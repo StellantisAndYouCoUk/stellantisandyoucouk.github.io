@@ -11,7 +11,7 @@
             var style = document.createElement( 'link' );
             style.rel = 'stylesheet';
             style.type = 'text/css';
-            style.href = 'https://robinsandday.github.io/knackjs/document.css?'+nowS;
+            style.href = 'https://stellantisandyoucouk.github.io/knackjs/document.css?'+nowS;
             document.getElementsByTagName( 'head' )[0].appendChild( style )
 
             function afterScriptLoad(){
@@ -33,12 +33,12 @@
                 scriptTag = document.getElementsByTagName('script')[0];
                 scriptTag.parentNode.insertBefore(script, scriptTag);
                 }
-            loadScript("https://robinsandday.github.io/knackjs/document.js?"+nowS,afterScriptLoad);
+            loadScript("https://stellantisandyoucouk.github.io/knackjs/document.js?"+nowS,afterScriptLoad);
 
-            var pinchZoomerDep = [{'id':'empty'},{'id':'jQuery','url':'https://robinsandday.github.io/knackjs/jquery-1.11.3.min.js'},
-                {'id':'jsHammer','url':'https://robinsandday.github.io/knackjs/hammer.min.js'},
-                {'id':'tweenMax','url':'https://robinsandday.github.io/knackjs/TweenMax.min.js'},
-                {'id':'pinchZoomer','url':'https://robinsandday.github.io/knackjs/jquery.pinchzoomer.js'}];
+            var pinchZoomerDep = [{'id':'empty'},{'id':'jQuery','url':'https://stellantisandyoucouk.github.io/knackjs/jquery-1.11.3.min.js'},
+                {'id':'jsHammer','url':'https://stellantisandyoucouk.github.io/knackjs/hammer.min.js'},
+                {'id':'tweenMax','url':'https://stellantisandyoucouk.github.io/knackjs/TweenMax.min.js'},
+                {'id':'pinchZoomer','url':'https://stellantisandyoucouk.github.io/knackjs/jquery.pinchzoomer.js'}];
 
             function loadPinchZoomer(){
                 pinchZoomerDep.shift();

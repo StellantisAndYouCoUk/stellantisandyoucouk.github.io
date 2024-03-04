@@ -506,7 +506,7 @@ var OperatingSystem = {
   
   var sndCameraTakePhoto = document.createElement('audio');  
   sndCameraTakePhoto.type = "audio/mpeg";     
-  sndCameraTakePhoto.src = "https://robinsandday.github.io/imagesStore/camera-shutter-click.mp3";                 
+  sndCameraTakePhoto.src = "https://stellantisandyoucouk.github.io/imagesStore/camera-shutter-click.mp3";                 
   sndCameraTakePhoto.load(); 
   //************************************* TAKE A PICTURE AND CROP*****************************************
   

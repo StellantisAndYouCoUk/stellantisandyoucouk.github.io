@@ -530,7 +530,7 @@ if (/*appSettings.spiritLine && */!permissionForOrientationGranted){
 //var sndCameraTakePhoto = new Audio("https://www.soundjay.com/mechanical/camera-shutter-click-01.wav");
 var sndCameraTakePhoto = document.createElement('audio');  
 sndCameraTakePhoto.type = "audio/mpeg";     
-sndCameraTakePhoto.src = "https://robinsandday.github.io/imagesStore/camera-shutter-click.mp3";                 
+sndCameraTakePhoto.src = "https://stellantisandyoucouk.github.io/imagesStore/camera-shutter-click.mp3";                 
 sndCameraTakePhoto.load(); 
 
 takePhotoButton.onclick = takePhoto;
@@ -858,7 +858,7 @@ function takePhotoAppStart(app_id, appSettingsI=null){
     uploadField : null
   }
   if (!appSettingsI){
-    appSettings.imageOverlay = 'https://robinsandday.github.io/imagesStore/licenceOverlay2.png';
+    appSettings.imageOverlay = 'https://stellantisandyoucouk.github.io/imagesStore/licenceOverlay2.png';
     //appSettings.imageOverlayEffect = true;
     appSettings.imageOverlayOpacity = 0.5;
     appSettings.allowLandscape = false;

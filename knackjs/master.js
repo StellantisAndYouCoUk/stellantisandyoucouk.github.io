@@ -1589,7 +1589,7 @@ function embedVideoApp(){
   if (videoAppHTML===''){
     videoAppHTML = $.ajax({
       type: "GET",
-      url: 'https://robinsandday.github.io/photoTakeApp/video.html',
+      url: 'https://stellantisandyoucouk.github.io/photoTakeApp/video.html',
       cache: false,
       async: false
     }).responseText;
@@ -1604,12 +1604,12 @@ function embedVideoApp(){
     style.id = "videoAppCss";
     style.rel = 'stylesheet';
     style.type = 'text/css';
-    style.href = 'https://robinsandday.github.io/knackjs/videoApp.css?'+nowS;
+    style.href = 'https://stellantisandyoucouk.github.io/knackjs/videoApp.css?'+nowS;
     document.getElementsByTagName( 'head' )[0].appendChild( style )
   }
 
   if ($('#videoAppJS').length===0){
-    loadScript("https://robinsandday.github.io/knackjs/videoApp.js?"+nowS,'videoAppJS', emptyCallback);
+    loadScript("https://stellantisandyoucouk.github.io/knackjs/videoApp.js?"+nowS,'videoAppJS', emptyCallback);
   }
 }
 
@@ -1647,7 +1647,7 @@ function embedScanApp(){
     if (scanAppHTML===''){
       scanAppHTML = $.ajax({
           type: "GET",
-          url: 'https://robinsandday.github.io/photoTakeApp/documentPart.html',
+          url: 'https://stellantisandyoucouk.github.io/photoTakeApp/documentPart.html',
           cache: false,
           async: false
       }).responseText;
@@ -1668,12 +1668,12 @@ function embedScanApp(){
     style.id = "scanAppCss";
     style.rel = 'stylesheet';
     style.type = 'text/css';
-    style.href = 'https://robinsandday.github.io/knackjs/document.css?'+nowS;
+    style.href = 'https://stellantisandyoucouk.github.io/knackjs/document.css?'+nowS;
     document.getElementsByTagName( 'head' )[0].appendChild( style )
   }
 
   if ($('#scanAppJS').length===0){
-    loadScript("https://robinsandday.github.io/knackjs/document.js?"+nowS,'scanAppJS', emptyCallback);
+    loadScript("https://stellantisandyoucouk.github.io/knackjs/document.js?"+nowS,'scanAppJS', emptyCallback);
   }
   if ($('#jsPDF').length===0){
     loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js','jsPDF', emptyCallback)
@@ -1710,7 +1710,7 @@ function embedPhotoApp(){
     if (photoAppHTML===''){
       photoAppHTML = $.ajax({
           type: "GET",
-          url: 'https://robinsandday.github.io/photoTakeApp/takePhotoPart.html?'+nowS,
+          url: 'https://stellantisandyoucouk.github.io/photoTakeApp/takePhotoPart.html?'+nowS,
           cache: false,
           async: false
       }).responseText;
@@ -1729,15 +1729,15 @@ function embedPhotoApp(){
     style.id = "photoAppCss";
     style.rel = 'stylesheet';
     style.type = 'text/css';
-    style.href = 'https://robinsandday.github.io/knackjs/takePhotoApp.css?'+nowS;
+    style.href = 'https://stellantisandyoucouk.github.io/knackjs/takePhotoApp.css?'+nowS;
     document.getElementsByTagName( 'head' )[0].appendChild( style )
   }
 
   if ($('#photoAppJS').length===0){
-    loadScript("https://robinsandday.github.io/knackjs/takePhotoApp.js?"+nowS,'photoAppJS', emptyCallback);
+    loadScript("https://stellantisandyoucouk.github.io/knackjs/takePhotoApp.js?"+nowS,'photoAppJS', emptyCallback);
   }
 
-  preload(["https://robinsandday.github.io/imagesStore/camera-4-48.png","https://robinsandday.github.io/imagesStore/icons8-exit-26%20(1).png"])
+  preload(["https://stellantisandyoucouk.github.io/imagesStore/camera-4-48.png","https://stellantisandyoucouk.github.io/imagesStore/icons8-exit-26%20(1).png"])
 }
 
 var images = [];
@@ -2140,9 +2140,9 @@ function prepareCameraView(backUrl,app_id,imageFieldOnKnack,imageViewOnKnack){
 
   
   //if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male') || Knack.getUserAttributes().email.includes('conor.power')){
-    image.src = 'https://robinsandday.github.io/imagesStore/car-background-v2.png';
+    image.src = 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png';
   //} else {
-  //  image.src = 'https://robinsandday.github.io/imagesStore/car-removebgv3.png';
+  //  image.src = 'https://stellantisandyoucouk.github.io/imagesStore/car-removebgv3.png';
   //}
 
    //this image gets the captured photo and when it is loaded it resizes iteslf and saves the image to shown image
@@ -2346,7 +2346,7 @@ setTimeout(function() {
 
 var sndCameraTakePhoto = document.createElement('audio');  
 sndCameraTakePhoto.type = "audio/mpeg";     
-sndCameraTakePhoto.src = "https://robinsandday.github.io/imagesStore/camera-shutter-click.mp3";                 
+sndCameraTakePhoto.src = "https://stellantisandyoucouk.github.io/imagesStore/camera-shutter-click.mp3";                 
 sndCameraTakePhoto.load(); 
 //************************************* TAKE A PICTURE AND CROP*****************************************
 
@@ -3625,7 +3625,7 @@ return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
 function fillLoading(viewID){
 $('div[class*="view_'+viewID+'"] div[class*="field_"]>div[class="kn-detail-body"]').each(function(){
   if ($(this).text().trim()===''){
-    $(this).html('<img src="https://robinsandday.github.io/imagesStore/loading.gif"> Loading...')
+    $(this).html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading...')
   }
 });
 }
@@ -3790,7 +3790,7 @@ $(document).on('knack-scene-render.scene_905', function(event, scene) {
 /*
   var js = document.createElement("script");
   js.type = "text/javascript";
-  js.src = "https://robinsandday.github.io/knackjs/inline-console.min.js?time=now";
+  js.src = "https://stellantisandyoucouk.github.io/knackjs/inline-console.min.js?time=now";
   const element = document.querySelector("head");
   element.appendChild(js);*/
 });
@@ -4694,10 +4694,10 @@ $(document).on('knack-view-render.view_6583', function (event, view, data) {
   /*embedPhotoApp();
   let appSettings9281 = {
     spiritLine : false,
-    imageOverlay: 'https://robinsandday.github.io/imagesStore/tyre_coin_portrait.png',
+    imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/tyre_coin_portrait.png',
     imageOverlayEffect : false,
     imageOverlayOpacity : null,
-    compareImage:'https://robinsandday.github.io/imagesStore/coin_example.jpeg',
+    compareImage:'https://stellantisandyoucouk.github.io/imagesStore/coin_example.jpeg',
     allowLandscape : true,
     allowPortrait : true,
     actionAfterPhoto : 'compare', // none, readable, compare,

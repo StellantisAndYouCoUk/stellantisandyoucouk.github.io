@@ -589,7 +589,7 @@ function embedScanApp(){
     if (scanAppHTML===''){
       scanAppHTML = $.ajax({
           type: "GET",
-          url: 'https://robinsandday.github.io/photoTakeApp/documentPart.html',
+          url: 'https://stellantisandyoucouk.github.io/photoTakeApp/documentPart.html',
           cache: false,
           async: false
       }).responseText;
@@ -610,7 +610,7 @@ function embedScanApp(){
     style.id = "scanAppCss";
     style.rel = 'stylesheet';
     style.type = 'text/css';
-    style.href = 'https://robinsandday.github.io/knackjs/document.css?'+nowS;
+    style.href = 'https://stellantisandyoucouk.github.io/knackjs/document.css?'+nowS;
     document.getElementsByTagName( 'head' )[0].appendChild( style )
   }
 
@@ -629,7 +629,7 @@ function embedScanApp(){
     scriptTag.parentNode.insertBefore(script, scriptTag);
   }
   if ($('#scanAppJS').length===0){
-    loadScript("https://robinsandday.github.io/knackjs/document.js?"+nowS,'scanAppJS', emptyCallback);
+    loadScript("https://stellantisandyoucouk.github.io/knackjs/document.js?"+nowS,'scanAppJS', emptyCallback);
   }
   if ($('#jsPDF').length===0){
     loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js','jsPDF', emptyCallback)
