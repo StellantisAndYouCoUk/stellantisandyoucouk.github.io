@@ -1,0 +1,56 @@
+<html lang="en">
+    <head>
+        <title>Car images take app</title>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>
+            var nowS = Date.now().toString();
+
+            var style = document.createElement( 'link' );
+            style.rel = 'stylesheet';
+            style.type = 'text/css';
+            style.href = 'https://robinsandday.github.io/knackjs/takePhotoApp.css?'+nowS;
+            document.getElementsByTagName( 'head' )[0].appendChild( style )
+        </script>
+        <script type="text/javascript" id='JS' src="https://robinsandday.github.io/knackjs/takePhotoApp.js?"></script>
+        <script>document.getElementById('JS').src = 'https://robinsandday.github.io/knackjs/takePhotoApp.js?'+nowS</script>
+    </head>
+    <body>
+        <div id="cameraPictureGallery">
+            <button id="cameraCancelAll" name="cancel all" type="button">Cancel</button><span>Take car images</span>
+            <div><img id="cameraImg1" class="photoGrid"><img id="cameraImg2" class="photoGrid"><img id="cameraImg3" class="photoGrid"></div>
+            <div><img id="cameraImg4" class="photoGrid"><img id="cameraImg5" class="photoGrid"><img id="cameraImg6" class="photoGrid"></div>
+            <div><img id="cameraImg7" class="photoGrid"><img id="cameraImg8" class="photoGrid"><img id="cameraImg9" class="photoGrid"></div>   
+            <span id="cameraUploadInfo"></span><br>
+            <input type="checkbox" id="cameraUploadBackground" checked="true">Upload images on background <button id="cameraUploadOnce" type="button" style="display: none;">Upload</button>
+        </div>
+        <p id="cameraLine" style="display: none;">
+            -
+        </p>
+        <p id="cameraVid_container" style="display: none;">
+            <canvas id="cameraOverlayCanvas"></canvas>
+            <canvas id="cameraBoxCanvas"></canvas>
+            <video autoplay="" playsinline="" class="hidden"></video>
+        </p>
+        <p id="cameraModal" style="display: none;">
+            <a id="cameraModal_header">Please enable Device Motion on your device</a>
+            <br>
+            <a id="cameraModal_txt">This app requires you to enable the Device Motion event on your device.</a>
+            <button id="cameraAccept" name="confirm request" type="button" class="cameraButton">Enable</button>
+        </p>
+        <p id="cameraGrid" style="display: none;">
+            <img id="cameraFrontpic">
+            <img id="cameraCompare" src="https://robinsandday.github.io/imagesStore/car.png">
+            <a id="cameraText">Does your photo match the guide?</a>
+        </p>
+        <p id="cameraGui_controls" style="display: none;">
+            <button id="cameraSpiritCircle" type="button" class="cameraButton"></button>
+            <button id="cameraZoom" type="button" class="cameraButton">2x</button>
+            <button id="takePhoto" class="cameraButton"></button>
+            <button id="cameraExit" name="exit photo" type="button" class="cameraButton"></button>
+            <button id="cameraRotate" name="rotate camera" type="button" class="cameraButton"></button>
+            <button id="cameraRetake" name="retake photo" type="button" class="cameraButton"></button>
+            <button id="cameraConfirm" name="confirm photo" type="button" class="cameraButton"></button>
+            <!--<span id="dev" class="cameraButton">DEV INFO</span>-->
+        </p>
+    </body>
+</html>

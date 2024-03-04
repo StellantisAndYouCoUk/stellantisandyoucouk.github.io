@@ -1,0 +1,198 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:aide =
+"http://xml.inetpsa.com/Commerce/APVTechnique/Information"><HEAD><META
+content="IE=5.0000" http-equiv="X-UA-Compatible">
+<TITLE>Technical support calculator: Support charge calculation</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<LINK rel=stylesheet type=text/css href="https://robinsandday.github.io/goodwillHTML/main.css">
+<LINK rel=stylesheet type=text/css href="https://robinsandday.github.io/goodwillHTML/bouton.css">
+<link rel="stylesheet" type="text/css" href="https://robinsandday.github.io/goodwillHTML/ui.spinner.css" />
+<link rel="stylesheet" type="text/css" href="https://robinsandday.github.io/goodwillHTML/jquery.ui.all.css" />
+<script type="text/javascript" src="https://robinsandday.github.io/goodwillHTML/jquery.js"></script>
+<script type="text/JavaScript" src="https://robinsandday.github.io/goodwillHTML/jquery.ui.core.js"></script>
+<script type="text/JavaScript" src="https://robinsandday.github.io/goodwillHTML/jquery.ui.widget.js"></script>
+<script type="text/JavaScript" src="https://robinsandday.github.io/goodwillHTML/jquery.ui.datepicker.js"></script>
+<script type="text/JavaScript" src="https://robinsandday.github.io/goodwillHTML/jquery.ui.datepicker-fr.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.mouse.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.draggable.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.position.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.resizable.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.dialog.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.tabs.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/jquery.ui.accordion.js"></script>
+<script type="text/JavaScript" src="../../../../commun/js/ui/ui.spinner.js"></script>
+
+<SCRIPT language=javascript>
+
+		/** Show and Hide Paragraphes */
+		function showTab(OBJ,ID){
+			if(OBJ.src.substr(OBJ.src.lastIndexOf("/")+1) == "closelem.gif"){
+				OBJ.src = "../../../../../charte/images/AC/picto/openelem.gif";
+				document.getElementById('tb'+ID).style.display = 'block';
+			}else{
+				OBJ.src = "../../../../../charte/images/AC/picto/closelem.gif";
+				document.getElementById('tb'+ID).style.display = 'none';
+			}
+		}
+
+		function ecart_mois(date_max, date_min)
+		{
+			var explode_date_min;
+			var explode_date_max;
+			var mois_min;
+			var annee_min;
+			var mois_max;
+			var annee_max;
+			var ecart;
+
+			explode_date_min = date_min.split('/');
+			explode_date_max = date_max.split('/');
+
+			mois_min = parseInt(explode_date_min[0]);
+			annee_min = parseInt(explode_date_min[1]);
+
+			mois_max = parseInt(explode_date_max[0]);
+			annee_max = parseInt(explode_date_max[1]);
+
+			ecart = ((annee_max - annee_min)*12) - (mois_min) + (mois_max);
+
+			return ecart;
+		}
+
+
+		/** Show and Hide Paragraphes */
+		function calculate()
+		{
+			if (document.getElementById("dateField").value=="")
+				return;
+			lDateDeFin = document.getElementById("dateField").value;
+			//alert(lDateDeFin);
+
+			var lObjKm = document.getElementById("KM");
+ 		    var idx = lObjKm.selectedIndex;
+    		var lKm = lObjKm.options[idx].value;
+			//alert(lKm)
+			//On calcule la date du jour...
+			var maintenant=new Date();
+			//alert(maintenant);
+			var jour=maintenant.getDate();
+			var mois=maintenant.getMonth()+1;
+			var an=maintenant.getFullYear();
+			var laDateDuJour = an+"-"+mois+"-"+jour;
+
+			tab = lDateDeFin.split('-');
+			an2 = tab[0];
+			mois2 = tab[1];
+			jour2 = tab[2];
+
+			delai = (an-an2)*12+(mois-mois2);
+			if (jour2 < jour)
+			{
+				delai+=1;
+			}
+			if (delai <= 0)
+				delai=0;
+			if (delai > 60)
+				delai=61;
+			lNum = lKm*1+delai*1;
+			if (delai==0)
+				lNum=1;
+			if (delai==61)
+				lNum=2;
+
+
+			// Recuperation du bon abaque
+			var lObjAba = document.getElementById("PAYS");
+ 		    var idx = lObjAba.selectedIndex;
+    		var lAba = lObjAba.options[idx].value;
+    		//alert("./images/"+lAba+"/"+lNum+".png");
+			var lObjRes = document.getElementById("resultat");
+
+			//Recuperation de la marque...
+			var lObjMarque = document.getElementById("MARQUE");
+ 		    var idx = lObjMarque.selectedIndex;
+    		var lMarque = lObjMarque.options[idx].value;
+
+
+
+    		lObjRes.src = "https://api.apify.com/v2/key-value-stores/ifhg2CYymXTWjc91t/records/"+lNum+".png";
+		}
+
+
+        $( function() {
+			$( "#dateField" ).datepicker({changeMonth: true,changeYear: true});
+		  } );
+</script>
+
+
+
+<META name=GENERATOR content="HOMEMADE"></HEAD>
+<BODY onLoad='javascript:calculate()'>
+<BR>
+<TABLE class=fondCouleur cellSpacing=0 cellPadding=0 width="95%" align=center border=0>
+	<TBODY>
+  		<TR>
+    		<TD width="100%">
+      			<TABLE class=titreSection style="TABLE-LAYOUT: fixed" height=23 cellSpacing=0 cellPadding=0 width="100%" border=0>
+        			<TBODY>
+        				<TR>
+          					<TD class=imageTitreSection><INPUT onclick="javascript:showTab(this,'0');" class=bt_openelem type=button></TD>
+          					<TD class=textTitreSection>
+          						<A name="Technical support calculator: Support charge calculation, version dated 01/10/2018 — Confidential"></A><FONT style="FONT-STYLE: normal">Technical support calculator: Support charge calculation, version dated 01/10/2018 — Confidential</FONT>
+          					</TD>
+          				</TR>
+          			</TBODY>
+          		</TABLE>
+          	</TD>
+        </TR>
+  		<TR>
+    		<TD>
+      			<DIV id=tb0><BR>
+      			<TABLE cellSpacing=0 cellPadding=0 width="90%" align=center border=1 style="border-style:double">
+        			<TBODY>
+        				<TR >
+          					<TD class=text style="vertical-align:middle;height:50px" >
+          						<FONT style="FONT-STYLE: normal">Please specify <b>the country</b> from which the vehicle was purchased (available on the RECEPTION tab):</FONT>
+            					<SELECT name="PAYS"  id="PAYS" style="FONT-SIZE: 11px" onChange="javascript:calculate()">
+            					<OPTION  value='5A'>AE</OPTION><OPTION  value='1A'>AF</OPTION><OPTION  value='1A'>AG</OPTION><OPTION  value='1A'>AI</OPTION><OPTION  value='2A'>AL</OPTION><OPTION  value='1A'>AM</OPTION><OPTION  value='2A'>AO</OPTION><OPTION  value='1A'>AQ</OPTION><OPTION  value='2A'>AR</OPTION><OPTION  value='1A'>AS</OPTION><OPTION  value='2A'>AT</OPTION><OPTION  value='3A'>AU</OPTION><OPTION  value='1A'>AW</OPTION><OPTION  value='1A'>AX</OPTION><OPTION  value='2A'>AZ</OPTION><OPTION  value='2A'>BB</OPTION><OPTION  value='3A'>BD</OPTION><OPTION  value='2A'>BE</OPTION><OPTION  value='2A'>BF</OPTION><OPTION  value='2A'>BG</OPTION><OPTION  value='5A'>BH</OPTION><OPTION  value='2A'>BI</OPTION><OPTION  value='2A'>BJ</OPTION><OPTION  value='1A'>BL</OPTION><OPTION  value='2A'>BM</OPTION><OPTION  value='3A'>BN</OPTION><OPTION  value='2A'>BO</OPTION><OPTION  value='1A'>BQ</OPTION><OPTION  value='3A'>BR</OPTION><OPTION  value='1A'>BS</OPTION><OPTION  value='1A'>BT</OPTION><OPTION  value='1A'>BV</OPTION><OPTION  value='1A'>BW</OPTION><OPTION  value='2A'>BY</OPTION><OPTION  value='1A'>BZ</OPTION><OPTION  value='3A'>CA</OPTION><OPTION  value='1A'>CC</OPTION><OPTION  value='2A'>CD</OPTION><OPTION  value='2A'>CF</OPTION><OPTION  value='2A'>CG</OPTION><OPTION  value='3A'>CH</OPTION><OPTION  value='3A'>CI</OPTION><OPTION  value='1A'>CK</OPTION><OPTION  value='3A'>CL</OPTION><OPTION  value='2A'>CM</OPTION><OPTION  value='3A'>CN</OPTION><OPTION  value='3A'>CO</OPTION><OPTION  value='3A'>CR</OPTION><OPTION  value='2A'>CU</OPTION><OPTION  value='1A'>CV</OPTION><OPTION  value='1A'>CW</OPTION><OPTION  value='1A'>CX</OPTION><OPTION  value='2A'>CY</OPTION><OPTION  value='2A'>CZ</OPTION><OPTION  value='2A'>DE</OPTION><OPTION  value='2A'>DJ</OPTION><OPTION  value='2A'>DK</OPTION><OPTION  value='1A'>DM</OPTION><OPTION  value='2A'>DO</OPTION><OPTION  value='3A'>DZ</OPTION><OPTION  value='2A'>EC</OPTION><OPTION  value='3A'>EE</OPTION><OPTION  value='3A'>EG</OPTION><OPTION  value='1A'>EH</OPTION><OPTION  value='1A'>ER</OPTION><OPTION  value='2A'>ES</OPTION><OPTION  value='2A'>ET</OPTION><OPTION  value='3A'>FI</OPTION><OPTION  value='1A'>FJ</OPTION><OPTION  value='1A'>FK</OPTION><OPTION  value='1A'>FM</OPTION><OPTION  value='1A'>FO</OPTION><OPTION  value='2A'>FR</OPTION><OPTION  value='2A'>GA</OPTION><OPTION  selected  value='3A'>GB</OPTION><OPTION  value='2A'>GD</OPTION><OPTION  value='2A'>GE</OPTION><OPTION  value='2A'>GF</OPTION><OPTION  value='3A'>GH</OPTION><OPTION  value='1A'>GL</OPTION><OPTION  value='2A'>GM</OPTION><OPTION  value='2A'>GN</OPTION><OPTION  value='2A'>GP</OPTION><OPTION  value='2A'>GQ</OPTION><OPTION  value='2A'>GR</OPTION><OPTION  value='1A'>GS</OPTION><OPTION  value='2A'>GT</OPTION><OPTION  value='1A'>GU</OPTION><OPTION  value='1A'>GW</OPTION><OPTION  value='1A'>GY</OPTION><OPTION  value='3A'>HK</OPTION><OPTION  value='1A'>HM</OPTION><OPTION  value='2A'>HN</OPTION><OPTION  value='2A'>HR</OPTION><OPTION  value='2A'>HT</OPTION><OPTION  value='2A'>HU</OPTION><OPTION  value='3A'>ID</OPTION><OPTION  value='3A'>IE</OPTION><OPTION  value='3A'>IL</OPTION><OPTION  value='1A'>IN</OPTION><OPTION  value='1A'>IO</OPTION><OPTION  value='3A'>IQ</OPTION><OPTION  value='1A'>IR</OPTION><OPTION  value='2A'>IS</OPTION><OPTION  value='2A'>IT</OPTION><OPTION  value='2A'>JM</OPTION><OPTION  value='3A'>JO</OPTION><OPTION  value='3A'>JP</OPTION><OPTION  value='2A'>KE</OPTION><OPTION  value='1A'>KG</OPTION><OPTION  value='1A'>KH</OPTION><OPTION  value='1A'>KI</OPTION><OPTION  value='1A'>KM</OPTION><OPTION  value='1A'>KN</OPTION><OPTION  value='1A'>KP</OPTION><OPTION  value='3A'>KR</OPTION><OPTION  value='5A'>KW</OPTION><OPTION  value='1A'>KY</OPTION><OPTION  value='1A'>KZ</OPTION><OPTION  value='1A'>LA</OPTION><OPTION  value='3A'>LB</OPTION><OPTION  value='1A'>LC</OPTION><OPTION  value='2A'>LI</OPTION><OPTION  value='3A'>LK</OPTION><OPTION  value='2A'>LR</OPTION><OPTION  value='1A'>LS</OPTION><OPTION  value='3A'>LT</OPTION><OPTION  value='3A'>LV</OPTION><OPTION  value='1A'>LY</OPTION><OPTION  value='2A'>MA</OPTION><OPTION  value='2A'>MD</OPTION><OPTION  value='2A'>ME</OPTION><OPTION  value='2A'>MG</OPTION><OPTION  value='1A'>MH</OPTION><OPTION  value='2A'>MK</OPTION><OPTION  value='2A'>ML</OPTION><OPTION  value='3A'>MM</OPTION><OPTION  value='3A'>MN</OPTION><OPTION  value='1A'>MO</OPTION><OPTION  value='1A'>MP</OPTION><OPTION  value='2A'>MQ</OPTION><OPTION  value='2A'>MR</OPTION><OPTION  value='1A'>MS</OPTION><OPTION  value='2A'>MT</OPTION><OPTION  value='2A'>MU</OPTION><OPTION  value='1A'>MV</OPTION><OPTION  value='2A'>MW</OPTION><OPTION  value='3A'>MX</OPTION><OPTION  value='3A'>MY</OPTION><OPTION  value='2A'>MZ</OPTION><OPTION  value='1A'>NA</OPTION><OPTION  value='2A'>NC</OPTION><OPTION  value='2A'>NE</OPTION><OPTION  value='1A'>NF</OPTION><OPTION  value='3A'>NG</OPTION><OPTION  value='2A'>NI</OPTION><OPTION  value='2A'>NL</OPTION><OPTION  value='5A'>NO</OPTION><OPTION  value='1A'>NP</OPTION><OPTION  value='1A'>NR</OPTION><OPTION  value='1A'>NU</OPTION><OPTION  value='3A'>NZ</OPTION><OPTION  value='5A'>OM</OPTION><OPTION  value='3A'>PA</OPTION><OPTION  value='3A'>PE</OPTION><OPTION  value='2A'>PF</OPTION><OPTION  value='1A'>PG</OPTION><OPTION  value='3A'>PH</OPTION><OPTION  value='1A'>PK</OPTION><OPTION  value='2A'>PL</OPTION><OPTION  value='2A'>PM</OPTION><OPTION  value='1A'>PN</OPTION><OPTION  value='1A'>PR</OPTION><OPTION  value='3A'>PS</OPTION><OPTION  value='2A'>PT</OPTION><OPTION  value='1A'>PW</OPTION><OPTION  value='2A'>PY</OPTION><OPTION  value='5A'>QA</OPTION><OPTION  value='2A'>RE</OPTION><OPTION  value='4A'>RO</OPTION><OPTION  value='2A'>RS</OPTION><OPTION  value='3A'>RU</OPTION><OPTION  value='2A'>RW</OPTION><OPTION  value='5A'>SA</OPTION><OPTION  value='1A'>SB</OPTION><OPTION  value='1A'>SC</OPTION><OPTION  value='1A'>SD</OPTION><OPTION  value='3A'>SE</OPTION><OPTION  value='3A'>SG</OPTION><OPTION  value='1A'>SH</OPTION><OPTION  value='2A'>SI</OPTION><OPTION  value='1A'>SJ</OPTION><OPTION  value='2A'>SK</OPTION><OPTION  value='2A'>SL</OPTION><OPTION  value='2A'>SN</OPTION><OPTION  value='2A'>SO</OPTION><OPTION  value='1A'>SR</OPTION><OPTION  value='1A'>ST</OPTION><OPTION  value='2A'>SV</OPTION><OPTION  value='1A'>SX</OPTION><OPTION  value='3A'>SY</OPTION><OPTION  value='1A'>SZ</OPTION><OPTION  value='1A'>TC</OPTION><OPTION  value='2A'>TD</OPTION><OPTION  value='1A'>TF</OPTION><OPTION  value='2A'>TG</OPTION><OPTION  value='3A'>TH</OPTION><OPTION  value='1A'>TJ</OPTION><OPTION  value='1A'>TK</OPTION><OPTION  value='1A'>TL</OPTION><OPTION  value='1A'>TM</OPTION><OPTION  value='2A'>TN</OPTION><OPTION  value='1A'>TO</OPTION><OPTION  value='2A'>TR</OPTION><OPTION  value='2A'>TT</OPTION><OPTION  value='1A'>TV</OPTION><OPTION  value='3A'>TW</OPTION><OPTION  value='2A'>TZ</OPTION><OPTION  value='2A'>UA</OPTION><OPTION  value='1A'>UG</OPTION><OPTION  value='1A'>UM</OPTION><OPTION  value='3A'>US</OPTION><OPTION  value='2A'>UY</OPTION><OPTION  value='1A'>UZ</OPTION><OPTION  value='1A'>VC</OPTION><OPTION  value='2A'>VE</OPTION><OPTION  value='1A'>VG</OPTION><OPTION  value='1A'>VI</OPTION><OPTION  value='3A'>VN</OPTION><OPTION  value='1A'>VU</OPTION><OPTION  value='1A'>WF</OPTION><OPTION  value='1A'>WS</OPTION><OPTION  value='2A'>XK</OPTION><OPTION  value='3A'>YE</OPTION><OPTION  value='2A'>YT</OPTION><OPTION  value='3A'>ZA</OPTION><OPTION  value='2A'>ZM</OPTION><OPTION  value='2A'>ZW</OPTION>
+								</SELECT>
+								<div style='display:none;'><SELECT name="MARQUE"  id="MARQUE"><option value=''>AP</OPTION></SELECT></div>
+							</TD>
+          					<TD rowspan=4 class=text align = right>
+          						<TABLE border=0>
+          							<TBODY>
+          								<TR>
+          									<TD class=text align = right>
+          										<FONT style="FONT-STYLE: normal">Support provided <b>by the brand</b>:&nbsp;</FONT>
+          									</TD>
+          									<TD>
+          										<img id="resultat" name = "resultat" src = "https://api.apify.com/v2/key-value-stores/ifhg2CYymXTWjc91t/records/150060.png"/>
+          									</TD>
+          								</TR>
+          							</TBODY>
+          						</TABLE>
+          					</TD>
+          				</TR>
+        				<TR>
+          					<TD class=text style="vertical-align:middle;height:50px" >
+          						<FONT style="FONT-STYLE: normal">Please indicate the value for <b>distance travelled</b> (in kilometres or miles) that is directly above the value for this vehicle:</FONT>
+            					<SELECT name="KM"  id="KM" style="FONT-SIZE: 11px" onChange="javascript:calculate()">
+            					<OPTION value='10000'>10000 km / 6214 mi</OPTION><OPTION value='20000'>20000 km / 12427 mi</OPTION><OPTION value='30000'>30000 km / 18641 mi</OPTION><OPTION value='40000'>40000 km / 24855 mi</OPTION><OPTION value='50000'>50000 km / 31069 mi</OPTION><OPTION value='60000'>60000 km / 37282 mi</OPTION><OPTION value='70000'>70000 km / 43496 mi</OPTION><OPTION value='80000'>80000 km / 49710 mi</OPTION><OPTION value='90000'>90000 km / 55923 mi</OPTION><OPTION value='100000'>100000 km / 62137 mi</OPTION><OPTION value='110000'>110000 km / 68351 mi</OPTION><OPTION value='120000'>120000 km / 74565 mi</OPTION><OPTION value='130000'>130000 km / 80778 mi</OPTION><OPTION value='140000'>140000 km / 86992 mi</OPTION><OPTION value='150000'>150000 km / 93206 mi</OPTION>
+								</SELECT>
+							</TD>
+          				</TR>
+        				<TR>
+          					<TD class=text  style="vertical-align:middle;height:50px" >
+          						<FONT style="FONT-STYLE: normal">Please specify <b>the warranty end date</b> (available on the RECEPTION tab):&nbsp;</FONT>
+          						<input type="text" name="date"  id="dateField" onChange="javascript:calculate()"  value="" />
+							</TD>
+          				</TR>
+          			</TBODY>
+          		</TABLE>
+          		</DIV><BR>
+          	</TD>
+  		</TR>
+	</TBODY>
+</TABLE>
+</BODY></HTML>

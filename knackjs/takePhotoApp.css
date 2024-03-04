@@ -1,0 +1,414 @@
+/**POP UP MESSAGE FOR ISO USER TO ALLOW MOTION SENSOR**/
+
+body {
+  overscroll-behavior-y: contain;
+}
+
+.photoH1{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size:20px;
+  padding:8px;
+  margin: auto;
+  text-align: center;
+}
+
+.photoGrid{
+  width: 25%;
+  margin:2%;
+  filter: opacity(50%);
+  -webkit-filter: opacity(50%);
+}
+
+.photoGridTaken{
+  width: 25%;
+  margin:2%;
+}
+
+#cameraModal {
+    background-color: #f5f5f5;
+  display:none;
+    padding: 30px 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: absolute;
+  max-width: 60%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
+
+#cameraModal_header {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 16.5px;
+  color: #000;
+  text-decoration: none;
+  padding: 0px;
+  }
+
+#cameraModal_txt {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  padding: 0px;
+  }
+
+ #cameraAccept {
+  background-color: #4CAF50;
+    color: #fafafa;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    border: 2px solid #000;
+  }
+
+
+#cameraVid_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  max-width: 100%;
+}
+
+#cameraGridCompare {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-gap: 6px;
+  padding: auto;
+  align-items: center;
+}
+
+#cameraGrid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  max-width: 100%;
+  text-align:center;
+  width: 100%;
+  height: 80%;
+}
+
+#cameraGrid.left {
+  left: 20%;
+}
+ 
+#cameraText {
+   font-family: sans-serif;
+   font-style: normal;
+   font-size: 16.5px;
+   color: #fafafa;
+   text-decoration: none;
+   padding: 0px;
+ }
+
+#cameraCompare {
+  max-width: 100%;
+  height: auto;
+}
+
+#zoomHolder {
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+}
+
+#zoomHolderOut {
+ width: 100%;
+ height: 90%;
+}
+
+#cameraFrontpic {
+  max-width: 80%;
+  max-height: 100%;
+}
+
+#cameraFrontpicCompare {
+  max-width: 80%;
+  height: auto;
+}
+
+/**Line canvas**/
+#cameraLine {
+  max-width:80%;
+  height: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  top: 90%;
+  font-size:0px;
+  /*left: calc(50vw - 100vmax);*/
+  /*transform: rotate(360deg);*/
+  
+  /*transform-origin: centre point*/
+  z-index:10;
+  opacity:0.5
+}
+
+/**Mobile first. Any mobile with viewport width of 640px or less apply the following to canvas**/
+
+#cameraBoxCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#cameraGui_controls {
+  position: fixed;
+  background-color: #111;
+  z-index: 2;
+  top: 0;
+}
+
+#cameraVideo_overlay {
+  position: fixed;
+  display: none;
+  max-width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: #111;
+}
+
+.cameraButton {
+  outline: none;
+  position: absolute;
+  color: white;
+  display: block;
+  opacity: 1;
+  background: transparent;
+  border: solid 2px #fff;
+  padding: 0;
+  text-shadow: 0px 0px 4px black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* IF IN PORTRAIT DISPLAY ROTATE BUTTON*/
+#cameraRotate {
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  background-image: url("https://robinsandday.github.io/imagesStore/rotate5.png");
+  border-radius: 50%;
+}
+
+#cameraSpiritCircle {
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;  
+  background-color: #ffff00;
+}
+
+#takePhoto {
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  background-image: url("https://robinsandday.github.io/imagesStore/camera-4-48.png");
+  border-radius: 50%;
+}
+
+#takePhoto:active {
+  background-color: #fafafa;
+}
+
+#takePhoto:enabled {
+  /*background-color: #fafafa;*/
+  background-color: #4cc417;
+}
+
+#takePhoto:disabled {
+  /*background-color: #fafafa;*/
+  background-color: #ff0000;
+}
+
+#cameraExit {
+  left: calc(50% - 32px);
+  top: calc(82% - 32px);
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/icons8-exit-26%20(1).png");
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#cameraExit:active {
+  background-color: #fafafa;
+}
+
+#cameraRetake {
+  left: calc(50% - 32px);
+  top: calc(82% - 32px);
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/x-mark-24.png");
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+#cameraRetake:active {
+  background-color: #fafafa;
+}
+
+#cameraConfirm {
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/check-mark-3-24.png");
+  border-radius: 50%;
+  background-color: rgba(60, 179, 113, 0.5);
+  left: calc(50% - 32px);
+  top: calc(18% - 32px);
+}
+
+#cameraConfirm:active {
+  background-color: #fafafa;
+}
+
+#videoElement {
+  width:100%;
+  height:auto;
+  max-height:100%
+}
+
+@media screen and (orientation: portrait) {
+
+  /* portrait-specific styles */
+  /* video_container (video) doesn't respect height...
+       so we will fill it in completely in portrait mode
+    */
+  #cameraVid_container {
+    width: auto;
+    height: 80%;
+    top: 0%
+  }
+
+  #cameraVideo_overlay {
+    max-width: 100%;
+    height: 80%;
+  }
+
+  #cameraGui_controls {
+    top: 80%;
+    width: 100%;
+    height: 20%;
+    left: 0;
+  }
+
+  #cameraConfirm {
+    left: calc(20% - 32px);
+    top: calc(50% - 32px);
+  }
+
+  #cameraRetake {
+    left: calc(80% - 32px);
+    top: calc(50% - 32px);
+  }
+
+  #cameraExit {
+    left: calc(20% - 32px);
+    top: calc(50% - 32px);
+  }
+
+  #cameraOverlayCanvasPA {
+    position: fixed;
+    display: none;
+    max-width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 80%;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  #cameraVid_container {
+    width: 80%;
+    height: 100%;
+  }
+
+  #cameraVid_container.left {
+    left: 20%;
+  }
+
+  /* we default to right */
+  #cameraGui_controls {
+    width: 20%;
+    height: 100%;
+    right: 0;
+    top: 0;
+  }
+
+  /* for the lefties */
+  #cameraGui_controls.left {
+    left: 0;
+  }
+
+  #cameraRetake {
+    left: calc(50% - 32px);
+    top: calc(18% - 32px);
+  }
+
+  #cameraConfirm {
+    left: calc(50% - 32px);
+    top: calc(82% - 32px);
+  }
+  
+
+  #cameraExit {
+    left: calc(50% - 32px);
+    top: calc(82% - 32px);
+  }
+
+  #cameraOverlayCanvasPA {
+    position: fixed;
+    display: none;
+    max-width: 80%;
+    height: auto;
+    top: 0;
+    left: 0;
+    right: calc(80% - 32px);
+    bottom: 0;
+  }
+}
+
+
+@media only screen and (min-width: 667px) and (max-width: 897px) and (orientation: landscape){
+#cameraText {
+  font-size: 20px;
+}
+  
+}
+
+@media only screen and (min-width: 898px) and (orientation: landscape){
+     #cameraGrid {
+  grid-template-columns: 45% 45%;
+}
+
+
+#cameraText {
+  font-size: 20px;
+}
+}
+  

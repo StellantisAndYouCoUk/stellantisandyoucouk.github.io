@@ -1,0 +1,126 @@
+.bt_openelem {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; WIDTH: 22px; BACKGROUND: url(../../images/AC/picto/openelem.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_closelem {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; WIDTH: 22px; BACKGROUND: url(../../images/AC/picto/closelem.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_openelemSelected {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; WIDTH: 22px; BACKGROUND: url(../../images/AC/picto/openelemSelected.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_closelemSelected {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; WIDTH: 22px; BACKGROUND: url(../../images/AC/picto/closelemSelected.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_creer {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/creer.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_envoi {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/envoyer.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_fleche {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/fleche_menu.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_print {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/imprimer.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_modif {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/modifier.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_browse {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/parcourir.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_search {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/recherche.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_save {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/sauvegarder.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_delete {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/supprimer.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_upload {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/upload.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_uploadRed {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/uploadrouge.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_uploadGreen {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/uploadvert.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_download {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/telecharger.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_downloadRed {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/telechargerrouge.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_downloadGreen {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/telechargervert.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_translate {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/traduire.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_courrier {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/courrier.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_valider {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/valider.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_validerVert {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/valider_vert.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_annuler {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/annuler.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_retour {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/retour.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_aide {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/aide.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_connexion {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/securite.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_ajouter {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/ajouter.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_rafraichir {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/rafraichir.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_soustraire {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/soustraire.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_zero {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/zero.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_alertcontrat {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 11px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/alertcontrat.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #29458c; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_suiv {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/page_suiv.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_prec {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/page_prec.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none; PADDING-RIGHT: 0px
+}
+.bt_premiere_page {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/premiere_page.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_derniere_page {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 20px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/derniere_page.gif) no-repeat left center; BORDER-BOTTOM: medium none; COLOR: #dc002e; TEXT-ALIGN: left; FONT: bold 11px Arial; PADDING-LEFT: 22px; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_ascinfo {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 5px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/ascinfo.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_asctrie {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 5px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/asctrie.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_descinfo {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 5px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/descinfo.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_desctrie {
+	CURSOR: pointer; BORDER-TOP: medium none; HEIGHT: 5px; BORDER-RIGHT: medium none; BACKGROUND: url(../../images/AC/picto/desctrie.gif) no-repeat left center; BORDER-BOTTOM: medium none; MARGIN: 0px; BORDER-LEFT: medium none
+}
+.bt_courant {
+	BORDER-TOP: #f7a629 1px solid; BORDER-RIGHT: #f7a629 1px solid; BORDER-BOTTOM: #f7a629 1px solid; MARGIN: 2px 5px; BORDER-LEFT: #f7a629 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.bt_futur {
+	BORDER-TOP: #f7a629 1px solid; BORDER-RIGHT: #f7a629 1px solid; BORDER-BOTTOM: #f7a629 1px solid; MARGIN: 2px 5px; BORDER-LEFT: #f7a629 1px solid; BACKGROUND-COLOR: #9c9a9c
+}

@@ -1,0 +1,2313 @@
+/* Force all table data to show in the screen*/
+.kn-table th {white-space: inherit;}
+
+body {
+	overscroll-behavior-y: contain;
+	overscroll-behavior: contain;
+  }
+
+#knack-logo {
+	display: none;
+  }
+
+  .kn-back-link {
+	visibility: hidden;
+  }
+
+#knack-body,
+.kn-content--embedded-with-fonts { 
+    overflow-x:initial !important;
+    overflow-y:auto !important;
+}
+
+.formModal {
+    background-color: #f5f5f5;
+    display:none;
+    padding: 30px 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    position: absolute;
+    max-width: 60%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+#kn-scene_22 .kn-detail-label {color:#a8aaac; font-size: 0.9rem; background-color: #ffffff; font-weight: normal; padding-top: 0px;}
+
+#kn-scene_22 .kn-detail-body {color:#37517e;font-size: 0.95rem; padding-top: 0px; padding-bottom: 0px;margin-top: -7px;margin-bottom: 7px}
+
+#kn-scene_22 .field_31 .kn-detail-body>span {color:#000000; font-size: 2rem; background-color:yellow; font-weight: bold;}
+
+#kn-scene_22 .field_31 .kn-detail-body>span:before{
+    content: "";
+    display: block;
+    background: url('https://robinsandday.github.io/imagesStore/licencePlateGB.png') no-repeat;
+    width: 21px;
+    height: 44px;
+    float: left;
+}
+
+.view_78 .kn-details-column>.kn-details-group:before{
+content: url(https://robinsandday.github.io/imagesStore/VHCLogo.png);
+}
+.view_78 .kn-details-column>.kn-details-group{ border: 2px solid red; }
+
+.view_80 .kn-details-column>.kn-details-group:before{
+content: url(https://robinsandday.github.io/imagesStore/EMaCLogo.png);
+}
+.view_80 .kn-details-column>.kn-details-group{ border: 2px solid yellow; }
+
+.view_81 .kn-details-column>.kn-details-group:before{
+content: url(https://robinsandday.github.io/imagesStore/DVLALogo.png);
+}
+.view_81 .kn-details-column>.kn-details-group{ border: 2px solid green; }
+
+#kn-scene_22 .field_72 #serviceSchedule {display:none;}
+#kn-scene_22 .field_72 #arduousInfo {display:none;}
+
+#kn-scene_22 th {font-size: 0.9rem; font-weight: normal;color:#a8aaac;}
+
+/*Make Reg Number look like Reg -Live job card v2 */ 
+#view_2338 > section > div > div > div > div > div > div > span > h2 > strong > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+/*Make Reg Number look like reg in technician job card view*/
+
+#view_3156 > section > div > div > div:nth-child(1) > div > div.field_31 > div > span > h2 > strong > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+
+/* Make Reg number look like REG in David's test layout page*/
+
+#view_97 > section > div.kn-details-column.first.column.is-horizontal > div:nth-child(1) > div > div > div.field_31 > div > span > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+/* Make Reg number look like REG in David's test layout page table view*/
+
+#\36 0866715119807001b7519e6 > td.field_31.cell-edit > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+/* Make Reg number look like REG on vehicle lookup status update*/
+
+#view_1223-search > div > div > ul > li > span.value > input {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+
+#kn-scene_24 > div.view-group.view-group-1 > div:nth-child(1) {
+	border: 1px solid #CCCCCC;
+	border-radius: 10px; 
+  }
+  
+  #kn-scene_24 > div.view-group.view-group-1 > div:nth-child(2) {
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+  }
+  
+  #kn-scene_24 > div.view-group.view-group-1 > div:nth-child(3) {
+	border: 1px solid #CCCCCC; 
+	border-radius: 10px;
+  }
+
+  #field_31 {
+	background-color: #FFE74C;
+	font-weight: bold;
+	text-align: center;
+	font-size: 24px;
+  }
+
+  #view_97 .field_31 {
+	width: 170px;
+	overflow: hidden;
+	white-space: nowrap;
+  }
+  #kn-scene_24 .kn-view {margin-bottom:5px;}
+  #kn-scene_24 tr { line-height: 20px; }   
+  
+  #sectionLeft {width:33%;float:left;border: 1px solid #CCCCCC;
+	border-radius: 10px;padding: 10px;}
+  #sectionCenter {width:33%;float:left;border: 1px solid #CCCCCC;
+	border-radius: 10px;padding: 10px;}
+  #sectionRight {width:33%;float:left;border: 1px solid #CCCCCC;
+	border-radius: 10px;padding: 10px;}
+  #kn-scene_24 #view_125 {width:100%;float:left;}
+  .kn-back-link {display: none;width:100%;float:left;}
+  #sections {
+	display: flex; /* equal height of the children */
+  }
+
+
+/**** SERVICE SCHEDULE & TYRE PRICES BUTTONS ****/
+#view_117 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #00CC66;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_117 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #32936F;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_117 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #00CC66;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_117 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #32936F;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/**** Menu Button back to Aftersales Lookup ****/
+#view_125 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_125 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/* BUGS & IMPROVEMENTS BUTTON */
+#view_123 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_123 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/************* AFTERSALES SERVICE REPORTING CSS *************/
+
+/**** Regional Reporting Button ****/
+#view_282 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_282 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_284 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_284 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_284 > div > a.kn-link.kn-link-3.kn-link-page.kn-button {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_284 > div > a.kn-link.kn-link-4.kn-link-page.kn-button {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_284 > div > a.kn-link.kn-link-5.kn-link-page.kn-button {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/* TOOLTIP CSS*/
+
+[data-tooltip] {
+	position: relative;
+  }
+  [data-tooltip]::after {
+	background-color: rgba(51, 51, 51, 0.9);
+	border-radius: 0.3rem;
+	color: #fff;
+	content: attr(data-tooltip);
+	font-size: 1rem;
+	font-size: 85%;
+	font-weight: normal;
+	line-height: 1.15rem;
+	opacity: 0;
+	padding: 0.25rem 0.5rem;
+	position: absolute;
+	text-align: center;
+	text-transform: none;
+	transition: opacity 0.2s;
+	visibility: hidden;
+	white-space: nowrap;
+	z-index: 1;
+  }
+  [data-tooltip].tooltip-top::before {
+	border-style: solid;
+	border-width: 0.3rem;
+	content: "";
+	opacity: 0;
+	position: absolute;
+	transition: opacity 0.2s;
+	visibility: hidden;
+	border-color: rgba(51, 51, 51, 0.9) transparent transparent transparent;
+	top: 0;
+	left: 50%;
+	margin-left: -0.3rem;
+  }
+  [data-tooltip].tooltip-top::after {
+	bottom: 100%;
+	left: 50%;
+	transform: translate(-50%);
+  }
+  [data-tooltip].tooltip-bottom::before {
+	border-style: solid;
+	border-width: 0.3rem;
+	content: "";
+	opacity: 0;
+	position: absolute;
+	transition: opacity 0.2s;
+	visibility: hidden;
+	border-color: transparent transparent rgba(51, 51, 51, 0.9) transparent;
+	bottom: 0;
+	left: 50%;
+	margin-left: -0.3rem;
+  }
+  [data-tooltip].tooltip-bottom::after {
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%);
+  }
+  [data-tooltip].tooltip-left::before {
+	border-style: solid;
+	border-width: 0.3rem;
+	content: "";
+	opacity: 0;
+	position: absolute;
+	transition: opacity 0.2s;
+	visibility: hidden;
+	border-color: transparent transparent transparent rgba(51, 51, 51, 0.9);
+	top: 0.3rem;
+	right: calc(110% - 0.3rem);
+	margin-top: -0.3rem;
+  }
+  [data-tooltip].tooltip-left::after {
+	top: -0.3rem;
+	right: calc(110% + 0.3rem);
+  }
+  [data-tooltip].tooltip-right::before {
+	border-style: solid;
+	border-width: 0.3rem;
+	content: "";
+	opacity: 0;
+	position: absolute;
+	transition: opacity 0.2s;
+	visibility: hidden;
+	border-color: transparent rgba(51, 51, 51, 0.9) transparent transparent;
+	top: 50%;
+	top: 0.3rem;
+	left: calc(110% - 0.3rem);
+	margin-top: -0.3rem;
+  }
+  [data-tooltip].tooltip-right::after {
+	top: -0.3rem;
+	left: calc(110% + 0.3rem);
+  }
+  @media (max-width: 767px) {
+	[data-tooltip].tooltip-mobile::before {
+	  display: none;
+	}
+	[data-tooltip].tooltip-mobile:after {
+	  font-size: 1rem;
+	  max-width: 20rem;
+	  position: fixed;
+	  bottom: auto;
+	  top: 50%;
+	  left: 50%;
+	  text-align: left;
+	  transform: translate(-50%);
+	  white-space: normal;
+	}
+  }
+  [data-tooltip]:hover::after, [data-tooltip][class*=tooltip-]:hover::before {
+	visibility: visible;
+	opacity: 1;
+  }
+  
+  /*TOOLTIP CSS END*/
+
+
+/* Aftersales Main Menu */
+
+#view_300 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_300 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_300 > div > a.kn-link.kn-link-3.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_300 > div > a.kn-link.kn-link-4.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-4.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+#view_300 > div > a.kn-link.kn-link-5.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-5.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+#view_300 > div > a.kn-link.kn-link-6.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-6.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+
+}
+
+#view_300 > div > a.kn-link.kn-link-7.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-7.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_300 > div > a.kn-link.kn-link-8.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-8.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_300 > div > a.kn-link.kn-link-9.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-9.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_300 > div > a.kn-link.kn-link-10.kn-button {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_300 > div > a:hover.kn-link.kn-link-10.kn-button {
+	background-color: #308965;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+		
+}
+
+#kn-scene_105 > div.view-group.view-group-4 > div:nth-child(1) {
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+  }
+  
+  #kn-scene_105 > div.view-group.view-group-4 > div:nth-child(2) {
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+  }
+  
+  #kn-scene_105 > div.view-group.view-group-4 > div:nth-child(3) {
+	border: 1px solid #CCCCCC; 
+	border-radius: 10px;
+  }
+
+#kn-scene_105 > div.view-group.view-group-2 > div:nth-child(1) {
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+	padding-top: 20px;
+  }
+  
+  #kn-scene_105 > div.view-group.view-group-2 > div:nth-child(2) {
+	border: 1px solid #CCCCCC;
+	border-radius: 10px;
+	padding-top: 20px;
+  }
+  
+  #kn-scene_105 > div.view-group.view-group-2 > div:nth-child(3) {
+	border: 1px solid #CCCCCC; 
+	border-radius: 10px;
+	padding-top: 20px;
+  }
+
+
+/* Make Reg number look like REG*/
+
+#view_344 > section > div > div > div > div > div > div > span > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+
+#view_3496 > section > div > div > div > div > div > div > span > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+
+#view_3273 > section > div > div > div > div > div > div > span > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+#view_1563 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div > div > span > h2 > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+
+/* Aftersales Vehicle Onsite Customer Advisor view & workshop & Tech*/
+
+#view_1643 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1644 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1645 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_1643 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1644 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1645 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_1643 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1644 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1645 > div > a.kn-link.kn-link-3.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_1643 > div > a.kn-link.kn-link-4.kn-button,
+#view_1644 > div > a.kn-link.kn-link-4.kn-button,
+#view_1645 > div > a.kn-link.kn-link-4.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-4.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-4.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-4.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+#view_1643 > div > a.kn-link.kn-link-5.kn-button,
+#view_1644 > div > a.kn-link.kn-link-5.kn-button,
+#view_1645 > div > a.kn-link.kn-link-5.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-5.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-5.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-5.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+#view_1643 > div > a.kn-link.kn-link-6.kn-button,
+#view_1644 > div > a.kn-link.kn-link-6.kn-button,
+#view_1645 > div > a.kn-link.kn-link-6.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-6.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-6.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-6.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+
+}
+
+#view_1643 > div > a.kn-link.kn-link-7.kn-button,
+#view_1644 > div > a.kn-link.kn-link-7.kn-button,
+#view_1645 > div > a.kn-link.kn-link-7.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-7.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-7.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-7.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_1643 > div > a.kn-link.kn-link-8.kn-button,
+#view_1644 > div > a.kn-link.kn-link-8.kn-button,
+#view_1645 > div > a.kn-link.kn-link-8.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-8.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-8.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-8.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_1643 > div > a.kn-link.kn-link-9.kn-button,
+#view_1644 > div > a.kn-link.kn-link-9.kn-button,
+#view_1645 > div > a.kn-link.kn-link-9.kn-button {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1643 > div > a:hover.kn-link.kn-link-9.kn-button,
+#view_1644 > div > a:hover.kn-link.kn-link-9.kn-button,
+#view_1645 > div > a:hover.kn-link.kn-link-9.kn-button {
+	background-color: #308965;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+		
+}
+
+
+
+
+/* Aftersales Reporting Pre-Call Section */
+
+#view_422 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+#view_422 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-3.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-4.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-4.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+#view_422 > div > a.kn-link.kn-link-5.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-5.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-6.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-6.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-7.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-7.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-8.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-8.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+
+#view_422 > div > a.kn-link.kn-link-9.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-9.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+
+#view_422 > div > a.kn-link.kn-link-10.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-10.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.11.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-11.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-12.kn-button {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-12.kn-button {
+	background-color: #308965;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_422 > div > a.kn-link.kn-link-13.kn-button {
+	background-color: #a343c4;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_422 > div > a:hover.kn-link.kn-link-13.kn-button {
+	background-color: #7f3499;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+	
+
+
+
+/* Aftersales PAets Cash and Credit Account Application Status overview */
+
+#view_444 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_444 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_444 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_444 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+/* Aftersales PAets Cash and Credit Account Application Status overview - Sub menu */
+
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a > span {
+	background-color: #308965;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(5) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+
+/* Aftersales Parts Cash and Credit Account Application Status overview */
+
+#view_571 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_571 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_571 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_571 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+/* Aftersales Parts Cash and Credit Account Application - Accounts review page */
+
+#view_575 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_575 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_575 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_575 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+
+/* Aftersales Post Visit - FOCUS table */
+
+#view_628 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_628 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+/* Aftersales Post Visit - Toggle between FOCUS and Follow up */
+
+#view_643 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #478ba8;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_643 > div > a:hover.kn-link.kn-link-1.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+	
+}
+
+
+/* Aftersales Post Visit - Toggle between FOLLOW UP and FOCUS */
+
+#view_644 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #478ba8;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_644 > div > a:hover.kn-link.kn-link-1.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+	
+}
+
+/* Aftersales Post Visit Operations - Customer Follow Up Call List */
+
+#view_632 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_738 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
+{
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+
+
+/* Aftersales Post Visit Reporting - Follow up call button */
+
+#view_661 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #478ba8;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_661 > div > a:hover.kn-link.kn-link-1.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+	
+}
+
+/* Aftersales Post Visit Reporting - FOCUS button */
+
+#view_706 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #478ba8;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_706 > div > a:hover.kn-link.kn-link-1.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+	
+}
+
+
+
+/* Start of Code for cool radio buttons */
+#view_732 > form > ul >li > .kn-input > .kn-radio > .control > .option > input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 13.33333px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    transition: all 0.15s ease-out 0s;
+    background: #cbd1d8;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+  }
+  #view_732 > form > ul >li > .kn-input > .kn-radio > .control > .option > input:hover {
+    background: #9faab7;
+  }
+  #view_732 > form > ul >li > .kn-input > .kn-radio > .control > .option > input:checked {
+    background: #fb8500;
+  }
+  #view_732 > form > ul >li > .kn-input > .kn-radio > .control > .option > input:checked::before {
+    width: 30px;
+    height: 30px;
+    display:flex;
+    content: '\2713';
+    font-size: 25px;
+    font-weight:bold;
+    position: absolute;
+    align-items:center;
+    justify-content:center;
+    font-family:'Font Awesome 5 Free';
+  }
+  #view_732 > form > ul >li > .kn-input > .kn-radio > .control > .option > input:checked::after {
+    -webkit-animation: click-wave 0.65s;
+    -moz-animation: click-wave 0.65s;
+    animation: click-wave 0.65s;
+    background: #fb8500;
+    content: '';
+    display: block;
+    position: relative;
+    z-index: 100;
+  }
+  #view_732 > form > ul >li > .kn-input > .kn-radio > .control > .radio > input {
+    border-radius: 50%;
+  }
+  #view_732 > form > ul >li > .kn-input > .kn-radio > .control > .radio > input::after {
+    border-radius: 50%;
+  }
+   
+  @keyframes click-wave {
+    0% {
+      height: 30px;
+      width: 30px;
+      opacity: 0.35;
+      position: relative;
+    }
+    100% {
+      height: 200px;
+      width: 200px;
+      margin-left: -80px;
+      margin-top: -80px;
+      opacity: 0;
+    }
+  }
+
+
+/* End of cod for cool radio buttons*/
+
+/*3d button Start*/
+#view_732 > form > .kn-submit > .kn-button {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #ffb703 0, #fb8500 100%);
+    border: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+  }
+  
+  #view_732 > form > .kn-submit > .kn-button:focus {
+    box-shadow: #40e0d0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #40e0d0 0 -3px 0 inset;
+  }
+  
+  #view_732 > form > .kn-submit > .kn-button:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #fb8500 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  #view_732 > form > .kn-submit > .kn-button:active {
+    box-shadow: #40e0d0 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+
+  /*3d button End*/
+
+/* Center a submit button*/
+#view_732 > form > .kn-submit{
+    text-align: center;
+  }
+
+#view_375 .kn-details-group-column{
+    max-width: 180px !important;
+}
+
+#view_375 .kn-detail-label {
+    min-width: 120px;
+}
+
+/* Aftersales Pre Visit - Customer Incident Form Table */
+
+#view_871 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_871 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_871 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_871 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/* Aftersales Pre Visit - Customer Incident Form - Messages Table */
+
+#view_1388 th span {
+  margin: auto !important;
+}
+
+/* Customer Advisor Pre Visit Operations - Customer Call List */
+
+#view_321 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_321 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/* Hide Crumbtrail At Top Of Page */
+
+.kn-crumbtrail {
+  visibility: hidden;
+}
+
+/*Centre Table Header In Digital Adoption Reporting Page*/
+
+#view_935 th span,
+#view_935 {
+  margin: auto !important;
+  font-size: 15px;
+}
+
+/**** Virtual Reception "add a new VR message" Button ****/
+
+#view_1179 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_1179 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+	background-color: #D18400;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/*Virtual Reception Messages List*/
+
+#view_1169 th span {
+        text-align: center;
+	margin: auto !important;
+}
+
+/*Centre Table Headers In Outstanding Messages Heading*/
+
+#view_1168 th span,
+#view_1188 th span,
+#view_1600 th span,
+#view_1599 th span,
+#view_1189 th span,
+#view_1190 th span {
+        text-align: center;
+	margin: auto !important;
+}
+
+#view_1169 > div.kn-table-wrapper > table > thead > tr > th.field_1657 > span > a > span > i {
+	font-weight: normal; 
+}
+
+#view_1169 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#view_1169 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/* Aftersales Reporting */
+
+#kn-report-view_502-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_502-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_1215-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active, 
+#kn-report-view_1215-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_1215-2 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_1215-2 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_281-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_281-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_598-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_598-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_423-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_423-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_562-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_562-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_537-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_537-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_1238-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_1238-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3057-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3057-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_1206-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_1206-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3111-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3111-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3113-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3113-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
+
+{
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/*live job card making fields transparent*/
+#view_3278 > section > div > div > div > div > div.kn-detail.field_303 > div.kn-detail-label,
+#view_1225 > section > div > div > div > div > div.kn-label-top.field_897 > div,
+#view_1225 > section > div > div > div > div > div.kn-detail.field_441 > div.kn-detail-label,
+#view_1225 > section > div > div > div > div > div.kn-detail.field_985 > div.kn-detail-label,
+#view_1175 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div:nth-child(1) > div,
+#view_1175 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div:nth-child(1) > div,
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div:nth-child(1) > div,
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div:nth-child(1) > div,
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(3) > div > div:nth-child(1) > div,
+#view_1225 > section > div > div > div > div > div.kn-detail.field_382 > div.kn-detail-label,
+#view_1225 > section > div > div > div > div > div.kn-detail.field_354 > div.kn-detail-label,
+#view_324 > section > div > div > div > div > div.kn-detail.field_303 > div.kn-detail-label,
+#view_335 > section > div > div > div:nth-child(3) > div > div:nth-child(1) > div,
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div:nth-child(3) > div,
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div:nth-child(5) > div,
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div:nth-child(3) > div,
+#view_1175 > section > div > div.kn-details-group.column-1.columns > div > div > div:nth-child(1) > div,
+#view_3156 > section > div > div > div:nth-child(1) > div > div.kn-label-top.field_2214 > div,
+#view_3156 > section > div > div > div:nth-child(2) > div > div.kn-label-top.field_1117 > div,
+#view_3139 > section > div > div:nth-child(1) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_2278 > div.kn-detail-label,
+#view_3139 > section > div > div:nth-child(1) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_1118 > div.kn-detail-label,
+#view_3139 > section > div > div:nth-child(1) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_1121 > div.kn-detail-label,
+#view_3139 > section > div > div:nth-child(1) > div:nth-child(2) > div > div.kn-detail.kn-label-undefined.field_1136 > div.kn-detail-label,
+#view_3139 > section > div > div:nth-child(1) > div:nth-child(2) > div > div.kn-detail.kn-label-undefined.field_1139 > div.kn-detail-label,
+#view_3139 > section > div > div:nth-child(1) > div:nth-child(1) > div > div.kn-detail.kn-label-undefined.field_1368 > div.kn-detail-label,
+#view_3139 > section > div > div:nth-child(2) > div:nth-child(1) > div > div.kn-label-top.field_888 > div,
+#view_3139 > section > div > div:nth-child(2) > div:nth-child(2) > div > div.kn-label-top.field_897 > div,
+#view_3147 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div.kn-detail.field_303 > div.kn-detail-label,
+#view_3145 > section > div > div:nth-child(1) > div > div > div.kn-detail.field_2047 > div.kn-detail-label,
+#view_3145 > section > div > div:nth-child(2) > div > div > div.kn-label-top.field_1532 > div,
+#view_3145 > section > div > div:nth-child(2) > div > div > div.kn-detail.field_1042 > div.kn-detail-label,
+#view_3145 > section > div > div:nth-child(2) > div > div > div.kn-detail.field_2047 > div.kn-detail-label,
+#view_3145 > section > div > div:nth-child(2) > div > div > div.kn-detail.field_1041 > div.kn-detail-label,
+#view_3484 > section > div > div > div > div > div > div.kn-detail-label,
+#view_3490 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div:nth-child(1) > div,
+#view_3490 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div:nth-child(1) > div,
+#view_3490 > section > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div,
+#view_3490 > section > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div,
+#view_3490 > section > div > div:nth-child(2) > div:nth-child(3) > div > div:nth-child(1) > div,
+#view_3490 > section > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div,
+#view_3490 > section > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3) > div,
+#view_3490 > section > div > div.kn-details-group.column-1.columns > div > div > div:nth-child(1) > div {
+  background-color: transparent;
+}
+
+/* AFTERSALES CHECK IN */
+#view_1225 .kn-detail-label,
+#view_1153 .kn-detail-label {
+  background-color: transparent;
+}
+
+/*make Last update time red */
+#view_1175 > section > div > div.kn-details-group.column-3.columns > div:nth-child(3) > div > div:nth-child(2) > div > span > strong > em > span {
+	color: #920000;
+}
+
+/*Make Virtual reception VHC link as a button*/
+#view_1175 > section > div > div:nth-child(4) > div:nth-child(2) > div > div > div > span > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+}
+
+
+/*Make Virtual reception Supporting documents as a button*/
+#view_1175 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-details-link > div > span > a {
+  color: #ffffff; !important
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+}
+
+/*Make Virtual reception Clockings Summary as a button*/
+#view_1175 > section > div > div:nth-child(4) > div:nth-child(3) > div > div > div > span > a {
+  color: #ffffff; !important
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+}
+
+/**** Action auto reminders to Button ****/
+
+#view_1305 > section > div > div > div > div > div.kn-details-link > div > span {
+  color: #FFFFFF; !important
+  font-weight: bold;
+  background-color: #FFA100;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 0.35em;
+}
+
+#view_1305 > section > div > div > div > div > div.kn-details-link > div > span a:hover {
+  color: #FFFFFF;
+  font-weight: bold;
+  background-color: #D18400;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 0.35em;
+}
+
+
+/* make PARTS SALES column stand out*/
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(11),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(11),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(11),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(11),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(11),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(11) {
+	font-weight: bold !important;
+	background-color: #6E55DD;
+	color: #FFFFFF; !important
+}
+
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(2),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(3),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(4),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(5),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(6),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(7),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(8),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(9),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(10),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(2),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(3),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(4),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(5),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(6),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(7),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(8),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(9),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(10),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(2),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(3),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(4),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(5),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(6),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(7),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(8),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(9),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(10),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(2),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(3),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(4),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(5),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(6),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(7),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(8),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(9),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(10),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(2),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(3),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(4),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(5),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(6),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(7),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(8),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(9),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(10) {
+	background-color: #D3CCF5;
+	font-weight: bold; !important
+}
+
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(12),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(13),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(12),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(13),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(12),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(13),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(12),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(13),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(12),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(13) {
+	background-color: #c9a6b0;
+	font-weight: bold !important;
+}
+
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(14),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(14),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(14),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(14),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(14),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(14)  {
+	background-color: #985d6e;
+	font-weight: bold !important;
+	color: #FFFFFF; !important
+	
+}
+
+
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(15),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(15),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(15),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(15),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(15),
+#kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(15) {
+	background-color: #2fc65f;
+	font-weight: bold !important;
+	color: #FFFFFF; !important
+}
+
+/* make PARTS SALES column stand out for choose your own filter pivot*/
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(11),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(11),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(11),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(11),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(11),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(11) {
+	font-weight: bold !important;
+	background-color: #6E55DD;
+	color: #FFFFFF; !important
+}
+
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(2),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(3),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(4),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(5),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(6),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(7),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(8),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(9),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(10),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(2),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(3),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(4),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(5),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(6),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(7),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(8),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(9),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(10),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(2),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(3),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(4),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(5),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(6),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(7),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(8),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(9),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(10),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(2),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(3),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(4),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(5),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(6),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(7),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(8),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(9),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(10),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(2),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(3),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(4),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(5),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(6),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(7),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(8),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(9),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(10) {
+	background-color: #D3CCF5;
+	font-weight: bold; !important
+}
+
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(12),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(13),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(12),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(13),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(12),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(13),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(12),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(13),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(12),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(13) {
+	background-color: #c9a6b0;
+	font-weight: bold; !important
+}
+
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(14),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(14),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(14),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(14),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(14),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(14)  {
+	background-color: #985d6e;
+	font-weight: bold !important;
+	color: #FFFFFF; !important
+}
+
+
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(15),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(2) > td:nth-child(15),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(3) > td:nth-child(15),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(4) > td:nth-child(15),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(15),
+#kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(15) {
+	background-color: #2fc65f;
+	font-weight: bold !important;
+	color: #FFFFFF; !important
+}
+
+/* Aftersales Pre Pick Filter Menu COlours */
+
+#view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) {
+	background-color: #e1d80f;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) :active {
+	background-color: #e1d80f;
+  	color: #FFFFFF; !important
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) {
+	background-color: #e73b3b;
+  	color: #FFFFFF; !important
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active {
+	background-color: #e73b3b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+
+#view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) {
+	background-color: #308965;
+  	color: #FFFFFF; !important
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+#view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) {
+	background-color: #2a65d7;
+  	color: #FFFFFF; !important
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
+/* Digital Adoption Historic Data Table Filters */
+
+#view_1371 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1371 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1371 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+
+#view_1373 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1373 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1373 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1374 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1374 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1374 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/*Make tyres & prices green*/
+#view_1474 > form > div > button {
+	background-color: #00CC66 !important;
+  	color: #FFFFFF !important;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_1474 > form > div > a:hover.button  {
+	background-color: #32936F !important;
+  	color: #FFFFFF !important;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+
+
+/*Make tyres & prices green*/
+#view_3515 > form > div > button {
+	background-color: #00CC66 !important;
+  	color: #FFFFFF !important;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+#view_3515 > form > div > a:hover.button  {
+	background-color: #32936F !important;
+  	color: #FFFFFF !important;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+  	box-shadow:         3px 3px #ccc;
+}
+/* Two Way Messaging */
+
+p.speech-bubble-outbound {
+  position: relative;
+  left: 50%;
+  background: #25D366;
+  border-radius: .4em;
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:white;
+  padding:1%;
+  margin:1px !important;
+  text-decoration : none;
+} 
+
+p.speech-bubble-outbound:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #25D366;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #25D366;
+  border-bottom: 10px solid transparent;
+  right: -19px;
+  top: 6px;
+  text-decoration : none;
+}
+
+p.speech-bubble-inbound {
+  position: relative;
+  background: #00aabb;
+  border-radius: .4em;
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:white;
+  padding:1%;
+  margin:1px !important;
+  left: 20px;
+} 
+
+p.speech-bubble-inbound:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #00aabb;
+  border-top: 10px solid #00aabb;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+}
+
+#view_1176 th span {
+  margin: auto !important;
+		
+}
+
+p.speech-bubble-inbound-1link {
+  position: relative;
+  background: #b356c2;
+  border-radius: .4em;
+  width:60%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:white;
+  padding:1%;
+  margin:1px !important;
+  text-wrap: wrap !important;
+  display: inline-block!important;
+  left: 20px;
+} 
+
+p.speech-bubble-inbound-1link:before {
+  content: "";
+  width: 0px;
+  text-wrap: wrap;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #b356c2;
+  border-top: 10px solid #b356c2;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+ text-wrap: wrap !important;
+}
+
+/* Conversation Outstanding Messages Table Filters */
+
+#view_1168 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1168 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_1168 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/* Group/Region Aftersales Reporting Filters */
+
+#kn-report-view_614-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_614-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_289-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active, 
+#kn-report-view_289-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_602-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_602-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_283-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_283-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_298-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_298-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+div.tooltipDiv table, th, td, tr {
+	border: 1px solid;
+}
+
+div.tooltipDiv th {
+	background-color: #B2BEB5;
+}
+
+div.tooltipDiv {
+	padding: 25px;
+}
+
+
+/****** All jobs in one table (workshop/CA view) *******/
+
+#view_2722 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2686 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2892 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a, 
+#view_2246 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+  background-color: #495057;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+#view_2722 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_2686 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_2892 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_2246 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a {
+  background-color: #95a6b8;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+/* Making New digital job card menu reporting buttons green for service operations and sub menus*/
+#view_2855 > div > nav > ul > li:nth-child(8) > a,
+#view_2856 > div > nav > ul > li:nth-child(8) > a,
+#view_2685 > div > nav > ul > li:nth-child(8) > a,
+#view_2857 > div > nav > ul > li:nth-child(8) > a,
+#view_2859 > div > nav > ul > li:nth-child(8) > a,
+#view_2860 > div > nav > ul > li:nth-child(8) > a,
+#view_2861 > div > nav > ul > li:nth-child(8) > a,
+#view_2746 > div > nav > ul > li:nth-child(9) > a,
+#view_2989 > div > nav > ul > li:nth-child(9) > a,
+#view_2749 > div > nav > ul > li:nth-child(8) > a,
+
+#view_2865 > div > nav > ul > li:nth-child(7) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+.Modal_for_scene_420 {
+    width: 99%;
+    height: 99vh;
+}
+ 
+.Modal_for_scene_769 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_762 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_779 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_963 {
+    width: 99%;
+    height: 99vh;
+}
+
+/*Formatting For Licence Verification Page*/
+
+#view_3043 > section > div > div:nth-child(1) > div > div > div > div.kn-detail-label,
+#view_3043 > section > div > div:nth-child(2) > div > div > div > div.kn-detail-label {
+  background-color: transparent;
+}
+
+/* warranty table to lock headers - JS code needed Ref: line 3413*/
+#view_wrap_3014 {
+  overflow: auto !important;
+  height: 800px !important;
+}
+
+/* Make scan buttons look like buttons
+#view_3471,
+#view_3602,
+#view_3603,
+#view_3138,
+#view_3162,
+#view_3135,
+#view_2866 > div > p {
+  margin: -30px;
+  padding-bottom: 20px;
+}*/
+
+#view_3174 {
+  overflow: visible;
+}
+

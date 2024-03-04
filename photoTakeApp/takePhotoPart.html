@@ -1,0 +1,33 @@
+<h1 class="photoH1">Processing your photo ...</h1>
+    <div id="kn-loading-spinner" style="display: none;"></div>
+    <div id="cameraTakePhotoDiv">
+        <div id="cameraVid_container" style="display: none;">
+            <canvas id="cameraOverlayCanvasPA"></canvas>
+            <canvas id="cameraBoxCanvas"></canvas>
+            <video id="videoElement" autoplay="" playsinline="" class="hidden"></video>
+        </div>
+        <p id="cameraModal" style="display: none;">
+            <a id="cameraModal_header">Please enable Device Motion on your device</a>
+            <br>
+            <a id="cameraModal_txt">This app requires you to enable the Device Motion event on your device.</a>
+            <button id="cameraAccept" name="confirm request" type="button" class="cameraButton">Enable</button>
+        </p>
+        <div id="cameraGrid" style="display: none;">
+            <img id="cameraFrontpic"/>
+            <br /><a id="cameraText">Is the document readable?</a>
+        </div>
+        <div id="cameraGridCompare" style="display: none;">
+            <img id="cameraFrontpicCompare"/>
+            <img id="cameraCompare" src="https://robinsandday.github.io/imagesStore/car.png">
+            <br /><a id="cameraText">Does the photo match the pattern?</a>
+        </div>
+        <div id="cameraGui_controls" style="display: none;">
+            <button id="cameraSpiritCircle" type="button" class="cameraButton"></button>
+            <button id="takePhoto" class="cameraButton"></button>
+            <button id="cameraExit" name="exit photo" type="button" class="cameraButton"></button>
+            <button id="cameraRotate" name="rotate camera" type="button" class="cameraButton"></button>
+            <button id="cameraRetake" name="retake photo" type="button" class="cameraButton"></button>
+            <button id="cameraConfirm" name="confirm photo" type="button" class="cameraButton"></button>
+        </div>
+    </div>
+    <span id="dev"></span>

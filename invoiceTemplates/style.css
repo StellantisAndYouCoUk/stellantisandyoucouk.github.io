@@ -1,0 +1,277 @@
+ 
+ 
+/* 
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+   */
+
+
+ /* TABLE 1  - for bottom tables */
+ 
+  table.table1 {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 4px;
+  }
+
+  table.table1 {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 4px;
+  }
+
+  table.table1 tr {
+    padding: 2px;
+  }
+
+  table.table1 th {
+    height: 10px;
+    font-size: 9pt;
+    background-color: #cccccc;
+  }
+
+
+  /* TABLE2 - for document number bar, parts table */
+
+  table.table2 {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 4px;
+  }
+
+  table.table2 tr {
+    padding: 0px;
+  }
+
+  table.table2 th {
+    height: 10px;
+    text-align: center;
+    background-color: #cccccc;
+    font-family: Arial, Bold, Serif;
+    font-weight: 600;
+    font-size: 8pt;
+    font-style: normal;
+  }
+
+  table.table2 td {
+    text-align: center;
+    padding: 2px;
+  }
+
+
+  /*table.table2 tr:first-child{
+background-color: #cccccc;
+padding: 4px;
+}*/
+
+  /* TABLE3 - for top addresses and operator name line */
+
+  table.table3 {
+    width: 100%;
+    margin-top: 5px;
+    border-collapse: collapse;
+    font-family: Arial, Bold, Serif;
+    font-size: 10px;
+
+  }
+
+  table.table3 tr {
+    height: 10px;
+  }
+
+  table.table3 th {
+    font-size: 7pt;
+    padding: 2px;
+    height: 14px;
+  }
+
+  table.table3 td {
+    text-align: left;
+    padding: 6px;
+    font-weight: 600;
+  }
+
+  /* TABLE4 - for logos at top */
+
+  table.table4 {
+    width: 100%;
+  }
+
+  table.table4 th {
+    text-align: right;
+    font-size: 50px;
+    font-weight: normal;
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  table.table4 tr {
+    text-align: right;
+    font-size: 1.5pt;
+  }
+
+  table.table4 td {
+    text-align: right;
+    font-weight: normal;
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  /* TABLE5 - for small print */
+
+  table.table5 {
+    width: 100%;
+  }
+
+  table.table5 th {
+    text-align: left;
+    font-size: 50px;
+    font-weight: normal;
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  table.table5 tr {
+    text-align: left;
+    font-size: 1.5pt;
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  /* HEADINGS */
+
+  /* Terms and conditions title */
+  h2 {
+    font-size: 15px;
+  }
+
+  /* Invoice title (ACCOUNT INVOICE normally) */
+  h3 {
+    text-align: center;
+    font-family: Arial
+  }
+
+
+  /* Terms and conditions headings */
+  h5 {
+    text-align: left;
+    font-size: 7px;
+    padding: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  /* Changing paragraph font size for terms and conditions */
+  p {
+    font-size: 7.0px;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+  }
+
+
+  /* OLD FOOTER CODE*/
+  div.header {
+    text-align: center;
+    width: 100%;
+  }
+
+  .no-header {
+    display: none;
+  }
+
+
+
+
+  /* OLD PAGE NUMBER ATTEMPTS 
+#content {
+  display: table;
+}
+
+#pageFooter {
+  display: table-footer-group;
+}
+
+#pageFooter:after {
+  counter-increment: page;
+  content: counter(page);
+}
+
+@page {
+@bottom-right {
+  content: counter(page) " of " counter(pages);
+}
+}
+
+*/
+
+  /* Remove padding */
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  /* FONTS */
+
+
+
+  .courier-prime-bold {
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 9pt;
+  }
+
+  .courier-prime-regular-italic {
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .courier-prime-bold-italic {
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+
+  .encode-sans-main {
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  .encode-sans-light {
+    font-family: "Encode Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+
+  table.table1 td {
+    text-align: center;
+    padding: 4px;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 9pt;
+  }

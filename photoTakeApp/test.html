@@ -1,0 +1,121 @@
+<html lang="en">
+    <head>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>
+            const getClientOffset = (event) => {
+                const {pageX, pageY} = event.touches ? event.touches[0] : event;
+                const x = pageX - canvasEle.offsetLeft;
+                const y = pageY - canvasEle.offsetTop;
+
+                return {
+                x,
+                y
+                } 
+            }
+
+            const drawLine = () => {
+                context.beginPath();
+                context.moveTo(startPosition.x, startPosition.y);
+                context.lineTo(lineCoordinates.x, lineCoordinates.y);
+                context.stroke();
+            }
+
+            const mouseDownListener = (event) => {
+                startPosition = getClientOffset(event);
+                isDrawStart = true;
+            }
+
+            const mouseMoveListener = (event) => {
+                if(!isDrawStart) return;
+                
+                lineCoordinates = getClientOffset(event);
+                clearCanvas();
+                drawLine();
+            }
+
+            const mouseupListener = (event) => {
+                isDrawStart = false;
+                processIt(phaseS,startPosition,lineCoordinates)
+            }
+
+            const clearCanvas = () => {
+                context.clearRect(0, 0, canvasEle.width, canvasEle.height);
+                context.drawImage(image,0,0);
+            }
+            function drawImageActualSize() {
+                canvasEle.width = this.naturalWidth;
+                canvasEle.height = this.naturalHeight;
+                context.drawImage(this, 0, 0);
+            }
+
+            function distance(p1,p2){
+                let a = p1.x - p2.x;
+                let b = p1.y - p2.y;
+                return Math.sqrt( a*a + b*b );
+            }
+        </script>
+    </head>
+    <body>
+        <p id="text">Draw line over full diameter.</p>
+        <form method="POST" action="https://7rhnwcwqj9ap.runs.apify.net/solveImage"><input type="hidden" name="queueId" value="$queueId$"><input type="text" name="depth"><input type="submit"></form>
+        <select><option value="1p">1 pence</option><option value="2p" selected>2 pence</option><option value="5p">5 pence</option><option value="10p">10 pence</option></select>Choose the COIN size before drawing the lines.
+        <canvas id="canvas"></canvas>
+            <script>
+                const canvasEle = document.getElementById('canvas');
+                const context = canvasEle.getContext('2d');
+                const image = new Image('naturalWidth', 'naturalHeight');
+                image.onload = drawImageActualSize;
+                image.src = "$imageUrl$";//"https://robinsandday.github.io/test.jpg";
+                canvasEle.width = image.width;
+                canvasEle.height = image.height;
+                context.drawImage(image,0,0)
+                let startPosition = {x: 0, y: 0};
+                let lineCoordinates = {x: 0, y: 0};
+                let isDrawStart = false;
+                
+                canvasEle.addEventListener('mousedown', mouseDownListener);
+                canvasEle.addEventListener('mousemove', mouseMoveListener);
+                canvasEle.addEventListener('mouseup', mouseupListener);
+
+                var phaseS = 1;
+                var touchPoint1 = null;
+                var touchPoint2 = null;
+                var diamPoint1 = null;
+                var diamPoint2 = null;
+
+                function processIt(phase = 1, param1 = null, param2 = null){
+                    console.log('processIt',phase, param1,param2)
+                    switch (phase){
+                        case 1:
+                            diamPoint1 = param1;
+                            diamPoint2 = param2;
+                            $('p[id="text"]').text('Draw line partial diameter.')
+                            phaseS = 2;
+                            break;
+                        case 2:
+                            touchPoint1 = param1;
+                            touchPoint2 = param2;
+                            console.log(diamPoint1,diamPoint2,touchPoint1,touchPoint2)
+                            console.log('diametr',distance(diamPoint1,diamPoint2),'part',distance(touchPoint1,touchPoint2))
+                            let coinDiam = 25.91;
+                            switch ($('select').find(":selected").val()){
+                                case "1p":
+                                    coinDiam = 20.3;
+                                    break;
+                                case "5p":
+                                    coinDiam = 18;
+                                    break;
+                                case "10p":
+                                    coinDiam = 24.5;
+                                    break;
+                            }
+                            //alert(coinDiam*(1-(distance(touchPoint1,touchPoint2)/distance(diamPoint1,diamPoint2))));
+                            $('input[name="depth"]').val(coinDiam*(1-(distance(touchPoint1,touchPoint2)/distance(diamPoint1,diamPoint2))))
+                            $('p[id="text"]').text('Draw line full diameter.')
+                            phaseS = 1;
+                            break;
+                    }
+                }
+            </script>
+    </body>
+</html>

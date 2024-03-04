@@ -1,0 +1,4247 @@
+body {
+  overscroll-behavior-y: contain;
+  overscroll-behavior: contain;
+}
+
+#knack-body,
+.kn-content--embedded-with-fonts { 
+    overflow-x:initial !important;
+    overflow-y:auto !important;
+}
+
+/* Show the hamburger menu on all screen sizes */
+.kn-mobile-controls {
+  display: block !important;
+}
+.kn-content .kn-navigation-bar {
+  display: none !important;
+}
+#kn-mobile-menu.is-visible {
+  left: inherit;
+}
+.kn-dropdown-menu .kn-dropdown-icon {
+  display: none !important;
+}
+.kn-dropdown-menu ul {
+  display: block !important;
+  pointer-events: all !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+/* END Show the hamburger menu on all screen sizes */
+
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 4x3 Aspect Ratio */
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9,
+.intrinsic-container-4x3 {
+  padding-bottom: 200%;
+}
+
+.intrinsic-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#knack-dist_5 > div.kn-info-bar > div > span > a {
+  font-weight: bold;
+}
+
+/* Main Menu Tab Colours
+
+#app-menu-list > li:nth-child(5) > a {
+  	background-color: #FFA100;
+}
+
+#app-menu-list > li:nth-child(5) > a:hover {
+  	background-color: #D18400;
+} */
+
+/* AutoTrader Consumer Valuation Sentence */
+#view_421 > section > div > div:nth-child(2) > div > div > div.field_1423 > div,
+#view_368 > section > div > div:nth-child(2) > div > div > div.field_1423 > div,
+#view_2246 > section,
+#view_2214 > section > div > div:nth-child(2),
+#view_2217 {
+  font-size: 18px;
+}
+
+/* Change 'Sign Up' Button Colour on Digital Home */
+
+#need-account > a {
+  background-color: #052645;
+  color: #ffffff;
+}
+
+#need-account > span {
+  font-weight: bold;
+}
+
+/* Part-Ex Reg No CSS to look like Reg */
+
+#view_5029 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div.kn-label-none.field_7225 > div > span > strong > span,
+#view_481 > section > div > div > div:nth-child(1) > div > div > div > span > strong > span,
+#view_488 > section > div > div > div:nth-child(1) > div > div > div > span > strong > span,
+#view_493 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div > div > span > strong > span,
+#view_495 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div > div > span > strong > span,
+#view_497 > section > div > div > div:nth-child(2) > div > div.field_257 > div > span > strong > span,
+#view_498 > section > div > div > div:nth-child(2) > div > div.field_257 > div > span > strong > span,
+#view_823 > section > div > div > div > div > div > div > span > strong > span,
+#view_824 > section > div > div > div > div > div > div > span > strong > span,
+#view_480 > section > div > div:nth-child(1) > div > div > div > div > span > span,
+#view_360 > section > div > div > div > div > div.field_257 > div > span > span,
+#view_3862 > section > div > div:nth-child(1) > div > div > div > div > span,
+#view_4969 > section > div > div > div:nth-child(1) > div > div > div > span > strong > span,
+#view_897 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.field_2694 > div > span > h2 > strong > span,
+#view_898 > section > div > div:nth-child(2) > div:nth-child(1) > div > div.field_257 > div > span > h2 > strong > span,
+#view_901 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.field_2694 > div > span > h2 > strong > span,
+#view_1263 > section > div > div > div > div > div.field_2694 > div > span > h2 > span,
+#view_1346 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.field_2694 > div > span > h2 > strong > span,
+#view_2142 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.field_2694 > div > span > h2 > strong > span,
+#view_2298 > section > div > div.kn-details-group.column-1.columns > div > div > div.field_4941 > div > span > h2 > strong > span,
+#view_2277 > section > div > div > div > div > div.field_4941 > div > span > h2 > span,
+#view_2283 > section > div > div > div:nth-child(1) > div > div.field_4941 > div > span > h2 > span,
+#view_2270 > section > div > div.kn-details-group.column-1.columns > div > div > div.field_4941 > div > span > h2 > span,
+#view_2332 > section > div > div > div:nth-child(1) > div > div.field_4941 > div > span > h2 > span,
+#view_2446 > section > div > div:nth-child(1) > div > div > div.field_4941 > div > span > span,
+#view_2478 > section > div > div > div:nth-child(1) > div > div.field_4941 > div > span > span,
+#view_2480 > section > div > div.kn-details-group.column-1.columns > div > div > div.field_4941 > div > span > h2 > strong > span,
+#view_3088 > section > div > div > div:nth-child(1) > div > div.field_4941 > div > span > span,
+#view_3281 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.field_2694 > div > span > span,
+#view_2511 > section > div > div:nth-child(1) > div > div > div.field_4941 > div > span > strong > span,
+#view_2521 > section > div > div:nth-child(1) > div > div > div.field_4941 > div > span > span,
+#view_3332 > section > div.kn-details-column.first.column.is-horizontal > div.kn-details-group.column-1.columns > div > div > div.field_4941 > div > span > h2 > span,
+#view_2791 > section > div > div:nth-child(1) > div:nth-child(-n + 3) > div > div:nth-child(1) > div > span > span,
+#view_4058 > section > div > div > div > div > div > div > span > h2 > span > span,
+#view_4559 > section > div > div > div > div > div > div > span > h2 > span > span,
+#view_4559 > section > div > div > div > div > div > div > span > h2 > span > span,
+#view_3493 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3494 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3495 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3496 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3497 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3498 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3499 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3500 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3501 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3502 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3503 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3504 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3505 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3506 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3507 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3508 > section > div > div > div > div > div > div > span > h2 > span,
+#view_3614 > section > div > div > div > div > div.field_4941 > div > span > h2 > span,
+#view_4098 > section > div > div:nth-child(1) > div > div > div > div > span > span,
+#view_4131 > section > div > div:nth-child(1) > div > div > div > div > span > span {
+  background-color: #ffe74c;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+#view_480 .kn-detail-label,
+#view_3561 .kn-detail-label,
+#view_3861 .kn-detail-label,
+#view_3862 .kn-detail-label,
+#view_1254 > div.kn-list-content.columns.is-multiline .kn-detail-label,
+#view_2142 .kn-detail-label,
+#view_3281 .kn-detail-label,
+#view_5369 .kn-detail-label,
+#view_3156 .kn-detail-label,
+#view_3559 .kn-detail-label,
+#view_2480 .kn-detail-label,
+#view_2301 .kn-detail-label,
+#view_2298 .kn-detail-label,
+#view_2299 .kn-detail-label,
+#view_3586 .kn-detail-label,
+#view_2511 .kn-detail-label,
+#view_2527 .kn-detail-label,
+#view_5240 .kn-detail-label,
+#view_2529 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div > div.kn-detail-label,
+#view_2529 .kn-detail-label,
+#view_2529 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div,
+#view_2534 .kn-detail-label,
+#view_3572 .kn-detail-label,
+#view_2767 .kn-detail-label,
+#view_2775 .kn-detail-label,
+#view_2561 .kn-detail-label,
+#view_2554 .kn-detail-label,
+#view_2555 .kn-detail-label,
+#view_2781 .kn-detail-label,
+#view_2786 .kn-detail-label,
+#view_2570 .kn-detail-label,
+#view_2569 .kn-detail-label,
+#view_4069 .kn-detail-label,
+#view_4082 .kn-detail-label,
+#view_4083 .kn-detail-label,
+#view_2521 .kn-detail-label,
+#view_3332 .kn-detail-label,
+#view_3090 .kn-detail-label,
+#view_3091 .kn-detail-label,
+#view_3092 .kn-detail-label,
+#view_3093 .kn-detail-label,
+#view_3094 .kn-detail-label,
+#view_3095 .kn-detail-label,
+#view_3096 .kn-detail-label,
+#view_3097 .kn-detail-label,
+#view_3098 .kn-detail-label,
+#view_3099 .kn-detail-label,
+#view_3100 .kn-detail-label,
+#view_3128 .kn-detail-label,
+#view_3297 .kn-detail-label,
+#view_3498 .kn-detail-label,
+#view_2791 .kn-detail-label,
+#view_5214 .kn-detail-label,
+#view_4524 .kn-detail-label,
+#view_4659 .kn-detail-label,
+#view_4058 .kn-detail-label,
+#view_4059 .kn-detail-label,
+#view_4060 .kn-detail-label,
+#view_4061 .kn-detail-label,
+#view_4045 .kn-detail-label,
+#view_4089 .kn-detail-label,
+#view_4115 .kn-detail-label,
+#view_4120 .kn-detail-label,
+#view_4130 .kn-detail-label,
+#view_4560 .kn-detail-label,
+#view_4609 .kn-detail-label,
+#view_4566 .kn-detail-label,
+#view_4584 .kn-detail-label,
+#view_4585 .kn-detail-label,
+#view_4586 .kn-detail-label,
+#view_4588 .kn-detail-label,
+#view_4571 .kn-detail-label,
+#view_4572 .kn-detail-label,
+#view_4574 .kn-detail-label,
+#view_4575 .kn-detail-label,
+#view_4600 .kn-detail-label,
+#view_4605 .kn-detail-label,
+#view_4608 .kn-detail-label,
+#view_4848 .kn-detail-label,
+#view_4849 .kn-detail-label,
+#view_3614 .kn-detail-label,
+#view_2926 .kn-detail-label,
+#view_4249 .kn-detail-label,
+#view_4231 .kn-detail-label,
+#view_3466 .kn-detail-label,
+#view_3464 .kn-detail-label,
+#view_2906 .kn-detail-label,
+#view_2905 .kn-detail-label,
+#view_5131 .kn-detail-label,
+#view_3465 .kn-detail-label,
+#view_2913 .kn-detail-label,
+#view_2918 .kn-detail-label,
+#view_2941 .kn-detail-label,
+#view_2942 .kn-detail-label,
+#view_4155 .kn-detail-label,
+#view_4519 .kn-detail-label,
+#view_4520 .kn-detail-label,
+#view_4521 .kn-detail-label,
+#view_4522 .kn-detail-label,
+#view_4934 .kn-detail-label,
+#view_4193 .kn-detail-label,
+#view_4206 .kn-detail-label,
+#view_4208 .kn-detail-label,
+#view_4209 .kn-detail-label,
+#view_4210 .kn-detail-label,
+#view_4211 .kn-detail-label,
+#view_4212 .kn-detail-label,
+#view_4214 .kn-detail-label,
+#view_4216 .kn-detail-label,
+#view_4098 .kn-detail-label,
+#view_4131 .kn-detail-label,
+#view_5142 .kn-detail-label,
+#view_4744 .kn-detail-label,
+#view_5330 .kn-detail-label,
+#view_4823 .kn-detail-label,
+#view_5323 .kn-detail-label,
+#view_5322 .kn-detail-label,
+#view_4804 .kn-detail-label,
+#view_4803 .kn-detail-label,
+#view_4801 .kn-detail-label,
+#view_5353 .kn-detail-label,
+#view_5065 .kn-label-none.field_7447,
+#view_5067 .kn-label-none.field_7447,
+#view_5068 .kn-label-none.field_7447,
+#view_2767 .kn-label-none.field_7447,
+#view_5131 .kn-label-none.field_7447,
+#view_4795 .kn-detail-label,
+#view_4824 .kn-detail-label,
+#view_5333 .kn-detail-label,
+#view_5334 .kn-detail-label,
+#view_5335 .kn-detail-label,
+#view_4748 .kn-detail-label,
+#view_4754 .kn-detail-label,
+#view_5143 .kn-detail-label,
+#view_5164 .kn-detail-label,
+#view_5028 .kn-detail-label,
+#view_5029 .kn-detail-label,
+#view_5482 .kn-detail-label,
+#view_5513 .kn-detail-label,
+#view_5612 .kn-detail-label,
+#view_5491 .kn-detail-label,
+#view_5651 .kn-detail-label,
+#view_5004 section > div > div:nth-child(3) > div:nth-child(1) > div,
+#view_5004 .kn-details .kn-detail-label .kn-list .kn-detail-label,
+#view_5662 .kn-detail-label,
+#view_6157 .kn-detail-label,
+#view_6177 .kn-detail-label,
+#view_6270 .kn-detail-label {
+  background-color: transparent;
+}
+
+/* R&D Online Appraisals Sentence stand out */
+
+#view_814 > div.kn-list-content.columns.is-multiline,
+#view_815 > div.kn-list-content.columns.is-multiline,
+#view_816 > div.kn-list-content.columns.is-multiline,
+#view_817 > div.kn-list-content.columns.is-multiline {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #6e6f71;
+  text-align: center;
+  box-shadow: 3px 3px 3px 3px #ccc;
+}
+
+/* Front 3/4 Photo Button for Retail Appraisal */
+
+#view_3908 > section > div > div > div > div > div > div > span > a,
+#view_3898 > section > div > div > div > div > div > div > span > a,
+#view_5131 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a,
+#view_2767 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a,
+#view_5068 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a,
+#view_5067 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a,
+#view_5065 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+}
+
+#view_3908 > section > div > div > div > div > div > div > span > a:hover,
+#view_3898 > section > div > div > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+}
+
+/*** TRADE APPRAISAL VEHICLE IMAGERY HEADER ***/
+
+#view_3865 > section > div > div > div:nth-child(1) > div > div:nth-child(2) {
+  font-size: 10px;
+}
+
+/****** LINK TO VIDEOS ON HOW TO ADD DIGITAL TO HOME SCREEN OF MOBILE DEVICE ******/
+
+#view_5185 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2564 > div > a,
+#view_4890 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5213 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4776 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5277 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5230 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5510 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5526 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5650 > div > a {
+  background-color: #00cc66;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5185 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2564 > div > a:hover,
+#view_4890 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5213 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4776 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5277 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5230 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5510 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5526 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5650 > div > a:hover {
+  background-color: #32936f;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+/* Link to Pricing and Advert Performance History from Sales Channel Page */
+
+#view_4937 > section > div > div > div > div > div > div > span > a,
+#view_5369 > section > div > div.kn-details-group.column-1.columns > div > div > div > div > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00cc66;
+  padding: 12px;
+  display: inline-block;
+}
+
+#view_4937 > section > div > div > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #32936f;
+  padding: 12px;
+  display: inline-block;
+}
+
+/****** Used Stock Management Filters *******/
+
+#view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3889 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4025 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+  background-color: #495057;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Used Vehicle Deal File Reg No. */
+
+/********** Stock Search Button to DS Imagery Page ***********/
+#view_3271 > div > a,
+#view_793 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_777 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_809 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_810 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_811 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_812 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4776 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5399 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5400 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4811 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3591 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3591 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3591 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3604 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3604 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3604 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_4878 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4890 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5210 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5403 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_755 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_768 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_789 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_757 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_769 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_788 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_758 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_770 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_764 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_790 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_765 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_791 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_766 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_792 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_767 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3625 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3627 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3629 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3631 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3643 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3643 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3645 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4229 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_776 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_776 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_776 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_776 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_776 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_3895 > div > a,
+#view_2927 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3633 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3633 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3633 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3576 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3578 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3578 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3580 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3582 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3584 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3593 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3595 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3598 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3600 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3602 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3604 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3606 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3608 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3610 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3610 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3621 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3623 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_1496 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1496 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1551 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1554 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1554 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1556 > div > a,
+#view_3149 > div > a,
+#view_4983 > div > a,
+#view_3184 > div > a,
+#view_3193 > div > a,
+#view_3194 > div > a,
+#view_3228 > div > a,
+#view_4314 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4314 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4314 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_4314 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_1171 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1171 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1171 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_630 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_909 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_909 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_909 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5545 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5544 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5598 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5894 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5894 > div > a.kn-link.kn-link-4.kn-link-page.kn-button {
+  background-color: #ffa100;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_3271 > div > a:hover,
+#view_811 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_812 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4776 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5399 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5400 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4811 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3591 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3591 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3591 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3604 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3604 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3604 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_4878 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4890 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5210 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5403 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_789 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_757 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_769 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_788 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_758 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_770 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_764 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_790 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_765 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_791 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_766 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_792 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_767 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_793 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-buttony,
+#view_777 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_809 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_810 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3627 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3629 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3631 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3643 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3643 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3645 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4229 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_776 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_776 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_776 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_776 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_776 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_755 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_768 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2927 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3633 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3633 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3633 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3576 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3578 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3578 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3580 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3582 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3584 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3593 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3595 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3598 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3600 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3602 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3604 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3606 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3608 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3610 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3610 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3621 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3623 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3625 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3149 > div > a:hover,
+#view_4983 > div > a:hover,
+#view_3184 > div > a:hover,
+#view_3193 > div > a:hover,
+#view_3194 > div > a:hover,
+#view_3228 > div > a:hover,
+#view_3895 > div > a:hover,
+#view_2919 > form > div > button:hover,
+#view_2807 > form > div > button:hover,
+#view_2819 > form > div > button:hover,
+#view_2824 > form > div > button:hover,
+#view_2867 > form > div > button:hover,
+#view_2901 > form > div > button:hover,
+#view_2925 > form > div > button:hover,
+#view_1171 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1171 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1171 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_630 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_909 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_909 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_909 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_1496 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1496 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1551 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1554 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1554 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1556 > div > a:hover,
+#view_5545 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5544 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5598 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5894 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5894 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button {
+  background-color: #d18400;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+/* Change Button Colour to Orange & add Hover Animation */
+
+#view_1544 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5219 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4526 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4547 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4556 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2806 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4698 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5163 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5154 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5278 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5279 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2262 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2262 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2262 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_2262 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_2583 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2583 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2955 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3659 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3136 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3135 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3124 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4602 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5232 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_6267 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3177-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3177-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_5467-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_5467-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3181-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3181-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3181-2 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3181-2 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3207 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#view_3207 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2200 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2200 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2200 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_2200 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_2311 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2311 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2311 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_2311 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#kn-report-view_3283-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_3283-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3195-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_3195-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3178-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_3178-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2321 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_2321 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2312 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_2312 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_2522 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#view_2522 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3174-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_3174-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3186 > div:nth-child(2) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_3186 > div:nth-child(2) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3180 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#view_3180 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3175-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3175-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3172-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3172-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3170-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3170-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_593-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#kn-report-view_593-2 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_593-2 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_593-3 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_593-3 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_593-4 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_593-4 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_2499-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_2499-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_2507-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_2507-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_3171 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3171 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_3171 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_3171 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_1651 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_1651 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_3071 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_3071 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#view_3071 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#view_1674 > div:nth-child(2) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#view_1674 > div:nth-child(2) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#view_1674 > div:nth-child(2) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#kn-report-view_593-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
+#kn-report-view_593-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#view_5521 > div > a,
+#view_1544 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1544 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1544 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_1544 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_1544 > div > a.kn-link.kn-link-6.kn-link-page.kn-buttony,
+#view_1651 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_1651 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_1651 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5886 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#view_5886 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#view_5886 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a,
+#view_5886 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) > a,
+#view_5886 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(5) > a,
+#view_5886 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(6) > a,
+#kn-report-view_5891-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#kn-report-view_5891-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#kn-report-view_5891-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a,
+#kn-report-view_5891-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(5) > a,
+#kn-report-view_5891-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(6) > a,
+#view_5935 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5938 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_5891-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) > a {
+  background-color: #ffa100;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#kn-report-view_2507-1 > div.kn-report-rendered > table > tbody > tr.kn-table_summary.even > td:nth-child(3),
+#kn-report-view_2507-1 > div.kn-report-rendered > table > tbody > tr.kn-table_summary.even > td:nth-child(5) {
+  visibility: hidden;
+}
+
+/****** REGIONAL USED Stock Profiling Buttons ******/
+
+#view_4314 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4314 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4314 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_4314 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_2200 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2200 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2200 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_2200 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_2311 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2311 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2311 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_2311 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_2262 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2262 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2262 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_2262 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_2583 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_2583 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_2806 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+  background-color: #d18400;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+#view_3171 > div > a.kn-link.kn-link-1.kn-link-page.is-primary.kn-button,
+#view_3171 > div > a.kn-link.kn-link-2.kn-link-page.is-primary.kn-button,
+#view_3171 > div > a.kn-link.kn-link-3.kn-link-page.is-primary.kn-button {
+  background-color: #d18400 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+/************************* Stock Search CSS Script Start ******************************8/
+
+/* #view_603 > div > div.kn-list-content.columns.is-multiline {
+  	border-radius: 40px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: darkgrey;
+    padding: 5px;
+} */
+
+/* #view_639 > div > div.kn-list-content.columns.is-multiline {
+  	border-radius: 40px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #1E2336;
+    padding: 5px;
+} */
+
+/* Border around Gallery - LIVE Stock */
+#view_622 > section > div > div:nth-child(6) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: lightgrey;
+  padding: 5px;
+}
+
+/* Border around Gallery - Dialog Stock 
+#view_641 > section > div > div:nth-child(5) {
+  	border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #1E2336;
+    padding: 5px;
+} */
+
+#\35 section {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: darkgrey;
+  padding: 5px;
+}
+
+/* Panel each Stock Container */
+
+#view_603 > div > div > div.kn-list-item-container.kn-list-container.column.is-one-third > section.columns {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: lightgrey;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+#view_639 > div > div > div.kn-list-item-container.kn-list-container.column.is-one-third > section.columns {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #1e2336;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+/* Attempt to panel each gallery image rather than entire gallery */
+/* #view_641 > section > div > div:nth-child(5) > div:nth-child(1) > div > div.kn-detail-body > div
+  	border-radius: 40px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #1E2336;
+    padding: 5px;
+} */
+
+/* Stock Search CSS Script End */
+
+/* Re-size Options box on Order Tracking 'In Progress' Detail View */
+
+#view_1542 > section > div.kn-details-column.first.column.is-horizontal > div:nth-child(2) > div > div > div.kn-detail.field_4004,
+#view_1549 > section > div > div:nth-child(3) > div > div > div:nth-child(2) > div,
+#view_1547 > section > div > div:nth-child(3) > div > div > div:nth-child(2) > div,
+#view_1657 > section > div.kn-details-column.first.column.is-horizontal > div:nth-child(2) > div > div > div.kn-detail.field_4004,
+#view_1654 > section > div > div:nth-child(3) > div > div > div:nth-child(2) > div,
+#view_1655 > section > div > div:nth-child(3) > div > div > div:nth-child(2) > div,
+#view_1666 > section > div > div > div:nth-child(1) > div > div:nth-child(8) > div {
+  box-sizing: border-box;
+  max-height: 110px;
+}
+
+/* Hide Unnecessary Scroll on VIN & RDC Status */
+#view_1666 > section > div > div:nth-child(3) > div:nth-child(1) {
+  overflow: hidden;
+}
+
+/* #view_1643 > div {
+  position: relative; 
+  padding-top:75%;
+}
+
+#view_1643 > div > p > iframe {
+   border: 0;
+   height: 82%;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 100%;
+} */
+
+/*Change colour of font of Knack Reord ID on Order Tracking page */
+#view_1526 > section > div > div:nth-child(1) > div > div > div.field_3409 {
+  color: #ffffff;
+}
+
+#view_1526 > section > div > div:nth-child(4) > div > div > div > div > p > iframe {
+  overflow: visible;
+}
+
+/* Dealer Configuration - Bold 'New & Used Car Preparation Costs' Title */
+#kn-input-section-1548944508357 > div > h3 {
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+#kn-input-section-1617033332278 > div > h3 {
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+/* Wrap Table Headers
+This removes white spaces from all table headers*/
+.kn-table th {
+  white-space: inherit;
+}
+
+/* CSS (in conjunction with JS) to improve Mobile Page Menu Layout 
+
+#kn-login #kn-mobile-menu {
+display: block !important;
+}
+
+#kn-mobile-menu {
+background-color: #f1f1f1;
+width:290px;
+transition: 0.6s;
+z-index:100;
+margin-top:80px;
+-webkit-box-shadow: 11px 13px 72px -29px rgba(0,0,0,0.64);
+-moz-box-shadow: 11px 13px 72px -29px rgba(0,0,0,0.64);
+box-shadow: 11px 13px 72px -29px rgba(0,0,0,0.64);
+left: -300px!important; 
+}
+#kn-mobile-menu .is-visible {
+left: -300px!important; 
+}
+#app-menu-list-mobile {
+margin: .75em;
+list-style: noe;
+font-size: 16px; 
+}
+@media screen and (max-width: 20000000000px) {
+.kn-mobile-controls {
+display: block;
+}
+} 
+@media screen and (min-width: 769px) {
+#kn-mobile-menu.is-visible {
+left: 0 !important;
+}
+} 
+@media screen and (min-width: 1px) {
+.kn-dropdown-icon .fa-caret-down:before {
+display: contents !important;
+}
+} 
+#app-menu-list {
+display: none;
+} 
+#knack-body #kn-app-header {
+height: 80px;
+position: fixed;
+z-index: 2000;
+}
+.kn-info-bar {
+display: noe !important;
+} 
+#kn-app-header img {
+width: 116px;
+margin-left: 15px;
+} 
+#kn-app-header .kn-container {
+margin-left: 10px !important;
+z-index: 10000000;
+} 
+.kn-dropdown-menu ul {
+position: relative !important;
+align-items: stretch;
+background-color: #c7d5db00;
+}
+.kn-dropdown-menu ul .is-active {
+color: #c7d5db00;
+} 
+
+.kn-menu-list li ul {
+border-left: 0px solid #dbdbdb !important; 
+margin: 0px !important; 
+padding-left: 0px !important; 
+padding-top 10px !important;
+transition: 0.8s !important; 
+padding-left: 25px;
+font-size: 16px;
+border-bottom: 1px solid #e4e4e4;
+-webkit-transition: width 2s; /* Safari 
+transition: width 2s;
+display: none;
+} 
+.kn-menu-list li ul .is-active {
+color: #c7d5db00;
+} 
+.kn-dropdown-menu li {
+background-color: #c7d5db00;
+-webkit-transition: width 2s; /* Safari 
+transition: width 2s;
+padding-left: 25px;
+font-size: 16px;
+
+} 
+.kn-dropdown-menu li .is-active {
+color: #c7d5db00;
+} 
+.kn-dropdown-menu ul {
+box-shadow: 0 0 0px 0px rgba(0,0,0,.1)!important;
+-webkit-transition: width 2s; /* Safari 
+transition: width 2s;
+padding-left: 25px;
+font-size: 16px;
+color: #c7d5db00;
+background-color: #eae8e838;
+border-radius: 0.6em;
+display:none;
+} 
+#app-menu-list-mobile li.is-active {
+background-color: #efefef00; 
+-moz-transition: all .4s linear;
+-webkit-transition: all .4s linear;
+transition: all .4s linear;
+} 
+#kn-mobile-menu .is-active a {
+color: grey; 
+} 
+#knack-body {
+transition: margin-left 0.9s;
+padding-top:100px;
+} 
+
+.kn-dropdown-menu-list ul {
+-moz-transition: all .4s linear;
+-webkit-transition: all .4s linear;
+transition: all .4s linear;
+} 
+
+.kn-mobile-nav-toggle {
+-moz-transition: all .4s linear;
+-webkit-transition: all .4s linear;
+transition: all .4s linear;
+margin-top: 10px;
+}
+.kn-mobile-nav-toggle.down {
+-moz-transform:rotate(180deg);
+-webkit-transform:rotate(180deg);
+transform:rotate(180deg);
+color:white;
+} 
+.kn-dropdown-icon {
+-moz-transition: all .4s linear;
+-webkit-transition: all .4s linear;
+transition: all .4s linear;
+} 
+
+.kn-dropdown-icon.down {
+-moz-transform:rotate(180deg);
+-webkit-transform:rotate(180deg);
+transform:rotate(180deg);
+color:white;
+} 
+
+
+#app-menu-list-mobile ul {
+list-style: none;
+transition: 0.9s;
+display: none;
+background-color: #efefef00; 
+-moz-transition: all .4s linear;
+-webkit-transition: all .4s linear;
+transition: all .4s linear;
+}
+#kn-dropdown-menu-list ul {
+margin-left: 20px !important;
+-moz-transition: all .4s linear;
+-webkit-transition: all .4s linear;
+transition: all .4s linear;
+margin-left: 15px !important;
+} 
+
+#kn-dropdown-menu-list a {
+opacity: 0;
+visibility: hidden;
+}
+#kn-dropdown-menu-list a :target {
+opacity: 1;
+visibility: visible;
+
+}
+*/
+
+/***************** AUTO PRICING V2 **************/
+
+/*** REQUEST TO CONTROL PRICING BUTTON ***/
+
+#view_5355 .kn-link-page,
+#view_3870 > section > div > div > div > div > div > div > span > a,
+#view_5215 > section > div > div > div > div > div > div > span > a {
+  color: #ffffff;
+  background-color: #ff1414;
+  padding: 8px;
+  display: inline-block;
+}
+
+#view_5355 .kn-link-page:hover,
+#view_3870 > section > div > div > div > div > div > div > span > a:hover,
+#view_5215 > section > div > div > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  background-color: #b10000;
+  padding: 8px;
+  display: inline-block;
+}
+
+/*** REMOVE PRICE CONTROL AND REINSTATE AUTO PRICE BUTTON ***/
+
+#view_5360 .kn-link-page,
+#view_2779 > section > div > div > div > div > div > div > span > a > span {
+  color: #ffffff;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+}
+
+#view_5360 .kn-link-page:hover {
+  color: #ffffff;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+}
+
+/*** Link to view Pricing and Advert Performance ***/
+
+#view_5369 > section > div > div.kn-details-group.column-1.columns > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #32936f;
+  padding: 12px;
+  display: inline-block;
+}
+
+/* Sales Channel Page CSS */
+
+#view_2142 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#view_2214 > section > div > div:nth-child(2) {
+  font-weight: bold;
+}
+
+/* Used Vehicle Check In Page Tab CSS */
+
+#view_2311 > div > a.kn-link.kn-link-5.kn-link-page.kn-button {
+  background-color: #ea9191;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#view_2311 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button {
+  background-color: #e05454;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+/****** Silent Salesman Print ********/
+
+#view_3907 > section > div > div > div > div > div.field_2725 > div > span > span {
+  font-size: 150px;
+  font-weight: bold;
+  padding-top: 80px;
+  padding-left: 50px;
+  text-align: center;
+  writing-mode: vertical-rl;
+}
+
+#view_3907 > section > div:nth-child(2) > div > div > div > div > div > h3 {
+  font-size: 150px;
+  font-weight: bold;
+  padding-top: 200px;
+  padding-left: 50px;
+  text-align: center;
+  writing-mode: vertical-rl;
+}
+
+#view_3907 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div.field_6307_thumb_181 > div > span > span > img {
+  padding-left: 40px;
+  padding-top: 20px;
+}
+
+/************************************************************************ USED VEHICLE DEAL FILE ************************************************************************/
+
+/******* USED DEAL FILES ADMIN VIEW *********/
+
+/************ USED VEHICLE ADMIN - VEHICLE FINANCE SETTLEMENT Table Filters ***********/
+
+/************ USED VEHICLE ADMIN - HANDOVER APPOINTMENTS CONFIRMATION Table Filters **********
+
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(5) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_3310 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(6) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+} */
+
+/************* Hide Form Submit from Admin Confirm Vehicle Check In Prep Pushed Page ************/
+#view_3126 > form > div > button {
+  display: none;
+}
+
+/*#view_5232 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_5232 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}*/
+
+/***************************** DEAL FILE MANAGER VIEW ********************************/
+
+/************************************** SHOWROOM ORDER **************************************************/
+
+#view_2527 {
+  font-size: 11px;
+}
+
+#view_2527 > section > div.kn-details-column.first.column.is-horizontal > div > div:nth-child(1) {
+  font-weight: bold;
+}
+
+#view_2527 > section > div.kn-details-column.first.column.is-horizontal > div > div:nth-child(1) > div > div:nth-child(1) > div {
+  font-size: 8px;
+}
+
+/*#view_2529 table {border-collapse: collapse;}*/
+#view_2529 td:empty {
+  display: none;
+}
+#view_2529 tr {
+  line-height: 10px;
+}
+#view_2529 > section > div > div.kn-details-group.column-3.columns {
+  font-size: 11px;
+}
+#view_2529 > section > div > div:nth-child(4) > div > div {
+  font-size: 12px;
+}
+
+/*#view_2529 > section > div > div:nth-child(4) > div > div > div > div > span > table > tbody > tr:nth-child(2) {
+  	line-height: 5px;
+}*/
+
+/* #view_2530 td:empty {display: none;}
+#view_2530 table {
+  	border-collapse: collapse;
+  	border: 1px solid black;
+}*/
+#view_2530 tr {
+  line-height: 10px;
+}
+
+#view_2530 {
+  font-size: 12px;
+}
+#view_2530 tr {
+  line-height: 10px;
+}
+
+#view_2532 {
+  font-size: 11px;
+}
+
+#view_2534 {
+  font-size: 11px;
+}
+
+/* Enquiry Max Views */
+
+#view_3572 > section > div > div.kn-details-group.column-3.columns {
+  font-size: 11px;
+}
+
+#view_3572 > section > div > div.kn-details-group.column-2.columns > div:nth-child(2) > div > div {
+  font-size: 11px;
+}
+
+#view_3573 > div {
+  font-size: 10px;
+}
+
+#view_3573 {
+  font-size: 12px;
+}
+#view_3573 tr {
+  line-height: 10px;
+}
+
+/* Pull Signature Form Side by Side to Finance Details
+#view_2531, #view_2534 {width: 50%; float: left;} */
+
+/* Spec Padding Test 
+#view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_5406, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_5407, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_5378, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_5379, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_5381, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_5410 {max-height: 16px; overflow: hidden;}
+
+#view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5388, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5411, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5386, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5385, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5412, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5413, #view_2529 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) > div > div.kn-detail.field_5414 {max-height: 16px; overflow: hidden;}
+*/
+
+/********** Link to View Agreed to Terms & Conditions *********/
+
+#view_2767 > section > div > div > div > div > div > div > span > a > span,
+#view_2781 > section > div > div > div > div > div > div > span > a > span,
+#view_4815 > section > div > div > div > div > div > div > span > a > span,
+#view_4767 > section > div.kn-details-column.first.column.is-horizontal.kn-details-group-column-empty > div > div > div > div > div > span > a > span {
+  color: #ffffff;
+  background-color: #19365e;
+  padding: 8px;
+  display: inline-block;
+}
+
+#view_2767 > section > div > div > div > div > div > div > span > a:hover > span,
+#view_2781 > section > div > div > div > div > div > div > span > a:hover > span,
+#view_4815 > section > div > div > div > div > div > div > span > a:hover > span,
+#view_4767 > section > div.kn-details-column.first.column.is-horizontal.kn-details-group-column-empty > div > div > div > div > div > span > a:hover > span {
+  color: #ffffff;
+  background-color: #0f2542;
+  padding: 8px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+/************************************ END OF SHOWROOM ORDER CSS ************************************/
+
+/************************************ USED VEHICLE INVOICE ****************************************/
+
+#view_2552 {
+  font-size: 11px;
+}
+
+#view_2550,
+#view_2550 > section > div > div > div:nth-child(3) > div > div:nth-child(1) > div > h3,
+#view_2550 > section > div > div > div:nth-child(1) > div > div:nth-child(1) > div > h3 {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+#view_2553 {
+  font-size: 12px;
+}
+#view_2553 tr {
+  line-height: 10px;
+}
+
+#view_2561 {
+  font-size: 11px;
+}
+
+#view_2562 tr {
+  line-height: 10px;
+  font-size: 12px;
+}
+
+#view_2554 {
+  font-size: 11px;
+}
+#view_2554 > section > div > div:nth-child(3) > div > div > div > div > h3 {
+  font-size: 11px;
+}
+
+#view_2555 > section > div > div:nth-child(1) {
+  font-size: 11px;
+}
+#view_2555 tr {
+  line-height: 10px;
+}
+#view_2555 > section > div > div:nth-child(2) {
+  font-size: 12px;
+}
+
+/*** Float Views Side by Side ***
+#view_2554, #view_2555 {width: 50%; float: left;} */
+
+#view_2582,
+#view_2557,
+#view_2779,
+#view_2781,
+#view_2582,
+#view_2787,
+#view_2788 {
+  float: right;
+  width: 100%;
+}
+
+/********** Link to Agree to Terms & Conditions *********/
+
+#view_2779 > section > div > div > div > div > div > div > span > a:hover > span {
+  color: #ffffff;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+/* Hide Back Link
+#kn-scene_996 > div.kn-view.kn-back-link {display: none;} */
+
+/* #kn-input-field_5496 > div > label {position: absolute;} */
+
+/*#kn-input-field_5496 > div {float: right;}*/
+
+/*************************** USED DIGITAL DEAL FILE PAGE & HANDOVER DOCUMENTS PAGE LAYOUT ***************************/
+
+/******* Links to Update Delivery and Deal File Contents Status *******/
+/**** Link from Deal File ****/
+
+#view_4069 > section > div > div:nth-child(1) > div > div > div > div > span > a,
+#view_4082 > section > div > div:nth-child(1) > div > div > div > div > span > a,
+#view_4892 > section > div > div:nth-child(1) > div > div > div > div > span > a,
+#view_4193 > section > div > div:nth-child(1) > div > div > div > div > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00cc66;
+  padding: 8px;
+  display: inline-block;
+  border-left: 10px solid #32a1ce;
+}
+
+#view_4069 > section > div > div:nth-child(1) > div > div > div > div > span > a:hover,
+#view_4082 > section > div > div:nth-child(1) > div > div > div > div > span > a:hover,
+#view_4892 > section > div > div:nth-child(1) > div > div > div > div > span > a:hover,
+#view_4193 > section > div > div:nth-child(1) > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #32936f;
+  padding: 8px;
+  display: inline-block;
+  border-left: 10px solid #32a1ce;
+}
+
+/***** Handover Documents Button Format on Used Vehicle Deal File Page ******/
+
+#view_2564 .control,
+#view_3895 .control,
+#kn-input-section-1575466918654 > div > h3,
+#kn-input-section-1575466918654 > div > p,
+#view_2520 > form > div,
+#kn-input-section-1575466994787 > div > h3,
+#kn-input-section-1575466994787 > div > p,
+#view_2548 > form > div {
+  text-align: center;
+}
+
+#view_2520 > form > div > button,
+#view_2548 > form > div > button {
+  background-color: #8d8e8e !important;
+  color: #ffffff;
+  font-weight: bold;
+  border-left: 10px solid #de3163 !important;
+}
+
+#view_2520 > form > div > button:hover,
+#view_2548 > form > div > button:hover {
+  background-color: #463f3a;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_2520 {
+  border: 4px solid #cccccc;
+  padding: 10px;
+}
+
+/**** Retrieve/Update Invoice FORM ****/
+
+#view_2548 {
+  border: 4px solid #cccccc;
+  padding: 10px;
+}
+
+/* Border & Height Setting for Order & Invoice Sign or Update Views */
+#view_2526,
+#view_2549,
+#view_2580,
+#view_2581 {
+  border: 4px solid #cccccc;
+  text-align: center;
+  padding: 10px;
+  padding-left: 25px;
+  height: 90px;
+}
+
+/* Set Heading Colour & Text Alignment for Order & Invoice Sign or Update Views */
+#view_2526 h3,
+#view_2549 h3,
+#view_2580 h3,
+#view_2581 h3 {
+  color: #19365e;
+  text-align: center;
+  padding-right: 10px;
+}
+
+/* Border & Height Setting of each view - When you add a new view, add the New View Number below - ALWAYS LEAVE VIEW_2769 AT END OF VIEW LIST, INSERT NEW VIEWS BEFORE THIS (TO GET AROUND BUG WITH LAST VIEW IN LIST) */
+#view_2584,
+#view_2585,
+#view_2586,
+#view_2587,
+#view_2588,
+#view_2760,
+#view_2789,
+#view_2790,
+#view_2816,
+#view_2818,
+#view_2821,
+#view_2823,
+#view_2851,
+#view_2852,
+#view_2886,
+#view_2888,
+#view_2909,
+#view_2910,
+#view_2912,
+#view_2914,
+#view_2920,
+#view_2922,
+#view_2933,
+#view_2935,
+#view_2936,
+#view_2939,
+#view_2944,
+#view_2946,
+#view_2948,
+#view_2950,
+#view_2960,
+#view_2961,
+#view_3109,
+#view_3107,
+#view_3333,
+#view_3335,
+#view_3336,
+#view_3344,
+#view_3346,
+#view_3349,
+#view_3350,
+#view_3354,
+#view_3355,
+#view_3359,
+#view_3374,
+#view_3376,
+#view_3419,
+#view_3423,
+#view_3469,
+#view_3471,
+#view_3489,
+#view_3490,
+#view_4112,
+#view_4133,
+#view_4137,
+#view_4139,
+#view_4140,
+#view_4144,
+#view_4145,
+#view_4147,
+#view_4148,
+#view_4150,
+#view_4165,
+#view_4168,
+#view_4169,
+#view_4170,
+#view_4915,
+#view_4916,
+#view_4527,
+#view_2769 .kn-details-group {
+  border: 1px solid #cccccc;
+  text-align: center;
+  padding: 10px;
+  padding-left: 25px;
+  height: 90px;
+}
+
+/* Set Heading Colour & Text Align for Each View When you add a new view, add the New View Number below - ALWAYS LEAVE VIEW_2769 AT END OF VIEW LIST, INSERT NEW VIEWS BEFORE THIS (TO GET AROUND BUG WITH LAST VIEW IN LIST) */
+#view_2584 h3,
+#view_2585 h3,
+#view_2586 h3,
+#view_2587 h3,
+#view_2588 h3,
+#view_2760 h3,
+#view_2789 h3,
+#view_2790 h3,
+#view_2816 h3,
+#view_2818 h3,
+#view_2821 h3,
+#view_2823 h3,
+#view_2851 h3,
+#view_2852 h3,
+#view_2886 h3,
+#view_2888 h3,
+#view_2909 h3,
+#view_2910 h3,
+#view_2912 h3,
+#view_2914 h3,
+#view_2920 h3,
+#view_2922 h3,
+#view_2933 h3,
+#view_2935 h3,
+#view_2936 h3,
+#view_2939 h3,
+#view_2944 h3,
+#view_2946 h3,
+#view_2948 h3,
+#view_2950 h3,
+#view_2960 h3,
+#view_2961 h3,
+#view_3107 h3,
+#view_3109 h3,
+#view_3333 h3,
+#view_3335 h3,
+#view_3336 h3,
+#view_3344 h3,
+#view_3346 h3,
+#view_3349 h3,
+#view_3350 h3,
+#view_3354 h3,
+#view_3355 h3,
+#view_3359 h3,
+#view_3374 h3,
+#view_3376 h3,
+#view_3419 h3,
+#view_3423 h3,
+#view_3469 h3,
+#view_3471 h3,
+#view_3489 h3,
+#view_3490 h3,
+#view_4112 h3,
+#view_4133 h3,
+#view_4137 h3,
+#view_4139 h3,
+#view_4140 h3,
+#view_4144 h3,
+#view_4145 h3,
+#view_4147 h3,
+#view_4148 h3,
+#view_4150 h3,
+#view_4165 h3,
+#view_4168 h3,
+#view_4169 h3,
+#view_4170 h3,
+#view_4915 h3,
+#view_4916 h3,
+#view_4527 h3,
+#view_2769 h3 {
+  color: #19365e;
+  text-align: center;
+  padding-right: 10px;
+}
+
+/***** Blue for Completed Actions *****/
+
+#kn-scene_990 .kn-detail-body a.kn-link-page .completed,
+#kn-scene_997 .kn-detail-body a.kn-link-page .completed,
+#view_2585 > section > div > div > div > div > div.field_5054 > div > span > span > a {
+  color: #ffffff;
+  background-color: #19365e;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+}
+
+#kn-scene_990 .kn-detail-body a:hover.kn-link-page .completed,
+#kn-scene_997 .kn-detail-body a:hover.kn-link-page .completed,
+#view_2585 > section > div > div > div > div > div.field_5054 > div > span > span > a:hover {
+  color: #ffffff;
+  background-color: #0f2542;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+/***** Orange and pink for Admin outstanding action *****/
+
+#kn-scene_990 .kn-detail-body a.kn-link-page .admin-task,
+#kn-scene_997 .kn-detail-body a.kn-link-page .admin-task {
+  color: #ffffff;
+  background-color: #ffa100;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  border-left: 10px solid #de3163;
+}
+
+#kn-scene_990 .kn-detail-body a:hover.kn-link-page .admin-task,
+#kn-scene_990 .kn-detail-body a:hover.kn-link-page .sale-task,
+#kn-scene_990 .kn-detail-body a:hover.kn-link-page .both-task,
+#kn-scene_997 .kn-detail-body a:hover.kn-link-page .admin-task,
+#kn-scene_997 .kn-detail-body a:hover.kn-link-page .sale-task,
+#kn-scene_997 .kn-detail-body a:hover.kn-link-page .both-task {
+  color: #ffffff;
+  background-color: #d18400;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+
+/***** Orange and blue for Sales Advisor outstanding action *****/
+
+#kn-scene_990 .kn-detail-body a.kn-link-page .sale-task,
+#kn-scene_997 .kn-detail-body a.kn-link-page .sale-task {
+  color: #ffffff;
+  background-color: #ffa100;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  border-left: 10px solid #32a1ce;
+}
+
+/***** Orange and pink/blue for Sales Advisor/Admin outstanding action *****/
+
+#kn-scene_990 .kn-detail-body a.kn-link-page .both-task,
+#kn-scene_997 .kn-detail-body a.kn-link-page .both-task {
+  color: #ffffff;
+  background-color: #ffa100;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-left: 10px solid #de3163;
+  border-right: 10px solid #32a1ce;
+}
+
+/***** Orange for Incomplete Actions on Remote Customer Signing View *****/
+
+#kn-scene_1304 .kn-detail-body a.kn-link-page .active {
+  color: #ffffff;
+  background-color: #ffa100;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+}
+
+#kn-scene_1304 .kn-detail-body a:hover.kn-link-page .active {
+  color: #ffffff;
+  background-color: #d18400;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+/***** Grey for Miscellaneous - No Files *****/
+
+#kn-scene_990 .kn-detail-body a.kn-link-page .miscellaneous {
+  color: #ffffff;
+  background-color: #8d8e8e;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  border-left: 10px solid #de3163;
+  border-right: 10px solid #32a1ce;
+}
+
+#kn-scene_990 .kn-detail-body a:hover.kn-link-page .miscellaneous {
+  color: #ffffff;
+  background-color: #463f3a;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+
+/***** Green for Miscellaneous - Files Exist *****/
+
+#kn-scene_990 .kn-detail-body a.kn-link-page .highlight {
+  color: #ffffff;
+  background-color: #00cc66;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+}
+
+#kn-scene_990 .kn-detail-body a:hover.kn-link-page .highlight {
+  color: #ffffff;
+  background-color: #32936f;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+}
+
+/***** Green for Consolidated Handover Pack - Sales Task *****/
+
+#kn-scene_997 .kn-detail-body a.kn-link-page .handover-pack {
+  color: #ffffff;
+  background-color: #00cc66;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  border-left: 10px solid #32a1ce;
+}
+
+#kn-scene_997 .kn-detail-body a:hover.kn-link-page .handover-pack {
+  color: #ffffff;
+  background-color: #32936f;
+  padding: 8px;
+  width: 250px;
+  display: inline-block;
+  border-left: 10px solid #32a1ce;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+
+/***** Handover Orange pink/blue for Admin/Sale Advisor outstanding action  *****/
+
+#view_2585 > section > div > div > div > div > div.field_5054 > div > span > span > a {
+  text-decoration: none !important;
+}
+
+/* HPI Check Page - Re-do HPI Check once Finance Settled */
+
+#view_2919 > form > div > button,
+#view_2807 > form > div > button,
+#view_2819 > form > div > button,
+#view_2824 > form > div > button,
+#view_2867 > form > div > button,
+#view_2901 > form > div > button,
+#view_2925 > form > div > button {
+  background-color: #ffa100 !important;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Vehicle - No Part Ex Text */
+
+#view_2586 > section > div > div > div > div > div > div > h5 {
+  text-align: center;
+  color: #6e0e0a;
+  font-style: bold;
+  padding: 8px;
+}
+
+/********* PROFIT & LOSS PAGE *******/
+
+#view_4013 th span {
+  margin: auto !important;
+}
+
+/**Digital P&L Overview PAGE V2**/
+
+/**Back to Overview page button**/
+
+#view_4106 > section > div > div > div > div > div > div > span > em > span > a {
+  margin-bottom: 5px;
+  font-size: 1.1em;
+  line-height: 125%;
+  height: auto;
+  margin-right: 0.2em;
+  padding: 0.4em 0.8em;
+  text-decoration: none;
+  background-color: #052645;
+  color: white;
+  border: none;
+  outline: none;
+  display: inline-block;
+  border-radius: 6px;
+}
+
+/* Resize Text on Details for Customer View */
+
+#view_2905 > section > div > div:nth-child(5) > div > div > div > div > h3 {
+  font-size: 14px;
+}
+
+/********* CUSTOMER HANDOVER DIARY *********/
+
+#view_2884 > div.kn-records-nav > div.level > div.level-left > div.kn-filters-nav > a {
+  background-color: #ffa100 !important;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#view_2884 > div.kn-records-nav > div.level > div.level-left > div.kn-filters-nav > a:hover {
+  background-color: #d18400;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+/********* CUSTOMER PART EXCHANGE PURCHASE INVOICE ********/
+
+#view_3464 {
+  font-size: 12px;
+}
+
+#view_3463 > form > ul:nth-child(1),
+#view_3463 > form > ul:nth-child(4),
+#view_3466 > section > div > div:nth-child(2),
+#view_3466 > section > div > div:nth-child(5) {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #6e6f71;
+  padding-bottom: 10px;
+}
+
+#view_3465 > section > div > div.kn-details-group.column-1.columns {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6e6f71;
+  padding-top: 20px;
+}
+
+/* Completed Part Ex Purchase Details */
+
+#view_3466 > section > div > div:nth-child(1) > div > div > div > div > h3,
+#view_3466 > section > div > div:nth-child(3) > div > div > div:nth-child(2) > div > h3 {
+  font-size: 16px;
+}
+
+/**LEV Reporting Center Table Headings**/
+
+#view_5241 th span,
+#view_5236 th span,
+#view_5243 th span,
+#view_5238 th span,
+#view_5241 th span {
+  margin: auto !important;
+}
+
+/**Button with link to Service plan Page**/
+#view_4247 > section > div > div > div > div > div > div > span > a > span {
+  background-color: #0f2542;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-align: center;
+  display: inline-block;
+}
+
+#view_4247 > section > div > div > div > div > div > div > span > a > span > span:nth-child(2) > span {
+  text-decoration: none;
+}
+
+/********* SERVICE PLAN PAGE *********/
+
+/**Service table**/
+
+#view_4220 > div.kn-table-wrapper.is-constrained > table > thead > tr > th {
+  background: #708090;
+}
+
+#view_4249 > section > div > div > div > div > div > div.kn-detail-label > span > span {
+  color: #3e74ab;
+}
+
+/* #view_4220 > div.kn-table-wrapper.is-constrained > td {background:#95c3d8 !important;} */
+
+/*About service plan and video rich text*/
+#view_4221 {
+  overflow: auto;
+}
+#view_4222 {
+  overflow: auto;
+}
+
+/********* First select box rating car buying experience *********/
+
+#view_2940-field_5976 > option:nth-child(2),
+#view_2940-field_5976 > option:nth-child(3),
+#view_2940-field_5655 > option:nth-child(2),
+#view_2940-field_5655 > option:nth-child(3),
+#view_4149-field_5976 > option:nth-child(2),
+#view_4149-field_5976 > option:nth-child(3),
+#view_4149-field_5655 > option:nth-child(2),
+#view_4149-field_5655 > option:nth-child(3),
+#view_4652-field_5976 > option:nth-child(2),
+#view_4652-field_5976 > option:nth-child(3),
+#view_4652-field_5655 > option:nth-child(2),
+#view_4652-field_5655 > option:nth-child(3) {
+  background-color: #23d160;
+  color: #fafafa;
+  font-size: 16px;
+}
+
+#view_2940-field_5976 > option,
+#view_2940-field_5655 > option,
+#view_4149-field_5976 > option,
+#view_4149-field_5655 > option,
+#view_4652-field_5976 > option,
+#view_4652-field_5655 > option {
+  background: #eee;
+  color: #000;
+}
+
+/***** Colour Code CSS for Deal File Audit Page *****/
+
+/*** Manager Docs to Review ***/
+
+#view_4155 > section > div > div:nth-child(2) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5588 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(2) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6092 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5590 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_7911 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6224 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6012 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6013 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6368 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6370 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(5) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5672 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(6) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6115 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(6) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5556 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(6) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5559 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(6) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5562 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(7) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5959 > div.kn-detail-label,
+#view_4522 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6267 > div.kn-detail-label,
+#view_4522 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6006 > div.kn-detail-label {
+  border-left: 10px solid #32a1ce;
+}
+
+/*** Admin DOCs to Review ***/
+
+#view_4155 > section > div > div:nth-child(8) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5988 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5685 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(10) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5959 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6263 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6223 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6369 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6109 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5662 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_7396 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6433 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6112 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5667 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6242 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6248 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6250 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6251 > div.kn-detail-label,
+#view_4519 > section > div > div > div:nth-child(1) > div > div > div.kn-detail-label,
+#view_4521 {
+  border-left: 10px solid #de3163;
+}
+
+/*** ADMIN & MANAGER TO REVIEW ***/
+
+#view_4520 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6264 > div.kn-detail-label,
+#view_4520 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6003 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6096 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_5626 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6452 > div.kn-detail-label,
+#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_7846 > div.kn-detail-label {
+  border-right: 10px solid #de3163;
+  border-left: 10px solid #32a1ce;
+}
+
+/* Upload Tax Confirmation Page - Admin Confirm Handover */
+
+#view_4934 > section > div > div.kn-details-group.column-1.columns > div > div > div > div > span > a {
+  color: #ffffff;
+  background-color: #ffa100;
+  padding: 8px;
+  width: 300px;
+  display: inline-block;
+  border-left: 10px solid #de3163;
+  font-weight: bold;
+  text-align: center;
+}
+
+#view_4934 > section > div > div.kn-details-group.column-1.columns > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  background-color: #d18400;
+  padding: 8px;
+  width: 300px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+
+/* Links to Audit Page from Deal File and Handover Docs */
+
+#view_4296 > section > div > div > div > div > div > div > span > a,
+#view_4297 > section > div > div > div > div > div > div > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00cc66;
+  padding: 8px;
+  display: inline-block;
+  border-left: 10px solid #de3163;
+  border-right: 10px solid #32a1ce;
+}
+
+#view_4296 > section > div > div > div > div > div > div > span > a:hover,
+#view_4297 > section > div > div > div > div > div > div > span > a:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #32936f;
+  padding: 8px;
+  display: inline-block;
+  border-left: 10px solid #de3163;
+  border-right: 10px solid #32a1ce;
+}
+
+/******* CSS to make File Uploads Stand out when Files Exist *******/
+/* Original Order */
+#kn-input-field_5957 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5960 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5962 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5964 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6248 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6250 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6251 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6014 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6026 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6109 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6003 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6006 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6239 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5588 > a,
+#kn-input-field_6263 > a,
+#kn-input-field_6266 > a,
+#kn-input-field_6265 > a,
+#kn-input-field_6264 > a,
+#kn-input-field_5626 > a,
+#kn-input-field_5996 > a,
+#kn-input-field_6012 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5959 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5626 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5628 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5643 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5643 > a,
+#kn-input-field_6805 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_8073 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5662 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_7396 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6096 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6433 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6112 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5667 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5685 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5990 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5996 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5957 > a,
+#kn-input-field_7846 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_7846 > a,
+#kn-input-field_6554 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6554 > a,
+#kn-input-field_6223 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5988 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5588 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_5589 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_6115 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#kn-input-field_8415 > div > div.kn-asset-current > div > div > a.kn-view-asset,
+#view_4571 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div.kn-detail.field_8415 > div.kn-detail-body > span > span > a,
+#kn-input-field_5590 > div > div.kn-asset-current > div > div > a.kn-view-asset {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: #388cf5;
+  color: #388cf5;
+}
+
+/* Pull Delivery Status Button and Sign Online Button Side by Side */
+/* #view_4082, #view_4193 {width: 50%; float: left;} */
+
+/*************** SIGN ONLINE REMOTE CUSTOMER AGREEMENT OF DOCUMENTS ******************/
+
+#view_4095 {
+  display: none;
+}
+
+/**** Part Exchange Link to Button ****/
+
+#\36 036159d004821075460cbf1 > td.kn-table-link > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+}
+
+#\36 036159d004821075460cbf1 > td.kn-table-link > span > a:hover,
+#view_5131 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a:hover,
+#view_2767 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a:hover,
+#view_5068 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a:hover,
+#view_5067 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a:hover,
+#view_5065 > section > div > div > div > div > div.kn-label-none.field_7447 > div > span > span > a:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+}
+
+/******** HIDE BACK LINKS ON SCENES ********/
+
+ div#kn-scene_1300 div.kn-view.kn-back-link > a {
+  display: none;
+}
+
+ div#kn-scene_1304 div.kn-view.kn-back-link > a {
+  display: none;
+}
+
+
+div#kn-scene_1772 div.kn-view.kn-back-link > a {
+display: none;
+}
+
+/******** Remote Customer Satisfaction Survey *********/
+/********* First select box rating car buying experience *********/
+
+/*************** Enquiry Max Links ***************/
+
+/************************ USED DEAL FILE CONSOLIDATED HANDOVER PACK **************************/
+
+/***** HANDOVER PACK - USED VEHICLE INVOICE *****/
+
+#view_4798 {
+  font-size: 11px;
+}
+
+#view_4799,
+#view_4799 > section > div > div > div:nth-child(1) > div > div:nth-child(1) > div > h3,
+#view_4799 > section > div > div > div:nth-child(3) > div > div:nth-child(1) > div > h3 {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+#view_4800 {
+  font-size: 12px;
+}
+#view_4800 tr {
+  line-height: 10px;
+}
+
+#view_4801 {
+  font-size: 11px;
+}
+
+#view_4802 tr {
+  line-height: 10px;
+  font-size: 12px;
+}
+
+#view_4803 > section > div > div:nth-child(1) {
+  font-size: 11px;
+}
+#view_4803 tr {
+  line-height: 10px;
+}
+#view_4803 > section > div > div:nth-child(2) {
+  font-size: 12px;
+}
+
+#view_4804 {
+  font-size: 11px;
+}
+#view_4804 > section > div > div:nth-child(3) > div > div > div > div > h3 {
+  font-size: 11px;
+}
+
+/***** HANDOVER PACK - PART EXCHANGE PURCHASE INVOICE *****/
+
+#view_5322 {
+  font-size: 12px;
+}
+
+#view_5323 > section > div > div.kn-details-group.column-1.columns {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6e6f71;
+  padding-top: 20px;
+}
+
+#view_5324 > form > ul:nth-child(1),
+#view_5324 > form > ul:nth-child(4) {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #6e6f71;
+  padding-bottom: 10px;
+}
+
+/********* HANDOVER PACK - HANDOVER CHECKLIST *********/
+
+/********* HANDOVER PACK - CUSTOMER SATISFACTION SURVEY PAGE *********/
+
+/********************************************************************Pete/Hynek iFrame Work****************************************************************/
+#knack-iframe {
+  height: calc(100vh - 237px);
+  overflow-y: scroll;
+}
+@media only screen and (min-width: 768px) {
+  #knack-iframe {
+    height: calc(100vh - 237px);
+    overflow-y: scroll;
+  }
+}
+.rad-header-closed #knack-iframe {
+  height: calc(100vh - 117px);
+}
+
+@media only screen and (min-width: 768px) {
+  .rad-header-closed #knack-iframe {
+    height: calc(100vh - 117px);
+  }
+}
+.kn-content:not(:last-child):not(:empty).view_2163,
+#view_2163,
+#view_4272 {
+  margin-bottom: 0;
+}
+#view_2163,
+#view_4272 > .columns,
+#view_2163,
+#view_4272 > .columns > .kn-details-column > .kn-details-group {
+  margin: 0;
+}
+
+#view_2163,
+#view_4272 .column.kn-details-column .kn-details-group-column,
+#view_2163,
+#view_4272 .column:only-child {
+  padding: 0;
+}
+.view_2163,
+#view_4272 .kn-scenes.kn-section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.view_2163,
+#view_4272 .kn-content .column.kn-details-group-column {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.rad-toggle-header {
+  cursor: pointer;
+  color: #052645;
+  text-decoration: underline;
+  font-weight: bold;
+  display: inline-block;
+}
+@keyframes highlight-button-animation {
+  from {
+    opacity: 0;
+    transform: scale(0.1) rotate(30deg);
+    transform-origin: center bottom;
+  }
+
+  50% {
+    transform: rotate(-10deg);
+    opacity: 1;
+  }
+
+  65% {
+    transform: scale(0.75) rotate(0deg);
+  }
+
+  70% {
+    transform: scale(1.25);
+  }
+
+  75% {
+    transform: scale(0.75);
+  }
+
+  80% {
+    transform: scale(1.25);
+  }
+
+  85% {
+    transform: scale(0.75);
+  }
+
+  90% {
+    transform: scale(1.25);
+  }
+
+  95% {
+    transform: scale(0.75);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.highlight-button-animation {
+  animation-name: highlight-button-animation;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+}
+@media (print), (prefers-reduced-motion: reduce) {
+  .animated {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/************ OLD DASHBOARD STUFF **********/
+
+/* ---Robins & Day Dashboard--- */
+
+#view_632 #\35 aba5688bee0f74ec9b3305a > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 10px;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+/*#\35 aba5688bee0f74ec9b3305a > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+#view_632 #\35 aba56013240a44b5ae580a8 > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 10px;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+/*#\35 aba56013240a44b5ae580a8 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+#view_632 #\35 aba569eeda21d29a4a66603 > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 10px;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+/*#\35 aba569eeda21d29a4a66603 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+#view_632 #\35 aba5695512730299745c767 > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 10px;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+/*#\35 aba5695512730299745c767 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+#view_632 #\35 aba567d6970b629a147c975 > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 210x;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+/*#\35 aba567d6970b629a147c975 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+#view_632 #\35 aec1049d95a8f2ff5b643ef > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 10px;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+/*#\35 5aec1049d95a8f2ff5b643ef > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+#view_632 #\35 aec65de77dc0d2fd227e6a2 > section {
+  transition: 0.3s;
+  width: 350px;
+  /*height: 200px;*/
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #6e6f71;
+  padding: 5px;
+  /*margin-left: 20px;*/
+  margin-right: 10px;
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+/*#\35 5aec65de77dc0d2fd227e6a2 > section > div.kn-details-column.first.column.is-horizontal > div > div > div > div > div > span > a > span > img {
+  	margin-top: 45px;
+}*/
+
+/* Robins & Day Dashboard Label Background */
+#view_632 .kn-detail-label {
+  background-color: #ffffff;
+}
+
+/* Department Overview Panels */
+
+/* NEW LIST VIEW */
+
+#\35 abcc5ca0cb9db13bea59581 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #001846;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#\35 abcc5ca0cb9db13bea59581 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #c60023;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#\35 abcc5ca0cb9db13bea59581 > section > div > div.kn-details-group.column-3.columns > div:nth-child(3) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000000;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+/* USED LIST VIEW */
+
+#\35 abcc5cbd644d629638dd926 > section > div > div:nth-child(1) > div:nth-child(1) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #001846;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#\35 abcc5cbd644d629638dd926 > section > div > div:nth-child(1) > div:nth-child(2) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #c60023;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+/* Change Button Colour */
+
+/* FLEET LIST VIEW */
+
+#\35 abcc5ace8e29329a4a42fe8 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #001846;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#\35 abcc5ace8e29329a4a42fe8 > section > div > div.kn-details-group.column-3.columns > div:nth-child(2) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #c60023;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+#\35 abcc5ace8e29329a4a42fe8 > section > div > div.kn-details-group.column-3.columns > div:nth-child(3) {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #000000;
+  padding: 5px;
+  background-color: #ffffff;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+
+/*Camera app shared CSS*/
+/**POP UP MESSAGE FOR ISO USER TO ALLOW MOTION SENSOR**/
+
+#cameraModal {
+  background-color: #f5f5f5;
+  display: none;
+  padding: 30px 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  position: absolute;
+  max-width: 60%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+#cameraModal_header {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 16.5px;
+  color: #000;
+  text-decoration: none;
+  padding: 0px;
+}
+
+#cameraModal_txt {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  padding: 0px;
+}
+
+#cameraAccept {
+  background-color: #4caf50;
+  color: #fafafa;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  border: 2px solid #000;
+}
+
+#cameraVid_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  max-width: 100%;
+}
+
+#cameraGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-gap: 6px;
+  padding: auto;
+  align-items: center;
+}
+
+#cameraText {
+  font-family: sans-serif;
+  font-style: normal;
+  font-size: 16.5px;
+  color: #fafafa;
+  text-decoration: none;
+  padding: 0px;
+}
+
+#cameraCompare {
+  max-width: 100%;
+  height: auto;
+}
+
+#cameraFrontpic {
+  max-width: 100%;
+  height: auto;
+}
+
+/**Line canvas**/
+#cameraLine {
+  max-width: 80%;
+  height: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  top: 90%;
+  font-size: 0px;
+  /*left: calc(50vw - 100vmax);*/
+  /*transform: rotate(360deg);*/
+
+  /*transform-origin: centre point*/
+  z-index: 10;
+  opacity: 0.5;
+}
+
+/**Mobile first. Any mobile with viewport width of 640px or less apply the following to canvas**/
+#cameraOverlayCanvas {
+  position: absolute;
+  max-width: 70%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#cameraGui_controls {
+  position: fixed;
+  background-color: #111;
+  z-index: 2;
+  bottom: 0;
+}
+
+#cameraVideo_overlay {
+  position: fixed;
+  display: none;
+  max-width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: #111;
+}
+
+.cameraButton {
+  outline: none;
+  position: absolute;
+  color: white;
+  display: block;
+  opacity: 1;
+  background: transparent;
+  border: solid 2px #fff;
+  padding: 0;
+  text-shadow: 0px 0px 4px black;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* IF IN PORTRAIT DISPLAY ROTATE BUTTON*/
+#cameraRotate {
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  background-image: url("https://robinsandday.github.io/imagesStore/rotate5.png");
+  border-radius: 50%;
+}
+
+#takePhoto {
+  left: calc(50% - 40px);
+  top: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  background-image: url("https://robinsandday.github.io/imagesStore/camera-4-48.png");
+  border-radius: 50%;
+}
+
+#takePhoto:active {
+  background-color: #fafafa;
+}
+
+#cameraExit {
+  left: calc(50% - 32px);
+  top: calc(82% - 32px);
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/icons8-exit-26%20(1).png");
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#cameraExit:active {
+  background-color: #fafafa;
+}
+
+#cameraCalibrate {
+  left: calc(50% - 32px);
+  top: calc(25% - 32px);
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/calibration_icon3.png");
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#cameraCalibrate:active {
+  background-color: #fafafa;
+}
+
+#cameraRetake {
+  left: calc(50% - 32px);
+  top: calc(82% - 32px);
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/x-mark-24.png");
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+#cameraRetake:active {
+  background-color: #fafafa;
+}
+
+#cameraConfirm {
+  width: 60px;
+  height: 60px;
+  background-image: url("https://robinsandday.github.io/imagesStore/check-mark-3-24.png");
+  border-radius: 50%;
+  background-color: rgba(60, 179, 113, 0.5);
+  left: calc(50% - 32px);
+  top: calc(18% - 32px);
+}
+
+#cameraConfirm:active {
+  background-color: #fafafa;
+}
+
+@media screen and (orientation: portrait) {
+  /* portrait-specific styles */
+  /* video_container (video) doesn't respect height...
+       so we will fill it in completely in portrait mode
+    */
+  #cameraVideo_overlay {
+    width: 100%;
+    height: 80%;
+  }
+
+  #cameraGui_controls {
+    width: 100%;
+    height: 20%;
+    left: 0;
+  }
+
+  #cameraConfirm {
+    left: calc(20% - 32px);
+    top: calc(50% - 32px);
+  }
+
+  #cameraRetake {
+    left: calc(80% - 32px);
+    top: calc(50% - 32px);
+  }
+
+  #cameraExit {
+    left: calc(20% - 32px);
+    top: calc(50% - 32px);
+  }
+
+  #cameraCalibrate {
+    left: calc(80% - 32px);
+    top: calc(50% - 32px);
+  }
+}
+
+@media screen and (orientation: landscape) {
+  #cameraVid_container {
+    width: 80%;
+    height: 100%;
+  }
+
+  #cameraVid_container.left {
+    left: 20%;
+  }
+
+  /* we default to right */
+  #cameraGui_controls {
+    width: 20%;
+    height: 100%;
+    right: 0;
+  }
+
+  /* for the lefties */
+  #cameraGui_controls.left {
+    left: 0;
+  }
+
+  #cameraRetake {
+    left: calc(50% - 32px);
+    top: calc(18% - 32px);
+  }
+
+  #cameraConfirm {
+    left: calc(50% - 32px);
+    top: calc(82% - 32px);
+  }
+
+  #cameraExit {
+    left: calc(50% - 32px);
+    top: calc(82% - 32px);
+  }
+
+  #cameraCalibrate {
+    left: calc(50% - 32px);
+    top: calc(25% - 32px);
+  }
+}
+
+@media only screen and (min-width: 667px) and (max-width: 897px) and (orientation: landscape) {
+  #cameraText {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 898px) and (orientation: landscape) {
+  #cameraGrid {
+    grid-template-columns: 45% 45%;
+  }
+
+  #cameraText {
+    font-size: 20px;
+  }
+}
+/*Camera app CSS END*/
+
+#kn-scene_1261 {
+  margin: 6px;
+}
+
+#kn-scene_1266 {
+  margin: 6px;
+}
+
+/**SCAN BUTTON STYLING**/
+#scanDocument {
+  background-color: #eeeeee;
+  font-weight: bold;
+  padding: 8px 6px;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 11px;
+  margin: 1.5rem;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border: none;
+  outline: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-transform: uppercase;
+}
+
+#scanDocument:hover {
+  background-color: #cdcdcd;
+}
+
+#scanDocument > .fa {
+  color: red;
+  font-size: 12px;
+}
+
+/**SCAN DOCUMENT BUTTONS: RICH TEXT**/
+
+#view_3929,
+#view_3952,
+#view_3948,
+#view_3949,
+#view_3951,
+#view_3947,
+#view_3945,
+#view_3943,
+#view_3950,
+#view_3953,
+#view_3954,
+#view_3955 > div > p {
+  margin: -30px;
+  padding-bottom: 20px;
+}
+
+#view_3956,
+#view_3957,
+#view_3958,
+#view_3959,
+#view_3960,
+#view_3962,
+#view_3963,
+#view_3983,
+#view_3984,
+#view_3985,
+#view_4181,
+#view_4180,
+#view_4273,
+#view_4518 > div > p {
+  margin: -30px;
+  padding-bottom: 20px;
+}
+
+#view_3984,
+#view_4020 > div > p {
+  margin: -13px;
+  padding-bottom: 20px;
+}
+
+#view_4020 > div > p {
+  margin: -30px;
+  padding-bottom: 0px;
+}
+
+/**BOX around vehicle checkin Route Selection**/
+
+#view_4306 {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 3px;
+  padding-bottom: 20px;
+  border-color: #6e6f71;
+  text-align: center;
+  box-shadow: 3px 3px 3px 3px #ccc;
+}
+
+/* Centre Table Headers and Change Font for Used DOC.*/
+/**Group and Region Performance Page**/
+
+#view_4690 th span,
+#view_4690,
+#view_4891 th span,
+#view_4891,
+#view_4839 th span,
+#view_4839,
+#view_4750,
+#view_4694 th span,
+#view_4694,
+#view_4696 th span,
+#view_4696,
+#view_4751,
+#view_5154 th span,
+#view_5154,
+#view_5134 th span,
+#view_5134,
+#view_5278 th span,
+#view_5278,
+#view_5279 th span,
+#view_5279 {
+  margin: auto !important;
+  font-size: 15px;
+}
+
+/**Region Performance Page**/
+
+#view_4750 th span {
+  margin: auto !important;
+}
+
+/**Dealers in that Region Page**/
+
+#view_4751 th span {
+  margin: auto !important;
+}
+
+/**Used Doc - Dealer Performance (Individual) Page**/
+
+#view_4753 {
+  font-size: 23px;
+}
+
+#view_4754 {
+  font-size: 17px;
+}
+
+#view_4698 th span {
+  margin: auto !important;
+}
+
+/**Red Colour for Average Discount**/
+
+#view_4754 > section > div > div.kn-details-group.column-3.columns > div:nth-child(1) > div > div.kn-detail.field_7559 {
+  color: #ff0000;
+  font-size: 17px;
+}
+
+/*********Used Historic Doc*********/
+
+/*Dealer Performance (Individual) Page*/
+
+#view_5165 {
+  font-size: 23px;
+}
+
+#view_5164 {
+  font-size: 17px;
+}
+
+/*Red Colour for Average Discount*/
+
+#view_5164 > section > div > div.kn-details-group.column-1.columns > div > div > div.kn-detail.field_7560 {
+  color: #ff0000;
+  font-size: 17px;
+}
+
+/**"Valeter Instructions" button on valet to do page*/
+#view_4811 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4811 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1368 > div > a.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_4791 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4791 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4784 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4784 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4852 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4852 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4850 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4850 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4850 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_4853 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4853 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4853 > div > a.kn-link.kn-link-3.kn-link-page.kn-button {
+  background-color: #ffafcc;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_4811 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4811 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_1368 > div > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_4791 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4791 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4784 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4784 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4852 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4852 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4850 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4850 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4850 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_4853 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_4853 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_4853 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button {
+  background-color: #ff5c98;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+/****************** AUDIT TEAM *********************/
+
+/* TOOLTIP CSS*/
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  background-color: rgba(51, 51, 51, 0.9);
+  border-radius: 0.3rem;
+  color: #fff;
+  content: attr(data-tooltip);
+  font-size: 1rem;
+  font-size: 85%;
+  font-weight: normal;
+  line-height: 1.15rem;
+  opacity: 0;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  text-align: center;
+  text-transform: none;
+  transition: opacity 0.2s;
+  visibility: hidden;
+  white-space: nowrap;
+  z-index: 1;
+}
+[data-tooltip].tooltip-top::before {
+  border-style: solid;
+  border-width: 0.3rem;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s;
+  visibility: hidden;
+  border-color: rgba(51, 51, 51, 0.9) transparent transparent transparent;
+  top: 0;
+  left: 50%;
+  margin-left: -0.3rem;
+}
+[data-tooltip].tooltip-top::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+[data-tooltip].tooltip-bottom::before {
+  border-style: solid;
+  border-width: 0.3rem;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s;
+  visibility: hidden;
+  border-color: transparent transparent rgba(51, 51, 51, 0.9) transparent;
+  bottom: 0;
+  left: 50%;
+  margin-left: -0.3rem;
+}
+[data-tooltip].tooltip-bottom::after {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+[data-tooltip].tooltip-left::before {
+  border-style: solid;
+  border-width: 0.3rem;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s;
+  visibility: hidden;
+  border-color: transparent transparent transparent rgba(51, 51, 51, 0.9);
+  top: 0.3rem;
+  right: calc(110% - 0.3rem);
+  margin-top: -0.3rem;
+}
+[data-tooltip].tooltip-left::after {
+  top: -0.3rem;
+  right: calc(110% + 0.3rem);
+}
+[data-tooltip].tooltip-right::before {
+  border-style: solid;
+  border-width: 0.3rem;
+  content: "";
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.2s;
+  visibility: hidden;
+  border-color: transparent rgba(51, 51, 51, 0.9) transparent transparent;
+  top: 50%;
+  top: 0.3rem;
+  left: calc(110% - 0.3rem);
+  margin-top: -0.3rem;
+}
+[data-tooltip].tooltip-right::after {
+  top: -0.3rem;
+  left: calc(110% + 0.3rem);
+}
+@media (max-width: 767px) {
+  [data-tooltip].tooltip-mobile::before {
+    display: none;
+  }
+  [data-tooltip].tooltip-mobile:after {
+    font-size: 1rem;
+    max-width: 20rem;
+    position: fixed;
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    text-align: left;
+    transform: translate(-50%);
+    white-space: normal;
+  }
+}
+[data-tooltip]:hover::after,
+[data-tooltip][class*="tooltip-"]:hover::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*TOOLTIP CSS END*/
+
+#view_4912 .kn-detail-body > span > strong > span > a {
+  background-color: #eeeeee;
+  font-weight: bold;
+  padding: 10px 15px;
+  margin: 5px 5px !important;
+  display: inline-block;
+  border-radius: 10px;
+  margin: 1.5rem;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border: none;
+  outline: none;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-transform: uppercase;
+  align-content: center;
+}
+
+#view_4912 .kn-detail-body > span > strong > span > a:hover {
+  background-color: #cdcdcd;
+}
+
+#view_4912 .kn-detail-label {
+  background-color: transparent;
+  height: 50px !important;
+  max-width: 30px !important;
+  min-width: 30px !important;
+  padding: 2px !important;
+  border: 2px !important;
+  margin: 2px !important;
+  text-align: center;
+}
+
+/*border around puchasing auction vehicles 
+#view_5004 > div {
+  	border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: lightgrey;
+    padding: 5px;
+*/
+/*border around individual cars
+	
+#view_5004 > div > div.kn-list-content.columns.is-multiline {
+			border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: lightgrey;
+    padding: 5px;
+
+	/*border around purchasing auction vehicles individual data on cars
+
+	#view_5006 > section > div.kn-details-column.first.column.is-horizontal {
+			border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: lightgrey;
+    padding: 5px;
+	*/
+
+/* turn back on Limit purchasing derivative counters to one line*/
+#view_5004 .kn-label-none.field_7438 > div > span > strong > span {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40ch;
+}
+
+/* make purchasing main page button for retail metrics */
+#view_5004 .kn-label-none.field_7403 > div > span,
+#view_5004 .kn-label-none.field_7403 > div > span a:hover,
+#view_5004 .kn-details-group.column-2.columns > div:nth-child(2) > div > div > div > span > strong > span,
+#view_5004 .kn-details-group.column-2.columns > div:nth-child(2) > div > div > div > span > strong > span a:hover,
+#view_5028 > section > div > div:nth-child(10) > div > div > div.kn-label-none.field_7403 > div > span > span,
+#view_5028 > section > div > div:nth-child(10) > div > div > div.kn-label-none.field_7403 > div > span > span a:hover,
+#view_5028 > section > div > div:nth-child(10) > div > div > div.kn-label-none.field_7404 > div > span > span,
+#view_5028 > section > div > div:nth-child(10) > div > div > div.kn-label-none.field_7404 > div > span > span a:hover,
+#view_5028 > section > div > div:nth-child(10) > div > div > div.kn-label-none.field_7422 > div > span > span,
+#view_5028 > section > div > div:nth-child(12) > div:nth-child(2) > div > div > div > span {
+  color: #ffffff !important;
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+/* View inspection report*/
+
+#view_5028 > section > div > div:nth-child(10) > div > div > div.kn-label-none.field_7422 > div > span > span a:hover {
+  color: #ffffff !important;
+  font-weight: bold;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 12px;
+}
+/*link to view auction */
+
+#view_5028 > section > div > div:nth-child(12) > div:nth-child(2) > div > div > div > span a:hover {
+  color: #ffffff !important;
+  font-weight: bold;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 12px;
+}
+#view_5028 > section > div > div:nth-child(11) > div:nth-child(2) > div > div {
+  color: #ffffff !important;
+  font-weight: bold;
+  background-color: #ffa100;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 12px;
+  height: 60px;
+}
+#view_5028 > section > div > div:nth-child(11) > div:nth-child(2) > div > div a:hover {
+  color: #ffffff !important;
+  font-weight: bold;
+  background-color: #d18400;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 12px;
+}
+
+/* TURN BACK ON hide metrics from main purchasing page  */
+
+#view_5004 .field_7295_thumb_203 > div > span > a > div > span > img {
+  background-color: #1f2dad !important;
+  top: 90px !important;
+}
+
+/*hide borders service table for MFL 
+#view_5029 > section > div > div:nth-child(3) > div > div > div.kn-label-none.field_7242 table, tr, td{
+ border:none !important;
+}*/
+
+/*hide scroll bar on purchasing vehicle description*/
+
+#view_5029 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div > div {
+  overflow: hidden !important;
+}
+
+/*button glow effect START*/
+#view_4779 .control > a {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  background: #dee2e6;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+#view_4779 .control > a:before {
+  content: "";
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+#view_4779 .control > a:active {
+  color: #000;
+}
+
+#view_4779 .control > a:active:after {
+  background: transparent;
+}
+
+#view_4779 .control > a:hover:before {
+  opacity: 1;
+}
+
+#view_4779 .control > a:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #dee2e6;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/*button glow effect END*/
+
+/*button shine effect START*/
+#kn-report-view_4580-1 .js-filter-menu > ul > li > a {
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+#kn-report-view_4580-1 .js-filter-menu > ul > li > a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(167, 167, 173, 0.4), transparent);
+  transition: all 650ms;
+}
+
+#kn-report-view_4580-1 .js-filter-menu > ul > li > a:hover:before {
+  left: 100%;
+}
+/*button shine effect END*/
+
+/*3d button Start*/
+#view_5076 .kn-records-nav .control > a {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+}
+
+#view_5076 .kn-records-nav .control > a:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+#view_5076 .kn-records-nav .control > a:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+#view_5076 .kn-records-nav .control > a:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/* change Auto Trader optional Extra's into a Scroll rather than list (used vehicle check in - 3) */ 
+#kn-scene_905 #outerDiv
+{ height : 200px;
+}
+
+#kn-scene_905 #connection-picker-checkbox-field_7464
+{ height     : 100%;
+  overflow-y : auto;
+}
+
+/* change Auto Trader optional Extra's into a Scroll rather than list (used vehicle checked in awaiting action/ select route of disposal) */ 
+#kn-scene_909 #outerDiv
+{ height : 200px;
+}
+
+#kn-scene_909 #connection-picker-checkbox-field_7464
+{ height     : 100%;
+  overflow-y : auto;
+}
+
+/* change Auto Trader optional Extra's into a Scroll rather than list (Sales channel data) */ 
+#kn-scene_1119 #outerDiv
+{ height : 200px;
+}
+
+#kn-scene_1119 #connection-picker-checkbox-field_7561
+{ height     : 100%;
+  overflow-y : auto;
+}
+
+/*********Robins & Day Digital UX*********/
+
+/* Digital Portal Page */ 
+
+#view_5641 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-11.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-12.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-13.kn-link-page.kn-button,
+#view_5641 > div.control > a.kn-link.kn-link-14.kn-link-page.kn-button {
+  font-size: 1.05em;
+  font: "Calibri", sans-serif;		
+  background-color: #ffa100 !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+#view_5641 > div.control > a.kn-link.kn-link-15.kn-link-page.kn-button {
+  font-size: 1.05em;
+  font: "Calibri", sans-serif;		
+  background-color: #2ab27b !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+#view_5641 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-12.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-13.kn-link-page.kn-button,
+#view_5641 > div.control > a:hover.kn-link.kn-link-14.kn-link-page.kn-button,{
+  font-size: 1.05em;
+  font: "Calibri", sans-serif;
+  text-align: center;
+  background-color: #d18400 !important;
+  color: #ffffff;
+  font-weight: bold;
+}	
+	
+#view_5653 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5666 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5666 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5666 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5666 > div.control > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5666 > div.control > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5666 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5667 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5667 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button {
+  padding: 8px 2px !important;
+  font-size: 1.17em;
+  font: "Calibri", sans-serif;
+  text-align: center;
+  width: 60% !important;
+  margin-bottom: 15px;
+  background-color: #005F80;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5653 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5666 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5666 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5666 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5666 > div.control > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5666 > div.control > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5666 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5667 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5667 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+  padding: 8px 2px !important;
+  font-size: 1.17em;
+  font: "Calibri", sans-serif;
+  text-align: center;
+  width: 60% !important;
+  margin-bottom: 15px;
+  background-color: #014157;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}	
+
+#view_5662 {
+  margin: 10px;
+}
+
+#view_5684 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5684 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5684 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5684 > div.control > a.kn-link.kn-link-4.kn-link-page.kn-button {
+  padding: 8px 2px !important;
+  font-size: 1.17em;
+  font: "Calibri", sans-serif;
+  text-align: center;
+  width: 60% !important;
+  margin-bottom: 15px;
+  background-color: #00BCB4;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5684 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5684 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5684 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5684 > div.control > a:hover.kn-link.kn-link-4.kn-link-page.kn-button {
+  padding: 8px 2px !important;
+  font-size: 1.17em;
+  font: "Calibri", sans-serif;
+  text-align: center;
+  width: 60% !important;
+  margin-bottom: 15px;
+  background-color: #019E97;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+/*********** NEW APP LAYOUT AS OF NOVEMBER 2022 ***********/
+
+/* OPERATION AND REPORTING PAGES */ 
+
+#view_5798,
+#view_5804,
+#view_5813,
+#view_5821,
+#view_5829,
+#view_5837,
+#view_5843,
+#view_5861,
+#view_5853,
+#view_5864,
+#view_5880 {
+  margin: 10px;
+}
+
+#view_5799 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5805 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5814 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5822 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5830 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5838 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5844 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5862 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5854 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5865 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5882 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3633 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_3633 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5894 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5894 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6235 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+  background-color: #2ab27b;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5799 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5805 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5814 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5822 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5830 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5838 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5844 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5862 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5854 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5865 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5882 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_3633 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_3633 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5894 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5894 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6235 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+  background-color: #308965;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5799 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5805 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5814 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5822 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5830 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5838 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5844 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5862 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5854 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5865 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5882 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6235 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+  background-color: #ffa100 !important;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5799 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5805 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5814 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5822 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5830 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5838 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5844 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5862 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5854 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5865 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5882 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6235 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+  background-color: #d18400 !important;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+
+#view_5797 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-11.kn-link-page.kn-button,
+#view_5800 > div > a.kn-link.kn-link-12.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5801 > div > a.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_5806 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5808 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5816 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5816 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5817 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5817 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5823 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5823 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5823 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5823 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5823 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5824 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5824 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5826 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5826 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5831 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5832 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-2.kn-link-page.kn-button, 
+#view_5839 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5839 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5840 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5840 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5840 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5845 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5845 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5846 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5846 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5846 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5863 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5863 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5863 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5863 > div > a.kn-link.kn-link-4.kn-button,
+#view_5855 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5855 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5855 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5856 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5856 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5866 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5881 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5881 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5881 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5881 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5899 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5899 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5899 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5900 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5797 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5815 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5907 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5907 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5907 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5907 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5908 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5909 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_6226 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_6226 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6226 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_6327 > div.control > a.kn-link.kn-link-10.kn-link-page.kn-button {
+  background-color: #005F80;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 3px 3px #ccc;
+}
+
+
+#view_5797 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
+#view_5800 > div > a:hover.kn-link.kn-link-12.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5801 > div > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_5806 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5808 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5816 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5816 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5817 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5817 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5823 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5823 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5823 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5823 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5823 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5824 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5824 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5826 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5826 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5831 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5832 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5839 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5840 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5840 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5840 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5845 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5845 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5846 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5846 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5846 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5863 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5863 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5863 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5863 > div > a:hover.kn-link.kn-link-3.kn-button,
+#view_5855 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5855 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5855 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5856 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5856 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5866 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5881 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5881 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5881 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5881 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5899 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5899 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5899 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5900 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5797 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5815 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_5907 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5907 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5907 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5907 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5908 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5909 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_6226 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_6226 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6226 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-10.kn-link-page.kn-button {
+  background-color: #014157;
+  color: #ffffff;
+  font-weight: bold;
+  transition-property: color;
+  transition-duration: 0.3s;
+  border-width: 2px;
+  border-color: #ffffff;
+  box-shadow: 3px 3px #ccc;
+}
+

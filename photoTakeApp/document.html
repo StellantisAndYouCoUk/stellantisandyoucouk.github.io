@@ -1,0 +1,98 @@
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Document Scanner</title>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/polyfills.umd.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
+        <script>
+            var nowS = Date.now().toString();
+
+            var style = document.createElement( 'link' );
+            style.rel = 'stylesheet';
+            style.type = 'text/css';
+            style.href = 'https://robinsandday.github.io/knackjs/document.css?'+nowS;
+            document.getElementsByTagName( 'head' )[0].appendChild( style )
+
+            function afterScriptLoad(){
+                afterLoad();
+            }
+
+            function loadScript(src, callback)
+                {
+                var script, scriptTag;
+                script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = src;
+                script.onload = script.onreadystatechange = function() {
+                    if (!this.readyState || this.readyState == 'complete' )
+                    {
+                    callback();
+                    }
+                };
+                scriptTag = document.getElementsByTagName('script')[0];
+                scriptTag.parentNode.insertBefore(script, scriptTag);
+                }
+            loadScript("https://robinsandday.github.io/knackjs/document.js?"+nowS,afterScriptLoad);
+
+            var pinchZoomerDep = [{'id':'empty'},{'id':'jQuery','url':'https://robinsandday.github.io/knackjs/jquery-1.11.3.min.js'},
+                {'id':'jsHammer','url':'https://robinsandday.github.io/knackjs/hammer.min.js'},
+                {'id':'tweenMax','url':'https://robinsandday.github.io/knackjs/TweenMax.min.js'},
+                {'id':'pinchZoomer','url':'https://robinsandday.github.io/knackjs/jquery.pinchzoomer.js'}];
+
+            function loadPinchZoomer(){
+                pinchZoomerDep.shift();
+                if (pinchZoomerDep.length!==0){
+                if ($('#'+pinchZoomerDep[0].id).length===0){
+                    loadScript(pinchZoomerDep[0].url,pinchZoomerDep[0].id, loadPinchZoomer);
+                }
+                }
+            }
+            loadPinchZoomer();
+        </script>
+    </head>
+    <body>
+        <h1 class="scanAppH1">Document Scanner</h1>
+    <p class="scanAppP"> You are able to combine multiple pages into one document. After scanning your first page, click on "Scan Page(s)" button and repeat until you have all the files you need.</p>
+        <div id="kn-loading-spinner" style="display: none;"></div>
+        <div id="scanDocGallery">
+            <button id="cameraCancelAll" name="cancel all" type="button" class="scanAppButton"><i class="scanAppFA fa fa-close"></i> Cancel</button>
+           <!-- <span>Take document image</span> -->
+            <button id="cameraTakePhoto" name="take photo" type="button" class="scanAppButton"><i class="scanAppFA fa fa-print" aria-hidden="true"></i> Scan Page(s)</button>
+            <div id="cameraTakenPhotos"></div>
+            <span id="cameraUploadInfo"></span><br>
+            <div id="cameraUploadDiv" style="display: none;">
+                Document file name: <input type="text" id="cameraUploadFileName" value="ScannedDocument.pdf"/>
+                <button id="cameraUploadOnce" type="button" class="scanAppButton"><i class="fa fa-upload" aria-hidden="true"></i> Create single PDF from Scanned Page(s)</button>
+                <!-- <p>Upload the document after you photographed all pages.</p> -->
+            </div>
+        </div>
+        <div id="cameraTakePhotoDiv">
+            <div id="scanCameraVid_container" style="display: none;">
+                <video id="videoElement" autoplay="" playsinline="" class="hidden"></video>
+            </div>
+            <div id="scanCameraGrid">
+                <div id="zoomHolderOut"><div id="zoomHolder"><img id="scanCameraFrontpic" src="https://manuelstofer.github.io/pinchzoom/demo/frog.jpg"></div></div><br />
+                <a id="scanCameraText">Is the document readable?</a>
+            </div>
+            <div id="scanCameraGui_controls" style="display: none;">
+                <button id="scanTakePhoto" class="scanCameraButton"></button>
+                <button id="scanCameraExit" name="exit photo" type="button" class="scanCameraButton"></button>
+                <button id="scanCameraRetake" name="retake photo" type="button" class="scanCameraButton"></button>
+                <button id="scanCameraConfirm" name="confirm photo" type="button" class="scanCameraButton"></button>
+            </div>
+        </div>
+        <div id="infoDialog" style="display: none;">
+            <p id="infoText">NICNIC</p>
+        </div>
+        <div id="modalDialog" style="display: none;">
+            <!-- Modal content -->
+            <div id="modalContent">
+              <span id="modalClose">&times;</span>
+              <p id="modalText"></p>
+              <button id="modalYes">Yes</button><button id="modalCancel">Cancel</button>
+            </div>
+        </div>
+        <span id="dev"></span>
+    </body>
+</html>
