@@ -2257,6 +2257,8 @@ div.tooltipDiv {
   	font-weight: bold;
 }
 
+/*Expanding Modal Pop Ups*/
+
 .Modal_for_scene_420 {
     width: 99%;
     height: 99vh;
@@ -2278,6 +2280,11 @@ div.tooltipDiv {
 }
 
 .Modal_for_scene_963 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_231 {
     width: 99%;
     height: 99vh;
 }
