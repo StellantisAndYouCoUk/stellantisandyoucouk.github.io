@@ -4737,7 +4737,7 @@ $(document).on('knack-form-submit.view_6583', function(event, view, data) {
 $(document).on('knack-view-render.view_6808', function(event, view, records) {
   let nD = addWorkDays(new Date(),2);
   console.log('nD',nD)
-  $('input[id="field_9307"]').val(dateToGB(nD))
+  $('input[id="view_6808-field_9307"]').val(dateToGB(nD))
 });
 
 function addWorkDays(startDate, daysToAdd) {
