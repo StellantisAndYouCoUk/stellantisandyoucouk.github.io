@@ -4733,3 +4733,23 @@ $(document).on('knack-form-submit.view_6583', function(event, view, data) {
       console.log(expection)
   }
 });
+
+$(document).on('knack-records-render.view_6808', function(event, view, records) {
+  let nD = addWorkDays(new Date(),2);
+  $('input[id="field_9307"]').val(dateToGB(nD))
+});
+
+function addWorkDays(startDate, daysToAdd) {
+  let dw=startDate.getDay(); //* see note
+  startDate.setDate(startDate.getDate()-((dw==6)?1:(dw==0)?2:0)); //*
+  var avance = 2 * Math.floor(daysToAdd / 5); //add 2 days for each 5 workdays
+  var exceso = (daysToAdd % 5) + startDate.getDay() ;
+  if (exceso>=6) avance +=2 ; 
+  startDate.setDate(startDate.getDate() + daysToAdd + avance);
+  return startDate;
+}
+
+function pad(n) {return n < 10 ? "0"+n : n;}
+function dateToGB(dateobj){
+    return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
+}
