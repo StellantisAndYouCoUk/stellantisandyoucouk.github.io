@@ -310,10 +310,9 @@ const constraints = {
   height: { min: 1080, ideal: 720, max: 2988 },
   //aspectRatio: 4/3,
   //frameRate:{max: 30}
-  advanced: [{ zoom: 1 }]
   };
 
-function openCamera(getUserMediaC, constraints){
+function openCamera(getUserMediaC, constraints, torch = false){
   console.log(constraints);
     navigator.mediaDevices.getUserMedia(getUserMediaC).then(mediaStream => {
       document.querySelector('video').srcObject = mediaStream;
@@ -321,6 +320,11 @@ function openCamera(getUserMediaC, constraints){
       const track = mediaStream.getVideoTracks()[0];
   
       //track.applyConstraints(constraints);
+      if (torch){
+        track.applyConstraints({
+          advanced: [{torch: true}]
+        });
+      }
   
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
@@ -349,9 +353,9 @@ if (OperatingSystem.Android()) {
     });
 
     if (countOfBackCameras<=1){
-      openCamera({video: {facingMode: {exact: "environment"}}},constraints);
+      openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
     } else {
-      openCamera({video: {deviceId: {exact: deviceId}}},constraints);
+      openCamera({video: {deviceId: {exact: deviceId}}},constraints,appSettings.torch);
     }
   })
   .catch(function(err) {
@@ -359,7 +363,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
-  openCamera({video: {facingMode: {exact: "environment"}}},constraints);
+  openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
 }
 
 

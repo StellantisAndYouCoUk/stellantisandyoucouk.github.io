@@ -4707,7 +4707,8 @@ $(document).on('knack-view-render.view_6583', function (event, view, data) {
     resizeImageMaxHeight : 1000,
     resizeImageMaxWidth : 1000,
     app_id : '591eae59e0d2123f23235769',
-    callbackAfterImageUploadKnack:'sendImageToCheckAfterUpload'
+    callbackAfterImageUploadKnack:'sendImageToCheckAfterUpload',
+    torch:true
   }
   createPhotoButton(appSettings9281,'9281');
 });
