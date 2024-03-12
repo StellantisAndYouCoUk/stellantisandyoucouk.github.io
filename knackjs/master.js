@@ -4712,9 +4712,8 @@ $(document).on('knack-view-render.view_6583', function (event, view, data) {
   createPhotoButton(appSettings9281,'9281');
 });
 
-function sendImageToCheckAfterUpload(fieldId,imageId){
-  alert(fieldId);
-  alert(imageId);
+function sendImageToCheckAfterUpload(fieldId,imageId,fileName){
+  sendImageToCheck(imageId,fileName,fieldId,$('input[name="id"]').attr('value'))
 }
 
 $(document).on('knack-form-submit.view_6583', function(event, view, data) { 

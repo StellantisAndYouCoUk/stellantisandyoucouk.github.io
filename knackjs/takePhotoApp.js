@@ -49,7 +49,7 @@
           $('#'+infoElementId).text('Upload succesfull, returning to app.');
           $('#kn-loading-spinner').hide();
           //alert(rData.id)
-          myCallback(fieldName, rData.id)
+          myCallback(fieldName, rData.id,fileName)
           return rData.id;
         } catch (e) {
           alert('File upload was not succesfull.')
@@ -699,20 +699,20 @@ function afterConfirmPhoto(){
   hidePhotoAppI();
 }
 
-function imageAfterKnackUpload(fieldName, imageId){
+function imageAfterKnackUpload(fieldName, imageId,fileName){
   $('input[name="'+fieldName+'"]').val(imageId);
   $('input[name="'+fieldName+'"]').removeAttr('disabled');
   $('div[id="kn-input-'+fieldName+'"]>div>div[class="image--remove"]').remove()
-  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html('photoImg.jpg');
+  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html(fileName);
   if ($('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').length===0){
-    $('div[id="kn-input-'+fieldName+'"]').append('<div class="kn-asset-current">photoImg.jpg</div>');
+    $('div[id="kn-input-'+fieldName+'"]').append('<div class="kn-asset-current">'+fileName+'</div>');
   }
   $('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('Image uploaded successfully.');
   if (appSettings.callbackAfterImageUploadKnack){
     alert('appSettings.callbackAfterImageUploadKnack')
     try {
-      (new Function('return '+appSettings.callbackAfterImageUploadKnack)(fieldName,imageId))(fieldName,imageId);
+      (new Function('return '+appSettings.callbackAfterImageUploadKnack)(fieldName,imageId,fileName))(fieldName,imageId,fileName);
     } catch (ex){
       console.log('callbackAfterImageUploadKnack',ex)
     }
