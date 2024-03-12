@@ -711,7 +711,6 @@ function imageAfterKnackUpload(fieldName, imageId,fileName){
   $('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('Image uploaded successfully.');
   if (appSettings.callbackAfterImageUploadKnack){
-    alert('appSettings.callbackAfterImageUploadKnack')
     try {
       (new Function('return '+appSettings.callbackAfterImageUploadKnack)(fieldName,imageId,fileName))(fieldName,imageId,fileName);
     } catch (ex){
