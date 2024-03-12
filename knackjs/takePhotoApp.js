@@ -712,7 +712,7 @@ function imageAfterKnackUpload(fieldName, imageId){
   if (appSettings.callbackAfterImageUploadKnack){
     alert('appSettings.callbackAfterImageUploadKnack')
     try {
-      (new Function('return '+appSettings.callbackAfterImageUploadKnack+'('+fieldName+','+imageId+')')())();
+      (new Function('return '+appSettings.callbackAfterImageUploadKnack)(fieldName,imageId))(fieldName,imageId);
     } catch (ex){
       console.log('callbackAfterImageUploadKnack',ex)
     }
