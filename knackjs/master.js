@@ -4706,10 +4706,16 @@ $(document).on('knack-view-render.view_6583', function (event, view, data) {
     uploadField : 'field_9281',
     resizeImageMaxHeight : 1000,
     resizeImageMaxWidth : 1000,
-    app_id : '591eae59e0d2123f23235769'
+    app_id : '591eae59e0d2123f23235769',
+    callbackAfterImageUploadKnack:'sendImageToCheckAfterUpload'
   }
   createPhotoButton(appSettings9281,'9281');
 });
+
+function sendImageToCheckAfterUpload(fieldId,imageId){
+  alert(fieldId);
+  alert(imageId);
+}
 
 $(document).on('knack-form-submit.view_6583', function(event, view, data) { 
   try{

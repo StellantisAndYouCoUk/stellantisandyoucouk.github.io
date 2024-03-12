@@ -709,6 +709,13 @@ function imageAfterKnackUpload(fieldName, imageId){
   }
   $('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('Image uploaded successfully.');
+  if (appSettings.callbackAfterImageUploadKnack){
+    try {
+      (new Function('return '+appSettings.callbackAfterImageUploadKnack+'('+fieldName+','+imageId+')')())();
+    } catch (ex){
+      console.log('callbackAfterImageUploadKnack',ex)
+    }
+  }
 }
 
 function setLayoutInPortrait(){
@@ -840,7 +847,8 @@ var appSettings = {
   uploadWebhook : 'https://hook.eu1.make.celonis.com/ouosl7cqftin4d5xk4ybco0q96t5bwk2',
   resizeImageHeight : null,
   resizeImageWidth : null,
-  app_id : null
+  app_id : null,
+  callbackAfterImageUploadKnack : null
 }
 var returnData = {};
 function takePhotoAppStart(app_id, appSettingsI=null){
