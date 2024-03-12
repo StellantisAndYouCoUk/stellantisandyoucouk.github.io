@@ -4713,6 +4713,7 @@ $(document).on('knack-view-render.view_6583', function (event, view, data) {
 });
 
 function sendImageToCheckAfterUpload(fieldId,imageId,fileName){
+  alert(fileName);
   sendImageToCheck(imageId,fileName,fieldId,$('input[name="id"]').attr('value'))
 }
 
