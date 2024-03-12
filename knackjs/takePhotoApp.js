@@ -12,6 +12,7 @@
   async function uploadImageOnlyPhotoApp(app_id, fileBlob, fileName, infoElementId, fieldName, myCallback) {
     //alert('uploadFileOnlyPhotoApp')
     var url = 'https://api.rd.knack.com/v1/applications/'+app_id+'/assets/image/upload';
+    fileName = fileName.toLowerCase();
     var form = new FormData();
     var headers = {
       'X-Knack-Application-ID': app_id,
