@@ -1611,8 +1611,13 @@ $(document).on("knack-scene-render.scene_231", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
 
-// Message Reporting Drilldown Page
+// Activity Snapshot Message Reporting Drilldown Page (Dealer)
 $(document).on("knack-scene-render.scene_1187", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
+// Activity Snapshot Message Reporting Drilldown Page (Group)
+$(document).on("knack-scene-render.scene_1193", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
 
