@@ -3644,12 +3644,12 @@ $(document).on('knack-form-submit.view_3047', function(event, view, data) {
 
 });
 
-//Commence courtesy car agreement to trigger part 2 of Digital check in
+/*Commence courtesy car agreement to trigger part 2 of Digital check in
 $(document).on('knack-form-submit.view_3592', function(event, view, data) { 
     
     try{
 	    
-        let commandURL = "https://hook.eu1.make.celonis.com/1v52b45xmqgp25kqsocwmoab3cu88ikf,";
+        let commandURL = "https://hook.eu1.make.celonis.com/1v52b45xmqgp25kqsocwmoab3cu88ikf";
         let dataToSend = JSON.stringify({"RecordID":data.id, "source": "Courtesy Inspection Page"});
 
         var rData = $.ajax({
@@ -3662,7 +3662,7 @@ $(document).on('knack-form-submit.view_3592', function(event, view, data) {
     }catch(exception){
         sendErrorToIntegromat(exception, "Aftersales - Create service wash from Job card v2");
     }
-});
+});*/
 
  //Commence courtesy car agreement to trigger part 2 of Digital check in from inspection page
 $(document).on('knack-form-submit.view_2353', function(event, view, data) { 
