@@ -3684,7 +3684,7 @@ $(document).on('knack-form-submit.view_2353', function(event, view, data) {
     }
 });
 
-//Trigger aftersales check in from jobcard inspection page
+/*Trigger aftersales check in from jobcard inspection page
 $(document).on('knack-form-submit.view_3566', function(event, view, data) { 
     
     try{
@@ -3722,7 +3722,8 @@ $(document).on('knack-form-submit.view_3592', function(event, view, data) {
     }catch(exception){
         sendErrorToIntegromat(exception, "Commence courtesy car agreement to trigger checin in from inspection page");
     }
-});
+});*/
+
 // ----------  refresh Enquiry Max Table every 5 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_778', function(event, scene) {
