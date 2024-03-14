@@ -58,7 +58,7 @@
     <body>
         <p id="text">Draw line over full diameter.</p>
         <form method="POST" action="https://7rhnwcwqj9ap.runs.apify.net/solveImage"><input type="hidden" name="queueId" value="$queueId$"><input type="text" name="depth"><input type="submit"></form>
-        <select><option value="1p">1 pence</option><option value="2p" selected>2 pence</option><option value="5p">5 pence</option><option value="10p">10 pence</option></select>Choose the COIN size before drawing the lines.
+        <select><option value="1p">1 pence</option><option value="2p" selected>2 pence</option><option value="5p">5 pence</option><option value="10p">10 pence</option></select>Choose the COIN size before drawing the lines.<br/>
         <canvas id="canvas"></canvas>
             <script>
                 const canvasEle = document.getElementById('canvas');
@@ -116,6 +116,7 @@
                             break;
                     }
                 }
-            </script>
+            </script><br/>
+            If you do not see any image, fill 0 and click Submit to load next image ...
     </body>
 </html>

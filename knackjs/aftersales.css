@@ -1606,7 +1606,9 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_3111-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
 #kn-report-view_3111-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #kn-report-view_3113-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
-#kn-report-view_3113-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
+#kn-report-view_3113-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_3890-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_3890-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
 
 {
 	background-color: #FFA100;
@@ -2257,6 +2259,8 @@ div.tooltipDiv {
   	font-weight: bold;
 }
 
+/*Expanding Modal Pop Ups*/
+
 .Modal_for_scene_420 {
     width: 99%;
     height: 99vh;
@@ -2278,6 +2282,21 @@ div.tooltipDiv {
 }
 
 .Modal_for_scene_963 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_231 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_1187 {
+    width: 99%;
+    height: 99vh;
+}
+
+.Modal_for_scene_1193 {
     width: 99%;
     height: 99vh;
 }

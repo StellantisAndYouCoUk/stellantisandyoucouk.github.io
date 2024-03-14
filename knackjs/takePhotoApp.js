@@ -12,6 +12,7 @@
   async function uploadImageOnlyPhotoApp(app_id, fileBlob, fileName, infoElementId, fieldName, myCallback) {
     //alert('uploadFileOnlyPhotoApp')
     var url = 'https://api.rd.knack.com/v1/applications/'+app_id+'/assets/image/upload';
+    fileName = fileName.toLowerCase();
     var form = new FormData();
     var headers = {
       'X-Knack-Application-ID': app_id,
@@ -49,7 +50,7 @@
           $('#'+infoElementId).text('Upload succesfull, returning to app.');
           $('#kn-loading-spinner').hide();
           //alert(rData.id)
-          myCallback(fieldName, rData.id)
+          myCallback(fieldName, rData.id,fileName)
           return rData.id;
         } catch (e) {
           alert('File upload was not succesfull.')
@@ -309,10 +310,9 @@ const constraints = {
   height: { min: 1080, ideal: 720, max: 2988 },
   //aspectRatio: 4/3,
   //frameRate:{max: 30}
-  advanced: [{ zoom: 1 }]
   };
 
-function openCamera(getUserMediaC, constraints){
+function openCamera(getUserMediaC, constraints, torch = false){
   console.log(constraints);
     navigator.mediaDevices.getUserMedia(getUserMediaC).then(mediaStream => {
       document.querySelector('video').srcObject = mediaStream;
@@ -320,6 +320,11 @@ function openCamera(getUserMediaC, constraints){
       const track = mediaStream.getVideoTracks()[0];
   
       //track.applyConstraints(constraints);
+      if (torch){
+        track.applyConstraints({
+          advanced: [{torch: true}]
+        });
+      }
   
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
@@ -348,9 +353,9 @@ if (OperatingSystem.Android()) {
     });
 
     if (countOfBackCameras<=1){
-      openCamera({video: {facingMode: {exact: "environment"}}},constraints);
+      openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
     } else {
-      openCamera({video: {deviceId: {exact: deviceId}}},constraints);
+      openCamera({video: {deviceId: {exact: deviceId}}},constraints,appSettings.torch);
     }
   })
   .catch(function(err) {
@@ -358,7 +363,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
-  openCamera({video: {facingMode: {exact: "environment"}}},constraints);
+  openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
 }
 
 
@@ -699,16 +704,23 @@ function afterConfirmPhoto(){
   hidePhotoAppI();
 }
 
-function imageAfterKnackUpload(fieldName, imageId){
+function imageAfterKnackUpload(fieldName, imageId,fileName){
   $('input[name="'+fieldName+'"]').val(imageId);
   $('input[name="'+fieldName+'"]').removeAttr('disabled');
   $('div[id="kn-input-'+fieldName+'"]>div>div[class="image--remove"]').remove()
-  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html('photoImg.jpg');
+  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html(fileName);
   if ($('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').length===0){
-    $('div[id="kn-input-'+fieldName+'"]').append('<div class="kn-asset-current">photoImg.jpg</div>');
+    $('div[id="kn-input-'+fieldName+'"]').append('<div class="kn-asset-current">'+fileName+'</div>');
   }
   $('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('Image uploaded successfully.');
+  if (appSettings.callbackAfterImageUploadKnack){
+    try {
+      (new Function('return '+appSettings.callbackAfterImageUploadKnack)(fieldName,imageId,fileName))(fieldName,imageId,fileName);
+    } catch (ex){
+      console.log('callbackAfterImageUploadKnack',ex)
+    }
+  }
 }
 
 function setLayoutInPortrait(){
@@ -840,7 +852,8 @@ var appSettings = {
   uploadWebhook : 'https://hook.eu1.make.celonis.com/ouosl7cqftin4d5xk4ybco0q96t5bwk2',
   resizeImageHeight : null,
   resizeImageWidth : null,
-  app_id : null
+  app_id : null,
+  callbackAfterImageUploadKnack : null
 }
 var returnData = {};
 function takePhotoAppStart(app_id, appSettingsI=null){

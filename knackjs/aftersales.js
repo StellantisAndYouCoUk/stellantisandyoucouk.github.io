@@ -1606,6 +1606,21 @@ $(document).on("knack-scene-render.scene_963", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
 
+// Post Visit Follow Up Call Page
+$(document).on("knack-scene-render.scene_231", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
+// Activity Snapshot Message Reporting Drilldown Page (Dealer)
+$(document).on("knack-scene-render.scene_1187", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
+// Activity Snapshot Message Reporting Drilldown Page (Group)
+$(document).on("knack-scene-render.scene_1193", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
 //Recall Recheck Spinner on Vehicle Checkin and to expand the modal pop up so it is wider
 
 $(document).on("knack-scene-render.scene_769", function(event, scene) {
@@ -3644,7 +3659,7 @@ $(document).on('knack-form-submit.view_3592', function(event, view, data) {
     
     try{
 	    
-        let commandURL = "https://hook.eu1.make.celonis.com/1v52b45xmqgp25kqsocwmoab3cu88ikf,";
+        let commandURL = "https://hook.eu1.make.celonis.com/1v52b45xmqgp25kqsocwmoab3cu88ikf";
         let dataToSend = JSON.stringify({"RecordID":data.id, "source": "Courtesy Inspection Page"});
 
         var rData = $.ajax({
@@ -3679,7 +3694,7 @@ $(document).on('knack-form-submit.view_2353', function(event, view, data) {
     }
 });
 
-//Trigger aftersales check in from jobcard inspection page
+/*Trigger aftersales check in from jobcard inspection page
 $(document).on('knack-form-submit.view_3566', function(event, view, data) { 
     
     try{
@@ -3717,7 +3732,8 @@ $(document).on('knack-form-submit.view_3592', function(event, view, data) {
     }catch(exception){
         sendErrorToIntegromat(exception, "Commence courtesy car agreement to trigger checin in from inspection page");
     }
-});
+});*/
+
 // ----------  refresh Enquiry Max Table every 5 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_778', function(event, scene) {

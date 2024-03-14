@@ -4691,7 +4691,7 @@ function sendImageToCheck(assetId, fileName,knackField,knackId){
 }
 
 $(document).on('knack-view-render.view_6583', function (event, view, data) {
-  /*embedPhotoApp();
+  embedPhotoApp();
   let appSettings9281 = {
     spiritLine : false,
     imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/tyre_coin_portrait.png',
@@ -4706,10 +4706,16 @@ $(document).on('knack-view-render.view_6583', function (event, view, data) {
     uploadField : 'field_9281',
     resizeImageMaxHeight : 1000,
     resizeImageMaxWidth : 1000,
-    app_id : '591eae59e0d2123f23235769'
+    app_id : '591eae59e0d2123f23235769',
+    callbackAfterImageUploadKnack:'sendImageToCheckAfterUpload',
+    torch:true
   }
-  createPhotoButton(appSettings9281,'9281');*/
+  createPhotoButton(appSettings9281,'9281');
 });
+
+function sendImageToCheckAfterUpload(fieldId,imageId,fileName){
+  sendImageToCheck(imageId,fileName,fieldId,$('input[name="id"]').attr('value'))
+}
 
 $(document).on('knack-form-submit.view_6583', function(event, view, data) { 
   try{
@@ -4733,3 +4739,24 @@ $(document).on('knack-form-submit.view_6583', function(event, view, data) {
       console.log(expection)
   }
 });
+
+$(document).on('knack-view-render.view_6808', function(event, view, records) {
+  let nD = addWorkDays(new Date(),2);
+  console.log('nD',nD)
+  $('input[id="view_6808-field_9307"]').val(dateToGB(nD))
+});
+
+function addWorkDays(startDate, daysToAdd) {
+  let dw=startDate.getDay(); //* see note
+  startDate.setDate(startDate.getDate()-((dw==6)?1:(dw==0)?2:0)); //*
+  var avance = 2 * Math.floor(daysToAdd / 5); //add 2 days for each 5 workdays
+  var exceso = (daysToAdd % 5) + startDate.getDay() ;
+  if (exceso>=6) avance +=2 ; 
+  startDate.setDate(startDate.getDate() + daysToAdd + avance);
+  return startDate;
+}
+
+function pad(n) {return n < 10 ? "0"+n : n;}
+function dateToGB(dateobj){
+    return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
+}
