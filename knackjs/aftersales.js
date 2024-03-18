@@ -4577,3 +4577,25 @@ function recursivecallscene_1098(){
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
  recursivecallscene_1098();
 });
+
+//Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
+  $(document).on('knack-view-render.view_3878', function (event, view, data) {
+if ($('div[class="kn-table kn-view view_3878"]')){
+      let rows = $('div[class="kn-table kn-view view_3878"] table tr');
+      console.log('rows',rows.length);
+      for (i = 1; i < rows.length; i++) {
+        let currentRow = rows[i];
+        const createClickHandler = function(row) {
+          return function() {
+            var cell = row.id;
+            console.log('cell',cell);
+            callPostHttpRequest("https://hook.eu1.make.celonis.com/q461vgdrkqp309gidqbhbmqioew3r69w", {"recordId":cell, "Scenario":"Aftersales - Warranty - Mark as Ready to Invoice" },"Aftersales - Warranty - Mark as Ready to Invoice");
+          };
+        };
+        if (currentRow.id!==''){
+          currentRow.children[12].onclick = createClickHandler(currentRow);
+        }
+      }
+    }
+ });
+	  
