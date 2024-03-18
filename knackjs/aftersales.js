@@ -4315,10 +4315,10 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
 	
-	 tooltipsTable('1098','3086','field_1532','field_2586');
+	 tooltipsTable('1098','3806','field_1532','field_2586');
 	//scene, view, hover info, field to have hover
    	
-	tooltipsTable('1098','3086','field_1537','field_2213');  
+	tooltipsTable('1098','3806','field_1537','field_2213');  
     });
 
 //hover for labour details on workshop table
