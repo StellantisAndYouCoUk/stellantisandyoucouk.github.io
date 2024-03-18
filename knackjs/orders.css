@@ -6247,13 +6247,16 @@ div.tooltipDiv {
 
   /*TOOLTIP CSS END*/
 
-/*Vans Direct Table Filters*/
+/*Vans Direct and Enterprise Table Filters*/
 
 #view_4699 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_4700 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_4701 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_4704 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_4707 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a{
+#view_4707 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4805 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4808 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_4810 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
   	background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
