@@ -3087,7 +3087,7 @@ $(document).on('knack-view-render.view_1916', function(event, view) {
 
 //Workshop Controller all in one table (onsite jobs)
 $(document).on('knack-view-render.view_2246', function (event, view, data) {
-    tooltipsTable('761','2246','field_1532','field_2220');
+    tooltipsTable('761','2246','field_1532','field_2586');
 	tooltipsTable('761','2246','field_1537','field_2213');
 	tooltipsTable('761','2246','field_2298','field_2272');
 	//tooltipsTable('761','2246','field_2278','field_1118','Tag No: ');
@@ -3109,7 +3109,7 @@ $(document).on('knack-view-render.view_2246', function (event, view, data) {
 
 //completed by not invoiced jobs - all jobs view
 $(document).on('knack-view-render.view_3168', function (event, view, data) {
-    tooltipsTable('1017','3168','field_1532','field_2220');
+    tooltipsTable('1017','3168','field_1532','field_2586');
 	tooltipsTable('1017','3168','field_1537','field_2213');
 	tooltipsTable('1017','3168','field_2298','field_2272');
 	//tooltipsTable('1017','3168','field_2278','field_1118','Tag No: ');
@@ -3376,7 +3376,7 @@ function recursivecallscene_761(){
 
 //Workshop Controller all Jobs in one table (OFF-site Jobs)
 $(document).on('knack-view-render.view_2478', function (event, view, data) {
-    tooltipsTable('755','2478','field_1532','field_2220');
+    tooltipsTable('755','2478','field_1532','field_2586');
 	tooltipsTable('755','2478','field_1537','field_2213');
 	tooltipsTable('755','2478','field_2298','field_2272');
 	     $('th[class="field_2240"]').hide();
@@ -3509,7 +3509,7 @@ function recursivecallscene_753(){
 
 //Workshop Controller all in one table (Off-site jobs)
 $(document).on('knack-view-render.view_2722', function (event, view, data) {
-    tooltipsTable('755','2722','field_1532','field_2220');
+    tooltipsTable('755','2722','field_1532','field_2586');
 	tooltipsTable('755','2722','field_1537','field_2213');
 	tooltipsTable('755','2722','field_2298','field_2272');
 //	tooltipsTable('755','2722','field_2278','field_1118','Tag No: ');
@@ -3530,7 +3530,7 @@ $(document).on('knack-view-render.view_2722', function (event, view, data) {
 
 //Workshop Controller all in one table (MY jobs)
 $(document).on('knack-view-render.view_2892', function (event, view, data) {
-    tooltipsTable('934','2892','field_1532','field_2220');
+    tooltipsTable('934','2892','field_1532','field_2586');
 	tooltipsTable('934','2892','field_1537','field_2213');
 	tooltipsTable('934','2892','field_2298','field_2272');
 	//tooltipsTable('934','2892','field_2278','field_1118','Tag No: ');
@@ -4229,8 +4229,10 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
-   	
+   	$('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
 	tooltipsTable('1098','3474','field_1537','field_2213');  
+	   tooltipsTable('1098','3474','field_1532','field_2586');
 	    
     });
 
@@ -4239,8 +4241,14 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
    	
 	tooltipsTable('1098','3476','field_1537','field_2213');  
+	   
+     tooltipsTable('1098','3476','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
+	
 
 	    
     });
@@ -4249,6 +4257,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	   
+	 tooltipsTable('1098','3483','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3483','field_1537','field_2213');  
  });
@@ -4258,7 +4271,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
-   	
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3482','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
 	tooltipsTable('1098','3482','field_1537','field_2213');  	    
     });
 	
@@ -4267,6 +4284,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3477','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3477','field_1537','field_2213');  
     });
@@ -4276,6 +4298,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3770','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3770','field_1537','field_2213');  
     });
@@ -4285,6 +4312,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     //start
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3086','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3806','field_1537','field_2213');  
     });
@@ -4293,6 +4325,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
    $(document).on('knack-view-render.view_3307', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3307','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3307','field_1537','field_2213');  
 	    
@@ -4302,6 +4339,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
    $(document).on('knack-view-render.view_3595', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3595','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3595','field_1537','field_2213');  
 	    
@@ -4311,6 +4353,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
    $(document).on('knack-view-render.view_3805', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3805','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3805','field_1537','field_2213');  
 	    
@@ -4320,6 +4367,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
    $(document).on('knack-view-render.view_3826', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
+    $('th[class="field_1532"]').hide();
+    $('td[class*="field_1532"]').hide();
+	
+	 tooltipsTable('1098','3826','field_1532','field_2586');
+	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3826','field_1537','field_2213');  
 	    
