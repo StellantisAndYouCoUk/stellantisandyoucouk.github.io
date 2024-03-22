@@ -4332,6 +4332,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
 	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1098','3307','field_1537','field_2213');  
+	   	tooltipsTable('1098','3307','field_2298','field_2272');
 	    
     });
 	
