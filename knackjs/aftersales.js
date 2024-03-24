@@ -4676,7 +4676,6 @@ if ($('div[class="kn-table kn-view view_3878"]')){
 function getWorkshopAvailability(retry = 1){
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
   if (lastDealerVisit==='' && retry < 10){
-    console.log('empty retry in 1 sec')
     setTimeout(() => {
       getWorkshopAvailability(retry+1)
     }, retry*500);
@@ -4693,5 +4692,6 @@ function getWorkshopAvailability(retry = 1){
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
   let avail = aJson.find(el => el.companyCode === mapLastDealerVisit);
   console.log('avail',avail);
-  //class="content kn-rich_text__content"
+  let htmlTable = '<table><tr><td>Dealer</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr><tr><td>'+lastDealerVisit+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='MOT')))+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='Recall')))+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='Small service')))+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='Large service')))+'</td></tr>'
+  $('div[id="view_3923"]>div').html(htmlTable);
 }
