@@ -4678,14 +4678,14 @@ if ($('div[class="kn-table kn-view view_3878"]')){
 
 function getWorkshopAvailability(retry = 1){
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
-  if (lastDealerVisit==='' && retry < 10){
-    console.log('lastDealerVisit empty, wait')
+  if ((lastDealerVisit==='' || lastDealerVisit==='No Last Dealer Found') && retry < 10){
+    console.log('lastDealerVisit empty, wait',retry)
     setTimeout(() => {
       getWorkshopAvailability(retry+1)
     }, retry*500);
     return;
   }
-  if (lastDealerVisit===''){
+  if (lastDealerVisit==='' || lastDealerVisit==='No Last Dealer Found'){
     console.log('lastDealerVisit empty, exit');
     return;
   }
@@ -4693,6 +4693,7 @@ function getWorkshopAvailability(retry = 1){
   let mapLastDealerVisit = mapDealerNamesToCodes.find(el => el[0] === lastDealerVisit);
   if (mapLastDealerVisit) mapLastDealerVisit = mapLastDealerVisit[1];
   console.log('mapLastDealerVisit',mapLastDealerVisit)
+  if (!mapLastDealerVisit) return;
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
   let avail = aJson.find(el => el.companyCode === mapLastDealerVisit);
   console.log('avail',avail);
