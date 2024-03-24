@@ -4667,7 +4667,7 @@ if ($('div[class="kn-table kn-view view_3878"]')){
     }
  });
 	  
- $(document).on('knack-view-render.view_3921', function(event, view, records) {
+ $(document).on('knack-view-render.view_3923', function(event, view, records) {
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
   console.log(aJson);
   //class="content kn-rich_text__content"
