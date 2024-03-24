@@ -4678,14 +4678,14 @@ if ($('div[class="kn-table kn-view view_3878"]')){
 
 function getWorkshopAvailability(retry = 1){
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
-  if ((lastDealerVisit==='' || lastDealerVisit==='No Last Dealer Found') && retry < 10){
+  if ((lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')) && retry < 10){
     console.log('lastDealerVisit empty, wait',retry)
     setTimeout(() => {
       getWorkshopAvailability(retry+1)
     }, retry*500);
     return;
   }
-  if (lastDealerVisit==='' || lastDealerVisit==='No Last Dealer Found'){
+  if (lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')){
     console.log('lastDealerVisit empty, exit');
     return;
   }
