@@ -4679,6 +4679,7 @@ if ($('div[class="kn-table kn-view view_3878"]')){
 function getWorkshopAvailability(retry = 1){
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
   if (lastDealerVisit==='' && retry < 10){
+    console.log('lastDealerVisit empty, wait')
     setTimeout(() => {
       getWorkshopAvailability(retry+1)
     }, retry*500);
