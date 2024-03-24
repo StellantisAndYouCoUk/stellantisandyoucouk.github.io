@@ -4673,11 +4673,11 @@ if ($('div[class="kn-table kn-view view_3878"]')){
   getWorkshopAvailability();
 });
 
-function getWorkshopAvailability(retry = 0){
+function getWorkshopAvailability(retry = 1){
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
   if (lastDealerVisit==='' && retry < 10){
     console.log('empty retry in 1 sec')
-    setTimeout(getWorkshopAvailability(retry+1),1000);
+    setTimeout(getWorkshopAvailability(retry+1),retry*500);
     return;
   }
   if (lastDealerVisit===''){
