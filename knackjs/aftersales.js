@@ -4677,7 +4677,7 @@ if ($('div[class="kn-table kn-view view_3878"]')){
 });
 
 function getWorkshopAvailability(retry = 1){
-  console.log('v1')
+  console.log('v2')
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
   if ((lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')) && retry < 10){
     console.log('lastDealerVisit empty, wait',retry)
