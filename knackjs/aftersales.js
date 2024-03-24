@@ -4666,9 +4666,18 @@ if ($('div[class="kn-table kn-view view_3878"]')){
       }
     }
  });
+
+ const mapDealerNamesToCodes = [["Stellantis &You Birmingham Central","GH"],["Stellantis &You Birmingham North","CG"],["Stellantis &You Birmingham South","BK"],["Stellantis &You Brentford","WW"],["Stellantis &You Bristol Cribbs","TC"],["Stellantis &You Chelmsford","ES"],["Stellantis &You Chingford","CH"],["Stellantis &You Coventry","BW"],["Stellantis &You Crawley","VG"],["Stellantis &You Croydon","VY"],["Stellantis &You Edgware","WN"],["Stellantis &You Guildford","ST"],["Stellantis &You Hatfield","HD"],["Stellantis &You Leicester","CL"],["Stellantis &You Liverpool","LP"],["Stellantis &You Maidstone","RM"],["Stellantis &You Manchester","TG"],["Stellantis &You National","BH"],["Stellantis &You Newport","NP"],["Stellantis &You Nottingham","NT"],["Stellantis &You Preston","GL"],["Stellantis &You Redditch","RH"],["Stellantis &You Romford","RF"],["Stellantis &You Sale","SB"],["Stellantis &You Sheffield","GM"],["Stellantis &You Stockport","CT"],["Stellantis &You Walton","WY"],["Stellantis &You West London","LW"],["Stellantis &You Wimbledon","VM"]];
 	  
  $(document).on('knack-view-render.view_3923', function(event, view, records) {
+  let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
+  console.log('lastDealerVisit',lastDealerVisit);
+  let mapLastDealerVisit = mapDealerNamesToCodes.find(el => el[0] === lastDealerVisit);
+  if (mapLastDealerVisit) mapLastDealerVisit = mapLastDealerVisit[1];
+  console.log('mapLastDealerVisit',mapLastDealerVisit)
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
   console.log(aJson);
+  let avail = aJson.find(el => el.companyCode === mapLastDealerVisit);
+  console.log('avail',avail);
   //class="content kn-rich_text__content"
 });
