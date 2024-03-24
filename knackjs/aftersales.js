@@ -260,6 +260,9 @@ function refreshView(viewID, reload = false, clearLoading = false){
 function formatDateGB(date){
   return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
 }
+function formatDateGBShort(date){
+  return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear().toString().substr(2,2);
+}
 
 function fillLoading(viewID){
   $('div[class*="view_'+viewID+'"] div[class*="field_"]>div[class="kn-detail-body"]').each(function(){
@@ -4692,7 +4695,7 @@ function getWorkshopAvailability(retry = 1){
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
   let avail = aJson.find(el => el.companyCode === mapLastDealerVisit);
   console.log('avail',avail);
-  let htmlTable = '<table><tr><td>Dealer</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr><tr><td>'+lastDealerVisit+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGB(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>'
+  let htmlTable = '<table><tr><td>Dealer</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr><tr><td>'+lastDealerVisit+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>'
   $('div[id="view_3923"]>div').html(htmlTable);
 
 }
