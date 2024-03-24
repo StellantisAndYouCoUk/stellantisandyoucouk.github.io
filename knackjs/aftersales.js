@@ -4695,7 +4695,7 @@ function getWorkshopAvailability(retry = 1){
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
   let avail = aJson.find(el => el.companyCode === mapLastDealerVisit);
   console.log('avail',avail);
-  let htmlTable = '<table><tr><td>Dealer</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr><tr><td>'+lastDealerVisit+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>'
+  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr><tr><td>'+lastDealerVisit+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>'
   $('div[id="view_3923"]>div').html(htmlTable);
 
 }
