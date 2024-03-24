@@ -4676,7 +4676,6 @@ if ($('div[class="kn-table kn-view view_3878"]')){
   if (mapLastDealerVisit) mapLastDealerVisit = mapLastDealerVisit[1];
   console.log('mapLastDealerVisit',mapLastDealerVisit)
   let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
-  console.log(aJson);
   let avail = aJson.find(el => el.companyCode === mapLastDealerVisit);
   console.log('avail',avail);
   //class="content kn-rich_text__content"
