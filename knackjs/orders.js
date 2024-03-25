@@ -2276,7 +2276,7 @@ $(document).on('knack-form-submit.view_3690', function(event, view, data) {
 $(document).on('knack-form-submit.view_2674', function(event, view, data) {
     
     try{
-
+console.log("data.field_6567_raw:", data.field_6567_raw);
         if(data.field_6567_raw === null || data.field_6567_raw === undefined){
 
 console.log("data.field_6567_raw:", data.field_6567_raw);
