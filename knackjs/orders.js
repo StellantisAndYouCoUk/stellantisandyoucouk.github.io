@@ -2277,7 +2277,7 @@ $(document).on('knack-form-submit.view_2674', function(event, view, data) {
     
     try{
 
-        if(data.field_6567_raw === null || data.field_6567_raw === undefined){
+        if(data.field_6567_raw === null || data.field_6567_raw === undefined || data.field_6567_raw === isFileEmpty){
 
 console.log("data.field_6567_raw:", data.field_6567_raw);
             let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
