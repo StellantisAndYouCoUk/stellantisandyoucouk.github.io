@@ -2276,11 +2276,10 @@ $(document).on('knack-form-submit.view_3690', function(event, view, data) {
 $(document).on('knack-form-submit.view_2674', function(event, view, data) {
     
     try{
-                console.log("data.field_6567_raw:", data.field_6567_raw);
 
         if(data.field_6567_raw === null || data.field_6567_raw === undefined){
 
-
+console.log("data.field_6567_raw:", data.field_6567_raw);
             let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
             let dataToSend = JSON.stringify({"Record ID":data.id, "Form":"Vehicle invoice", "Source Of Payload":"knack direct"});
 
