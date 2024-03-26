@@ -3853,15 +3853,11 @@ color: #FFFFFF;
 /* Manual Satisfaction Survey Completed */
 #view_3974 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6491 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
-
-
 /* 24 - 48 Hour Pre Delivery Check */
 #view_3975 {border-left: 10px solid #32a1ce;}
 
 /* 2 Hour Pre Delivery Check */
 #view_3976 {border-left: 10px solid #32a1ce;}
-
-/* Latest Order Form */
 
 /*** Admin Docs to Review ***/
 
@@ -3938,6 +3934,7 @@ color: #FFFFFF;
 #view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6537 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
 
 /* Latest Order Form */
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
 
 #view_3655 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
 
