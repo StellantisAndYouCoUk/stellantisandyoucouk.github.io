@@ -4213,10 +4213,18 @@ $(document).on('knack-scene-render.scene_1050', function(event, scene) {
  recursivecallscene_1050();
 });
 
+
 function recursivecallscene_1050(){
- setTimeout(function () { if($("#view_3307").is(":visible")==true){ Knack.views["view_3307"].model.fetch();recursivecallscene_1050();} }, 300000);
-	 
+ setTimeout(function () { 
+  if($("#view_3307").is(":visible")==true) Knack.views["view_3307"].model.fetch();
+  if($("#view_3595").is(":visible")==true) Knack.views["view_3595"].model.fetch();
+  if($("#view_3802").is(":visible")==true) Knack.views["view_3802"].model.fetch();
+  recursivecallscene_1050();
+  }, 120000);
 }
+
+
+
 
 
     //hover for service details for pre-visit jobcard
@@ -4642,7 +4650,7 @@ function recursivecallscene_1098(){
   if($("#view_3482").is(":visible")==true) Knack.views["view_3482"].model.fetch();
   if($("#view_3477").is(":visible")==true) Knack.views["view_3477"].model.fetch();
   recursivecallscene_1098();
-  }, 30000);
+  }, 60000);
 }
 
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
