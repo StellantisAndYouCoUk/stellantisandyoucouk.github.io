@@ -4208,10 +4208,6 @@ function recursivecallscene_981(){
 }
 
 
-// refresh workshop table v1
-$(document).on('knack-scene-render.scene_1050', function(event, scene) {
- recursivecallscene_1050();
-});
 
 
 function recursivecallscene_1050(){
@@ -4223,6 +4219,10 @@ function recursivecallscene_1050(){
   }, 120000);
 }
 
+// refresh workshop table v1
+$(document).on('knack-scene-render.scene_1050', function(event, scene) {
+ recursivecallscene_1050();
+});
 
 
 
@@ -4649,6 +4649,8 @@ function recursivecallscene_1098(){
   if($("#view_3483").is(":visible")==true) Knack.views["view_3483"].model.fetch();
   if($("#view_3482").is(":visible")==true) Knack.views["view_3482"].model.fetch();
   if($("#view_3477").is(":visible")==true) Knack.views["view_3477"].model.fetch();
+  if($("#view_3806").is(":visible")==true) Knack.views["view_3806"].model.fetch();
+  if($("#view_3826").is(":visible")==true) Knack.views["view_3826"].model.fetch();
   recursivecallscene_1098();
   }, 60000);
 }
