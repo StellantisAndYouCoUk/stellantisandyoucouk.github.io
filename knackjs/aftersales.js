@@ -4218,7 +4218,7 @@ function recursivecallscene_1050(){
  setTimeout(function () { 
   if($("#view_3307").is(":visible")==true) Knack.views["view_3307"].model.fetch();
   if($("#view_3595").is(":visible")==true) Knack.views["view_3595"].model.fetch();
-  if($("#view_3802").is(":visible")==true) Knack.views["view_3802"].model.fetch();
+  if($("#view_3805").is(":visible")==true) Knack.views["view_3805"].model.fetch();
   recursivecallscene_1050();
   }, 120000);
 }
