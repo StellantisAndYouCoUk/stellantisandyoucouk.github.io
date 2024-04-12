@@ -4597,7 +4597,7 @@ function fillDataToKnack(message){
 //END
 
 //THIS IS ARRAY OF scenes with document scan
-var scanDocsSceneNames = ["scenne_1013","scene_928","scene_1097","scene_1012","scene_1015","scene_1013","scene_1073","scene_1073"];
+var scanDocsSceneNames = ["scenne_1189","scene_928","scene_1097","scene_1012","scene_1015","scene_1013","scene_1073","scene_1215"];
 scanDocsSceneNames.forEach(scanDocsLinkFunction);
 function scanDocsLinkFunction(selector_view){
   $(document).on("knack-scene-render." + selector_view, function(event, view, data) {
