@@ -4723,3 +4723,9 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
   console.log('sel',sel)
   $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
 });
+
+$('select[name="cA"]').on('change', function() {
+  var optionSelected = $("option:selected", this);
+  console.log('optionSelected.text()',optionSelected.text())
+  $('input[name="keyword"]').val(optionSelected.text())
+});
