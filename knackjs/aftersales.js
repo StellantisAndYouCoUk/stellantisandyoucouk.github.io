@@ -4715,6 +4715,9 @@ function getWorkshopAvailability(retry = 1){
 
 $(document).on('knack-view-render.view_4008', function(event, view, records) {
   $('[id="view_4008"]').hide();
+});
+
+$(document).on('knack-view-render.view_2686', function(event, view, records) {
   let sel = 'Customer advisor: <select name="cA" class="kn-page-select"><option>All</option>'+$('div[id="view_4008"] table>tbody>tr').map(function() {
     let a = $(this); return '<option>'+a.find('td').eq(0).text().trim()+'</option>';
   })
@@ -4730,5 +4733,5 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
       console.log('optionSelected.text()',optionSelected.text())
       $('input[name="keyword"]').val(optionSelected.text())
     });
-  },2000)
+  },1000)
 });
