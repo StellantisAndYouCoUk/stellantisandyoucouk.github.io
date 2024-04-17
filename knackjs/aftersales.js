@@ -4718,11 +4718,11 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
 });
 
 $(document).on('knack-view-render.view_2686', function(event, view, records) {
-  let sel = 'Customer advisor: <select name="cA" class="kn-page-select"><option>All</option>'+$('div[id="view_4008"] table>tbody>tr').map(function() {
+  let sel = '<div>Customer advisor: <select name="cA" class="kn-page-select"><option>All</option>'+$('div[id="view_4008"] table>tbody>tr').map(function() {
     let a = $(this); return '<option>'+a.find('td').eq(0).text().trim()+'</option>';
   })
   .get()
-  .join('')+'</select>';
+  .join('')+'</select></div>';
   
   setTimeout(function(){
     console.log($('div[id="view_2686"] div[class*="js-filter-menu"]'))
