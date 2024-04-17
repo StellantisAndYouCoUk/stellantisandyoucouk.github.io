@@ -2273,13 +2273,12 @@ $(document).on('knack-form-submit.view_3690', function(event, view, data) {
 });
 
 // New Deal File - Capture PDFs – **New Deal File PDF - Vehicle Invoice signed at dealer or to be signed remotely {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/100708580?redirect=true
-$(document).on('knack-form-submit.view_2674', function(event, view, data) {
+/*$(document).on('knack-form-submit.view_2674', function(event, view, data) {
     
     try{
-        
+
         if(data.field_6567_raw === null || data.field_6567_raw === undefined){
-
-
+		
             let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
             let dataToSend = JSON.stringify({"Record ID":data.id, "Form":"Vehicle invoice", "Source Of Payload":"knack direct"});
 
@@ -2312,7 +2311,53 @@ $(document).on('knack-form-submit.view_2674', function(event, view, data) {
            async: false
         }).responseText;
     }
+});*/
+
+$(document).on('knack-form-submit.view_2674', function(event, view, data) {
+    try {
+
+        let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
+        let dataToSend = JSON.stringify({
+            "Record ID": data.id,
+            "Form": "Vehicle invoice",
+            "Source Of Payload": "knack direct"
+        });
+
+        var rData = $.ajax({
+            url: commandURL,
+            type: 'POST',
+            contentType: 'application/json',
+            data: dataToSend,
+            async: false
+        }).responseText;
+    } catch (exception) {
+        console.log("error");
+        var today = new Date();
+        var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date + ' ' + time;
+
+        let commandURL = "https://hook.integromat.com/bxfn25wkj67pptq9bniqmpvvjg868toi";
+        let dataToSend = JSON.stringify({
+            "Source": "Javascript error",
+            "Function": "New Deal File PDF - Vehicle Invoice signed at dealer or to be signed remotely {(Deal File) Digital Deal File} Slave App",
+            "Payload": data,
+            "userName": Knack.getUserAttributes().name,
+            "userEmail": Knack.getUserAttributes().email,
+            "Exception": exception.message,
+            "dateTime": dateTime
+        });
+        var rData = $.ajax({
+            url: commandURL,
+            type: 'POST',
+            contentType: 'application/json',
+            data: dataToSend,
+            async: false
+        }).responseText;
+    }
 });
+
+
 
 
 // New Deal File - **New Deal File PDF - Vehicle Invoice signed online by Customer {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116194118?redirect=true

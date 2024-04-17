@@ -4208,15 +4208,23 @@ function recursivecallscene_981(){
 }
 
 
+
+
+function recursivecallscene_1050(){
+ setTimeout(function () { 
+  if($("#view_3307").is(":visible")==true) Knack.views["view_3307"].model.fetch();
+  if($("#view_3595").is(":visible")==true) Knack.views["view_3595"].model.fetch();
+  if($("#view_3805").is(":visible")==true) Knack.views["view_3805"].model.fetch();
+  recursivecallscene_1050();
+  }, 120000);
+}
+
 // refresh workshop table v1
 $(document).on('knack-scene-render.scene_1050', function(event, scene) {
  recursivecallscene_1050();
 });
 
-function recursivecallscene_1050(){
- setTimeout(function () { if($("#view_3307").is(":visible")==true){ Knack.views["view_3307"].model.fetch();recursivecallscene_1050();} }, 300000);
-	 
-}
+
 
 
     //hover for service details for pre-visit jobcard
@@ -4345,11 +4353,11 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
 	
-	 tooltipsTable('1098','3307','field_1532','field_2586');
+	 tooltipsTable('1050','3307','field_1532','field_2586');
 	//scene, view, hover info, field to have hover
    	
-	tooltipsTable('1098','3307','field_1537','field_2213');  
-	   	tooltipsTable('1098','3307','field_2298','field_2272');
+	tooltipsTable('1050','3307','field_1537','field_2213');  
+	   	tooltipsTable('1050','3307','field_2298','field_2272');
 	    
     });
 	
@@ -4360,10 +4368,10 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
 	
-	 tooltipsTable('1098','3595','field_1532','field_2586');
+	 tooltipsTable('1050','3595','field_1532','field_2586');
 	//scene, view, hover info, field to have hover
    	
-	tooltipsTable('1098','3595','field_1537','field_2213');  
+	tooltipsTable('1050','3595','field_1537','field_2213');  
 	    
     });
 	
@@ -4374,10 +4382,10 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
 	
-	 tooltipsTable('1098','3805','field_1532','field_2586');
+	 tooltipsTable('1050','3805','field_1532','field_2586');
 	//scene, view, hover info, field to have hover
    	
-	tooltipsTable('1098','3805','field_1537','field_2213');  
+	tooltipsTable('1050','3805','field_1537','field_2213');  
 	    
     });
 
@@ -4589,7 +4597,7 @@ function fillDataToKnack(message){
 //END
 
 //THIS IS ARRAY OF scenes with document scan
-var scanDocsSceneNames = ["scene_928","scene_1097","scene_1012","scene_1015","scene_1013","scene_1073","scene_1073"];
+var scanDocsSceneNames = ["scenne_1189","scene_928","scene_1097","scene_1012","scene_1015","scene_1013","scene_1073","scene_1215"];
 scanDocsSceneNames.forEach(scanDocsLinkFunction);
 function scanDocsLinkFunction(selector_view){
   $(document).on("knack-scene-render." + selector_view, function(event, view, data) {
@@ -4641,8 +4649,10 @@ function recursivecallscene_1098(){
   if($("#view_3483").is(":visible")==true) Knack.views["view_3483"].model.fetch();
   if($("#view_3482").is(":visible")==true) Knack.views["view_3482"].model.fetch();
   if($("#view_3477").is(":visible")==true) Knack.views["view_3477"].model.fetch();
+  if($("#view_3806").is(":visible")==true) Knack.views["view_3806"].model.fetch();
+  if($("#view_3826").is(":visible")==true) Knack.views["view_3826"].model.fetch();
   recursivecallscene_1098();
-  }, 30000);
+  }, 60000);
 }
 
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
