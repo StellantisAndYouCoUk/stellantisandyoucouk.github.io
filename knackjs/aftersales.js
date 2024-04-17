@@ -4731,7 +4731,8 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
     $('select[name="cA"]').on('change', function() {
       var optionSelected = $("option:selected", this);
       console.log('optionSelected.text()',optionSelected.text())
-      $('input[name="keyword"]').val(optionSelected.text())
+      $('input[name="keyword"]').val(optionSelected.text());
+      $('div[id="view_2686"] a[class="kn-button search"]').click();
     });
   },1000)
 });
