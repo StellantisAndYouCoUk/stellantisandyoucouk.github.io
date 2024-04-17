@@ -4702,3 +4702,13 @@ function getWorkshopAvailability(retry = 1){
   $('div[id="view_3923"]>div').html(htmlTable);
 
 }
+
+$(document).on('knack-view-render.view_4008', function(event, view, records) {
+  $('[id="view_4008"]').hide();
+  let sel = 'Customer advisor: <select name="cA" class="kn-page-select"><option>All</option>'+$('div[id="view_4008"] table>tbody>tr').map(function() {
+    let a = $(this); return '<option>'+a.find('td').eq(0).text().trim()+'</option>';
+  })
+  .get()
+  .join('')+'</select>';
+  $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
+});
