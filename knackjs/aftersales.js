@@ -4721,7 +4721,9 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
   .get()
   .join('')+'</select>';
   console.log('sel',sel)
-  $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
+  setTimeout(function(){
+    $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
+  },1500)
 });
 
 $('select[name="cA"]').on('change', function() {
