@@ -4723,11 +4723,11 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
   console.log('sel',sel)
   setTimeout(function(){
     $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
-  },1500)
-});
 
-$('select[name="cA"]').on('change', function() {
-  var optionSelected = $("option:selected", this);
-  console.log('optionSelected.text()',optionSelected.text())
-  $('input[name="keyword"]').val(optionSelected.text())
+    $('select[name="cA"]').on('change', function() {
+      var optionSelected = $("option:selected", this);
+      console.log('optionSelected.text()',optionSelected.text())
+      $('input[name="keyword"]').val(optionSelected.text())
+    });
+  },1500)
 });
