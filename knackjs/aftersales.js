@@ -4720,8 +4720,9 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
   })
   .get()
   .join('')+'</select>';
-  console.log('sel',sel)
+  
   setTimeout(function(){
+    console.log($('div[id="view_2686"] div[class*="js-filter-menu"]'))
     $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
 
     $('select[name="cA"]').on('change', function() {
@@ -4729,5 +4730,5 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
       console.log('optionSelected.text()',optionSelected.text())
       $('input[name="keyword"]').val(optionSelected.text())
     });
-  },1500)
+  },2000)
 });
