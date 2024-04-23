@@ -4736,3 +4736,13 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
     });
   },1000)
 });
+
+//trigger when Jobcard report Created (No DIDA)
+$(document).on('knack-form-submit.view_3133', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/wzbopamu9wqee7vp8xy0wlvpbz67a4oi", {"Record ID":data.id},"Job Card Report Created No DIDA")
+});
+
+//trigger when Jobcard report Created (With DIDA)
+$(document).on('knack-form-submit.view_3161', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/wzbopamu9wqee7vp8xy0wlvpbz67a4oi", {"Record ID":data.id},"Job Card Report Created with DIDA")
+});
