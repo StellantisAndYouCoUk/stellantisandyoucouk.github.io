@@ -4367,6 +4367,8 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
+    $('th[class="field_2298"]').hide();
+    $('td[class*="field_22989"]').hide();
     });
 	
 //hover for labour details on workshop Today's jobs not checked in
