@@ -4222,6 +4222,7 @@ function recursivecallscene_1050(){
 // refresh workshop table v1
 $(document).on('knack-scene-render.scene_1050', function(event, scene) {
  recursivecallscene_1050();
+	 console.log('Recursivecallscene_1050');
 });
 
 
