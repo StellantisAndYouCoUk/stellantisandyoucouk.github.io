@@ -4221,6 +4221,17 @@ function recursivecallscene_1050(){
 
 // refresh workshop table v1
 $(document).on('knack-scene-render.scene_1050', function(event, scene) {
+  //Tooltip table 3805
+  $('th[class="field_1537"]').hide();
+  $('td[class*="field_1537"]').hide();
+  $('th[class="field_1532"]').hide();
+  $('td[class*="field_1532"]').hide();
+
+  tooltipsTable('1050','3805','field_1532','field_2586');
+  //scene, view, hover info, field to have hover
+    
+  tooltipsTable('1050','3805','field_1537','field_2213');  
+
  recursivecallscene_1050();
 	 console.log('Recursivecallscene_1050');
 });
@@ -4379,7 +4390,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
 	
 //hover for labour details on workshop jobs planned in the future
    $(document).on('knack-view-render.view_3805', function (event, view, data) {
-    $('th[class="field_1537"]').hide();
+    /*$('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
@@ -4388,7 +4399,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
 	//scene, view, hover info, field to have hover
    	
 	tooltipsTable('1050','3805','field_1537','field_2213');  
-	    
+	    */
     });
 
 //hover for labour details on workshop pots "completed work"
