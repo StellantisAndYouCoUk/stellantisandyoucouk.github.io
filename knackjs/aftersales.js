@@ -4216,7 +4216,7 @@ function recursivecallscene_1050(){
   if($("#view_3595").is(":visible")==true) Knack.views["view_3595"].model.fetch();
   if($("#view_3805").is(":visible")==true) Knack.views["view_3805"].model.fetch();
   recursivecallscene_1050();
-  }, 120000);
+  }, 300000);
 }
 
 // refresh workshop table v1
