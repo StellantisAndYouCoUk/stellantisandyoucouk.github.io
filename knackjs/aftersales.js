@@ -4348,6 +4348,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
 
 //hover for labour details on workshop table
    $(document).on('knack-view-render.view_3307', function (event, view, data) {
+    console.log('knack-view-render.view_3307')
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
