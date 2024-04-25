@@ -4216,12 +4216,13 @@ function recursivecallscene_1050(){
   if($("#view_3595").is(":visible")==true) Knack.views["view_3595"].model.fetch();
   if($("#view_3805").is(":visible")==true) Knack.views["view_3805"].model.fetch();
   recursivecallscene_1050();
-  }, 120000);
+  }, 300000);
 }
 
 // refresh workshop table v1
 $(document).on('knack-scene-render.scene_1050', function(event, scene) {
  recursivecallscene_1050();
+	 console.log('Recursivecallscene_1050');
 });
 
 
@@ -4658,6 +4659,7 @@ function recursivecallscene_1098(){
 
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
  recursivecallscene_1098();
+	console.log('Recursivecallscene_1098');
 });
 
 //Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
@@ -4736,4 +4738,14 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
       $('div[id="view_2686"] a[class="kn-button search"]').click();
     });
   },1000)
+});
+
+//trigger when Jobcard report Created (No DIDA)
+$(document).on('knack-form-submit.view_3133', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/wzbopamu9wqee7vp8xy0wlvpbz67a4oi", {"Record ID":data.id},"Job Card Report Created No DIDA")
+});
+
+//trigger when Jobcard report Created (With DIDA)
+$(document).on('knack-form-submit.view_3161', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/wzbopamu9wqee7vp8xy0wlvpbz67a4oi", {"Record ID":data.id},"Job Card Report Created with DIDA")
 });
