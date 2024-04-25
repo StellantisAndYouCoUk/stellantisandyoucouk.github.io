@@ -4658,6 +4658,7 @@ function recursivecallscene_1098(){
 
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
  recursivecallscene_1098();
+	console.log('Recursivecallscene_1098');
 });
 
 //Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
