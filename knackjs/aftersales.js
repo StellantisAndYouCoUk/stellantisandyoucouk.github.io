@@ -4270,9 +4270,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
    	$('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
-	tooltipsTable('1098','3474','field_1537','field_2213');  
-	   tooltipsTable('1098','3474','field_1532','field_2586');
-	    
     });
 
 	//hover for labour details on workshop POT (service Table)
@@ -4282,14 +4279,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
-   	
-	tooltipsTable('1098','3476','field_1537','field_2213');  
-	   
-     tooltipsTable('1098','3476','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-	
-
-	    
     });
 	//hover for labour details on workshop POT (Predictable work)
    $(document).on('knack-view-render.view_3483', function (event, view, data) {
@@ -4298,11 +4287,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
-	   
-	 tooltipsTable('1098','3483','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-   	
-	tooltipsTable('1098','3483','field_1537','field_2213');  
  });
 	
 		//hover for labour details on workshop POT (diag/inv/recall)
@@ -4311,11 +4295,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
-    $('td[class*="field_1532"]').hide();
-	
-	 tooltipsTable('1098','3482','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-	tooltipsTable('1098','3482','field_1537','field_2213');  	    
+    $('td[class*="field_1532"]').hide();	    
     });
 	
 		//hover for labour details on workshop POT (Internal)
@@ -4325,11 +4305,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
-	
-	 tooltipsTable('1098','3477','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-   	
-	tooltipsTable('1098','3477','field_1537','field_2213');  
     });
 
 		//hover for todays internal jobs 
@@ -4339,11 +4314,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
-	
-	 tooltipsTable('1098','3770','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-   	
-	tooltipsTable('1098','3770','field_1537','field_2213');  
     });
 
 		//hover for jobs planned in the future 
@@ -4353,11 +4323,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();
-	
-	 tooltipsTable('1098','3806','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-   	
-	tooltipsTable('1098','3806','field_1537','field_2213');  
     });
 
 //hover for labour details on workshop table
@@ -4398,13 +4363,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
-    $('td[class*="field_1532"]').hide();
-	
-	 tooltipsTable('1098','3826','field_1532','field_2586');
-	//scene, view, hover info, field to have hover
-   	
-	tooltipsTable('1098','3826','field_1537','field_2213');  
-	    
+    $('td[class*="field_1532"]').hide();	    
     });
 
 	//auto refresh for C/D Driver pick up and return table
@@ -4661,7 +4620,43 @@ function recursivecallscene_1098(){
 
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
  recursivecallscene_1098();
-	console.log('Recursivecallscene_1098');
+//pots tooltips
+
+//view 3474
+tooltipsTable('1098','3474','field_1537','field_2213');  
+tooltipsTable('1098','3474','field_1532','field_2586');
+
+//view 3476
+tooltipsTable('1098','3476','field_1537','field_2213');  
+tooltipsTable('1098','3476','field_1532','field_2586');
+
+//view 3483
+tooltipsTable('1098','3483','field_1532','field_2586');
+tooltipsTable('1098','3483','field_1537','field_2213'); 
+
+//view 3482
+tooltipsTable('1098','3482','field_1532','field_2586');
+tooltipsTable('1098','3482','field_1537','field_2213');  
+
+//view 3477
+tooltipsTable('1098','3477','field_1532','field_2586');	
+tooltipsTable('1098','3477','field_1537','field_2213'); 
+
+//view 3770
+tooltipsTable('1098','3770','field_1532','field_2586');
+tooltipsTable('1098','3770','field_1537','field_2213'); 
+
+//view 3806
+tooltipsTable('1098','3806','field_1532','field_2586');
+tooltipsTable('1098','3806','field_1537','field_2213');  
+
+//view 3826
+tooltipsTable('1098','3826','field_1532','field_2586'); 	
+tooltipsTable('1098','3826','field_1537','field_2213');  
+
+
+
+	
 });
 
 //Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
