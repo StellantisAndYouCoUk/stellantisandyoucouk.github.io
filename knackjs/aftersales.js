@@ -4747,9 +4747,10 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/wzbopamu9wqee7vp8xy0wlvpbz67a4oi", {"Record ID":data.id},"Job Card Report Created with DIDA")
 });
 
-$(document).on('knack-form-submit.view_2942', function(event, view, record) {
+/* $(document).on('knack-form-submit.view_2942', function(event, view, record) {
   alert('view_2942 submitted!');
   if (Knack.user.id === '6079ce7212c6d9001b7309a4'){
 
   }
 });
+*/
