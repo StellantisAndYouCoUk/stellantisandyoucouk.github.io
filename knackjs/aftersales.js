@@ -4749,4 +4749,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 $(document).on('knack-form-submit.view_2942', function(event, view, record) {
   alert('view_2942 submitted!');
+  if (Knack.user.id === '6079ce7212c6d9001b7309a4'){
+
+  }
 });
