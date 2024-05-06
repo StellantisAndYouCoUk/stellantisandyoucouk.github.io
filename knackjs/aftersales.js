@@ -4751,7 +4751,7 @@ let lastRefresh = new Date();
  $(document).on('knack-form-submit.view_2942', function(event, view, record) {
   console.log('view_2942 submitted!', lastRefresh);
   if (Knack.user.id === '6079ce7212c6d9001b7309a4'){
-    console.log(Knack.user);
+    console.log('isDev',Knack.user.attributes.profile_keys.includes('profile_17'));
     if ((new Date()-lastRefresh)>/*2*60*60**/10*1000){
       console.log('goto refresh');
       lastRefresh = new Date();
