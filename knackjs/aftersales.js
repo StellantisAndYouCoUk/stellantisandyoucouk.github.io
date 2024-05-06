@@ -4754,7 +4754,7 @@ let lastRefresh = new Date();
     if ((new Date()-lastRefresh)>/*2*60*60**/10*1000){
       console.log('goto refresh');
       lastRefresh = new Date();
-      window.location.reload(false);
+      window.location = 'https://www.stellantisandyou.co.uk/aftersales#after-sales-vehicle-lookup/all-jobs/workshop-control';
     }
   }
 });
