@@ -3387,7 +3387,9 @@ function bindToUpdate1(selector_view_name){
   }
 
   $(document).on('knack-view-render.view_1149', function (event, view, data) {
-
+    //hide columns for search
+    $('th[class="field_5801"]').hide();
+    $('td[class*="field_5801"]').hide();
     //This part is for tooltip of another field above field in list
     //This part of code hides field_330 from the list and then adds it as mouse over to field 380
     //It needs function "getFieldForRowID", also the field_330 NEEDS to be included in the list
