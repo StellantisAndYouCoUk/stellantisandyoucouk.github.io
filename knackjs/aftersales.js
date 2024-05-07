@@ -4567,7 +4567,7 @@ function scanDocsLinkFunction(selector_view){
     embedScanApp();
     if ($('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').length>0){
       for (let i = 0;i<$('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').length;i++){
-        $('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').eq(i).append('<button type="button" id="scanDocument" data-pdfassetfield="'+$('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').eq(i).attr('data-input-id')+'" data-app_id="6040dd9a301633001bca5b4e"><i class="fa fa-file-pdf-o" data-redactor-tag="i"></i>Scan document</button>')
+        $('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').eq(i).append('<button type="button" id="scanDocument" data-pdfassetfield="'+$('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').eq(i).attr('data-input-id')+'" data-app_id="6040dd9a301633001bca5b4e"><i class="fa fa-file-pdf-o" data-redactor-tag="i"></i> Scan document</button>')
         $('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').eq(i).find('label>span').text($('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').eq(i).find('label>span').text().trim().replace('#SCANALSO#',''))
       }
     }
