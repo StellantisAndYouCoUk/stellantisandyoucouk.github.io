@@ -4572,6 +4572,11 @@ function scanDocsLinkFunction(selector_view){
         });
       }
     }
+    if ($('div[class="kn-input kn-input-file control"]:contains("#SCAN")').length>0){
+      for (let i = 0;i<$('div[class="kn-input kn-input-file control"]:contains("#SCAN")').length;i++){
+        $('div[class="kn-input kn-input-file control"]:contains("#SCAN")').eq(i).append('<button id="scanDocument" data-pdfassetfield="'+$('div[class="kn-input kn-input-file control"]:contains("#SCAN")').eq(i).attr('data-input-id')+'" data-app_id="6040dd9a301633001bca5b4e"><i class="fa fa-file-pdf-o" data-redactor-tag="i"></i>Scan document</button>')
+      }
+    }
   });
 }  
 
