@@ -924,6 +924,57 @@ function loadFieldInEditMode(filename, viewId, fieldId, startTime){
   }
 }
 
+// ****** Motability Check-In Diversion: refresh page when forms are submitted
+ 
+// Offside Front Tyre
+ 
+ $(document).on('knack-record-create.view_6762', function(event, view, data) {
+ 
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
+ 
+  // Nearside Front Tyre
+ 
+  $(document).on('knack-record-create.view_6763', function(event, view, data) {
+   
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
+ 
+  // Missing Parcel Shelf
+ 
+  $(document).on('knack-record-create.view_6764', function(event, view, data) {
+   
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
+ 
+  // Nearside Rear Tyre
+ 
+  $(document).on('knack-record-create.view_6765', function(event, view, data) {
+   
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
+ 
+  // Offside Rear Tyre
+ 
+  $(document).on('knack-record-create.view_6766', function(event, view, data) {
+   
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
 
 //******************************** Used Vehicle Quick Edit Advert Work *****************************//
 
