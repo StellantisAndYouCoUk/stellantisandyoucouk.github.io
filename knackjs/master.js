@@ -2216,6 +2216,7 @@ function prepareCameraView(backUrl,app_id,imageFieldOnKnack,imageViewOnKnack){
 
 imageBeforeResize.onload = () => {
    const elem = document.createElement('canvas');
+   //978*550
    elem.width = 768;
    elem.height = 576;
    const ctx = elem.getContext('2d');
