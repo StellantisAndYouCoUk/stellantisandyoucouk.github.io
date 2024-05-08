@@ -4758,7 +4758,7 @@ let lastRefresh = new Date();
   console.log('view_2942 submitted!', lastRefresh);
   if (Knack.user.attributes.profile_keys.includes('profile_17')){
     console.log('isDev',Knack.user.attributes.profile_keys.includes('profile_17'));
-    if ((new Date()-lastRefresh)>/*1*60**/60*1000){
+    if ((new Date()-lastRefresh)>1*60*60*1000){
       console.log('goto refresh');
       lastRefresh = new Date();
       window.location = 'https://www.stellantisandyou.co.uk/aftersales#after-sales-vehicle-lookup/all-jobs/workshop-control?dt='+lastRefresh;
