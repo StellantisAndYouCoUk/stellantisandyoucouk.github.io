@@ -2217,12 +2217,12 @@ function prepareCameraView(backUrl,app_id,imageFieldOnKnack,imageViewOnKnack){
 imageBeforeResize.onload = () => {
    const elem = document.createElement('canvas');
    //978*550
-   elem.width = 768;
-   elem.height = 576;
+   elem.width = 978;
+   elem.height = 550;
    const ctx = elem.getContext('2d');
-  //check if the resolution of the image is 4:3
+  //check if the resolution of the image is 16:9
 
-  if ((imageBeforeResize.width/imageBeforeResize.height)===(4/3)){
+  if ((imageBeforeResize.width/imageBeforeResize.height)===(16/9)){
     var percentOfPicture = 0.6;
     var left = imageBeforeResize.width * ((1-percentOfPicture)/2);
     var top = imageBeforeResize.height * ((1-percentOfPicture)/2);
@@ -2234,14 +2234,14 @@ imageBeforeResize.onload = () => {
         //alert('Safari without top');
       }
     }
-    ctx.drawImage(imageBeforeResize, left, top , imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
+    ctx.drawImage(imageBeforeResize, left, top , imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 978, 550);
   } else {
     //alert('another resolution');
     var percentOfPicture69 = 0.7;
     //if not, compute what you need to crop, now it expects the width/heigth more than 4/3, so it crops just width
-    var sx = ((imageBeforeResize.width-((4/3)*imageBeforeResize.height))/imageBeforeResize.width) * imageBeforeResize.width / 2;
+    var sx = ((imageBeforeResize.width-((16/9)*imageBeforeResize.height))/imageBeforeResize.width) * imageBeforeResize.width / 2;
     var sw = imageBeforeResize.width - (((imageBeforeResize.width-((4/3)*imageBeforeResize.height))/imageBeforeResize.width) * imageBeforeResize.width);
-    ctx.drawImage(imageBeforeResize, sx + sw * (1-percentOfPicture69)/2, imageBeforeResize.height * (1-percentOfPicture69)/2, sw * percentOfPicture69, imageBeforeResize.height * percentOfPicture69, 0, 0, 768, 576);
+    ctx.drawImage(imageBeforeResize, sx + sw * (1-percentOfPicture69)/2, imageBeforeResize.height * (1-percentOfPicture69)/2, sw * percentOfPicture69, imageBeforeResize.height * percentOfPicture69, 0, 0, 978, 550);
   }
    //save the resized image to the shown img
    ctx.canvas.toBlob((blob) => {
