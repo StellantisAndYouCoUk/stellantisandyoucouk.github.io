@@ -2291,7 +2291,7 @@ imageBeforeResize.onload = () => {
     var percentOfPicture69 = 0.7;
     //if not, compute what you need to crop, now it expects the width/heigth more than 4/3, so it crops just width
     var sx = ((imageBeforeResize.width-((16/9)*imageBeforeResize.height))/imageBeforeResize.width) * imageBeforeResize.width / 2;
-    var sw = imageBeforeResize.width - (((imageBeforeResize.width-((4/3)*imageBeforeResize.height))/imageBeforeResize.width) * imageBeforeResize.width);
+    var sw = imageBeforeResize.width - (((imageBeforeResize.width-((16/9)*imageBeforeResize.height))/imageBeforeResize.width) * imageBeforeResize.width);
     ctx.drawImage(imageBeforeResize, sx + sw * (1-percentOfPicture69)/2, imageBeforeResize.height * (1-percentOfPicture69)/2, sw * percentOfPicture69, imageBeforeResize.height * percentOfPicture69, 0, 0, 978, 550);
   }
    //save the resized image to the shown img
