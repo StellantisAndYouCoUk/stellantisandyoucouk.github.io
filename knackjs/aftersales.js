@@ -4822,7 +4822,9 @@ let lastRefresh = new Date();
     if ((new Date()-lastRefresh)>1*60*60*1000){
       console.log('goto refresh');
       lastRefresh = new Date();
-      window.location = 'https://www.stellantisandyou.co.uk/aftersales#after-sales-vehicle-lookup/all-jobs/workshop-control?dt='+lastRefresh;
+      //window.location = 'https://www.stellantisandyou.co.uk/aftersales#after-sales-vehicle-lookup/all-jobs/workshop-control?dt='+lastRefresh;
+      //window.location.reload(false);
+      window.parent.location = 'https://www.stellantisandyou.co.uk/digital#service-operations/workshop/?dt='+lastRefresh;
       window.location.reload(false);
     }
   }
