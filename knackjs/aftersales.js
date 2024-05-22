@@ -3881,6 +3881,8 @@ $(document).on('knack-view-render.view_3566', function (event, view, data) {
   }
 });
 
+
+//inspection page
 $(document).on('knack-view-render.view_3566', function (event, view, data) {
   embedPhotoApp();
   let appSettings2718 = {
@@ -3954,6 +3956,7 @@ $(document).on('knack-view-render.view_3566', function (event, view, data) {
   }
 });
 
+//courtesy inspection page
 $(document).on('knack-view-render.view_3592', function (event, view, data) {
   embedPhotoApp();
   let appSettings1914 = {uploadMethod : 'field', uploadField : 'field_1914',app_id : '591eae59e0d2123f23235769',actionAfterPhoto : 'none'}
