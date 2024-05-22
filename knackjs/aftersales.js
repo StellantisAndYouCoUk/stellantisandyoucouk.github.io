@@ -237,6 +237,7 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
 //Can be called from scene render, view render
 function refreshView(viewID, reload = false, clearLoading = false){
     try {
+      if (Knack.views['view_'+viewID]===undefined) return false;
       var currModel = JSON.stringify(Knack.views['view_'+viewID].model.attributes);
       const a = {}
       a.success = function () {
