@@ -3820,7 +3820,7 @@ $(document).on('knack-form-submit.view_3088', function(event, view, data) {
     }
 });
 
-$(document).on('knack-view-render.view_3566', function (event, view, data) {
+$(document).on('knack-view-render.view_3841', function (event, view, data) {
   embedPhotoApp();
   let appSettings2718 = {
     spiritLine : false,
