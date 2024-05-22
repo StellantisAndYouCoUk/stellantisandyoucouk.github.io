@@ -4850,6 +4850,7 @@ function getWorkshopAvailability(status = null,retry = 1){
       if (!status || !status.addressData){
         let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
         console.log('closestD',closestD)
+        closestD = JSON.parse(closestD);
         if (!status){
           status = {addressData:{closestD:closestD}}
         } else {
