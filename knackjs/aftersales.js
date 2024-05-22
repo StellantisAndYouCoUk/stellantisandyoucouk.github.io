@@ -4845,14 +4845,14 @@ function getWorkshopAvailability(status = null,retry = 1){
   let customerAddress = $('div[class="field_308"]>div>span>span').text();
   console.log('customerAddress',customerAddress)
   if (customerAddress!=='' && (status===null || !status.addressData)){
-    let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
+    /*let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
     console.log('closestD',closestD)
     if (!status){
       status = {addressData:{closestD:closestD}}
     } else {
       status.addressData = {closestD:closestD}
     }
-    console.log('status',status);
+    console.log('status',status);*/
   }
 
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
