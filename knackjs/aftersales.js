@@ -4625,6 +4625,7 @@ var scanDocsSceneNames = ["scenne_1189","scene_928","scene_1097","scene_1012","s
 scanDocsSceneNames.forEach(scanDocsLinkFunction);
 function scanDocsLinkFunction(selector_view){
   $(document).on("knack-scene-render." + selector_view, function(event, view, data) {
+    console.log('prepare scan view, aftersales')
     embedScanApp();
     if ($('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').length>0){
       for (let i = 0;i<$('div[class="kn-input kn-input-file control"]:contains("#SCANALSO#")').length;i++){
