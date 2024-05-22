@@ -4891,8 +4891,8 @@ function availabilityHTML(status){
   if (status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
-      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name+'</td><td>'+status.addressData.closestD[i].duration+(status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?', LastVisited':'')+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>';
-      if (status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit) lastVisitedInClosest = true;
+      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name+'</td><td>'+status.addressData.closestD[i].duration+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?', LastVisited':'')+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>';
+      if (status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit) lastVisitedInClosest = true;
     }
   }
   if (status.lastVisitData && status.lastVisitData!=='' && !lastVisitedInClosest){
