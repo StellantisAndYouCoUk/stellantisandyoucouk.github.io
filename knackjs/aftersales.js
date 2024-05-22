@@ -4834,51 +4834,71 @@ if ($('div[class="kn-table kn-view view_3878"]')){
 
 function getWorkshopAvailability(status = null,retry = 1){
   console.log('v2')
-  if (!status || !status.availabilityData){
-    let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
-    if (!status){
-      status = {availabilityData:aJson};
-    } else {
-      status.availabilityData = aJson;
-    }
-  }
-  let customerAddress = $('div[class="field_308"]>div>span>span').text();
-  console.log('customerAddress',customerAddress)
-  if (customerAddress!==''){
-    if (!status || !status.addressData){
-      let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
-      console.log('closestD',closestD)
+  try {
+    if (!status || !status.availabilityData){
+      let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
       if (!status){
-        status = {addressData:{closestD:closestD}}
+        status = {availabilityData:aJson};
       } else {
-        status.addressData = {closestD:closestD}
+        status.availabilityData = aJson;
       }
-      console.log('status',status);
+    }
+
+    let customerAddress = $('div[class="field_308"]>div>span>span').text();
+    console.log('customerAddress',customerAddress)
+    if (customerAddress!==''){
+      if (!status || !status.addressData){
+        let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
+        console.log('closestD',closestD)
+        if (!status){
+          status = {addressData:{closestD:closestD}}
+        } else {
+          status.addressData = {closestD:closestD}
+        }
+        console.log('status',status);
+      }
+    }
+
+    let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
+    if (lastDealerVisit!=='' && !lastDealerVisit.includes('No Last Dealer Found')){
+      if (!status || !status.lastVisitData){
+        console.log('lastDealerVisit',lastDealerVisit);
+        let mapLastDealerVisit = mapDealerNamesToCodes.find(el => el[0] === lastDealerVisit);
+        if (mapLastDealerVisit) mapLastDealerVisit = mapLastDealerVisit[1];
+        console.log('mapLastDealerVisit',mapLastDealerVisit)
+        status.lastVisitData = {lastDealerVisit:lastDealerVisit,mapLastDealerVisit:mapLastDealerVisit};
+      }
+    }
+
+    if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status);
+
+    if (retry < 10 && (!status.lastVisitData || !status.addressData)){
+      console.log('some status empty, wait',retry)
+      setTimeout(() => {
+        getWorkshopAvailability(status,retry+1)
+      }, retry*500);
+      return;
+    }
+  } catch (ex){
+    console.log('getWorkshopAvailability EX',ex)
+  }
+}
+
+function availabilityHTML(status){
+  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td>Last/Travel</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr>';
+  if (status.lastVisitData && status.lastVisitData!==''){
+    let avail = status.availabilityData.find(el => el.companyCode === status.lastVisitData.mapLastDealerVisit);
+    if (avail) htmlTable += '<tr><td>'+status.lastVisitData.lastDealerVisit+'</td><td>Last visited</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>';
+  }
+  if (status.addressData && status.addressData.closestD){
+    for (let i = 0;i<status.addressData.closestD.length;i++){
+      let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
+      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name+'</td><td>'+status.addressData.closestD[i].duration+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>';
     }
   }
-
-  let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
-  if ((lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')) && retry < 10){
-    console.log('lastDealerVisit empty, wait',retry)
-    setTimeout(() => {
-      getWorkshopAvailability(status,retry+1)
-    }, retry*500);
-    return;
-  }
-  if (lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')){
-    console.log('lastDealerVisit empty, exit');
-    return;
-  }
-  console.log('lastDealerVisit',lastDealerVisit);
-  let mapLastDealerVisit = mapDealerNamesToCodes.find(el => el[0] === lastDealerVisit);
-  if (mapLastDealerVisit) mapLastDealerVisit = mapLastDealerVisit[1];
-  console.log('mapLastDealerVisit',mapLastDealerVisit)
-  if (!mapLastDealerVisit) return;
-  let avail = status.availabilityData.find(el => el.companyCode === mapLastDealerVisit);
-  console.log('avail',avail);
-  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr><tr><td>'+lastDealerVisit+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='MOT').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Recall').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Small service').availability))+'</td><td>'+formatDateGBShort(new Date(avail.work.find(el=>el.work==='Large service').availability))+'</td></tr>'
+  htmlTable += '</table>';
+  console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
-
 }
 
 $(document).on('knack-view-render.view_4008', function(event, view, records) {
