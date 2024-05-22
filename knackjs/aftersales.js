@@ -3847,8 +3847,8 @@ $(document).on('knack-view-render.view_3841', function (event, view, data) {
     } else {
       if ($('input[imageToSaveUrl]').length>0 || $('input[id*="offline"]').length>0){
         uploadList = [];
-        $('div[id="view_3566"] button[type="submit"]').prop('disabled', true);
-        $('<h3>Images are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>').insertBefore($('div[id="view_3566"] button[type="submit"]'))
+        $('div[id="view_3841"] button[type="submit"]').prop('disabled', true);
+        $('<h3>Images are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>').insertBefore($('div[id="view_3841"] button[type="submit"]'))
         createFormModal('fMImageUpload','<h3>Images and files are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>');
         $('#fMImageUpload').show();
         for (let i =0;i<$('input[imageToSaveUrl]').length;i++){
@@ -3881,6 +3881,78 @@ $(document).on('knack-view-render.view_3841', function (event, view, data) {
   }
 });
 
+$(document).on('knack-view-render.view_3221', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings2718 = {
+    spiritLine : false,
+    imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
+    imageOverlayEffect : true,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : false,
+    actionAfterPhoto : 'compare', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Does the photo match the template?',
+    uploadMethod : 'field', //knack, make, field
+    uploadField : 'field_2718',
+    //resizeImageMaxHeight : 1000,
+    //resizeImageMaxWidth : 1000,
+    app_id : '591eae59e0d2123f23235769'
+  }
+  createPhotoButton(appSettings2718,'2718');
+  let appSettings1914 = {uploadMethod : 'field', uploadField : 'field_1914',app_id : '591eae59e0d2123f23235769',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings1914,'1914');
+  let appSettings2477 = {uploadMethod : 'field', uploadField : 'field_2477', app_id : '591eae59e0d2123f23235769',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings2477,'2477');
+  let appSettings2478 = {uploadMethod : 'field', uploadField : 'field_2478', app_id : '591eae59e0d2123f23235769',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings2478,'2478');
+  let appSettings2479 = {uploadMethod : 'field', uploadField : 'field_2479', app_id : '591eae59e0d2123f23235769',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings2479,'2479');
+
+  //if (Knack.user.id === '6079ce7212c6d9001b7309a4'){
+    makeFileUploadOffline('field_2332');
+  //}
+  
+  var formButton = document.querySelector('div[class="kn-submit"]>button');
+  formButton.onclick = function() {
+    if (!isOnline){
+      alert('You are unable to submit the Vehicle Inspection as the device is not connected to a network. Please move within range/reconnect to a network to submit the Vehicle Inspection.');
+      return false;
+    } else {
+      if ($('input[imageToSaveUrl]').length>0 || $('input[id*="offline"]').length>0){
+        uploadList = [];
+        $('div[id="view_3221"] button[type="submit"]').prop('disabled', true);
+        $('<h3>Images are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>').insertBefore($('div[id="view_3221"] button[type="submit"]'))
+        createFormModal('fMImageUpload','<h3>Images and files are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>');
+        $('#fMImageUpload').show();
+        for (let i =0;i<$('input[imageToSaveUrl]').length;i++){
+          uploadList.push({field:$('input[imageToSaveUrl]').eq(i).attr('name')})
+          fetch($('input[imageToSaveUrl]').eq(i).attr('imageToSaveUrl'))
+          .then(function(response) {
+            return response.blob();
+          })
+          .then(function(blob) {
+            uploadImageOnlyPhotoApp('6040dd9a301633001bca5b4e',blob,'photoImg.jpg','infoText',$('input[imageToSaveUrl]').eq(i).attr('name'),imageUploadedSuccesfully);
+          });
+        }
+        for (let i =0;i< $('input[id*="offline"]').length;i++){
+          if ($('input[id*="offline"]').eq(i).prop('files')[0]){
+            uploadList.push({field:$('input[id*="offline"]').eq(i).attr('fieldName')});
+            let fU = URL.createObjectURL( $('input[id*="offline"]').eq(i).prop('files')[0]);
+            fetch(fU)
+            .then(function(response) {
+              return response.blob();
+            })
+            .then(function(blob) {
+              uploadFileOnlyPhotoApp('6040dd9a301633001bca5b4e',blob,$('input[id*="offline"]').eq(i).prop('files')[0].name,'infoText',$('input[id*="offline"]').eq(i).attr('fieldName'),fileUploadedSuccesfully);
+            });
+          }
+        }
+        testSubmitOfflineForm();
+        return false;
+      }
+    }
+  }
+});
 
 //inspection page
 $(document).on('knack-view-render.view_3566', function (event, view, data) {
