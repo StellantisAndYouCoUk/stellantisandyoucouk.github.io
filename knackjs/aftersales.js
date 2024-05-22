@@ -4828,13 +4828,15 @@ if ($('div[class="kn-table kn-view view_3878"]')){
  const mapDealerNamesToCodes = [["Stellantis &You Birmingham Central","GH"],["Stellantis &You Birmingham North","CG"],["Stellantis &You Birmingham South","BK"],["Stellantis &You Brentford","WW"],["Stellantis &You Bristol Cribbs","TC"],["Stellantis &You Chelmsford","ES"],["Stellantis &You Chingford","CH"],["Stellantis &You Coventry","BW"],["Stellantis &You Crawley","VG"],["Stellantis &You Croydon","VY"],["Stellantis &You Edgware","WN"],["Stellantis &You Guildford","ST"],["Stellantis &You Hatfield","HD"],["Stellantis &You Leicester","CL"],["Stellantis &You Liverpool","LP"],["Stellantis &You Maidstone","RM"],["Stellantis &You Manchester","TG"],["Stellantis &You National","BH"],["Stellantis &You Newport","NP"],["Stellantis &You Nottingham","NT"],["Stellantis &You Preston","GL"],["Stellantis &You Redditch","RH"],["Stellantis &You Romford","RF"],["Stellantis &You Sale","SB"],["Stellantis &You Sheffield","GM"],["Stellantis &You Stockport","CT"],["Stellantis &You Walton","WY"],["Stellantis &You West London","LW"],["Stellantis &You Wimbledon","VM"]];
 	  
  $(document).on('knack-view-render.view_3923', function(event, view, records) {
-  //let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
-  //console.log('closestD',closestD)
   getWorkshopAvailability();
 });
 
-function getWorkshopAvailability(retry = 1){
+function getWorkshopAvailability(status = null,retry = 1){
   console.log('v2')
+  let customerAddress = $('div[class="field_308"]>div>span>span').text();
+  console.log('customerAddress',customerAddress)
+    //let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
+  //console.log('closestD',closestD)
   let lastDealerVisit = $('div[class="kn-detail field_303"]').text().replace('Last Dealer Visit','').trim();
   if ((lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')) && retry < 10){
     console.log('lastDealerVisit empty, wait',retry)
