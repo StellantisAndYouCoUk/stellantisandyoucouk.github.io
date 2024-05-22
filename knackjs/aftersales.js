@@ -4859,7 +4859,7 @@ function getWorkshopAvailability(status = null,retry = 1){
   if ((lastDealerVisit==='' || lastDealerVisit.includes('No Last Dealer Found')) && retry < 10){
     console.log('lastDealerVisit empty, wait',retry)
     setTimeout(() => {
-      getWorkshopAvailability(retry+1)
+      getWorkshopAvailability(status,retry+1)
     }, retry*500);
     return;
   }
