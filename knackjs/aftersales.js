@@ -4901,11 +4901,15 @@ function formatDateWA(input){
     }
 }
 
+function isTodayF(date){
+  let today = new Date();
+  return (today.toDateString() == date.toDateString())
+}
+
 function formatDateTimeUpdatedWA(input){
   let output = '';
   let date = new Date(input);
-  let isToday = (today.toDateString() == dateTimeOfFirstRun.toDateString());
-  if (!isToday) output = formatDateGBShortNotYear(date)+' ';
+  if (!isTodayF(date)) output = formatDateGBShortNotYear(date)+' ';
   output = output + date.getHours()+':'+date.getMinutes().toFixed(2);
   return output;
 }
