@@ -4910,7 +4910,7 @@ function formatDateTimeUpdatedWA(input){
   let output = '';
   let date = new Date(input);
   if (!isTodayF(date)) output = formatDateGBShortNotYear(date)+' ';
-  output = output + date.getHours()+':'+date.getMinutes().toFixed(2);
+  output = output + date.getHours()+':'+date.getMinutes().toString().padStart(2,'0');
   return output;
 }
 
@@ -4920,7 +4920,7 @@ function availabilityHTML(status){
   if (status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
-      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'<br />U:'+formatDateTimeUpdatedWA(avail.updatedDateTime)+'</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td></tr>';
+      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'<br />('+formatDateTimeUpdatedWA(avail.updatedDateTime)+')</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td></tr>';
       if (status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit) lastVisitedInClosest = true;
     }
   }
