@@ -4930,7 +4930,7 @@ function availabilityHTML(status,useCustomerAddress){
   }
   htmlTable += '</table>';
   if (!useCustomerAddress){
-    htmlTable += "<a onclick='return availabilityHTML(null,true)'>Show dealerships close to customer address</a>";
+    htmlTable += "<a onclick='return getWorkshopAvailability(null,true)'>Show dealerships close to customer address</a>";
   }
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
