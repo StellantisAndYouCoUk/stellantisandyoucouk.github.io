@@ -4839,7 +4839,7 @@ if ($('div[class="kn-table kn-view view_3878"]')){
   getWorkshopAvailability();
 });
 
-function getWorkshopAvailability(status = null,retry = 1){
+function getWorkshopAvailability(status = null,useCustomerAddress=false,retry = 1){
   console.log('v2')
   try {
     if (!status || !status.availabilityData){
@@ -4853,7 +4853,7 @@ function getWorkshopAvailability(status = null,retry = 1){
 
     let customerAddress = $('div[class="field_308"]>div>span>span').text();
     console.log('customerAddress',customerAddress)
-    if (customerAddress!==''){
+    if (customerAddress!=='' && useCustomerAddress){
       if (!status || !status.addressData){
         let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
         console.log('closestD',closestD)
@@ -4878,12 +4878,12 @@ function getWorkshopAvailability(status = null,retry = 1){
       }
     }
 
-    if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status);
+    if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status, useCustomerAddress);
 
     if (retry < 10 && (!status.lastVisitData || !status.addressData)){
       console.log('some status empty, wait',retry)
       setTimeout(() => {
-        getWorkshopAvailability(status,retry+1)
+        getWorkshopAvailability(status,useCustomerAddress,retry+1)
       }, retry*500);
       return;
     }
@@ -4914,10 +4914,10 @@ function formatDateTimeUpdatedWA(input){
   return output;
 }
 
-function availabilityHTML(status){
+function availabilityHTML(status,useCustomerAddress){
   let lastVisitedInClosest = false;
   let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td>Customer<br>Travel Time</td><td><b>MOT</b></td><td><b>Recall</b></td><td><b>Minor service</b></td><td><b>Major service</b></td></tr>';
-  if (status.addressData && status.addressData.closestD){
+  if (useCustomerAddress && status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
       if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'<br />('+formatDateTimeUpdatedWA(avail.updatedDateTime)+')</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td></tr>';
