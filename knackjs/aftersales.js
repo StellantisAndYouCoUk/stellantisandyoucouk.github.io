@@ -4904,6 +4904,7 @@ function formatDateWA(input){
 function formatDateTimeUpdatedWA(input){
   let output = '';
   let date = new Date(input);
+  let isToday = (today.toDateString() == dateTimeOfFirstRun.toDateString());
   if (!isToday) output = formatDateGBShortNotYear(date)+' ';
   output = output + date.getHours()+':'+date.getMinutes().toFixed(2);
   return output;
