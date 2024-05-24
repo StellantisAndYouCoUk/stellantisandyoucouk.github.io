@@ -4929,6 +4929,9 @@ function availabilityHTML(status,useCustomerAddress){
     if (avail) htmlTable += '<tr><td>'+status.lastVisitData.lastDealerVisit.replace('Stellantis &You','')+'<br /><b>Last Visited</b></td><td>Not computed</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td></tr>';
   }
   htmlTable += '</table>';
+  if (!useCustomerAddress){
+    htmlTable += "<a onclick='return availabilityHTML(null,true)'>Show dealerships close to customer address</a>";
+  }
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
 }
