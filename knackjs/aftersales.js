@@ -4900,7 +4900,7 @@ function formatDateWA(input){
 
 function availabilityHTML(status){
   let lastVisitedInClosest = false;
-  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td>Customer<br>Travel Time</td><td>MOT</td><td>Recall</td><td>Small service</td><td>Large service</td></tr>';
+  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td>Customer<br>Travel Time</td><td><b>MOT</b></td><td><b>Recall</b></td><td><b>Minor service</b></td><td><b>Major service</b></td></tr>';
   if (status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
