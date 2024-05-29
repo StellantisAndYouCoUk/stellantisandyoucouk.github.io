@@ -4814,31 +4814,3 @@ function pad(n) {return n < 10 ? "0"+n : n;}
 function dateToGB(dateobj){
     return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
 }
-
-// Code to wait following Form Submission while Retrieving Signed Enquiry Max Order Form
-
-$(document).on('knack-form-submit.view_7036', function(event, view, data) { 
-
-
-	setTimeout(function(){ 
-
-    	Knack.showSpinner();
-
-    }, 0); 
-
-  
-
-	commandURL = "https://hook.eu1.make.celonis.com/m4b8ethe82abcdnmoue520v576o1xxar?recordid=" + data.id ;
-
-
- 	$.get(commandURL, function(data, status){
-
-
-      Knack.hideSpinner();
-
-      $(".kn-message.success").html("<b>" + data + "</b>");
-
-
-    });
-
-});
