@@ -3023,7 +3023,7 @@ function recursivecallscene_1313(){
 
 //****************** Show Alert & Refresh Fleet Page - Spinner Whilst Connecting Orders ****************//
 
-$(document).on('knack-record-update.view_4844', function(event, view, data) {
+$(document).on('knack-form-submit.view_4844', function(event, view, data) { 
   
   setTimeout(function () { location.hash = location.hash + "#"; }, 12000);
   
