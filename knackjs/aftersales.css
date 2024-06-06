@@ -2162,6 +2162,12 @@ div.tooltipDiv {
   overflow: visible;
 }
 
+/*CIF Table in Job Card*/
+
+#view_4088 {
+  overflow: visible;
+}
+
 #scanDocument {
 	background-color: #FFA100;
   	color: #FFFFFF;
