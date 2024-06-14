@@ -4932,7 +4932,7 @@ function availabilityHTML(status,useCustomerAddress){
   }
   htmlTable += '</table>';
   if (!useCustomerAddress){
-    htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a href="#after-sales-vehicle-lookup/" onclick="return getWorkshopAvailability(null,true)" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Show dealerships close to customer address</span></span> <!----></a></span></div></div>';
+    htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getWorkshopAvailability(null,true)" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Show dealerships close to customer address</span></span> <!----></a></span></div></div>';
   }
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
