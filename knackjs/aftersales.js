@@ -3889,6 +3889,8 @@ $(document).on('knack-view-render.view_3841', function (event, view, data) {
   }
 });
 
+
+//C/D Check-in form motability photo
 $(document).on('knack-view-render.view_3221', function (event, view, data) {
   embedPhotoApp();
   let appSettings2718 = {
