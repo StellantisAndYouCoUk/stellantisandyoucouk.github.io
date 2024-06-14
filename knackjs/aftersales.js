@@ -4930,7 +4930,7 @@ function availabilityHTML(status,useCustomerAddress){
   }
   htmlTable += '</table>';
   if (!useCustomerAddress){
-    htmlTable += "<a onclick='return getWorkshopAvailability(null,true)'>Show dealerships close to customer address</a>";
+    htmlTable += '<div class="kn-details-column first column is-horizontal kn-details-group-column-empty" style="flex-basis: 100%"><div class="kn-details-group column-1 columns"><div class="kn-details-group-column column"><div class="kn-label-left kn-table is-unbordered"><div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getWorkshopAvailability(null,true)" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Show dealerships close to customer address</span></span></a></span></div></div></div></div></div></div>';
   }
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
