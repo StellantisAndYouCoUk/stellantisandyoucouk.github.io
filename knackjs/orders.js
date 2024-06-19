@@ -3020,15 +3020,3 @@ $(document).on('knack-scene-render.scene_1313', function(event, scene) {
 function recursivecallscene_1313(){
  setTimeout(function () { if($("#view_4594").is(":visible")==true){ Knack.views["view_4594"].model.fetch();recursivecallscene_1313();} }, 60000);
 }
-
-//****************** Show Alert & Refresh Fleet Page - Spinner Whilst Connecting Orders ****************//
-
-$(document).on('knack-form-submit.view_4844', function(event, view, data) { 
-  
-  setTimeout(function () { location.hash = location.hash + "#"; }, 12000);
-  
-  alert("Please wait while we find existing orders for this customer. Click 'OK' & this page will refresh in a few moments...");
-
-  Knack.showSpinner();
-  
-});
