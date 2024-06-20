@@ -1800,6 +1800,12 @@ $(document).on('knack-form-submit.view_1180', function(event, view, data) {
   callPostHttpRequest("https://hook.integromat.com/f1k56q7sd97mlqn37v37y9s759it9ghn", {"Record ID":data.id},"Aftersales VR New Message")
 });
 
+// Refresh Contact Centre Feedback Page - Request table on update to latest update field
+
+$(document).on('knack-scene-render.scene_526', function(event, scene) {
+  refreshWithData('1528', 'TITLE', 'TEXT $field_351', 'field_2850');
+});
+
 //Refresh Virtual Reception table on Vehicle lookup page         
 
 $(document).on('knack-scene-render.scene_20', function(event, scene) {
