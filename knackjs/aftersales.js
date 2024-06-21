@@ -284,8 +284,11 @@ function stopLoading(viewID){
   });
 }
 
+var currentRefreshScene = '';
 function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0){
   console.log('recursiveSceneRefresh',sceneId,runCount)
+  if (currentRefreshScene === sceneId) return;
+  currentRefreshScene = sceneId;
   setTimeout(function () { 
     if ($('div[id="kn-scene_'+sceneId+'"]').length===0) return;
     for (let i = 0;i<viewsArray.length;i++){
