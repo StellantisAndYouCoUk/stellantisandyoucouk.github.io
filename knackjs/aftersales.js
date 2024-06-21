@@ -284,13 +284,14 @@ function stopLoading(viewID){
   });
 }
 
-function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval){
+function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0){
+  console.log('recursiveSceneRefresh',sceneId,runCount)
   setTimeout(function () { 
     if ($('div[id="kn-scene_'+sceneId+'"]').length===0) return;
     for (let i = 0;i<viewsArray.length;i++){
       if($("#"+viewsArray[i]+"").is(":visible")==true) Knack.views[viewsArray[i]].model.fetch();
     }
-    recursiveSceneRefresh(sceneId,viewsArray,refreshInterval);
+    recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
     }, refreshInterval);
 }
 
