@@ -194,6 +194,26 @@ hashCode = function(elem) {
   return hash;
 };
 
+var currentRefreshScene = [];
+//Reloads views from viewsArray in scene with sceneId in selected interval
+function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0){
+  console.log('recursiveSceneRefresh',sceneId,runCount)
+  //If request for start of refresh of same scene comes, do nothing, just exit
+  if (currentRefreshScene.includes(sceneId) && runCount === 0) {console.log('refresh '+sceneId+',new refresh of same scene, exiting'); return;}
+  //Adding new scene refresh to list
+  currentRefreshScene.push(sceneId);
+  setTimeout(function () { 
+    //Check if we are still in the same scene, we are trying to refresh views, if not exit
+    if ($('div[id="kn-scene_'+sceneId+'"]').length===0) {console.log('refresh '+sceneId+', another scene, stop refresh'); currentRefreshScene = currentRefreshScene.filter(el => el !== sceneId); return;} 
+    //Refresh views
+    for (let i = 0;i<viewsArray.length;i++){
+      if($("#"+viewsArray[i]+"").is(":visible")==true) Knack.views[viewsArray[i]].model.fetch();
+    }
+    //Call me once again to do it after set refreshInterval
+    recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
+    }, refreshInterval);
+}
+
 // ************************************************************************************************************************************************
 // ************Hyneks Code to Embed new app and autologin for Ordrs App aded 08/05/19**************************************************************
 // ************************************************************************************************************************************************
@@ -1552,56 +1572,32 @@ $(document).on('knack-view-render.view_6267', function(event, view, data) {
 // ----------  refresh Prep Centre driver pickup table every 60 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_1152', function(event, scene) {
-  recursivecallscene_1152();
+  recursiveSceneRefresh('1152',['view_3435','view_3437'],100000)
 });
-
-function recursivecallscene_1152(){
- setTimeout(function () { 
-    if($("#view_3435").is(":visible")==true){ Knack.views["view_3435"].model.fetch()};
-    if($("#view_3437").is(":visible")==true){ Knack.views["view_3437"].model.fetch()};
-  recursivecallscene_1152(); }, 100000);
-}
 
 // ----------  refresh Prep Centre Table every 60 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_1150', function(event, scene) {
- recursivecallscene_1150();
+  recursiveSceneRefresh('1150',['view_3432'],300000)
 });
-
-function recursivecallscene_1150(){
- setTimeout(function () { if($("#view_3432").is(":visible")==true){ Knack.views["view_3432"].model.fetch();recursivecallscene_1150();} }, 300000);
-}
 
 // ----------  refresh Prep Centre Dealer View Table every 60 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_1145', function(event, scene) {
- recursivecallscene_1145();
+  recursiveSceneRefresh('1145',['view_3418'],100000)
 });
-
-function recursivecallscene_1145(){
- setTimeout(function () { if($("#view_3418").is(":visible")==true){ Knack.views["view_3418"].model.fetch();recursivecallscene_1145();} }, 100000);
-}
 
 // ----------  refresh Prep Centre Daily counters Table every 60 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_2097', function(event, scene) {
- recursivecallscene_2097();
+  recursiveSceneRefresh('2097',['view_6774'],60000)
 });
-
-function recursivecallscene_2097(){
- setTimeout(function () { if($("#view_6774").is(":visible")==true){ Knack.views["view_6774"].model.fetch();recursivecallscene_2097();} }, 60000);
-}
-
 
 // ----------  refresh Enquiry Max Table every 5 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_146', function(event, scene) {
- recursivecallscene_14();
+  recursiveSceneRefresh('146',['view_3254'],5000)
 });
-
-function recursivecallscene_14(){
- setTimeout(function () { if($("#view_3254").is(":visible")==true){ Knack.views["view_3254"].model.fetch();recursivecallscene_14();} }, 5000);
-}
 
 function createCookie(name, value, days) {
     var expires;
@@ -2675,7 +2671,7 @@ prepareCameraView(location.origin+"/digital#used-vehicle-check-in/used-vehicle-c
 // refresh background replaced image at used vehicle check in - disposal selection page
 
 $(document).on('knack-scene-render.scene_909', function(event, scene) {
- recursivecallscene_909();
+  recursiveSceneRefresh('909',['view_3927'],100000)
  $('div[class="field_5038"]').hide()
  setTimeout(function(){
   refreshScene909();
@@ -2693,20 +2689,11 @@ function refreshScene909(){
   sceneRefresh(refreshData);
 }
 
-
-function recursivecallscene_909(){
- setTimeout(function () { if($("#view_3927").is(":visible")==true){ Knack.views["view_3927"].model.fetch();recursivecallscene_909();} }, 100000);
-}
-
 // ----------  refresh Parts Hub table table every 10 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_1274', function(event, scene) {
- recursivecallscene_1274();
+  recursiveSceneRefresh('1274',['view_3934'],10000)
 });
-
-function recursivecallscene_1274(){
- setTimeout(function () { if($("#view_3934").is(":visible")==true){ Knack.views["view_3934"].model.fetch();recursivecallscene_1274();} }, 10000);
-}
 
 // LZW-compress a string
 function lzw_encode(s) {
@@ -3385,12 +3372,8 @@ $(document).on('knack-form-submit.view_4733', function(event, view, data) {
 
 
 $(document).on('knack-scene-render.scene_1417', function(event, scene) {
- recursivecallscene_1417();
+  recursiveSceneRefresh('1417',['view_4579'],10000)
 });
-
-function recursivecallscene_1417(){
- setTimeout(function () { if($("#view_4579").is(":visible")==true){ Knack.views["view_4579"].model.fetch();recursivecallscene_1417();} }, 10000);
-}
 
 //Trigger Integromat to Unreserve Vehicle via Updates to Website/AutoTrader From Used Stock Management - Edit Adverts 
 $(document).on('knack-form-submit.view_4857', function(event, view, data) { 
@@ -3949,23 +3932,15 @@ $(document).on('knack-form-submit.view_5511', function(event, view, data) {
 
 
 $(document).on('knack-scene-render.scene_1599', function(event, scene) {
- recursivecallscene_1599();
+  recursiveSceneRefresh('1599',['view_5199'],10000)
 });
-
-function recursivecallscene_1599(){
- setTimeout(function () { if($("#view_5199").is(":visible")==true){ Knack.views["view_5199"].model.fetch();recursivecallscene_1599();} }, 10000);
-}
 
 // Refresh the table on Physical Stock Audit Page        
 
 
 $(document).on('knack-scene-render.scene_1601', function(event, scene) {
- recursivecallscene_1601();
+  recursiveSceneRefresh('1601',['view_5478'],10000)
 });
-
-function recursivecallscene_1601(){
- setTimeout(function () { if($("#view_5478").is(":visible")==true){ Knack.views["view_5478"].model.fetch();recursivecallscene_1601();} }, 10000);
-}
 
 //****************** Refresh Location and Video Page Upon Form Submission ****************//
 
@@ -4706,21 +4681,9 @@ $(document).on('knack-form-submit.view_6421', function(event, view, data) {
   callPostHttpRequest("https://hook.integromat.com/j5s5ksuxtqjd4jcwh41qm5gy2afujni3", {"Record ID":data.id,"TypeOfWash":data.field_6778, "AftersalesRecordID":data.field_6787},"Valeting check in out (Master App)")
 });
 //refresh service wash table every 5 minutes
-	$(document).on('knack-scene-render.scene_1387', function(event, scene) {
- recursivecallscene_1387();
+$(document).on('knack-scene-render.scene_1387', function(event, scene) {
+    recursiveSceneRefresh('1387',['view_6466'],30000)
 });
-
-function recursivecallscene_1387(){
- setTimeout(function () { if($("#view_6466").is(":visible")==true){ Knack.views["view_6466"].model.fetch();recursivecallscene_1387();} }, 30000);
-}
-
-//refresh other washes every 5 minutes
-function recursivecallscene_2021(){
- setTimeout(function () { 
-  if($("#view_6364").is(":visible")==true){ Knack.views["view_6364"].model.fetch();}
-  if($("#view_6361").is(":visible")==true){ Knack.views["view_6361"].model.fetch();}
-  recursivecallscene_2021(); }, 30000);
-}
 
 // Prep center confirmed work completed and email Dealer to complete work on their side
 $(document).on('knack-form-submit.view_3443', function(event, view, data) { 
