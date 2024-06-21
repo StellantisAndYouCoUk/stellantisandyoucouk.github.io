@@ -3471,6 +3471,8 @@ $(document).on('knack-view-render.view_2686', function (event, view, data) {
     $('td[class*="field_1537"]').hide(); 
 	  $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide(); 
+		    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
 	// $('th[class="field_2278"]').hide();
    // $('td[class*="field_2278"]').hide(); 
 /*allocate tech to hide
