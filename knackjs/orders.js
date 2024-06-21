@@ -13,6 +13,26 @@ function dateTimeToGBWithoutSeconds(dateobj){
   return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear()+' '+dateobj.toLocaleTimeString("en-GB").substring(0,5);
 }
 
+var currentRefreshScene = [];
+//Reloads views from viewsArray in scene with sceneId in selected interval
+function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0){
+  console.log('recursiveSceneRefresh',sceneId,runCount)
+  //If request for start of refresh of same scene comes, do nothing, just exit
+  if (currentRefreshScene.includes(sceneId) && runCount === 0) {console.log('refresh '+sceneId+',new refresh of same scene, exiting'); return;}
+  //Adding new scene refresh to list
+  currentRefreshScene.push(sceneId);
+  setTimeout(function () { 
+    //Check if we are still in the same scene, we are trying to refresh views, if not exit
+    if ($('div[id="kn-scene_'+sceneId+'"]').length===0) {console.log('refresh '+sceneId+', another scene, stop refresh'); currentRefreshScene = currentRefreshScene.filter(el => el !== sceneId); return;} 
+    //Refresh views
+    for (let i = 0;i<viewsArray.length;i++){
+      if($("#"+viewsArray[i]+"").is(":visible")==true) Knack.views[viewsArray[i]].model.fetch();
+    }
+    //Call me once again to do it after set refreshInterval
+    recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
+    }, refreshInterval);
+}
+
 // Listen for the list page view
 $(document).on('knack-records-render.view_2157', function(event, view, records) {
   // Do something after the records render
@@ -678,12 +698,8 @@ function scanDocsLinkFunction(selector_view){
 // ----------  refresh Sales Admin To Do (New Deal File Admin) Table every 50 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_989', function(event, scene) {
- recursivecallscene_98();
+  recursiveSceneRefresh('989',['view_3766','view_3767'],50000)
 });
-
-function recursivecallscene_98(){
- setTimeout(function () { if($("#view_3766").is(":visible")==true){ Knack.views["view_3766"].model.fetch()};if($("#view_3767").is(":visible")==true){ Knack.views["view_3767"].model.fetch();};recursivecallscene_98();}, 50000);
-}
 
 
 // NEW DEAL FILE ADMIN AND MANAGER VIEW - HIDE AND EXPAND TABLES
@@ -3014,9 +3030,5 @@ function serviceVisitsTooltips(viewId = '324', fieldId = '325'){
 // ----------  refresh Fleet Bulk CRONOS Orders to Tag in Customer First table every 60 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_1313', function(event, scene) {
- recursivecallscene_1313();
+  recursiveSceneRefresh('1313',['view_4594'],60000)
 });
-
-function recursivecallscene_1313(){
- setTimeout(function () { if($("#view_4594").is(":visible")==true){ Knack.views["view_4594"].model.fetch();recursivecallscene_1313();} }, 60000);
-}
