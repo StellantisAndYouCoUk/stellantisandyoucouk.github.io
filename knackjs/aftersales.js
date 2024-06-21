@@ -285,15 +285,21 @@ function stopLoading(viewID){
 }
 
 var currentRefreshScene = [];
+//Reloads views from viewsArray in scene with sceneId in selected interval
 function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0){
   console.log('recursiveSceneRefresh',sceneId,runCount)
+  //If request for start of refresh of same scene comes, do nothing, just exit
   if (currentRefreshScene.includes(sceneId) && runCount === 0) {console.log('refresh '+sceneId+',new refresh of same scene, exiting'); return;}
+  //Adding new scene refresh to list
   currentRefreshScene.push(sceneId);
   setTimeout(function () { 
+    //Check if we are still in the same scene, we are trying to refresh views, if not exit
     if ($('div[id="kn-scene_'+sceneId+'"]').length===0) {console.log('refresh '+sceneId+', another scene, stop refresh'); currentRefreshScene = currentRefreshScene.filter(el => el !== sceneId); return;} 
+    //Refresh views
     for (let i = 0;i<viewsArray.length;i++){
       if($("#"+viewsArray[i]+"").is(":visible")==true) Knack.views[viewsArray[i]].model.fetch();
     }
+    //Call me once again to do it after set refreshInterval
     recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
     }, refreshInterval);
 }
