@@ -3372,7 +3372,7 @@ $(document).on('knack-view-render.view_2881', function (event, view, data) {
 
 // ------------ Refresh ONSITE jobs in ONE Table (workshop/CA view)-----------------------//
 $(document).on('knack-scene-render.scene_761', function(event, scene) {
-  recursiveSceneRefresh('761',['view_2246'],300000);
+  recursiveSceneRefresh('761',['view_2246'],120000);
 });
 
 //Workshop Controller all Jobs in one table (OFF-site Jobs)
@@ -3493,7 +3493,7 @@ $(document).on('knack-view-render.view_2686', function (event, view, data) {
 });
 
 $(document).on('knack-scene-render.scene_753', function(event, scene) {
-  recursiveSceneRefresh('753',['view_2686'],300000);
+  recursiveSceneRefresh('753',['view_2686'],120000);
 });
 
 //Workshop Controller all in one table (Off-site jobs)
