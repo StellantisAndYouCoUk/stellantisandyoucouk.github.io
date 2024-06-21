@@ -284,6 +284,16 @@ function stopLoading(viewID){
   });
 }
 
+function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval){
+  setTimeout(function () { 
+    if ($('div[id="kn-scene_'+sceneId+'"]').length===0) return;
+    for (let i = 0;i<viewsArray.length;i++){
+      if($("#"+viewsArray[i]+"").is(":visible")==true) Knack.views[viewsArray[i]].model.fetch();
+    }
+    recursiveSceneRefresh(sceneId,viewsArray,refreshInterval);
+    }, refreshInterval);
+}
+
 //function saveStats(stats){
   //console.log('saveStats');
   //let commandURL = "https://hook.integromat.com/cqqou5f36rhra151jzixw3mmhm5fxf1a" ;
@@ -1192,12 +1202,8 @@ $(document).on('knack-form-submit.view_310', function(event, view, data) {
 // ----------  efresh customer account applications report every 60 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_111', function(event, scene) {
- recursivecallscene_111();
+ recursiveSceneRefresh('111',['view_359','view_634'],100000)
 });
-
-function recursivecallscene_111(){
- setTimeout(function () { if($("#view_359").is(":visible")==true){ Knack.views["view_359"].model.fetch();}if($("#view_634").is(":visible")==true){ Knack.views["view_634"].model.fetch();}recursivecallscene_111(); }, 100000);
-}
 
 //trigger Tarot API
 $(document).on('knack-form-submit.view_1106', function(event, view, data) {
@@ -1418,12 +1424,8 @@ try{
 // ----------  refresh status of tarot upload ----------
 
 $(document).on('knack-scene-render.scene_224', function(event, scene) {
- recursivecallscene_224();
+  recursiveSceneRefresh('224',['view_638'],30000);
 });
-
-function recursivecallscene_224(){
- setTimeout(function () { if($("#view_638").is(":visible")==true){ Knack.views["view_638"].model.fetch();recursivecallscene_224();} }, 30000);
-}
 
 // Trigger Customer Incident Form
 
@@ -1716,22 +1718,14 @@ $input.siblings('.typed-chars').text($input.val().length + " out of 120 Characte
 
 
 $(document).on('knack-scene-render.scene_94', function(event, scene) {
- recursivecallscene_94();
+  recursiveSceneRefresh('94',['view_1337'],10000);
 });
-
-function recursivecallscene_94(){
- setTimeout(function () { if($("#view_1337").is(":visible")==true){ Knack.views["view_1337"].model.fetch();recursivecallscene_94();} }, 10000);
-}
 
 // ----------  Refresh Aftersales Customer Exit Survey Results table every 60 seconds but not the page itself  ---------- //
 
 $(document).on('knack-scene-render.scene_148', function(event, scene) {
- recursivecallscene_148();
+  recursiveSceneRefresh('148',['view_423'],10000);
 });
-
-function recursivecallscene_148(){
- setTimeout(function () { if($("#view_423").is(":visible")==true){ Knack.views["view_423"].model.fetch();recursivecallscene_148();} }, 100000);
-}
 
 // Exit Survey E-mails webhook to trigger – 
 $(document).on('knack-form-submit.view_307', function(event, view, data) { 
@@ -1741,22 +1735,14 @@ $(document).on('knack-form-submit.view_307', function(event, view, data) {
 
 // ------------ Refresh Aftersales Wip Management Table every 20 mins but not the page itself -----------------------//
 $(document).on('knack-scene-render.scene_152', function(event, scene) {
- recursivecallscene_152();
+  recursiveSceneRefresh('152',['view_596'],1200000);
 });
-
-function recursivecallscene_152(){
- setTimeout(function () { if($("#view_596").is(":visible")==true){ Knack.views["view_596"].model.fetch();recursivecallscene_152();} }, 1200000);
-}
 
 // Refresh the Parts Hubs Pre Pick List         
 
 $(document).on('knack-scene-render.scene_340', function(event, scene) {
- recursivecallscene_340();
+ recursiveSceneRefresh('340',['view_947'],300000);
 });
-
-function recursivecallscene_340(){
- setTimeout(function () { if($("#view_947").is(":visible")==true){ Knack.views["view_947"].model.fetch();recursivecallscene_340();} }, 300000);
-}
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 
@@ -2029,22 +2015,13 @@ $(document).on('knack-view-render.view_1248', function(event, view) {
 
 // ------------ Refresh Hub to Hub transfer every 2 mins but not the page itself -----------------------//
 $(document).on('knack-scene-render.scene_439', function(event, scene) {
- recursivecallscene_439();
+  recursiveSceneRefresh('439',['view_1248'],120000);
 });
-
-function recursivecallscene_439(){
- setTimeout(function () { if($("#view_1248").is(":visible")==true){ Knack.views["view_1248"].model.fetch();recursivecallscene_439();} }, 120000);
-}
-
 
 // ------------ Refresh WIP Reporting status but not the page itself -----------------------//
 $(document).on('knack-scene-render.scene_152', function(event, scene) {
- recursivecallscene_152();
+  recursiveSceneRefresh('152',['view_1285'],120000);
 });
-
-function recursivecallscene_152(){
- setTimeout(function () { if($("#view_1285").is(":visible")==true){ Knack.views["view_1285"].model.fetch();recursivecallscene_439();} }, 120000);
-}
 
 $(document).on('knack-view-render.view_1297', function (event, view, data) {
   $('div[class*="field_1687"]>div[class="kn-detail-body"]>span').hide();
@@ -3150,14 +3127,8 @@ $(document).on('knack-view-render.view_3168', function (event, view, data) {
 }); 
 
 $(document).on('knack-scene-render.scene_1017', function(event, scene) {
- recursivecallscene_1017();
+  recursiveSceneRefresh('1017',['view_3168'],300000);
 });
-
-function recursivecallscene_1017(){
- setTimeout(function () { if($("#view_3168").is(":visible")==true){ Knack.views["view_3168"].model.fetch();recursivecallscene_1017();} }, 300000);
-}
-
-
 
 //trigger Create Service Wash From Job card v2
 $(document).on('knack-form-submit.view_2362', function(event, view, data) { 
@@ -3391,13 +3362,8 @@ $(document).on('knack-view-render.view_2881', function (event, view, data) {
 
 // ------------ Refresh ONSITE jobs in ONE Table (workshop/CA view)-----------------------//
 $(document).on('knack-scene-render.scene_761', function(event, scene) {
- recursivecallscene_761();
- 
+  recursiveSceneRefresh('761',['view_2246'],300000);
 });
-
-function recursivecallscene_761(){
- setTimeout(function () { if($("#view_2246").is(":visible")==true){ Knack.views["view_2246"].model.fetch();recursivecallscene_761();} }, 300000);
-}
 
 //Workshop Controller all Jobs in one table (OFF-site Jobs)
 $(document).on('knack-view-render.view_2478', function (event, view, data) {
@@ -3414,17 +3380,8 @@ $(document).on('knack-view-render.view_2478', function (event, view, data) {
 
 // ------------ Refresh Off-site jobs in ONE Table (workshop/CA view)-----------------------//
 $(document).on('knack-scene-render.scene_755', function(event, scene) {
- recursivecallscene_755();
- 
+  recursiveSceneRefresh('755',['view_2478','view_2722'],30000);
 });
-
-function recursivecallscene_755(){
- setTimeout(function () { 
-  if($("#view_2478").is(":visible")==true) Knack.views["view_2478"].model.fetch();
-  if($("#view_2722").is(":visible")==true) Knack.views["view_2722"].model.fetch();
-  recursivecallscene_755();
-  }, 30000);
-}
 
 $(document).on('knack-view-render.view_3008', function (event, view, data) {
   embedPhotoApp();
@@ -3524,13 +3481,8 @@ $(document).on('knack-view-render.view_2686', function (event, view, data) {
 });
 
 $(document).on('knack-scene-render.scene_753', function(event, scene) {
- recursivecallscene_753();
+  recursiveSceneRefresh('753',['view_2686'],300000);
 });
-
-function recursivecallscene_753(){
- setTimeout(function () { if($("#view_2686").is(":visible")==true){ Knack.views["view_2686"].model.fetch();recursivecallscene_753();} }, 300000);
-	 
-}
 
 //Workshop Controller all in one table (Off-site jobs)
 $(document).on('knack-view-render.view_2722', function (event, view, data) {
@@ -3574,13 +3526,8 @@ $(document).on('knack-view-render.view_2892', function (event, view, data) {
 }); 
 
 $(document).on('knack-scene-render.scene_934', function(event, scene) {
- recursivecallscene_934();
+  recursiveSceneRefresh('934',['view_2892'],300000);
 });
-
-function recursivecallscene_934(){
- setTimeout(function () { if($("#view_2892").is(":visible")==true){ Knack.views["view_2892"].model.fetch();recursivecallscene_934();} }, 300000);
-	
-}
 
 // Trigger Licence Link - Customer Manually Enters Driving Licence
 
@@ -3763,13 +3710,8 @@ $(document).on('knack-form-submit.view_3592', function(event, view, data) {
 // ----------  refresh Enquiry Max Table every 5 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_778', function(event, scene) {
- recursivecallscene_778();
+  recursiveSceneRefresh('778',['view_2352'],5000);
 });
-
-function recursivecallscene_778(){
- setTimeout(function () { if($("#view_2352").is(":visible")==true){ Knack.views["view_2352"].model.fetch();recursivecallscene_778();} }, 1000);
-}
-
 
 /* Sticky Headers on Warranty admin table - this code locks the Table Header - CSS code is needed ref: line 3174*/
 
@@ -4332,38 +4274,12 @@ $(document).on('knack-form-submit.view_2881', function(event, view, data) {
 
   //refresh  new tech page every 5 seconds
 $(document).on('knack-scene-render.scene_935', function(event, scene) {
- recursivecallscene_935();
+  recursiveSceneRefresh('935',['view_2900','view_3126'],30000);
 });
-function recursivecallscene_935(){
- setTimeout(function () { 
-  if($("#view_2900").is(":visible")==true) Knack.views["view_2900"].model.fetch();
-  if($("#view_3126").is(":visible")==true) Knack.views["view_3126"].model.fetch();
-  recursivecallscene_935();
-  }, 30000);
-}
 
 $(document).on('knack-scene-render.scene_981', function(event, scene) {
- recursivecallscene_981();
+  recursiveSceneRefresh('981',['view_3223','view_3086'],30000);
 });
-function recursivecallscene_981(){
- setTimeout(function () { 
-  if($("#view_3223").is(":visible")==true) Knack.views["view_3223"].model.fetch();
-  if($("#view_3086").is(":visible")==true) Knack.views["view_3086"].model.fetch();
-  recursivecallscene_981();
-  }, 30000);
-}
-
-
-
-
-function recursivecallscene_1050(){
- setTimeout(function () { 
-  if($("#view_3307").is(":visible")==true) Knack.views["view_3307"].model.fetch();
-  if($("#view_3595").is(":visible")==true) Knack.views["view_3595"].model.fetch();
-  if($("#view_3805").is(":visible")==true) Knack.views["view_3805"].model.fetch();
-  recursivecallscene_1050();
-  }, 300000);
-}
 
 // refresh workshop table v1
 $(document).on('knack-scene-render.scene_1050', function(event, scene) {
@@ -4380,7 +4296,7 @@ $(document).on('knack-scene-render.scene_1050', function(event, scene) {
 	tooltipsTable('1050','3307','field_1537','field_2213');  
 	tooltipsTable('1050','3307','field_2298','field_2272');
 
-  recursivecallscene_1050();
+  recursiveSceneRefresh('1050',['view_3307','view_3595','view_3805'],300000);
 	console.log('Recursivecallscene_1050');
 });
 
@@ -4511,15 +4427,6 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('th[class="field_1532"]').hide();
     $('td[class*="field_1532"]').hide();	    
     });
-
-	//auto refresh for C/D Driver pick up and return table
-function recursivecallscene_1031(){
- setTimeout(function () { 
-  if($("#view_3218").is(":visible")==true){ Knack.views["view_3218"].model.fetch()};
-  if($("#view_3269").is(":visible")==true){ Knack.views["view_3269"].model.fetch()};
-  recursivecallscene_1031(); }, 30000);
-}
-
 
   //trigger get tyres and prices for a selected dealer from modal view
 $(document).on('knack-form-submit.view_3519', function(event, view, data) { 
@@ -4760,21 +4667,9 @@ function scanDocsLinkFunction(selector_view){
   });
 
 //auto refresh for workshop controller pots
-function recursivecallscene_1098(){
- setTimeout(function () { 
-  if($("#view_3474").is(":visible")==true) Knack.views["view_3474"].model.fetch();
-  if($("#view_3476").is(":visible")==true) Knack.views["view_3476"].model.fetch();
-  if($("#view_3483").is(":visible")==true) Knack.views["view_3483"].model.fetch();
-  if($("#view_3482").is(":visible")==true) Knack.views["view_3482"].model.fetch();
-  if($("#view_3477").is(":visible")==true) Knack.views["view_3477"].model.fetch();
-  if($("#view_3806").is(":visible")==true) Knack.views["view_3806"].model.fetch();
-  if($("#view_3826").is(":visible")==true) Knack.views["view_3826"].model.fetch();
-  recursivecallscene_1098();
-  }, 60000);
-}
 
 $(document).on('knack-scene-render.scene_1098', function(event, scene) {
- recursivecallscene_1098();
+  recursiveSceneRefresh('1098',['view_3474','view_3476','view_3483','view_3482','view_3477','view_3806','view_3826'],60000);
 //pots tooltips
 
 //view 3474
