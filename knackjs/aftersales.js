@@ -4895,29 +4895,4 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   }
 });*/
 
-// Code to wait following user selecting to stay on WIP
-
-$(document).on('knack-form-submit.view_1530', function(event, view, data) { 
-
-	if (data.field_2937 === "Yes")	
-
-	setTimeout(function(){ 
-
-    	Knack.showSpinner();
-
-    }, 0); 
-
- 	$.get(commandURL, function(data, status){
-
-
-      Knack.hideSpinner();
-
-      $(".kn-message.success").html("<b>" + data + "</b>");
-
-
-    });
-
-});
-
-
 
