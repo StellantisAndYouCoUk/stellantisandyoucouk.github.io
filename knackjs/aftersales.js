@@ -4895,4 +4895,6 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   }
 });*/
 
-
+$(document).on('knack-form-submit.view_1530', function(event, view, data) {
+$(‘html, body’).animate({ scrollTop: $(document).height() }, ‘fast’);
+});
