@@ -4784,3 +4784,14 @@ function pad(n) {return n < 10 ? "0"+n : n;}
 function dateToGB(dateobj){
     return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
 }
+
+// ----------  refresh Stock Mobility table every 5 seconds but not the page itself  ----------
+
+$(document).on('knack-scene-render.scene_2001', function(event, scene) {
+  recursiveSceneRefresh('2001',['view_6931'],5000)
+});
+
+$(document).on('knack-scene-render.scene_2001', function(event, scene) {
+  recursiveSceneRefresh('2001',['view_6932'],5000)
+});
+
