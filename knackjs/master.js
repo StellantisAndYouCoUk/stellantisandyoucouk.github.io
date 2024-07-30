@@ -3572,7 +3572,7 @@ $(document).on('knack-form-submit.view_5326', function(event, view, data) {
           }
         ]
 */
-function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
+function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null, reloadAfter = true){
   console.log('sceneRefresh');
   try {
     if (!startTime){
@@ -3644,7 +3644,7 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
             }
           }
         }
-        setTimeout(function () { location.hash = location.hash + "#"; }, 100);
+        if (reloadAfter) setTimeout(function () { location.hash = location.hash + "#"; }, 100);
       }
     }
   } catch (e){
@@ -4825,5 +4825,5 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
         views:['7312']   
     }
   ]
-  sceneRefresh(refreshData);
+  sceneRefresh(refreshData,null,1,null,false);
 }
