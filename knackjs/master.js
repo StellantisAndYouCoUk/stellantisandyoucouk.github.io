@@ -3620,7 +3620,7 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
     if (recheck && (new Date() - startTime)<120000){
         console.log('needs recheck')
         setTimeout(function(){
-            sceneRefresh(refreshData, startTime, runCounter + 1, stats);
+            sceneRefresh(refreshData, startTime, runCounter + 1, stats, reloadAfter);
         }, (runCounter<3?1500:2500));
     } else if ((new Date() - startTime)>120000){
       console.log('ending refresh without all done');
