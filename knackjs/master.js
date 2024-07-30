@@ -4799,3 +4799,7 @@ $(document).on('knack-scene-render.scene_2001', function(event, scene) {
   recursiveSceneRefresh('2001',['view_6932'],30000)
 });
 
+$(document).on('knack-scene-render.scene_2262', function(event, scene) {
+  fillLoading('7312')
+ });
+
