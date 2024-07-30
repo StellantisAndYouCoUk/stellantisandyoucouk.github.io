@@ -3640,7 +3640,7 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
         for (one of refreshData){
           if (!one.runAfterDone){
             for (oneView of one.views){
-              refreshView(oneView, true);
+              refreshView(oneView, true, false);
             }
           }
         }
