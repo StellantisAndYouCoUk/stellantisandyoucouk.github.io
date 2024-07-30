@@ -85,6 +85,19 @@ $(document).on('knack-view-render.any', function (event, view, data) {
   });
 });
 
+// Auto Capitalise Registration Input on CAP and AutoTrader Lookup //
+
+$(document).on('knack-view-render.any', function (event, view, data) {
+  //  ---------Auto Capitalise Regestration input-------------
+  $('input#field_9950').keyup(function() {
+      this.value = this.value.toUpperCase();
+      $(this).css("background-color", "#FFE74C");  			// yellow
+      $(this).css("font-weight", "bold", "important");		// bolder
+      $(this).css("text-align", "center", "important");		// centre
+      $(this).css("fontSize", "24px", "important");         // bigger
+  });
+});
+
 // --- Hide Robins & Day Logo on Customer Order Tracker View ---
 $(document).on('knack-view-render.view_1522', function(event, view) {
  var myElement = document.querySelector("#knack-logo");
