@@ -3654,7 +3654,7 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
 
 //This function refreshes view acording viewId, what is just view number!
 //Can be called from scene render, view render
-function refreshView(viewID, reload = false, fillLoading = true){
+function refreshView(viewID, reload = false, fillLoadingNow = true){
   try {
     var currModel = JSON.stringify(Knack.views['view_'+viewID].model.attributes);
     const a = {}
@@ -3665,7 +3665,7 @@ function refreshView(viewID, reload = false, fillLoading = true){
         //refresh view on page
         setTimeout(function(){
           Knack.views['view_'+viewID].render();
-          if (fillLoading) fillLoading(viewID);
+          if (fillLoadingNow) fillLoading(viewID);
         }, 50);
         return true;
       } else {
