@@ -4817,11 +4817,7 @@ function dateToGB(dateobj){
 // ----------  refresh Stock Mobility table every 30 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_2001', function(event, scene) {
-  recursiveSceneRefresh('2001',['view_6931'],30000)
-});
-
-$(document).on('knack-scene-render.scene_2001', function(event, scene) {
-  recursiveSceneRefresh('2001',['view_6932'],30000)
+  recursiveSceneRefresh('2001',['view_6931','view_6932'],30000)
 });
 
 $(document).on('knack-scene-render.scene_2262', function(event, scene) {
