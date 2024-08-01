@@ -2206,7 +2206,7 @@ div.tooltipDiv {
 #view_4098 {
   overflow: hidden;
 }
-/*Courtesy Car to PDF change font size and labels to make transparent*/ 
+/*Courtesy Car Started to PDF change font size and labels to make transparent*/ 
 #view_4242 {
   font-size: 9px;
 }
@@ -2219,5 +2219,22 @@ div.tooltipDiv {
   background-color: transparent;
 }
 #view_4239 .kn-detail-label {
+  background-color: transparent;
+}
+
+/*Courtesy Car Ended to PDF change font sizr and labels to email Customer*/
+
+#view_2357 {
+  font-size: 9px;
+}
+
+#view_4254 .kn-detail-label {
+  background-color: transparent;
+}
+
+#view_4255 .kn-detail-label {
+  background-color: transparent;
+}
+#view_4257 .kn-detail-label {
   background-color: transparent;
 }
