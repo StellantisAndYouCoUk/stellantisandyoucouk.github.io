@@ -4919,7 +4919,7 @@ $(document).on('knack-view-render.view_3808', function(event, view, data) {
   // Add SweetAlert2 JS
   $.getScript('https://cdn.jsdelivr.net/npm/sweetalert2@11', function() {
     // Now SweetAlert2 is loaded, you can use it here
-    $(".field_3158").click(() => {
+    $(".knViewLink__label").click(() => {
         Swal.fire({
             title: 'Bye!',
             text: 'You now leave p1!',
