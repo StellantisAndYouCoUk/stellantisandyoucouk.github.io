@@ -4912,7 +4912,11 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 
 
-$(document).on('knack-view-render.view_3808', function(event, view, data) {
+
+
+
+
+$(document).on('knack-view-render.view_3773', function(event, view, data) {
   console.log("View render event triggered");
 
   // Add SweetAlert2 CSS
@@ -4923,14 +4927,20 @@ $(document).on('knack-view-render.view_3808', function(event, view, data) {
     console.log("SweetAlert2 script loaded");
 
     // Now SweetAlert2 is loaded, you can use it here
-    $(".knViewLink__label").mouseleave(() => {
-        console.log("Mouse leave detected");
-        Swal.fire({
-            title: 'Bye!',
-            text: 'You now leave p1!',
-            icon: 'info',
-            confirmButtonText: 'OK'
-        });
+    $("a[data-kn-id=c9af2b88-7f0f-4686-a658-b902e4c566b3]").mouseenter(() => {
+
+      $('#myModal .modal-body').html('<p>Dynamic HTML content goes here.</p>');
+      // Open the modal
+      $('#myModal').modal('show');
+
+
+      
+        // console.log("Mouse leave detected");
+        // Swal.fire({
+        //   title: "Good job!",
+        //   text: "You clicked the button!",
+        //   icon: "success"
+        // });
     });
   });
 });
