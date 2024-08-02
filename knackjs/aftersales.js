@@ -4954,7 +4954,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                               <h3> 
   Search Contacts 
   <span class="htmx-indicator"> 
-    <img src="/img/bars.svg"/> Searching... 
+     Searching... 
    </span> 
 </h3>
 <input class="form-control" type="search" 
