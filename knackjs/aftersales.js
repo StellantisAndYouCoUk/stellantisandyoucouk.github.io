@@ -4951,7 +4951,30 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                           </div>
                           <div class="modal-body">
                               <!-- Your HTML content goes here -->
-                              <p>Some content inside the modal.</p>
+                              <h3> 
+  Search Contacts 
+  <span class="htmx-indicator"> 
+    <img src="/img/bars.svg"/> Searching... 
+   </span> 
+</h3>
+<input class="form-control" type="search" 
+       name="search" placeholder="Begin Typing To Search Users..." 
+       hx-post="/search" 
+       hx-trigger="input changed delay:500ms, search" 
+       hx-target="#search-results" 
+       hx-indicator=".htmx-indicator">
+
+<table class="table">
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="search-results">
+    </tbody>
+</table>
                           </div>
                           <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
