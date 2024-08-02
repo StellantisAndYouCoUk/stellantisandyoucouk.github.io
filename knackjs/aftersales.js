@@ -4910,16 +4910,21 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   }
 });*/
 
-// Change "view_1" to the view you want to listen for
-$(document).on('knack-view-render.view_3808', function(event, view, data) {
-  // Do something after the view renders
 
+
+$(document).on('knack-view-render.view_3808', function(event, view, data) {
+  console.log("View render event triggered");
+
+  // Add SweetAlert2 CSS
   $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" type="text/css" />');
 
   // Add SweetAlert2 JS
   $.getScript('https://cdn.jsdelivr.net/npm/sweetalert2@11', function() {
+    console.log("SweetAlert2 script loaded");
+
     // Now SweetAlert2 is loaded, you can use it here
     $(".knViewLink__label").mouseleave(() => {
+        console.log("Mouse leave detected");
         Swal.fire({
             title: 'Bye!',
             text: 'You now leave p1!',
@@ -4928,5 +4933,6 @@ $(document).on('knack-view-render.view_3808', function(event, view, data) {
         });
     });
   });
-
 });
+
+
