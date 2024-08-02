@@ -4909,3 +4909,10 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
     }
   }
 });*/
+
+// Change "view_1" to the view you want to listen for
+$(document).on('knack-view-render.view_3808', function(event, view, data) {
+  // Do something after the view renders
+  alert('listener for view: ' + view.key);
+});
+
