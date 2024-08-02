@@ -4938,32 +4938,23 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             console.log("HTMX loaded");
 
             // Add Modal Structure to the body
-            $('body').append(`
-                <div class="modal fade" id="myModal">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Modal Title</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Your HTML content goes here -->
-                                <p>Some content inside the modal.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `);
 
-            // Bind mouseleave event to the element with class .fa-cart-arrow-down
-            $(".fa-cart-arrow-down").mouseleave(function() {
+            $.get(/modalHTML/modal.html, (modal)=>{
+
+              $('body').append(modal);
+
+              
+              $(".fa-cart-arrow-down").mouseleave(function() {
                 $('#myModal .modal-body').html('<p>Dynamic HTML content goes here.</p>');
                 $('#myModal').modal('show');
                 console.log("Mouse leave detected");
             });
+
+            })
+            
+
+            // Bind mouseleave event to the element with class .fa-cart-arrow-down
+            
         });
     });
 });
