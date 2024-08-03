@@ -4916,99 +4916,99 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 
 
-$(document).on('knack-view-render.view_3773', function(event, view, data) {
-  console.log("View render event triggered");
+// $(document).on('knack-view-render.view_3773', function(event, view, data) {
+//   console.log("View render event triggered");
 
-  // Add SweetAlert2 CSS
-  $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" type="text/css" />');
+//   // Add SweetAlert2 CSS
+//   $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" type="text/css" />');
 
-  // Add SweetAlert2 JS
-  $.getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', function() {
-    console.log("jQuery loaded");
+//   // Add SweetAlert2 JS
+//   $.getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', function() {
+//     console.log("jQuery loaded");
 
-    // Load Bootstrap CSS
-    $('head').append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
+//     // Load Bootstrap CSS
+//     $('head').append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     
-    // Load Bootstrap JS
-    $.getScript('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', function() {
-        console.log("Bootstrap JS loaded");
+//     // Load Bootstrap JS
+//     $.getScript('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', function() {
+//         console.log("Bootstrap JS loaded");
 
-        // Load HTMX
-        $.getScript('https://unpkg.com/htmx.org@1.8.3/dist/htmx.min.js', function() {
-            console.log("HTMX loaded");
+//         // Load HTMX
+//         $.getScript('https://unpkg.com/htmx.org@1.8.3/dist/htmx.min.js', function() {
+//             console.log("HTMX loaded");
 
-            // Add Modal Structure to the body
+//             // Add Modal Structure to the body
 
           
-            $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
-              // Remove any existing modal with the same ID to prevent duplicates
-              $('#myModal').remove();
+//             $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
+//               // Remove any existing modal with the same ID to prevent duplicates
+//               $('#myModal').remove();
           
-              // Append the modal structure to the body
-              $('body').append(`
-                <!-- Modal Structure -->
-                <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content" style="flex-direction: row;">
-                            <div>                          
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ordered</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-                                <div class="modal-body">
-                                    <ul>
-                                        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
-                                        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
-                                        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
-                                        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
-                                        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Invoiced</h4>
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                </div>
-                                <div class="modal-body">
-                                    <ul>
-                                        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
-                                        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
-                                        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
-                                        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
-                                        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
-                                    </ul>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              `);
+//               // Append the modal structure to the body
+//               $('body').append(`
+//                 <!-- Modal Structure -->
+//                 <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
+//                     <div class="modal-dialog modal-lg">
+//                         <div class="modal-content" style="flex-direction: row;">
+//                             <div>                          
+//                                 <div class="modal-header">
+//                                     <h4 class="modal-title">Ordered</h4>
+//                                     <button type="button" class="close" data-dismiss="modal">×</button>
+//                                 </div>
+//                                 <div class="modal-body">
+//                                     <ul>
+//                                         <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
+//                                     </ul>
+//                                 </div>
+//                             </div>
+//                             <div>
+//                                 <div class="modal-header">
+//                                     <h4 class="modal-title">Invoiced</h4>
+//                                     <button type="button" class="close" data-dismiss="modal">×</button>
+//                                 </div>
+//                                 <div class="modal-body">
+//                                     <ul>
+//                                         <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
+//                                         <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
+//                                     </ul>
+//                                 </div>
+//                                 <div class="modal-footer">
+//                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//               `);
           
-              // Show the modal
-              $('#myModal').modal('show');
+//               // Show the modal
+//               $('#myModal').modal('show');
           
-              // Remove the modal from the DOM when it's closed to prevent clutter
-              $('#myModal').on('hidden.bs.modal', function() {
-                  $(this).remove();
-              });
+//               // Remove the modal from the DOM when it's closed to prevent clutter
+//               $('#myModal').on('hidden.bs.modal', function() {
+//                   $(this).remove();
+//               });
           
-              console.log("Mouse leave detected");
-          });
+//               console.log("Mouse leave detected");
+//           });
           
 
             
 
-            // Bind mouseleave event to the element with class .fa-cart-arrow-down
+//             // Bind mouseleave event to the element with class .fa-cart-arrow-down
             
-        });
-    });
-});
+//         });
+//     });
+// });
 
 
-});
+// });
 
 
