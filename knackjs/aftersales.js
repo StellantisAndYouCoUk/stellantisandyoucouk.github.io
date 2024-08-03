@@ -4949,7 +4949,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                       <div>                          
                       <div class="modal-header">
                               <h4 class="modal-title">Ordered</h4>
-                              
+                              <button type="button" class="close" data-dismiss="modal">×</button>
                       </div>
 
                           <div class="modal-body"> 
@@ -4975,12 +4975,16 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           </div></div>
 </div>
-                  </div>
+                  <div class="modal-header">
+                              <h4 class="modal-title">Invoiced</h4>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
+                          </div></div>
               </div>
               `
-                $('.modal-content').css('flex-direction', 'row');
-                $('#myModal .modal-body').html(html);
-                $('#myModal').modal('show');
+                $('#myModal .modal-body').html('<p>Dynamic HTML content goes here.</p>');
+              $('#myModal').modal('show');
+              $('.modal-content').css('flex-direction', 'row');
+
                 console.log("Mouse leave detected");
             });
 
