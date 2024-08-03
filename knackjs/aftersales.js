@@ -4941,7 +4941,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
           
             $(".fa-cart-arrow-down").mouseleave(function() {
-              $('body').append(`<!-- Modal Structure -->
+
+              let html = `<!-- Modal Structure -->
               <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -4979,10 +4980,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                               <button type="button" class="close" data-dismiss="modal">×</button>
                           </div></div>
               </div>
-              `);
-
-
-              
+              `
+                $('.modal-content').css('flex-direction', 'row');
                 $('#myModal .modal-body').html('<p>Dynamic HTML content goes here.</p>');
                 $('#myModal').modal('show');
                 console.log("Mouse leave detected");
