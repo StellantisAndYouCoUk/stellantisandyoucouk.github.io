@@ -4949,7 +4949,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                       <div>                          
                       <div class="modal-header">
                               <h4 class="modal-title">Ordered</h4>
-                              <button type="button" class="close" data-dismiss="modal">×</button>
+                              
                       </div>
 
                           <div class="modal-body"> 
@@ -4975,10 +4975,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           </div></div>
 </div>
-                  <div class="modal-header">
-                              <h4 class="modal-title">Invoiced</h4>
-                              <button type="button" class="close" data-dismiss="modal">×</button>
-                          </div></div>
+                  </div>
               </div>
               `
                 $('.modal-content').css('flex-direction', 'row');
