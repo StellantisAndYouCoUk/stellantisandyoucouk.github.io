@@ -4949,7 +4949,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                 <!-- Modal Structure -->
                 <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
                     <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
+                        <div class="modal-content" style="flex-direction: row;">
                             <div>                          
                                 <div class="modal-header">
                                     <h4 class="modal-title">Ordered</h4>
