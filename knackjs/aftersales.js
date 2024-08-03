@@ -4945,6 +4945,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
               $('#myModal').remove();
           
               // Append the modal structure to the body
+              let partsModelHTML = '';
               if (partsModelHTML===''){
                 partsModelHTML = $.ajax({
                   type: "GET",
