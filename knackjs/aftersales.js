@@ -4940,50 +4940,65 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             // Add Modal Structure to the body
 
           
-            $(".fa-cart-arrow-down").mouseleave(function() {
-              $('body').append(`<!-- Modal Structure -->
-              <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
-                  <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                      <div>                          
-                      <div class="modal-header">
-                              <h4 class="modal-title">Ordered</h4>
-                              <button type="button" class="close" data-dismiss="modal">×</button>
-                      </div>
-
-                          <div class="modal-body"> 
-            <ul>
-        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
-        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
-        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
-        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
-        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
-    </ul></div>
-                          
-</div>
-<div>                      <div class="modal-header">
-                              <h4 class="modal-title">Invoiced</h4>
-                              <button type="button" class="close" data-dismiss="modal">×</button>
-                          </div><div class="modal-body"><ul>
-        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
-        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
-        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
-        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
-        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
-    </ul></div><div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                          </div></div>
-</div>
+            $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
+              // Remove any existing modal with the same ID to prevent duplicates
+              $('#myModal').remove();
+          
+              // Append the modal structure to the body
+              $('body').append(`
+                <!-- Modal Structure -->
+                <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div>                          
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Ordered</h4>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>
+                                        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
+                                        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
+                                        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
+                                        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
+                                        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Invoiced</h4>
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>
+                                        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
+                                        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
+                                        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
+                                        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
+                                        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                         </div>
-              </div>
+                    </div>
+                </div>
               `);
-
-
-              
-                // $('#myModal .modal-body').html('<p>Dynamic HTML content goes here.</p>');
-                $('#myModal').modal('show');
-                console.log("Mouse leave detected");
-            });
+          
+              // Show the modal
+              $('#myModal').modal('show');
+          
+              // Remove the modal from the DOM when it's closed to prevent clutter
+              $('#myModal').on('hidden.bs.modal', function() {
+                  $(this).remove();
+              });
+          
+              console.log("Mouse leave detected");
+          });
+          
 
             
 
