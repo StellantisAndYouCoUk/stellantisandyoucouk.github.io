@@ -4942,25 +4942,42 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           
 
               $('body').append(`<!-- Modal Structure -->
-              <div class="modal fade" id="myModal">
+              <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
-                          <div class="modal-header">
-                              <h4 class="modal-title">Modal Title</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          </div>
-                          <div class="modal-body">
-                              <!-- Your HTML content goes here -->
-                              
-
-    <img class="cat" src="https://media1.giphy.com/media/vx31dAcfq73Q7tnPHC/giphy.webp?cid=ecf05e47dwmy2fdbrtco7tcqxx6gui9qcpweoiglgqxlokyo&ep=v1_gifs_search&rid=giphy.webp&ct=g" alt="Cat">
-
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                          </div>
+                      <div>                          
+                      <div class="modal-header">
+                              <h4 class="modal-title">Ordered</h4>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
                       </div>
-                  </div>
+
+                          <div class="modal-body"> 
+            <ul>
+        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
+        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
+        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
+        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
+        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
+    </ul></div>
+                          
+</div>
+<div>                      <div class="modal-header">
+                              <h4 class="modal-title">Invoiced</h4>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
+                          </div><div class="modal-body"><ul>
+        <li draggable="true"><strong>Part Number:</strong> CPU-001, <strong>Quantity:</strong> 50</li>
+        <li draggable="true"><strong>Part Number:</strong> RAM-002, <strong>Quantity:</strong> 200</li>
+        <li draggable="true"><strong>Part Number:</strong> HDD-003, <strong>Quantity:</strong> 120</li>
+        <li draggable="true"><strong>Part Number:</strong> SSD-004, <strong>Quantity:</strong> 75</li>
+        <li draggable="true"><strong>Part Number:</strong> GPU-005, <strong>Quantity:</strong> 40</li>
+    </ul></div><div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          </div></div>
+</div>
+                  <div class="modal-header">
+                              <h4 class="modal-title">Invoiced</h4>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
+                          </div></div>
               </div>
               `);
 
