@@ -4983,7 +4983,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
               `
                 $('#myModal .modal-body').html('<p>Dynamic HTML content goes here.</p>');
               $('#myModal').modal('show');
-              $('.modal-content').css('flex-direction', 'row');
+              // $('.modal-content').css('flex-direction', 'row');
 
                 console.log("Mouse leave detected");
             });
