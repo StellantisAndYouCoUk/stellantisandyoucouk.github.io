@@ -4916,7 +4916,6 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 
 
-
 $(document).on('knack-view-render.view_3773', function(event, view, data) {
   console.log("View render event triggered");
 
@@ -4926,6 +4925,9 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   // Add SweetAlert2 JS
   $.getScript('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', function() {
 
+
+
+  $.getScript('sweetalert2.min.js', function(){
     // Load Bootstrap CSS
     $('head').append('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     
@@ -4934,6 +4936,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
         // Load HTMX
         $.getScript('https://unpkg.com/htmx.org@1.8.3/dist/htmx.min.js', function() {
+            console.log("HTMX loaded");
 
             // Add Modal Structure to the body
 
@@ -4962,40 +4965,36 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
               $('#searchButton').on('click', function() {
                 // TODO
-                // Swal.fire({
-                //     title: "Submit your GitHub username",
-                //     input: "text",
-                //     inputAttributes: {
-                //         autocapitalize: "off"
-                //     },
-                //     showCancelButton: true,
-                //     confirmButtonText: "Look up",
-                //     showLoaderOnConfirm: true,
-                //     preConfirm: async (login) => {
-                //         try {
-                //             const githubUrl = `https://api.github.com/users/${login}`;
-                //             const response = await fetch(githubUrl);
-                //             if (!response.ok) {
-                //                 return Swal.showValidationMessage(`Request failed: ${response.statusText}`);
-                //             }
-                //             return response.json();
-                //         } catch (error) {
-                //             Swal.showValidationMessage(`Request failed: ${error}`);
-                //         }
-                //     },
-                //     allowOutsideClick: () => !Swal.isLoading()
-                // }).then((result) => {
-                //     if (result.isConfirmed) {
-                //         Swal.fire({
-                //             title: `${result.value.login}'s avatar`,
-                //             imageUrl: result.value.avatar_url
-                //         });
-                //     }
-                // });
-                Swal.fire("SweetAlert2 is working!");
-
-
-
+                Swal.fire({
+                    title: "Submit your GitHub username",
+                    input: "text",
+                    inputAttributes: {
+                        autocapitalize: "off"
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: "Look up",
+                    showLoaderOnConfirm: true,
+                    preConfirm: async (login) => {
+                        try {
+                            const githubUrl = `https://api.github.com/users/${login}`;
+                            const response = await fetch(githubUrl);
+                            if (!response.ok) {
+                                return Swal.showValidationMessage(`Request failed: ${response.statusText}`);
+                            }
+                            return response.json();
+                        } catch (error) {
+                            Swal.showValidationMessage(`Request failed: ${error}`);
+                        }
+                    },
+                    allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: `${result.value.login}'s avatar`,
+                            imageUrl: result.value.avatar_url
+                        });
+                    }
+                });
             });
 
 
@@ -5018,7 +5017,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     });
 });
 
-
+})
 });
 
 
