@@ -5036,30 +5036,17 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   }
   
   // Load jQuery first
-  // loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
+  loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
     // Load other scripts after jQuery is loaded
-    Promise.all([
+    return Promise.all([
       loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
       loadScript('https://unpkg.com/htmx.org@1.8.3'),
       loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js')
-    ]).then(() => {
-      // Append CSS files after all scripts are loaded
-      const head = document.head;
-    
-      const bootstrapCSS = document.createElement('link');
-      bootstrapCSS.rel = 'stylesheet';
-      bootstrapCSS.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css';
-      bootstrapCSS.type = 'text/css';
-      head.appendChild(bootstrapCSS);
-    
-      const sweetAlertCSS = document.createElement('link');
-      sweetAlertCSS.rel = 'stylesheet';
-      sweetAlertCSS.href = 'https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css';
-      sweetAlertCSS.type = 'text/css';
-      head.appendChild(sweetAlertCSS);
-    }).catch((error) => {
-      console.error("Failed to load scripts:", error);
-    });
+    ]);
+  }).then(() => {
+    // Append CSS files after all scripts are loaded
+    $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
+    $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
 
   
 
@@ -5130,6 +5117,6 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   }).catch((error) => {
     console.error("Failed to load scripts:", error);
   });
-// });
+});
 
 
