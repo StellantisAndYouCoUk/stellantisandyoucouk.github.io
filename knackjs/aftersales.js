@@ -5065,7 +5065,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       // Show the modal
       $('#myModal').modal({
         keyboard: true,
-        show: true
+        show: true,
+        handleUpdate: true
       });
 
       $('#searchButton').on('click', function() {
