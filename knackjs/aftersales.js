@@ -5036,7 +5036,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   }
   
   // Load jQuery first
-  loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
+  // loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
     // Load other scripts after jQuery is loaded
     return Promise.all([
       loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
@@ -5117,6 +5117,6 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   }).catch((error) => {
     console.error("Failed to load scripts:", error);
   });
-});
+// });
 
 
