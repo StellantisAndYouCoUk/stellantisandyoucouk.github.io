@@ -5028,22 +5028,29 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = src;
+      script.src = src + '?cache-bust=' + new Date().getTime(); // Add cache-busting
       script.onload = () => resolve(script);
       script.onerror = () => reject(new Error(`Script load error for ${src}`));
       document.head.append(script);
     });
   }
-
-  // Load all necessary scripts and styles sequentially
-  Promise.all([
-    loadScript('https://code.jquery.com/jquery-3.5.1.min.js'),
-    loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
-    loadScript('https://unpkg.com/htmx.org@1.8.3'),
-    loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js')
-  ]).then(() => {
+  
+  // Load jQuery first
+  loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
+    // Load other scripts after jQuery is loaded
+    return Promise.all([
+      loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
+      loadScript('https://unpkg.com/htmx.org@1.8.3'),
+      loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js')
+    ]);
+  }).then(() => {
+    // Append CSS files after all scripts are loaded
     $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
+  }).catch(error => {
+    console.error('Error loading scripts:', error);
+  });
+  
 
     // Add Modal Structure to the body
     $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
