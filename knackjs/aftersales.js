@@ -5070,10 +5070,10 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
       $('#searchButton').on('click', function() {
         Swal.fire({
-          title: "Submit your GitHub username",
+          title: "Bin is Available",
           input: "text",
           inputAttributes: {
-            autocapitalize: "off"
+            autocapitalize: "on"
           },
           showCancelButton: true,
           confirmButtonText: "Look up",
