@@ -5040,7 +5040,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     loadScript('https://code.jquery.com/jquery-3.5.1.min.js'),
     loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
     loadScript('https://unpkg.com/htmx.org@1.8.3'),
-    loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11')
+    loadScript('sweetalert2.all.min.js')
   ]).then(() => {
     $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" type="text/css" />');
