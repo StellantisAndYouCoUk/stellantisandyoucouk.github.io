@@ -4913,7 +4913,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 
 
-import Swal from 'sweetalert2'
+
 
 
 
