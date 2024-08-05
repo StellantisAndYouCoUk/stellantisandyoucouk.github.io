@@ -15,6 +15,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     // Load jQuery first
     loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
       // Load other scripts after jQuery is loaded
+      console.log("jquerry installed");
       return Promise.all([
         loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
         loadScript('https://unpkg.com/htmx.org@1.8.3'),
