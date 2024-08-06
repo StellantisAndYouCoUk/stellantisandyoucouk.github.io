@@ -4971,6 +4971,14 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         handleUpdate: true
       });
 
+
+      // $('#htmxTest').on('click', function(){
+
+
+      // })
+
+
+
       $('#searchButton').on('click', function() {
         Swal.fire({
           title: "Bin is Available",

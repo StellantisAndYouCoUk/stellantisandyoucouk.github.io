@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
+
 <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" style="flex-direction: row; justify-content: space-around;">
@@ -158,7 +160,11 @@
 
           <button type="button" class="btn btn-outline-success">Finished</button>
         </div>
-        <div><input type="search">Part Search</button></div>
+        <h1>HTMX Content Fetch Example</h1>
+    <button hx-get='https://api.apify.com/v2/key-value-stores/absqBsHwSeIiIcE0y/records/test.html' hx-target="#content">Fetch Content</button>
+    <div id="content"></div>
+
+        
       </div>
 
 
