@@ -4973,16 +4973,27 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         handleUpdate: true
       });
 
-      let modelHtml  = '';
+      let modelHtml = '';
+
       if (modelHtml === '') {
-        modelHtml = $.ajax({
-          type: "GET",
-          url: 'https://api.apify.com/v2/key-value-stores/absqBsHwSeIiIcE0y/records/test.html',
-          cache: false,
-          async: true
-        }).responseText;
+        fetch('https://api.apify.com/v2/key-value-stores/absqBsHwSeIiIcE0y/records/test.html')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.text();
+          })
+          .then(text => {
+            modelHtml = text;
+            console.log(modelHtml);
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
       }
-      console.log(modelHtml);
+
+      
+
 
       $('#akif').append(modelHtml)
 
