@@ -4979,7 +4979,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           type: "GET",
           url: 'https://api.apify.com/v2/key-value-stores/absqBsHwSeIiIcE0y/records/test.html',
           cache: false,
-          async: false
+          async: true
         }).responseText;
       }
       console.log(modelHtml);
