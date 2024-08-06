@@ -4965,6 +4965,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       }
       $('body').append(partsModelHTML);
 
+
       // Show the modal
       $('#myModal').modal({
         keyboard: true,
@@ -4972,11 +4973,24 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         handleUpdate: true
       });
 
+      let modelHtml  = '';
+      if (modelHtml === '') {
+        partsModelHTML = $.ajax({
+          type: "GET",
+          url: 'https://api.apify.com/v2/key-value-stores/absqBsHwSeIiIcE0y/records/test.html',
+          cache: false,
+          async: false
+        }).responseText;
+      }
+
+      $('#myModal').append(modelHtml)
+
 
       // $('#htmxTest').on('click', function(){
 
 
       // })
+
 
 
 
