@@ -4948,7 +4948,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     script.crossOrigin = 'anonymous';
     
     // Append the script to the head of the document
-    $('head').appendChild(script);
+    $('head').append(script);
     // Append CSS files after all scripts are loaded
     $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
