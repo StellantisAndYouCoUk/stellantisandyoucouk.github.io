@@ -4983,7 +4983,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         }).responseText;
       }
 
-      $('#myModal').append(modelHtml)
+      $('#akif').append(modelHtml)
 
 
       // $('#htmxTest').on('click', function(){
