@@ -4938,9 +4938,9 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     // Load other scripts after jQuery is loaded
     console.log("jquerry installed");
     return Promise.all([
-      loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js',null, null),
+      loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js','', ''),
       loadScript('https://unpkg.com/htmx.org@1.8.3', 'sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/', 'anonymous'),
-      loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js', null, null)
+      loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js', '', '')
     ]);
   }).then(() => {
     
