@@ -4921,10 +4921,12 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   console.log("View render event triggered");
 
   // Function to load a script and return a promise
-  function loadScript(src) {
+  function loadScript(src, integrity, crossorigin) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = src + '?cache-bust=' + new Date().getTime(); // Add cache-busting
+      script.integrity = integrity;
+      script.crossOrigin = crossorigin;
       script.onload = () => resolve(script);
       script.onerror = () => reject(new Error(`Script load error for ${src}`));
       document.head.append(script);
@@ -4937,7 +4939,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     console.log("jquerry installed");
     return Promise.all([
       loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
-      loadScript('https://unpkg.com/htmx.org@1.8.3'),
+      loadScript('https://unpkg.com/htmx.org@1.8.3', 'sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/', 'anonymous'),
       loadScript('https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js')
     ]);
   }).then(() => {
