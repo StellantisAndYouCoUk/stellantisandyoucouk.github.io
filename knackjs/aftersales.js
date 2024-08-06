@@ -4985,7 +4985,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           })
           .then(text => {
             modelHtml = text;
-            $('.akif').append(modelHtml); // Replace #someElement with the actual target
+            $('#akif').append(modelHtml); // Replace #someElement with the actual target
 
           })
           .catch(error => {
