@@ -4982,6 +4982,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           async: false
         }).responseText;
       }
+      console.log(modelHtml);
 
       $('#akif').append(modelHtml)
 
