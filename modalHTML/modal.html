@@ -1,6 +1,19 @@
-<script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
-
-<div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .modal-body{
+      padding: 0.7rem;
+    }
+  
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/htmx.org@2.0.1"></script>
+</head>
+<body>
+  <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
   <div class="modal-dialog modal-lg">
     <div class="modal-content" style="flex-direction: row; justify-content: space-around;">
       <div>
@@ -160,7 +173,7 @@
 
           <button type="button" class="btn btn-outline-success">Finished</button>
         </div>
-        <h1>HTMX Content Fetch Example</h1>
+        <h1>Show Parts</h1>
     <button hx-get='https://api.apify.com/v2/key-value-stores/absqBsHwSeIiIcE0y/records/test.html' hx-target="#content">Fetch Content</button>
     <div id="content"></div>
 
@@ -174,11 +187,5 @@
   </div>
 </div>
 
-
-
-<style>
-  .modal-body{
-    padding: 0.7rem;
-  }
-
-</style>
+</body>
+</html>
