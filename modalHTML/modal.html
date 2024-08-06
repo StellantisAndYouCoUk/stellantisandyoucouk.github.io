@@ -1,174 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <style>
-    .modal-body{
+    .modal-body {
       padding: 0.7rem;
     }
-  
+
+    .list-group-item {
+      padding: 0.25rem 1.15rem;
+    }
+
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="sweetalert2.min.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
-  <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content" style="flex-direction: row; justify-content: space-around;">
-      <div>
-        <div class="modal-header">
-          <h4 class="modal-title">Ordered</h4>
+  <div class="modal fade show" id="myModal" style="display: block; padding-right: 17px;" aria-modal="true"
+    role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content" style="flex-direction: row; justify-content: space-around;">
+        <div>
+          <div class="modal-header">
+            <h4 class="modal-title">Ordered</h4>
+          </div>
+          <div class="modal-body">
+            <ul id="akif" class="list-group">
+            </ul>
+          </div>
+          <div class="modal-footer">
+          </div>
         </div>
-        <div class="modal-body">
-          <ul id="akif" class="list-group">
-          </ul>
+        <div>
+          <div class="modal-header">
+            <h4 class="modal-title">Invoiced</h4>
+
+          </div>
+          <div class="modal-body">
+            <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                P12345
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">3</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                P131<strong>819</strong>
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">1</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                PD1817
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+
+          </div>
         </div>
-        <div class="modal-footer">
+
+        <div>
+          <div class="modal-header">
+            <h4 class="modal-title">Invoiced 2</h4>
+
+          </div>
+          <div class="modal-body">
+            <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                P12345
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">3</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                P131<strong>819</strong>
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">1</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                PD1817
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div>
+
+        <div>
+          <div class="modal-header">
+            <h4 class="modal-title">Invoiced 3</h4>
+
+          </div>
+          <div class="modal-body">
+            <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                P12345
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">3</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                P131<strong>819</strong>
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">1</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                PD1817
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                PD1817
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                PD1817
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+                PD1817
+                <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div>
+
+        <div>
+          <div class="modal-header">
+            <h4 class="modal-title">Return</h4>
+          </div>
+          <div class="modal-body"
+            style="height: 138px; border-radius: 25px; width: 100px; background-color: rgb(188, 240, 192);">
+            <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
+
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div>
+
+
+        <div>
+          <div class="modal-header">
+            <h4 class="modal-title">Descrepency</h4>
+
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body"
+            style="height: 138px; border-radius: 25px; width: 100px; background-color: rgba(248, 199, 199, 0.219);">
+            <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
+
+          </div>
+          <div class="modal-footer">
+
+
+
+            <button id="searchButton" type="button" class="btn btn-outline-info"><svg xmlns="http://www.w3.org/2000/svg"
+                width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>Bin</i></button>
+
+            <button type="button" class="btn btn-outline-success">Finished</button>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="modal-header">
-          <h4 class="modal-title">Invoiced</h4>
-
-        </div>
-        <div class="modal-body">
-          <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              P12345
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">3</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              P131<strong>819</strong>
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              PD1817
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
-            </li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-
-      <div>
-        <div class="modal-header">
-          <h4 class="modal-title">Invoiced 2</h4>
-
-        </div>
-        <div class="modal-body">
-          <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              P12345
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">3</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              P131<strong>819</strong>
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              PD1817
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
-            </li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-
-      <div>
-        <div class="modal-header">
-          <h4 class="modal-title">Invoiced 3</h4>
-
-        </div>
-        <div class="modal-body">
-          <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              P12345
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">3</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              P131<strong>819</strong>
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              PD1817
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              PD1817
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              PD1817
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
-              PD1817
-              <span class="badge bg-primary rounded-pill" style="margin-left: 0.3rem;">25</span>
-            </li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-
-      <div>
-        <div class="modal-header">
-          <h4 class="modal-title">Return</h4>
-        </div>
-        <div class="modal-body"
-          style="height: 138px; border-radius: 25px; width: 100px; background-color: rgb(188, 240, 192);">
-          <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
-
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-
-
-
-
-
-      <div>
-        <div class="modal-header">
-          <h4 class="modal-title">Descrepency</h4>
-
-          <button type="button" class="close" data-dismiss="modal">×</button>
-        </div>
-        <div class="modal-body"
-          style="height: 138px; border-radius: 25px; width: 100px; background-color: rgba(248, 199, 199, 0.219);">
-          <!-- id="invoiced-list" hx-get="https://api.apify.com/v2/key-value-stores/x1Ip3enFHNmJvjOkW/records/INPUT?token=apify_api_token" hx-trigger="load" hx-target="#invoiced-list" hx-swap="innerHTML" -->
-
-        </div>
-        <div class="modal-footer">
-
-
-
-          <button id="searchButton" type="button" class="btn btn-outline-info"><svg xmlns="http://www.w3.org/2000/svg"
-              width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path
-                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-            </svg>Bin</i></button>
-
-          <button type="button" class="btn btn-outline-success">Finished</button>
-
-<div id="akif">Akif</div>
-        
-      </div>
-
-
-
-
-    </div>
-  </div>
-</div>
 
 </body>
+
 </html>
