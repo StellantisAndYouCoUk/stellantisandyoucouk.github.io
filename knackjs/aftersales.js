@@ -4985,17 +4985,15 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           })
           .then(text => {
             modelHtml = text;
-            console.log(modelHtml);
+            $('#akif').append(modelHtml); // Replace #someElement with the actual target
+
           })
           .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
           });
       }
 
-      
-
-
-      $('#akif').append(modelHtml)
+  
 
 
       // $('#htmxTest').on('click', function(){
