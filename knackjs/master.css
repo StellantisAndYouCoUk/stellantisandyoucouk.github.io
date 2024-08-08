@@ -2131,6 +2131,9 @@ visibility: visible;
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7846 > div.kn-detail-label,
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6805 > div.kn-detail-label,
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_8073 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6012 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6370 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6368 > div.kn-detail-label,
 #view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_7846 > div.kn-detail-label {
   border-left: 10px solid #32a1ce;
 }
