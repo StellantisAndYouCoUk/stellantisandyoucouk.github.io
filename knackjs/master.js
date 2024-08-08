@@ -4843,6 +4843,7 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
   
   const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.values.field_7974;
+      console.log( "UserAttributes: " + JSON.stringify(userAttributes));
    
       // Construct URLs with the dynamic value
       const publishURL = `https://ntfy.sh/example-${userValue}`;
@@ -4915,7 +4916,7 @@ $('.view_5521').append($div);
           //let event = document.createElement('div');
           //event.innerHTML = e.data;
           //events.appendChild(event);
-          console.log(e.data);
+          // console.log(e.data);
           showNotification(e.data);
       };
 
