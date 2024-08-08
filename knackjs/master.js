@@ -4861,14 +4861,13 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
       const eventSource = new EventSource(subscribeURL);
       console.log(`Subscribed to ${subscribeURL}.` )
 
-  
+
 
 // Create a new anchor element using jQuery
 let $link = $('<a></a>');
 
-// Set the href attribute to the subscription URL
-
-$link.attr('href', subscribeURL.substr(0, subscribeURL.length-4));
+// Set the href attribute to the subscription URL, removing the last 4 characters
+$link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
 
 // Set the target attribute to '_blank' to open the link in a new tab
 $link.attr('target', '_blank');
@@ -4876,8 +4875,11 @@ $link.attr('target', '_blank');
 // Set the text of the link
 $link.text('Click here to visit the subscription page');
 
-// Append the link to the body (or another element in the DOM)
-$('.view_5521').append(<div>$link</div>);
+// Create a new div element and append the link to it
+let $div = $('<div></div>').append($link);
+
+// Append the div to the specified element in the DOM
+$('.view_5521').append($div);
       
       function showNotification(data) {
           const parsedData = JSON.parse(data);
