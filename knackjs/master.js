@@ -4876,7 +4876,7 @@ async function fetchKnackRecord(object, id) {
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
-  let name = 
+  let name = "";
 
   // Create a new anchor element using jQuery
 function createSubscriptionLink(linkName, subscribeURL) {
