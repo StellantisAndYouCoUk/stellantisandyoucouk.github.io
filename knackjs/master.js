@@ -4839,11 +4839,78 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 
 
+async function fetchKnackRecord(object, id) {
+  try {
+      const response = await fetch(`https://api.rd.knack.com/v1/objects/${object}/records/${id}`, {
+          method: "GET",
+          headers: {
+              "X-Knack-Application-Id": "591eae59e0d2123f23235769", // Replace with your actual App ID
+              "X-Knack-REST-API-Key": "knack",   // Replace with your actual API Key
+              "Content-Type": "application/json"
+          }
+      });
+
+      // Check if the response is OK (status 200)
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Parse the JSON response
+      const data = await response.json();
+      console.log(data);
+      
+      // Return the data if needed
+      return data;
+  } catch (error) {
+      console.error('There was an error fetching the record:', error);
+  }
+}
+
+// Call the function
+
+
+
+
+
+
+
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
+
+  let name = 
+
+  // Create a new anchor element using jQuery
+function createSubscriptionLink(linkName, subscribeURL) {
+  // Create a new anchor element
+  let $link = $('<a></a>');
+
+  // Set the href attribute to the subscription URL, removing the last 4 characters
+  $link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
+
+  // Set the target attribute to '_blank' to open the link in a new tab
+  $link.attr('target', '_blank');
+
+  // Set the text of the link
+  $link.text(linkName);
+
+  // Create a new div element and append the link to it
+  let $div = $('<div></div>').append($link);
+
+  // Return the div element
+  return $div;
+}
+
   
   const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.values.field_7974;
       console.log( "UserAttributes: " + JSON.stringify(userAttributes));
+      let linkName = '';
+      userAttributes.values.field_2849.forEach((location)=>{
+        const publishURL = `https://ntfy.sh/example-${location}`;
+        const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
+        linkName = fetchKnackRecord("Object_3", location);
+       
+        createSubscriptionLink(linkName, subscribeURL);
+      })
    
       // Construct URLs with the dynamic value
       const publishURL = `https://ntfy.sh/example-${userValue}`;
@@ -4864,20 +4931,9 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
 
 
-// Create a new anchor element using jQuery
-let $link = $('<a></a>');
 
-// Set the href attribute to the subscription URL, removing the last 4 characters
-$link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
 
-// Set the target attribute to '_blank' to open the link in a new tab
-$link.attr('target', '_blank');
-
-// Set the text of the link
-$link.text('Click here to visit the subscription page');
-
-// Create a new div element and append the link to it
-let $div = $('<div></div>').append($link);
+createSubscriptionLink("User Subscription", subscribeURL);
 
 // Append the div to the specified element in the DOM
 $('.view_5521').append($div);
