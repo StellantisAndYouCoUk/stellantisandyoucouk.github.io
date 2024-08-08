@@ -5012,11 +5012,11 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             autocapitalize: "on"
           },
           showCancelButton: true,
-          confirmButtonText: "Look up",
+          confirmButtonText: "Find",
           showLoaderOnConfirm: true,
           preConfirm: async (login) => {
             try {
-              const githubUrl = `https://api.github.com/users/${login}`;
+              const githubUrl = `https://odbc.robinsandday.co.uk/ExecuteSql`;
               const response = await fetch(githubUrl);
               if (!response.ok) {
                 return Swal.showValidationMessage(`Request failed: ${response.statusText}`);
