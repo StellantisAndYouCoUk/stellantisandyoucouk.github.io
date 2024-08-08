@@ -4877,7 +4877,7 @@ $link.attr('target', '_blank');
 $link.text('Click here to visit the subscription page');
 
 // Append the link to the body (or another element in the DOM)
-$('.view_5521').append($link);
+$('.view_5521').append(<div>$link</div>);
       
       function showNotification(data) {
           const parsedData = JSON.parse(data);
