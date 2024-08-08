@@ -4880,106 +4880,226 @@ async function fetchKnackRecord(object, id) {
 
 
 
-$(document).on('knack-scene-render.scene_4', function(event, scene) {
+// $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
-  let name = "";
+//   let name = "";
 
-  // Create a new anchor element using jQuery
-function createSubscriptionLink(linkName, subscribeURL) {
-  // Create a new anchor element
-  let $link = $('<a></a>');
+//   // Create a new anchor element using jQuery
+// function createSubscriptionLink(linkName, subscribeURL) {
+//   // Create a new anchor element
+//   let $link = $('<a></a>');
 
-  // Set the href attribute to the subscription URL, removing the last 4 characters
-  $link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
+//   // Set the href attribute to the subscription URL, removing the last 4 characters
+//   $link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
 
-  // Set the target attribute to '_blank' to open the link in a new tab
-  $link.attr('target', '_blank');
+//   // Set the target attribute to '_blank' to open the link in a new tab
+//   $link.attr('target', '_blank');
 
-  // Set the text of the link
-  $link.text(linkName);
+//   // Set the text of the link
+//   $link.text(linkName);
 
-  // Create a new div element and append the link to it
-  let $div = $('<div></div>').append($link);
+//   // Create a new div element and append the link to it
+//   let $div = $('<div></div>').append($link);
 
-  // Return the div element
-  return $div;
-}
+//   // Return the div element
+//   return $div;
+// }
 
   
-  const userAttributes = Knack.getUserAttributes();
-      const userValue = userAttributes.values.field_7974;
-      console.log( "UserAttributes: " + JSON.stringify(userAttributes));
-      let linkName = '';
-      userAttributes.values.field_2849.forEach((location)=>{
-        const publishURL = `https://ntfy.sh/example-${location}`;
-        const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
-        linkName = fetchKnackRecord("Object_3", location);
+//   const userAttributes = Knack.getUserAttributes();
+//       const userValue = userAttributes.values.field_7974;
+//       console.log( "UserAttributes: " + JSON.stringify(userAttributes));
+//       let linkName = '';
+//       userAttributes.values.field_2849.forEach((location)=>{
+//         const publishURL = `https://ntfy.sh/example-${location}`;
+//         const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
+//         linkName = fetchKnackRecord("Object_3", location);
        
-        createSubscriptionLink(linkName, subscribeURL);
-      })
+//         createSubscriptionLink(linkName, subscribeURL);
+//       })
    
-      // Construct URLs with the dynamic value
-      const publishURL = `https://ntfy.sh/example-${userValue}`;
-      const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+//       // Construct URLs with the dynamic value
+//       const publishURL = `https://ntfy.sh/example-${userValue}`;
+//       const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
      
-      const events = document.getElementById('events');
+//       const events = document.getElementById('events');
    
-      // Ensure notification container exists
-      let notificationContainer = document.getElementById('notification-container');
-      if (!notificationContainer) {
-          notificationContainer = document.createElement('div');
-          notificationContainer.id = 'notification-container';
-          document.body.appendChild(notificationContainer);
-      }
+//       // Ensure notification container exists
+//       let notificationContainer = document.getElementById('notification-container');
+//       if (!notificationContainer) {
+//           notificationContainer = document.createElement('div');
+//           notificationContainer.id = 'notification-container';
+//           document.body.appendChild(notificationContainer);
+//       }
    
-      const eventSource = new EventSource(subscribeURL);
-      console.log(`Subscribed to ${subscribeURL}.` )
+//       const eventSource = new EventSource(subscribeURL);
+//       console.log(`Subscribed to ${subscribeURL}.` )
 
 
 
 
 
-createSubscriptionLink("User Subscription", subscribeURL);
+// createSubscriptionLink("User Subscription", subscribeURL);
 
-// Append the div to the specified element in the DOM
-$('.view_5521').append($div);
+// // Append the div to the specified element in the DOM
+// $('.view_5521').append($div);
       
-      function showNotification(data) {
-          const parsedData = JSON.parse(data);
+//       function showNotification(data) {
+//           const parsedData = JSON.parse(data);
    
-          let notification = document.createElement('div');
-          notification.className = 'notification';
+//           let notification = document.createElement('div');
+//           notification.className = 'notification';
    
-          // Create close button
-          let closeButton = document.createElement('button');
-          closeButton.className = 'close-btn';
-          closeButton.innerHTML = '&times;';
-          closeButton.onclick = () => {
-              notificationContainer.removeChild(notification);
-          };
+//           // Create close button
+//           let closeButton = document.createElement('button');
+//           closeButton.className = 'close-btn';
+//           closeButton.innerHTML = '&times;';
+//           closeButton.onclick = () => {
+//               notificationContainer.removeChild(notification);
+//           };
    
-          // Create title and message
-          let title = document.createElement('div');
-          title.className = 'title';
-          title.innerText = parsedData.title || 'No Title';
+//           // Create title and message
+//           let title = document.createElement('div');
+//           title.className = 'title';
+//           title.innerText = parsedData.title || 'No Title';
    
-          let message = document.createElement('div');
-          message.className = 'message';
-          message.innerText = parsedData.message || 'No Message';
+//           let message = document.createElement('div');
+//           message.className = 'message';
+//           message.innerText = parsedData.message || 'No Message';
    
-          notification.appendChild(closeButton);
-          notification.appendChild(title);
-          notification.appendChild(message);
-          notificationContainer.appendChild(notification);
-      }
+//           notification.appendChild(closeButton);
+//           notification.appendChild(title);
+//           notification.appendChild(message);
+//           notificationContainer.appendChild(notification);
+//       }
    
    
-      eventSource.onmessage = (e) => {
-          //let event = document.createElement('div');
-          //event.innerHTML = e.data;
-          //events.appendChild(event);
-          // console.log(e.data);
-          showNotification(e.data);
+//       eventSource.onmessage = (e) => {
+//           //let event = document.createElement('div');
+//           //event.innerHTML = e.data;
+//           //events.appendChild(event);
+//           // console.log(e.data);
+//           showNotification(e.data);
+//       };
+
+// });
+
+
+$(document).on('knack-scene-render.scene_4', async function(event, scene) {
+  // Create a new anchor element using jQuery
+  function createSubscriptionLink(linkName, subscribeURL) {
+      // Create a new anchor element
+      let $link = $('<a></a>');
+
+      // Set the href attribute to the subscription URL, removing the last 4 characters
+      $link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
+
+      // Set the target attribute to '_blank' to open the link in a new tab
+      $link.attr('target', '_blank');
+
+      // Set the text of the link
+      $link.text(linkName);
+
+      // Create a new div element and append the link to it
+      let $div = $('<div></div>').append($link);
+
+      // Return the div element
+      return $div;
+  }
+
+  // Fetch and process user attributes
+  const userAttributes = Knack.getUserAttributes();
+  const userValue = userAttributes.values.field_7974;
+  console.log("UserAttributes: " + JSON.stringify(userAttributes));
+
+  // Process locations and create subscription links
+  for (let location of userAttributes.values.field_2849) {
+      const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
+      
+      // Fetch the link name asynchronously
+      let linkName = await fetchKnackRecord("Object_3", location);
+      
+      // Create the subscription link and append it to the specified view
+      let $subscriptionDiv = createSubscriptionLink(linkName, subscribeURL);
+      $('.view_5521').append($subscriptionDiv);
+  }
+
+  // Construct URLs with the dynamic value
+  const publishURL = `https://ntfy.sh/example-${userValue}`;
+  const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+
+  // Ensure the notification container exists
+  let notificationContainer = document.getElementById('notification-container');
+  if (!notificationContainer) {
+      notificationContainer = document.createElement('div');
+      notificationContainer.id = 'notification-container';
+      document.body.appendChild(notificationContainer);
+  }
+
+  // Create EventSource for live notifications
+  const eventSource = new EventSource(subscribeURL);
+  console.log(`Subscribed to ${subscribeURL}.`);
+
+  // Display user subscription link
+  let userSubscriptionDiv = createSubscriptionLink("User Subscription", subscribeURL);
+  $('.view_5521').append(userSubscriptionDiv);
+
+  // Function to show notifications
+  function showNotification(data) {
+      const parsedData = JSON.parse(data);
+
+      let notification = document.createElement('div');
+      notification.className = 'notification';
+
+      // Create close button
+      let closeButton = document.createElement('button');
+      closeButton.className = 'close-btn';
+      closeButton.innerHTML = '&times;';
+      closeButton.onclick = () => {
+          notificationContainer.removeChild(notification);
       };
 
+      // Create title and message
+      let title = document.createElement('div');
+      title.className = 'title';
+      title.innerText = parsedData.title || 'No Title';
+
+      let message = document.createElement('div');
+      message.className = 'message';
+      message.innerText = parsedData.message || 'No Message';
+
+      notification.appendChild(closeButton);
+      notification.appendChild(title);
+      notification.appendChild(message);
+      notificationContainer.appendChild(notification);
+  }
+
+  // Handle incoming messages from EventSource
+  eventSource.onmessage = (e) => {
+      showNotification(e.data);
+  };
 });
+
+// Example of the fetchKnackRecord function (assumed to be defined elsewhere in your code)
+async function fetchKnackRecord(objectKey, recordId) {
+  try {
+      const response = await fetch(`https://api.rd.knack.com/v1/objects/${objectKey}/records/${recordId}`, {
+          method: "GET",
+          headers: {
+              "X-Knack-Application-Id": "591eae59e0d2123f23235769",
+              "X-Knack-REST-API-Key": "knack",
+              "Content-Type": "application/json"
+          }
+      });
+
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.field_you_want; // Adjust this to return the specific field you're interested in
+  } catch (error) {
+      console.error('There was an error fetching the record:', error);
+      return 'Unknown'; // Return a default value if there's an error
+  }
+}
