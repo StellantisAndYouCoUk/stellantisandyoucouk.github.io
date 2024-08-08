@@ -4920,7 +4920,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 $(document).on('knack-view-render.view_3773', function(event, view, data) {
   console.log("View render event triggered");
 
-  
+
 
   // Function to load a script and return a promise
   function loadScript(src) {
@@ -4952,6 +4952,72 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
     // Add Modal Structure to the body
     $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
+
+//Mayank code 
+
+      const userAttributes = Knack.getUserAttributes();
+      const userValue = userAttributes.values.field_24;
+   
+      // Construct URLs with the dynamic value
+      const publishURL = `https://ntfy.sh/example-${userValue}`;
+      const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+     
+      const events = document.getElementById('events');
+   
+      // Ensure notification container exists
+      let notificationContainer = document.getElementById('notification-container');
+      if (!notificationContainer) {
+          notificationContainer = document.createElement('div');
+          notificationContainer.id = 'notification-container';
+          document.body.appendChild(notificationContainer);
+      }
+   
+      const eventSource = new EventSource(subscribeURL);
+      console.log(`Subscribed to ${subscribeURL}.` )
+      function showNotification(data) {
+          const parsedData = JSON.parse(data);
+   
+          let notification = document.createElement('div');
+          notification.className = 'notification';
+   
+          // Create close button
+          let closeButton = document.createElement('button');
+          closeButton.className = 'close-btn';
+          closeButton.innerHTML = '&times;';
+          closeButton.onclick = () => {
+              notificationContainer.removeChild(notification);
+          };
+   
+          // Create title and message
+          let title = document.createElement('div');
+          title.className = 'title';
+          title.innerText = parsedData.title || 'No Title';
+   
+          let message = document.createElement('div');
+          message.className = 'message';
+          message.innerText = parsedData.message || 'No Message';
+   
+          notification.appendChild(closeButton);
+          notification.appendChild(title);
+          notification.appendChild(message);
+          notificationContainer.appendChild(notification);
+      }
+   
+   
+      eventSource.onmessage = (e) => {
+          //let event = document.createElement('div');
+          //event.innerHTML = e.data;
+          //events.appendChild(event);
+          console.log(e.data);
+          showNotification(e.data);
+      };
+   
+      //alert(Knack.getUserAttributes().values.field_24);
+
+
+
+
+
       // Remove any existing modal with the same ID to prevent duplicates
       $('#myModal').remove();
 
