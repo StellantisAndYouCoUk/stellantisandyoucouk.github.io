@@ -4867,7 +4867,8 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 let $link = $('<a></a>');
 
 // Set the href attribute to the subscription URL
-$link.attr('href', subscribeURL);
+
+$link.attr('href', subscribeURL.substr(0, subscribeURL.length-4));
 
 // Set the target attribute to '_blank' to open the link in a new tab
 $link.attr('target', '_blank');
@@ -4876,7 +4877,7 @@ $link.attr('target', '_blank');
 $link.text('Click here to visit the subscription page');
 
 // Append the link to the body (or another element in the DOM)
-$('body').append($link);
+$('.view_5521').append($link);
       
       function showNotification(data) {
           const parsedData = JSON.parse(data);
