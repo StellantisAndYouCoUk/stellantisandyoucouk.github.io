@@ -2122,35 +2122,7 @@ visibility: visible;
 #view_4155 > section > div > div:nth-child(6) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5562 > div.kn-detail-label,
 #view_4155 > section > div > div:nth-child(7) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5959 > div.kn-detail-label,
 #view_4522 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6267 > div.kn-detail-label,
-#view_4522 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6006 > div.kn-detail-label {
-  border-left: 10px solid #32a1ce;
-}
-
-/*** Admin DOCs to Review ***/
-
-#view_4155 > section > div > div:nth-child(8) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5988 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5685 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(10) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5959 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6263 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6223 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6369 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6109 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5662 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_7396 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6433 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6112 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_5667 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6242 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6248 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6250 > div.kn-detail-label,
-#view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_6251 > div.kn-detail-label,
-#view_4519 > section > div > div > div:nth-child(1) > div > div > div.kn-detail-label,
-#view_4521 {
-  border-left: 10px solid #de3163;
-}
-
-/*** ADMIN & MANAGER TO REVIEW ***/
-
+#view_4522 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6006 > div.kn-detail-label,
 #view_4520 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6264 > div.kn-detail-label,
 #view_4520 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6003 > div.kn-detail-label,
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6096 > div.kn-detail-label,
@@ -2159,8 +2131,10 @@ visibility: visible;
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7846 > div.kn-detail-label,
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6805 > div.kn-detail-label,
 #view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_8073 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6012 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6370 > div.kn-detail-label,
+#view_4155 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6368 > div.kn-detail-label,
 #view_4155 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_7846 > div.kn-detail-label {
-  border-right: 10px solid #de3163;
   border-left: 10px solid #32a1ce;
 }
 
