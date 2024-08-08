@@ -4956,7 +4956,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 //Mayank code 
 
       const userAttributes = Knack.getUserAttributes();
-      const userValue = userAttributes.values.field_7174;
+      const userValue = userAttributes.values.field_7974;
    
       // Construct URLs with the dynamic value
       const publishURL = `https://ntfy.sh/example-${userValue}`;
