@@ -5017,7 +5017,7 @@ $(document).on('knack-scene-render.scene_4', async function(event, scene) {
       const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
       
       // Fetch the link name asynchronously
-      let linkName = await fetchKnackRecord("Object_3", location);
+      let linkName = await fetchKnackRecord("object_3", location);
       
       // Create the subscription link and append it to the specified view
       let $subscriptionDiv = createSubscriptionLink(linkName, subscribeURL);
