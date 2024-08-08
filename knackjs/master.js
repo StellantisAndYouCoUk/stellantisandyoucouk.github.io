@@ -5081,7 +5081,7 @@ async function fetchKnackRecord(objectKey, recordId) {
           method: "GET",
           headers: {
               "X-Knack-Application-Id": "591eae59e0d2123f23235769",
-              "X-Knack-REST-API-Key": "knack",
+              "X-Knack-REST-API-Key": "91c668c0-3c7c-11e7-9e34-11068f8335ed",
               "Content-Type": "application/json"
           }
       });
