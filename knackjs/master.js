@@ -4835,3 +4835,85 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
   ]
   sceneRefresh(refreshData,null,1,null,false);
 }
+
+//Mayank code 
+
+
+$(document).on('knack-scene-render.scene_4', function(event, scene) {
+  
+  const userAttributes = Knack.getUserAttributes();
+      const userValue = userAttributes.values.field_7974;
+   
+      // Construct URLs with the dynamic value
+      const publishURL = `https://ntfy.sh/example-${userValue}`;
+      const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+     
+      const events = document.getElementById('events');
+   
+      // Ensure notification container exists
+      let notificationContainer = document.getElementById('notification-container');
+      if (!notificationContainer) {
+          notificationContainer = document.createElement('div');
+          notificationContainer.id = 'notification-container';
+          document.body.appendChild(notificationContainer);
+      }
+   
+      const eventSource = new EventSource(subscribeURL);
+      console.log(`Subscribed to ${subscribeURL}.` )
+
+  
+
+// Create a new anchor element using jQuery
+let $link = $('<a></a>');
+
+// Set the href attribute to the subscription URL
+$link.attr('href', subscribeURL);
+
+// Set the target attribute to '_blank' to open the link in a new tab
+$link.attr('target', '_blank');
+
+// Set the text of the link
+$link.text('Click here to visit the subscription page');
+
+// Append the link to the body (or another element in the DOM)
+$('body').append($link);
+      
+      function showNotification(data) {
+          const parsedData = JSON.parse(data);
+   
+          let notification = document.createElement('div');
+          notification.className = 'notification';
+   
+          // Create close button
+          let closeButton = document.createElement('button');
+          closeButton.className = 'close-btn';
+          closeButton.innerHTML = '&times;';
+          closeButton.onclick = () => {
+              notificationContainer.removeChild(notification);
+          };
+   
+          // Create title and message
+          let title = document.createElement('div');
+          title.className = 'title';
+          title.innerText = parsedData.title || 'No Title';
+   
+          let message = document.createElement('div');
+          message.className = 'message';
+          message.innerText = parsedData.message || 'No Message';
+   
+          notification.appendChild(closeButton);
+          notification.appendChild(title);
+          notification.appendChild(message);
+          notificationContainer.appendChild(notification);
+      }
+   
+   
+      eventSource.onmessage = (e) => {
+          //let event = document.createElement('div');
+          //event.innerHTML = e.data;
+          //events.appendChild(event);
+          console.log(e.data);
+          showNotification(e.data);
+      };
+
+});
