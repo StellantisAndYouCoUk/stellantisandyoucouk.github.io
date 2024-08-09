@@ -4838,79 +4838,10 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 
 //Mayank code 
 
-
-async function fetchKnackRecord(object, id) {
-  try {
-      const response = await fetch(`https://api.rd.knack.com/v1/objects/${object}/records/${id}`, {
-          method: "GET",
-          headers: {
-              "X-Knack-Application-Id": "591eae59e0d2123f23235769", // Replace with your actual App ID
-              "X-Knack-REST-API-Key": "knack",   // Replace with your actual API Key
-              "Content-Type": "application/json"
-          }
-      });
-
-      // Check if the response is OK (status 200)
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      // Parse the JSON response
-      const data = await response.json();
-      console.log(data);
-      
-      // Return the data if needed
-      return data;
-  } catch (error) {
-      console.error('There was an error fetching the record:', error);
-  }
-}
-
-// Call the function
-
-
-
-
-
-
-
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
-
-  let name = "";
-
-  // Create a new anchor element using jQuery
-function createSubscriptionLink(linkName, subscribeURL) {
-  // Create a new anchor element
-  let $link = $('<a></a>');
-
-  // Set the href attribute to the subscription URL, removing the last 4 characters
-  $link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
-
-  // Set the target attribute to '_blank' to open the link in a new tab
-  $link.attr('target', '_blank');
-
-  // Set the text of the link
-  $link.text(linkName);
-
-  // Create a new div element and append the link to it
-  let $div = $('<div></div>').append($link);
-
-  // Return the div element
-  return $div;
-}
-
   
   const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.values.field_7974;
-      // console.log( "UserAttributes: " + JSON.stringify(userAttributes));
-      let linkName = '';
-      // userAttributes.values.field_2849.forEach((location)=>{
-      //   const publishURL = `https://ntfy.sh/example-${location}`;
-      //   const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
-      //   linkName = fetchKnackRecord("Object_3", location);
-       
-      //   createSubscriptionLink(linkName, subscribeURL);
-      // })
    
       // Construct URLs with the dynamic value
       const publishURL = `https://ntfy.sh/example-${userValue}`;
@@ -4927,13 +4858,24 @@ function createSubscriptionLink(linkName, subscribeURL) {
       }
    
       const eventSource = new EventSource(subscribeURL);
-      console.log(`Subscribed to ${subscribeURL}.` )
+      // console.log(`Subscribed to ${subscribeURL}.` )
 
 
 
+// Create a new anchor element using jQuery
+let $link = $('<a></a>');
 
+// Set the href attribute to the subscription URL, removing the last 4 characters
+$link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
 
-createSubscriptionLink("User Subscription", subscribeURL);
+// Set the target attribute to '_blank' to open the link in a new tab
+$link.attr('target', '_blank');
+
+// Set the text of the link
+$link.text('Click here to visit the subscription page');
+
+// Create a new div element and append the link to it
+let $div = $('<div></div>').append($link);
 
 // Append the div to the specified element in the DOM
 $('.view_5521').append($div);
@@ -4972,128 +4914,8 @@ $('.view_5521').append($div);
           //let event = document.createElement('div');
           //event.innerHTML = e.data;
           //events.appendChild(event);
-          // console.log(e.data);
+          console.log(e.data);
           showNotification(e.data);
       };
 
 });
-
-
-$(document).on('knack-scene-render.scene_4', async function(event, scene) {
-  // Create a new anchor element using jQuery
-  function createSubscriptionLink(linkName, subscribeURL) {
-      // Create a new anchor element
-      let $link = $('<a></a>');
-
-      // Set the href attribute to the subscription URL, removing the last 4 characters
-      $link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
-
-      // Set the target attribute to '_blank' to open the link in a new tab
-      $link.attr('target', '_blank');
-
-      // Set the text of the link
-      $link.text(linkName);
-
-      // Create a new div element and append the link to it
-      let $div = $('<div></div>').append($link);
-
-      // Return the div element
-      return $div;
-  }
-
-  // Fetch and process user attributes
-  const userAttributes = Knack.getUserAttributes();
-  const userValue = userAttributes.values.field_7974;
-  console.log("UserAttributes: " + JSON.stringify(userAttributes));
-
-  // Process locations and create subscription links
-  for (let location of userAttributes.values.field_2849) {
-      const subscribeURL = `https://ntfy.sh/example-${location}/sse`;
-      
-      // Fetch the link name asynchronously
-      let linkName = await fetchKnackRecord("object_3", location);
-      
-      // Create the subscription link and append it to the specified view
-      let $subscriptionDiv = createSubscriptionLink(linkName, subscribeURL);
-      $('.view_5521').append($subscriptionDiv);
-  }
-
-  // Construct URLs with the dynamic value
-  const publishURL = `https://ntfy.sh/example-${userValue}`;
-  const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
-
-  // Ensure the notification container exists
-  let notificationContainer = document.getElementById('notification-container');
-  if (!notificationContainer) {
-      notificationContainer = document.createElement('div');
-      notificationContainer.id = 'notification-container';
-      document.body.appendChild(notificationContainer);
-  }
-
-  // Create EventSource for live notifications
-  const eventSource = new EventSource(subscribeURL);
-  console.log(`Subscribed to ${subscribeURL}.`);
-
-  // Display user subscription link
-  let userSubscriptionDiv = createSubscriptionLink("User Subscription", subscribeURL);
-  $('.view_5521').append(userSubscriptionDiv);
-
-  // Function to show notifications
-  function showNotification(data) {
-      const parsedData = JSON.parse(data);
-
-      let notification = document.createElement('div');
-      notification.className = 'notification';
-
-      // Create close button
-      let closeButton = document.createElement('button');
-      closeButton.className = 'close-btn';
-      closeButton.innerHTML = '&times;';
-      closeButton.onclick = () => {
-          notificationContainer.removeChild(notification);
-      };
-
-      // Create title and message
-      let title = document.createElement('div');
-      title.className = 'title';
-      title.innerText = parsedData.title || 'No Title';
-
-      let message = document.createElement('div');
-      message.className = 'message';
-      message.innerText = parsedData.message || 'No Message';
-
-      notification.appendChild(closeButton);
-      notification.appendChild(title);
-      notification.appendChild(message);
-      notificationContainer.appendChild(notification);
-  }
-
-  // Handle incoming messages from EventSource
-  eventSource.onmessage = (e) => {
-      showNotification(e.data);
-  };
-});
-
-// Example of the fetchKnackRecord function (assumed to be defined elsewhere in your code)
-async function fetchKnackRecord(objectKey, recordId) {
-  try {
-      const response = await fetch(`https://api.rd.knack.com/v1/objects/${objectKey}/records/${recordId}`, {
-          method: "GET",
-          headers: {
-              "X-Knack-Application-Id": "591eae59e0d2123f23235769",
-              "X-Knack-REST-API-Key": "91c668c0-3c7c-11e7-9e34-11068f8335ed",
-              "Content-Type": "application/json"
-          }
-      });
-
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.field_you_want; // Adjust this to return the specific field you're interested in
-  } catch (error) {
-      console.error('There was an error fetching the record:', error);
-      return 'Unknown'; // Return a default value if there's an error
-  }
-}
