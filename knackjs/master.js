@@ -5059,6 +5059,7 @@ $(document).on('knack-scene-render.scene_4', async function(event, scene) {
           notificationContainer.removeChild(notification);
       };
 
+
       // Create title and message
       let title = document.createElement('div');
       title.className = 'title';
@@ -5103,3 +5104,5 @@ async function fetchKnackRecord(objectKey, recordId) {
       return 'Unknown'; // Return a default value if there's an error
   }
 }
+
+
