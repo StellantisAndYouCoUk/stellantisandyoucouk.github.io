@@ -4917,7 +4917,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 
 
-/*$(document).on('knack-view-render.view_3773', function(event, view, data) {
+$(document).on('knack-view-render.view_3773', function(event, view, data) {
   $('.field_3181').hide();
   console.log("View render event triggered");
 
@@ -5024,8 +5024,6 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
           .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
           });
-      }else{
-        // $('#akif').append(<p>Someting Wrong</p>)
       }
 
   
@@ -5084,7 +5082,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   });
 });
 
-*/ 
+
 
 // $(document).on('knack-view-render.view_4230', function(event, scene) {
 // $('#view_4230').css('flex','0')
