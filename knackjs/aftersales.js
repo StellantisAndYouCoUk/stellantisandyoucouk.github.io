@@ -4932,7 +4932,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       document.head.append(script);
     });
   }
-  
+  let trId = '';
   // Load jQuery first
   loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
     // Load other scripts after jQuery is loaded
@@ -4949,7 +4949,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
 
     $('tr').mouseenter(function() {
-      var trId = $(this).attr('id');
+      trId = $(this).attr('id');
       console.log('Mouse is on: ' + trId);
   });
 
