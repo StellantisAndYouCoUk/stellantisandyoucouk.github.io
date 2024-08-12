@@ -4958,7 +4958,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
     // Add Modal Structure to the body
     $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
-
+      $('.field_3181').hide();
 
 
 
