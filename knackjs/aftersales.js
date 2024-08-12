@@ -4987,6 +4987,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       });
 
       let modelHtml = '';
+      const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
+      console.log(key_value_store)
 
       if (modelHtml === '') {
         fetch('https://api.apify.com/v2/key-value-stores/9z2SNV3dWNezNUF3a/records/test.html')
