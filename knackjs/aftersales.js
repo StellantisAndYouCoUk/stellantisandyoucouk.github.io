@@ -4915,7 +4915,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 
 //Parts Ordering View  
 
-
+/*
 
 $(document).on('knack-view-render.view_3773', function(event, view, data) {
   $('.field_3181').hide();
@@ -4923,7 +4923,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
 
 
-/*  // Function to load a script and return a promise
+ // Function to load a script and return a promise
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
