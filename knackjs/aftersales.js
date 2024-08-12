@@ -4993,8 +4993,18 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       });
 
       let modelHtml = '';
+
+      console.log(trId);
+      const keyValueStore = '';
       const recordId = Knack.views['view_5739'].record.id
-      const keyValueStore  = Knack.views.view_3773.model.data.models[0].attributes['field_3181'];
+
+      Knack.views.view_3773.model.data.models.forEach((model)=>{
+
+        if(model.id===trId){
+          keyValueStore = model.attributes.field_3181_raw
+        }
+
+      })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
       console.log(keyValueStore)
 
