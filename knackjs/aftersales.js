@@ -4948,6 +4948,12 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
 
+    $('tr').mouseenter(function() {
+      var trId = $(this).attr('id');
+      console.log('Mouse is on: ' + trId);
+  });
+
+  
   
 
     // Add Modal Structure to the body
@@ -4987,7 +4993,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       });
 
       let modelHtml = '';
-
+      const recordId = Knack.views['view_5739'].record.id
       const keyValueStore  = Knack.views.view_3773.model.data.models[0].attributes['field_3181'];
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
       console.log(keyValueStore)
