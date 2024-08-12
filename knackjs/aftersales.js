@@ -4948,7 +4948,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     // Append CSS files after all scripts are loaded
     $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
-
+$(document).on('mouseleave', '.fa-cart-arrow-down', function() {
     $('tr').mouseenter(function() {
       trId = $(this).attr('id');
       console.log('Mouse is on: ' + trId);
@@ -4958,7 +4958,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   
 
     // Add Modal Structure to the body
-    $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
+    
      
 
 
