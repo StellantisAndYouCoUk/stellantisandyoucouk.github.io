@@ -4974,7 +4974,7 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
  
 
       $('#myModal').remove();
-
+$('.modal-backdrop').remove();
 
       let modelHtml = '';
 
