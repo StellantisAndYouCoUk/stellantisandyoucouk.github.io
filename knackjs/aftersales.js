@@ -4921,7 +4921,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   $('.field_3181').hide();
   console.log("View render event triggered");
 
-});*/
+
 
  // Function to load a script and return a promise
   function loadScript(src) {
@@ -5084,7 +5084,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
   });
 });
 
-
+*/ 
 
 // $(document).on('knack-view-render.view_4230', function(event, scene) {
 // $('#view_4230').css('flex','0')
