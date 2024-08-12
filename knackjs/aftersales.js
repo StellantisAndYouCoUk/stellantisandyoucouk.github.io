@@ -4995,7 +4995,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       let modelHtml = '';
 
       console.log(trId);
-      const keyValueStore = '';
+      let keyValueStore = '';
 
       Knack.views.view_3773.model.data.models.forEach((model)=>{
 
