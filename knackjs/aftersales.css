@@ -2238,3 +2238,8 @@ div.tooltipDiv {
 #view_4257 .kn-detail-label {
   background-color: transparent;
 }
+
+
+#view_4230 {
+	flex: 0;
+}
