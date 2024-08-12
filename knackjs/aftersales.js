@@ -4955,40 +4955,19 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     let keyValueStore = '';
     $('tr').mouseenter(function() {
       trId = $(this).attr('id');
-      console.log('Mouse is on: ' + trId);
   });
 
 $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
 
  
-  $('tr').mouseenter(function() {
-    trId = $(this).attr('id');
-    console.log('Mouse is on: ' + trId);
-});
-  
-  
 
-    // Add Modal Structure to the body
-    
-     
-
-
-
-   
-      //alert(Knack.getUserAttributes().values.field_24);
-
-
-
-
-
-      // Remove any existing modal with the same ID to prevent duplicates
       $('#myModal').remove();
 
 
       let modelHtml = '';
 
 
-      let keyValueStore = '';
+      keyValueStore = '';
       $('tr').mouseenter(function() {
         trId = $(this).attr('id');
         console.log('Mouse is on: ' + trId);
