@@ -4970,6 +4970,16 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
       // Remove any existing modal with the same ID to prevent duplicates
       $('#myModal').remove();
 
+      
+      let modelHtml = '';
+
+
+      let keyValueStore = '';
+      $('tr').mouseenter(function() {
+        trId = $(this).attr('id');
+        console.log('Mouse is on: ' + trId);
+    });
+
 
 
       // Append the modal structure to the body
@@ -4992,15 +5002,7 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
         handleUpdate: true
       });
 
-      let modelHtml = '';
 
-      console.log(trId);
-      let keyValueStore = '';
-      $('tr').mouseenter(function() {
-        trId = $(this).attr('id');
-        console.log('Mouse is on: ' + trId);
-    });
-    
 
       Knack.views.view_3773.model.data.models.forEach((model)=>{
 
