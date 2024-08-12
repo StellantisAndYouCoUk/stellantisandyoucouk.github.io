@@ -4955,6 +4955,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     let keyValueStore = '';
     $('tr').mouseenter(function() {
       trId = $(this).attr('id');
+    console.log('Mouse is on: ' + trId);
+
   });
 
 $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
