@@ -5025,7 +5025,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             console.error('There was a problem with the fetch operation:', error);
           });
       }else{
-        $('#akif').append(<p>Someting Wrong</p>)
+        // $('#akif').append(<p>Someting Wrong</p>)
       }
 
   
