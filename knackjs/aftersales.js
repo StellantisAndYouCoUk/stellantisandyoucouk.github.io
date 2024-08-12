@@ -4959,6 +4959,12 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
 $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
 
+  keyValueStore = '';
+  $('tr').mouseenter(function() {
+    trId = $(this).attr('id');
+    console.log('Mouse is on: ' + trId);
+});
+
  
 
       $('#myModal').remove();
@@ -4966,12 +4972,6 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
 
       let modelHtml = '';
 
-
-      keyValueStore = '';
-      $('tr').mouseenter(function() {
-        trId = $(this).attr('id');
-        console.log('Mouse is on: ' + trId);
-    });
 
 
 
