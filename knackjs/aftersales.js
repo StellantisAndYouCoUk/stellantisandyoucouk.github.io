@@ -4951,10 +4951,10 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" type="text/css" />');
           
-    let modelHtml = '';
 
 
-    let keyValueStore = '';
+
+ 
     $('tr').mouseenter(function() {
       trId = $(this).attr('id');
       console.log('Mouse is on: ' + trId);
@@ -5024,7 +5024,7 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
 
       })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
-      console.log(keyValueStore)
+      console.log("Key Value Store Id: " + keyValueStore)
 
       if (modelHtml === '' && keyValueStore != '') {
         fetch(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`)
