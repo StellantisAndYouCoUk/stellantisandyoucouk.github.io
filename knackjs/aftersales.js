@@ -5008,7 +5008,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
       console.log(keyValueStore)
 
-      if (modelHtml === '') {
+      if (modelHtml === '' && keyValueStore != '') {
         fetch(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`)
           .then(response => {
             if (!response.ok) {
@@ -5024,6 +5024,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
           });
+      }else{
+        $('#akif').append(<p>Someting Wrong</p>)
       }
 
   
