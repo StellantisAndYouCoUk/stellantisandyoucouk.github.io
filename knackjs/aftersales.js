@@ -4920,6 +4920,7 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
 $(document).on('knack-view-render.view_3773', function(event, view, data) {
   $('.field_3181').hide();
   console.log("View render event triggered");
+  $('#myModal').remove();
 
 
 
