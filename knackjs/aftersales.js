@@ -4934,6 +4934,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     });
   }
   let trId = '';
+  let modelHtml = '';
+  let keyValueStore = '';
   // Load jQuery first
   loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
     // Load other scripts after jQuery is loaded
@@ -4985,10 +4987,6 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
       $('#myModal').remove();
 
 
-      let modelHtml = '';
-
-
-      let keyValueStore = '';
       $('tr').mouseenter(function() {
         trId = $(this).attr('id');
         console.log('Mouse is on: ' + trId);
@@ -5045,17 +5043,6 @@ $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
             console.error('There was a problem with the fetch operation:', error);
           });
       }
-
-  
-
-
-      // $('#htmxTest').on('click', function(){
-
-
-      // })
-
-
-
 
       $('#searchButton').on('click', function() {
         Swal.fire({
