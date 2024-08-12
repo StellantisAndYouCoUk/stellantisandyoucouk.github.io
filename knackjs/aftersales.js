@@ -5070,6 +5070,10 @@ $('.modal-backdrop').remove();
         $(this).remove();
       });
 
+      $('.modal-backdrop').on('hidden.bs.modal', function() {
+        $(this).remove();
+      });
+
       console.log("Mouse leave detected");
     });
   }).catch((error) => {
