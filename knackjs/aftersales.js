@@ -5063,6 +5063,6 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 });
 
 
-$(document).on('knack-view-render.view_4230', function(event, scene) {
-$('#view_4230').css('flex','0')
-});
+// $(document).on('knack-view-render.view_4230', function(event, scene) {
+// $('#view_4230').css('flex','0')
+// });
