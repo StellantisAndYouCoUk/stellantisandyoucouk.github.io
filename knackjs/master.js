@@ -4856,6 +4856,8 @@ let subscribeURL = '';
       function createNotificationUrl(value){
        publishURL = `https://ntfy.sh/example-${userValue}`;
        subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+
+       return subscribeURL;
       }
 
       createNotificationUrl(userValue)
@@ -4901,8 +4903,8 @@ createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
-    createNotificationUrl(location.id)
-    createLink(subscribeURL.substr(0, subscribeURL.length - 4), location.identifier);
+    
+    createLink(createNotificationUrl(location.id).createNotificationUrl(location.id)(0, subscribeURL.length - 4), location.identifier);
     console.log(JSON.stringify(location));
    })
 
