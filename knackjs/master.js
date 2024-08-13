@@ -4873,7 +4873,7 @@ function createLink(url, linkText){
   $link.text(linkText);
   
   // Create a new div element and append the link to it
-  let $div = $('<div></div>').append($link);
+  let $div = $('<div style="margin: 10px 10px"></div>').append($link);
   
   $('.view_5521').append($div);
   
