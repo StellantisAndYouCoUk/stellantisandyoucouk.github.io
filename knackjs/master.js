@@ -4854,7 +4854,7 @@ let subscribeURL = '';
 // Create a link function
 function createLink(url, linkText){
   // Create a new anchor element using jQuery
-  let $link = $('<a></a>');
+  let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
   
   // Set the href attribute to the subscription URL, removing the last 4 characters
   $link.attr('href', url);
@@ -4867,7 +4867,7 @@ function createLink(url, linkText){
   $link.text(linkText);
   
   // Create a new div element and append the link to it
-  let $div = $('<div style="margin: 10px 10px"></div>').append($link);
+  let $div = $('<div class="control"></div>').append($link);
   
   $('.view_5521').append($div);
   
