@@ -4844,6 +4844,108 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 
 //Mayank code 
 
+$(document).on('knack-scene-render.scene_4', function(event, scene) {
+let publishURL = '';
+let subscribeURL = '';
+  
+  //  Indivial Users
+      const userAttributes = Knack.getUserAttributes();
+      const userValue = userAttributes.values.field_7974;
+   
+      // Construct URLs with the dynamic value
+      function createNotificationUrl(value){
+       publishURL = `https://ntfy.sh/example-${userValue}`;
+       subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+      }
+
+      createNotificationUrl(userValue)
+      const events = document.getElementById('events');
+   
+      // Ensure notification container exists
+      let notificationContainer = document.getElementById('notification-container');
+      if (!notificationContainer) {
+          notificationContainer = document.createElement('div');
+          notificationContainer.id = 'notification-container';
+          document.body.appendChild(notificationContainer);
+      }
+   
+      const eventSource = new EventSource(subscribeURL);
+      // console.log(`Subscribed to ${subscribeURL}.` )
+
+
+// Create a link function
+function createLink(url, linkText){
+// Create a new anchor element using jQuery
+let $link = $('<a></a>');
+
+// Set the href attribute to the subscription URL, removing the last 4 characters
+$link.attr('href', url);
+
+// Set the target attribute to '_blank' to open the link in a new tab
+$link.attr('target', '_blank');
+
+// Set the text of the link
+$link.text(linkText);
+
+// Create a new div element and append the link to it
+let $div = $('<div></div>').append($link);
+
+$('.view_5521').append($div);
+
+// Append the div to the specified element in the DOM
+}
 
 
 
+createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit the subscription page');
+
+  // Locations
+  Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
+    createNotificationUrl(location.id)
+    createLink(subscribeURL.substr(0, subscribeURL.length - 4), location.identifier);
+    console.log(JSON.stringify(location));
+   })
+
+
+
+
+      
+      function showNotification(data) {
+          const parsedData = JSON.parse(data);
+   
+          let notification = document.createElement('div');
+          notification.className = 'notification';
+   
+          // Create close button
+          let closeButton = document.createElement('button');
+          closeButton.className = 'close-btn';
+          closeButton.innerHTML = '&times;';
+          closeButton.onclick = () => {
+              notificationContainer.removeChild(notification);
+          };
+   
+          // Create title and message
+          let title = document.createElement('div');
+          title.className = 'title';
+          title.innerText = parsedData.title || 'No Title';
+   
+          let message = document.createElement('div');
+          message.className = 'message';
+          message.innerText = parsedData.message || 'No Message';
+   
+          notification.appendChild(closeButton);
+          notification.appendChild(title);
+          notification.appendChild(message);
+          notificationContainer.appendChild(notification);
+      }
+   
+   
+      eventSource.onmessage = (e) => {
+          //let event = document.createElement('div');
+          //event.innerHTML = e.data;
+          //events.appendChild(event);
+          console.log(e.data);
+          showNotification(e.data);
+      };
+
+});
