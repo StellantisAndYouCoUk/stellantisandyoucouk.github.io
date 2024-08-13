@@ -4864,12 +4864,12 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
 
 // Create a link function
-function createLink(subscribeUrl, linkText){
+function createLink(url, linkText){
 // Create a new anchor element using jQuery
 let $link = $('<a></a>');
 
 // Set the href attribute to the subscription URL, removing the last 4 characters
-$link.attr('href', subscribeURL);
+$link.attr('href', url);
 
 // Set the target attribute to '_blank' to open the link in a new tab
 $link.attr('target', '_blank');
@@ -4887,7 +4887,7 @@ $('.view_5521').append($div);
 
 
 
-createLink(`${subscribeURL.substr(0, subscribeURL.length - 4)}`, 'Click here to visit the subscription page');
+createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit the subscription page');
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
