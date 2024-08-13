@@ -4844,8 +4844,8 @@ let subscribeURL = '';
 
 
       function createNotificationUrl(value){
-       publishURL = `https://ntfy.sh/example-${value}`;
-       subscribeURL = `https://ntfy.sh/example-${value}/sse`;
+       publishURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
 
        return subscribeURL;
       }
