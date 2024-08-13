@@ -4839,16 +4839,20 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
-
+let publishURL = '';
+let subscribeURL = '';
   
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.values.field_7974;
    
       // Construct URLs with the dynamic value
-      const publishURL = `https://ntfy.sh/example-${userValue}`;
-      const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
-     
+      function createNotificationUrl(value){
+       publishURL = `https://ntfy.sh/example-${userValue}`;
+       subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+      }
+
+      createNotificationUrl(userValue)
       const events = document.getElementById('events');
    
       // Ensure notification container exists
@@ -4891,6 +4895,8 @@ createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
+    createNotificationUrl(location.id)
+    createLink(subscribeURL.substr(0, subscribeURL.length - 4), location.identifier);
     console.log(JSON.stringify(location));
    })
 
