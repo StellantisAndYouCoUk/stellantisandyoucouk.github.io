@@ -4880,6 +4880,8 @@ $link.text(linkText);
 // Create a new div element and append the link to it
 let $div = $('<div></div>').append($link);
 
+$('.view_5521').append($div);
+
 // Append the div to the specified element in the DOM
 }
 
@@ -4892,7 +4894,7 @@ createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit
 
 
 
-$('.view_5521').append($div);
+
       
       function showNotification(data) {
           const parsedData = JSON.parse(data);
