@@ -4839,6 +4839,11 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
+  // Return Locations
+   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
+    console.log(JSON.stringify(location));
+   })
+  
   
   const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.values.field_7974;
