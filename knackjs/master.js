@@ -4903,8 +4903,8 @@ createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
-    
-    createLink(createNotificationUrl(location.id).createNotificationUrl(location.id)(0, subscribeURL.length - 4), location.identifier);
+    let url = createNotificationUrl(location.id);
+    createLink(url.substr(0, url.length - 4), location.identifier);
     console.log(JSON.stringify(location));
    })
 
