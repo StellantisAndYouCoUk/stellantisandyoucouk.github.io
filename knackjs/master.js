@@ -4910,7 +4910,7 @@ createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
-    let url = createNotificationUrl(location.identifier);
+    let url = createNotificationUrl(location.identifier.replace(" ", "").replace("&", ""));
     createLink(url.substr(0, url.length - 4), location.identifier);
   
 });
