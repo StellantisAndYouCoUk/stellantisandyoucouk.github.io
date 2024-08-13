@@ -4845,32 +4845,47 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 
 
-async function fetchKnackRecord(object, id) {
+$(document).on('knack-scene-render.scene_4', async function(event, scene) { // Added 'async' to the function
   try {
-      const response = await fetch(`https://api.rd.knack.com/v1/objects/${object}/records/${id}`, {
-          method: "GET",
-          headers: {
-              "X-Knack-Application-Id": "591eae59e0d2123f23235769", // Replace with your actual App ID
-              "X-Knack-REST-API-Key": "knack",   // Replace with your actual API Key
-              "Content-Type": "application/json"
-          }
-      });
+    // Return Locations
+    Knack.views.view_5.model.attributes.field_2849_raw.forEach((location) => {
+      console.log(JSON.stringify(location));
+    });
 
-      // Check if the response is OK (status 200)
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
+    const userAttributes = Knack.getUserAttributes();
+    const userValue = userAttributes.values.field_7974;
 
-      // Parse the JSON response
-      const data = await response.json();
-      console.log(data);
-      
-      // Return the data if needed
-      return data;
+    // Construct URLs with the dynamic value
+    const publishURL = `https://ntfy.sh/example-${userValue}`;
+    const subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+
+    const events = document.getElementById('events');
+
+    // Ensure notification container exists
+    let notificationContainer = document.getElementById('notification-container');
+    if (!notificationContainer) {
+      notificationContainer = document.createElement('div');
+      notificationContainer.id = 'notification-container';
+      document.body.appendChild(notificationContainer);
+    }
+
+    // Fetch data from a URL
+    const response = await fetch(subscribeURL); // Assumed you need to fetch data from subscribeURL
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    // Parse the JSON response
+    const data = await response.json();
+    console.log(data);
+
+    // Return the data if needed
+    return data;
   } catch (error) {
-      console.error('There was an error fetching the record:', error);
+    console.error('There was an error fetching the record:', error);
   }
-}
+});
+
 
 // Call the function
 
