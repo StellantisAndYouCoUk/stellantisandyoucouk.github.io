@@ -4841,18 +4841,47 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
 let publishURL = '';
 let subscribeURL = '';
-  
-  //  Indivial Users
-      const userAttributes = Knack.getUserAttributes();
-      const userValue = userAttributes.values.field_7974;
-   
-      // Construct URLs with the dynamic value
+
+
       function createNotificationUrl(value){
        publishURL = `https://ntfy.sh/example-${value}`;
        subscribeURL = `https://ntfy.sh/example-${value}/sse`;
 
        return subscribeURL;
       }
+
+      
+// Create a link function
+function createLink(url, linkText){
+  // Create a new anchor element using jQuery
+  let $link = $('<a></a>');
+  
+  // Set the href attribute to the subscription URL, removing the last 4 characters
+  $link.attr('href', url);
+  
+  // Set the target attribute to '_blank' to open the link in a new tab
+  $link.attr('target', '_blank');
+  
+  // Set the text of the link
+  $link.text(linkText);
+  
+  // Create a new div element and append the link to it
+  let $div = $('<div></div>').append($link);
+  
+  $('.view_5521').append($div);
+  
+  // Append the div to the specified element in the DOM
+  }
+  
+
+
+
+  //  Indivial Users
+      const userAttributes = Knack.getUserAttributes();
+      const userValue = userAttributes.values.field_7974;
+   
+      // Construct URLs with the dynamic value
+
 
       createNotificationUrl(userValue)
       const events = document.getElementById('events');
@@ -4869,38 +4898,16 @@ let subscribeURL = '';
       // console.log(`Subscribed to ${subscribeURL}.` )
 
 
-// Create a link function
-function createLink(url, linkText){
-// Create a new anchor element using jQuery
-let $link = $('<a></a>');
-
-// Set the href attribute to the subscription URL, removing the last 4 characters
-$link.attr('href', url);
-
-// Set the target attribute to '_blank' to open the link in a new tab
-$link.attr('target', '_blank');
-
-// Set the text of the link
-$link.text(linkText);
-
-// Create a new div element and append the link to it
-let $div = $('<div></div>').append($link);
-
-$('.view_5521').append($div);
-
-// Append the div to the specified element in the DOM
-}
-
 
 
 createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit the subscription page');
 
   // Locations
-  Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
-    let url = createNotificationUrl(location.id);
+  Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
+    let url = createNotificationUrl(location.identifier);
     createLink(url.substr(0, url.length - 4), location.identifier);
-    console.log(JSON.stringify(location));
-   })
+  
+});
 
 
 
