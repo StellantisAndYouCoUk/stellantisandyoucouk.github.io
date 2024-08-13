@@ -4868,3 +4868,55 @@ async function fetchKnackRecord(objectKey, recordId) {
       return 'Unknown'; // Return a default value if there's an error
   }
 }
+
+
+
+createLink(`${subscribeURL.substr(0, subscribeURL.length - 4)}`, 'Click here to visit the subscription page');
+
+  // Locations
+  Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
+    console.log(JSON.stringify(location));
+   })
+
+
+
+
+      
+      function showNotification(data) {
+          const parsedData = JSON.parse(data);
+   
+          let notification = document.createElement('div');
+          notification.className = 'notification';
+   
+          // Create close button
+          let closeButton = document.createElement('button');
+          closeButton.className = 'close-btn';
+          closeButton.innerHTML = '&times;';
+          closeButton.onclick = () => {
+              notificationContainer.removeChild(notification);
+          };
+   
+          // Create title and message
+          let title = document.createElement('div');
+          title.className = 'title';
+          title.innerText = parsedData.title || 'No Title';
+   
+          let message = document.createElement('div');
+          message.className = 'message';
+          message.innerText = parsedData.message || 'No Message';
+   
+          notification.appendChild(closeButton);
+          notification.appendChild(title);
+          notification.appendChild(message);
+          notificationContainer.appendChild(notification);
+      }
+   
+   
+      eventSource.onmessage = (e) => {
+          //let event = document.createElement('div');
+          //event.innerHTML = e.data;
+          //events.appendChild(event);
+          console.log(e.data);
+          showNotification(e.data);
+      };
+
