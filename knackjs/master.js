@@ -4867,6 +4867,7 @@ function createLink(url, linkText){
   
   // Set the target attribute to '_blank' to open the link in a new tab
   $link.attr('target', '_blank');
+
   
   // Set the text of the link
   $link.text(linkText);
@@ -4906,11 +4907,11 @@ function createLink(url, linkText){
 
 
 
-createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit the subscription page');
+createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable User Notification');
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
-    let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", ""));
+    let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
     createLink(url.substr(0, url.length - 4), location.identifier);
   
 });
