@@ -4854,8 +4854,8 @@ let subscribeURL = '';
    
       // Construct URLs with the dynamic value
       function createNotificationUrl(value){
-       publishURL = `https://ntfy.sh/example-${userValue}`;
-       subscribeURL = `https://ntfy.sh/example-${userValue}/sse`;
+       publishURL = `https://ntfy.sh/example-${value}`;
+       subscribeURL = `https://ntfy.sh/example-${value}/sse`;
 
        return subscribeURL;
       }
