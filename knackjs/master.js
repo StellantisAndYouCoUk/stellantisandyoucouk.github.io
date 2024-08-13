@@ -4839,13 +4839,10 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
-  // Return Locations
-   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
-    console.log(JSON.stringify(location));
-   })
+
   
-  
-  const userAttributes = Knack.getUserAttributes();
+  //  Indivial Users
+      const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.values.field_7974;
    
       // Construct URLs with the dynamic value
@@ -4866,23 +4863,35 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
       // console.log(`Subscribed to ${subscribeURL}.` )
 
 
-
+// Create a link function
+function createLink(subscribeUrl, linkText){
 // Create a new anchor element using jQuery
 let $link = $('<a></a>');
 
 // Set the href attribute to the subscription URL, removing the last 4 characters
-$link.attr('href', subscribeURL.substr(0, subscribeURL.length - 4));
+$link.attr('href', subscribeURL);
 
 // Set the target attribute to '_blank' to open the link in a new tab
 $link.attr('target', '_blank');
 
 // Set the text of the link
-$link.text('Click here to visit the subscription page');
+$link.text(linkText);
 
 // Create a new div element and append the link to it
 let $div = $('<div></div>').append($link);
 
 // Append the div to the specified element in the DOM
+}
+
+createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Click here to visit the subscription page');
+
+  // Locations
+  Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
+    console.log(JSON.stringify(location));
+   })
+
+
+
 $('.view_5521').append($div);
       
       function showNotification(data) {
@@ -4924,4 +4933,3 @@ $('.view_5521').append($div);
       };
 
 });
-
