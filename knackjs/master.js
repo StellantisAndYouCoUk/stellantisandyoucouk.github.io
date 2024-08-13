@@ -4885,9 +4885,9 @@ $('.view_5521').append($div);
 // Append the div to the specified element in the DOM
 }
 
-subscribeURL = subscribeURL.substr(0, subscribeURL.length - 4)
 
-createLink(subscribeURL, 'Click here to visit the subscription page');
+
+createLink(`${subscribeURL.substr(0, subscribeURL.length - 4)}`, 'Click here to visit the subscription page');
 
   // Locations
   Knack.views.view_5.model.attributes.field_2849_raw.forEach((location)=>{
