@@ -4961,6 +4961,28 @@ function createLink(url, linkText){
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
       console.log("Subscribe to: " + subscribeURL );
+
+      function showNotification(data) {
+        const parsedData = JSON.parse(data);
+  
+        Swal.fire({
+          title: parsedData.title ||'No Title',
+          text: parsedData.message || 'No Message',
+          icon: "info",
+          allowOutsideClick: false
+        });
+    }
+  
+  
+    eventSource.onmessage = (e) => {
+        //let event = document.createElement('div');
+        //event.innerHTML = e.data;
+        //events.appendChild(event);
+        console.log(e.data);
+        showNotification(e.data);
+    };
+
+    
   }
 
 
@@ -4974,24 +4996,6 @@ function createLink(url, linkText){
 
 
       
-//   function showNotification(data) {
-//       const parsedData = JSON.parse(data);
 
-//       Swal.fire({
-//         title: parsedData.title ||'No Title',
-//         text: parsedData.message || 'No Message',
-//         icon: "info",
-//         allowOutsideClick: false
-//       });
-//   }
-
-
-//   eventSource.onmessage = (e) => {
-//       //let event = document.createElement('div');
-//       //event.innerHTML = e.data;
-//       //events.appendChild(event);
-//       console.log(e.data);
-//       showNotification(e.data);
-//   };
 
  })
