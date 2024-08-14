@@ -4849,25 +4849,20 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 // The first parameter is an array of files to load.
 // The second parameter is a function to execute after all the libraries have completed loading.
 LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js'], function () {
-    alert('All my files have completed loading!');
+  console.log('All my files have completed loading!');
 });
 
 // load some external CSS files
 var css_files = ['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css'];
 LazyLoad.css(css_files, function () {
-    alert('All my CSS files have completed loading!');
+    console.log('All my CSS files have completed loading!');
 });
 
 
 let publishURL = '';
 let subscribeURL = '';
 
-Swal.fire({
-  title: 'Error!',
-  text: 'Do you want to continue',
-  icon: 'error',
-  confirmButtonText: 'Cool'
-})
+
 
 
 
@@ -4926,6 +4921,12 @@ function createLink(url, linkText){
       const eventSource = new EventSource(subscribeURL);
       console.log(`Subscribed to ${subscribeURL}.` )
 
+      Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
 
 
 
