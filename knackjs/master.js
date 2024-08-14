@@ -4951,6 +4951,10 @@ function createLink(url, linkText){
     const userAttributes = Knack.getUserAttributes();
     if(userAttributes !=='No user found'){
       console.log("User Attributes: " + JSON.stringify(userAttributes));
+      const userValue = userAttributes.values.field_7974;
+      subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      eventSource = new EventSource(subscribeURL);
+      console.log("Subscribe to: " + subscribeURL );
   }
 
 
@@ -4959,11 +4963,9 @@ function createLink(url, linkText){
 }
 
 
-//   const userValue = userAttributes.values.field_7974;
-//   subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
 
-//   const eventSource = new EventSource(subscribeURL);
-//   console.log("Subscribe to: " + subscribeURL );
+
+
 
       
 //   function showNotification(data) {
