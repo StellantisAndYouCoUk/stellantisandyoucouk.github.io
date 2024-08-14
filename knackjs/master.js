@@ -4911,7 +4911,7 @@ function createLink(url, linkText){
       });
       
       Knack.views.view_5.model.attributes.profile_keys.split(",").forEach((profile) => {
-        let url = createNotificationUrl(profile.toLowerCase());
+        let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
         createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
   
       });
