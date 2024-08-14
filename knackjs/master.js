@@ -4951,7 +4951,6 @@ function createLink(url, linkText){
 });
 
 
-
  $(document).on('knack-view-render.any', function(event, scene) {
   if(eventSource===null){
     const userAttributes = Knack.getUserAttributes();
@@ -4962,21 +4961,33 @@ function createLink(url, linkText){
       eventSource = new EventSource(subscribeURL);
 
 
-      $.ajax({
-        url: 'https://api.rd.knack.com/v1/pages/scene_4/views/view_5/records',
-        type: 'GET',
-        headers: {
-          'Authorization': Knack.getUserToken(),
-          'X-Knack-Application-Id': Knack.application_id,
-          'Content-Type': 'application/json'
-        },
-        success: function(data) {
+      // $.ajax({
+      //   url: 'https://api.rd.knack.com/v1/pages/scene_4/views/view_5/records',
+      //   type: 'GET',
+      //   headers: {
+      //     'Authorization': Knack.getUserToken(),
+      //     'X-Knack-Application-Id': Knack.application_id,
+      //     'Content-Type': 'application/json'
+      //   },
+      //   success: function(data) {
+
+
+      //     data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
+      //       createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+      //     });
+          
+      //     Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
+      //       let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
+      //     });
+
+
+
 
 
     
-          console.log(data.records[0].field_2849_raw);
-        }
-      });
+      //     console.log(data.records[0].field_2849_raw);
+      //   }
+      // });
 
 
 
@@ -5030,6 +5041,14 @@ function createLink(url, linkText){
 
 
       
+
+
+ })
+
+
+ $(document).on('knack-scene-render.scene_2297', function(event, scene){
+
+console.log("scene_2297")
 
 
  })
