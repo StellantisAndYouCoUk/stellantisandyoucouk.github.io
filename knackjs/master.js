@@ -4933,7 +4933,7 @@ function createLink(url, linkText){
 //       })
 //     }
 
-    mySweetAlert('Error!', 'Do you want to continue', 'error', 'Cool').then();
+    // mySweetAlert('Error!', 'Do you want to continue', 'error', 'Cool').then();
 
 
 
