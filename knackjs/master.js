@@ -4896,7 +4896,7 @@ function createLink(url, linkText){
 
 
       createNotificationUrl(userValue)
-      const events = document.getElementById('events');
+      // const events = document.getElementById('events');
    
       // // Ensure notification container exists
       // let notificationContainer = document.getElementById('notification-container');
@@ -4919,34 +4919,34 @@ function createLink(url, linkText){
   
       });
       
-      Knack.views.view_5.model.attributes.profile_keys.split(",").forEach((profile) => {
+      Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
         let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
         createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
   
       });
 
-      eventSource = new EventSource(subscribeURL);
+      // eventSource = new EventSource(subscribeURL);
 
       
-      function showNotification(data) {
-          const parsedData = JSON.parse(data);
+      // function showNotification(data) {
+      //     const parsedData = JSON.parse(data);
 
-          Swal.fire({
-            title: parsedData.title ||'No Title',
-            text: parsedData.message || 'No Message',
-            icon: "info",
-            allowOutsideClick: false
-          });
-      }
+      //     Swal.fire({
+      //       title: parsedData.title ||'No Title',
+      //       text: parsedData.message || 'No Message',
+      //       icon: "info",
+      //       allowOutsideClick: false
+      //     });
+      // }
    
    
-      eventSource.onmessage = (e) => {
-          //let event = document.createElement('div');
-          //event.innerHTML = e.data;
-          //events.appendChild(event);
-          console.log(e.data);
-          showNotification(e.data);
-      };
+      // eventSource.onmessage = (e) => {
+      //     //let event = document.createElement('div');
+      //     //event.innerHTML = e.data;
+      //     //events.appendChild(event);
+      //     console.log(e.data);
+      //     showNotification(e.data);
+      // };
 
 });
 
@@ -4956,11 +4956,11 @@ function createLink(url, linkText){
   if(eventSource===null){
     const userAttributes = Knack.getUserAttributes();
     if(userAttributes !=='No user found'){
-      console.log("User Attributes: " + JSON.stringify(userAttributes));
+      // console.log("User Attributes: " + JSON.stringify(userAttributes));
       const userValue = userAttributes.values.field_7974;
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
-      console.log("Subscribe to: " + subscribeURL );
+      // console.log("Subscribe to: " + subscribeURL );
 
       function showNotification(data) {
         const parsedData = JSON.parse(data);
@@ -4982,7 +4982,7 @@ function createLink(url, linkText){
         showNotification(e.data);
     };
 
-    
+
   }
 
 
