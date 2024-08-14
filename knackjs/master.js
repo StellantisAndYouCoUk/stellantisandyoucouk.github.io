@@ -4846,13 +4846,6 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
-// The first parameter is an array of files to load.
-// The second parameter is a function to execute after all the libraries have completed loading.
-
-
-// load some external CSS files
-
-
 
 let publishURL = '';
 let subscribeURL = '';
@@ -4891,8 +4884,7 @@ function createLink(url, linkText){
   
   // Append the div to the specified element in the DOM
   }
-  // TODO
-// $('#kn-input-field_6 > span.profile_78').text()
+
 
 
   //  Indivial Users
@@ -4905,30 +4897,15 @@ function createLink(url, linkText){
       createNotificationUrl(userValue)
       const events = document.getElementById('events');
    
-      // Ensure notification container exists
-      let notificationContainer = document.getElementById('notification-container');
-      if (!notificationContainer) {
-          notificationContainer = document.createElement('div');
-          notificationContainer.id = 'notification-container';
-          document.body.appendChild(notificationContainer);
-      }
+      // // Ensure notification container exists
+      // let notificationContainer = document.getElementById('notification-container');
+      // if (!notificationContainer) {
+      //     notificationContainer = document.createElement('div');
+      //     notificationContainer.id = 'notification-container';
+      //     document.body.appendChild(notificationContainer);
+      // }
    
-      const eventSource = new EventSource(subscribeURL);
-
-
-
-      console.log(`Subscribed to ${subscribeURL}.` )
-// async function mySweetAlert(title, text, icon, confirmButton){
-//       Swal.fire({
-//         title: title,
-//         text: text,
-//         icon: icon,
-//         confirmButtonText: confirmButton
-//       })
-//     }
-
-    // mySweetAlert('Error!', 'Do you want to continue', 'error', 'Cool').then();
-
+      
 
 
 
@@ -4947,55 +4924,60 @@ function createLink(url, linkText){
   
       });
 
+      // const eventSource = new EventSource(subscribeURL);
 
       
-      function showNotification(data) {
-          const parsedData = JSON.parse(data);
+      // function showNotification(data) {
+      //     const parsedData = JSON.parse(data);
 
-          Swal.fire({
-            title: parsedData.title ||'No Title',
-            text: parsedData.message || 'No Message',
-            icon: "info",
-            allowOutsideClick: false
-          });
-
-
-
-   
-          // let notification = document.createElement('div');
-          // notification.className = 'notification';
-   
-          // // Create close button
-          // let closeButton = document.createElement('button');
-          // closeButton.className = 'close-btn';
-          // closeButton.innerHTML = '&times;';
-          // closeButton.onclick = () => {
-          //     notificationContainer.removeChild(notification);
-          // };
-   
-          // // Create title and message
-          // let title = document.createElement('div');
-          // title.className = 'title';
-          // title.innerText = parsedData.title || 'No Title';
-   
-          // let message = document.createElement('div');
-          // message.className = 'message';
-          // message.innerText = parsedData.message || 'No Message';
-   
-          // notification.appendChild(closeButton);
-          // notification.appendChild(title);
-          // notification.appendChild(message);
-          // notificationContainer.appendChild(notification);
-      }
+      //     Swal.fire({
+      //       title: parsedData.title ||'No Title',
+      //       text: parsedData.message || 'No Message',
+      //       icon: "info",
+      //       allowOutsideClick: false
+      //     });
+      // }
    
    
-      eventSource.onmessage = (e) => {
-          //let event = document.createElement('div');
-          //event.innerHTML = e.data;
-          //events.appendChild(event);
-          console.log(e.data);
-          showNotification(e.data);
-      };
+      // eventSource.onmessage = (e) => {
+      //     //let event = document.createElement('div');
+      //     //event.innerHTML = e.data;
+      //     //events.appendChild(event);
+      //     console.log(e.data);
+      //     showNotification(e.data);
+      // };
 
 });
 
+
+
+$(document).on('knack-scene-render.any', function(event, scene) {
+
+  const userAttributes = Knack.getUserAttributes();
+  const userValue = userAttributes.values.field_7974;
+  subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+
+  const eventSource = new EventSource(subscribeURL);
+
+      
+  function showNotification(data) {
+      const parsedData = JSON.parse(data);
+
+      Swal.fire({
+        title: parsedData.title ||'No Title',
+        text: parsedData.message || 'No Message',
+        icon: "info",
+        allowOutsideClick: false
+      });
+  }
+
+
+  eventSource.onmessage = (e) => {
+      //let event = document.createElement('div');
+      //event.innerHTML = e.data;
+      //events.appendChild(event);
+      console.log(e.data);
+      showNotification(e.data);
+  };
+
+})
