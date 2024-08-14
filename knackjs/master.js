@@ -4954,9 +4954,10 @@ function createLink(url, linkText){
 $(document).on('knack-view-render.any', function(event, scene) {
 
   const userAttributes = Knack.getUserAttributes();
+   if(userAttributes){
   const userValue = userAttributes.values.field_7974 || null;
 
-  if(userValue){
+ 
   subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
 
   const eventSource = new EventSource(subscribeURL);
