@@ -5042,7 +5042,16 @@ function createLink(url, linkText){
 
  $(document).on('knack-scene-render.scene_2297', function(event, scene){
 
-  <button id="githubButton" type="button">Send Messages</button>
+  var $button = $('<button>', {
+    id: 'githubButton',
+    type: 'button',
+    text: 'Send Messages'
+});
+
+// Append the button to a container
+$('#buttonContainer').append($button);
+
+
 
   $('#githubButton').on('click', function() {
 
