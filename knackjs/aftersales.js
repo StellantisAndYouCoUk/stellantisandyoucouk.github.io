@@ -4751,7 +4751,7 @@ if ($('div[class="kn-table kn-view view_3878"]')){
           };
         };
         if (currentRow.id!==''){
-          currentRow.children[12].onclick = createClickHandler(currentRow);
+          currentRow.children[10].onclick = createClickHandler(currentRow);
         }
       }
     }
