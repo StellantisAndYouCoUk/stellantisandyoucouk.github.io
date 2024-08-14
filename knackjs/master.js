@@ -4902,7 +4902,7 @@ function createLink(url, linkText){
       }
    
       const eventSource = new EventSource(subscribeURL);
-      // console.log(`Subscribed to ${subscribeURL}.` )
+      console.log(`Subscribed to ${subscribeURL}.` )
 
 
 
