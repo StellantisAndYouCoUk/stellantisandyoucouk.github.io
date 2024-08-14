@@ -4850,17 +4850,6 @@ LazyLoad.css(css_files, function () {
 
 });
 
-
-
-LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js'], function () {
-  console.log('All my files have completed loading!');
-
-
-
-
-
-
-
 // load some external CSS files
 
 
@@ -5010,4 +4999,3 @@ function createLink(url, linkText){
 
 });
 
-});
