@@ -4901,16 +4901,20 @@ function createLink(url, linkText){
 
 
 
-createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable User Notification');
+    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable User Notification');
 
-  // Locations
-  Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
-    let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-    createLink(url.substr(0, url.length - 4), `${location.identifier}`);
+      // Locations
+      Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
+        let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+        createLink(url.substr(0, url.length - 4), `Enable ${location.identifier} Notification`);
   
-});
-
-
+      });
+      
+      Knack.views.view_5.model.attributes.profile_keys.split(",").forEach((profile) => {
+        let url = createNotificationUrl(profile.toLowerCase());
+        createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
+  
+      });
 
 
       
