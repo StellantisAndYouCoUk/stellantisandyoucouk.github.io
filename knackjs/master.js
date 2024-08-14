@@ -4954,6 +4954,36 @@ function createLink(url, linkText){
       const userValue = userAttributes.values.field_7974;
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
+
+
+      $(this).ajax({
+        url: 'https://api.rd.knack.com/v1/pages/scene_4/views/view_5/records',
+        type: 'GET',
+        headers: {
+          'Authorization': Knack.getUserToken(),
+          'X-Knack-Application-Id': Knack.application_id,
+          'Content-Type': 'application/json'
+        },
+        success: function(data) {
+
+          
+    
+          console.log(data.records[0].field_2849_raw);
+        }
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
       // console.log("Subscribe to: " + subscribeURL );
 
       function showNotification(data) {
@@ -4975,6 +5005,10 @@ function createLink(url, linkText){
         console.log(e.data);
         showNotification(e.data);
     };
+
+
+
+
 
 
   }
