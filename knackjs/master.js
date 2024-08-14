@@ -4844,7 +4844,7 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 
 //Mayank code 
 
-$(document).on('knack-scene-render.scene_4', function(event, scene) {
+$(document).on('knack-scene-render.any', function(event, scene) {
 
 // The first parameter is an array of files to load.
 // The second parameter is a function to execute after all the libraries have completed loading.
