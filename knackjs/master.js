@@ -4972,7 +4972,8 @@ function createLink(url, linkText){
           Swal.fire({
             title: parsedData.title ||'No Title',
             text: parsedData.message || 'No Message',
-            icon: "success"
+            icon: "info",
+            allowOutsideClick: false
           });
 
 
