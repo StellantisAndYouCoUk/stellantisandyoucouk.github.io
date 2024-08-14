@@ -4865,7 +4865,7 @@ LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.
 
 
 
-});
+
 
 // load some external CSS files
 
@@ -5000,5 +5000,7 @@ function createLink(url, linkText){
           console.log(e.data);
           showNotification(e.data);
       };
+
+});
 
 });
