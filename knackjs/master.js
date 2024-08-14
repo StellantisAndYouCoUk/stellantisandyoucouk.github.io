@@ -4842,19 +4842,27 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
 // The first parameter is an array of files to load.
 // The second parameter is a function to execute after all the libraries have completed loading.
-LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js'], function () {
-  console.log('All my files have completed loading!');
 
-  callback();
-});
 
-// load some external CSS files
 var css_files = ['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css'];
 LazyLoad.css(css_files, function () {
     console.log('All my CSS files have completed loading!');
 
-    callback();
 });
+
+
+
+LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js'], function () {
+  console.log('All my files have completed loading!');
+
+  Swal.fire("SweetAlert2 is working!");
+
+
+
+});
+
+// load some external CSS files
+
 
 
 let publishURL = '';
