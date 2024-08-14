@@ -4956,7 +4956,7 @@ function createLink(url, linkText){
       eventSource = new EventSource(subscribeURL);
 
 
-      $(this).ajax({
+      $.ajax({
         url: 'https://api.rd.knack.com/v1/pages/scene_4/views/view_5/records',
         type: 'GET',
         headers: {
@@ -4966,7 +4966,7 @@ function createLink(url, linkText){
         },
         success: function(data) {
 
-          
+
     
           console.log(data.records[0].field_2849_raw);
         }
