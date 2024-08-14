@@ -4861,7 +4861,7 @@ LazyLoad.css(css_files, function () {
 LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js'], function () {
   console.log('All my files have completed loading!');
 
-  Swal.fire("SweetAlert2 is working!");
+
 
 
 
@@ -4931,6 +4931,9 @@ function createLink(url, linkText){
       }
    
       const eventSource = new EventSource(subscribeURL);
+
+
+
       console.log(`Subscribed to ${subscribeURL}.` )
 // async function mySweetAlert(title, text, icon, confirmButton){
 //       Swal.fire({
@@ -4965,31 +4968,40 @@ function createLink(url, linkText){
       
       function showNotification(data) {
           const parsedData = JSON.parse(data);
+
+          Swal.fire({
+            title: parsedData.title ||'No Title',
+            text: parsedData.message || 'No Message',
+            icon: "success"
+          });
+
+
+
    
-          let notification = document.createElement('div');
-          notification.className = 'notification';
+          // let notification = document.createElement('div');
+          // notification.className = 'notification';
    
-          // Create close button
-          let closeButton = document.createElement('button');
-          closeButton.className = 'close-btn';
-          closeButton.innerHTML = '&times;';
-          closeButton.onclick = () => {
-              notificationContainer.removeChild(notification);
-          };
+          // // Create close button
+          // let closeButton = document.createElement('button');
+          // closeButton.className = 'close-btn';
+          // closeButton.innerHTML = '&times;';
+          // closeButton.onclick = () => {
+          //     notificationContainer.removeChild(notification);
+          // };
    
-          // Create title and message
-          let title = document.createElement('div');
-          title.className = 'title';
-          title.innerText = parsedData.title || 'No Title';
+          // // Create title and message
+          // let title = document.createElement('div');
+          // title.className = 'title';
+          // title.innerText = parsedData.title || 'No Title';
    
-          let message = document.createElement('div');
-          message.className = 'message';
-          message.innerText = parsedData.message || 'No Message';
+          // let message = document.createElement('div');
+          // message.className = 'message';
+          // message.innerText = parsedData.message || 'No Message';
    
-          notification.appendChild(closeButton);
-          notification.appendChild(title);
-          notification.appendChild(message);
-          notificationContainer.appendChild(notification);
+          // notification.appendChild(closeButton);
+          // notification.appendChild(title);
+          // notification.appendChild(message);
+          // notificationContainer.appendChild(notification);
       }
    
    
