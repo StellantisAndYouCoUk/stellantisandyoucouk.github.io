@@ -4850,12 +4850,16 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 // The second parameter is a function to execute after all the libraries have completed loading.
 LazyLoad.js(['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js'], function () {
   console.log('All my files have completed loading!');
+
+  callback();
 });
 
 // load some external CSS files
 var css_files = ['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css'];
 LazyLoad.css(css_files, function () {
     console.log('All my CSS files have completed loading!');
+
+    callback();
 });
 
 
@@ -4920,14 +4924,14 @@ function createLink(url, linkText){
    
       const eventSource = new EventSource(subscribeURL);
       console.log(`Subscribed to ${subscribeURL}.` )
-async function mySweetAlert(title, text, icon, confirmButton){
-      Swal.fire({
-        title: title,
-        text: text,
-        icon: icon,
-        confirmButtonText: confirmButton
-      })
-    }
+// async function mySweetAlert(title, text, icon, confirmButton){
+//       Swal.fire({
+//         title: title,
+//         text: text,
+//         icon: icon,
+//         confirmButtonText: confirmButton
+//       })
+//     }
 
     mySweetAlert('Error!', 'Do you want to continue', 'error', 'Cool').then();
 
