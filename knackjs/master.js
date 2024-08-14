@@ -4920,13 +4920,17 @@ function createLink(url, linkText){
    
       const eventSource = new EventSource(subscribeURL);
       console.log(`Subscribed to ${subscribeURL}.` )
-
+async function mySweetAlert(title, text, icon, confirmButton){
       Swal.fire({
-        title: 'Error!',
-        text: 'Do you want to continue',
-        icon: 'error',
-        confirmButtonText: 'Cool'
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: confirmButton
       })
+    }
+
+    mySweetAlert('Error!', 'Do you want to continue', 'error', 'Cool').then();
+
 
 
 
