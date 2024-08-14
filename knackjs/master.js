@@ -4844,12 +4844,6 @@ $(document).on('knack-scene-render.scene_4', function(event, scene) {
 // The second parameter is a function to execute after all the libraries have completed loading.
 
 
-var css_files = ['https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css'];
-LazyLoad.css(css_files, function () {
-    console.log('All my CSS files have completed loading!');
-
-});
-
 // load some external CSS files
 
 
