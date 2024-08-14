@@ -5048,6 +5048,11 @@ function createLink(url, linkText){
 
  $(document).on('knack-scene-render.scene_2297', function(event, scene){
 
+  <button id="githubButton" type="button">Send Messages</button>
+
+  $('#githubButton').on('click', function() {
+
+
   Swal.fire({
     title: "Submit your Github username",
     input: "text",
@@ -5088,3 +5093,4 @@ function createLink(url, linkText){
 
 
  })
+});
