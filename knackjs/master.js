@@ -4837,6 +4837,7 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 }
 
 //Mayank code 
+let eventSource = null;
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
@@ -4918,7 +4919,7 @@ function createLink(url, linkText){
   
       });
 
-      const eventSource = new EventSource(subscribeURL);
+      eventSource = new EventSource(subscribeURL);
 
       
       function showNotification(data) {
@@ -4946,13 +4947,13 @@ function createLink(url, linkText){
 
 
  $(document).on('knack-view-render.any', function(event, scene) {
-  
-  if (firstLoad) {
+  if(eventSource===null){
     const userAttributes = Knack.getUserAttributes();
     if(userAttributes !=='No user found'){
-     console.log("User Attributes: " + JSON.stringify(userAttributes));
- 
-    }
+      console.log("User Attributes: " + JSON.stringify(userAttributes));
+  }
+
+
 
   
 }
