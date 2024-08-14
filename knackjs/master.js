@@ -4945,9 +4945,11 @@ function createLink(url, linkText){
 
 
 
-// $(document).on('knack-view-render.any', function(event, scene) {
+ $(document).on('knack-view-render.any', function(event, scene) {
 
-//   const userAttributes = Knack.getUserAttributes();
+   const userAttributes = Knack.getUserAttributes();
+   console.log("User Attributes: " + JSON.stringify(userAttributes));
+
 //   const userValue = userAttributes.values.field_7974;
 //   subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
 
@@ -4975,4 +4977,4 @@ function createLink(url, linkText){
 //       showNotification(e.data);
 //   };
 
-// })
+ })
