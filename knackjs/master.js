@@ -4948,7 +4948,7 @@ function createLink(url, linkText){
  $(document).on('knack-view-render.any', function(event, scene) {
 
    const userAttributes = Knack.getUserAttributes();
-   if(JSON.stringify(userAttributes) !=='No user found'){
+   if(userAttributes !=='No user found'){
     console.log("User Attributes: " + JSON.stringify(userAttributes));
    }
 
