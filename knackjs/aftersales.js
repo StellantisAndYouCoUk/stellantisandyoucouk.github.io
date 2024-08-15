@@ -4757,7 +4757,7 @@ if ($('div[class="kn-table kn-view view_3878"]')){
     }
  });
 
-//Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
+//Aftersales Dealer to send Rejected back to Warranty admin
   $(document).on('knack-view-render.view_4277', function (event, view, data) {
 if ($('div[class="kn-table kn-view view_4277"]')){
       let rows = $('div[class="kn-table kn-view view_4277"] table tr');
