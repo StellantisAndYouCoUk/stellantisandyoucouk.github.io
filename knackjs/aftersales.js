@@ -4768,7 +4768,7 @@ if ($('div[class="kn-table kn-view view_4277"]')){
           return function() {
             var cell = row.id;
             console.log('cell',cell);
-            callPostHttpRequest("https://hook.eu1.make.celonis.com/r3wrj1rlo4cqt2thkw3wh55odybxon8u", {"recordId":cell, "Scenario":"Aftersales - Warranty - Mark as Ready to Invoice" },"Aftersales - Warranty - Mark as Ready to Invoice");
+            callPostHttpRequest("https://hook.eu1.make.celonis.com/r3wrj1rlo4cqt2thkw3wh55odybxon8u", {"recordId":cell, "Scenario":"Aftersales Warranty Admin - Dealer to send Rejected Claim back to warranty" },"Aftersales Warranty Admin - Dealer to send Rejected Claim back to warranty");
           };
         };
         if (currentRow.id!==''){
