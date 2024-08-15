@@ -4954,6 +4954,7 @@ function createLink(url, linkText){
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
+      console.log("Check Sweet Pop Up");
      
 
 
@@ -4990,7 +4991,6 @@ function createLink(url, linkText){
 
       function showNotification(data) {
         const parsedData = JSON.parse(data);
-        console.log("Check Sweet Pop Up");
         Swal.fire({
           title: parsedData.title ||'No Title',
           text: parsedData.message || 'No Message',
