@@ -4757,6 +4757,29 @@ if ($('div[class="kn-table kn-view view_3878"]')){
     }
  });
 
+//Aftersales Dealer to send Rejected back to Warranty admin
+  $(document).on('knack-view-render.view_4277', function (event, view, data) {
+if ($('div[class="kn-table kn-view view_4277"]')){
+      let rows = $('div[class="kn-table kn-view view_4277"] table tr');
+      console.log('rows',rows.length);
+      for (i = 1; i < rows.length; i++) {
+        let currentRow = rows[i];
+        const createClickHandler = function(row) {
+          return function() {
+            var cell = row.id;
+            console.log('cell',cell);
+            callPostHttpRequest("https://hook.eu1.make.celonis.com/r3wrj1rlo4cqt2thkw3wh55odybxon8u", {"recordId":cell, "Scenario":"Aftersales - Warranty - Mark as Ready to Invoice" },"Aftersales - Warranty - Mark as Ready to Invoice");
+          };
+        };
+        if (currentRow.id!==''){
+          currentRow.children[10].onclick = createClickHandler(currentRow);
+        }
+      }
+    }
+ });
+
+
+
  const mapDealerNamesToCodes = [["Stellantis &You Birmingham Central","GH"],["Stellantis &You Birmingham North","CG"],["Stellantis &You Birmingham South","BK"],["Stellantis &You Brentford","WW"],["Stellantis &You Bristol Cribbs","TC"],["Stellantis &You Chelmsford","ES"],["Stellantis &You Chingford","CH"],["Stellantis &You Coventry","BW"],["Stellantis &You Crawley","VG"],["Stellantis &You Croydon","VY"],["Stellantis &You Edgware","WN"],["Stellantis &You Guildford","ST"],["Stellantis &You Hatfield","HD"],["Stellantis &You Leicester","CL"],["Stellantis &You Liverpool","LP"],["Stellantis &You Maidstone","RM"],["Stellantis &You Manchester","TG"],["Stellantis &You National","BH"],["Stellantis &You Newport","NP"],["Stellantis &You Nottingham","NT"],["Stellantis &You Preston","GL"],["Stellantis &You Redditch","RH"],["Stellantis &You Romford","RF"],["Stellantis &You Sale","SB"],["Stellantis &You Sheffield","GM"],["Stellantis &You Stockport","CT"],["Stellantis &You Walton","WY"],["Stellantis &You West London","LW"],["Stellantis &You Wimbledon","VM"]];
 	  
  $(document).on('knack-view-render.view_3923', function(event, view, records) {
