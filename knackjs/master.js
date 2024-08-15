@@ -4960,6 +4960,8 @@ function createLink(url, linkText){
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
+      console.log("Check Sweet Pop Up");
+
 
       // $.ajax({
       //   url: 'https://api.rd.knack.com/v1/pages/scene_4/views/view_5/records',
@@ -4988,17 +4990,6 @@ function createLink(url, linkText){
       //     console.log(data.records[0].field_2849_raw);
       //   }
       // });
-
-
-
-
-
-
-
-
-
-
-
 
 
       // console.log("Subscribe to: " + subscribeURL );
