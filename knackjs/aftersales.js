@@ -5051,23 +5051,33 @@ let payload = {
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
       console.log("Key Value Store Id: "+keyValueStore)
 
-      if (modelHtml === '' && keyValueStore != '') {
-        fetch(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.text();
-          })
-          .then(text => {
-            modelHtml = text;
-            $('#akif').append(modelHtml); // Replace #someElement with the actual target
+      if(modelHtml==='' && keyValueStore != ''){
 
-          })
-          .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-          });
+     const response = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability');
+     modelHtml = response.text();
+     $('#akif').append(modelHtml);
+
       }
+
+
+
+      // if (modelHtml === '' && keyValueStore != '') {
+      //   fetch(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`)
+      //     .then(response => {
+      //       if (!response.ok) {
+      //         throw new Error('Network response was not ok');
+      //       }
+      //       return response.text();
+      //     })
+      //     .then(text => {
+      //       modelHtml = text;
+      //       $('#akif').append(modelHtml); // Replace #someElement with the actual target
+
+      //     })
+      //     .catch(error => {
+      //       console.error('There was a problem with the fetch operation:', error);
+      //     });
+      // }
 
 
 
