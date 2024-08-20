@@ -5047,6 +5047,17 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
 
+      
+      if(modelHtml==='' && keyValueStore != ''){
+
+        const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
+         $('#akif').append(response);
+   
+         }
+
+         
+
+         
       let payload = {
         "keyValueStoreId": keyValueStore,
         "WIP": 64046,
@@ -5054,16 +5065,15 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       }
       
       
-      const invoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+      const responseInvoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+      let invoices = JSON.parse(responseInvoices);
       
-        console.log(typeof(invoices))
+      invoices.forEach((invoice)=>{
 
-      if(modelHtml==='' && keyValueStore != ''){
+        console.log(invoice.PartNumber);
+      })
 
-     const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
-      $('#akif').append(response);
 
-      }
 
 
 
