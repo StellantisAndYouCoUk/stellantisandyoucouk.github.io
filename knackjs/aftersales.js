@@ -5004,6 +5004,10 @@ $('.modal-backdrop').remove();
 
 
 
+
+
+
+
       // Append the modal structure to the body
       let partsModelHTML = '';
       if (partsModelHTML === '') {
@@ -5053,6 +5057,39 @@ $('.modal-backdrop').remove();
             console.error('There was a problem with the fetch operation:', error);
           });
       }
+
+
+
+      
+      $.ajax({
+        url: 'https://api.rd.knack.com/v1/objects/object_129/records/66c45ac002bf9402d0d5a54e',
+        type: 'GET',
+        headers: {
+          'X-Knack-Application-ID': app_id,
+          'X-Knack-REST-API-Key': 'knack',
+          'Content-Type': 'application/json'
+        },
+        success: function(data) {
+          console.log(data);
+
+
+          // data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
+          //   createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+          // });
+          
+          // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
+          //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
+          // });
+
+      
+        }})
+
+
+
+
+
+
+
 
 
       $('#searchButton').on('click', function() {
