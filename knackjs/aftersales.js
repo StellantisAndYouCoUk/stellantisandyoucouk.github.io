@@ -5021,15 +5021,25 @@ let payload = {
 
       // Append the modal structure to the body
       let partsModelHTML = '';
-      if (partsModelHTML === '') {
-        partsModelHTML = $.ajax({
-          type: "GET",
-          url: 'https://stellantisandyoucouk.github.io/modalHTML/modal.html',
-          cache: false,
-          async: false
-        }).responseText;
+
+      if(partsModelHTML === ''){
+
+        partsModelHTML = callGetHttpRequest('https://stellantisandyoucouk.github.io/modalHTML/modal.html');
+        $('body').append(partsModelHTML);
+
       }
-      $('body').append(partsModelHTML);
+
+
+
+      // if (partsModelHTML === '') {
+      //   partsModelHTML = $.ajax({
+      //     type: "GET",
+      //     url: 'https://stellantisandyoucouk.github.io/modalHTML/modal.html',
+      //     cache: false,
+      //     async: false
+      //   }).responseText;
+      // }
+      // $('body').append(partsModelHTML);
 
 
       // Show the modal
@@ -5049,13 +5059,11 @@ let payload = {
 
       })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
-      console.log("Key Value Store Id: "+keyValueStore)
+    
 
       if(modelHtml==='' && keyValueStore != ''){
 
      const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
-     console.log(response);
- 
       $('#akif').append(response);
 
       }
