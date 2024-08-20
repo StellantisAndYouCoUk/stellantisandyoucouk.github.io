@@ -5008,7 +5008,10 @@ let payload = {
 }
 
 
-      callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice get");
+      const invoice = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+
+      console.log(JSON.stringify(invoice));
+
 
 
 
@@ -5065,38 +5068,6 @@ let payload = {
             console.error('There was a problem with the fetch operation:', error);
           });
       }
-
-
-
-      
-      $.ajax({
-        url: 'https://api.rd.knack.com/v1/objects/object_129/records/66c45ac002bf9402d0d5a54e',
-        type: 'GET',
-        headers: {
-          'X-Knack-Application-ID': '6040dd9a301633001bca5b4e',
-          'X-Knack-REST-API-Key': 'knack',
-          'Content-Type': 'application/json'
-        },
-        success: function(data) {
-          console.log(data);
-
-
-          // data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
-          //   createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-          // });
-          
-          // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
-          //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
-          // });
-
-      
-        }})
-
-
-
-
-
-
 
 
 
