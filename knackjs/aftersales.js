@@ -5002,7 +5002,7 @@ $('.modal-backdrop').remove();
       let modelHtml = '';
 
 let payload = {
-  "keyValueStoreId":data.id,
+  "keyValueStoreId": trId,
   "WIP": 64046,
   "AccountNumber": "B0208"
 }
