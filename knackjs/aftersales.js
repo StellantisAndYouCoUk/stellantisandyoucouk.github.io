@@ -5084,16 +5084,11 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     <ul class="list-group">${rows}</ul>
   </div>`
 
-  $('.invoices').append(htmxTest);
+  $('.invoiced').append(htmxTest);
 
 
 
 
-      
-      invoices.forEach((invoice)=>{
-
-        
-      })
 
 
 
