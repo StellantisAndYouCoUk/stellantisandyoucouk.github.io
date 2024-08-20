@@ -5001,16 +5001,7 @@ $('.modal-backdrop').remove();
 
       let modelHtml = '';
 
-let payload = {
-  "keyValueStoreId": trId,
-  "WIP": 64046,
-  "AccountNumber": "B0208"
-}
 
-
-      const invoice = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
-
-      console.log(JSON.stringify(invoice));
 
 
 
@@ -5059,6 +5050,19 @@ let payload = {
 
       })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
+
+      let payload = {
+        "keyValueStoreId": keyValueStore,
+        "WIP": 64046,
+        "AccountNumber": "B0208"
+      }
+      
+      
+            const invoice = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+      
+   
+            
+
     
 
       if(modelHtml==='' && keyValueStore != ''){
