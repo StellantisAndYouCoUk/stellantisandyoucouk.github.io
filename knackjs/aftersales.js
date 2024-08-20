@@ -5051,16 +5051,7 @@ $('.modal-backdrop').remove();
       })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
 
-      let payload = {
-        "keyValueStoreId": keyValueStore,
-        "WIP": 64046,
-        "AccountNumber": "B0208"
-      }
-      
-      
-            const invoice = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
-      
-   
+
             
 
     
@@ -5069,6 +5060,15 @@ $('.modal-backdrop').remove();
 
      const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
       $('#akif').append(response);
+
+      let payload = {
+        "keyValueStoreId": keyValueStore,
+        "WIP": 64046,
+        "AccountNumber": "B0208"
+      }
+ 
+            const invoice = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+
 
       }
 
