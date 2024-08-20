@@ -5068,8 +5068,7 @@ $('.modal-backdrop').remove();
       }
  
             const invoice = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
-
-
+            console.log(JSON.stringify(invoice));
       }
 
 
