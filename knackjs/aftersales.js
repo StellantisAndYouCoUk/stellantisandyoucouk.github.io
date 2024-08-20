@@ -5065,7 +5065,7 @@ $('.modal-backdrop').remove();
         url: 'https://api.rd.knack.com/v1/objects/object_129/records/66c45ac002bf9402d0d5a54e',
         type: 'GET',
         headers: {
-          'X-Knack-Application-ID': app_id,
+          'X-Knack-Application-ID': Knack.application_id,
           'X-Knack-REST-API-Key': 'knack',
           'Content-Type': 'application/json'
         },
