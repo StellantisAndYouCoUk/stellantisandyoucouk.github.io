@@ -5001,6 +5001,14 @@ $('.modal-backdrop').remove();
 
       let modelHtml = '';
 
+let payload = {
+  "keyValueStoreId":data.id,
+  "WIP": 64046,
+  "AccountNumber": "B0208"
+}
+
+
+      callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice get");
 
 
 
