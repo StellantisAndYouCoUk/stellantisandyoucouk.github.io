@@ -5056,7 +5056,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       
       const invoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
       
-        console.log(invoices[0].PartNumber)
+        console.log(typeof(invoices))
 
       if(modelHtml==='' && keyValueStore != ''){
 
