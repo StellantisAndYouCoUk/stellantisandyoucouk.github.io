@@ -4963,38 +4963,6 @@ function createLink(url, linkText){
       console.log("Check Sweet Pop Up");
      
 
-
-      // $.ajax({
-      //   url: 'https://api.rd.knack.com/v1/pages/scene_4/views/view_5/records',
-      //   type: 'GET',
-      //   headers: {
-      //     'Authorization': Knack.getUserToken(),
-      //     'X-Knack-Application-Id': Knack.application_id,
-      //     'Content-Type': 'application/json'
-      //   },
-      //   success: function(data) {
-
-
-      //     data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
-      //       createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-      //     });
-          
-      //     Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
-      //       let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
-      //     });
-
-
-
-
-
-    
-      //     console.log(data.records[0].field_2849_raw);
-      //   }
-      // });
-
-
-      // console.log("Subscribe to: " + subscribeURL );
-
       function showNotification(data) {
         const parsedData = JSON.parse(data);
         Swal.fire({
