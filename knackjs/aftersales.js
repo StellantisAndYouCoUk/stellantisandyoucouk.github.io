@@ -5051,13 +5051,13 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       if(modelHtml==='' && keyValueStore != ''){
 
         const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
-         $('#akif').append(response);
+         $('#part').append(response);
    
          }
 
          
 
-         
+
       let payload = {
         "keyValueStoreId": keyValueStore,
         "WIP": 64046,
@@ -5067,10 +5067,32 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       
       const responseInvoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
       let invoices = JSON.parse(responseInvoices);
+
+
+      const rows = invoices
+      .map(
+        (invoice) => `
+    <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+    ${invoice.PartNumber}
+    <span class="badge bg-primary rounded-pill" style="margin-left: 0.2rem;">${invoice.Quantity
+          }</span>
+  </li>`
+      )
+      .join("");
+
+    const htmxTest = `<div class="modal-body">
+    <ul class="list-group">${rows}</ul>
+  </div>`
+
+  $('.invoices').append(htmxTest);
+
+
+
+
       
       invoices.forEach((invoice)=>{
 
-        console.log(invoice.PartNumber);
+        
       })
 
 
