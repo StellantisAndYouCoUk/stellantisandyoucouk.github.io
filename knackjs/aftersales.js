@@ -5055,8 +5055,8 @@ let payload = {
 
      const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
      console.log(response);
-      modelHtml = response.text();
-      $('#akif').append(modelHtml);
+ 
+      $('#akif').append(response);
 
       }
 
