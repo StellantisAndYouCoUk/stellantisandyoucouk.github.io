@@ -4885,8 +4885,7 @@ function createLink(url, linkText){
     type: 'GET',
     headers: {
       'X-Knack-Application-ID': Knack.application_id,
-      'X-Knack-REST-API-Key': 'knack',
-      'Content-Type': 'application/json'
+      'X-Knack-REST-API-Key': 'knack'
     },
     success: function(data) {
       console.log(data);
