@@ -4886,27 +4886,31 @@ function createLink(url, linkText){
   // Append the div to the specified element in the DOM
   }
 
-  $.ajax({
-    url: 'https://api.rd.knack.com/v1/objects/object_222/records/66bdcfe634629e0275b0185b',
-    type: 'GET',
-    headers: {
-      'X-Knack-Application-ID': Knack.application_id,
-      'X-Knack-REST-API-Key': 'knack'
-    },
-    success: function(data) {
-      console.log(data);
+  // $.ajax({
+  //   url: 'https://api.rd.knack.com/v1/objects/object_222/records/66bdcfe634629e0275b0185b',
+  //   type: 'GET',
+  //   headers: {
+  //     'X-Knack-Application-ID': Knack.application_id,
+  //     'X-Knack-REST-API-Key': 'knack'
+  //   },
+  //   success: function(data) {
+  //     console.log(data);
 
 
-      // data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
-      //   createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-      // });
+  //     // data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
+  //     //   createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+  //     // });
       
-      // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
-      //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
-      // });
+  //     // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
+  //     //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
+  //     // });
 
   
-    }})
+  //   }})
+
+
+
+  
 
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
