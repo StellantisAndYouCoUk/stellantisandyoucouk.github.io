@@ -5047,10 +5047,14 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       })
       // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
 
-      
+      let responseJson;
+      let output;
       if(modelHtml==='' && keyValueStore != ''){
 
         const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
+        responseJson = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/wTDYKllK5dQREMpAR/records/OUTPUT');
+        output = JSON.parse(responseJson);
+
          $('#part').append(response);
    
          }
@@ -5060,8 +5064,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
       let payload = {
         "keyValueStoreId": keyValueStore,
-        "WIP": 61069,
-        "AccountNumber": "B0208"
+        "WIP": output.WIP,
+        "AccountNumber": output.AccountNumber
       }
       
       
