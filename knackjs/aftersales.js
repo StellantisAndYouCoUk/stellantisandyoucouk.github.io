@@ -5084,7 +5084,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
 
 
-
+//FIXME: Invoiced and Part Numbers for modal pop up
     const htmxTest = `<div class="modal-header">
       <h4 class="modal-title">Invoiced: 14638876</h4>
     </div>
