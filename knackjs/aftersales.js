@@ -5080,9 +5080,20 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       )
       .join("");
 
-    const htmxTest = `<div class="modal-body">
+
+
+
+
+
+    const htmxTest = `<div class="modal-header">
+      <h4 class="modal-title">Invoiced: 14638876</h4>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body">
     <ul class="list-group">${rows}</ul>
-  </div>`
+  </div>
+    </div>
+    <div class="modal-footer"></div>`
 
   $('.invoiced').append(htmxTest);
 }else{
