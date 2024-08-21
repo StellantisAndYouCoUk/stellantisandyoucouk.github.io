@@ -5164,9 +5164,9 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       //     }
       //   });
       // });
-
+   $('#searchButton').on('click', function() {
       Swal.fire({
-        title: "Submit your Github username",
+        title: "Look Up Bin Location",
         input: "text",
         inputAttributes: {
           autocapitalize: "off"
@@ -5179,7 +5179,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             const githubUrl = `
               https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
             `;
-            const response = await fetch(githubUrl);
+            const response = callPostHttpRequest(githubUrl, payload,"Servicebox bin location find");
             if (!response.ok) {
               return Swal.showValidationMessage(`
                 ${JSON.stringify(await response.json())}
@@ -5202,7 +5202,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         }
       });
 
-
+      });
 
       // Remove the modal from the DOM when it's closed to prevent clutter
       $('#myModal').on('hidden.bs.modal', function() {
