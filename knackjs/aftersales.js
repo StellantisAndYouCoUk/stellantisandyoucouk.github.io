@@ -5181,7 +5181,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             `;
             const response = callPostHttpRequest(githubUrl, {"akif":"mehmet"},"Servicebox bin location find");
             console.log(JSON.parse(response))
-            if (!response.Accepted) {
+            if (!response) {
               return Swal.showValidationMessage(`
                 Hey
               `);
