@@ -5179,11 +5179,11 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             const githubUrl = `
               https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
             `;
-            const response = callPostHttpRequest(githubUrl, {"PartNumber": "12345"},"Servicebox bin location find");
+            const response = callPostHttpRequest(githubUrl, {"akif":"mehmet"},"Servicebox bin location find");
             console.log(response)
             if (!response.Accepted) {
               return Swal.showValidationMessage(`
-                ${"Hey"}
+                ${JSON.stringify(await response.json())}
               `);
             }
             return response.json();
