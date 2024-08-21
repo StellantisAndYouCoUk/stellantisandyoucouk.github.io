@@ -5186,7 +5186,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
                 Hey
               `);
             }
-            return 'Hey';
+            return JSON.parse(response);
           } catch (error) {
             Swal.showValidationMessage(`
               Request failed: ${error}
