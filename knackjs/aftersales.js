@@ -5143,12 +5143,14 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           showLoaderOnConfirm: true,
           preConfirm: async (login) => {
             try {
-              const githubUrl = `https://odbc.robinsandday.co.uk/ExecuteSql`;
-              const response = await fetch(githubUrl);
-              if (!response.ok) {
-                return Swal.showValidationMessage(`Request failed: ${response.statusText}`);
+              payload = `{"Akif": "test"}`;
+              const url = `https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs`;
+              const responseBinLocation = callPostHttpRequest(url, payload,"Servicebox bin location find");
+              
+              if (!responseBinLocation.ok) {
+                return Swal.showValidationMessage(`Request failed: ${responseBinLocation.statusText}`);
               }
-              return response.json();
+              return Json.parse(responseBinLocation);
             } catch (error) {
               Swal.showValidationMessage(`Request failed: ${error}`);
             }
@@ -5157,8 +5159,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire({
-              title: `${result.value.login}'s avatar`,
-              imageUrl: result.value.avatar_url
+              title: `${result}`,
             });
           }
         });
