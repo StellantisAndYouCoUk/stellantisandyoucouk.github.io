@@ -5195,7 +5195,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         },
         allowOutsideClick: () => !Swal.isLoading()
       }).then((result) => {
-        if (result.isConfirmed) {
+        if (result) {
           Swal.fire({
             title: `${result.value.login}'s avatar`,
             imageUrl: result.value.avatar_url
