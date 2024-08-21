@@ -5141,7 +5141,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           showCancelButton: true,
           confirmButtonText: "Find",
           showLoaderOnConfirm: true,
-          preConfirm: async (login) => {
+          preConfirm: async (binLocation) => {
             try {
               payload = `{"PartNumber": ${input}}`;
               const url = `https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs`;
@@ -5150,7 +5150,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
               if (!responseBinLocation.ok) {
                 return Swal.showValidationMessage(`Request failed: ${responseBinLocation.statusText}`);
               }
-              return Json.parse(responseBinLocation);
+              return JSON.parse(responseBinLocation);
             } catch (error) {
               Swal.showValidationMessage(`Request failed: ${error}`);
             }
@@ -5159,7 +5159,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire({
-              title: `${result}`,
+              title: `${result.value.binLocation}`,
             });
           }
         });
