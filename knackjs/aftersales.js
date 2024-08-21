@@ -5197,7 +5197,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       }).then((result) => {
         if (result) {
           Swal.fire({
-            title: `${result.value.login}'s avatar`,
+            title: `${result}'s avatar`,
             imageUrl: result.value.avatar_url
           });
         }
