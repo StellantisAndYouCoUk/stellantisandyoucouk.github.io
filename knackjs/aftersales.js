@@ -5068,12 +5068,14 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         "AccountNumber": output.AccountNumber
       }
       
-      
-      const responseInvoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
-      let invoices = JSON.parse(responseInvoices);
+      if(payload.WIP !== '' && payload.AccountNumber !== ''){      
+        
+         const responseInvoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+        let invoices = JSON.parse(responseInvoices);
 
-
-      const rows = invoices
+        
+        
+        const rows = invoices
       .map(
         (invoice) => `
     <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
@@ -5089,6 +5091,12 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
   </div>`
 
   $('.invoiced').append(htmxTest);
+}else{
+  $('.invoiced').append(`<p>Can find the invoice at the moment</p>`);
+}
+
+     
+
 
 
 
