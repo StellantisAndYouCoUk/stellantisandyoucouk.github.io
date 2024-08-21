@@ -5131,39 +5131,78 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
 
 
-      $('#searchButton').on('click', function() {
-        Swal.fire({
-          title: "Lookup Bin",
-          input: "text",
-          inputAttributes: {
-            autocapitalize: "on"
-          },
-          showCancelButton: true,
-          confirmButtonText: "Find",
-          showLoaderOnConfirm: true,
-          preConfirm: async (binLocation) => {
-            try {
-              payload = `{"PartNumber": ${input}}`;
-              const url = `https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs`;
-              const responseBinLocation = callPostHttpRequest(url, payload,"Servicebox bin location find");
+      // $('#searchButton').on('click', function() {
+      //   Swal.fire({
+      //     title: "Lookup Bin",
+      //     input: "text",
+      //     inputAttributes: {
+      //       autocapitalize: "on"
+      //     },
+      //     showCancelButton: true,
+      //     confirmButtonText: "Find",
+      //     showLoaderOnConfirm: true,
+      //     preConfirm: async (binLocation) => {
+      //       try {
+      //         payload = `{"PartNumber": ${input}}`;
+      //         const url = `https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs`;
+      //         const responseBinLocation = callPostHttpRequest(url, payload,"Servicebox bin location find");
               
-              if (!responseBinLocation.ok) {
-                return Swal.showValidationMessage(`Request failed: ${responseBinLocation.statusText}`);
-              }
-              return JSON.parse(responseBinLocation);
-            } catch (error) {
-              Swal.showValidationMessage(`Request failed: ${error}`);
+      //         if (!responseBinLocation.ok) {
+      //           return Swal.showValidationMessage(`Request failed: ${responseBinLocation.statusText}`);
+      //         }
+      //         return JSON.parse(responseBinLocation);
+      //       } catch (error) {
+      //         Swal.showValidationMessage(`Request failed: ${error}`);
+      //       }
+      //     },
+      //     allowOutsideClick: () => !Swal.isLoading()
+      //   }).then((result) => {
+      //     if (result.isConfirmed) {
+      //       Swal.fire({
+      //         title: `${result.value.binLocation}`,
+      //       });
+      //     }
+      //   });
+      // });
+
+      Swal.fire({
+        title: "Submit your Github username",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off"
+        },
+        showCancelButton: true,
+        confirmButtonText: "Look up",
+        showLoaderOnConfirm: true,
+        preConfirm: async (login) => {
+          try {
+            const githubUrl = `
+              https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
+            `;
+            const response = await fetch(githubUrl);
+            if (!response.ok) {
+              return Swal.showValidationMessage(`
+                ${JSON.stringify(await response.json())}
+              `);
             }
-          },
-          allowOutsideClick: () => !Swal.isLoading()
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire({
-              title: `${result.value.binLocation}`,
-            });
+            return response.json();
+          } catch (error) {
+            Swal.showValidationMessage(`
+              Request failed: ${error}
+            `);
           }
-        });
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: `${result.value.login}'s avatar`,
+            imageUrl: result.value.avatar_url
+          });
+        }
       });
+
+
 
       // Remove the modal from the DOM when it's closed to prevent clutter
       $('#myModal').on('hidden.bs.modal', function() {
