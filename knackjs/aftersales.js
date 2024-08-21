@@ -5180,6 +5180,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
               https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
             `;
             const response = callPostHttpRequest(githubUrl, payload,"Servicebox bin location find");
+            console.log(response)
             if (!response.ok) {
               return Swal.showValidationMessage(`
                 ${JSON.stringify(await response.json())}
