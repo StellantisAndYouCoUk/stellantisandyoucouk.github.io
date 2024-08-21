@@ -5133,7 +5133,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
       $('#searchButton').on('click', function() {
         Swal.fire({
-          title: "Bin is Available",
+          title: "Lookup Bin",
           input: "text",
           inputAttributes: {
             autocapitalize: "on"
