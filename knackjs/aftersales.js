@@ -4978,10 +4978,6 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
     console.log('Mouse is on before mouse leave: ' + trId);
 
     });
-
-
-  
-
           $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
 
             keyValueStore = '';
@@ -4996,13 +4992,6 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           $('.modal-backdrop').remove();
 
                 let modelHtml = '';
-
-
-
-
-
-
-
 
 
 
@@ -5054,6 +5043,9 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
         responseJson = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/wTDYKllK5dQREMpAR/records/OUTPUT');
         output = JSON.parse(responseJson);
+        if(output.WIP==='Test'){
+          output.WIP='';
+        }
 
          $('#part').append(response);
    
