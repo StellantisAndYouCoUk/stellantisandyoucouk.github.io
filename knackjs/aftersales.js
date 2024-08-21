@@ -5045,7 +5045,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         output = JSON.parse(responseJson);
         if(output.WIP==='Test'){
           // TODO: Changed the WIP
-          output.WIP='64046';
+          output.WIP='';
         }
 
          $('#part').append(response);
@@ -5054,10 +5054,11 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
          
 
-
+//FIXME: Hardcoded WIP
       let payload = {
         "keyValueStoreId": keyValueStore,
-        "WIP": output.WIP,
+        // "WIP": 'output.WIP',
+        "WIP": '64046',
         "AccountNumber": output.AccountNumber
       }
       
