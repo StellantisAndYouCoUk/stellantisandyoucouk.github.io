@@ -5183,7 +5183,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             console.log(response)
             if (!response.Accepted) {
               return Swal.showValidationMessage(`
-                ${JSON.stringify(await response.json())}
+                ${JSON.parse(response)}
               `);
             }
             return response.json();
