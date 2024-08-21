@@ -5143,7 +5143,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
           showLoaderOnConfirm: true,
           preConfirm: async (login) => {
             try {
-              payload = `{"Akif": "test"}`;
+              payload = `{"PartNumber": ${input}}`;
               const url = `https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs`;
               const responseBinLocation = callPostHttpRequest(url, payload,"Servicebox bin location find");
               
