@@ -5044,7 +5044,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         responseJson = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/wTDYKllK5dQREMpAR/records/OUTPUT');
         output = JSON.parse(responseJson);
         if(output.WIP==='Test'){
-          output.WIP='';
+          // TODO: Changed the WIP
+          output.WIP='64046';
         }
 
          $('#part').append(response);
