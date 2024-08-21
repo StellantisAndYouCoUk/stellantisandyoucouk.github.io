@@ -5074,8 +5074,8 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         (invoice) => `
     <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
     ${invoice.PartNumber}
-    <span class="badge bg-primary rounded-pill" style="margin-left: 0.2rem;">${invoice.OrderQuantity}
-          }</span>
+    <span class="badge bg-primary rounded-pill" style="margin-left: 0.2rem;">${parseInt(invoice.OrderQuantity)}
+          </span>
   </li>`
       )
       .join("");
