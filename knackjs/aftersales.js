@@ -969,6 +969,26 @@ try{
     }).responseText;
 }
 }); */
+//trigger get tyres and prices from customer job card stapletons v4 trigger (service box)
+$(document).on('knack-form-submit.view_1474', function(event, view, data) { 
+    
+    try{
+        
+
+        let commandURL = "https://hook.eu1.make.celonis.com/sci2jeh10s6dmwyul5sbced6lsaifj9b";
+        let dataToSend = JSON.stringify({"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411, "VIN": data.field_73});
+
+        var rData = $.ajax({
+            url: commandURL,
+            type: 'POST',
+            contentType: 'application/json',
+            data: dataToSend,
+            async: false
+        }).responseText;
+    }catch(exception){
+        sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
+    }
+});
 
 //trigger get tyres and prices from customer job card
 $(document).on('knack-form-submit.view_1474', function(event, view, data) { 
@@ -2179,6 +2199,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 	      //hide connected dealer
 	      $('#kn-input-field_411').hide();
     $('#kn-input-field_411').hide();
+
+	  //hide Vin
+	      $('#kn-input-field_73').hide();
+    $('#kn-input-field_73').hide();
 	  
 	  });
 
@@ -2196,6 +2220,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 	      //hide connected dealer
 	      $('#kn-input-field_411').hide();
     $('#kn-input-field_411').hide();
+  //hide Vin
+	      $('#kn-input-field_73').hide();
+    $('#kn-input-field_73').hide();
 	  
 	  });
 
@@ -5072,7 +5099,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         const rows = invoices
       .map(
         (invoice) => `
-    <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
     ${invoice.PartNumber}
     <span class="badge bg-primary rounded-pill" style="margin-left: 0.2rem;">${parseInt(invoice.OrderQuantity)}
           </span>
@@ -5179,7 +5206,9 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             const githubUrl = `
               https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
             `;
-            const response = callPostHttpRequest(githubUrl, {"akif":login},"Servicebox bin location find");
+
+            const response = callPostHttpRequest(githubUrl, {"BinLocation":login},"Servicebox bin location find");
+
             console.log(JSON.parse(response))
             if (!response) {
               return Swal.showValidationMessage(`
@@ -5197,7 +5226,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
       }).then((result) => {
         if (result) {
           Swal.fire({
-            title: `${result}'s avatar`,
+            title: `Bin Location: ${result.value.BinLocation.replace('SRETURNS', '').replace('RETURNS', '').trim()}`,
             imageUrl: result.value.avatar_url
           });
         }
