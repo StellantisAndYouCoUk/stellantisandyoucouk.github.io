@@ -5099,7 +5099,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         const rows = invoices
       .map(
         (invoice) => `
-    <li class="list-group-item d-flex justify-content-between align-items-center" draggable="true">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
     ${invoice.PartNumber}
     <span class="badge bg-primary rounded-pill" style="margin-left: 0.2rem;">${parseInt(invoice.OrderQuantity)}
           </span>
