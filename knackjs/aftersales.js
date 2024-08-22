@@ -2179,6 +2179,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 	      //hide connected dealer
 	      $('#kn-input-field_411').hide();
     $('#kn-input-field_411').hide();
+
+	  //hide Vin
+	      $('#kn-input-field_73').hide();
+    $('#kn-input-field_73').hide();
 	  
 	  });
 
@@ -2196,6 +2200,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 	      //hide connected dealer
 	      $('#kn-input-field_411').hide();
     $('#kn-input-field_411').hide();
+  //hide Vin
+	      $('#kn-input-field_73').hide();
+    $('#kn-input-field_73').hide();
 	  
 	  });
 
