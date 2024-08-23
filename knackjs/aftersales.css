@@ -2271,13 +2271,5 @@ div.tooltipDiv {
   background-color: transparent;
 }
 
-/* Fix to Knack white space issue for FOCUS summary page */
 
-#view_4273 {
-	flex: 0;
-}
-
-#view_4230 {
-	flex: 0;
-}
 
