@@ -1428,8 +1428,9 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_3980-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
 #kn-report-view_3980-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_1206 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_3213 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
-
+#view_3213 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#kn-report-view_4234-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active,
+#kn-report-view_4234-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
 {
 	background-color: #FFA100;
   	color: #FFFFFF;
@@ -2155,6 +2156,11 @@ div.tooltipDiv {
     height: 99vh;
 }
 
+.Modal_for_scene_1280 {
+    width: 99%;
+    height: 99vh;
+}
+
 /*Formatting For Licence Verification Page*/
 
 #view_3043 > section > div > div:nth-child(1) > div > div > div > div.kn-detail-label,
@@ -2200,4 +2206,70 @@ div.tooltipDiv {
 #view_4098 {
   overflow: hidden;
 }
+/*Courtesy Car Started to PDF change font size and labels to make transparent*/ 
+#view_4242 {
+  font-size: 9px;
+}
+
+#view_4239 {
+  font-size: 10px;
+}
+
+#view_4240 {
+  font-size: 10px;
+}
+
+#view_4244 {
+  font-size: 10px;
+}
+
+#view_4243 {
+  font-size: 10px;
+}
+
+#view_4240 .kn-detail-label {
+  background-color: transparent;
+}
+
+#view_4244 .kn-detail-label {
+  background-color: transparent;
+}
+#view_4239 .kn-detail-label {
+  background-color: transparent;
+}
+
+/*Courtesy Car Ended to PDF change font sizr and labels to email Customer*/
+
+#view_2357 {
+  font-size: 9px;
+}
+
+#view_4254 {
+  font-size: 10px;
+}
+
+#view_4255 {
+  font-size: 10px;
+}
+
+#view_4257 {
+  font-size: 10px;
+}
+
+#view_4256 {
+  font-size: 10px;
+}
+
+#view_4254 .kn-detail-label {
+  background-color: transparent;
+}
+
+#view_4255 .kn-detail-label {
+  background-color: transparent;
+}
+#view_4257 .kn-detail-label {
+  background-color: transparent;
+}
+
+
 

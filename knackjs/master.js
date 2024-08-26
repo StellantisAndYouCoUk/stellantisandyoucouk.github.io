@@ -98,6 +98,18 @@ $(document).on('knack-view-render.any', function (event, view, data) {
   });
 });
 
+// Auto Capitalise Mileage Input on CAP and AutoTrader Lookup //
+
+$(document).on('knack-view-render.any', function (event, view, data) {
+  //  ---------Auto Capitalise Mileage Input-------------
+  $('input#field_9952').keyup(function() {
+      this.value = this.value.toUpperCase();
+      $(this).css("font-weight", "bold", "important");		// bolder
+      $(this).css("text-align", "center", "important");		// centre
+      $(this).css("fontSize", "24px", "important");         // bigger
+  });
+});
+
 // --- Hide Robins & Day Logo on Customer Order Tracker View ---
 $(document).on('knack-view-render.view_1522', function(event, view) {
  var myElement = document.querySelector("#knack-logo");
@@ -4811,11 +4823,7 @@ function dateToGB(dateobj){
 // ----------  refresh Stock Mobility table every 30 seconds but not the page itself  ----------
 
 $(document).on('knack-scene-render.scene_2001', function(event, scene) {
-  recursiveSceneRefresh('2001',['view_6931'],30000)
-});
-
-$(document).on('knack-scene-render.scene_2001', function(event, scene) {
-  recursiveSceneRefresh('2001',['view_6932'],30000)
+  recursiveSceneRefresh('2001',['view_6931','view_6932'],30000)
 });
 
 $(document).on('knack-scene-render.scene_2262', function(event, scene) {
@@ -4833,3 +4841,248 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
   ]
   sceneRefresh(refreshData,null,1,null,false);
 }
+
+//Mayank code 
+let eventSource = null;
+
+$(document).on('knack-scene-render.scene_4', function(event, scene) {
+
+
+let publishURL = '';
+let subscribeURL = '';
+
+
+
+
+
+      function createNotificationUrl(value){
+       publishURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
+
+       return subscribeURL;
+      }
+
+      
+// Create a link function
+function createLink(url, linkText){
+  // Create a new anchor element using jQuery
+  let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
+  
+  // Set the href attribute to the subscription URL, removing the last 4 characters
+  $link.attr('href', url);
+  
+  // Set the target attribute to '_blank' to open the link in a new tab
+  $link.attr('target', '_blank');
+
+  
+  // Set the text of the link
+  $link.text(linkText);
+  
+  // Create a new div element and append the link to it
+  let $div = $('<div class="control"></div>').append($link);
+  
+  $('.view_5521').append($div);
+  
+  // Append the div to the specified element in the DOM
+  }
+
+  // $.ajax({
+  //   url: 'https://api.rd.knack.com/v1/objects/object_222/records/66bdcfe634629e0275b0185b',
+  //   type: 'GET',
+  //   headers: {
+  //     'X-Knack-Application-ID': Knack.application_id,
+  //     'X-Knack-REST-API-Key': 'knack'
+  //   },
+  //   success: function(data) {
+  //     console.log(data);
+
+
+  //     // data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
+  //     //   createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+  //     // });
+      
+  //     // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
+  //     //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
+  //     // });
+
+  
+  //   }})
+
+
+
+  
+
+  //  Indivial Users
+      const userAttributes = Knack.getUserAttributes();
+      const userValue = userAttributes.values.field_7974;
+   
+      // Construct URLs with the dynamic value
+
+
+      createNotificationUrl(userValue)
+      // const events = document.getElementById('events');
+   
+      // // Ensure notification container exists
+      // let notificationContainer = document.getElementById('notification-container');
+      // if (!notificationContainer) {
+      //     notificationContainer = document.createElement('div');
+      //     notificationContainer.id = 'notification-container';
+      //     document.body.appendChild(notificationContainer);
+      // }
+   
+      
+
+
+
+    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable User Notification');
+
+      // Locations
+      Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
+        let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+        createLink(url.substr(0, url.length - 4), `Enable ${location.identifier} Notification`);
+  
+      });
+      
+      Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
+        let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+        createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
+  
+      });
+
+      // eventSource = new EventSource(subscribeURL);
+
+      
+      // function showNotification(data) {
+      //     const parsedData = JSON.parse(data);
+
+      //     Swal.fire({
+      //       title: parsedData.title ||'No Title',
+      //       text: parsedData.message || 'No Message',
+      //       icon: "info",
+      //       allowOutsideClick: false
+      //     });
+      // }
+   
+   
+      // eventSource.onmessage = (e) => {
+      //     //let event = document.createElement('div');
+      //     //event.innerHTML = e.data;
+      //     //events.appendChild(event);
+      //     console.log(e.data);
+      //     showNotification(e.data);
+      // };
+
+});
+
+
+ $(document).on('knack-view-render.any', function(event, scene) {
+  if(eventSource===null){
+    const userAttributes = Knack.getUserAttributes();
+    if(userAttributes !=='No user found'){
+      // console.log("User Attributes: " + JSON.stringify(userAttributes));
+      const userValue = userAttributes.values.field_7974;
+      subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      eventSource = new EventSource(subscribeURL);
+
+      console.log("Check Sweet Pop Up");
+     
+
+      function showNotification(data) {
+        const parsedData = JSON.parse(data);
+        Swal.fire({
+          title: parsedData.title ||'No Title',
+          text: parsedData.message || 'No Message',
+          icon: "info",
+          allowOutsideClick: false
+        });
+    }
+  
+  
+    eventSource.onmessage = (e) => {
+        //let event = document.createElement('div');
+        //event.innerHTML = e.data;
+        //events.appendChild(event);
+        console.log(e.data);
+        showNotification(e.data);
+    };
+
+
+
+
+
+
+  }
+
+
+
+  
+}
+
+
+
+
+
+
+      
+
+
+ })
+
+
+//  $(document).on('knack-scene-render.scene_2297', function(event, scene){
+
+//   var $button = $('<button>', {
+//     id: 'githubButton',
+//     type: 'button',
+//     text: 'Send Messages'
+// });
+
+// // Append the button to a container
+// $('#buttonContainer').append($button);
+
+
+
+//   $('#githubButton').on('click', function() {
+
+
+//   Swal.fire({
+//     title: "Submit your Github username",
+//     input: "text",
+//     inputAttributes: {
+//       autocapitalize: "off"
+//     },
+//     showCancelButton: true,
+//     confirmButtonText: "Look up",
+//     showLoaderOnConfirm: true,
+//     preConfirm: async (login) => {
+//       try {
+//         const githubUrl = `
+//           https://api.github.com/users/${login}
+//         `;
+//         const response = await fetch(githubUrl);
+//         if (!response.ok) {
+//           return Swal.showValidationMessage(`
+//             ${JSON.stringify(await response.json())}
+//           `);
+//         }
+//         return response.json();
+//       } catch (error) {
+//         Swal.showValidationMessage(`
+//           Request failed: ${error}
+//         `);
+//       }
+//     },
+//     allowOutsideClick: () => !Swal.isLoading()
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       Swal.fire({
+//         title: `${result.value.login}'s avatar`,
+//         imageUrl: result.value.avatar_url
+//       });
+//     }
+//   });
+  
+
+
+//  })
+// });

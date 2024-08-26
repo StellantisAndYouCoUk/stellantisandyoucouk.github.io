@@ -549,7 +549,12 @@ function refreshScene24(){
       name : 'EMAC Service plan - offer',
       mainField : 'field_348', //EMAC - service plan Summary = Service plan
       views:['378','3504']
-    },{
+    },
+	  /*{
+      name : 'Tyresv2',
+      mainField : 'field_2983', //Tyres size (from service Box) 
+      views:['1474'],
+    }, */ {
       name : 'Tyres',
       mainField : 'field_247', //Tyres - Front = Stapletons
       views:['330','3509'],
@@ -969,6 +974,26 @@ try{
     }).responseText;
 }
 }); */
+//trigger get tyres and prices from customer job card stapletons v4 trigger (service box)
+$(document).on('knack-form-submit.view_1474', function(event, view, data) { 
+    
+    try{
+        
+
+        let commandURL = "https://hook.eu1.make.celonis.com/sci2jeh10s6dmwyul5sbced6lsaifj9b";
+        let dataToSend = JSON.stringify({"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411, "VIN": data.field_73});
+
+        var rData = $.ajax({
+            url: commandURL,
+            type: 'POST',
+            contentType: 'application/json',
+            data: dataToSend,
+            async: false
+        }).responseText;
+    }catch(exception){
+        sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
+    }
+});
 
 //trigger get tyres and prices from customer job card
 $(document).on('knack-form-submit.view_1474', function(event, view, data) { 
@@ -1658,6 +1683,11 @@ $(document).on("knack-scene-render.scene_1193", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
 
+//  Pop-up to display FOCUS Data
+$(document).on("knack-scene-render.scene_1280", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
 //Recall Recheck Spinner on Vehicle Checkin and to expand the modal pop up so it is wider
 
 $(document).on("knack-scene-render.scene_769", function(event, scene) {
@@ -2174,6 +2204,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 	      //hide connected dealer
 	      $('#kn-input-field_411').hide();
     $('#kn-input-field_411').hide();
+
+	  //hide Vin
+	      $('#kn-input-field_73').hide();
+    $('#kn-input-field_73').hide();
 	  
 	  });
 
@@ -2191,6 +2225,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 	      //hide connected dealer
 	      $('#kn-input-field_411').hide();
     $('#kn-input-field_411').hide();
+  //hide Vin
+	      $('#kn-input-field_73').hide();
+    $('#kn-input-field_73').hide();
 	  
 	  });
 
@@ -4746,11 +4783,34 @@ if ($('div[class="kn-table kn-view view_3878"]')){
           };
         };
         if (currentRow.id!==''){
-          currentRow.children[12].onclick = createClickHandler(currentRow);
+          currentRow.children[10].onclick = createClickHandler(currentRow);
         }
       }
     }
  });
+
+//Aftersales Dealer to send Rejected back to Warranty admin
+  $(document).on('knack-view-render.view_4277', function (event, view, data) {
+if ($('div[class="kn-table kn-view view_4277"]')){
+      let rows = $('div[class="kn-table kn-view view_4277"] table tr');
+      console.log('rows',rows.length);
+      for (i = 1; i < rows.length; i++) {
+        let currentRow = rows[i];
+        const createClickHandler = function(row) {
+          return function() {
+            var cell = row.id;
+            console.log('cell',cell);
+            callPostHttpRequest("https://hook.eu1.make.celonis.com/r3wrj1rlo4cqt2thkw3wh55odybxon8u", {"recordId":cell, "Scenario":"Aftersales Warranty Admin - Dealer to send Rejected Claim back to warranty" },"Aftersales Warranty Admin - Dealer to send Rejected Claim back to warranty");
+          };
+        };
+        if (currentRow.id!==''){
+          currentRow.children[10].onclick = createClickHandler(currentRow);
+        }
+      }
+    }
+ });
+
+
 
  const mapDealerNamesToCodes = [["Stellantis &You Birmingham Central","GH"],["Stellantis &You Birmingham North","CG"],["Stellantis &You Birmingham South","BK"],["Stellantis &You Brentford","WW"],["Stellantis &You Bristol Cribbs","TC"],["Stellantis &You Chelmsford","ES"],["Stellantis &You Chingford","CH"],["Stellantis &You Coventry","BW"],["Stellantis &You Crawley","VG"],["Stellantis &You Croydon","VY"],["Stellantis &You Edgware","WN"],["Stellantis &You Guildford","ST"],["Stellantis &You Hatfield","HD"],["Stellantis &You Leicester","CL"],["Stellantis &You Liverpool","LP"],["Stellantis &You Maidstone","RM"],["Stellantis &You Manchester","TG"],["Stellantis &You National","BH"],["Stellantis &You Newport","NP"],["Stellantis &You Nottingham","NT"],["Stellantis &You Preston","GL"],["Stellantis &You Redditch","RH"],["Stellantis &You Romford","RF"],["Stellantis &You Sale","SB"],["Stellantis &You Sheffield","GM"],["Stellantis &You Stockport","CT"],["Stellantis &You Walton","WY"],["Stellantis &You West London","LW"],["Stellantis &You Wimbledon","VM"]];
 	  
@@ -4904,3 +4964,299 @@ $(document).on('knack-form-submit.view_3161', function(event, view, data) {
     }
   }
 });*/
+
+
+
+
+//Parts Ordering View  
+
+
+
+$(document).on('knack-view-render.view_3773', function(event, view, data) {
+  $('.field_3181').hide();
+  console.log("View render event triggered");
+ 
+
+
+
+ // Function to load a script and return a promise
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src + '?cache-bust=' + new Date().getTime(); // Add cache-busting
+      script.onload = () => resolve(script);
+      script.onerror = () => reject(new Error(`Script load error for ${src}`));
+      document.head.append(script);
+    });
+  }
+  let trId = '';
+  // Load jQuery first
+  loadScript('https://code.jquery.com/jquery-3.5.1.min.js').then(() => {
+    // Load other scripts after jQuery is loaded
+    console.log("jquerry installed");
+    return Promise.all([
+      loadScript('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'),
+    ]);
+  }).then(() => {
+    
+    // Append CSS files after all scripts are loaded
+    $('head').append('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css" />');          
+    let modelHtml = '';
+
+
+    let keyValueStore = '';
+    $('tr').mouseenter(function() {
+      trId = $(this).attr('id');
+    console.log('Mouse is on before mouse leave: ' + trId);
+
+    });
+          $(document).on('mouseleave', '.fa-cart-arrow-down', function() {
+
+            keyValueStore = '';
+            $('tr').mouseenter(function() {
+              trId = $(this).attr('id');
+              console.log('Mouse is on: ' + trId);
+          });
+
+          
+
+                $('#myModal').remove();
+          $('.modal-backdrop').remove();
+
+                let modelHtml = '';
+
+
+
+      // Append the modal structure to the body
+      let partsModelHTML = '';
+
+      if(partsModelHTML === ''){
+
+        partsModelHTML = callGetHttpRequest('https://stellantisandyoucouk.github.io/modalHTML/modal.html');
+        $('body').append(partsModelHTML);
+
+      }
+
+
+
+      // if (partsModelHTML === '') {
+      //   partsModelHTML = $.ajax({
+      //     type: "GET",
+      //     url: 'https://stellantisandyoucouk.github.io/modalHTML/modal.html',
+      //     cache: false,
+      //     async: false
+      //   }).responseText;
+      // }
+      // $('body').append(partsModelHTML);
+
+
+      // Show the modal
+      $('#myModal').modal({
+        keyboard: true,
+        show: true,
+        handleUpdate: true
+      });
+
+
+
+      Knack.views.view_3773.model.data.models.forEach((model)=>{
+
+        if(model.id===trId){
+          keyValueStore = model.attributes.field_3181_raw
+        }
+
+      })
+      // const key_value_store = JSON.parse(Knack.views['view_3773'].model.attributes['field_250'])
+
+      let responseJson;
+      let output;
+      if(modelHtml==='' && keyValueStore != ''){
+
+        const response = callGetHttpRequest(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`);
+        responseJson = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/wTDYKllK5dQREMpAR/records/OUTPUT');
+        output = JSON.parse(responseJson);
+        if(output.WIP==='Test'){
+          // TODO: Changed the WIP
+          output.WIP='';
+        }
+
+         $('#part').append(response);
+   
+         }
+
+         
+
+//FIXME: Hardcoded WIP
+      let payload = {
+        "keyValueStoreId": keyValueStore,
+        // "WIP": 'output.WIP',
+        "WIP": '64046',
+        "AccountNumber": output.AccountNumber
+      }
+      
+      if(payload.WIP !== '' && payload.AccountNumber !== ''){      
+        
+         const responseInvoices = callPostHttpRequest("https://hook.eu1.make.celonis.com/njmr76ctfodft44xtbo77uy3bvbzq287", payload,"Servicebox invoice find");
+        let invoices = JSON.parse(responseInvoices);
+
+        
+        
+        const rows = invoices
+      .map(
+        (invoice) => `
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+    ${invoice.PartNumber}
+    <span class="badge bg-primary rounded-pill" style="margin-left: 0.2rem;">${parseInt(invoice.OrderQuantity)}
+          </span>
+  </li>`
+      )
+      .join("");
+
+
+
+
+
+//FIXME: Invoiced and Part Numbers for modal pop up
+    const htmxTest = `<div class="modal-header">
+      <h4 class="modal-title">Invoiced: 14638876</h4>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body">
+    <ul class="list-group">${rows}</ul>
+  </div>
+    </div>
+    <div class="modal-footer"></div>`
+
+  $('.invoiced').append(htmxTest);
+}else{
+  $('.invoiced').append(`<p>Can find the invoice at the moment</p>`);
+}
+
+     
+
+
+
+
+
+
+
+
+
+
+      // if (modelHtml === '' && keyValueStore != '') {
+      //   fetch(`https://api.apify.com/v2/key-value-stores/${keyValueStore}/records/test.html`)
+      //     .then(response => {
+      //       if (!response.ok) {
+      //         throw new Error('Network response was not ok');
+      //       }
+      //       return response.text();
+      //     })
+      //     .then(text => {
+      //       modelHtml = text;
+      //       $('#akif').append(modelHtml); // Replace #someElement with the actual target
+
+      //     })
+      //     .catch(error => {
+      //       console.error('There was a problem with the fetch operation:', error);
+      //     });
+      // }
+
+
+
+      // $('#searchButton').on('click', function() {
+      //   Swal.fire({
+      //     title: "Lookup Bin",
+      //     input: "text",
+      //     inputAttributes: {
+      //       autocapitalize: "on"
+      //     },
+      //     showCancelButton: true,
+      //     confirmButtonText: "Find",
+      //     showLoaderOnConfirm: true,
+      //     preConfirm: async (binLocation) => {
+      //       try {
+      //         payload = `{"PartNumber": ${input}}`;
+      //         const url = `https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs`;
+      //         const responseBinLocation = callPostHttpRequest(url, payload,"Servicebox bin location find");
+              
+      //         if (!responseBinLocation.ok) {
+      //           return Swal.showValidationMessage(`Request failed: ${responseBinLocation.statusText}`);
+      //         }
+      //         return JSON.parse(responseBinLocation);
+      //       } catch (error) {
+      //         Swal.showValidationMessage(`Request failed: ${error}`);
+      //       }
+      //     },
+      //     allowOutsideClick: () => !Swal.isLoading()
+      //   }).then((result) => {
+      //     if (result.isConfirmed) {
+      //       Swal.fire({
+      //         title: `${result.value.binLocation}`,
+      //       });
+      //     }
+      //   });
+      // });
+   $('#searchButton').on('click', function() {
+      Swal.fire({
+        title: "Look Up Bin Location",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off"
+        },
+        showCancelButton: true,
+        confirmButtonText: "Look up",
+        showLoaderOnConfirm: true,
+        preConfirm: async (login) => {
+          try {
+            const githubUrl = `
+              https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
+            `;
+
+            const response = callPostHttpRequest(githubUrl, {"BinLocation":login},"Servicebox bin location find");
+
+            console.log(JSON.parse(response))
+            if (!response) {
+              return Swal.showValidationMessage(`
+                Hey
+              `);
+            }
+            return JSON.parse(response);
+          } catch (error) {
+            Swal.showValidationMessage(`
+              Request failed: ${error}
+            `);
+          }
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result) {
+          Swal.fire({
+            title: `Bin Location: ${result.value.BinLocation.replace('SRETURNS', '').replace('RETURNS', '').trim()}`,
+            imageUrl: result.value.avatar_url
+          });
+        }
+      });
+
+      });
+
+      // Remove the modal from the DOM when it's closed to prevent clutter
+      $('#myModal').on('hidden.bs.modal', function() {
+        $(this).remove();
+      });
+
+      $('.modal-backdrop').on('hidden.bs.modal', function() {
+        $(this).remove();
+      });
+
+      console.log("Mouse leave detected");
+    });
+  }).catch((error) => {
+    console.error("Failed to load scripts:", error);
+  });
+});
+
+
+
+// $(document).on('knack-view-render.view_4230', function(event, scene) {
+// $('#view_4230').css('flex','0')
+//  });
