@@ -5086,3 +5086,150 @@ function createLink(url, linkText){
 
 //  })
 // });
+
+$(document).on('knack-view-render.view_7387', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings10045 = {
+    spiritLine : false,
+    imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
+    imageOverlayEffect : true,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : false,
+    actionAfterPhoto : 'compare', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Does the photo match the template?',
+    uploadMethod : 'field', //knack, make, field
+    uploadField : 'field_10045',
+    //resizeImageMaxHeight : 1000,
+    //resizeImageMaxWidth : 1000,
+    app_id : '6040dd9a301633001bca5b4e'
+  }
+  createPhotoButton(appSettings10045,'10045');
+
+  createOfflineFormSubmit('7387','6040dd9a301633001bca5b4e',motabReturnsImageUpload)
+});
+
+function motabReturnsImageUpload(fieldName, fileId, filename){
+  console.log('motabReturnsImageUpload',fieldName, fileId, filename)
+}
+
+function createOfflineFormSubmit(view,appId, nextAction=null){
+  var formButton = document.querySelector('div[class="kn-submit"]>button');
+  formButton.onclick = function() {
+    if (!isOnline){
+      alert('You are unable to submit the form as the device is not connected to a network. Please move within range/reconnect to a network to submit the form.');
+      return false;
+    } else {
+      if ($('input[imageToSaveUrl]').length>0 || $('input[id*="offline"]').length>0){
+        uploadList = [];
+        $('div[id="view_'+view+'"] button[type="submit"]').prop('disabled', true);
+        $('<h3>Images are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>').insertBefore($('div[id="view_'+view+'"] button[type="submit"]'))
+        createFormModal('fMImageUpload','<h3>Images and files are being uploaded, then the form will be submitted ...</h3><p id="infoText"></p>');
+        $('#fMImageUpload').show();
+        for (let i =0;i<$('input[imageToSaveUrl]').length;i++){
+          uploadList.push({field:$('input[imageToSaveUrl]').eq(i).attr('name')})
+          fetch($('input[imageToSaveUrl]').eq(i).attr('imageToSaveUrl'))
+          .then(function(response) {
+            return response.blob();
+          })
+          .then(function(blob) {
+            uploadImageOnlyPhotoApp(appId,blob,'photoImg.jpg','infoText',$('input[imageToSaveUrl]').eq(i).attr('name'),imageUploadedSuccesfully, nextAction);
+          });
+        }
+        for (let i =0;i< $('input[id*="offline"]').length;i++){
+          if ($('input[id*="offline"]').eq(i).prop('files')[0]){
+            uploadList.push({field:$('input[id*="offline"]').eq(i).attr('fieldName')});
+            let fU = URL.createObjectURL( $('input[id*="offline"]').eq(i).prop('files')[0]);
+            fetch(fU)
+            .then(function(response) {
+              return response.blob();
+            })
+            .then(function(blob) {
+              uploadFileOnlyPhotoApp(appId,blob,$('input[id*="offline"]').eq(i).prop('files')[0].name,'infoText',$('input[id*="offline"]').eq(i).attr('fieldName'),fileUploadedSuccesfully);
+            });
+          }
+        }
+        testSubmitOfflineForm();
+        return false;
+      }
+    }
+  }
+}
+
+function createFormModal(id, htmlContent){
+  let fM = document.createElement("div");
+  fM.setAttribute("id", id);
+  fM.setAttribute("class", "formModal");
+  fM.setAttribute("style","display:none;");
+  fM.innerHTML = htmlContent;
+  document.body.appendChild(fM)
+}
+
+function testSubmitOfflineForm(){
+  let notUploaded = uploadList.filter(el => !el.uploaded);
+  if (notUploaded.length===0){
+    $('#fMImageUpload').hide();
+    $('button[type="submit"]').removeAttr('disabled');
+    $('form').submit();
+  }
+}
+
+function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null){
+  //alert(fieldName);
+  //alert(fileId);
+  $('input[name="'+fieldName+'"]').val(fileId);
+  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html('photoImg.jpg');
+  $('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
+  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('File uploaded successfully.');
+  $('input[name="'+fieldName+'"]').removeAttr('imageToSaveUrl');
+  if (nextAction){
+    nextAction(fieldName, fileId, filename);
+  }
+  if (fieldName === 'field_2718'){
+    console.log('Motab Photo');
+    let dataToSend = {
+      recordId:getRecordIdFromHref(location.href),
+      imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg'
+    }
+    $.ajax({
+      url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheckMotability',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(dataToSend),
+      async: true
+    })
+  }
+  let f = uploadList.find(el => el.field === fieldName);
+  if (f){
+    f.uploaded = true;
+  }
+  let notUploaded = uploadList.filter(el => !el.uploaded);
+  if (notUploaded.length===0){
+    $('#fMImageUpload').hide();
+    $('button[type="submit"]').removeAttr('disabled');
+    $('form').submit();
+  }
+}
+
+function fileUploadedSuccesfully(fieldName, fileId, filename){
+  //alert(fieldName);
+  //alert(fileId);
+  $('input[name="'+fieldName+'"]').val(fileId);
+  $('input[name="'+fieldName+'"]').removeAttr('disabled');
+  $('input[id="'+fieldName+'_offlinefile"]').val(null);
+  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html(filename);
+  //$('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html('photoImg.jpg');
+  //$('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
+  $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('File uploaded successfully.');
+  $('input[id="'+fieldName+'_offlinefile"]').remove()
+  let f = uploadList.find(el => el.field === fieldName);
+  if (f){
+    f.uploaded = true;
+  }
+  let notUploaded = uploadList.filter(el => !el.uploaded);
+  if (notUploaded.length===0){
+    $('#fMImageUpload').hide();
+    $('button[type="submit"]').removeAttr('disabled');
+    $('form').submit();
+  }
+}
