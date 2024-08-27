@@ -4960,7 +4960,7 @@ function createLink(url, linkText){
     const userAttributes = Knack.getUserAttributes();
     if(userAttributes !=='No user found'){
       // console.log("User Attributes: " + JSON.stringify(userAttributes));
-      const userValue = userAttributes.values.field_7974;
+      const userValue = userAttributes.id;
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
