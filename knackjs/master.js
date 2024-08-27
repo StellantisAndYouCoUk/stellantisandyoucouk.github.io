@@ -4894,7 +4894,7 @@ function createLink(url, linkText){
 
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
-      const userValue = userAttributes.values.field_7974;
+      const userValue = userAttributes.id;
    
       // Construct URLs with the dynamic value
 
@@ -4914,7 +4914,7 @@ function createLink(url, linkText){
 
 
 
-    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable User Notification');
+    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable Desktop Notification');
 
       // Locations
       // Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
