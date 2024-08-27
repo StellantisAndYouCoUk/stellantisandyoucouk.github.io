@@ -1076,6 +1076,18 @@ $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
     sceneRefresh(refreshData);
   });
 
+
+//refresh tyre on modal pop up NEW TYRE V2 FIELD (FROM SERVICEBOX)
+$(document).on("knack-scene-render.scene_508", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_2983', //Tyres Front
+          views:['1475']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+
 //trigger get tyres and prices for a selected dealer from modal view
 $(document).on('knack-form-submit.view_1484', function(event, view, data) { 
     
