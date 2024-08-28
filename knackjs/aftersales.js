@@ -995,6 +995,28 @@ $(document).on('knack-form-submit.view_1474', function(event, view, data) {
     }
 });
 
+  //trigger get tyres and prices from pre-visit jobcard Triggers Stapleton lookup (V4)
+$(document).on('knack-form-submit.view_3515', function(event, view, data) { 
+    
+    try{
+        
+
+        let commandURL = "https://hook.eu1.make.celonis.com/sci2jeh10s6dmwyul5sbced6lsaifj9b";
+        let dataToSend = JSON.stringify({"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411});
+
+        var rData = $.ajax({
+            url: commandURL,
+            type: 'POST',
+            contentType: 'application/json',
+            data: dataToSend,
+            async: false
+        }).responseText;
+    }catch(exception){
+        sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
+    }
+});
+
+
 //trigger get tyres and prices from customer job card
 $(document).on('knack-form-submit.view_1474', function(event, view, data) { 
     
