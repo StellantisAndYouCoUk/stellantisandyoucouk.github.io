@@ -5146,6 +5146,13 @@ function createFormModal(id, htmlContent){
   document.body.appendChild(fM)
 }
 
+ //PROPERTY AND EVENTS FOR ONLINE/OFFLINE DETECTION
+ var isOnline = true;
+ window.addEventListener('online', () => isOnline = true);
+ window.addEventListener('offline', () => isOnline = false);
+
+ var uploadList = [];
+
 function testSubmitOfflineForm(){
   let notUploaded = uploadList.filter(el => !el.uploaded);
   if (notUploaded.length===0){
