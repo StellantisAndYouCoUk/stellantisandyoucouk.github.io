@@ -4886,27 +4886,7 @@ function createLink(url, linkText){
   // Append the div to the specified element in the DOM
   }
 
-  // $.ajax({
-  //   url: 'https://api.rd.knack.com/v1/objects/object_222/records/66bdcfe634629e0275b0185b',
-  //   type: 'GET',
-  //   headers: {
-  //     'X-Knack-Application-ID': Knack.application_id,
-  //     'X-Knack-REST-API-Key': 'knack'
-  //   },
-  //   success: function(data) {
-  //     console.log(data);
 
-
-  //     // data.records[0].field_2849_raw.slice(0, 3).forEach((location) => {
-  //     //   createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-  //     // });
-      
-  //     // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
-  //     //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());      
-  //     // });
-
-  
-  //   }})
 
 
 
@@ -4914,7 +4894,7 @@ function createLink(url, linkText){
 
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
-      const userValue = userAttributes.values.field_7974;
+      const userValue = userAttributes.id;
    
       // Construct URLs with the dynamic value
 
@@ -4934,20 +4914,20 @@ function createLink(url, linkText){
 
 
 
-    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable User Notification');
+    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable Desktop Notification');
 
       // Locations
-      Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
-        let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-        createLink(url.substr(0, url.length - 4), `Enable ${location.identifier} Notification`);
+      // Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
+      //   let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+      //   createLink(url.substr(0, url.length - 4), `Enable ${location.identifier} Notification`);
   
-      });
+      // });
       
-      Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
-        let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-        createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
+      // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
+      //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
+      //   createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
   
-      });
+      // });
 
       // eventSource = new EventSource(subscribeURL);
 
@@ -4980,7 +4960,7 @@ function createLink(url, linkText){
     const userAttributes = Knack.getUserAttributes();
     if(userAttributes !=='No user found'){
       // console.log("User Attributes: " + JSON.stringify(userAttributes));
-      const userValue = userAttributes.values.field_7974;
+      const userValue = userAttributes.id;
       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
