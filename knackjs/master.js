@@ -5090,6 +5090,8 @@ $(document).on('knack-view-render.view_7387', function (event, view, data) {
 });
 
 function motabReturnsImageUpload(fieldName, fileId, filename){
+  alert('motabReturnsImageUpload');
+  alert(fieldName);
   console.log('motabReturnsImageUpload',fieldName, fileId, filename)
 }
 
@@ -5100,7 +5102,6 @@ function createOfflineFormSubmit(view,appId, nextAction=null){
       alert('You are unable to submit the form as the device is not connected to a network. Please move within range/reconnect to a network to submit the form.');
       return false;
     } else {
-      alert($('input[imageToSaveUrl]').length);
       if ($('input[imageToSaveUrl]').length>0 || $('input[id*="offline"]').length>0){
         uploadList = [];
         $('div[id="view_'+view+'"] button[type="submit"]').prop('disabled', true);
