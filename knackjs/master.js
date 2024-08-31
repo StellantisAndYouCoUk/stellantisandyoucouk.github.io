@@ -5067,7 +5067,7 @@ function createLink(url, linkText){
 //  })
 // });
 
-/*$(document).on('knack-view-render.view_7387', function (event, view, data) {
+$(document).on('knack-view-render.view_7387', function (event, view, data) {
   embedPhotoApp();
   let appSettings10045 = {
     spiritLine : false,
@@ -5087,7 +5087,7 @@ function createLink(url, linkText){
   createPhotoButton(appSettings10045,'10045');
 
   createOfflineFormSubmit('7387','6040dd9a301633001bca5b4e',motabReturnsImageUpload)
-});*/
+});
 
 function motabReturnsImageUpload(fieldName, fileId, filename){
   alert('motabReturnsImageUpload');
