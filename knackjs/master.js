@@ -5092,7 +5092,7 @@ $(document).on('knack-view-render.view_7387', function (event, view, data) {
 function motabReturnsImageUpload(fieldName, fileId, filename){
   alert('motabReturnsImageUpload');
   alert(fieldName);
-  alert(fieldId);
+  alert(fileId);
   console.log('motabReturnsImageUpload',fieldName, fileId, filename)
 }
 
