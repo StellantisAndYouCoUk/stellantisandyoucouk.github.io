@@ -5082,16 +5082,17 @@ $(document).on('knack-view-render.view_7387', function (event, view, data) {
     uploadField : 'field_10045',
     //resizeImageMaxHeight : 1000,
     //resizeImageMaxWidth : 1000,
-    app_id : '6040dd9a301633001bca5b4e'
+    app_id : '591eae59e0d2123f23235769'
   }
   createPhotoButton(appSettings10045,'10045');
 
-  createOfflineFormSubmit('7387','6040dd9a301633001bca5b4e',motabReturnsImageUpload)
+  createOfflineFormSubmit('7387','591eae59e0d2123f23235769',motabReturnsImageUpload)
 });
 
 function motabReturnsImageUpload(fieldName, fileId, filename){
   alert('motabReturnsImageUpload');
   alert(fieldName);
+  alert(fieldId);
   console.log('motabReturnsImageUpload',fieldName, fileId, filename)
 }
 
