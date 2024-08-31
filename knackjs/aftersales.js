@@ -625,6 +625,19 @@ $(document).on("knack-scene-render.scene_119", function(event, scene, data) {
   //generateTyres();
 });
 
+//pre-visit jobcard tyres to reload stapleton view after populated
+$(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_250', //Tyres
+          views:['3518'],
+          runAfter : generateTyres2 
+      }
+    ]
+    sceneRefresh(refreshData);
+});
+
+
   var recordId = '';
   $(document).on('knack-form-submit.view_71', function(event, view, data) { 
     let commandURL = "https://hook.integromat.com/53yx2tuy820lvzuobdqex8jem2utgwil" ;
@@ -1150,18 +1163,6 @@ $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
     sceneRefresh(refreshData);
   });
 
-
-
-//refresh tyre on modal pop up 
-$(document).on("knack-scene-render.scene_508", function(event, scene, data) {
-    let refreshData = [
-      {
-          mainField : 'field_247', //Tyres Front
-          views:['1475']
-      }
-    ]
-    sceneRefresh(refreshData);
-  });
 //auto reload Clear tyres in customer & vehicle look up /precalls
 $(document).on('knack-record-update.view_1484', function(event, view, data) {
   
