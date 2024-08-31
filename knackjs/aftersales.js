@@ -4240,7 +4240,9 @@ function imageUploadedSuccesfully(fieldName, fileId){
     console.log('Motab Photo');
     let dataToSend = {
       recordId:getRecordIdFromHref(location.href),
-      imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg'
+      imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg',
+      successMakeWebhook : 'https://hook.eu1.make.celonis.com/kln78kilvne9gknkl8mcupp6v3imktxq',
+      failMakeWebhook : 'https://hook.eu1.make.celonis.com/3but1lwjptm6gqi3a0m7uulceuhx8znt'
     }
     $.ajax({
       url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheckMotability',

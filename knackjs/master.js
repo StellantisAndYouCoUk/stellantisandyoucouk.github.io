@@ -5090,10 +5090,20 @@ $(document).on('knack-view-render.view_7387', function (event, view, data) {
 });
 
 function motabReturnsImageUpload(fieldName, fileId, filename){
-  alert('motabReturnsImageUpload');
-  alert(fieldName);
-  alert(fileId);
-  console.log('motabReturnsImageUpload',fieldName, fileId, filename)
+  console.log('motabReturnsImageUpload');
+  let dataToSend = {
+    recordId:getRecordIdFromHref(location.href),
+    imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/591eae59e0d2123f23235769/'+fileId+'/original/photoimg.jpg',
+    successMakeWebhook : 'https://hook.eu1.make.celonis.com/tr2g6iu7mufatyq2t8r0jyl15q49ibll',
+    failMakeWebhook : 'https://hook.eu1.make.celonis.com/8bk2vrabvh1u2y3oiur2l1t3pwbo9mqk'
+  }
+  $.ajax({
+    url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheckMotability',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(dataToSend),
+    async: true
+  })
 }
 
 function createOfflineFormSubmit(view,appId, nextAction=null){
