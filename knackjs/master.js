@@ -5068,6 +5068,14 @@ function createLink(url, linkText){
 // });
 
 $(document).on('knack-view-render.view_7387', function (event, view, data) {
+  createdMotabReturnsViewImageUpload();
+});
+
+$(document).on('knack-view-render.view_7386', function (event, view, data) {
+  createdMotabReturnsViewImageUpload();
+});
+
+function createdMotabReturnsViewImageUpload(){
   embedPhotoApp();
   let appSettings10045 = {
     spiritLine : false,
@@ -5087,7 +5095,7 @@ $(document).on('knack-view-render.view_7387', function (event, view, data) {
   createPhotoButton(appSettings10045,'10045');
 
   createOfflineFormSubmit('7387','591eae59e0d2123f23235769',motabReturnsImageUpload)
-});
+}
 
 function motabReturnsImageUpload(fieldName, fileId, filename){
   console.log('motabReturnsImageUpload');
