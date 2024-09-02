@@ -1479,7 +1479,8 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #view_3490 > section > div > div:nth-child(2) > div:nth-child(3) > div > div:nth-child(1) > div,
 #view_3490 > section > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div,
 #view_3490 > section > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3) > div,
-#view_3490 > section > div > div.kn-details-group.column-1.columns > div > div > div:nth-child(1) > div {
+#view_3490 > section > div > div.kn-details-group.column-1.columns > div > div > div:nth-child(1) > div,
+#view_1475 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_2983 > div.kn-detail-label {
   background-color: transparent;
 }
 
