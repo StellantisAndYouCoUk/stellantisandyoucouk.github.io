@@ -1423,6 +1423,12 @@ body {
   	font-weight: bold;
 }
 
+#view_2874 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(12) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
 /******** AFRLs Signed but Vehicle Tax Confirmation NOT yet Uploaded TO DO LIST ON ADMIN PAGE *********/
 
 #view_2897 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
