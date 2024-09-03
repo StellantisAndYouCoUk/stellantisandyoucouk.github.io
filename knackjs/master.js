@@ -527,7 +527,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 /*Daily activity snapshot*/{view:'view_6388',url:'#aftersales-service-reporting/activity-snapshot/'},		
 /*Colection/Delivery Driver*/ {view:'view_6462',url:'#cd-check-in/'},
 /*Stapletons Tyre Stock Profiling*//* {view:'view_4929 ',url:'#tyres-availability-tracking-by-dealer--region/'},*/
-/*Parts sales reporting*/ {view:'view_4929 ',url:'#parts-sales-reporting/'}
+/*Parts sales reporting*/ {view:'view_4929 ',url:'#parts-sales-reporting/'},
 {view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'}]; ///add scene numbers as necessary
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 aftersalesConnectView.forEach(aftersalesConnectViewFunction);
