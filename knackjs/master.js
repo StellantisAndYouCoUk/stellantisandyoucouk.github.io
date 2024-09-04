@@ -4897,62 +4897,10 @@ function createLink(url, linkText){
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.id;
-   
-      // Construct URLs with the dynamic value
-
 
       createNotificationUrl(userValue)
-      // const events = document.getElementById('events');
-   
-      // // Ensure notification container exists
-      // let notificationContainer = document.getElementById('notification-container');
-      // if (!notificationContainer) {
-      //     notificationContainer = document.createElement('div');
-      //     notificationContainer.id = 'notification-container';
-      //     document.body.appendChild(notificationContainer);
-      // }
-   
-      
-
-
 
     createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable Desktop Notification');
-
-      // Locations
-      // Knack.views.view_5.model.attributes.field_2849_raw.slice(0, 3).forEach((location) => {
-      //   let url = createNotificationUrl(location.identifier.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-      //   createLink(url.substr(0, url.length - 4), `Enable ${location.identifier} Notification`);
-  
-      // });
-      
-      // Knack.views.view_5.model.attributes.profile_keys.split(",").slice(0,3).forEach((profile) => {
-      //   let url = createNotificationUrl(profile.replaceAll(" ", "").replaceAll("&", "").toLowerCase());
-      //   createLink(url.substr(0, url.length - 4), `Enable ${profile} Notification`);
-  
-      // });
-
-      // eventSource = new EventSource(subscribeURL);
-
-      
-      // function showNotification(data) {
-      //     const parsedData = JSON.parse(data);
-
-      //     Swal.fire({
-      //       title: parsedData.title ||'No Title',
-      //       text: parsedData.message || 'No Message',
-      //       icon: "info",
-      //       allowOutsideClick: false
-      //     });
-      // }
-   
-   
-      // eventSource.onmessage = (e) => {
-      //     //let event = document.createElement('div');
-      //     //event.innerHTML = e.data;
-      //     //events.appendChild(event);
-      //     console.log(e.data);
-      //     showNotification(e.data);
-      // };
 
 });
 
@@ -4989,85 +4937,16 @@ function createLink(url, linkText){
     };
 
 
-
-
-
-
   }
-
-
 
   
 }
 
 
-
-
-
-
-      
-
-
  })
 
 
-//  $(document).on('knack-scene-render.scene_2297', function(event, scene){
 
-//   var $button = $('<button>', {
-//     id: 'githubButton',
-//     type: 'button',
-//     text: 'Send Messages'
-// });
-
-// // Append the button to a container
-// $('#buttonContainer').append($button);
-
-
-
-//   $('#githubButton').on('click', function() {
-
-
-//   Swal.fire({
-//     title: "Submit your Github username",
-//     input: "text",
-//     inputAttributes: {
-//       autocapitalize: "off"
-//     },
-//     showCancelButton: true,
-//     confirmButtonText: "Look up",
-//     showLoaderOnConfirm: true,
-//     preConfirm: async (login) => {
-//       try {
-//         const githubUrl = `
-//           https://api.github.com/users/${login}
-//         `;
-//         const response = await fetch(githubUrl);
-//         if (!response.ok) {
-//           return Swal.showValidationMessage(`
-//             ${JSON.stringify(await response.json())}
-//           `);
-//         }
-//         return response.json();
-//       } catch (error) {
-//         Swal.showValidationMessage(`
-//           Request failed: ${error}
-//         `);
-//       }
-//     },
-//     allowOutsideClick: () => !Swal.isLoading()
-//   }).then((result) => {
-//     if (result.isConfirmed) {
-//       Swal.fire({
-//         title: `${result.value.login}'s avatar`,
-//         imageUrl: result.value.avatar_url
-//       });
-//     }
-//   });
-  
-
-
-//  })
-// });
 
 $(document).on('knack-view-render.view_7387', function (event, view, data) {
   createdMotabReturnsViewImageUpload();
