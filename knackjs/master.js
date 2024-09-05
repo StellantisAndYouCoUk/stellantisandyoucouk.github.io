@@ -4937,9 +4937,6 @@ function createLink(url, linkText){
           `,
           cancelButtonAriaLabel: "Thumbs down",
           allowOutsideClick: false,
-          customClass: {
-            popup: 'custom-swal-popup'
-          }
         });
 
     }
