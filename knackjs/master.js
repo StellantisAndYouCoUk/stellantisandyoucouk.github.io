@@ -4920,10 +4920,10 @@ function createLink(url, linkText){
               title: `<strong>${parsedData.title}</strong>`,
               icon: "info",
               html: `
-              ${JSON.stringify(parsedData)}
                 You can use <b>bold text</b>,
                 <a href="#" autofocus>links</a>,
                 and other HTML tags
+                <img src='${parseData.attachment.url}'>
               `,
               showCloseButton: true,
               showCancelButton: true,
