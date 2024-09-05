@@ -4933,6 +4933,7 @@ function createLink(url, linkText){
             `
           },
           html: `
+          ${JSON.stringify(parsedData)}
             You can use <b>bold text</b>,
             <a href="${parsedData.attachment.click}" autofocus>links</a>,
             and other HTML tags
