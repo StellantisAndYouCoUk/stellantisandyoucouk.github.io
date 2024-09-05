@@ -4861,27 +4861,81 @@ let subscribeURL = '';
 
       
 // Create a link function
-function createLink(url, linkText){
-  // Create a new anchor element using jQuery
-  let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
+// function createLink(url, linkText){
+//   // Create a new anchor element using jQuery
+//   let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
   
-  // Set the href attribute to the subscription URL, removing the last 4 characters
-  $link.attr('href', url);
+//   // Set the href attribute to the subscription URL, removing the last 4 characters
+//   $link.attr('href', url);
   
-  // Set the target attribute to '_blank' to open the link in a new tab
-  $link.attr('target', '_blank');
+//   // Set the target attribute to '_blank' to open the link in a new tab
+//   $link.attr('target', '_blank');
 
   
-  // Set the text of the link
+//   // Set the text of the link
+//   $link.text(linkText);
+  
+//   // Create a new div element and append the link to it
+//   let $div = $('<div class="control"></div>').append($link);
+  
+//   $('.view_5521').append($div);
+  
+//   // Append the div to the specified element in the DOM
+//   }
+
+
+
+function createLink(url, linkText) {
+  let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
+  $link.attr('href', url);
+  $link.attr('target', '_blank');
   $link.text(linkText);
-  
-  // Create a new div element and append the link to it
+
   let $div = $('<div class="control"></div>').append($link);
-  
   $('.view_5521').append($div);
-  
-  // Append the div to the specified element in the DOM
-  }
+
+  // Add click event listener to start Shepherd.js tour
+  $link.on('click', function (event) {
+    event.preventDefault(); // Prevent default link behavior
+    
+    // Shepherd.js tour setup
+    const tour = new Shepherd.Tour({
+      defaultStepOptions: {
+        scrollTo: true,
+        cancelIcon: {
+          enabled: true
+        }
+      }
+    });
+
+    // Add steps to the tour
+    tour.addStep({
+      title: 'Step 1: Enable Notifications',
+      text: 'Click here to enable desktop notifications in your browser settings.',
+      attachTo: { element: '.kn-link-page', on: 'right' },
+      buttons: [
+        {
+          text: 'Next',
+          action: tour.next
+        }
+      ]
+    });
+
+    tour.addStep({
+      title: 'Step 2: Confirm Settings',
+      text: 'Make sure notifications are enabled and saved.',
+      buttons: [
+        {
+          text: 'Done',
+          action: tour.complete
+        }
+      ]
+    });
+
+    // Start the tour
+    tour.start();
+  });
+}
 
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
@@ -4908,33 +4962,6 @@ function createLink(url, linkText){
 
       function showNotification(data) {
         const parsedData = JSON.parse(data);
-        // Swal.fire({
-        //   title: parsedData.title ||'No Title',
-        //   text: parsedData.message || 'No Message',
-        //   icon: "info",
-        //   allowOutsideClick: false
-        // });
-
-     
-        // Swal.fire({
-        //   title: `<strong>${parsedData.title}</strong>`,
-        //   html: `
-        //     <a href="${parsedData.click}" target="_blank"><img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;"></a>
-        //     ${parsedData.message}
-        //   `,
-        //   showCloseButton: true,
-        //   showCancelButton: true,
-        //   focusConfirm: false,
-        //   confirmButtonText: `
-        //     <i class="fa fa-thumbs-up"></i> Great!
-        //   `,
-        //   confirmButtonAriaLabel: "Thumbs up, great!",
-        //   cancelButtonText: `
-        //     <i class="fa fa-thumbs-down"></i>
-        //   `,
-        //   cancelButtonAriaLabel: "Thumbs down"
-        // });
-
 
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
@@ -4963,7 +4990,7 @@ function createLink(url, linkText){
         });
 
         
-        
+
 
     }
   
