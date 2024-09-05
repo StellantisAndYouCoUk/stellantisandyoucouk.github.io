@@ -4918,6 +4918,20 @@ function createLink(url, linkText){
      
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          },
           html: `
             You can use <b>bold text</b>,
             <a href="${parsedData.attachment.click}" autofocus>links</a>,
