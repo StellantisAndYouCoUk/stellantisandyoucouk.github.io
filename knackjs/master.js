@@ -4916,24 +4916,32 @@ function createLink(url, linkText){
         // });
 
      
+        // Swal.fire({
+        //   title: `<strong>${parsedData.title}</strong>`,
+        //   html: `
+        //     <a href="${parsedData.click}" target="_blank"><img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;"></a>
+        //     ${parsedData.message}
+        //   `,
+        //   showCloseButton: true,
+        //   showCancelButton: true,
+        //   focusConfirm: false,
+        //   confirmButtonText: `
+        //     <i class="fa fa-thumbs-up"></i> Great!
+        //   `,
+        //   confirmButtonAriaLabel: "Thumbs up, great!",
+        //   cancelButtonText: `
+        //     <i class="fa fa-thumbs-down"></i>
+        //   `,
+        //   cancelButtonAriaLabel: "Thumbs down"
+        // });
+
+
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
-          showClass: {
-            popup: `
-              animate__animated
-              animate__fadeInUp
-              animate__faster
-            `
-          },
-          hideClass: {
-            popup: `
-              animate__animated
-              animate__fadeOutDown
-              animate__faster
-            `
-          },
           html: `
-            <a href="${parsedData.click}" target="_blank"><img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;"></a>
+            <a id="popup-link" href="${parsedData.click}" target="_blank">
+              <img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">
+            </a>
             ${parsedData.message}
           `,
           showCloseButton: true,
@@ -4948,6 +4956,14 @@ function createLink(url, linkText){
           `,
           cancelButtonAriaLabel: "Thumbs down"
         });
+        
+        // Add a click event listener to the link
+        document.getElementById('popup-link').addEventListener('click', () => {
+          Swal.close(); // Close the popup when the link is clicked
+        });
+
+        
+        
 
     }
   
