@@ -4918,7 +4918,6 @@ function createLink(url, linkText){
      
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
-          icon: "info",
           html: `
             You can use <b>bold text</b>,
             <a href="#" autofocus>links</a>,
@@ -4937,10 +4936,11 @@ function createLink(url, linkText){
             <i class="fa fa-thumbs-down"></i>
           `,
           cancelButtonAriaLabel: "Thumbs down",
-          allowOutsideClick: false
+          allowOutsideClick: false,
+          customClass: {
+            popup: 'custom-swal-popup'
+          }
         });
-        
-
 
     }
   
