@@ -4933,7 +4933,7 @@ function createLink(url, linkText){
             `
           },
           html: `
-            <a href="${parsedData.click}" autofocus><img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;"></a>
+            <a href="${parsedData.click}" target="_blank"><img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;"></a>
             ${parsedData.message}
           `,
           showCloseButton: true,
