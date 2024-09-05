@@ -4849,13 +4849,8 @@ let eventSource = null;
 
 $(document).on('knack-scene-render.scene_4', function(event, scene) {
 
-
 let publishURL = '';
 let subscribeURL = '';
-
-
-
-
 
       function createNotificationUrl(value){
        publishURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
@@ -4888,12 +4883,6 @@ function createLink(url, linkText){
   // Append the div to the specified element in the DOM
   }
 
-
-
-
-
-  
-
   //  Indivial Users
       const userAttributes = Knack.getUserAttributes();
       const userValue = userAttributes.id;
@@ -4919,12 +4908,38 @@ function createLink(url, linkText){
 
       function showNotification(data) {
         const parsedData = JSON.parse(data);
-        Swal.fire({
-          title: parsedData.title ||'No Title',
-          text: parsedData.message || 'No Message',
-          icon: "info",
-          allowOutsideClick: false
-        });
+        // Swal.fire({
+        //   title: parsedData.title ||'No Title',
+        //   text: parsedData.message || 'No Message',
+        //   icon: "info",
+        //   allowOutsideClick: false
+        // });
+
+     
+            Swal.fire({
+              title: `<strong>${parsedData.title}</strong>`,
+              icon: "info",
+              html: `
+              ${JSON.stringify(parsedData)}
+                You can use <b>bold text</b>,
+                <a href="#" autofocus>links</a>,
+                and other HTML tags
+              `,
+              showCloseButton: true,
+              showCancelButton: true,
+              focusConfirm: false,
+              confirmButtonText: `
+                <i class="fa fa-thumbs-up"></i> Great!
+              `,
+              confirmButtonAriaLabel: "Thumbs up, great!",
+              cancelButtonText: `
+                <i class="fa fa-thumbs-down"></i>
+              `,
+              cancelButtonAriaLabel: "Thumbs down",
+              allowOutsideClick: false
+            });
+
+
     }
   
   
