@@ -4920,7 +4920,7 @@ function createLink(url, linkText){
           title: `<strong>${parsedData.title}</strong>`,
           html: `
             You can use <b>bold text</b>,
-            <a href="#" autofocus>links</a>,
+            <a href="${parsedData.attachment.click}" autofocus>links</a>,
             and other HTML tags
             <br>
             <img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">
