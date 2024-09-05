@@ -4935,8 +4935,7 @@ function createLink(url, linkText){
           cancelButtonText: `
             <i class="fa fa-thumbs-down"></i>
           `,
-          cancelButtonAriaLabel: "Thumbs down",
-          allowOutsideClick: false,
+          cancelButtonAriaLabel: "Thumbs down"
         });
 
     }
