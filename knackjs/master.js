@@ -4923,7 +4923,7 @@ function createLink(url, linkText){
                 You can use <b>bold text</b>,
                 <a href="#" autofocus>links</a>,
                 and other HTML tags
-                <img src='${parseData.attachment.url}'>
+                <img src='${parsedData.attachment.url}'>
               `,
               showCloseButton: true,
               showCancelButton: true,
