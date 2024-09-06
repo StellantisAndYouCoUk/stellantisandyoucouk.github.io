@@ -1,0 +1,10 @@
+function showTab(OBJ,ID){
+	var  div = document.getElementById(ID);
+    if(div.style.display == 'none'){
+    	OBJ.className = 'bt bt-open-elem'; 
+        div.style.display = 'block'; 
+    }else{
+        OBJ.className = 'bt bt-close-elem'; 
+        div.style.display = 'none';
+    }
+}

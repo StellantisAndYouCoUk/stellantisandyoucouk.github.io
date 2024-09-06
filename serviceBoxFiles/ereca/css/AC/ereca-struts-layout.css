@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* -------------------------------------------------------------------------------------------- */
+/* Charte NewAPVPR version 3.0.1 */
+/* -------------------------------------------------------------------------------------------- */
+
+#global table.data table td {
+	background-color:#ACA39A !important;
+	color: #FFFFFF; 
+	font-weight:bold;
+	margin:0px; 
+	padding:0px;
+}
+
+#global table.data table {
+	border-spacing:0px;
+}
+
+#global a {
+	color: #0076A8;
+	outline: none;
+}
+
+#global a:hover {
+	color: #0076A8;
+}
+
+.textboldred {
+	color: red;
+    font-weight:bold;       
+}

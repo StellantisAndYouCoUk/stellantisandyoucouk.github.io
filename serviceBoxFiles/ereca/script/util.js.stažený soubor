@@ -1,0 +1,166 @@
+var allChecked = true;
+var tr_selected = "lineSelected";
+var tr_noselected_impair = "odd";
+var tr_noselected_pair = "even";
+
+/** fonction deprecated : utiliser à la place zeRealChecker**/
+function selectDeselect(nameForm, nbtr, nameCheck, nameTR,idCheck) {
+	zeRealChecker(nameForm,nameCheck, nameTR,idCheck);
+}
+
+function zeRealChecker(nameForm,nameCheck, nameTR,idCheck) {
+	nbtr2 = nameCheck.length;
+	if (allChecked) {
+		select(nbtr2, nameCheck, nameTR,idCheck);
+		allChecked = false;
+	} else {
+		deSelect(nbtr2, nameCheck, nameTR);
+		allChecked = true;
+	}
+}
+
+function zeRealCheckerPlus(nameChecker, nameCheck) {
+	if (allChecked) {
+		selectAll(nameCheck);
+		document.getElementById(nameChecker).checked = true;
+		allChecked = false;
+	} else {
+		deSelectAll(nameCheck);
+		document.getElementById(nameChecker).checked = false;
+		allChecked = true;
+	}
+}
+
+function selectAll(nameCheck){
+if (nameCheck != null) {
+	if (nameCheck.checked!=null) {
+		nameCheck.parentNode.parentNode.className = tr_selected;
+		nameCheck.checked = true;
+	} else {
+		for ( i = 0; i < nameCheck.length; i++){
+			if (nameCheck[i].checked != null) {
+				nameCheck[i].parentNode.parentNode.className = tr_selected;
+				nameCheck[i].checked = true;
+			}
+		}
+	}
+}
+}
+
+function deSelectAll(nameCheck){
+	if (nameCheck != null) {
+		if (nameCheck.checked!=null) {
+			reinitColorTr(nameCheck);
+			nameCheck.checked = false;
+		} else {
+			for ( i = 0; i < nameCheck.length; i++){
+				if (nameCheck[i].checked != null) {
+					reinitColorTr(nameCheck[i]);
+					nameCheck[i].checked = false;
+				}
+			}
+		}
+	}
+}
+
+function reinitColorTr(checkItem){
+	var rowId = checkItem.parentNode.parentNode.sectionRowIndex;
+	//var row = rowId % 2 + 1;
+	var row = rowId % 2;
+	//var styleClass = "row" + row;
+	var styleClass = "odd";
+	if (row == 0){
+		styleClass = "even";
+	}
+	checkItem.parentNode.parentNode.className = styleClass;
+}
+
+function soumettre(field, formul){
+	ok = false;
+	if (field.checked!=null) {
+		if (field.checked) {
+			ok = true;
+		}
+	} else {
+		for ( i = 0; i < field.length; i++){
+			if (field[i].checked) {
+				ok = true;
+				break;
+			}
+		}
+	}
+	if (!ok) {
+		alert(chargeMsg());
+	} else {
+		formul.submit();
+	}
+}
+
+/**
+* Quand on clique sur un checkbox on change la couleur du <tr>
+*/
+function clickCheckbox(checkbox) {
+	if(checkbox.checked == true) {
+		changeCouleur(checkbox);
+	}
+	else {
+		reinitColorTr(checkbox);
+	}
+}
+
+/**
+*fonction qui sélectionne dans la liste des pdv
+* en fonction des caractères saisis dans la zone de texte
+**/
+
+function recherchePdv(text,list)
+{
+var recherche=text.value;
+var length=text.value.length;
+
+for(i=0;i<list.length;i++)
+{
+var code=list.options[i].value.substring(0,length);
+if(code==recherche)
+{
+list.options[i].selected=true;
+return;
+}
+
+}
+}
+
+
+/**
+* permet de changer la couleur du <tr> 
+*/
+function changeCouleur(nom){
+	nom.parentNode.parentNode.className = tr_selected;
+	//document.getElementById(nom).className = tr_selected;
+}
+
+/**
+* Remet les couleurs d'origine des tr
+*/
+function resetColor(nom)
+{
+var row = tr % 2;
+//var ligne = "row" + row;
+var ligne = "odd";
+if (row == 0){
+	ligne = "even";
+}
+document.getElementById(nom+tr).className = ligne;
+}
+
+/**
+* Change de page
+*/
+function changePage(path) {
+	document.location=path;
+}
+
+
+
+
+

@@ -1,0 +1,68 @@
+function trim(string)
+{
+	return string.replace(/(^\s*)|(\s*$)/g,'');
+} 
+
+
+function check(zeform) {
+ 	var tabmsg = initMsg();
+	var finaltest = true;
+	if (zeform.name == "campDetForm") {
+		if (trim(zeform.cc.value) == "")
+		{
+			alert(tabmsg["msgRechCampVide"]);
+			finaltest = false;
+		}
+	} else {
+		if (trim(zeform.vin.value) == "") 
+		{
+			alert(tabmsg["msgRechVide"]);
+			finaltest = false;
+		}
+	
+		chaine = zeform.vin.value;
+		if ((chaine.length != 17) && (zeform.choix[0].checked) && finaltest)
+		{
+			alert(tabmsg["msgRechVin"]);
+			finaltest = false;
+		}
+	
+		if ((chaine.length != 8) && (zeform.choix[1].checked) && finaltest)
+		{
+			alert(tabmsg["msgRechVis"]);
+			finaltest = false;
+		}
+	
+		if (zeform.choix[2]!=null && (chaine.length > 10) && (zeform.choix[2].checked) && finaltest)
+		{
+			alert(tabmsg["msgRechImmat"]);
+			finaltest = false;
+		}
+	
+		cartest = chaine.indexOf('*')
+		if ((cartest != -1) && finaltest)
+		{
+			alert(tabmsg["msgRechStar"]);
+			finaltest = false;
+		}
+		if (!finaltest) {
+			zeform.vin.focus();	
+		}
+	}
+	
+	return finaltest;
+}
+
+function cpnWaitPreloadPage() { //DOM
+	if (document.getElementById){
+		document.getElementById('cpnPreLoad').style.visibility='hidden';
+	} else {
+		if (document.layers) { //NS4
+			document.cpnPreLoad.visibility = 'hidden';	
+		} else { //IE4
+			document.all.cpnPreLoad.style.visibility = 'hidden';
+		}
+	}
+}
+
+	
