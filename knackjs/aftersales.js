@@ -549,12 +549,7 @@ function refreshScene24(){
       name : 'EMAC Service plan - offer',
       mainField : 'field_348', //EMAC - service plan Summary = Service plan
       views:['378','3504']
-    },
-	  /*{
-      name : 'Tyresv2',
-      mainField : 'field_2983', //Tyres size (from service Box) 
-      views:['1474'],
-    }, */ {
+    },{
       name : 'Tyres',
       mainField : 'field_247', //Tyres - Front = Stapletons
       views:['330','3509'],
@@ -5248,9 +5243,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
             const githubUrl = `
               https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
             `;
-
             const response = callPostHttpRequest(githubUrl, {"BinLocation":login},"Servicebox bin location find");
-
             console.log(JSON.parse(response))
             if (!response) {
               return Swal.showValidationMessage(`

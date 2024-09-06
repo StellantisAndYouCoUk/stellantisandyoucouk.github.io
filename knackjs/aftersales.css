@@ -1479,7 +1479,11 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #view_3490 > section > div > div:nth-child(2) > div:nth-child(3) > div > div:nth-child(1) > div,
 #view_3490 > section > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > div,
 #view_3490 > section > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3) > div,
-#view_3490 > section > div > div.kn-details-group.column-1.columns > div > div > div:nth-child(1) > div {
+#view_3490 > section > div > div.kn-details-group.column-1.columns > div > div > div:nth-child(1) > div,
+#view_1475 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_2983 > div.kn-detail-label,
+#view_3516 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_2983 > div.kn-detail-label,
+#view_1475 > section > div > div:nth-child(1) > div > div > div > div.kn-detail-label,
+#view_330 > section > div > div > div > div > div > div.kn-detail-label {
   background-color: transparent;
 }
 
@@ -2121,6 +2125,11 @@ div.tooltipDiv {
     height: 99vh;
 }
 
+.Modal_for_scene_1049 {
+    width: 99%;
+    height: 99vh;
+}
+
 .Modal_for_scene_420 {
     width: 99%;
     height: 99vh;
@@ -2274,6 +2283,11 @@ div.tooltipDiv {
 }
 #view_4257 .kn-detail-label {
   background-color: transparent;
+}
+
+#view_3554 .field_445 {
+    color: red;
+    font-weight: bold;
 }
 
 
