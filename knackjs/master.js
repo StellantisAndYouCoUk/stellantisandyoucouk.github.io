@@ -4860,28 +4860,6 @@ let subscribeURL = '';
       }
 
       
-// Create a link function
-// function createLink(url, linkText){
-//   // Create a new anchor element using jQuery
-//   let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
-  
-//   // Set the href attribute to the subscription URL, removing the last 4 characters
-//   $link.attr('href', url);
-  
-//   // Set the target attribute to '_blank' to open the link in a new tab
-//   $link.attr('target', '_blank');
-
-  
-//   // Set the text of the link
-//   $link.text(linkText);
-  
-//   // Create a new div element and append the link to it
-//   let $div = $('<div class="control"></div>').append($link);
-  
-//   $('.view_5521').append($div);
-  
-//   // Append the div to the specified element in the DOM
-//   }
 
 
 
@@ -4894,47 +4872,6 @@ function createLink(url, linkText) {
   let $div = $('<div class="control"></div>').append($link);
   $('.view_5521').append($div);
 
-  // Add click event listener to start Shepherd.js tour
-  // $link.on('click', function (event) {
-  //   event.preventDefault(); // Prevent default link behavior
-    
-  //   // Shepherd.js tour setup
-  //   const tour = new Shepherd.Tour({
-  //     defaultStepOptions: {
-  //       scrollTo: true,
-  //       cancelIcon: {
-  //         enabled: true
-  //       }
-  //     }
-  //   });
-
-  //   // Add steps to the tour
-  //   tour.addStep({
-  //     title: 'Step 1: Enable Notifications',
-  //     text: 'Click here to enable desktop notifications in your browser settings.',
-  //     attachTo: { element: '.kn-link-page', on: 'right' },
-  //     buttons: [
-  //       {
-  //         text: 'Next',
-  //         action: tour.next
-  //       }
-  //     ]
-  //   });
-
-  //   tour.addStep({
-  //     title: 'Step 2: Confirm Settings',
-  //     text: 'Make sure notifications are enabled and saved.',
-  //     buttons: [
-  //       {
-  //         text: 'Done',
-  //         action: tour.complete
-  //       }
-  //     ]
-  //   });
-
-  //   // Start the tour
-  //   tour.start();
-  // });
 }
 
   //  Indivial Users
