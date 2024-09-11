@@ -982,6 +982,16 @@ function loadFieldInEditMode(filename, viewId, fieldId, startTime){
   }
 }
 
+// **** Motability returns - show release id when form is submitted (by refreshing page)
+
+ $(document).on('knack-record-update.view_7357', function(event, view, data) {
+ 
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
+
 // ****** Motability Check-In Diversion: refresh page when forms are submitted
  
 // Offside Front Tyre
