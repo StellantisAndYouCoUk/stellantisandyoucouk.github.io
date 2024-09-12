@@ -501,7 +501,7 @@ $(document).on('knack-view-render.view_7326', function(event, view, data) {
 //Demo and Courtesy Reporting
 $(document).on('knack-view-render.view_7480', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
-  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #demo-courtesy-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #democourtesy-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
