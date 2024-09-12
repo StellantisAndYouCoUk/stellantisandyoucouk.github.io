@@ -4911,7 +4911,7 @@ function createLink(url, linkText) {
     if(userAttributes !=='No user found'){
       // console.log("User Attributes: " + JSON.stringify(userAttributes));
       const userValue = userAttributes.id;
-      subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
       console.log("Check Sweet Pop Up");
