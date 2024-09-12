@@ -4923,11 +4923,11 @@ function createLink(url, linkText) {
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
-            <a id="popup-link" href="${parsedData.click}" target="_blank">
-              <img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">
-            </a>
-            ${parsedData.message}
-          `,
+          <a id="popup-link" href="${parsedData.click}" target="_blank">
+            ${parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
+          </a>
+          ${parsedData.message}
+        `,
           showCloseButton: true,
           showCancelButton: true,
           focusConfirm: false,
