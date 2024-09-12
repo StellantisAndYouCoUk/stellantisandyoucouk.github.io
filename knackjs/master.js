@@ -4873,8 +4873,8 @@ let publishURL = '';
 let subscribeURL = '';
 
       function createNotificationUrl(value){
-       publishURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
-       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
+       publishURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
 
        return subscribeURL;
       }
