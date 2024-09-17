@@ -497,6 +497,13 @@ $(document).on('knack-view-render.view_7326', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #customer-follow-up-calls" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//
+//Demo and Courtesy Reporting
+$(document).on('knack-view-render.view_7480', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #democourtesy-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
 			     {view:'view_6510',url:'#aftersales-key-tag-search'},
@@ -526,7 +533,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 /*TECH V3*/{view:'view_6379',url:'#after-sales-vehicle-lookup/technician-view-my-jobs-v2/'},
 /*Daily activity snapshot*/{view:'view_6388',url:'#aftersales-service-reporting/activity-snapshot/'},		
 /*Colection/Delivery Driver*/ {view:'view_6462',url:'#cd-check-in/'},
-/*Stapletons Tyre Stock Profiling*//* {view:'view_4929 ',url:'#tyres-availability-tracking-by-dealer--region/'},*/
+/*Stapletons Tyre Stock Profiling*/ {view:'view_7468',url:'#tyres-availability-tracking-by-dealer--region'},
 /*Parts sales reporting {view:'view_4929 ',url:'#parts-sales-reporting/'},*/
 {view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'}]; ///add scene numbers as necessary
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
@@ -981,6 +988,16 @@ function loadFieldInEditMode(filename, viewId, fieldId, startTime){
     }
   }
 }
+
+// **** Motability returns - show release id when form is submitted (by refreshing page)
+
+ $(document).on('knack-record-update.view_7357', function(event, view, data) {
+ 
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
 
 // ****** Motability Check-In Diversion: refresh page when forms are submitted
  
@@ -1552,6 +1569,16 @@ $(document).on('knack-view-render.view_5232', function(event, view, data) {
 $(document).on('knack-view-render.view_6303', function(event, view, data) {
   console.log('view6303');
   Knack.fn.hideExpand("view_6303");
+});
+
+$(document).on('knack-view-render.view_6989', function(event, view, data) {
+  console.log('view6989');
+  Knack.fn.hideExpand("view_6989");
+});
+
+$(document).on('knack-view-render.view_7045', function(event, view, data) {
+  console.log('view7045');
+  Knack.fn.hideExpand("view_7045");
 });
 
 
@@ -4853,35 +4880,13 @@ let publishURL = '';
 let subscribeURL = '';
 
       function createNotificationUrl(value){
-       publishURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
-       subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
+       publishURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
 
        return subscribeURL;
       }
 
       
-// Create a link function
-// function createLink(url, linkText){
-//   // Create a new anchor element using jQuery
-//   let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
-  
-//   // Set the href attribute to the subscription URL, removing the last 4 characters
-//   $link.attr('href', url);
-  
-//   // Set the target attribute to '_blank' to open the link in a new tab
-//   $link.attr('target', '_blank');
-
-  
-//   // Set the text of the link
-//   $link.text(linkText);
-  
-//   // Create a new div element and append the link to it
-//   let $div = $('<div class="control"></div>').append($link);
-  
-//   $('.view_5521').append($div);
-  
-//   // Append the div to the specified element in the DOM
-//   }
 
 
 
@@ -4894,47 +4899,6 @@ function createLink(url, linkText) {
   let $div = $('<div class="control"></div>').append($link);
   $('.view_5521').append($div);
 
-  // Add click event listener to start Shepherd.js tour
-  // $link.on('click', function (event) {
-  //   event.preventDefault(); // Prevent default link behavior
-    
-  //   // Shepherd.js tour setup
-  //   const tour = new Shepherd.Tour({
-  //     defaultStepOptions: {
-  //       scrollTo: true,
-  //       cancelIcon: {
-  //         enabled: true
-  //       }
-  //     }
-  //   });
-
-  //   // Add steps to the tour
-  //   tour.addStep({
-  //     title: 'Step 1: Enable Notifications',
-  //     text: 'Click here to enable desktop notifications in your browser settings.',
-  //     attachTo: { element: '.kn-link-page', on: 'right' },
-  //     buttons: [
-  //       {
-  //         text: 'Next',
-  //         action: tour.next
-  //       }
-  //     ]
-  //   });
-
-  //   tour.addStep({
-  //     title: 'Step 2: Confirm Settings',
-  //     text: 'Make sure notifications are enabled and saved.',
-  //     buttons: [
-  //       {
-  //         text: 'Done',
-  //         action: tour.complete
-  //       }
-  //     ]
-  //   });
-
-  //   // Start the tour
-  //   tour.start();
-  // });
 }
 
   //  Indivial Users
@@ -4954,7 +4918,7 @@ function createLink(url, linkText) {
     if(userAttributes !=='No user found'){
       // console.log("User Attributes: " + JSON.stringify(userAttributes));
       const userValue = userAttributes.id;
-      subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
       console.log("Check Sweet Pop Up");
@@ -4966,11 +4930,12 @@ function createLink(url, linkText) {
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
-            <a id="popup-link" href="${parsedData.click}" target="_blank">
-              <img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">
-            </a>
-            ${parsedData.message}
-          `,
+          <a id="popup-link" href="${parsedData.click}" target="_blank">
+            ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
+          </a>
+          ${parsedData.message || ''}
+
+        `,
           showCloseButton: true,
           showCancelButton: true,
           focusConfirm: false,
