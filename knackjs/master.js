@@ -5042,13 +5042,15 @@ function createdMotabReturnsViewImageUpload(){
   }
   createPhotoButton(appSettings10045,'10045');
 
-  createOfflineFormSubmit('7387','591eae59e0d2123f23235769',motabReturnsImageUpload)
+  let recordId = getRecordIdFromHref(location.href);
+
+  createOfflineFormSubmit('7387','591eae59e0d2123f23235769',motabReturnsImageUpload,recordId)
 }
 
-function motabReturnsImageUpload(fieldName, fileId, filename){
+function motabReturnsImageUpload(fieldName, fileId, filename, recordId){
   console.log('motabReturnsImageUpload');
   let dataToSend = {
-    recordId:getRecordIdFromHref(location.href),
+    recordId:(recordId?recordId:getRecordIdFromHref(location.href)),
     imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/591eae59e0d2123f23235769/'+fileId+'/original/photoimg.jpg',
     successMakeWebhook : 'https://hook.eu1.make.celonis.com/tr2g6iu7mufatyq2t8r0jyl15q49ibll',
     failMakeWebhook : 'https://hook.eu1.make.celonis.com/8bk2vrabvh1u2y3oiur2l1t3pwbo9mqk'
@@ -5062,7 +5064,7 @@ function motabReturnsImageUpload(fieldName, fileId, filename){
   })
 }
 
-function createOfflineFormSubmit(view,appId, nextAction=null){
+function createOfflineFormSubmit(view,appId, nextAction=null,recordId = null){
   var formButton = document.querySelector('div[class="kn-submit"]>button');
   formButton.onclick = function() {
     if (!isOnline){
@@ -5082,7 +5084,7 @@ function createOfflineFormSubmit(view,appId, nextAction=null){
             return response.blob();
           })
           .then(function(blob) {
-            uploadImageOnlyPhotoApp(appId,blob,'photoImg.jpg','infoText',$('input[imageToSaveUrl]').eq(i).attr('name'),imageUploadedSuccesfully, nextAction);
+            uploadImageOnlyPhotoApp(appId,blob,'photoImg.jpg','infoText',$('input[imageToSaveUrl]').eq(i).attr('name'),imageUploadedSuccesfully, nextAction, recordId);
           });
         }
         for (let i =0;i< $('input[id*="offline"]').length;i++){
@@ -5130,7 +5132,7 @@ function testSubmitOfflineForm(){
   }
 }
 
-function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null){
+function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null, recordId = null){
   //alert(fieldName);
   //alert(fileId);
   $('input[name="'+fieldName+'"]').val(fileId);
@@ -5139,7 +5141,7 @@ function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('File uploaded successfully.');
   $('input[name="'+fieldName+'"]').removeAttr('imageToSaveUrl');
   if (nextAction){
-    nextAction(fieldName, fileId, filename);
+    nextAction(fieldName, fileId, filename, recordId);
   }
   if (fieldName === 'field_2718'){
     console.log('Motab Photo');
