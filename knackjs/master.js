@@ -5032,8 +5032,10 @@ function motabReturnsImageUpload(fieldName, fileId, filename, recordId){
 function createOfflineFormSubmit(view,appId, nextAction=null,recordId = null){
   var formButton = document.querySelector('div[class="kn-submit"]>button');
   formButton.onclick = function() {
+    $('button[type="submit"]').prop('disabled', true);
     if (!isOnline){
       alert('You are unable to submit the form as the device is not connected to a network. Please move within range/reconnect to a network to submit the form.');
+      $('button[type="submit"]').removeAttr('disabled');
       return false;
     } else {
       if ($('input[imageToSaveUrl]').length>0 || $('input[id*="offline"]').length>0){
