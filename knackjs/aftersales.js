@@ -3745,6 +3745,34 @@ $(document).on('knack-form-submit.view_3047', function(event, view, data) {
 
 });
 
+// Code to wait following Form Submission while Licence Is Being Checked in Make - DVLA Coventry Pilot - Customer Advisor View
+
+$(document).on('knack-form-submit.view_4313', function(event, view, data) { 
+
+
+	setTimeout(function(){ 
+
+    	Knack.showSpinner();
+
+    }, 0); 
+
+  
+
+	commandURL = "https://hook.eu1.make.celonis.com/e5oxog44l3ple4fk40kyo99dyua24pxb?recordid=" + data.id ;
+
+
+ 	$.get(commandURL, function(data, status){
+
+
+      Knack.hideSpinner();
+
+      $(".kn-message.success").html("<b>" + data + "</b>");
+
+
+    });
+
+});
+
 //Commence courtesy car agreement to trigger part 2 of Digital check in
 $(document).on('knack-form-submit.view_3592', function(event, view, data) { 
     
