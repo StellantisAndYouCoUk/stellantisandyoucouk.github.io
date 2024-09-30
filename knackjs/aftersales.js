@@ -4937,11 +4937,11 @@ function formatDateTimeUpdatedWA(input){
 
 function availabilityHTML(status,useCustomerAddress){
   let lastVisitedInClosest = false;
-  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer<br>(Lead Time<br>Checked)</td><td>Customer<br>Travel Time</td><td><b>MOT</b></td><td><b>Recall</b></td><td><b>Minor service</b></td><td><b>Major service</b></td></tr>';
+  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer<br>(Lead Time<br>Checked)</td><td>Customer<br>Travel Time</td><td><b>MOT</b></td><td><b>Recall/<br> Inv</b></td><td><b>Minor service</b></td><td><b>Major service</b></td></tr>';
   if (useCustomerAddress && status && status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
-      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'<br />('+formatDateTimeUpdatedWA(avail.updatedDateTime)+')</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td></tr>';
+      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td></tr>';
       if (status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit) lastVisitedInClosest = true;
     }
   }
