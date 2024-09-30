@@ -4994,7 +4994,7 @@ function formatDateTimeUpdatedWA(input){
 
 function availabilityHTML(status,useCustomerAddress){
   let lastVisitedInClosest = false;
-  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer<br>(Lead Time<br>Checked)</td><td>Customer<br>Travel Time</td><td><b>MOT</b></td><td><b>Recall/<br> Inv</b></td><td><b>Minor service</b></td><td><b>Major service</b></td></tr>';
+  let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td><b>Travel Time<br>For Cust</b></td><td><b>MOT</b></td><td><b>Recall/<br> Inv</b></td><td><b>Minor service</b></td><td><b>Major service</b></td></tr>';
   if (useCustomerAddress && status && status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
