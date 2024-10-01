@@ -4940,13 +4940,9 @@ function createLink(url, linkText) {
           showCancelButton: true,
           focusConfirm: false,
           confirmButtonText: `
-            <i class="fa fa-thumbs-up"></i> Great!
+            <i class="fa fa-thumbs-up"></i> Ok!
           `,
-          confirmButtonAriaLabel: "Thumbs up, great!",
-          cancelButtonText: `
-            <i class="fa fa-thumbs-down"></i>
-          `,
-          cancelButtonAriaLabel: "Thumbs down"
+          confirmButtonAriaLabel: "Ok!",
         });
         
         // Add a click event listener to the link
