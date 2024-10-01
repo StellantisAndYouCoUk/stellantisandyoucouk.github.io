@@ -4937,7 +4937,7 @@ function createLink(url, linkText) {
 
         `,
           showCloseButton: true,
-          allowEscapeKey: false,
+          allowEscapeKey: true,
           focusConfirm: false,
           confirmButtonText: `
             <i class="fa fa-thumbs-up"></i> Ok!
