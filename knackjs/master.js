@@ -4891,7 +4891,7 @@ let subscribeURL = '';
 
 
 function createLink(url, linkText) {
-  let $link = $('<a class="kn-link kn-link-1 kn-link-page kn-button"></a>');
+  let $link = $('<a class="kn-link kn-link-2 kn-link-page kn-button"></a>');
   $link.attr('href', url);
   $link.attr('target', '_blank');
   $link.text(linkText);
