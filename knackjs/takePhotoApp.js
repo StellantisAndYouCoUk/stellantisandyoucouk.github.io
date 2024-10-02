@@ -363,7 +363,10 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
-  openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
+  openCamera({video: {facingMode: {exact: "environment"},'mandatory': {
+            'minWidth': '640',
+            'minHeight': '480',
+          },}},constraints,appSettings.torch);
 }
 
 
