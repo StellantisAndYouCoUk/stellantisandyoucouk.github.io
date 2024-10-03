@@ -4917,9 +4917,12 @@ if ($('div[class="kn-table kn-view view_4277"]')){
   getWorkshopAvailability();
 });
 
+let globalWorkshopAvailabilityStatus = null;
+
 function getWorkshopAvailability(status = null,useCustomerAddress=false,retry = 1){
   console.log('v2')
   try {
+    if (!status) status = globalWorkshopAvailabilityStatus;
     if (!status || !status.availabilityData){
       let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
       if (!status){
@@ -4955,6 +4958,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,retry = 
         status.lastVisitData = {lastDealerVisit:lastDealerVisit,mapLastDealerVisit:mapLastDealerVisit};
       }
     }
+    globalWorkshopAvailabilityStatus = status;
 
     if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status, useCustomerAddress);
 
