@@ -329,6 +329,18 @@ function openCamera(getUserMediaC, constraints, torch = false){
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
       }
+
+      /*if ("permissions" in navigator) {
+        navigator.permissions.query({ name:'camera' }).then((result) => {
+          if (result.state === 'granted') {
+            console.log("granted")
+          } else if(result.state === 'denied'){
+            console.log("denial")
+          } else {
+            console.log("prompt")
+          }
+        });
+      }*/
   
     })
     .catch(error =>{
@@ -363,10 +375,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
-  openCamera({video: {facingMode: {exact: "environment"},'mandatory': {
-            'minWidth': '640',
-            'minHeight': '480',
-          },}},constraints,appSettings.torch);
+  openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
 }
 
 
