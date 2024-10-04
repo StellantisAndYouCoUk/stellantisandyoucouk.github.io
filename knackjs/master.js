@@ -2203,6 +2203,13 @@ function prepareCameraView(backUrl,app_id,imageFieldOnKnack,imageViewOnKnack){
         if (!OperatingSystem.iOS()) {
           imageCapture = new ImageCapture(track);
         }
+
+        if (OperatingSystem.iOS()) {
+          //try to do blank screen test
+          setTimeout(function (){
+            testBlackScreen();
+          }, 2000);
+        }
     
       })
       .catch(error =>{
@@ -2212,6 +2219,31 @@ function prepareCameraView(backUrl,app_id,imageFieldOnKnack,imageViewOnKnack){
           alert('Error starting camera. Please report this error to admin.'+ error)
         }
       });
+  }
+
+  function testBlackScreen(){
+    let video = document.querySelector('video');
+    let cT = document.createElement('canvas');
+    cT.width = video.videoWidth;
+    cT.height = video.videoHeight;
+    let ctxT = cT.getContext('2d');
+    ctxT.drawImage(video, 0, 0);
+  
+    let isOnlyBlack = isCtxOnlyBlack(ctxT,video.videoWidth,video.videoHeight);
+    if (isOnlyBlack){
+      callPostHttpRequest('https://hook.eu1.make.celonis.com/37g55xn4vrvtxxp5uqbvswdb7wrdj3sg',{'userEmail':Knack.getUserAttributes().email,'appName':navigator.appName,'appVersion':navigator.appVersion})
+      alert('If you have allowed accss to the camera but are still seeing a black screen, please switch your phone off and on and try again.')
+    }
+  }
+  
+  function isCtxOnlyBlack(ctxT, width, height){
+  for (let i = 1;i<5;i++){
+      let p1 = ctxT.getImageData(i*width/7, i*height/7, 1, 1);
+      for (let j = 0;j<3;j++){
+        if (p1.data[j]>10) return false
+      }
+    }
+    return true;
   }
  
   if (OperatingSystem.Android()) {
