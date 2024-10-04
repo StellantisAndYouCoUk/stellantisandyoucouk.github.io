@@ -4997,8 +4997,8 @@ function createdMotabReturnsViewImageUpload(){
     actionAfterPhotoReadableText : 'Does the photo match the template?',
     uploadMethod : 'field', //knack, make, field
     uploadField : 'field_10045',
-    resizeImageMaxHeight : 1000,
-    resizeImageMaxWidth : 1000,
+    resizeImageMaxHeight : 1080,
+    resizeImageMaxWidth : 1440,
     app_id : '591eae59e0d2123f23235769'
   }
   createPhotoButton(appSettings10045,'10045');
