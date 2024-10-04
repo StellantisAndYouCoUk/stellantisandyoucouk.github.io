@@ -366,9 +366,6 @@ function isCtxOnlyBlack(ctxT, width, height){
 for (let i = 1;i<5;i++){
     let p1 = ctxT.getImageData(i*width/7, i*height/7, 1, 1);
     for (let j = 0;j<3;j++){
-      if (Knack.getUserAttributes().email.includes('hynek')){
-        alert(p1.data[j])
-      }
       if (p1.data[j]>10) return false
     }
   }
