@@ -2232,7 +2232,7 @@ function prepareCameraView(backUrl,app_id,imageFieldOnKnack,imageViewOnKnack){
     let isOnlyBlack = isCtxOnlyBlack(ctxT,video.videoWidth,video.videoHeight);
     if (isOnlyBlack){
       callPostHttpRequest('https://hook.eu1.make.celonis.com/37g55xn4vrvtxxp5uqbvswdb7wrdj3sg',{'userEmail':Knack.getUserAttributes().email,'appName':navigator.appName,'appVersion':navigator.appVersion})
-      alert('If you have allowed accss to the camera but are still seeing a black screen, please switch your phone off and on and try again.')
+      alert('If you have allowed access to the camera but are still seeing a black screen, please switch your phone off and on and try again.')
     }
   }
   
