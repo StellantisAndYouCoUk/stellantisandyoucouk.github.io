@@ -329,6 +329,18 @@ function openCamera(getUserMediaC, constraints, torch = false){
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
       }
+
+      /*if ("permissions" in navigator) {
+        navigator.permissions.query({ name:'geolocation' }).then((result) => {
+          if (result.state === 'granted') {
+            console.log("granted")
+          } else if(result.state === 'denied'){
+            console.log("denial")
+          } else {
+            console.log("prompt")
+          }
+        });
+      }*/
   
     })
     .catch(error =>{
