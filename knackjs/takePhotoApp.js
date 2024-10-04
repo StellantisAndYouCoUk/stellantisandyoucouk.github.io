@@ -329,6 +329,13 @@ function openCamera(getUserMediaC, constraints, torch = false){
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
       }
+
+      if (OperatingSystem.iOS()) {
+        //try to do blank screen test
+        setTimeout(function (){
+          testBlackScreen();
+        }, 2000);
+      }
   
     })
     .catch(error =>{
@@ -338,6 +345,19 @@ function openCamera(getUserMediaC, constraints, torch = false){
         alert('Error starting camera. Please report this error to admin.'+ error)
       }
     });
+}
+
+function testBlackScreen(){
+  let video = document.querySelector('video');
+  let cT = document.createElement('canvas');
+  cT.width = video.videoWidth;
+  cT.height = video.videoHeight;
+  let ctxT = cT.getContext('2d');
+  ctxT.drawImage(video, 0, 0);
+  let p1 = ctxT.getImageData(0, 0, 1, 1);
+  if (Knack.getUserAttributes().email.includes('hynek')){
+    alert(p1);
+  }
 }
 
 if (OperatingSystem.Android()) {
