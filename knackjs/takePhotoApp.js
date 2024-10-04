@@ -331,7 +331,7 @@ function openCamera(getUserMediaC, constraints, torch = false){
       }
 
       /*if ("permissions" in navigator) {
-        navigator.permissions.query({ name:'geolocation' }).then((result) => {
+        navigator.permissions.query({ name:'camera' }).then((result) => {
           if (result.state === 'granted') {
             console.log("granted")
           } else if(result.state === 'denied'){
