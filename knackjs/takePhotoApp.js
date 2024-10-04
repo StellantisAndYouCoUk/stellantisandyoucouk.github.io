@@ -329,18 +329,6 @@ function openCamera(getUserMediaC, constraints, torch = false){
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
       }
-
-      if ("permissions" in navigator) {
-        navigator.permissions.query({ name:'camera' }).then((result) => {
-          if (result.state === 'granted') {
-            alert("granted")
-          } else if(result.state === 'denied'){
-            alert("denial")
-          } else {
-            alert("prompt")
-          }
-        });
-      }
   
     })
     .catch(error =>{
