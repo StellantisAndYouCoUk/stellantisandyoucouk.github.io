@@ -330,17 +330,17 @@ function openCamera(getUserMediaC, constraints, torch = false){
         imageCapture = new ImageCapture(track);
       }
 
-      /*if ("permissions" in navigator) {
+      if ("permissions" in navigator) {
         navigator.permissions.query({ name:'camera' }).then((result) => {
           if (result.state === 'granted') {
-            console.log("granted")
+            alert("granted")
           } else if(result.state === 'denied'){
-            console.log("denial")
+            alert("denial")
           } else {
-            console.log("prompt")
+            alert("prompt")
           }
         });
-      }*/
+      }
   
     })
     .catch(error =>{
