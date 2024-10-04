@@ -369,7 +369,7 @@ for (let i = 1;i<5;i++){
       if (Knack.getUserAttributes().email.includes('hynek')){
         alert(p1.data[j])
       }
-      if (p1.data[j]<250) return false
+      //if (p1.data[j]<250) return false
     }
   }
   return true;
