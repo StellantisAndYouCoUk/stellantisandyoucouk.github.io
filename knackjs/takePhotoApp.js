@@ -356,7 +356,7 @@ function testBlackScreen(){
   ctxT.drawImage(video, 0, 0);
   let p1 = ctxT.getImageData(0, 0, 1, 1);
   if (Knack.getUserAttributes().email.includes('hynek')){
-    alert(p1);
+    alert(p1.data)
   }
 }
 
