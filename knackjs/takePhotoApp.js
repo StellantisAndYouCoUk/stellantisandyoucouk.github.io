@@ -354,13 +354,22 @@ function testBlackScreen(){
   cT.height = video.videoHeight;
   let ctxT = cT.getContext('2d');
   ctxT.drawImage(video, 0, 0);
-  
-  for (let i = 1;i<5;i++){
-    let p1 = ctxT.getImageData(i*video.videoWidth/7, i*video.videoHeight/7, 1, 1);
-    if (Knack.getUserAttributes().email.includes('hynek')){
-      alert(p1.data)
+
+  let isOnlyBlack = isCtxOnlyBlack(ctxT,video.videoWidth,video.videoHeight);
+
+  if (Knack.getUserAttributes().email.includes('hynek')){
+    alert(isOnlyBlack)
+  }
+}
+
+function isCtxOnlyBlack(ctxT, width, height){
+for (let i = 1;i<5;i++){
+    let p1 = ctxT.getImageData(i*width/7, i*height/7, 1, 1);
+    for (let j = 0;j<p1.length;j++){
+      if (p1[j]<250) return false
     }
   }
+  return true;
 }
 
 if (OperatingSystem.Android()) {
