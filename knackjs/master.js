@@ -4959,15 +4959,37 @@ function createLink(url, linkText) {
       function showNotification(data) {
         const parsedData = JSON.parse(data);
 
+        // Swal.fire({
+        //   title: `<strong>${parsedData.title}</strong>`,
+        //   html: `
+        //   <a id="popup-link" href="${parsedData.click}" target="_blank">
+        //     ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
+        //   </a>
+        //   ${parsedData.message || ''}
+
+        // `,
+        //   showCloseButton: true,
+        //   allowEscapeKey: true,
+        //   focusConfirm: false,
+        //   confirmButtonText: `
+        //     <i class="fa fa-thumbs-up"></i> Ok!
+        //   `,
+        //   confirmButtonAriaLabel: "Ok!",
+        // });
+
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
-          <a id="popup-link" href="${parsedData.click}" target="_blank">
             ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
-          </a>
-          ${parsedData.message || ''}
-
-        `,
+            ${parsedData.message || ''}
+            ${parsedData.click ? `
+              <div style="margin-top: 10px;">
+                <button id="navigate-button" class="swal2-confirm swal2-styled" onclick="window.open('${parsedData.click}', '_blank')">
+                  Go to Link
+                </button>
+              </div>` : ''
+            }
+          `,
           showCloseButton: true,
           allowEscapeKey: true,
           focusConfirm: false,
@@ -4976,6 +4998,7 @@ function createLink(url, linkText) {
           `,
           confirmButtonAriaLabel: "Ok!",
         });
+        
         
         // Add a click event listener to the link
         document.getElementById('popup-link').addEventListener('click', () => {
