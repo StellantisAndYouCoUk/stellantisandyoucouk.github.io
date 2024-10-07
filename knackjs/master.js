@@ -4989,16 +4989,18 @@ function createLink(url, linkText) {
           showCancelButton: true, // Show the cancel button
           cancelButtonText: 'Ok', // Set the cancel button text
           cancelButtonColor: '#28a745', // Set the cancel button color to green
+          showConfirmButton: !!parsedData.click, // Only show confirm button if there is a link
           confirmButtonText: `
-            ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : `<i class="fa fa-thumbs-up"></i> Ok!`}
+            ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : ''}
           `,
-          confirmButtonAriaLabel: parsedData.click ? "Go to Link" : "Ok!",
+          confirmButtonAriaLabel: "Go to Link",
           preConfirm: () => {
             if (parsedData.click) {
               window.open(parsedData.click, '_blank');
             }
           }
         });
+        
         
         
         
