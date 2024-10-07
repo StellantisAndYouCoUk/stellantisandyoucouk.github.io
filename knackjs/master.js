@@ -4982,21 +4982,19 @@ function createLink(url, linkText) {
           html: `
             ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
             ${parsedData.message || ''}
-            ${parsedData.click ? `
-              <div style="margin-top: 10px;">
-                <button id="navigate-button" class="swal2-confirm swal2-styled" onclick="window.open('${parsedData.click}', '_blank')">
-                  Go to Link
-                </button>
-              </div>` : ''
-            }
           `,
           showCloseButton: true,
           allowEscapeKey: true,
           focusConfirm: false,
           confirmButtonText: `
-            <i class="fa fa-thumbs-up"></i> Ok!
+            ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : `<i class="fa fa-thumbs-up"></i> Ok!`}
           `,
-          confirmButtonAriaLabel: "Ok!",
+          confirmButtonAriaLabel: parsedData.click ? "Go to Link" : "Ok!",
+          preConfirm: () => {
+            if (parsedData.click) {
+              window.open(parsedData.click, '_blank');
+            }
+          }
         });
         
         
