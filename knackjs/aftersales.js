@@ -4920,8 +4920,13 @@ if ($('div[class="kn-table kn-view view_4277"]')){
 let globalWorkshopAvailabilityStatus = null;
 
 function getWorkshopAvailability(status = null,useCustomerAddress=false,customAddress=null,retry = 1){
-  console.log('v2')
+  console.log('getWorkshopAvailability',globalWorkshopAvailabilityStatus)
   try {
+    if (useCustomerAddress) globalWorkshopAvailabilityStatus.useCustomerAddress = true;
+    if (!useCustomerAddress && globalWorkshopAvailabilityStatus.useCustomerAddress) useCustomerAddress = true;
+    if (customAddress) globalWorkshopAvailabilityStatus.customAddress = customAddress;
+    if (!customAddress && globalWorkshopAvailabilityStatus.customAddress) customAddress = globalWorkshopAvailabilityStatus.customAddress;
+    
     if (!status) status = globalWorkshopAvailabilityStatus;
     if (!status || !status.availabilityData){
       let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
