@@ -4923,10 +4923,10 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
   console.log('getWorkshopAvailability',globalWorkshopAvailabilityStatus)
   try {
     if (useCustomerAddress) globalWorkshopAvailabilityStatus.useCustomerAddress = true;
-    if (!useCustomerAddress && globalWorkshopAvailabilityStatus.useCustomerAddress) useCustomerAddress = true;
+    if (!useCustomerAddress && globalWorkshopAvailabilityStatus && globalWorkshopAvailabilityStatus.useCustomerAddress) useCustomerAddress = true;
     if (customAddress) globalWorkshopAvailabilityStatus.customAddress = customAddress;
-    if (!customAddress && globalWorkshopAvailabilityStatus.customAddress) customAddress = globalWorkshopAvailabilityStatus.customAddress;
-    
+    if (!customAddress && globalWorkshopAvailabilityStatus && globalWorkshopAvailabilityStatus.customAddress) customAddress = globalWorkshopAvailabilityStatus.customAddress;
+
     if (!status) status = globalWorkshopAvailabilityStatus;
     if (!status || !status.availabilityData){
       let aJson = JSON.parse(callGetHttpRequest('https://api.apify.com/v2/key-value-stores/ISl77oKEGWUSIcuXx/records/workshopAvailability'));
