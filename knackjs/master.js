@@ -4987,7 +4987,7 @@ function createLink(url, linkText) {
           allowEscapeKey: true,
           focusConfirm: false,
           showCancelButton: true, // Show the cancel button
-          cancelButtonText: 'Cancel', // Set the cancel button text
+          cancelButtonText: 'Ok', // Set the cancel button text
           cancelButtonColor: '#28a745', // Set the cancel button color to green
           confirmButtonText: `
             ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : `<i class="fa fa-thumbs-up"></i> Ok!`}
