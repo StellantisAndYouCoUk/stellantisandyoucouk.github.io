@@ -4919,7 +4919,7 @@ if ($('div[class="kn-table kn-view view_4277"]')){
 
 let globalWorkshopAvailabilityStatus = null;
 
-function getWorkshopAvailability(status = null,useCustomerAddress=false,retry = 1){
+function getWorkshopAvailability(status = null,useCustomerAddress=false,customAddress=null,retry = 1){
   console.log('v2')
   try {
     if (!status) status = globalWorkshopAvailabilityStatus;
@@ -4933,16 +4933,19 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,retry = 
     }
 
     let customerAddress = $('div[class="field_308"]>div>span>span').text();
-    console.log('customerAddress',customerAddress)
-    if (customerAddress!=='' && useCustomerAddress){
-      if (!status || !status.addressData){
-        let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:$('div[class="field_308"]>div>span>span').html().replace('<br>',', ')});
+    console.log('customerAddress',customerAddress, 'customAddress',customAddress);
+    if ((customerAddress!=='' && useCustomerAddress) || customAddress){
+      if (!status || !status.addressData || (customAddress && status.addressToUse !==customAddress)){
+        let addressToUse = $('div[class="field_308"]>div>span>span').html().replace('<br>',', ');
+        if (customAddress) addressToUse = customAddress;
+        let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:addressToUse});
         console.log('closestD',closestD)
         closestD = JSON.parse(closestD);
         if (!status){
-          status = {addressData:{closestD:closestD}}
+          status = {addressData:{closestD:closestD},addressToUse:addressToUse}
         } else {
           status.addressData = {closestD:closestD}
+          status.addressToUse = addressToUse;
         }
         console.log('status',status);
       }
@@ -4960,12 +4963,12 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,retry = 
     }
     globalWorkshopAvailabilityStatus = status;
 
-    if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status, useCustomerAddress);
+    if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status, useCustomerAddress, customAddress);
 
     if (retry < 10 && (!status.lastVisitData || !status.addressData)){
       console.log('some status empty, wait',retry)
       setTimeout(() => {
-        getWorkshopAvailability(status,useCustomerAddress,retry+1)
+        getWorkshopAvailability(status,useCustomerAddress, customAddress,retry+1)
       }, retry*500);
       return;
     }
@@ -4996,7 +4999,7 @@ function formatDateTimeUpdatedWA(input){
   return output;
 }
 
-function availabilityHTML(status,useCustomerAddress){
+function availabilityHTML(status,useCustomerAddress,customAddress){
   let lastVisitedInClosest = false;
   let htmlTable = '<b>Workshop Availability</b><br /><table><tr><td>Dealer</td><td><b>Travel Time<br>For Cust</b></td><td><b>MOT</b></td><td><b>Recall/<br> Inv</b></td><td><b>Minor service</b></td><td><b>Major service</b></td><td><b>Diag</b></td><td><b>C&D</b></td><td><b>Wait</b></td></tr>';
   if (useCustomerAddress && status && status.addressData && status.addressData.closestD){
@@ -5013,6 +5016,7 @@ function availabilityHTML(status,useCustomerAddress){
   htmlTable += '</table>';
   if (!useCustomerAddress){
     htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getWorkshopAvailability(null,true)" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Click Here To Return Travel Time <br> & Workshop Availability For The 3 Closest Dealers</span></span> <!----></a></span></div></div>';
+    htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getWorkshopAvailability(null,true,\'CV32 6JW\')" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">TEST</span></span> <!----></a></span></div></div>';
   }
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
