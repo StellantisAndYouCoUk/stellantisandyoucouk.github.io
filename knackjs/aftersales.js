@@ -5383,38 +5383,42 @@ $(document).on('knack-scene-render.scene_1230', function(event, scene) {
 
   // Trigger when the user leaves the page
   $(window).on('beforeunload', function() {
-      let endTime = new Date(); // Log end time
-      let timeSpent = (endTime - startTime) / 1000; // Time spent in seconds
-      console.log("User ended using the app at: " + endTime);
-      console.log("Time spent (seconds): " + timeSpent);
+    let endTime = new Date(); // Log end time
+    let timeSpent = (endTime - startTime) / 1000; // Time spent in seconds
+    console.log("User ended using the app at: " + endTime);
+    console.log("Time spent (seconds): " + timeSpent);
 
-      // Send the data using the sendBeacon API to ensure it completes before page unloads
-      let payload = JSON.stringify({
-          topic: "application-usage",
-          message: "User used the application for " + timeSpent + " seconds",
-          priority: 5  // Optional: Set priority for ntfy message
-      });
+    // Send the data using the sendBeacon API to ensure it completes before page unloads
+    let payload = JSON.stringify({
+        topic: "application-usage",
+        message: "User used the application for " + timeSpent + " seconds",
+        priority: 5  // Optional: Set priority for ntfy message
+    });
 
-      if (navigator.sendBeacon) {
-          navigator.sendBeacon('https://ntfy.armojo.com/stapleton', payload);
-          console.log("Usage time sent to ntfy server with sendBeacon.");
-      } else {
-          // Fallback to synchronous AJAX in case sendBeacon is not supported
-          $.ajax({
-              url: 'https://ntfy.armojo.com/stapleton',
-              type: 'POST',
-              data: payload,
-              contentType: "application/json",
-              async: false, // Make it synchronous
-              success: function(response) {
-                  console.log("Usage time sent to ntfy server.");
-              },
-              error: function(error) {
-                  console.error("Error sending usage time", error);
-              }
-          });
-      }
-  });
+    if (navigator.sendBeacon) {
+        navigator.sendBeacon('https://ntfy.armojo.com/stapleton', payload);
+        console.log("Usage time sent to ntfy server with sendBeacon.");
+    } else {
+        // Fallback to synchronous AJAX in case sendBeacon is not supported
+        $.ajax({
+            url: 'https://ntfy.armojo.com/stapleton',
+            type: 'POST',
+            data: payload,
+            contentType: "application/json",
+            async: false, // Make it synchronous to ensure it completes before the page unloads
+            success: function(response) {
+                console.log("Usage time sent to ntfy server.");
+            },
+            error: function(error) {
+                console.error("Error sending usage time", error);
+            }
+        });
+    }
+
+    // Clear the stored start time to indicate the session ended
+    localStorage.removeItem('app_start_time');
+});
+
 });
 
 
