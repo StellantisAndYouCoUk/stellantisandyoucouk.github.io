@@ -4915,7 +4915,7 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 let eventSource = null;
 
-$(document).on('knack-scene-render.scene_4', function(event, scene) {
+$(document).on('knack-scene-render.scene_2335', function(event, scene) {
 
 let publishURL = '';
 let subscribeURL = '';
@@ -4938,7 +4938,7 @@ function createLink(url, linkText) {
   $link.text(linkText);
 
   let $div = $('<div class="control"></div>').append($link);
-  $('.view_5521').append($div);
+  $('.view_7519').append($div);
 
 }
 
