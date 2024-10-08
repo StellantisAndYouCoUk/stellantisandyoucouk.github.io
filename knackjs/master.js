@@ -4962,20 +4962,29 @@ function createLink(url, linkText) {
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
-          <a id="popup-link" href="${parsedData.click}" target="_blank">
             ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
-          </a>
-          ${parsedData.message || ''}
-
-        `,
+            ${parsedData.message || ''}
+          `,
           showCloseButton: true,
           allowEscapeKey: true,
           focusConfirm: false,
+          showCancelButton: true, // Show the cancel button
+          cancelButtonText: 'Ok', // Set the cancel button text
+          cancelButtonColor: '#28a745', // Set the cancel button color to green
+          showConfirmButton: !!parsedData.click, // Only show confirm button if there is a link
           confirmButtonText: `
-            <i class="fa fa-thumbs-up"></i> Ok!
+            ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : ''}
           `,
-          confirmButtonAriaLabel: "Ok!",
+          confirmButtonAriaLabel: "Go to Link",
+          preConfirm: () => {
+            if (parsedData.click) {
+              window.open(parsedData.click, '_blank');
+            }
+          }
         });
+        
+        
+        
         
         // Add a click event listener to the link
         document.getElementById('popup-link').addEventListener('click', () => {
