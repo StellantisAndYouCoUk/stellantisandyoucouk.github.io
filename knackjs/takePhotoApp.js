@@ -450,7 +450,8 @@ imageBeforeResize.onload = () => {
    const ctx = elem.getContext('2d');
   //check if the resolution of the image is 4:3
  //ONE STEP RESIZE
-    ctx.drawImage(imageBeforeResize,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
+    ctx.drawImage(imageBeforeResize,0,0,imageBeforeResize.width,imageBeforeResize.height,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
+    //ctx.drawImage(imageBeforeResize,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
   
    //save the resized image to the shown img
    ctx.canvas.toBlob((blob) => {
