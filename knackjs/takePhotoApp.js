@@ -443,6 +443,8 @@ imageBeforeResize.onload = () => {
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
 
    const elem = document.createElement('canvas');
+   alert((appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:appSettings.resizeImageMaxWidth*imageRatio): imageBeforeResize.width))
+   alert((appSettings.resizeImageMaxHeight?(imageRatio>=1?appSettings.resizeImageMaxHeight*(1/imageRatio):appSettings.resizeImageMaxHeight): imageBeforeResize.height))
    elem.width = (appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:appSettings.resizeImageMaxWidth*imageRatio): imageBeforeResize.width);
    elem.height = (appSettings.resizeImageMaxHeight?(imageRatio>=1?appSettings.resizeImageMaxHeight*(1/imageRatio):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
    const ctx = elem.getContext('2d');
@@ -605,8 +607,8 @@ var takePhotoImageHeight = null;
         //theoretically the blob can be given only to the imageBeforeResize, and it should then update them shown image but this approach shows the image sooner ...
         img.classList.remove('hidden');
         img.src = URL.createObjectURL(blob);
-        takePhotoImageWidth = img.width;
-        takePhotoImageHeight = img.height;
+        takePhotoImageWidth = video.videoWidth;
+        takePhotoImageHeight = video.videoHeight;
         imageBeforeResize.src = img.src; 
         imgCompare.src = img.src;
         srcSet = true;
