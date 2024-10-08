@@ -3929,8 +3929,8 @@ $(document).on('knack-view-render.view_3841', function (event, view, data) {
     actionAfterPhotoReadableText : 'Does the photo match the template?',
     uploadMethod : 'field', //knack, make, field
     uploadField : 'field_2718',
-    //resizeImageMaxHeight : 1000,
-    //resizeImageMaxWidth : 1000,
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
     app_id : '591eae59e0d2123f23235769'
   }
   createPhotoButton(appSettings2718,'2718');
@@ -3994,8 +3994,8 @@ $(document).on('knack-view-render.view_3221', function (event, view, data) {
     actionAfterPhotoReadableText : 'Does the photo match the template?',
     uploadMethod : 'field', //knack, make, field
     uploadField : 'field_2718',
-    //resizeImageMaxHeight : 1000,
-    //resizeImageMaxWidth : 1000,
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
     app_id : '591eae59e0d2123f23235769'
   }
   createPhotoButton(appSettings2718,'2718');
@@ -4070,8 +4070,8 @@ $(document).on('knack-view-render.view_3566', function (event, view, data) {
     actionAfterPhotoReadableText : 'Does the photo match the template?',
     uploadMethod : 'field', //knack, make, field
     uploadField : 'field_2718',
-    //resizeImageMaxHeight : 1000,
-    //resizeImageMaxWidth : 1000,
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
     app_id : '591eae59e0d2123f23235769'
   }
   createPhotoButton(appSettings2718,'2718');
