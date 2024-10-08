@@ -1510,7 +1510,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 /*Make Virtual reception Supporting documents as a button*/
 #view_1175 > section > div > div:nth-child(4) > div:nth-child(1) > div > div.kn-details-link > div > span > a {
-  color: #ffffff; !important
+  color: #ffffff !important;
   font-weight: bold;
   background-color: #ffa100;
   padding: 8px;
@@ -1519,7 +1519,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 /*Make Virtual reception Clockings Summary as a button*/
 #view_1175 > section > div > div:nth-child(4) > div:nth-child(3) > div > div > div > span > a {
-  color: #ffffff; !important
+  color: #ffffff !important;
   font-weight: bold;
   background-color: #ffa100;
   padding: 8px;
@@ -1529,7 +1529,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 /**** Action auto reminders to Button ****/
 
 #view_1305 > section > div > div > div > div > div.kn-details-link > div > span {
-  color: #FFFFFF; !important
+  color: #FFFFFF !important;
   font-weight: bold;
   background-color: #FFA100;
   padding: 8px;
@@ -1555,7 +1555,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(13) {
 	font-weight: bold !important;
 	background-color: #6E55DD;
-	color: #FFFFFF; !important
+	color: #FFFFFF !important;
 }
 
 #kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(2),
@@ -1615,7 +1615,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(12)
  {
 	background-color: #D3CCF5;
-	font-weight: bold; !important
+	font-weight: bold !important;
 }
 
 #kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(14),
@@ -1640,7 +1640,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(16)  {
 	background-color: #985d6e;
 	font-weight: bold !important;
-	color: #FFFFFF; !important
+	color: #FFFFFF !important;
 	
 }
 
@@ -1653,7 +1653,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_208-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(17) {
 	background-color: #2fc65f;
 	font-weight: bold !important;
-	color: #FFFFFF; !important
+	color: #FFFFFF !important;
 }
 
 /* make PARTS SALES column stand out for choose your own filter pivot*/
@@ -1665,7 +1665,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(13) {
 	font-weight: bold !important;
 	background-color: #6E55DD;
-	color: #FFFFFF; !important
+	color: #FFFFFF !important;
 }
 
 #kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(2),
@@ -1725,7 +1725,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(5) > td:nth-child(12)
  {
 	background-color: #D3CCF5;
-	font-weight: bold; !important
+	font-weight: bold !important;
 }
 
 #kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(1) > td:nth-child(14),
@@ -1750,7 +1750,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(16)  {
 	background-color: #985d6e;
 	font-weight: bold !important;
-	color: #FFFFFF; !important
+	color: #FFFFFF !important;
 	
 }
 
@@ -1763,7 +1763,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-report-view_1344-1 > div.kn-report-rendered > table > tbody > tr:nth-child(6) > td:nth-child(17) {
 	background-color: #2fc65f;
 	font-weight: bold !important;
-	color: #FFFFFF; !important
+	color: #FFFFFF !important;
 }
 
 /* Aftersales Pre Pick Filter Menu COlours */
@@ -1780,7 +1780,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 #view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) :active {
 	background-color: #e1d80f;
-  	color: #FFFFFF; !important
+  	color: #FFFFFF !important;
   	font-weight: bold;
   	transition-property: color;
   	transition-duration: .3s;
@@ -1790,7 +1790,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 #view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) {
 	background-color: #e73b3b;
-  	color: #FFFFFF; !important
+  	color: #FFFFFF !important;
   	font-weight: bold;
   	transition-property: color;
   	transition-duration: .3s;
@@ -1811,7 +1811,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 #view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) {
 	background-color: #308965;
-  	color: #FFFFFF; !important
+  	color: #FFFFFF !important;
   	font-weight: bold;
   	transition-property: color;
   	transition-duration: .3s;
@@ -1821,7 +1821,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 #view_947 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) {
 	background-color: #2a65d7;
-  	color: #FFFFFF; !important
+  	color: #FFFFFF !important;
   	font-weight: bold;
   	transition-property: color;
   	transition-duration: .3s;
