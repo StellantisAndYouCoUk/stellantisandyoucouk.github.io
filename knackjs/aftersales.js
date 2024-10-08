@@ -5376,6 +5376,14 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 
 
 
+
+$(document).on('knack-scene-render.scene_1230', function(event, scene) {
+
+  console.log("Stapleton Loged In")
+
+})
+
+
 // $(document).on('knack-view-render.view_4230', function(event, scene) {
 // $('#view_4230').css('flex','0')
 //  });
