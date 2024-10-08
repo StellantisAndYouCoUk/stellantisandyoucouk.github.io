@@ -443,10 +443,10 @@ imageBeforeResize.onload = () => {
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
 
    const elem = document.createElement('canvas');
-   alert((appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:appSettings.resizeImageMaxWidth*imageRatio): imageBeforeResize.width))
-   alert((appSettings.resizeImageMaxHeight?(imageRatio>=1?appSettings.resizeImageMaxHeight*(1/imageRatio):appSettings.resizeImageMaxHeight): imageBeforeResize.height))
-   elem.width = (appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:appSettings.resizeImageMaxWidth*imageRatio): imageBeforeResize.width);
-   elem.height = (appSettings.resizeImageMaxHeight?(imageRatio>=1?appSettings.resizeImageMaxHeight*(1/imageRatio):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
+   alert((appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width))
+   alert((appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height))
+   elem.width = (appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width);
+   elem.height = (appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
    const ctx = elem.getContext('2d');
   //check if the resolution of the image is 4:3
  //ONE STEP RESIZE
