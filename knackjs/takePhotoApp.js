@@ -436,6 +436,10 @@ if (appSettings.compareImage){
 //this image gets the captured photo and when it is loaded it resizes iteslf and saves the image to shown image
 var imageBeforeResize = document.createElement('img');
 imageBeforeResize.onload = () => {
+  alert(takePhotoImageWidth);
+  alert(takePhotoImageHeight)
+  alert(imageBeforeResize.width);
+  alert(imageBeforeResize.height)
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
 
    const elem = document.createElement('canvas');
@@ -572,6 +576,9 @@ sndCameraTakePhoto.load();
 
 takePhotoButton.onclick = takePhoto;
 
+var takePhotoImageWidth = null;
+var takePhotoImageHeight = null;
+
   function takePhoto() {
     sndCameraTakePhoto.play();
     //sndCameraTakePhoto.currentTime=0;
@@ -581,6 +588,8 @@ takePhotoButton.onclick = takePhoto;
       var c = document.createElement('canvas');
       c.width = video.videoWidth;
       c.height = video.videoHeight;
+      takePhotoImageWidth = video.videoWidth;
+      takePhotoImageHeight = video.videoHeight;
       var ctx = c.getContext('2d');
       ctx.drawImage(video, 0, 0);
       ctx.canvas.toBlob((blob) => {
@@ -596,6 +605,8 @@ takePhotoButton.onclick = takePhoto;
         //theoretically the blob can be given only to the imageBeforeResize, and it should then update them shown image but this approach shows the image sooner ...
         img.classList.remove('hidden');
         img.src = URL.createObjectURL(blob);
+        takePhotoImageWidth = img.width;
+        takePhotoImageHeight = img.height;
         imageBeforeResize.src = img.src; 
         imgCompare.src = img.src;
         srcSet = true;
