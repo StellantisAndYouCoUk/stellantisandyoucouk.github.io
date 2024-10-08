@@ -436,15 +436,15 @@ if (appSettings.compareImage){
 //this image gets the captured photo and when it is loaded it resizes iteslf and saves the image to shown image
 var imageBeforeResize = document.createElement('img');
 imageBeforeResize.onload = () => {
-  alert(takePhotoImageWidth);
-  alert(takePhotoImageHeight)
-  alert(imageBeforeResize.width);
-  alert(imageBeforeResize.height)
+  if (takePhotoImageWidth/takePhotoImageHeight!==imageBeforeResize.width/imageBeforeResize.height){
+    //alert(takePhotoImageWidth);
+    //alert(takePhotoImageHeight)
+    //alert(imageBeforeResize.width);
+    //alert(imageBeforeResize.height)
+  }
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
 
    const elem = document.createElement('canvas');
-   alert((appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width))
-   alert((appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height))
    elem.width = (appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width);
    elem.height = (appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
    const ctx = elem.getContext('2d');
