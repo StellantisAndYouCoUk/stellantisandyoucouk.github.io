@@ -437,10 +437,10 @@ if (appSettings.compareImage){
 var imageBeforeResize = document.createElement('img');
 imageBeforeResize.onload = () => {
   if (takePhotoImageWidth/takePhotoImageHeight!==imageBeforeResize.width/imageBeforeResize.height){
-    alert(takePhotoImageWidth);
-    alert(takePhotoImageHeight)
-    alert(imageBeforeResize.width);
-    alert(imageBeforeResize.height)
+    //alert(takePhotoImageWidth);
+    //alert(takePhotoImageHeight)
+    //alert(imageBeforeResize.width);
+    //alert(imageBeforeResize.height)
     imageBeforeResize.width = imageBeforeResize.height*(takePhotoImageWidth/takePhotoImageHeight);
   }
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
