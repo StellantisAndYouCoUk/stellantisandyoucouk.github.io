@@ -4995,14 +4995,17 @@ function createLink(url, linkText) {
             const cancelButton = Swal.getCancelButton();
             const confirmButton = Swal.getConfirmButton();
             
-            if (cancelButton) cancelButton.id = 'popup-cancel-button';
+            if (cancelButton) {
+              cancelButton.id = 'popup-cancel-button';
+        
+              // Add the event listener to the cancel button inside didOpen
+              document.getElementById('popup-cancel-button').addEventListener('click', () => {
+                Swal.close(); // Close the popup when the cancel button is clicked
+              });
+            }
+        
             if (confirmButton) confirmButton.id = 'popup-confirm-button';
           }
-        });
-        
-        // Add a click event listener to the cancel button using the newly added ID
-        document.getElementById('popup-cancel-button').addEventListener('click', () => {
-          Swal.close(); // Close the popup when the cancel button is clicked
         });
 
         
