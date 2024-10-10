@@ -4989,15 +4989,20 @@ function createLink(url, linkText) {
             if (parsedData.click) {
               window.open(parsedData.click, '_blank');
             }
+          },
+          didOpen: () => {
+            // Add an ID to the cancel and confirm buttons after the popup opens
+            const cancelButton = Swal.getCancelButton();
+            const confirmButton = Swal.getConfirmButton();
+            
+            if (cancelButton) cancelButton.id = 'popup-cancel-button';
+            if (confirmButton) confirmButton.id = 'popup-confirm-button';
           }
         });
         
-        
-        
-        
-        // Add a click event listener to the link
-        document.getElementById('popup-link').addEventListener('click', () => {
-          Swal.close(); // Close the popup when the link is clicked
+        // Add a click event listener to the cancel button using the newly added ID
+        document.getElementById('popup-cancel-button').addEventListener('click', () => {
+          Swal.close(); // Close the popup when the cancel button is clicked
         });
 
         
