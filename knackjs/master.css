@@ -3757,7 +3757,7 @@ display: none;
 #view_5641 > div.control > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_5641 > div.control > a:hover.kn-link.kn-link-12.kn-link-page.kn-button,
 #view_5641 > div.control > a:hover.kn-link.kn-link-13.kn-link-page.kn-button,
-#view_5641 > div.control > a:hover.kn-link.kn-link-14.kn-link-page.kn-button,{
+#view_5641 > div.control > a:hover.kn-link.kn-link-14.kn-link-page.kn-button{
   font-size: 1.05em;
   font: "Calibri", sans-serif;
   text-align: center;
@@ -3950,7 +3950,9 @@ display: none;
 #view_5854 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5865 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5882 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_6235 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+#view_6235 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_7519 > div > a.kn-link.kn-link-2.kn-link-page.kn-button
+ {
   background-color: #ffa100 !important;
   color: #ffffff;
   font-weight: bold;

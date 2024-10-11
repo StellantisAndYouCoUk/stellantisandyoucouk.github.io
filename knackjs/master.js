@@ -467,6 +467,7 @@ $(document).on('knack-view-render.view_6462', function(event, view, data) {
  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#cd-check-in/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+
 /*Key tag search for Valeter's
 $(document).on('knack-view-render.view_6510', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
@@ -504,6 +505,13 @@ $(document).on('knack-view-render.view_7480', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #democourtesy-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Service Sales Prospecting
+$(document).on('knack-view-render.view_7517', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+ $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#service-sales-prospect/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
 			     {view:'view_6510',url:'#aftersales-key-tag-search'},
@@ -535,7 +543,8 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 /*Colection/Delivery Driver*/ {view:'view_6462',url:'#cd-check-in/'},
 /*Stapletons Tyre Stock Profiling*/ {view:'view_7468',url:'#tyres-availability-tracking-by-dealer--region'},
 /*Parts sales reporting {view:'view_4929 ',url:'#parts-sales-reporting/'},*/
-{view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'}]; ///add scene numbers as necessary
+{view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'},
+/* sales prospect*/ {view:'view_7517',url:'#service-sales-prospect'}]; ///add scene numbers as necessary
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 aftersalesConnectView.forEach(aftersalesConnectViewFunction);
 
@@ -4906,7 +4915,7 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 //Mayank code 
 let eventSource = null;
 
-$(document).on('knack-scene-render.scene_4', function(event, scene) {
+$(document).on('knack-scene-render.scene_2335', function(event, scene) {
 
 let publishURL = '';
 let subscribeURL = '';
@@ -4929,7 +4938,7 @@ function createLink(url, linkText) {
   $link.text(linkText);
 
   let $div = $('<div class="control"></div>').append($link);
-  $('.view_5521').append($div);
+  $('.view_7519').append($div);
 
 }
 
@@ -4980,15 +4989,23 @@ function createLink(url, linkText) {
             if (parsedData.click) {
               window.open(parsedData.click, '_blank');
             }
+          },
+          didOpen: () => {
+            // Add an ID to the cancel and confirm buttons after the popup opens
+            const cancelButton = Swal.getCancelButton();
+            const confirmButton = Swal.getConfirmButton();
+            
+            if (cancelButton) {
+              cancelButton.id = 'popup-cancel-button';
+        
+              // Add the event listener to the cancel button inside didOpen
+              document.getElementById('popup-cancel-button').addEventListener('click', () => {
+                Swal.close(); // Close the popup when the cancel button is clicked
+              });
+            }
+        
+            if (confirmButton) confirmButton.id = 'popup-confirm-button';
           }
-        });
-        
-        
-        
-        
-        // Add a click event listener to the link
-        document.getElementById('popup-link').addEventListener('click', () => {
-          Swal.close(); // Close the popup when the link is clicked
         });
 
         
