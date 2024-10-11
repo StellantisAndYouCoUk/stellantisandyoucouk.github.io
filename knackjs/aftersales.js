@@ -525,7 +525,8 @@ function serviceVisitsTooltips(viewId = '324', fieldId = '325', tooltipPlace = '
 }
 
 $(document).on("knack-scene-render.scene_105", function(event, scene, data) {
-  //formatScene24();
+  //reset the Workshop Availability on Scene load
+  globalWorkshopAvailabilityStatus = null;
   setTimeout(function(){
     refreshScene24();
   }, 100);
