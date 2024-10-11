@@ -525,9 +525,6 @@ function serviceVisitsTooltips(viewId = '324', fieldId = '325', tooltipPlace = '
 }
 
 $(document).on("knack-scene-render.scene_105", function(event, scene, data) {
-  //reset the Workshop Availability on Scene load
-  console.log('knack-scene-render.scene_105')
-  globalWorkshopAvailabilityStatus = null;
   setTimeout(function(){
     refreshScene24();
   }, 100);
@@ -4924,6 +4921,9 @@ let globalWorkshopAvailabilityStatus = null;
 function getWorkshopAvailability(status = null,useCustomerAddress=false,customAddress=null,retry = 1){
   console.log('getWorkshopAvailability',globalWorkshopAvailabilityStatus)
   try {
+    if (globalWorkshopAvailabilityStatus){
+      if (globalWorkshopAvailabilityStatus.regNumber!==$('div[class="kn-label-none field_31"]').text().trim()) globalWorkshopAvailabilityStatus = null;
+    }
     if (useCustomerAddress) globalWorkshopAvailabilityStatus.useCustomerAddress = true;
     if (!useCustomerAddress && globalWorkshopAvailabilityStatus && globalWorkshopAvailabilityStatus.useCustomerAddress) useCustomerAddress = true;
     if (customAddress) globalWorkshopAvailabilityStatus.customAddress = customAddress;
@@ -4969,6 +4969,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
       }
     }
     globalWorkshopAvailabilityStatus = status;
+    globalWorkshopAvailabilityStatus.regNumber = $('div[class="kn-label-none field_31"]').text().trim();
 
     if (status && (status.lastVisitData || status.addressData)) availabilityHTML(status, useCustomerAddress, customAddress);
 
