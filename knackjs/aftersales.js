@@ -4922,6 +4922,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
   console.log('getWorkshopAvailability',globalWorkshopAvailabilityStatus)
   try {
     if (globalWorkshopAvailabilityStatus){
+      console.log('globalWorkshopAvailabilityStatus.regNumber',globalWorkshopAvailabilityStatus.regNumber,$('div[class="kn-label-none field_31"]').text().trim())
       if (globalWorkshopAvailabilityStatus.regNumber!==$('div[class="kn-label-none field_31"]').text().trim()) globalWorkshopAvailabilityStatus = null;
     }
     if (useCustomerAddress) globalWorkshopAvailabilityStatus.useCustomerAddress = true;
