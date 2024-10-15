@@ -4953,84 +4953,167 @@ function createLink(url, linkText) {
 });
 
 
- $(document).on('knack-view-render.any', function(event, scene) {
-  if(eventSource===null){
-    const userAttributes = Knack.getUserAttributes();
-    if(userAttributes !=='No user found'){
-      // console.log("User Attributes: " + JSON.stringify(userAttributes));
-      const userValue = userAttributes.id;
-      subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-      eventSource = new EventSource(subscribeURL);
 
-      console.log("Check Sweet Pop Up");
+$(document).on('knack-view-render.any', function(event, scene) {
+  if (eventSource === null) {
+      const userAttributes = Knack.getUserAttributes();
+      let notificationId;
+      if (userAttributes !== 'No user found') {
+          const userValue = userAttributes.id;
+          subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+          eventSource = new EventSource(subscribeURL);
+
+          console.log("Check Sweet Pop Up");
+
+          function showNotification(data) {
+              const parsedData = JSON.parse(data);
+              const notificationId = parsedData.id;  // Get the unique notification ID from the message
+
+              // Check if the notification has already been shown
+              if (!localStorage.getItem(`alertShown_${notificationId}`)) {
+                  Swal.fire({
+                      title: `<strong>${parsedData.title}</strong>`,
+                      html: `
+                          ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
+                          ${parsedData.message || ''}
+                      `,
+                      showCloseButton: true,
+                      allowEscapeKey: true,
+                      focusConfirm: false,
+                      showCancelButton: true,
+                      cancelButtonText: 'Ok',
+                      cancelButtonColor: '#28a745',
+                      showConfirmButton: !!parsedData.click,
+                      confirmButtonText: `
+                          ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : ''}
+                      `,
+                      confirmButtonAriaLabel: "Go to Link",
+                      preConfirm: () => {
+                          if (parsedData.click) {
+                              window.open(parsedData.click, '_blank');
+                          }
+                      },
+                      didOpen: () => {
+                          const cancelButton = Swal.getCancelButton();
+                          const confirmButton = Swal.getConfirmButton();
+
+                          if (cancelButton) {
+                              cancelButton.id = 'popup-cancel-button';
+                              document.getElementById('popup-cancel-button').addEventListener('click', () => {
+                                  Swal.close();
+                              });
+                          }
+
+                          if (confirmButton) confirmButton.id = 'popup-confirm-button';
+                      }
+                  });
+
+                  // Mark this specific notification as shown
+                  localStorage.setItem(`alertShown_${notificationId}`, 'true');
+              }
+          }
+
+          // Handle incoming messages from the event source
+          eventSource.onmessage = (e) => {
+              try {
+                  // Print the received message to the console
+                  console.log(e.data);
+
+                  // Call the showNotification function to process and display the message
+                  showNotification(e.data);
+
+              } catch (error) {
+                  console.error('Failed to process message:', error);
+              }
+          };
+      }
+  }
+});
+
+
+
+//  $(document).on('knack-view-render.any', function(event, scene) {
+//   if(eventSource===null){
+//     const userAttributes = Knack.getUserAttributes();
+//     let notificationId;
+//     if(userAttributes !=='No user found'){
+//       // console.log("User Attributes: " + JSON.stringify(userAttributes));
+//       const userValue = userAttributes.id;
+//       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+//       eventSource = new EventSource(subscribeURL);
+
+//       console.log("Check Sweet Pop Up");
      
 
-      function showNotification(data) {
-        const parsedData = JSON.parse(data);
-        if (!localStorage.getItem('alertShown')) {
-        Swal.fire({
-          title: `<strong>${parsedData.title}</strong>`,
-          html: `
-            ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
-            ${parsedData.message || ''}
-          `,
-          showCloseButton: true,
-          allowEscapeKey: true,
-          focusConfirm: false,
-          showCancelButton: true, // Show the cancel button
-          cancelButtonText: 'Ok', // Set the cancel button text
-          cancelButtonColor: '#28a745', // Set the cancel button color to green
-          showConfirmButton: !!parsedData.click, // Only show confirm button if there is a link
-          confirmButtonText: `
-            ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : ''}
-          `,
-          confirmButtonAriaLabel: "Go to Link",
-          preConfirm: () => {
-            if (parsedData.click) {
-              window.open(parsedData.click, '_blank');
-            }
-          },
-          didOpen: () => {
-            // Add an ID to the cancel and confirm buttons after the popup opens
-            const cancelButton = Swal.getCancelButton();
-            const confirmButton = Swal.getConfirmButton();
+//       function showNotification(data) {
+//         const parsedData = JSON.parse(data);
+//         if (!localStorage.getItem('alertShown')) {
+//         Swal.fire({
+//           title: `<strong>${parsedData.title}</strong>`,
+//           html: `
+//             ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
+//             ${parsedData.message || ''}
+//           `,
+//           showCloseButton: true,
+//           allowEscapeKey: true,
+//           focusConfirm: false,
+//           showCancelButton: true, // Show the cancel button
+//           cancelButtonText: 'Ok', // Set the cancel button text
+//           cancelButtonColor: '#28a745', // Set the cancel button color to green
+//           showConfirmButton: !!parsedData.click, // Only show confirm button if there is a link
+//           confirmButtonText: `
+//             ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : ''}
+//           `,
+//           confirmButtonAriaLabel: "Go to Link",
+//           preConfirm: () => {
+//             if (parsedData.click) {
+//               window.open(parsedData.click, '_blank');
+//             }
+//           },
+//           didOpen: () => {
+//             // Add an ID to the cancel and confirm buttons after the popup opens
+//             const cancelButton = Swal.getCancelButton();
+//             const confirmButton = Swal.getConfirmButton();
             
-            if (cancelButton) {
-              cancelButton.id = 'popup-cancel-button';
+//             if (cancelButton) {
+//               cancelButton.id = 'popup-cancel-button';
         
-              // Add the event listener to the cancel button inside didOpen
-              document.getElementById('popup-cancel-button').addEventListener('click', () => {
-                Swal.close(); // Close the popup when the cancel button is clicked
-              });
-            }
+//               // Add the event listener to the cancel button inside didOpen
+//               document.getElementById('popup-cancel-button').addEventListener('click', () => {
+//                 Swal.close(); // Close the popup when the cancel button is clicked
+//               });
+//             }
         
-            if (confirmButton) confirmButton.id = 'popup-confirm-button';
-          }
-        });
-        localStorage.setItem('alertShown', 'true'); // Mark notification as shown
+//             if (confirmButton) confirmButton.id = 'popup-confirm-button';
+//           }
+//         });
+//         localStorage.setItem('alertShown', 'true'); // Mark notification as shown
 
-      }
+//       }
 
 
-    }
+//     }
   
   
-    eventSource.onmessage = (e) => {
-        //let event = document.createElement('div');
-        //event.innerHTML = e.data;
-        //events.appendChild(event);
-        console.log(e.data);
-        showNotification(e.data);
-    };
+//     eventSource.onmessage = (e) => {
+//         //let event = document.createElement('div');
+//         //event.innerHTML = e.data;
+//         //events.appendChild(event);
+//         notificationId = e.data.id;
+//         localStorage.setItem(`alertShown_${notificationId}`, 'true');
+
+//         console.log(e.data);
+//         showNotification(e.data);
+//     };
 
 
-  }
+//   }
 
   
-}
+// }
 
 
- })
+//  })
 
 
 
