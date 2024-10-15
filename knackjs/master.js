@@ -4970,6 +4970,7 @@ $(document).on('knack-view-render.any', function(event, scene) {
               const notificationId = parsedData.id;  // Get the unique notification ID from the message
 
               const alertKey = `alertShown_${notificationId}`;
+              console.log(alertKey);
 
               // Check if the notification has already been shown
               if (localStorage.getItem(alertKey) !== notificationId) {
