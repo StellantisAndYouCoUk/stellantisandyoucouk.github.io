@@ -4967,7 +4967,7 @@ function createLink(url, linkText) {
 
       function showNotification(data) {
         const parsedData = JSON.parse(data);
-
+        if (!localStorage.getItem('alertShown')) {
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
@@ -5007,8 +5007,9 @@ function createLink(url, linkText) {
             if (confirmButton) confirmButton.id = 'popup-confirm-button';
           }
         });
+        localStorage.setItem('alertShown', 'true'); // Mark notification as shown
 
-        
+      }
 
 
     }
