@@ -4967,11 +4967,12 @@ $(document).on('knack-view-render.any', function(event, scene) {
 
           function showNotification(data) {
               const parsedData = JSON.parse(data);
-              console.log(JSON.stringify(data))
               const notificationId = parsedData.id;  // Get the unique notification ID from the message
-              console.log(notificationId)
+
+              const alertKey = `alertShown_${notificationId}`;
+
               // Check if the notification has already been shown
-              if (!localStorage.getItem(`alertShown_${notificationId}`)) {
+              if (localStorage.getItem(alertKey) !== notificationId) {
                   Swal.fire({
                       title: `<strong>${parsedData.title}</strong>`,
                       html: `
@@ -5010,8 +5011,8 @@ $(document).on('knack-view-render.any', function(event, scene) {
                   });
 
                   // Mark this specific notification as shown
-                  localStorage.setItem(`alertShown_${notificationId}`, 'true');
-              }
+                  localStorage.setItem(alertKey, notificationId);
+                }
           }
 
           // Handle incoming messages from the event source
