@@ -4962,12 +4962,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
-      let alertKey;
       function showNotification(data) {
         const parsedData = JSON.parse(data);
         const notificationId = parsedData.id; // Get the unique notification ID from the message
          // Use a fixed key for storing notifications
-        const storedId = localStorage.getItem(alertKey); // Get the last shown notification ID
+        const storedId = localStorage.getItem("alertKey"); // Get the last shown notification ID
       
         console.log("Stored ID from localStorage:", storedId);
       
