@@ -4966,12 +4966,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
       function showNotification(data) {
         const parsedData = JSON.parse(data);
         const notificationId = parsedData.id; // Get the unique notification ID from the message
+        let alertKey = "alertShown"; // Use a fixed key for storing notifications
+        const storedId = localStorage.getItem(alertKey); // Get the last shown notification ID
       
-        let alertKey = `alertShown_${notificationId}`;
-        console.log("Alert key being checked:", alertKey);
-      
-        // Check if the notification has already been shown
-        const storedId = localStorage.getItem(alertKey);
         console.log("Stored ID from localStorage:", storedId);
       
         if (storedId !== notificationId) {
@@ -5025,10 +5022,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
           });
       
           // Mark this specific notification as shown
-          console.log(`Setting localStorage: key = ${alertKey}, value = ${notificationId}`);
+          console.log(`Updating localStorage: key = ${alertKey}, value = ${notificationId}`);
+          localStorage.setItem(alertKey, String(notificationId));
           
           // Ensure that both key and value are strings
-          localStorage.setItem(alertKey, String(notificationId));
       
           console.log("Value stored in localStorage:", localStorage.getItem(alertKey));
         } else {
