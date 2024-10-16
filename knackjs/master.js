@@ -5247,7 +5247,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       eventSource.onmessage = (e) => {
         try {
           // Print the received message to the console
-          console.log(e.data);
+    
 
           // Call the showNotification function to process and display the message
           showNotification(e.data);
