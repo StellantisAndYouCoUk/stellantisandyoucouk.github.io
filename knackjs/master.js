@@ -5023,7 +5023,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       
           // Mark this specific notification as shown
           console.log(`Updating localStorage: key = ${alertKey}, value = ${notificationId}`);
-          localStorage.setItem(alertKey, String(notificationId));
+          localStorage.setItem("alertKey", String(notificationId));
           
           // Ensure that both key and value are strings
       
