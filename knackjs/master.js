@@ -4953,86 +4953,105 @@ function createLink(url, linkText) {
 });
 
 
-
-$(document).on('knack-view-render.any', function(event, scene) {
+$(document).on("knack-view-render.any", function (event, scene) {
   if (eventSource === null) {
-      const userAttributes = Knack.getUserAttributes();
-      let notificationId;
-      if (userAttributes !== 'No user found') {
-          const userValue = userAttributes.id;
-          subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-          eventSource = new EventSource(subscribeURL);
+    const userAttributes = Knack.getUserAttributes();
+    let notificationId;
+    if (userAttributes !== "No user found") {
+      const userValue = userAttributes.id;
+      subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      eventSource = new EventSource(subscribeURL);
 
-          console.log("Check Sweet Pop Up");
 
-          function showNotification(data) {
-              const parsedData = JSON.parse(data);
-              const notificationId = parsedData.id;  // Get the unique notification ID from the message
-
-              let alertKey = `alertShown_${notificationId}`;
-              console.log(alertKey);
-
-              // Check if the notification has already been shown
-              if (localStorage.getItem(alertKey) !== notificationId) {
-                  Swal.fire({
-                      title: `<strong>${parsedData.title}</strong>`,
-                      html: `
-                          ${parsedData.attachment && parsedData.attachment.url ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">` : ''}
-                          ${parsedData.message || ''}
-                      `,
-                      showCloseButton: true,
-                      allowEscapeKey: true,
-                      focusConfirm: false,
-                      showCancelButton: true,
-                      cancelButtonText: 'Ok',
-                      cancelButtonColor: '#28a745',
-                      showConfirmButton: !!parsedData.click,
-                      confirmButtonText: `
-                          ${parsedData.click ? `<i class="fa fa-external-link-alt"></i> Go to Link` : ''}
-                      `,
-                      confirmButtonAriaLabel: "Go to Link",
-                      preConfirm: () => {
-                          if (parsedData.click) {
-                              window.open(parsedData.click, '_blank');
-                          }
-                      },
-                      didOpen: () => {
-                          const cancelButton = Swal.getCancelButton();
-                          const confirmButton = Swal.getConfirmButton();
-
-                          if (cancelButton) {
-                              cancelButton.id = 'popup-cancel-button';
-                              document.getElementById('popup-cancel-button').addEventListener('click', () => {
-                                  Swal.close();
-                              });
-                          }
-
-                          if (confirmButton) confirmButton.id = 'popup-confirm-button';
+      function showNotification(data) {
+        const parsedData = JSON.parse(data);
+        const notificationId = parsedData.id; // Get the unique notification ID from the message
+      
+        let alertKey = `alertShown_${notificationId}`;
+        console.log("Alert key being checked:", alertKey);
+      
+        // Check if the notification has already been shown
+        const storedId = localStorage.getItem(alertKey);
+        console.log("Stored ID from localStorage:", storedId);
+      
+        if (storedId !== notificationId) {
+          console.log("Notification not shown yet, showing now...");
+      
+          Swal.fire({
+            title: `<strong>${parsedData.title}</strong>`,
+            html: `
+                      ${
+                        parsedData.attachment && parsedData.attachment.url
+                          ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+                          : ""
                       }
-                  });
-
-                  // Mark this specific notification as shown
-                  localStorage.setItem(alertKey, notificationId);
-                }
-          }
-
-          // Handle incoming messages from the event source
-          eventSource.onmessage = (e) => {
-              try {
-                  // Print the received message to the console
-                  console.log(e.data);
-
-                  // Call the showNotification function to process and display the message
-                  showNotification(e.data);
-
-              } catch (error) {
-                  console.error('Failed to process message:', error);
+                      ${parsedData.message || ""}
+                  `,
+            showCloseButton: true,
+            allowEscapeKey: true,
+            focusConfirm: false,
+            showCancelButton: true,
+            cancelButtonText: "Ok",
+            cancelButtonColor: "#28a745",
+            showConfirmButton: !!parsedData.click,
+            confirmButtonText: `
+                      ${
+                        parsedData.click
+                          ? `<i class="fa fa-external-link-alt"></i> Go to Link`
+                          : ""
+                      }
+                  `,
+            confirmButtonAriaLabel: "Go to Link",
+            preConfirm: () => {
+              if (parsedData.click) {
+                window.open(parsedData.click, "_blank");
               }
-          };
+            },
+            didOpen: () => {
+              const cancelButton = Swal.getCancelButton();
+              const confirmButton = Swal.getConfirmButton();
+      
+              if (cancelButton) {
+                cancelButton.id = "popup-cancel-button";
+                document
+                  .getElementById("popup-cancel-button")
+                  .addEventListener("click", () => {
+                    Swal.close();
+                  });
+              }
+      
+              if (confirmButton) confirmButton.id = "popup-confirm-button";
+            },
+          });
+      
+          // Mark this specific notification as shown
+          console.log(`Setting localStorage: key = ${alertKey}, value = ${notificationId}`);
+          
+          // Ensure that both key and value are strings
+          localStorage.setItem(alertKey, String(notificationId));
+      
+          console.log("Value stored in localStorage:", localStorage.getItem(alertKey));
+        } else {
+          console.log("Notification already shown, skipping...");
+        }
       }
+      
+
+      // Handle incoming messages from the event source
+      eventSource.onmessage = (e) => {
+        try {
+          // Print the received message to the console
+          console.log(e.data);
+
+          // Call the showNotification function to process and display the message
+          showNotification(e.data);
+        } catch (error) {
+          console.error("Failed to process message:", error);
+        }
+      };
+    }
   }
 });
-
 
 
 
