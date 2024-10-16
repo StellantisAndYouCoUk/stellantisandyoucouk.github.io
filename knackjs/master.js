@@ -5179,12 +5179,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
         // Get the last shown notification details from localStorage
         const storedData = localStorage.getItem("alertKey");
-        let lastNotification = storedData ? JSON.parse(storedData) : null;
+        let lastNotification = storedData ? storedData : null;
 
-        console.log("Stored ID from localStorage:", lastNotification ? lastNotification.value : null);
+        console.log("Stored ID from localStorage:", lastNotification ? lastNotification : null);
 
         // Check if the current notification ID is different from the last shown ID
-        if (!lastNotification || lastNotification.value !== notificationId) {
+        if (!lastNotification || lastNotification !== notificationId) {
           console.log("Notification not shown yet, showing now...");
 
           // Show the notification using Swal
