@@ -4968,7 +4968,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         const notificationId = parsedData.id; // Get the unique notification ID from the message
          // Use a fixed key for storing notifications
         const storedId = localStorage.getItem("alertKey"); // Get the last shown notification ID
-      
+        const parsedData2 = JSON.parse(storedId);
         console.log("Stored ID from localStorage:", storedId.value);
       
         if (storedId !== notificationId) {
