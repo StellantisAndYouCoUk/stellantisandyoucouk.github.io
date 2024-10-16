@@ -5174,8 +5174,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
       eventSource = new EventSource(subscribeURL);
 
       function showNotification(data) {
-       
-        notificationId = data.id; // Get the unique notification ID from the message
+        parsedData = data;
+        notificationId = parsedData.id; // Get the unique notification ID from the message
+
 
         // Get the last shown notification details from localStorage
         const storedData = localStorage.getItem("alertKey");
