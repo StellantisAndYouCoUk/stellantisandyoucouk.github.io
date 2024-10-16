@@ -5174,8 +5174,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
       eventSource = new EventSource(subscribeURL);
 
       function showNotification(data) {
-        const parsedData = JSON.parse(data);
-        notificationId = parsedData.id; // Get the unique notification ID from the message
+       
+        notificationId = data.id; // Get the unique notification ID from the message
 
         // Get the last shown notification details from localStorage
         const storedData = localStorage.getItem("alertKey");
@@ -5248,9 +5248,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
         try {
           // Print the received message to the console
     
-
+          const dataParsed = JSON.parse(e.data);
           // Call the showNotification function to process and display the message
-          showNotification(e.data);
+          showNotification(dataParsed);
         } catch (error) {
           console.error("Failed to process message:", error);
         }
