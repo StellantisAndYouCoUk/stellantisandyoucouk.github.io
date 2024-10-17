@@ -594,6 +594,8 @@ var takePhotoImageHeight = null;
       c.height = video.videoHeight;
       takePhotoImageWidth = video.videoWidth;
       takePhotoImageHeight = video.videoHeight;
+      imageBeforeResize.width = video.videoWidth;
+      imageBeforeResize.height = video.videoHeight;
       var ctx = c.getContext('2d');
       ctx.drawImage(video, 0, 0);
       ctx.canvas.toBlob((blob) => {
@@ -611,6 +613,8 @@ var takePhotoImageHeight = null;
         img.src = URL.createObjectURL(blob);
         takePhotoImageWidth = video.videoWidth;
         takePhotoImageHeight = video.videoHeight;
+        imageBeforeResize.width = video.videoWidth;
+        imageBeforeResize.height = video.videoHeight;
         imageBeforeResize.src = img.src; 
         imgCompare.src = img.src;
         srcSet = true;
