@@ -1934,6 +1934,12 @@ color: #FFFFFF;
   	font-weight: bold;
 }
 
+#view_2394 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(7) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
 /******** Consigned Orders - Invoice Values Downloaded (Last 6 Months) *********/
 
 #view_2395 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {

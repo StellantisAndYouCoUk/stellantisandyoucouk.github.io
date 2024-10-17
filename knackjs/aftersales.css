@@ -2120,7 +2120,7 @@ div.tooltipDiv {
 
 /*Expanding Modal Pop Ups*/
 
-.Modal_for_scene_1049 {
+.Modal_for_scene_1315 {
     width: 99%;
     height: 99vh;
 }
@@ -2295,5 +2295,12 @@ div.tooltipDiv {
 	margin-bottom: 1.75em;
 }
 
+/****** Service > Reporting > Workshop Capacity Table Filters *******/
 
+#view_4348 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a, 
+#view_4348 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+  background-color: #495057;
+  color: #ffffff !important;
+  font-weight: bold;
+}
 
