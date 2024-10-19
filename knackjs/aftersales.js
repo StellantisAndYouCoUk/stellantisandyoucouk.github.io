@@ -528,6 +528,7 @@ $(document).on("knack-scene-render.scene_105", function(event, scene, data) {
   setTimeout(function(){
     refreshScene24();
   }, 100);
+  //document.querySelector('div[id="view_326"]').scrollIntoView(true)
 });
 
 function refreshScene24(){
