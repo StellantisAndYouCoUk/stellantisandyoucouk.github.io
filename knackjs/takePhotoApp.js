@@ -617,9 +617,9 @@ var takePhotoImageHeight = null;
         img.classList.remove('hidden');
         img.src = URL.createObjectURL(blob);
         takePhotoImageWidth = video.videoWidth;
-        takePhotoImageHeight = video.videoHeight;/*
+        takePhotoImageHeight = video.videoHeight;
         imageBeforeResize.width = video.videoWidth;
-        imageBeforeResize.height = video.videoHeight;*/
+        imageBeforeResize.height = video.videoHeight;
         imageBeforeResize.src = img.src; 
         imgCompare.src = img.src;
         srcSet = true;
