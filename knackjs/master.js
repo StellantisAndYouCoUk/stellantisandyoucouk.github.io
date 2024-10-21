@@ -5351,6 +5351,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       eventSource.onmessage = (e) => {
         try {
           const dataParsed = JSON.parse(e.data);
+          console.log(JSON.stringify(dataParsed));
           showNotification(dataParsed);
         } catch (error) {
           console.error("Failed to process message:", error);
