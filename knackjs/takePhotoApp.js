@@ -319,11 +319,12 @@ function openCamera(getUserMediaC, constraints, torch = false){
   
       const track = mediaStream.getVideoTracks()[0];
   
-      track.applyConstraints(constraints);
       if (torch){
         track.applyConstraints({
           advanced: [{torch: true}]
         });
+      } else {
+        track.applyConstraints(constraints);
       }
   
       if (!OperatingSystem.iOS()) {
