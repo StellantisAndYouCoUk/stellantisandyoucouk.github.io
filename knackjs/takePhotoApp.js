@@ -306,10 +306,10 @@ function prepareCameraView(imgToSaveName){
 //************************************* OPEN THE CAMERA BY ASKING USER PERMISSION(APPLE DEVICE) AND APPLY VIDEO STREAM SETTINGS*****************************************
 
 const constraints = {
-  width: { min: 1440, ideal: 1440, max: 3984 },
-  height: { min: 1080, ideal: 1080, max: 2988 },
-  //aspectRatio: 4/3,
-  //frameRate:{max: 30}
+  width: { min: 1440, ideal: 1280, max: 3984 },
+  height: { min: 1080, ideal: 720, max: 2988 },
+  aspectRatio: 4/3,
+  frameRate:{max: 30}
   };
 
 function openCamera(getUserMediaC, constraints, torch = false){
@@ -615,10 +615,10 @@ var takePhotoImageHeight = null;
         //theoretically the blob can be given only to the imageBeforeResize, and it should then update them shown image but this approach shows the image sooner ...
         img.classList.remove('hidden');
         img.src = URL.createObjectURL(blob);
-        takePhotoImageWidth = video.videoWidth;
+        /*takePhotoImageWidth = video.videoWidth;
         takePhotoImageHeight = video.videoHeight;
         imageBeforeResize.width = video.videoWidth;
-        imageBeforeResize.height = video.videoHeight;
+        imageBeforeResize.height = video.videoHeight;*/
         imageBeforeResize.src = img.src; 
         imgCompare.src = img.src;
         srcSet = true;
