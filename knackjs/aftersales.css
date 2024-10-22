@@ -2303,4 +2303,10 @@ div.tooltipDiv {
   color: #ffffff !important;
   font-weight: bold;
 }
-
+/*Conversation to remove scrollbar and max height*/
+#view_4346 .kn-table-wrapper {overflow-y: hidden;
+}
+ 
+.kn-table-wrapper.is-constrained {
+max-height: 100%;
+}
