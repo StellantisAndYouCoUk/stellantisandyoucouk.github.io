@@ -4618,7 +4618,12 @@ $(document).on('knack-scene-render.scene_1313', function(event, scene) {
 //1 Link cust.name over name
 		 tooltipsTable('1313','4342','field_3356','field_3242');	
 	  $('th[class="field_3356"]').hide();
-    $('td[class*="field_3356"]').hide();	
+    $('td[class*="field_3356"]').hide();
+
+//Finance Details Over Finance
+		 tooltipsTable('1313','4342','field_3357','field_3349');	
+	  $('th[class="field_3357"]').hide();
+    $('td[class*="field_3357"]').hide();		
 	
 	});
 
