@@ -4586,32 +4586,30 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1532"]').hide();	    
     });
 
-
 $(document).on('knack-scene-render.scene_1313', function(event, scene) {
 //Hover for sales prospecting
 //scene, view, field to have hover, hover info
 //Service Details over Reg 
-		 tooltipsTable('1313','4342','field_3238','field_3350');	
+		 tooltipsTable('1313','4342','field_3350','field_3238');	
 	  $('th[class="field_3350"]').hide();
     $('td[class*="field_3350"]').hide();
 
 //vhc work over model
-		 tooltipsTable('1313','4342','field_3354','field_3351');	
+		 tooltipsTable('1313','4342','field_3351','field_3354');	
 	  $('th[class="field_3351"]').hide();
     $('td[class*="field_3351"]').hide();	
 	
 //vhc work over model
-		 tooltipsTable('1313','4342','field_3248','field_3352');	
+		 tooltipsTable('1313','4342','field_3352','field_3248');	
 	  $('th[class="field_3352"]').hide();
     $('td[class*="field_3352"]').hide();	
 	
 //vhc work over model
-		 tooltipsTable('1313','4342','field_3330','field_3353');	
+		 tooltipsTable('1313','4342','field_3353','field_3330');	
 	  $('th[class="field_3353"]').hide();
     $('td[class*="field_3353"]').hide();	
 		
 	});
-
 
 
 
