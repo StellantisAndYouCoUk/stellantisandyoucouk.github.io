@@ -4586,7 +4586,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1532"]').hide();	    
     });
 
-$(document).on('knack-scene-render.scene_1313', function(event, scene) {
+$(document).on('knack-scene-render.view_4342', function(event, scene) {
 //Hover for sales prospecting
 //scene, view, field to have hover, hover info
 //Service Details over Reg 
