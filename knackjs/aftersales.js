@@ -4613,7 +4613,13 @@ $(document).on('knack-scene-render.scene_1313', function(event, scene) {
 //date sold over sold new/used
 		 tooltipsTable('1313','4342','field_3355','field_3263');	
 	  $('th[class="field_3355"]').hide();
-    $('td[class*="field_3355"]').hide();	
+    $('td[class*="field_3355"]').hide();
+
+//1 Link cust.name over name
+		 tooltipsTable('1313','4342','field_3356','field_3242');	
+	  $('th[class="field_3356"]').hide();
+    $('td[class*="field_3356"]').hide();	
+	
 	});
 
 
