@@ -3691,7 +3691,7 @@ $(document).on('knack-form-submit.view_2999', function(event, view, data) {
 // Code to wait following Form Submission while Licence Is Being Checked in Make - DVLA Coventry PILOT - Customer View
 
 
-$(document).on('knack-form-submit.view_4310', function(event, view, data) { 
+$(document).on('knack-form-submit.view_4353', function(event, view, data) { 
 
 
 	setTimeout(function(){ 
