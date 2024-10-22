@@ -4599,16 +4599,21 @@ $(document).on('knack-scene-render.scene_1313', function(event, scene) {
 	  $('th[class="field_3351"]').hide();
     $('td[class*="field_3351"]').hide();	
 	
-//vhc work over model
+//historic visit over due in
 		 tooltipsTable('1313','4342','field_3352','field_3248');	
 	  $('th[class="field_3352"]').hide();
     $('td[class*="field_3352"]').hide();	
 	
-//vhc work over model
+//cust. name/emax notes over last contact
 		 tooltipsTable('1313','4342','field_3353','field_3330');	
 	  $('th[class="field_3353"]').hide();
     $('td[class*="field_3353"]').hide();	
-		
+
+
+//date sold over sold new/used
+		 tooltipsTable('1313','4342','field_3355','field_3263');	
+	  $('th[class="field_3355"]').hide();
+    $('td[class*="field_3355"]').hide();	
 	});
 
 
