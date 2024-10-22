@@ -4586,6 +4586,35 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1532"]').hide();	    
     });
 
+
+$(document).on('knack-scene-render.scene_1313', function(event, scene) {
+//Hover for sales prospecting
+//scene, view, field to have hover, hover info
+//Service Details over Reg 
+		 tooltipsTable('1313','4342','field_3238','field_3350');	
+	  $('th[class="field_3350"]').hide();
+    $('td[class*="field_3350"]').hide();
+
+//vhc work over model
+		 tooltipsTable('1313','4342','field_3354','field_3351');	
+	  $('th[class="field_3351"]').hide();
+    $('td[class*="field_3351"]').hide();	
+	
+//vhc work over model
+		 tooltipsTable('1313','4342','field_3248','field_3352');	
+	  $('th[class="field_3352"]').hide();
+    $('td[class*="field_3352"]').hide();	
+	
+//vhc work over model
+		 tooltipsTable('1313','4342','field_3330','field_3353');	
+	  $('th[class="field_3353"]').hide();
+    $('td[class*="field_3353"]').hide();	
+		
+	});
+
+
+
+
   //trigger get tyres and prices for a selected dealer from modal view
 $(document).on('knack-form-submit.view_3519', function(event, view, data) { 
     
