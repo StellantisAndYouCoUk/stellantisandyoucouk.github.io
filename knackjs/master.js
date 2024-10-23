@@ -4919,12 +4919,17 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 
 $(document).on('knack-record-update.view_7544', function(event, view, data) {
   
-  setTimeout(function () { location.hash = location.hash + "#"; }, 5000);
+  setTimeout(function () { location.hash = location.hash + "#"; }, 8000);
   
   alert("We're refreshing the valuation based on the new aesthetic repair costs. Please click 'OK' & this page will refresh in a few moments...");
 
   Knack.showSpinner();
   
+});
+
+// TCHEK PX V1 - Dealer updates aesthetic repair costs, update valuation
+$(document).on('knack-form-submit.view_7544', function(event, view, data) { 
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/sdp9gj2gk24bwdcqubm6be1cmfet4ko0",{"Record ID":data.id,"Trigger":"Tchek Aesthetic Repair Costs Updated"},"TCHEK PX V1 - Dealer updates aesthetic repair costs, update valuation");
 });
 
 
