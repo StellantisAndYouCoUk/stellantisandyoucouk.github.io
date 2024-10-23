@@ -4629,7 +4629,7 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 		 tooltipsTable('1313','4342','field_3280','field_3358');	
 	  $('th[class="field_3280"]').hide();
     $('td[class*="field_3280"]').hide();*/	
-	
+	 $('div[id="view_4342"] table>tbody>tr').each(function(){
 	 $(this).find('td[data-field-key="field_3358"]').attr('data-tooltip',getFieldForRowID('view_4342','field_3280',$(this).attr('id')));
       $(this).find('td[data-field-key="field_3358"]').addClass('tooltip-left');
 
