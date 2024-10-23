@@ -4913,6 +4913,24 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
   sceneRefresh(refreshData,null,1,null,false);
 }
 
+// TCHEK PART EX APPRAISAL V1 PILOTING CODE //
+
+//****************** Show Alert & Refresh Retail Valuation after Manager Updates Aesthetic Repair Costs from Tchek ****************//
+
+$(document).on('knack-record-update.view_7544', function(event, view, data) {
+  
+  setTimeout(function () { location.hash = location.hash + "#"; }, 5000);
+  
+  alert("We're refreshing the valuation based on the new aesthetic repair costs. Please click 'OK' & this page will refresh in a few moments...");
+
+  Knack.showSpinner();
+  
+});
+
+
+
+
+
 //Mayank code 
 let eventSource = null;
 
