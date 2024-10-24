@@ -4286,7 +4286,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 }
 
 /* Tchek AI Condition Link from PX V1 */
-#view_7547 > section > div > div > div > div > div.kn-label-none.field_10169 > div > span > h2 > strong > span > a {
+#view_7547 > section > div > div > div > div > div.kn-label-none.field_10169 > div > span > strong > span > a {
   color: #ffffff;
   font-weight: bold;
   background-color: #00cc66;
@@ -4294,7 +4294,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
   display: inline-block;
 }
 
-#view_7547 > section > div > div > div > div > div.kn-label-none.field_10169 > div > span > h2 > strong > span > a:hover {
+#view_7547 > section > div > div > div > div > div.kn-label-none.field_10169 > div > span > strong > span > a:hover {
   color: #ffffff;
   font-weight: bold;
   background-color: #32936f;
