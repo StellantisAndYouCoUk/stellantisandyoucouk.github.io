@@ -4285,6 +4285,23 @@ n-link.kn-link-2.kn-link-page.kn-button,
   box-shadow: 3px 3px #ccc;
 }
 
+/* Tchek AI Condition Link from PX V1 */
+#view_7547 > section > div > div > div > div > div.kn-label-none.field_10169 > div > span > h2 > strong > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00cc66;
+  padding: 12px;
+  display: inline-block;
+}
+
+#view_7547 > section > div > div > div > div > div.kn-label-none.field_10169 > div > span > h2 > strong > span > a {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #32936f;
+  padding: 12px;
+  display: inline-block;
+}
+
 
 .notification {
   background-color: #333;
