@@ -4590,7 +4590,7 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 //Hover for sales prospecting
 //scene, view, field to have hover, hover info
 //Service Details over Reg 
-		 tooltipsTable('1313','4342','field_3350','field_3259');	
+		 tooltipsTable('1313','4342','field_3350','field_3359');	
 	  $('th[class="field_3350"]').hide();
     $('td[class*="field_3350"]').hide();
 
