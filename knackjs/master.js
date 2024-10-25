@@ -523,6 +523,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 {view:'view_5736',url:'#after-sales-vehicle-lookup/all-jobs/'},
 {view:'view_5737',url:'#after-sales-vehicle-lookup/check-out/'},
 {view:'view_5738',url:'#after-sales-vehicle-lookup/post-visit/'},
+{view:'view_5738',url:'#after-sales-vehicle-lookup/customer-follow-up-call-list/'},
 {view:'view_5739',url:'#aftersales-service-reporting/'},
 {view:'view_5740',url:'#aftersales-service-reporting/wip-reporting/'},
 {view:'view_5741',url:'#aftersales-service-reporting/exit-survey-reporting/'},
