@@ -523,6 +523,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 {view:'view_5736',url:'#after-sales-vehicle-lookup/all-jobs/'},
 {view:'view_5737',url:'#after-sales-vehicle-lookup/check-out/'},
 {view:'view_5738',url:'#after-sales-vehicle-lookup/post-visit/'},
+{view:'view_7562',url:'#after-sales-vehicle-lookup/customer-follow-up-call-list/'},
 {view:'view_5739',url:'#aftersales-service-reporting/'},
 {view:'view_5740',url:'#aftersales-service-reporting/wip-reporting/'},
 {view:'view_5741',url:'#aftersales-service-reporting/exit-survey-reporting/'},
@@ -4913,6 +4914,29 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
   sceneRefresh(refreshData,null,1,null,false);
 }
 
+// TCHEK PART EX APPRAISAL V1 PILOTING CODE //
+
+//****************** Show Alert & Refresh Retail Valuation after Manager Updates Aesthetic Repair Costs from Tchek ****************//
+
+$(document).on('knack-record-update.view_7544', function(event, view, data) {
+  
+  setTimeout(function () { location.hash = location.hash + "#"; }, 10000);
+  
+  alert("We're refreshing the valuation based on the new aesthetic repair costs. Please click 'OK' & this page will refresh in a few moments...");
+
+  Knack.showSpinner();
+  
+});
+
+// TCHEK PX V1 - Dealer updates aesthetic repair costs, update valuation
+$(document).on('knack-form-submit.view_7544', function(event, view, data) { 
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/sdp9gj2gk24bwdcqubm6be1cmfet4ko0",{"Record ID":data.id,"Trigger":"Tchek Aesthetic Repair Costs Updated"},"TCHEK PX V1 - Dealer updates aesthetic repair costs, update valuation");
+});
+
+
+
+
+
 //Mayank code 
 let eventSource = null;
 
@@ -5162,6 +5186,130 @@ function createLink(url, linkText) {
 //   }
 // });
 
+// $(document).on("knack-view-render.any", function (event, scene) {
+//   // Initialize the EventSource only if it's not already set
+//   if (eventSource === null) {
+//     const userAttributes = Knack.getUserAttributes();
+//     let notificationId;
+
+//     if (userAttributes !== "No user found") {
+//       const userValue = userAttributes.id;
+//       const subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+//       eventSource = new EventSource(subscribeURL);
+
+//       function showNotification(data) {
+//         parsedData = data;
+//         notificationId = parsedData.id; // Get the unique notification ID from the message
+
+
+//         // Get the last shown notification details from localStorage
+//         const storedData = localStorage.getItem("alertKey");
+//         let lastNotification = storedData ? storedData : null;
+
+//         console.log("Stored ID from localStorage:", lastNotification ? lastNotification : null);
+//         const lastNotificationId = JSON.parse(lastNotification).value
+
+//         // Check if the current notification ID is different from the last shown ID
+//         if (!lastNotificationId || lastNotificationId !== notificationId) {
+//           console.log("Notification not shown yet, showing now...");
+
+//           // Show the notification using Swal
+//           Swal.fire({
+//             title: `<strong>${parsedData.title}</strong>`,
+//             html: `
+//               ${parsedData.attachment && parsedData.attachment.url
+//                 ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+//                 : ""
+//               }
+//               ${parsedData.message || ""}
+//             `,
+//             showCloseButton: true,
+//             allowEscapeKey: true,
+//             focusConfirm: false,
+//             showCancelButton: true,
+//             cancelButtonText: "Ok",
+//             cancelButtonColor: "#28a745",
+//             showConfirmButton: !!parsedData.click,
+//             confirmButtonText: `${parsedData.click
+//               ? `<i class="fa fa-external-link-alt"></i> Go to Link`
+//               : ""}`,
+//             confirmButtonAriaLabel: "Go to Link",
+//             preConfirm: () => {
+//               if (parsedData.click) {
+//                 window.open(parsedData.click, "_blank");
+//               }
+//             },
+//             didOpen: () => {
+//               const cancelButton = Swal.getCancelButton();
+//               const confirmButton = Swal.getConfirmButton();
+
+//               if (cancelButton) {
+//                 cancelButton.id = "popup-cancel-button";
+//                 document
+//                   .getElementById("popup-cancel-button")
+//                   .addEventListener("click", () => {
+//                     Swal.close();
+//                   });
+//               }
+
+//               if (confirmButton) confirmButton.id = "popup-confirm-button";
+//             },
+//           });
+
+//           // Save the shown notification ID and timestamp in localStorage
+//           const data = {
+//             value: String(notificationId),
+//             timestamp: new Date().toISOString() // Save current time in ISO format
+//           };
+
+//           localStorage.setItem("alertKey", JSON.stringify(data));
+//           console.log("Value stored in localStorage:", localStorage.getItem("alertKey"));
+//         } else {
+//           console.log("Notification already shown, skipping...");
+//         }
+//       }
+
+//       // Handle incoming messages from the event source
+//       eventSource.onmessage = (e) => {
+//         try {
+//           // Print the received message to the console
+    
+//           const dataParsed = JSON.parse(e.data);
+//           // Call the showNotification function to process and display the message
+//           showNotification(dataParsed);
+//         } catch (error) {
+//           console.error("Failed to process message:", error);
+//         }
+//       };
+
+//       // Sync notifications across all open tabs
+//       window.addEventListener("storage", (event) => {
+//         if (event.key === "alertKey") {
+//           const storedData = JSON.parse(event.newValue);
+//           if (storedData) {
+//             const lastNotificationId = storedData.value;
+//             if (lastNotificationId === notificationId) {
+//               console.log("Notification was shown in another tab, skipping in this tab.");
+//               return; // Prevent showing this notification again
+//             }
+//           }
+//         }
+//       });
+
+//       // Handle the EventSource error event
+//       eventSource.onerror = (error) => {
+//         console.error("EventSource failed:", error);
+//         // Optionally, close the EventSource on error
+//         eventSource.close();
+//         eventSource = null; // Reset the eventSource variable
+//       };
+//     }
+//   }
+// });
+
+
+
+
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
   if (eventSource === null) {
@@ -5177,111 +5325,73 @@ $(document).on("knack-view-render.any", function (event, scene) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
 
+        console.log("Notification ID:", notificationId);
 
-        // Get the last shown notification details from localStorage
-        const storedData = localStorage.getItem("alertKey");
-        let lastNotification = storedData ? storedData : null;
+        // Show the notification using Swal
+        Swal.fire({
+          title: `<strong>${parsedData.title}</strong>`,
+          html: `
+            ${parsedData.attachment && parsedData.attachment.url
+              ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+              : ""
+            }
+            ${parsedData.message || ""}
+          `,
+          showCloseButton: true,
+          allowEscapeKey: true,
+          focusConfirm: false,
+          showCancelButton: true,
+          cancelButtonText: "Ok",
+          cancelButtonColor: "#28a745",
+          showConfirmButton: !!parsedData.click,
+          confirmButtonText: `${parsedData.click
+            ? `<i class="fa fa-external-link-alt"></i> Go to Link`
+            : ""}`,
+          confirmButtonAriaLabel: "Go to Link",
+          preConfirm: () => {
+            if (parsedData.click) {
+              window.open(parsedData.click, "_blank");
+            }
+          },
+          didOpen: () => {
+            const cancelButton = Swal.getCancelButton();
+            const confirmButton = Swal.getConfirmButton();
 
-        console.log("Stored ID from localStorage:", lastNotification ? lastNotification : null);
-        const lastNotificationId = JSON.parse(lastNotification).value
+            if (cancelButton) {
+              cancelButton.id = "popup-cancel-button";
+              document
+                .getElementById("popup-cancel-button")
+                .addEventListener("click", () => {
+                  Swal.close();
+                });
+            }
 
-        // Check if the current notification ID is different from the last shown ID
-        if (!lastNotificationId || lastNotificationId !== notificationId) {
-          console.log("Notification not shown yet, showing now...");
-
-          // Show the notification using Swal
-          Swal.fire({
-            title: `<strong>${parsedData.title}</strong>`,
-            html: `
-              ${parsedData.attachment && parsedData.attachment.url
-                ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
-                : ""
-              }
-              ${parsedData.message || ""}
-            `,
-            showCloseButton: true,
-            allowEscapeKey: true,
-            focusConfirm: false,
-            showCancelButton: true,
-            cancelButtonText: "Ok",
-            cancelButtonColor: "#28a745",
-            showConfirmButton: !!parsedData.click,
-            confirmButtonText: `${parsedData.click
-              ? `<i class="fa fa-external-link-alt"></i> Go to Link`
-              : ""}`,
-            confirmButtonAriaLabel: "Go to Link",
-            preConfirm: () => {
-              if (parsedData.click) {
-                window.open(parsedData.click, "_blank");
-              }
-            },
-            didOpen: () => {
-              const cancelButton = Swal.getCancelButton();
-              const confirmButton = Swal.getConfirmButton();
-
-              if (cancelButton) {
-                cancelButton.id = "popup-cancel-button";
-                document
-                  .getElementById("popup-cancel-button")
-                  .addEventListener("click", () => {
-                    Swal.close();
-                  });
-              }
-
-              if (confirmButton) confirmButton.id = "popup-confirm-button";
-            },
-          });
-
-          // Save the shown notification ID and timestamp in localStorage
-          const data = {
-            value: String(notificationId),
-            timestamp: new Date().toISOString() // Save current time in ISO format
-          };
-
-          localStorage.setItem("alertKey", JSON.stringify(data));
-          console.log("Value stored in localStorage:", localStorage.getItem("alertKey"));
-        } else {
-          console.log("Notification already shown, skipping...");
-        }
+            if (confirmButton) confirmButton.id = "popup-confirm-button";
+          },
+        });
       }
 
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
         try {
-          // Print the received message to the console
-    
           const dataParsed = JSON.parse(e.data);
-          // Call the showNotification function to process and display the message
+          console.log(JSON.stringify(dataParsed));
           showNotification(dataParsed);
         } catch (error) {
           console.error("Failed to process message:", error);
         }
       };
 
-      // Sync notifications across all open tabs
-      window.addEventListener("storage", (event) => {
-        if (event.key === "alertKey") {
-          const storedData = JSON.parse(event.newValue);
-          if (storedData) {
-            const lastNotificationId = storedData.value;
-            if (lastNotificationId === notificationId) {
-              console.log("Notification was shown in another tab, skipping in this tab.");
-              return; // Prevent showing this notification again
-            }
-          }
-        }
-      });
-
       // Handle the EventSource error event
       eventSource.onerror = (error) => {
         console.error("EventSource failed:", error);
-        // Optionally, close the EventSource on error
         eventSource.close();
         eventSource = null; // Reset the eventSource variable
       };
     }
   }
 });
+
 
 $(document).on('knack-view-render.view_7387', function (event, view, data) {
   createdMotabReturnsViewImageUpload();
