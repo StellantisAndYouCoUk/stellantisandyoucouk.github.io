@@ -456,8 +456,8 @@ imageBeforeResize.onload = () => {
   let str = 'takePhotoImageWidth:'+takePhotoImageWidth+',takePhotoImageHeight:'+takePhotoImageHeight+',imageBeforeResize.width:'+imageBeforeResize.width+',imageBeforeResize.height:'+imageBeforeResize.height+',elem.width:'+elem.width+',elem.height:'+elem.height;
   alert(str);
 }
-    //ctx.drawImage(imageBeforeResize,0,0,imageBeforeResize.width,imageBeforeResize.height,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
-    ctx.drawImage(imageBeforeResize,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
+    ctx.drawImage(imageBeforeResize,0,0,imageBeforeResize.width,imageBeforeResize.height,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
+    //ctx.drawImage(imageBeforeResize,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
   
    //save the resized image to the shown img
    ctx.canvas.toBlob((blob) => {
@@ -599,8 +599,8 @@ var takePhotoImageHeight = null;
       c.height = video.videoHeight;
       takePhotoImageWidth = video.videoWidth;
       takePhotoImageHeight = video.videoHeight;
-      imageBeforeResize.width = video.videoWidth;
-      imageBeforeResize.height = video.videoHeight;
+      //imageBeforeResize.width = video.videoWidth;
+      //imageBeforeResize.height = video.videoHeight;
       var ctx = c.getContext('2d');
       ctx.drawImage(video, 0, 0);
       ctx.canvas.toBlob((blob) => {
@@ -618,8 +618,8 @@ var takePhotoImageHeight = null;
         img.src = URL.createObjectURL(blob);
         takePhotoImageWidth = video.videoWidth;
         takePhotoImageHeight = video.videoHeight;
-        imageBeforeResize.width = video.videoWidth;
-        imageBeforeResize.height = video.videoHeight;
+        //imageBeforeResize.width = video.videoWidth;
+        //imageBeforeResize.height = video.videoHeight;
         imageBeforeResize.src = img.src; 
         imgCompare.src = img.src;
         srcSet = true;
