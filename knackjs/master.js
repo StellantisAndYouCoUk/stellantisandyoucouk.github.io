@@ -4920,7 +4920,7 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
 
 $(document).on('knack-record-update.view_7544', function(event, view, data) {
   
-  setTimeout(function () { location.hash = location.hash + "#"; }, 8000);
+  setTimeout(function () { location.hash = location.hash + "#"; }, 10000);
   
   alert("We're refreshing the valuation based on the new aesthetic repair costs. Please click 'OK' & this page will refresh in a few moments...");
 
