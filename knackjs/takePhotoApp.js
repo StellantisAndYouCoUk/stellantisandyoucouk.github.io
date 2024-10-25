@@ -437,13 +437,13 @@ if (appSettings.compareImage){
 //this image gets the captured photo and when it is loaded it resizes iteslf and saves the image to shown image
 var imageBeforeResize = document.createElement('img');
 imageBeforeResize.onload = () => {
-  if (takePhotoImageWidth/takePhotoImageHeight!==imageBeforeResize.width/imageBeforeResize.height){
+  /*if (takePhotoImageWidth/takePhotoImageHeight!==imageBeforeResize.width/imageBeforeResize.height){
     //alert(takePhotoImageWidth);
     //alert(takePhotoImageHeight)
     //alert(imageBeforeResize.width);
     //alert(imageBeforeResize.height)
     imageBeforeResize.width = imageBeforeResize.height*(takePhotoImageWidth/takePhotoImageHeight);
-  }
+  }*/
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
 
    const elem = document.createElement('canvas');
