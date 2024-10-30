@@ -17,9 +17,9 @@
             /*const track = mediaStream.getVideoTracks()[0];
             track.applyConstraints(constraints);*/
   
-            if (!OperatingSystem.iOS()) {
+            /*if (!OperatingSystem.iOS()) {
                 imageCapture = new ImageCapture(track);
-            }
+            }*/
         })
         .catch(error =>{
         if (error.toString().includes('Permission denied')){
