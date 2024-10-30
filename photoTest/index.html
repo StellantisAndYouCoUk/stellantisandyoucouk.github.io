@@ -10,8 +10,8 @@
             };
 
         var video = document.querySelector('video');
-        let constraints2 = MediaServices.getIdealConstraints(idealCameraDevice, idealResolution);
-        navigator.mediaDevices.getUserMedia(constraints2).then(mediaStream => {
+        //let constraints2 = MediaServices.getIdealConstraints(idealCameraDevice, idealResolution);
+        navigator.mediaDevices.getUserMedia({}).then(mediaStream => {
             document.querySelector('video').srcObject = mediaStream;
   
             /*const track = mediaStream.getVideoTracks()[0];
