@@ -10,7 +10,8 @@
             };
 
         var video = document.querySelector('video');
-        navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}}).then(mediaStream => {
+        let constraints2 = MediaServices.getIdealConstraints(idealCameraDevice, idealResolution);
+        navigator.mediaDevices.getUserMedia(constraints2).then(mediaStream => {
             document.querySelector('video').srcObject = mediaStream;
   
             /*const track = mediaStream.getVideoTracks()[0];
