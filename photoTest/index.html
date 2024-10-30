@@ -13,8 +13,8 @@
         navigator.mediaDevices.getUserMedia({video: {facingMode: {exact: "environment"}}}).then(mediaStream => {
             document.querySelector('video').srcObject = mediaStream;
   
-            const track = mediaStream.getVideoTracks()[0];
-            track.applyConstraints(constraints);
+            /*const track = mediaStream.getVideoTracks()[0];
+            track.applyConstraints(constraints);*/
   
             if (!OperatingSystem.iOS()) {
                 imageCapture = new ImageCapture(track);
