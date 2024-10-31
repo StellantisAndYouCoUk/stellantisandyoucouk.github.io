@@ -2422,7 +2422,17 @@ var calibrationValue = getCookie('rdSpiritCalibration');
   var alpha    = event.alpha;
   var beta     = event.beta;
   var gamma    = event.gamma;
-  console.log('orientation',alpha,beta,gamma,absolute);
+  let orientationStr = '';
+  if (window.matchMedia("(orientation: portrait)").matches) {
+    // you're in PORTRAIT mode
+    orientationStr = 'portrait';
+  }
+ 
+  if (window.matchMedia("(orientation: landscape)").matches) {
+    // you're in LANDSCAPE mode
+    orientationStr = 'landscape';
+  }
+  console.log('orientation',orientationStr,alpha,beta,gamma,absolute);
   let origBeta = beta;
 
   //if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male') || Knack.getUserAttributes().email.includes('conor.power')){
