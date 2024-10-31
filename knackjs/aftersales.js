@@ -4638,7 +4638,15 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 	
 	});
 
-
+//hover for labour details on Quality Check View
+   $(document).on('knack-view-render.view_3068', function (event, view, data) {
+    $('th[class="field_1537"]').hide();
+    $('td[class*="field_1537"]').hide();
+   
+	 tooltipsTable('990','3068','field_1537','field_787');
+	//scene, view, hover info, field to have hover
+   
+    });
 
   //trigger get tyres and prices for a selected dealer from modal view
 $(document).on('knack-form-submit.view_3519', function(event, view, data) { 
