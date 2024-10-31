@@ -4642,7 +4642,10 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
    $(document).on('knack-view-render.view_3068', function (event, view, data) {
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
-   
+    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
+
+	   
 	 tooltipsTable('990','3068','field_1537','field_787');
 	//scene, view, hover info, field to have hover
    
