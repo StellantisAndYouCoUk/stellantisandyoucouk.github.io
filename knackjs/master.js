@@ -2422,7 +2422,7 @@ var calibrationValue = getCookie('rdSpiritCalibration');
   var alpha    = event.alpha;
   var beta     = event.beta;
   var gamma    = event.gamma;
-  //console.log(beta);
+  console.log('orientation',alpha,beta,gamma,absolute);
   let origBeta = beta;
 
   //if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male') || Knack.getUserAttributes().email.includes('conor.power')){
