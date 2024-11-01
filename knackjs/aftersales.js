@@ -1718,6 +1718,11 @@ $(document).on("knack-scene-render.scene_1280", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
 
+//  Pop-up to display Parts PO Upload
+$(document).on("knack-scene-render.scene_1325", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
 //Recall Recheck Spinner on Vehicle Checkin and to expand the modal pop up so it is wider
 
 $(document).on("knack-scene-render.scene_769", function(event, scene) {
