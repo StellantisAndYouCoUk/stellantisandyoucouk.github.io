@@ -4307,7 +4307,7 @@ function imageUploadedSuccesfully(fieldName, fileId){
       failMakeWebhook : 'https://hook.eu1.make.celonis.com/3but1lwjptm6gqi3a0m7uulceuhx8znt'
     }
     $.ajax({
-      url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheckMotability',
+      url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(dataToSend),
@@ -5001,7 +5001,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
       if (!status || !status.addressData || (customAddress && status.addressToUse !==customAddress)){
         let addressToUse = $('div[class="field_308"]>div>span>span').html().replace('<br>',', ');
         if (customAddress) addressToUse = customAddress;
-        let closestD = callPostHttpRequest('https://7rhnwcwqj9ap.runs.apify.net/dealersNearAddress',{Address:addressToUse});
+        let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:addressToUse});
         console.log('closestD',closestD)
         closestD = JSON.parse(closestD);
         if (!status){

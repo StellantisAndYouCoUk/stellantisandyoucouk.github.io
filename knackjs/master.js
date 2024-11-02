@@ -4367,7 +4367,7 @@ $(document).on('knack-view-render.view_6164', function (event, view, data) {
   console.log('recordIf',getRecordIdFromHref(location.href));
   if ($('div[class*="field_4944"] img').attr('src')){
     $.ajax({
-      url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheck',
+      url: 'https://davidmale--server.apify.actor/photoCheck?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({imageUrl:$('div[class*="field_4944"] img').attr('src'),recordId:getRecordIdFromHref(location.href)}),
@@ -4437,7 +4437,7 @@ function scene_1908_showhide(){
 
 function sendRejectedPhotoToEnhancement(recordId, imageUrl){
   $.ajax({
-    url: 'https://7rhnwcwqj9ap.runs.apify.net/photoEnhancement',
+    url: 'https://davidmale--server.apify.actor/photoEnhancement?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify({imageUrl:imageUrl,recordId:recordId}),
@@ -4449,7 +4449,7 @@ $(document).on('knack-view-render.view_2277', function (event, view, data) {
   console.log('recordIf',getRecordIdFromHref(location.href));
   if ($('div[class*="field_4944_thumb_100"] img').attr('data-kn-img-gallery')){
     $.ajax({
-      url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheck',
+      url: 'https://davidmale--server.apify.actor/photoCheck?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({imageUrl:$('div[class*="field_4944_thumb_100"] img').attr('data-kn-img-gallery'),recordId:getRecordIdFromHref(location.href)}),
@@ -4494,7 +4494,7 @@ $(document).on('knack-view-render.view_2283', function (event, view, data) {
         insertUpdatePhotoMessage('Photo Quality Check Status – PROCESSING','photoQualityMessage',false);
       }, 500);
       $.ajax({
-        url: 'https://7rhnwcwqj9ap.runs.apify.net/sightengine',
+        url: 'https://davidmale--server.apify.actor/sightengine?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({imageUrl:$('div[class="field_4944_thumb_100"] img').attr('data-kn-img-gallery')}),
@@ -4823,7 +4823,7 @@ function sendImageToCheck(assetId, fileName,knackField,knackId){
     imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/591eae59e0d2123f23235769/'+assetId+'/original/'+fileName
   }
   $.ajax({
-    url: 'https://7rhnwcwqj9ap.runs.apify.net/addImageToCheck',
+    url: 'https://davidmale--server.apify.actor/addImageToCheck?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify(dataToSend),
@@ -5444,7 +5444,7 @@ function motabReturnsImageUpload(fieldName, fileId, filename, recordId){
     failMakeWebhook : 'https://hook.eu1.make.celonis.com/8bk2vrabvh1u2y3oiur2l1t3pwbo9mqk'
   }
   $.ajax({
-    url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheckMotability',
+    url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify(dataToSend),
@@ -5540,7 +5540,7 @@ function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null
       imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg'
     }
     $.ajax({
-      url: 'https://7rhnwcwqj9ap.runs.apify.net/photoCheckMotability',
+      url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(dataToSend),
