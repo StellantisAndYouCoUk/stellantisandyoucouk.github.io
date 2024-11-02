@@ -1718,6 +1718,11 @@ $(document).on("knack-scene-render.scene_1280", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
 
+//  Pop-up to display Parts PO Upload
+$(document).on("knack-scene-render.scene_1325", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
 //Recall Recheck Spinner on Vehicle Checkin and to expand the modal pop up so it is wider
 
 $(document).on("knack-scene-render.scene_769", function(event, scene) {
@@ -4611,12 +4616,12 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 
 
 //date sold over sold new/used
-		 tooltipsTable('1313','4342','field_3355','field_3263');	
+		 tooltipsTable('1313','4342','field_3355','field_3371');	
 	  $('th[class="field_3355"]').hide();
     $('td[class*="field_3355"]').hide();
 
 //1 Link cust.name over name
-		 tooltipsTable('1313','4342','field_3356','field_3242');	
+		 tooltipsTable('1313','4342','field_3356','field_3372');	
 	  $('th[class="field_3356"]').hide();
     $('td[class*="field_3356"]').hide();
 
@@ -4638,7 +4643,18 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 	
 	});
 
+//hover for labour details on Quality Check View
+   $(document).on('knack-view-render.view_3068', function (event, view, data) {
+    $('th[class="field_1537"]').hide();
+    $('td[class*="field_1537"]').hide();
+    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
 
+	   
+	 tooltipsTable('990','3068','field_1537','field_787');
+	//scene, view, hover info, field to have hover
+   
+    });
 
   //trigger get tyres and prices for a selected dealer from modal view
 $(document).on('knack-form-submit.view_3519', function(event, view, data) { 

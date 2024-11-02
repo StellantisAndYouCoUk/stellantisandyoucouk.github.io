@@ -546,7 +546,8 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 /*Parts sales reporting {view:'view_4929 ',url:'#parts-sales-reporting/'},*/
 {view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'},
 /*Workshop capacity*/ {view:'view_7528',url:'#aftersales-service-reporting/workshop-capacity/'},
-/* sales prospect*/ {view:'view_7517',url:'#service-sales-prospect'}]; ///add scene numbers as necessary
+/*PO Upload*/ {view:'view_7571',url:'#po-upload/'},
+/* sales prospect*/ {view:'view_7517',url:'#service-sales-prospect'}]; 
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 aftersalesConnectView.forEach(aftersalesConnectViewFunction);
 
