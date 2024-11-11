@@ -4995,6 +4995,8 @@ function createLink(url, linkText) {
 });
 
 
+
+
 // $(document).on("knack-view-render.any", function (event, scene) {
 //   if (eventSource === null) {
 //     const userAttributes = Knack.getUserAttributes();
@@ -5588,3 +5590,36 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
     $('form').submit();
   }
 }
+// Notification
+
+function requestNotificationPermission() {
+  // Check if the Notification API is supported
+  if ('Notification' in window) {
+      // Check the current permission status
+      if (Notification.permission === 'default') {
+          // If permission is neither granted nor denied, ask for permission
+          Notification.requestPermission().then(permission => {
+              if (permission === 'granted') {
+                  console.log('User granted notification permissions.');
+                  // You can proceed with sending notifications or other related actions
+              } else if (permission === 'denied') {
+                  console.log('User denied notification permissions.');
+                  // Handle denied permission if needed
+              }
+          });
+      } else if (Notification.permission === 'granted') {
+          console.log('Notification permission already granted.');
+          // Notifications are already allowed, so you don’t need to ask again
+      } else {
+          console.log('Notification permission previously denied.');
+          // Notifications were denied, so you don’t need to ask again
+      }
+  } else {
+      console.log('Browser does not support notifications.');
+  }
+}
+
+// Using jQuery to call the function when the page is ready
+$(document).ready(function() {
+  requestNotificationPermission();
+});
