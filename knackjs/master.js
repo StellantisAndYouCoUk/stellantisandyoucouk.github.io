@@ -5623,3 +5623,12 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 // $(window).on('load', function() {
 //   requestNotificationPermission();
 // });
+
+$(document).ready(function() {
+  const notificationIconHtml = `
+      <div class="notification-icon">
+          <img src="https://media.lordicon.com/icons/system/regular/46-notification-bell.svg" alt="Notification Bell">
+      </div>
+  `;
+  $(".field_2").append(notificationIconHtml);
+});
