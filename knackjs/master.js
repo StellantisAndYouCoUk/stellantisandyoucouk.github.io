@@ -5626,9 +5626,12 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 
 $(document).on('knack-view-render.view_5662', function(event, view) {
   const notificationIconHtml = `
+      <div class="user-icon">
+          <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon">
+      </div>
       <div class="notification-icon">
-          <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="Notification Bell">
+          <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell">
       </div>
   `;
-  $(".field_2").append(notificationIconHtml);
+  $("#649abd15f2292c09c47ae64a").append(notificationIconHtml);
 });
