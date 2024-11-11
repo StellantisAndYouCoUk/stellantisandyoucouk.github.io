@@ -5624,7 +5624,7 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 //   requestNotificationPermission();
 // });
 
-$(document).on('knack-view-render.kn-log-out', function(event, view) {
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
   const notificationIconHtml = `
       <div class="user-icon">
           <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon">
