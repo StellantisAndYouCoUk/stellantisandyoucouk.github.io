@@ -4346,3 +4346,11 @@ n-link.kn-link-2.kn-link-page.kn-button,
   from { transform: translateY(100px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+
+.kn-current_user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -5626,12 +5626,9 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
   const notificationIconHtml = `
-      <div class="user-icon">
-          <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon">
-      </div>
-      <div class="notification-icon">
-          <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell">
-      </div>
+          <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+          <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
+
   `;
   $(".kn-current_user").append(notificationIconHtml);
 });
