@@ -5624,7 +5624,7 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 //   requestNotificationPermission();
 // });
 
-$(document).ready(function() {
+$(document).on('knack-view-render.view_5662', function(event, view) {
   const notificationIconHtml = `
       <div class="notification-icon">
           <img src="https://media.lordicon.com/icons/system/regular/46-notification-bell.svg" alt="Notification Bell">
