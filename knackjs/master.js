@@ -5620,6 +5620,6 @@ function requestNotificationPermission() {
 }
 
 // Using jQuery to call the function when the page is ready
-$(document).ready(function() {
+$(window).on('load', function() {
   requestNotificationPermission();
 });
