@@ -5624,7 +5624,7 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 //   requestNotificationPermission();
 // });
 
-$(document).on('knack-view-render.view_5662', function(event, view) {
+$(document).on('knack-view-render.kn-log-out', function(event, view) {
   const notificationIconHtml = `
       <div class="user-icon">
           <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon">
@@ -5633,5 +5633,5 @@ $(document).on('knack-view-render.view_5662', function(event, view) {
           <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell">
       </div>
   `;
-  $("#649abd15f2292c09c47ae64a").append(notificationIconHtml);
+  $(".kn-current_user").append(notificationIconHtml);
 });
