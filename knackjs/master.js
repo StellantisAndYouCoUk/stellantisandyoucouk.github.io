@@ -5627,7 +5627,7 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 $(document).on('knack-view-render.view_5662', function(event, view) {
   const notificationIconHtml = `
       <div class="notification-icon">
-          <img src="https://media.lordicon.com/icons/system/regular/46-notification-bell.svg" alt="Notification Bell">
+          <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="Notification Bell">
       </div>
   `;
   $(".field_2").append(notificationIconHtml);
