@@ -5409,7 +5409,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
              };
            }
 
-           showNotificationBackground(dataParsed.message,"Desktop Notification Test");
+           showNotificationBackground(dataParsed.title,"",dataParsed.message);
 
 
 
