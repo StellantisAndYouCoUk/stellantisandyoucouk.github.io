@@ -5626,7 +5626,7 @@ $(window).on('load', function() {
 
 // 2.Improvement
 
-$(document).on('knack-scene-render.scene_435', function(event, scene) {
+$(document).ready(function() {
   const notificationIconHtml = `
   <div class="bellicon__off">
   <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
@@ -5634,5 +5634,7 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   </div>
            <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
    `;
+   if (!$('.kn-current_user').find('.notification-icon').length) {
    $(".kn-current_user").append(notificationIconHtml);
+   }
  });
