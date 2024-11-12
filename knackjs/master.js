@@ -4963,8 +4963,8 @@ let publishURL = '';
 let subscribeURL = '';
 
       function createNotificationUrl(value){
-       publishURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
-       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
+       publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+       subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
 
        return subscribeURL;
       }
@@ -5337,7 +5337,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
-      const subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
       function showNotification(data) {
@@ -5592,47 +5592,47 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 }
 // Notification Read
 
-// function requestNotificationPermission() {
-//   // Check if the Notification API is supported
-//   if ('Notification' in window) {
-//       // Check the current permission status
-//       if (Notification.permission === 'default') {
-//           // If permission is neither granted nor denied, ask for permission
-//           Notification.requestPermission().then(permission => {
-//               if (permission === 'granted') {
-//                   console.log('User granted notification permissions.');
-//                   // You can proceed with sending notifications or other related actions
-//               } else if (permission === 'denied') {
-//                   console.log('User denied notification permissions.');
-//                   // Handle denied permission if needed
-//               }
-//           });
-//       } else if (Notification.permission === 'granted') {
-//           console.log('Notification permission already granted.');
-//           // Notifications are already allowed, so you don’t need to ask again
-//       } else {
-//           console.log('Notification permission previously denied.');
-//           // Notifications were denied, so you don’t need to ask again
-//       }
-//   } else {
-//       console.log('Browser does not support notifications.');
-//   }
-// }
+function requestNotificationPermission() {
+  // Check if the Notification API is supported
+  if ('Notification' in window) {
+      // Check the current permission status
+      if (Notification.permission === 'default') {
+          // If permission is neither granted nor denied, ask for permission
+          Notification.requestPermission().then(permission => {
+              if (permission === 'granted') {
+                  console.log('User granted notification permissions.');
+                  // You can proceed with sending notifications or other related actions
+              } else if (permission === 'denied') {
+                  console.log('User denied notification permissions.');
+                  // Handle denied permission if needed
+              }
+          });
+      } else if (Notification.permission === 'granted') {
+          console.log('Notification permission already granted.');
+          // Notifications are already allowed, so you don’t need to ask again
+      } else {
+          console.log('Notification permission previously denied.');
+          // Notifications were denied, so you don’t need to ask again
+      }
+  } else {
+      console.log('Browser does not support notifications.');
+  }
+}
 
 // // Using jQuery to call the function when the page is ready
-// $(window).on('load', function() {
-//   requestNotificationPermission();
-// });
+$(window).on('load', function() {
+  requestNotificationPermission();
+});
 
 // 2.Improvement
 
-// $(document).on('knack-scene-render.scene_435', function(event, scene) {
-//   const notificationIconHtml = `
-//   <div class="bellicon__off">
-//   <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
-//   <span class="not">Off</span>
-//   </div>
-//            <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
-//    `;
-//    $(".kn-current_user").append(notificationIconHtml);
-//  });
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
+  const notificationIconHtml = `
+  <div class="bellicon__off">
+  <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
+  <span class="not">Off</span>
+  </div>
+           <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+   `;
+   $(".kn-current_user").append(notificationIconHtml);
+ });

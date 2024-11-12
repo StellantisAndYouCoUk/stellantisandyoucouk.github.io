@@ -4347,7 +4347,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
   to { transform: translateY(0); opacity: 1; }
 }
 /* After ask comment it out... */
-/*  
+ 
 .kn-current_user {
   display: flex;
   justify-content: center;
@@ -4377,4 +4377,4 @@ img.user-icon:hover {
   box-shadow: 0 0 10px rgba(0, 128, 128, 0.8); 
 }
 
-*/
+
