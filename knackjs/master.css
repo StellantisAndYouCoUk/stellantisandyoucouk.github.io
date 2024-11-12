@@ -4368,13 +4368,13 @@ span.not {
 
 
 img.user-icon {
-  box-shadow: 0 0 10px rgba(194, 178, 128, 0.6); 
+  box-shadow: 0 0 10px rgba(136, 55, 105, 0.6); 
   border-radius: 50%;
   transition: box-shadow 0.3s ease-out;
 }
 
 img.user-icon:hover {
-  box-shadow: 0 0 10px rgba(0, 128, 128, 0.8); 
+  box-shadow: 0 0 10px rgba(0, 23, 128, 0.8); 
 }
 
 
