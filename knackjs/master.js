@@ -5626,7 +5626,7 @@ $(window).on('load', function() {
 
 // 2.Improvement
 
-$(document).on('knack-scene-render.scene_435', function(event, scene) {
+$(document).on("knack-view-render.any", function (event, scene) {
   const notificationIconHtml = `
   <div class="bellicon__off">
   <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
