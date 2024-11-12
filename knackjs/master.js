@@ -5398,7 +5398,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotification(title, icon = '', body){   
+          function showNotificationBackground(title, icon = '', body){   
             var notification = new Notification(title, {
               icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
               body: body,
@@ -5409,7 +5409,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
              };
            }
 
-           showNotification("Test","Desktop Notification Test");
+           showNotificationBackground("Test","Desktop Notification Test");
 
 
 
