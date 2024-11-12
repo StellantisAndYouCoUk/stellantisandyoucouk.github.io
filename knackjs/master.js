@@ -5346,6 +5346,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
         console.log("Notification ID:", notificationId);
 
+
         // Show the notification using Swal
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
@@ -5395,6 +5396,24 @@ $(document).on("knack-view-render.any", function (event, scene) {
         try {
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
+          
+
+          function showNotification(title, icon = '', body){   
+            var notification = new Notification(title, {
+              icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+              body: body,
+              requireInteraction: true
+             });
+             notification.onclick = function() {
+              notification.close();
+             };
+           }
+
+           showNotification("Test","Desktop Notification Test");
+
+
+
+
           showNotification(dataParsed);
         } catch (error) {
           console.error("Failed to process message:", error);
