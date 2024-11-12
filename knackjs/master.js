@@ -5626,8 +5626,7 @@ $(window).on('load', function() {
 
 // 2.Improvement
 
-$(window).on('load', function() {
-  console.log("inside iconHtml")
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
   const notificationIconHtml = `
   <div class="bellicon__off">
   <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
@@ -5635,7 +5634,5 @@ $(window).on('load', function() {
   </div>
            <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
    `;
-  
    $(".kn-current_user").append(notificationIconHtml);
-
  });
