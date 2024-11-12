@@ -5626,7 +5626,7 @@ $(window).on('load', function() {
 
 // 2.Improvement
 
-$(document).ready(function() {
+$(window).on('load', function() {
   console.log("inside iconHtml")
   const notificationIconHtml = `
   <div class="bellicon__off">
