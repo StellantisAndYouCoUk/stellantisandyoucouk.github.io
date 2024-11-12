@@ -4361,3 +4361,16 @@ n-link.kn-link-2.kn-link-page.kn-button,
   margin-left: 2em;
 
 }
+
+
+img.user-icon {
+  box-shadow: 0 0 10px rgba(194, 178, 128, 0.6); /* Sandy, coastal shade */
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease;
+}
+
+img.user-icon:hover {
+  box-shadow: 0 0 10px rgba(0, 128, 128, 0.8); /* Deep teal, ocean-inspired */
+}
+
+
