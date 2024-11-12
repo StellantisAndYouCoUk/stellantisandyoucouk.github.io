@@ -5400,7 +5400,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
           function showNotificationBackground(title, icon = '', body){   
             var notification = new Notification(title, {
-              icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg',
               body: body,
               requireInteraction: true
              });
@@ -5409,7 +5409,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
              };
            }
 
-           showNotificationBackground("Test","Desktop Notification Test");
+           showNotificationBackground(dataParsed.message,"Desktop Notification Test");
 
 
 
