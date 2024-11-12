@@ -5634,7 +5634,7 @@ $(document).ready(function() {
   </div>
            <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
    `;
-   if (!$('.kn-current_user').find('.notification-icon').length) {
+  
    $(".kn-current_user").append(notificationIconHtml);
-   }
+
  });
