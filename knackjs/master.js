@@ -5627,6 +5627,7 @@ $(window).on('load', function() {
 // 2.Improvement
 
 $(document).ready(function() {
+  console.log("inside iconHtml")
   const notificationIconHtml = `
   <div class="bellicon__off">
   <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
