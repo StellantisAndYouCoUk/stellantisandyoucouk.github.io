@@ -4362,11 +4362,15 @@ n-link.kn-link-2.kn-link-page.kn-button,
 
 }
 
+span.not {
+  padding: 2px;
+}
+
 
 img.user-icon {
   box-shadow: 0 0 10px rgba(194, 178, 128, 0.6); /* Sandy, coastal shade */
   border-radius: 50%;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease-out;
 }
 
 img.user-icon:hover {
