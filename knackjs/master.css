@@ -4347,7 +4347,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
   to { transform: translateY(0); opacity: 1; }
 }
 /* After ask comment it out... */
-
+/*  
 .kn-current_user {
   display: flex;
   justify-content: center;
@@ -4368,13 +4368,13 @@ span.not {
 
 
 img.user-icon {
-  box-shadow: 0 0 10px rgba(194, 178, 128, 0.6); /* Sandy, coastal shade */
+  box-shadow: 0 0 10px rgba(194, 178, 128, 0.6); 
   border-radius: 50%;
   transition: box-shadow 0.3s ease-out;
 }
 
 img.user-icon:hover {
-  box-shadow: 0 0 10px rgba(0, 128, 128, 0.8); /* Deep teal, ocean-inspired */
+  box-shadow: 0 0 10px rgba(0, 128, 128, 0.8); 
 }
 
-
+*/

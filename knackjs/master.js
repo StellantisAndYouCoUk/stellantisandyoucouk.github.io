@@ -5626,13 +5626,13 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 
 // 2.Improvement
 
-$(document).on('knack-scene-render.scene_435', function(event, scene) {
-  const notificationIconHtml = `
-  <div class="bellicon__off">
-  <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
-  <span class="not">Off</span>
-  </div>
-           <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
-   `;
-   $(".kn-current_user").append(notificationIconHtml);
- });
+// $(document).on('knack-scene-render.scene_435', function(event, scene) {
+//   const notificationIconHtml = `
+//   <div class="bellicon__off">
+//   <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
+//   <span class="not">Off</span>
+//   </div>
+//            <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+//    `;
+//    $(".kn-current_user").append(notificationIconHtml);
+//  });
