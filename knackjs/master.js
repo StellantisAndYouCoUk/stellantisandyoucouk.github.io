@@ -5400,7 +5400,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
           function showNotificationBackground(title, icon = '', body){   
             var notification = new Notification(title, {
-              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg',
+              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
               requireInteraction: true
              });
