@@ -5398,18 +5398,19 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotificationBackground(title, icon = '', body){   
+          function showNotificationBackground(title, icon = '', body, tag){   
             var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
-              requireInteraction: true
+              requireInteraction: true,
+              tag: tag
              });
              notification.onclick = function() {
               notification.close();
              };
            }
 
-           showNotificationBackground(dataParsed.title,"",dataParsed.message);
+           showNotificationBackground(dataParsed.title,"",dataParsed.message, notificationId);
 
 
 
