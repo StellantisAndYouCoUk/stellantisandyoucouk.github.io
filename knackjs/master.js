@@ -5398,28 +5398,38 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotificationBackground(title, icon = '', body){   
+          function showNotificationBackground(title, icon = '', body) {   
             var notification = new Notification(title, {
-              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body,
-              requireInteraction: true             });
-             notification.onclick = function() {
-              notification.close();
-             };
-           }
-           localStorage.unique_notification = notificationId+new Date().getMilliseconds()+new Date().getSeconds()
-
-           if(!localStorage.unique_notification){
-            console.log("Nothing there")
-            showNotificationBackground(dataParsed.title,"",dataParsed.message);
-            console.log("Appeared")          
-
-          
-          
-          }else{
-            localStorage.removeItem("unique_notification")
-            console.log("removed")
-          }
+                icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+                body: body,
+                requireInteraction: true
+            });
+            notification.onclick = function() {
+                notification.close();
+            };
+        }
+        
+        // Create a unique identifier using notification ID and current timestamp
+        function createUniqueNotificationId(notificationId) {
+            return notificationId.toString() + new Date().getMilliseconds().toString() + new Date().getSeconds().toString();
+        }
+        
+        // Example notification ID for generating unique notification key (you can replace with your actual logic)
+        
+        // Set unique notification ID
+        localStorage.setItem("unique_notification", createUniqueNotificationId(notificationId));
+        
+        // Check if the notification already exists in localStorage
+        if (!localStorage.getItem("unique_notification")) {
+            console.log("Nothing there");
+            showNotificationBackground(dataParsed.title, "", dataParsed.message);
+            console.log("Appeared");
+        } else {
+            // Remove the notification key if it already exists
+            localStorage.removeItem("unique_notification");
+            console.log("removed");
+        }
+        
 
 
 
