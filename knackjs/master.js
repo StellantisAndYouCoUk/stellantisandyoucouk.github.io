@@ -5412,8 +5412,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
            if(!localStorage.unique_notification){
             console.log("Nothing there")
             showNotificationBackground(dataParsed.title,"",dataParsed.message);
-            showNotification(dataParsed);
             console.log("Appeared")          
+
+          
+          
           }else{
             localStorage.removeItem("unique_notification")
             console.log("removed")
@@ -5422,6 +5424,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 
+          showNotification(dataParsed);
         } catch (error) {
           console.error("Failed to process message:", error);
         }
