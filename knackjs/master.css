@@ -4353,12 +4353,14 @@ n-link.kn-link-2.kn-link-page.kn-button,
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  margin: 0.2rem;
 }
 
 .bellicon__off{
   display: flex;
   justify-content: center;
   margin-left: 2em;
+  visibility: hidden;
 
 }
 
@@ -4371,6 +4373,7 @@ img.user-icon {
   box-shadow: 0 0 10px rgba(136, 55, 105, 0.6); 
   border-radius: 50%;
   transition: box-shadow 0.3s ease-out;
+  visibility: hidden;
 }
 
 img.user-icon:hover {
