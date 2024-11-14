@@ -4998,10 +4998,136 @@ function createLink(url, linkText) {
 
 
 
-$(document).on("knack-view-render.any", function (event, scene) {
-  // Initialize the EventSource only if it's not already set
-  let notificationId;
+// $(document).on("knack-view-render.any", function (event, scene) {
+//   // Initialize the EventSource only if it's not already set
+//   let notificationId;
 
+//   if (eventSource === null) {
+//     const userAttributes = Knack.getUserAttributes();
+
+//     if (userAttributes !== "No user found") {
+//       const userValue = userAttributes.id;
+//       const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+//       eventSource = new EventSource(subscribeURL);
+
+//       function showNotification(data) {
+//         parsedData = data;
+//         notificationId = parsedData.id; // Get the unique notification ID from the message
+
+//         console.log("Notification ID:", notificationId);
+
+
+//         // Show the notification using Swal
+//         Swal.fire({
+//           title: `<strong>${parsedData.title}</strong>`,
+//           html: `
+//             ${parsedData.attachment && parsedData.attachment.url
+//               ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+//               : ""
+//             }
+//             ${parsedData.message || ""}
+//           `,
+//           showCloseButton: true,
+//           allowEscapeKey: true,
+//           focusConfirm: false,
+//           showCancelButton: true,
+//           cancelButtonText: "Ok",
+//           cancelButtonColor: "#28a745",
+//           showConfirmButton: !!parsedData.click,
+//           confirmButtonText: `${parsedData.click
+//             ? `<i class="fa fa-external-link-alt"></i> Go to Link`
+//             : ""}`,
+//           confirmButtonAriaLabel: "Go to Link",
+//           preConfirm: () => {
+//             if (parsedData.click) {
+//               window.open(parsedData.click, "_blank");
+//             }
+//           },
+//           didOpen: () => {
+//             const cancelButton = Swal.getCancelButton();
+//             const confirmButton = Swal.getConfirmButton();
+
+//             if (cancelButton) {
+//               cancelButton.id = "popup-cancel-button";
+//               document
+//                 .getElementById("popup-cancel-button")
+//                 .addEventListener("click", () => {
+//                   Swal.close();
+//                 });
+//             }
+
+//             if (confirmButton) confirmButton.id = "popup-confirm-button";
+//           },
+//         });
+//       }
+
+//       // Handle incoming messages from the event source
+//       eventSource.onmessage = (e) => {
+//         try {
+//           const dataParsed = JSON.parse(e.data);
+//           console.log(JSON.stringify(dataParsed));
+          
+
+//           function showNotificationBackground(title, icon = '', body) {   
+//             var notification = new Notification(title, {
+//                 icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+//                 body: body,
+//                 requireInteraction: true
+//             });
+//             notification.onclick = function() {
+//                 notification.close();
+//             };
+//         }
+        
+//         // Create a unique identifier using notification ID and current timestamp
+//         function createUniqueNotificationId(notificationId) {
+//             return notificationId + new Date().getMilliseconds() + new Date().getSeconds();
+//         }
+        
+//         // Example notification ID for generating unique notification key (you can replace with your actual logic)
+//         console.log("Notification ID:", notificationId);
+
+//         // Set unique notification ID
+//         localStorage.setItem("unique_notification", createUniqueNotificationId(notificationId));
+        
+//         // Check if the notification already exists in localStorage
+//         if (!localStorage.getItem("unique_notification")) {
+//             console.log("Nothing there");
+//             showNotificationBackground(dataParsed.title, "", dataParsed.message);
+//             console.log("Appeared");
+//         } else {
+//             // Remove the notification key if it already exists
+//             localStorage.removeItem("unique_notification");
+//             console.log("removed");
+//         }
+        
+
+
+
+
+//           showNotification(dataParsed);
+//         } catch (error) {
+//           console.error("Failed to process message:", error);
+//         }
+//       };
+
+//       // Handle the EventSource error event
+//       eventSource.onerror = (error) => {
+//         console.error("EventSource failed:", error);
+//         eventSource.close();
+//         eventSource = null; // Reset the eventSource variable
+//       };
+//     }
+//   }
+// });
+
+
+
+
+
+$(document).on("knack-view-render.any", function (event, scene) {
+  let eventSource = null;
+  // Initialize the EventSource only if it's not already set
   if (eventSource === null) {
     const userAttributes = Knack.getUserAttributes();
 
@@ -5010,22 +5136,33 @@ $(document).on("knack-view-render.any", function (event, scene) {
       const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
+      // Function to show background notification
+      function showNotificationBackground(title, icon = '', body) {   
+        const notification = new Notification(title, {
+          icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+          body: body,
+          requireInteraction: true
+        });
+        notification.onclick = function() {
+          notification.close();
+        };
+      }
+
+      // Function to create a unique notification ID
+      function createUniqueNotificationId(notificationId) {
+        return notificationId + new Date().getMilliseconds() + new Date().getSeconds();
+      }
+
+      // Show the notification using Swal
       function showNotification(data) {
-        parsedData = data;
-        notificationId = parsedData.id; // Get the unique notification ID from the message
-
-        console.log("Notification ID:", notificationId);
-
-
-        // Show the notification using Swal
         Swal.fire({
-          title: `<strong>${parsedData.title}</strong>`,
+          title: `<strong>${data.title}</strong>`,
           html: `
-            ${parsedData.attachment && parsedData.attachment.url
-              ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+            ${data.attachment && data.attachment.url
+              ? `<img src='${data.attachment.url}' style="max-width: 100%; height: auto;">`
               : ""
             }
-            ${parsedData.message || ""}
+            ${data.message || ""}
           `,
           showCloseButton: true,
           allowEscapeKey: true,
@@ -5033,14 +5170,14 @@ $(document).on("knack-view-render.any", function (event, scene) {
           showCancelButton: true,
           cancelButtonText: "Ok",
           cancelButtonColor: "#28a745",
-          showConfirmButton: !!parsedData.click,
-          confirmButtonText: `${parsedData.click
+          showConfirmButton: !!data.click,
+          confirmButtonText: `${data.click
             ? `<i class="fa fa-external-link-alt"></i> Go to Link`
             : ""}`,
           confirmButtonAriaLabel: "Go to Link",
           preConfirm: () => {
-            if (parsedData.click) {
-              window.open(parsedData.click, "_blank");
+            if (data.click) {
+              window.open(data.click, "_blank");
             }
           },
           didOpen: () => {
@@ -5065,45 +5202,19 @@ $(document).on("knack-view-render.any", function (event, scene) {
       eventSource.onmessage = (e) => {
         try {
           const dataParsed = JSON.parse(e.data);
-          console.log(JSON.stringify(dataParsed));
-          
+          console.log("Notification ID:", dataParsed.id);
 
-          function showNotificationBackground(title, icon = '', body) {   
-            var notification = new Notification(title, {
-                icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-                body: body,
-                requireInteraction: true
-            });
-            notification.onclick = function() {
-                notification.close();
-            };
-        }
-        
-        // Create a unique identifier using notification ID and current timestamp
-        function createUniqueNotificationId(notificationId) {
-            return notificationId + new Date().getMilliseconds() + new Date().getSeconds();
-        }
-        
-        // Example notification ID for generating unique notification key (you can replace with your actual logic)
-        console.log("Notification ID:", notificationId);
-
-        // Set unique notification ID
-        localStorage.setItem("unique_notification", createUniqueNotificationId(notificationId));
-        
-        // Check if the notification already exists in localStorage
-        if (!localStorage.getItem("unique_notification")) {
-            console.log("Nothing there");
+          // Check if the notification already exists in localStorage
+          if (!localStorage.getItem("unique_notification")) {
+            // Set unique notification ID
+            localStorage.setItem("unique_notification", createUniqueNotificationId(dataParsed.id));
             showNotificationBackground(dataParsed.title, "", dataParsed.message);
-            console.log("Appeared");
-        } else {
+            console.log("Notification appeared");
+          } else {
             // Remove the notification key if it already exists
             localStorage.removeItem("unique_notification");
-            console.log("removed");
-        }
-        
-
-
-
+            console.log("Notification removed");
+          }
 
           showNotification(dataParsed);
         } catch (error) {
@@ -5120,6 +5231,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
     }
   }
 });
+
 
 
 $(document).on('knack-view-render.view_7387', function (event, view, data) {
