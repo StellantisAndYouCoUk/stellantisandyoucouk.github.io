@@ -5403,7 +5403,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
               requireInteraction: true,
-              tag: tag
+              tag: 1
              });
              notification.onclick = function() {
               notification.close();
