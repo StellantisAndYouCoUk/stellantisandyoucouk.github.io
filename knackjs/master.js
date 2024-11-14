@@ -5411,7 +5411,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         
         // Create a unique identifier using notification ID and current timestamp
         function createUniqueNotificationId(notificationId) {
-            return notificationId.toString() + new Date().getMilliseconds().toString() + new Date().getSeconds().toString();
+            return notificationId + new Date().getMilliseconds() + new Date().getSeconds();
         }
         
         // Example notification ID for generating unique notification key (you can replace with your actual logic)
