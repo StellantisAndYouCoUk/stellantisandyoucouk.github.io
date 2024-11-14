@@ -5411,7 +5411,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
            }
 
            showNotificationBackground(dataParsed.title,"",dataParsed.message, notificationId);
-
+           console.log(new Date().getMilliseconds());
+           console.log(new Date().getSeconds());
 
 
 
