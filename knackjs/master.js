@@ -5080,21 +5080,33 @@ $(document).on("knack-view-render.any", function (event, scene) {
         }
         
         // Create a unique identifier using notification ID and current timestamp
-        function createUniqueNotificationId(notificationId) {
-            return notificationId + new Date().getMilliseconds() + new Date().getSeconds();
-        }
+   
+        let createUniqueNotificationId = notificationId + new Date().getMilliseconds() + new Date().getSeconds();
+        
         
         // Example notification ID for generating unique notification key (you can replace with your actual logic)
         console.log("Notification ID:", notificationId);
 
         // Set unique notification ID
+        localStorage.setItem("unique_notification", createUniqueNotificationId);
+        
+        // Check if the notification already exists in localStorage
+        if (!localStorage.getItem("unique_notification")===createUniqueNotificationId) {
+            console.log("Nothing there");
+            showNotificationBackground(dataParsed.title, "", dataParsed.message);
+            console.log("Appeared");
+        } else {
+            // Remove the notification key if it already exists
+            localStorage.removeItem("unique_notification");
+            console.log("removed");
+        }
+        
 
-
+        showNotification(dataParsed);
 
         showNotificationBackground(dataParsed.title, "", dataParsed.message);
 
 
-          showNotification(dataParsed);
         } catch (error) {
           console.error("Failed to process message:", error);
         }
