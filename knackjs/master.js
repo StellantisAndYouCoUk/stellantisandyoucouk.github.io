@@ -5398,21 +5398,29 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotificationBackground(title, icon = '', body, tag){   
+          function showNotificationBackground(title, icon = '', body){   
             var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
-              requireInteraction: true,
-              tag: 1
-             });
+              requireInteraction: true             });
              notification.onclick = function() {
               notification.close();
              };
            }
+           localStorage.unique_notification = notificationId+new Date().getMilliseconds()+new Date().getSeconds()
 
-           showNotificationBackground(dataParsed.title,"",dataParsed.message, notificationId);
-           console.log(new Date().getMilliseconds());
-           console.log(new Date().getSeconds());
+           if(!localStorage.unique_notification){
+            console.log("Nothing there")
+            showNotificationBackground(dataParsed.title,"",dataParsed.message);
+            console.log("Appeared")          
+
+          
+          
+          }else{
+            localStorage.removeItem("unique_notification")
+            console.log("removed")
+          }
+
 
 
 
