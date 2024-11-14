@@ -5081,6 +5081,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
         
         // Create a unique identifier using notification ID and current timestamp
    
+
+
+        showNotification(dataParsed);
+
+
         let createUniqueNotificationId = notificationId + new Date().getMilliseconds() + new Date().getSeconds();
         
         
@@ -5102,7 +5107,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
         }
         
 
-        showNotification(dataParsed);
+
+        
 
         showNotificationBackground(dataParsed.title, "", dataParsed.message);
 
