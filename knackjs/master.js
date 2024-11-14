@@ -5088,21 +5088,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
         console.log("Notification ID:", notificationId);
 
         // Set unique notification ID
-        localStorage.setItem("unique_notification", createUniqueNotificationId(notificationId));
-        
-        // Check if the notification already exists in localStorage
-        if (!localStorage.getItem("unique_notification")) {
-            console.log("Nothing there");
-            showNotificationBackground(dataParsed.title, "", dataParsed.message);
-            console.log("Appeared");
-        } else {
-            // Remove the notification key if it already exists
-            localStorage.removeItem("unique_notification");
-            console.log("removed");
-        }
-        
 
 
+
+        showNotificationBackground(dataParsed.title, "", dataParsed.message);
 
 
           showNotification(dataParsed);
