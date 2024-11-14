@@ -5102,13 +5102,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
             console.log("Appeared");
         } else {
             // Remove the notification key if it already exists
-            localStorage.removeItem("unique_notification");
             console.log("removed");
         }
         
 
 
-        
+
 
         showNotificationBackground(dataParsed.title, "", dataParsed.message);
 
