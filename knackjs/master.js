@@ -5000,9 +5000,10 @@ function createLink(url, linkText) {
 
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
+  let notificationId;
+
   if (eventSource === null) {
     const userAttributes = Knack.getUserAttributes();
-    let notificationId;
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
