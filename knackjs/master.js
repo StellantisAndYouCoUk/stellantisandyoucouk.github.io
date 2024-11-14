@@ -5086,30 +5086,32 @@ $(document).on("knack-view-render.any", function (event, scene) {
         showNotification(dataParsed);
 
 
-        let createUniqueNotificationId = notificationId + new Date().getMilliseconds() + new Date().getSeconds();
+        // let createUniqueNotificationId = notificationId + new Date().getMilliseconds() + new Date().getSeconds();
         
         
         // Example notification ID for generating unique notification key (you can replace with your actual logic)
-        console.log("Notification ID:", notificationId);
+        // console.log("Notification ID:", notificationId);
 
         // Set unique notification ID
-        localStorage.setItem("unique_notification", createUniqueNotificationId);
+        // localStorage.setItem("unique_notification", createUniqueNotificationId);
         
         // Check if the notification already exists in localStorage
-        if (!localStorage.getItem("unique_notification")===createUniqueNotificationId) {
-            console.log("Nothing there");
+        // if (!localStorage.getItem("unique_notification")!==createUniqueNotificationId) {
+        //     console.log("Nothing there");
+        // localStorage.setItem("unique_notification", createUniqueNotificationId);
+
             showNotificationBackground(dataParsed.title, "", dataParsed.message);
-            console.log("Appeared");
-        } else {
-            // Remove the notification key if it already exists
-            console.log("removed");
-        }
+        //     console.log("Appeared");
+        // } else {
+        //     // Remove the notification key if it already exists
+        //     console.log("removed");
+        // }
         
 
 
 
 
-        showNotificationBackground(dataParsed.title, "", dataParsed.message);
+        // showNotificationBackground(dataParsed.title, "", dataParsed.message);
 
 
         } catch (error) {
