@@ -5073,7 +5073,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
                 body: body,
                 requireInteraction: true,
-                tag: tag
+                tag: tag,
+                badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
             });
             notification.onclick = function() {
                 notification.close();
