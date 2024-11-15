@@ -5081,29 +5081,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
             };
           }
 
+          if (document.visibilityState === "visible") {
           showNotification(dataParsed);
+          }else{
+            showNotificationBackground(data.title, data.message, data.notificationId);
 
+          }
 
-          function handleNotification(data) {
-            // Check if the page is visible
-            if (document.visibilityState === "visible") {
-                // Show an in-page pop-up or handle it differently
-                console.log("Page is visible: handling notification on-page");
-                // Your custom logic here for showing an in-page alert
-            } else {
-                // Show a desktop notification
-                console.log("Page is not visible: sending desktop notification");
-                showNotificationBackground(data.title, data.message, data.notificationId);
-            }
-        }
-
-              // Use BroadcastChannel to coordinate tabs
-              const notificationChannel = new BroadcastChannel("notifications_channel");
-
-              // Listen for incoming messages
-              notificationChannel.onmessage = (event) => {
-                  handleNotification(event.data);
-              };
         
         // Create a unique identifier using notification ID and current timestamp
 
