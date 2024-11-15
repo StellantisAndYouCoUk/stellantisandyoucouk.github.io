@@ -5086,7 +5086,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           showNotification(dataParsed);
           }else{
             console.log("Background notification")
-            showNotificationBackground(dataParsed.title, "",dataParsed.message, "1");
+            showNotificationBackground(dataParsed.title, "",dataParsed.message, Math.random());
 
           }
 
