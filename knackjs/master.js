@@ -5093,10 +5093,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
          console.log("createUniqueNotificationId: ", createUniqueNotificationId);
 
         // Set unique notification ID
-         localStorage.setItem("unique_notification", createUniqueNotificationId);
         
         // Check if the notification already exists in localStorage
          if (localStorage.getItem("unique_notification")!==createUniqueNotificationId) {
+         localStorage.setItem("unique_notification", createUniqueNotificationId);
+
              console.log("Nothing there");
          localStorage.setItem("unique_notification", createUniqueNotificationId);
 
