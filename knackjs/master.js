@@ -5068,47 +5068,26 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotificationBackground(title, icon = '', body) {   
+          function showNotificationBackground(title, icon = '', body, tag) {   
             var notification = new Notification(title, {
                 icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
                 body: body,
-                requireInteraction: true
+                requireInteraction: true,
+                tag: tag
             });
             notification.onclick = function() {
                 notification.close();
             };
-        }
+          }
         
         // Create a unique identifier using notification ID and current timestamp
    
 
 
         showNotification(dataParsed);
+        showNotificationBackground(dataParsed.title, "", dataParsed.message, notificationId);
 
-
-         let createUniqueNotificationId = notificationId + new Date().getMilliseconds() + new Date().getSeconds();
         
-        
-        // Example notification ID for generating unique notification key (you can replace with your actual logic)
-         console.log("createUniqueNotificationId: ", createUniqueNotificationId);
-
-        // Set unique notification ID
-        
-        // Check if the notification already exists in localStorage
-         if (localStorage.getItem("unique_notification")!==createUniqueNotificationId) {
-         localStorage.setItem("unique_notification", createUniqueNotificationId);
-
-             console.log("Nothing there");
-         localStorage.setItem("unique_notification", createUniqueNotificationId);
-
-            showNotificationBackground(dataParsed.title, "", dataParsed.message);
-             console.log("Appeared");
-         } else {
-             // Remove the notification key if it already exists
-             console.log("removed");
-         }
-        
-
 
 
 
