@@ -5067,7 +5067,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
           
-          let activeNotifications = [];
 
           function showNotificationBackground(title, icon = '', body, tag) {   
             var notification = new Notification(title, {
@@ -5088,7 +5087,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           showNotification(dataParsed);
           }else{
             console.log("Background notification")
-            showNotificationBackground(dataParsed.title, "",dataParsed.message, Math.random());
+            showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
 
           }
 
