@@ -5081,10 +5081,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 notification.close();
             };
           }
-        
         // Create a unique identifier using notification ID and current timestamp
-   
-        
         if (document.visibilityState === "visible") {
           showNotification(dataParsed);
           }else{
