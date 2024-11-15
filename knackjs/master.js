@@ -5080,16 +5080,20 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 notification.close();
             };
           }
-
-          if (document.visibilityState === "visible") {
+        
+        // Create a unique identifier using notification ID and current timestamp
+   
+        
+        if (document.visibilityState === "visible") {
           showNotification(dataParsed);
           }else{
-            showNotificationBackground(data.title, data.message, data.notificationId);
+            showNotificationBackground(dataParsed.title, "", dataParsed.message, notificationId);
 
           }
 
-        
-        // Create a unique identifier using notification ID and current timestamp
+
+
+  
 
         
 
