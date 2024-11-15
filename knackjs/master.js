@@ -5082,17 +5082,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
           }
         
         // Create a unique identifier using notification ID and current timestamp
-   
-        window.addEventListener("focus", () => {
-          console.log("Window is focused");
-      });
 
-      
+
+
         if (document.visibilityState === "visible") {
           showNotification(dataParsed);
           }else{
             showNotificationBackground(dataParsed.title, "", dataParsed.message, notificationId);
-
           }
 
 
