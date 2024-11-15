@@ -5073,24 +5073,23 @@ $(document).on("knack-view-render.any", function (event, scene) {
             var notification = new Notification(title, {
                 icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
                 body: body,
-                requireInteraction: false,
+                requireInteraction: true,
                 tag: tag,
                 badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
                         });
+                        notification.onclick = function() {
+                          notification.close();
+                          
+                         };
           }
         // Create a unique identifier using notification ID and current timestamp
         if (document.visibilityState === "visible") {
           showNotification(dataParsed);
-          notification.close();
           }else{
             console.log("Background notification")
             showNotificationBackground(dataParsed.title, "",dataParsed.message, Math.random());
-            
-            if (document.visibilityState === "visible") {
-              
-            
-            }
+
           }
 
         } catch (error) {
