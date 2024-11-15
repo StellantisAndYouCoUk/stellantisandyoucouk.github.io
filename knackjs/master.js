@@ -5088,7 +5088,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         if (document.visibilityState === "visible") {
           showNotification(dataParsed);
           }else{
-            showNotificationBackground(dataParsed.title, "", dataParsed.message, notificationId);
+            showNotificationBackground(dataParsed.title, "", dataParsed.message, 1);
           }
 
 
