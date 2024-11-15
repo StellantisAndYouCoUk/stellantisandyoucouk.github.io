@@ -5073,9 +5073,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
                 body: body,
                 requireInteraction: true,
-                tag: tag,
-                badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
-            });
+                tag: tag            });
             notification.onclick = function() {
                 notification.close();
             };
@@ -5087,16 +5085,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
         if (document.visibilityState === "visible") {
           showNotification(dataParsed);
           }else{
-            showNotificationBackground(dataParsed.title, dataParsed.message, dateTime().getSeconds());
+            showNotificationBackground(dataParsed.title, dataParsed.message, "1");
 
           }
-
-
-
-
-
-
-        // showNotificationBackground(dataParsed.title, "", dataParsed.message);
 
 
         } catch (error) {
