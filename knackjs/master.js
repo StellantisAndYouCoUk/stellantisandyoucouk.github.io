@@ -5106,14 +5106,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
               };
         
         // Create a unique identifier using notification ID and current timestamp
-        const lambdaMessage = {
-          title: "Reminder",
-          message: "You have a new notification!",
-          notificationId: notificationId,
-      };
-
-
-        notificationChannel.postMessage(lambdaMessage);
 
         
 
