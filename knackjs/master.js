@@ -511,6 +511,12 @@ $(document).on('knack-view-render.view_7517', function(event, view, data) {
  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#service-sales-prospect/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Overdue Debts
+$(document).on('knack-view-render.view_7578', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #overdue-debts" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
@@ -4957,8 +4963,8 @@ let publishURL = '';
 let subscribeURL = '';
 
       function createNotificationUrl(value){
-       publishURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
-       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
+       publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+       subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
 
        return subscribeURL;
       }
@@ -4989,347 +4995,19 @@ function createLink(url, linkText) {
 });
 
 
-// $(document).on("knack-view-render.any", function (event, scene) {
-//   if (eventSource === null) {
-//     const userAttributes = Knack.getUserAttributes();
-//     let notificationId;
-//     if (userAttributes !== "No user found") {
-//       const userValue = userAttributes.id;
-//       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-//       eventSource = new EventSource(subscribeURL);
-
-//       function showNotification(data) {
-//         const parsedData = JSON.parse(data);
-//         const notificationId = parsedData.id; // Get the unique notification ID from the message
-//          // Use a fixed key for storing notifications
-//         const storedId = localStorage.getItem("alertKey"); // Get the last shown notification ID
-//         const parsedData2 = JSON.parse(storedId);
-//         console.log("Stored ID from localStorage:", parsedData2.value);
-      
-//         if (storedId !== notificationId) {
-//           console.log("Notification not shown yet, showing now...");
-      
-//           Swal.fire({
-//             title: `<strong>${parsedData.title}</strong>`,
-//             html: `
-//                       ${
-//                         parsedData.attachment && parsedData.attachment.url
-//                           ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
-//                           : ""
-//                       }
-//                       ${parsedData.message || ""}
-//                   `,
-//             showCloseButton: true,
-//             allowEscapeKey: true,
-//             focusConfirm: false,
-//             showCancelButton: true,
-//             cancelButtonText: "Ok",
-//             cancelButtonColor: "#28a745",
-//             showConfirmButton: !!parsedData.click,
-//             confirmButtonText: `
-//                       ${
-//                         parsedData.click
-//                           ? `<i class="fa fa-external-link-alt"></i> Go to Link`
-//                           : ""
-//                       }
-//                   `,
-//             confirmButtonAriaLabel: "Go to Link",
-//             preConfirm: () => {
-//               if (parsedData.click) {
-//                 window.open(parsedData.click, "_blank");
-//               }
-//             },
-//             didOpen: () => {
-//               const cancelButton = Swal.getCancelButton();
-//               const confirmButton = Swal.getConfirmButton();
-      
-//               if (cancelButton) {
-//                 cancelButton.id = "popup-cancel-button";
-//                 document
-//                   .getElementById("popup-cancel-button")
-//                   .addEventListener("click", () => {
-//                     Swal.close();
-//                   });
-//               }
-      
-//               if (confirmButton) confirmButton.id = "popup-confirm-button";
-//             },
-//           });
-      
-//           // Mark this specific notification as shown
-//           // console.log(`Updating localStorage: key = ${alertKey}, value = ${notificationId}`);
-
-//           const data = {
-//             value: String(notificationId),
-//             timestamp: new Date().toISOString()  // Save current time in ISO format
-//           };
-
-
-
-
-
-//           localStorage.setItem("alertKey",  JSON.stringify(data));
-          
-//           // Ensure that both key and value are strings
-      
-//           console.log("Value stored in localStorage:", localStorage.getItem("alertKey"));
-//         } else {
-//           console.log("Notification already shown, skipping...");
-//         }
-//       }
-      
-
-//       // Handle incoming messages from the event source
-//       eventSource.onmessage = (e) => {
-//         try {
-//           // Print the received message to the console
-//           console.log(e.data);
-
-//           // Call the showNotification function to process and display the message
-//           showNotification(e.data);
-//         } catch (error) {
-//           console.error("Failed to process message:", error);
-//         }
-//       };
-//     }
-//   }
-// });
-
-// $(document).on("knack-view-render.any", function (event, scene) { 
-//   if (eventSource === null) {
-//     const userAttributes = Knack.getUserAttributes(); 
-//     let notificationId;
-    
-//     if (userAttributes !== "No user found") {
-//       const userValue = userAttributes.id;
-//       subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`; 
-//       eventSource = new EventSource(subscribeURL);
-
-//       function showNotification(data) {
-//         const parsedData = JSON.parse(data);
-//         const notificationId = parsedData.id; // Get the unique notification ID from the message
-
-//         // Get the last shown notification details from localStorage
-//         const storedData = localStorage.getItem("alertKey"); 
-//         let lastNotification = storedData ? JSON.parse(storedData) : null;
-        
-//         console.log("Stored ID from localStorage:", lastNotification ? lastNotification.value : null);
-
-//         if (!lastNotification || lastNotification.value !== notificationId) {
-//           console.log("Notification not shown yet, showing now...");
-
-//           // Show the notification using Swal
-//           Swal.fire({
-//             title: `<strong>${parsedData.title}</strong>`,
-//             html: `
-//               ${parsedData.attachment && parsedData.attachment.url
-//                 ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
-//                 : ""
-//               }
-//               ${parsedData.message || ""}
-//             `,
-//             showCloseButton: true,
-//             allowEscapeKey: true,
-//             focusConfirm: false,
-//             showCancelButton: true,
-//             cancelButtonText: "Ok",
-//             cancelButtonColor: "#28a745",
-//             showConfirmButton: !!parsedData.click,
-//             confirmButtonText: `${parsedData.click
-//               ? `<i class="fa fa-external-link-alt"></i> Go to Link`
-//               : ""}`,
-//             confirmButtonAriaLabel: "Go to Link",
-//             preConfirm: () => {
-//               if (parsedData.click) {
-//                 window.open(parsedData.click, "_blank");
-//               }
-//             },
-//             didOpen: () => {
-//               const cancelButton = Swal.getCancelButton();
-//               const confirmButton = Swal.getConfirmButton();
-
-//               if (cancelButton) {
-//                 cancelButton.id = "popup-cancel-button";
-//                 document
-//                   .getElementById("popup-cancel-button")
-//                   .addEventListener("click", () => {
-//                     Swal.close();
-//                   });
-//               }
-
-//               if (confirmButton) confirmButton.id = "popup-confirm-button";
-//             },
-//           });
-
-//           // Save the shown notification ID and timestamp in localStorage
-//           const data = {
-//             value: String(notificationId),
-//             timestamp: new Date().toISOString()  // Save current time in ISO format
-//           };
-
-//           localStorage.setItem("alertKey", JSON.stringify(data));
-//           console.log("Value stored in localStorage:", localStorage.getItem("alertKey"));
-//         } else {
-//           console.log("Notification already shown, skipping...");
-//         }
-//       }
-
-//       // Handle incoming messages from the event source
-//       eventSource.onmessage = (e) => {
-//         try {
-//           // Print the received message to the console
-//           console.log(e.data);
-
-//           // Call the showNotification function to process and display the message
-//           showNotification(e.data);
-//         } catch (error) {
-//           console.error("Failed to process message:", error);
-//         }
-//       };
-
-//       // Sync notifications across all open tabs
-//       window.addEventListener("storage", (event) => {
-//         if (event.key === "alertKey") {
-//           console.log("Notification was shown in another tab, skipping in this tab.");
-//         }
-//       });
-//     }
-//   }
-// });
-
-// $(document).on("knack-view-render.any", function (event, scene) {
-//   // Initialize the EventSource only if it's not already set
-//   if (eventSource === null) {
-//     const userAttributes = Knack.getUserAttributes();
-//     let notificationId;
-
-//     if (userAttributes !== "No user found") {
-//       const userValue = userAttributes.id;
-//       const subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-//       eventSource = new EventSource(subscribeURL);
-
-//       function showNotification(data) {
-//         parsedData = data;
-//         notificationId = parsedData.id; // Get the unique notification ID from the message
-
-
-//         // Get the last shown notification details from localStorage
-//         const storedData = localStorage.getItem("alertKey");
-//         let lastNotification = storedData ? storedData : null;
-
-//         console.log("Stored ID from localStorage:", lastNotification ? lastNotification : null);
-//         const lastNotificationId = JSON.parse(lastNotification).value
-
-//         // Check if the current notification ID is different from the last shown ID
-//         if (!lastNotificationId || lastNotificationId !== notificationId) {
-//           console.log("Notification not shown yet, showing now...");
-
-//           // Show the notification using Swal
-//           Swal.fire({
-//             title: `<strong>${parsedData.title}</strong>`,
-//             html: `
-//               ${parsedData.attachment && parsedData.attachment.url
-//                 ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
-//                 : ""
-//               }
-//               ${parsedData.message || ""}
-//             `,
-//             showCloseButton: true,
-//             allowEscapeKey: true,
-//             focusConfirm: false,
-//             showCancelButton: true,
-//             cancelButtonText: "Ok",
-//             cancelButtonColor: "#28a745",
-//             showConfirmButton: !!parsedData.click,
-//             confirmButtonText: `${parsedData.click
-//               ? `<i class="fa fa-external-link-alt"></i> Go to Link`
-//               : ""}`,
-//             confirmButtonAriaLabel: "Go to Link",
-//             preConfirm: () => {
-//               if (parsedData.click) {
-//                 window.open(parsedData.click, "_blank");
-//               }
-//             },
-//             didOpen: () => {
-//               const cancelButton = Swal.getCancelButton();
-//               const confirmButton = Swal.getConfirmButton();
-
-//               if (cancelButton) {
-//                 cancelButton.id = "popup-cancel-button";
-//                 document
-//                   .getElementById("popup-cancel-button")
-//                   .addEventListener("click", () => {
-//                     Swal.close();
-//                   });
-//               }
-
-//               if (confirmButton) confirmButton.id = "popup-confirm-button";
-//             },
-//           });
-
-//           // Save the shown notification ID and timestamp in localStorage
-//           const data = {
-//             value: String(notificationId),
-//             timestamp: new Date().toISOString() // Save current time in ISO format
-//           };
-
-//           localStorage.setItem("alertKey", JSON.stringify(data));
-//           console.log("Value stored in localStorage:", localStorage.getItem("alertKey"));
-//         } else {
-//           console.log("Notification already shown, skipping...");
-//         }
-//       }
-
-//       // Handle incoming messages from the event source
-//       eventSource.onmessage = (e) => {
-//         try {
-//           // Print the received message to the console
-    
-//           const dataParsed = JSON.parse(e.data);
-//           // Call the showNotification function to process and display the message
-//           showNotification(dataParsed);
-//         } catch (error) {
-//           console.error("Failed to process message:", error);
-//         }
-//       };
-
-//       // Sync notifications across all open tabs
-//       window.addEventListener("storage", (event) => {
-//         if (event.key === "alertKey") {
-//           const storedData = JSON.parse(event.newValue);
-//           if (storedData) {
-//             const lastNotificationId = storedData.value;
-//             if (lastNotificationId === notificationId) {
-//               console.log("Notification was shown in another tab, skipping in this tab.");
-//               return; // Prevent showing this notification again
-//             }
-//           }
-//         }
-//       });
-
-//       // Handle the EventSource error event
-//       eventSource.onerror = (error) => {
-//         console.error("EventSource failed:", error);
-//         // Optionally, close the EventSource on error
-//         eventSource.close();
-//         eventSource = null; // Reset the eventSource variable
-//       };
-//     }
-//   }
-// });
-
 
 
 
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
+  let notificationId;
+
   if (eventSource === null) {
     const userAttributes = Knack.getUserAttributes();
-    let notificationId;
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
-      const subscribeURL = `https://ntfy.armojo.com/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
       function showNotification(data) {
@@ -5337,6 +5015,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         notificationId = parsedData.id; // Get the unique notification ID from the message
 
         console.log("Notification ID:", notificationId);
+
 
         // Show the notification using Swal
         Swal.fire({
@@ -5387,7 +5066,31 @@ $(document).on("knack-view-render.any", function (event, scene) {
         try {
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
+          
+
+          function showNotificationBackground(title, icon = '', body, tag) {   
+            var notification = new Notification(title, {
+                icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+                body: body,
+                requireInteraction: true,
+                tag: tag,
+                badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+
+                        });
+                        notification.onclick = function() {
+                          notification.close();
+                          
+                         };
+          }
+        // Create a unique identifier using notification ID and current timestamp
+        if (document.visibilityState === "visible") {
           showNotification(dataParsed);
+          }else{
+            console.log("Background notification")
+            showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
+
+          }
+
         } catch (error) {
           console.error("Failed to process message:", error);
         }
@@ -5582,3 +5285,49 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
     $('form').submit();
   }
 }
+// Notification Read
+
+function requestNotificationPermission() {
+  // Check if the Notification API is supported
+  if ('Notification' in window) {
+      // Check the current permission status
+      if (Notification.permission === 'default') {
+          // If permission is neither granted nor denied, ask for permission
+          Notification.requestPermission().then(permission => {
+              if (permission === 'granted') {
+                  console.log('User granted notification permissions.');
+                  // You can proceed with sending notifications or other related actions
+              } else if (permission === 'denied') {
+                  console.log('User denied notification permissions.');
+                  // Handle denied permission if needed
+              }
+          });
+      } else if (Notification.permission === 'granted') {
+          console.log('Notification permission already granted.');
+          // Notifications are already allowed, so you don’t need to ask again
+      } else {
+          console.log('Notification permission previously denied.');
+          // Notifications were denied, so you don’t need to ask again
+      }
+  } else {
+      console.log('Browser does not support notifications.');
+  }
+}
+
+// // Using jQuery to call the function when the page is ready
+$(window).on('load', function() {
+  requestNotificationPermission();
+});
+
+// 2.Improvement
+
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
+  const notificationIconHtml = `
+  <div class="bellicon__off">
+  <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
+  <span class="not">Off</span>
+  </div>
+           <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+   `;
+   $(".kn-current_user").append(notificationIconHtml);
+ });

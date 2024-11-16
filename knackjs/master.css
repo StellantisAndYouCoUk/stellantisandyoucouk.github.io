@@ -4034,6 +4034,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5815 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
 #view_5816 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5816 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5816 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_5817 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5817 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5817 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
@@ -4121,6 +4122,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-10.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-12.kn-link-page.kn-button,
+#view_7514 > div.control > a,
 #view_7542 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #005F80;
   color: #ffffff;
@@ -4183,6 +4185,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5815 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
 #view_5816 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5816 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_5816 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_5817 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5817 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5817 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
@@ -4268,6 +4271,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-12.kn-link-page.kn-button,
+#view_7514 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,  
 #view_7542 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #014157;
   color: #ffffff;
@@ -4342,3 +4346,38 @@ n-link.kn-link-2.kn-link-page.kn-button,
   from { transform: translateY(100px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+/* After ask comment it out... */
+ 
+.kn-current_user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.2rem;
+}
+
+.bellicon__off{
+  display: flex;
+  justify-content: center;
+  margin-left: 2em;
+  visibility: hidden;
+
+}
+
+span.not {
+  padding: 2px;
+}
+
+
+img.user-icon {
+  box-shadow: 0 0 10px rgba(136, 55, 105, 0.6); 
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease-out;
+  visibility: hidden;
+}
+
+img.user-icon:hover {
+  box-shadow: 0 0 10px rgba(1, 111, 155, 0.8); 
+}
+
+
