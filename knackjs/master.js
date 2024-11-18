@@ -5093,15 +5093,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
                 await delay(delayRandomNumber); // Wait for the delay
                 console.log("This message appears after the delay");
-            }
-            
-            runSync();
-
-          console.log("After delay (executed immediately)" + " v2");
-
-
-
-
+                
 
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
@@ -5121,6 +5113,14 @@ $(document).on("knack-view-render.any", function (event, scene) {
                   showNotificationBackground("title","","message","1");
                 }
           }
+
+            }
+            
+            runSync();
+
+
+
+
 
         // Create a unique identifier using notification ID and current timestamp
         
