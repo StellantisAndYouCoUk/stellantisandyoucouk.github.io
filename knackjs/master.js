@@ -5103,13 +5103,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
           if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
-            
+
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
                 if (document.visibilityState === "visible") {
                   showNotification(dataParsed);
                 }else{
-                  showNotificationBackground(dataParsed);
+                  showNotificationBackground("title","","message","1");
                 }
           }
 
