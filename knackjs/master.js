@@ -5063,6 +5063,23 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
+
+        function showNotificationBackground(title, icon = '', body, tag) {   
+          var notification = new Notification(title, {
+              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+              body: body,
+              requireInteraction: true,
+              tag: tag,
+              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+
+                      });
+                      notification.onclick = function() {
+                        notification.close();
+                        
+                       };
+        }
+
+
         try {
                 
         console.log("Before delay");
@@ -5081,40 +5098,27 @@ $(document).on("knack-view-render.any", function (event, scene) {
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotificationBackground(title, icon = '', body, tag) {   
-            var notification = new Notification(title, {
-                icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-                body: body,
-                requireInteraction: true,
-                tag: tag,
-                badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
-                        });
-                        notification.onclick = function() {
-                          notification.close();
-                          
-                         };
-          }
           let uniqueNumberNotification = new Date().getTime();
           console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
-        // Create a unique identifier using notification ID and current timestamp
-        if (document.visibilityState === "visible") {
+          if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
+            
+                localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                  if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
+                if (document.visibilityState === "visible") {
                   showNotification(dataParsed);
-                  }else{
-                    localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
-                  }
-
-        }else{
-            console.log("Background notification")
-                  if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
-                  showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
-                  }else{
-                    localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
-                  }
+                }else{
+                  showNotificationBackground(dataParsed);
+                }
           }
+
+        // Create a unique identifier using notification ID and current timestamp
+        
+
+                 
+
+      
 
         } catch (error) {
           console.error("Failed to process message:", error);
