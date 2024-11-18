@@ -5110,7 +5110,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 if (document.visibilityState === "visible") {
                   showNotification(dataParsed);
                 }else{
-                  showNotificationBackground("title","","message","1");
+                  showNotificationBackground("title","","message",uniqueNumberNotification);
                 }
           }
 
