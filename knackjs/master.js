@@ -5097,8 +5097,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             
             runSync();
 
-          console.log("Delayed Random Number: ", delayRandomNumber);
-          console.log("After delay (executed immediately)" + " v1");
+          console.log("After delay (executed immediately)" + " v2");
 
 
 
