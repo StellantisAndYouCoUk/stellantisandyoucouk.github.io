@@ -5099,19 +5099,20 @@ $(document).on("knack-view-render.any", function (event, scene) {
         // Create a unique identifier using notification ID and current timestamp
         if (document.visibilityState === "visible") {
 
-          if(localStorage.getItem('notificationRandomNumber')===uniqueNumberNotification){
-          showNotification(dataParsed);
-          }else{
-            localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
-          }
-          }else{
-            console.log("Background notification")
-            if(localStorage.getItem('notificationRandomNumber')===uniqueNumberNotification){
+                  if(localStorage.getItem('notificationRandomNumber')===uniqueNumberNotification){
+                  showNotification(dataParsed);
+                  }else{
+                    localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
+                  }
 
-            showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
-            }else{
-              localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
-            }
+        }else{
+            console.log("Background notification")
+                  if(localStorage.getItem('notificationRandomNumber')===uniqueNumberNotification){
+
+                  showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
+                  }else{
+                    localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
+                  }
           }
 
         } catch (error) {
