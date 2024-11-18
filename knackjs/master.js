@@ -5064,12 +5064,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
 
-        function showNotificationBackground(title, icon = '', body, tag) {   
+        function showNotificationBackground(title, icon = '', body) {   
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
               requireInteraction: true,
-              tag: tag,
               badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
                       });
@@ -5110,7 +5109,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 if (document.visibilityState === "visible") {
                   showNotification(dataParsed);
                 }else{
-                  showNotificationBackground("title","","message",uniqueNumberNotification);
+                  showNotificationBackground("title","","message");
                 }
           }
 
