@@ -5083,10 +5083,19 @@ $(document).on("knack-view-render.any", function (event, scene) {
         try {
                 
         console.log("Before delay");
-          let delayRandomNumber = Math.floor(Math.random(10)*5)*1000;
-          setTimeout(() => {
-              console.log("This message appears after 2 seconds");
-          }, delayRandomNumber);
+
+        function delay(milliseconds) {
+          return new Promise(resolve => setTimeout(resolve, milliseconds));
+      }
+      
+      async function runSync() {
+          let delayRandomNumber = Math.floor(Math.random(10) * 5) * 1000; // Random delay
+          console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
+          await delay(delayRandomNumber); // Wait for the delay
+          console.log("This message appears after the delay");
+      }
+      
+      runSync();
 
           console.log("Delayed Random Number: ", delayRandomNumber);
           console.log("After delay (executed immediately)");
