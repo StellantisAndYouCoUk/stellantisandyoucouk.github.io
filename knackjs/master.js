@@ -5064,6 +5064,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
         try {
+          Math.random
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
           
@@ -5084,9 +5085,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
           }
         // Create a unique identifier using notification ID and current timestamp
         if (document.visibilityState === "visible") {
+          console.log(Math.floor(Math.random(10)*10)*100);
           showNotification(dataParsed);
           }else{
             console.log("Background notification")
+            console.log(Math.floor(Math.random(10)*10)*100);
             showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
 
           }
