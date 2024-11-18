@@ -5095,6 +5095,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                          };
           }
           let uniqueNumberNotification = new Date().getTime();
+          console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
         // Create a unique identifier using notification ID and current timestamp
         if (document.visibilityState === "visible") {
