@@ -5064,7 +5064,18 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
         try {
-          Math.random
+                
+        console.log("Before delay");
+
+          setTimeout(() => {
+              console.log("This message appears after 2 seconds");
+          }, Math.floor(Math.random(10)*10)*100);
+
+          console.log("After delay (executed immediately)");
+
+
+
+
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
           
@@ -5083,15 +5094,21 @@ $(document).on("knack-view-render.any", function (event, scene) {
                           
                          };
           }
+          let uniqueNumberNotification = new Date().getTime();
+          localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
+
         // Create a unique identifier using notification ID and current timestamp
         if (document.visibilityState === "visible") {
-          console.log(Math.floor(Math.random(10)*10)*100);
+
+          if(localStorage.getItem('notificationRandomNumber')===uniqueNumberNotification){
           showNotification(dataParsed);
+          }
           }else{
             console.log("Background notification")
-            console.log(Math.floor(Math.random(10)*10)*100);
-            showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
+            if(localStorage.getItem('notificationRandomNumber')===uniqueNumberNotification){
 
+            showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
+            }
           }
 
         } catch (error) {
