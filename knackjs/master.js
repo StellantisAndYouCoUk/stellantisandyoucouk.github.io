@@ -5099,7 +5099,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           
 
 
-          let uniqueNumberNotification = new Date().getTime();
+          let uniqueNumberNotification = dataParsed.id;
           console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
           if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
