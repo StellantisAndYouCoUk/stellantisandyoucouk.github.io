@@ -5066,11 +5066,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
         try {
                 
         console.log("Before delay");
-
+          let delayRandomNumber = Math.floor(Math.random(10)*10)*100;
           setTimeout(() => {
               console.log("This message appears after 2 seconds");
-          }, Math.floor(Math.random(10)*10)*100);
+          }, delayRandomNumber);
 
+          console.log("Delayed Random Number: ", delayRandomNumber);
           console.log("After delay (executed immediately)");
 
 
