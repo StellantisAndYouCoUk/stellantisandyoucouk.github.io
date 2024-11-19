@@ -5063,33 +5063,70 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
+
+        function showNotificationBackground(title, icon = '', body) {   
+          var notification = new Notification(title, {
+              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+              body: body,
+              requireInteraction: true,
+              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+
+                      });
+                      notification.onclick = function() {
+                        notification.close();
+                        
+                       };
+        }
+
+
         try {
+                
+  
+
+        function delay(milliseconds) {
+          return new Promise(resolve => setTimeout(resolve, milliseconds));
+            }
+            
+            async function runSync() {
+              let delayRandomNumber = Math.floor(Math.random() * 100) * 100; // Random delay
+                console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
+                await delay(delayRandomNumber); // Wait for the delay
+                console.log("This message appears after the delay");
+                
+
           const dataParsed = JSON.parse(e.data);
           console.log(JSON.stringify(dataParsed));
           
 
-          function showNotificationBackground(title, icon = '', body, tag) {   
-            var notification = new Notification(title, {
-                icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-                body: body,
-                requireInteraction: true,
-                tag: tag,
-                badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
-                        });
-                        notification.onclick = function() {
-                          notification.close();
-                          
-                         };
-          }
+          let uniqueNumberNotification = dataParsed.id;
+          console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
+
+          if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
+
+                localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
+
+                if (document.visibilityState === "visible") {
+                  showNotification(dataParsed);
+                }else{
+                  showNotificationBackground(dataParsed.title,"",dataParsed.message);
+                }
+              }
+
+            }
+            
+            runSync();
+
+
+
+
+
         // Create a unique identifier using notification ID and current timestamp
-        if (document.visibilityState === "visible") {
-          showNotification(dataParsed);
-          }else{
-            console.log("Background notification")
-            showNotificationBackground(dataParsed.title, "",dataParsed.message, `notification-${dataParsed.id}`);
+        
 
-          }
+                 
+
+      
 
         } catch (error) {
           console.error("Failed to process message:", error);
