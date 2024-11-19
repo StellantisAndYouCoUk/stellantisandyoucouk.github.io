@@ -5059,7 +5059,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
 
 function formatDateWA(input){
     if (!input){
-      return 'Error obtaining'
+      return 'More then 60 days'
     } else {
       let date = new Date(input);
       return date.toLocaleDateString('en-UK',{"weekday":"short", "day":"numeric"})+'<br />'+date.toLocaleDateString('en-UK',{"month":"short"});
