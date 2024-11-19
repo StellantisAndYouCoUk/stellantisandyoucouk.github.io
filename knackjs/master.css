@@ -4380,4 +4380,15 @@ img.user-icon:hover {
   box-shadow: 0 0 10px rgba(1, 111, 155, 0.8); 
 }
 
+/* Smooth appearance transition for SweetAlert popups */
+.swal2-popup {
+  opacity: 0;                   /* Start fully transparent */
+  transform: scale(0.8);        /* Start with a smaller scale */
+  transition: all 0.7s ease-in-out; /* Set the transition to control opacity and scale */
+}
+
+.swal2-show {
+  opacity: 1;                   /* Transition to fully visible */
+  transform: scale(1);          /* Transition to full size */
+}
 

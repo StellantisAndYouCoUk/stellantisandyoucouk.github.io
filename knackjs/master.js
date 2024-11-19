@@ -5013,10 +5013,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
       function showNotification(data) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
-
+      
         console.log("Notification ID:", notificationId);
-
-
+      
         // Show the notification using Swal
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
@@ -5044,9 +5043,14 @@ $(document).on("knack-view-render.any", function (event, scene) {
             }
           },
           didOpen: () => {
+            const popup = document.querySelector('.swal2-popup');
+            if (popup) {
+              popup.classList.add('swal2-show'); // Trigger the transition effect
+            }
+      
             const cancelButton = Swal.getCancelButton();
             const confirmButton = Swal.getConfirmButton();
-
+      
             if (cancelButton) {
               cancelButton.id = "popup-cancel-button";
               document
@@ -5055,11 +5059,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
                   Swal.close();
                 });
             }
-
+      
             if (confirmButton) confirmButton.id = "popup-confirm-button";
           },
         });
       }
+      
 
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
