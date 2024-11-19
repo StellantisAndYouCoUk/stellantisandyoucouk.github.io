@@ -5057,9 +5057,9 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
   }
 }
 
-function formatDateWA(input){
+function formatDateWA(input,emptyText='More than 60 days'){
     if (!input){
-      return 'More than 60 days'
+      return emptyText;
     } else {
       let date = new Date(input);
       return date.toLocaleDateString('en-UK',{"weekday":"short", "day":"numeric"})+'<br />'+date.toLocaleDateString('en-UK',{"month":"short"});
@@ -5090,11 +5090,11 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
   let lastVisitedInClosest = false;
   let htmlTable = '<b>Workshop Availability</b><br />';
   if (customAddress) htmlTable += 'Workshop travel times shown for address: '+customAddress+'<br />';
-  htmlTable += '<table><tr><td>Dealer</td><td><b>Travl<br>Time<br>For<br>Cust</b></td><td><b>MOT</b></td><td><b>Rcall<br>/Inv</b></td><td><b>Min<br>Serv</b></td><td><b>Maj<br>Ser</b></td><td><b>Diag</b></td><td><b>C&D</b></td><td><b>Wait</b></td></tr>';
+  htmlTable += '<table><tr><td>Dealer</td><td><b>Travl<br>Time<br>For<br>Cust</b></td><td><b>MOT</b></td><td><b>Rcall<br>/Inv</b></td><td><b>Min<br>Serv</b></td><td><b>Maj<br>Ser</b></td><td><b>Diag</b></td><td><b>C&D</b></td><td><b>Wait</b></td><td><b>Uber<br>Or<br>Lift</b></td></tr>';
   if (useCustomerAddress && status && status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
-      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td></tr>';
+      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Lift').availability,'No service')+'</td></tr>';
       if (status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit) lastVisitedInClosest = true;
     }
   }
