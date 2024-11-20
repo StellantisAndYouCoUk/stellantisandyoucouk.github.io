@@ -192,6 +192,7 @@ if (OperatingSystem.Android()) {
     });
   } else {
     if (Knack.getUserAttributes().email.includes('hynek')){
+      console.log('hynek')
       openCamera({'video':true},null);
     } else {
       openCamera({video: {facingMode: {exact: "environment"}}},constraints);
