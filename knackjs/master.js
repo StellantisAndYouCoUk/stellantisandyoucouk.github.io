@@ -5370,8 +5370,8 @@ $(window).on('load', function() {
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
   const notificationIconHtml = `
   <span class="bellicon__off">
-  <p class="not">Off</p><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg"
-    alt="Notification Bell" class="notification-icon">
+<a src="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
+    </a>
 
   <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
 </span>
