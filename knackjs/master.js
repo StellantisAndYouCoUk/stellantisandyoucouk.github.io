@@ -5379,25 +5379,29 @@ $(window).on('load', function() {
 //    $(".kn-current_user").append(notificationIconHtml);
 //  });
 
-
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
-  // Generate the notification icon HTML
+  // Generate the base notification icon HTML (always visible)
   const notificationIconHtml = `
     <span class="bellicon__off">
-      <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
       <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
     </span>
   `;
 
-  // Append the notification icon HTML to the current user section
+  // Append the base notification icon HTML to the current user section
   $(".kn-current_user").append(notificationIconHtml);
 
-  // Function to update the UI based on notification permission
+  // Function to dynamically update the UI for notification permission
   const updateNotificationUI = () => {
-    if (Notification.permission === "granted") {
-      $("a.off").hide(); // Hide the notification link if permission is granted
+    if (Notification.permission !== "granted") {
+      // Check if the link is already appended
+      if ($(".bellicon__off .not").length === 0) {
+        $(".bellicon__off").append(`
+          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
+        `);
+      }
     } else {
-      $("a.off").show(); // Show the notification link if permission is not granted
+      // If permission is granted, ensure the link is removed
+      $(".bellicon__off .not").remove();
     }
   };
 
