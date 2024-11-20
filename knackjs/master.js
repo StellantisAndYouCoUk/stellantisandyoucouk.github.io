@@ -5372,6 +5372,18 @@ $(document).ready(function() {
 });
 
 // 2.Improvement
+$(document).ready(function() {
+  const currentUserElement = $('.kn-current_user'); // Find the element with the class
+  if (currentUserElement.length > 0) {
+    const elementId = currentUserElement.attr('id'); // Get the element's ID
+    console.log('Element ID:', elementId);
+  } else {
+    console.log('No element with the class .kn-current_user was found.');
+  }
+});
+
+
+
 
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
@@ -5399,8 +5411,6 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
       $(".bellicon__off .not").remove();
     }
   };
-
-      updateNotificationUI();
   
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
