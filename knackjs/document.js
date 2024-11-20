@@ -98,8 +98,8 @@
           $('#'+infoElementId).text('Upload succesfull, returning to app.');
           $('#kn-loading-spinner').hide();
           
-          let message = {'event':'scanDocument','status':'ok','pdfAssetField':pdfAssetField,'pdfAssetId':rData.id, 'fileName':fileName}
-
+          let message = {'event':'scanDocument','status':'ok','pdfAssetField':pdfAssetField,'pdfAssetId':rData[0].id, 'fileName':fileName}
+          console.log(message);
           //function from master.js to fill return data to Knack
           fillDataToKnack(message);
         } catch (e) {
