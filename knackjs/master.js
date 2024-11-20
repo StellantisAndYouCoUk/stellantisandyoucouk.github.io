@@ -5366,9 +5366,8 @@ function requestNotificationPermission() {
 }
 
 // // Using jQuery to call the function when the page is ready
-$(window).on('load', function() {
+$(document).ready(function() {
   requestNotificationPermission();
-  
 });
 
 // 2.Improvement
