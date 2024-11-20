@@ -401,7 +401,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
-  openCamera({video: {facingMode: {exact: "environment"}}},appleConstraints,appSettings.torch);
+  openCamera({video: {facingMode: {ideal: "environment"}}},appleConstraints,appSettings.torch);
 }
 
 
