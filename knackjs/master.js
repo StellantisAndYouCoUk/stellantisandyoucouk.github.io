@@ -5395,7 +5395,7 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
     if (Notification.permission !== "granted") {
       // Check if the link is already appended
       if ($(".bellicon__off .not").length === 0) {
-        $(".bellicon__off").append(`
+        $(".bellicon__off").prepend(`
           <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
         `);
       }
