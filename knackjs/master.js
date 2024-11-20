@@ -5367,18 +5367,6 @@ $(window).on('load', function() {
 
 // 2.Improvement
 
-// $(document).on('knack-scene-render.scene_435', function(event, scene) {
-//   const notificationIconHtml = `
-//   <span class="bellicon__off">
-// <a src="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
-//     </a>
-
-//   <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
-// </span>
-//    `;
-//    $(".kn-current_user").append(notificationIconHtml);
-//  });
-
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
   const notificationIconHtml = `
@@ -5391,6 +5379,7 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   $(".kn-current_user").append(notificationIconHtml);
 
   // Function to dynamically update the UI for notification permission
+
   const updateNotificationUI = () => {
     if (Notification.permission !== "granted") {
       // Check if the link is already appended
@@ -5404,15 +5393,26 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
       $(".bellicon__off .not").remove();
     }
   };
-
+  
+  $(document).on("click", ".not", function (e) {
+    e.preventDefault(); // Prevent default link behavior
+  
+    // Request notification permission
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+        console.log("User granted notification permissions.");
+      } else if (permission === "denied") {
+        console.log("User denied notification permissions.");
+      }
+  
+      // Update the UI after checking the permission
+      updateNotificationUI();
+    });
+  });
+  
   // Initial check to update the UI
   updateNotificationUI();
 
-  // Add click event to the notification link
-  $(document).on("click", ".not", function(e) {
-    e.preventDefault(); // Prevent default link behavior
-    requestNotificationPermission(); // Call your existing function
-    updateNotificationUI(); // Update the UI after requesting permission
-  });
+  
 });
 
