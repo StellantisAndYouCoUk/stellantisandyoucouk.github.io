@@ -5399,6 +5399,8 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
       $(".bellicon__off .not").remove();
     }
   };
+
+      updateNotificationUI();
   
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
