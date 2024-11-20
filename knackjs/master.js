@@ -5091,7 +5091,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             }
             
             async function runSync() {
-              let delayRandomNumber = Math.floor(Math.random() * 500) + 250 ; // Random delay
+              let delayRandomNumber = Math.floor(Math.random() * 1000) + 250 ; // Random delay
                 console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
                 await delay(delayRandomNumber); // Wait for the delay
                 console.log("This message appears after the delay");
