@@ -5109,11 +5109,14 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                // if (document.visibilityState === "visible") {
+                if (document.visibilityState === "visible") {
                   showNotification(dataParsed);
-                // }else{
                   showNotificationBackground(dataParsed.title,"",dataParsed.message);
-                // }
+
+                }else{
+                  showNotification(dataParsed);
+                  showNotificationBackground(dataParsed.title,"",dataParsed.message);
+                }
               }
 
             }
