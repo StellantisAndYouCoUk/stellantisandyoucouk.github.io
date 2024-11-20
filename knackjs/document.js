@@ -56,6 +56,63 @@
     }
   }
 
+  //Uploads given fileBlob to given app_id file store
+  //and then calls the fillDataToKnack of master.js to fill coresponding data
+  async function uploadFileOnlyNew(app_id, fileBlob, fileName, pdfAssetField, infoElementId, viewId) {
+    var url = 'https://api.rd.knack.com/v1/applications/'+app_id+'/assets/file/upload/stream?fieldKey='+pdfAssetField+'&filename='+fileName+'&size=65033&type=application%2Fpdf';
+    var form = new FormData();
+    var headers = {
+      'X-Knack-Application-ID': app_id,
+      'X-Knack-REST-API-Key': 'renderer',
+    };
+
+    form.append('origin', JSON.stringify({"view_key":viewId,"field_key":pdfAssetField}))
+    form.append('files', fileBlob, fileName);
+
+    try {
+      $('#'+infoElementId).text('File upload started.');
+      $.ajax({
+        //this takes care about the progress reporting on infoElementId
+        xhr: function() {
+          var xhr = new window.XMLHttpRequest();
+          xhr.upload.addEventListener("progress", function(evt) {
+              if (evt.lengthComputable) {
+                  var percentComplete = (evt.loaded / evt.total) * 100;
+                  //Do something with upload progress here
+                  $('#'+infoElementId).text('File upload progress: ' + parseInt(percentComplete)+'%');
+              }
+         }, false);
+         return xhr;
+        },
+        url: url,
+        type: 'POST',
+        headers: headers,
+        processData: false,
+        contentType: false,
+        mimeType: 'multipart/form-data',
+        data: form
+      }).then(rData => {
+        $('#'+infoElementId).text('File upload finished.');
+        try {
+          if (typeof rData === 'string'){ rData = JSON.parse(rData);};
+          $('#'+infoElementId).text('Upload succesfull, returning to app.');
+          $('#kn-loading-spinner').hide();
+          
+          let message = {'event':'scanDocument','status':'ok','pdfAssetField':pdfAssetField,'pdfAssetId':rData.id, 'fileName':fileName}
+
+          //function from master.js to fill return data to Knack
+          fillDataToKnack(message);
+        } catch (e) {
+          alert('File upload was not succesfull.')
+          alert(e);
+        }
+      })
+    } catch (ex){
+      alert('File upload was not succesfull.')
+      alert(ex);
+    }
+  }
+
   //************************************* OPERATING SYSTEM DETECTION *****************************************   
 var OperatingSystem = {
   Android: function() {
@@ -415,7 +472,12 @@ async function createPDF(infoText){
 
     $('#'+infoText).text('PDF created, starting upload.');
 
-    uploadFileOnly(returnData.app_id, blobPDF,pdfName, returnData.pdfAssetField, infoText);
+    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male')){
+      uploadFileOnlyNew(returnData.app_id, blobPDF,pdfName, returnData.pdfAssetField, infoText,'view_2706');
+    } else {
+      uploadFileOnly(returnData.app_id, blobPDF,pdfName, returnData.pdfAssetField, infoText);
+    }
+    
   } catch(e){
     alert(e);
   }
