@@ -472,11 +472,11 @@ async function createPDF(infoText){
 
     $('#'+infoText).text('PDF created, starting upload.');
 
-    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male')){
+    //if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male')){
       uploadFileOnlyNew(returnData.app_id, blobPDF,pdfName, returnData.pdfAssetField, infoText,$('div[class*="kn-view"]').has('input[name="'+returnData.pdfAssetField+'"]').attr('id'));
-    } else {
+    /*} else {
       uploadFileOnly(returnData.app_id, blobPDF,pdfName, returnData.pdfAssetField, infoText);
-    }
+    }*/
     
   } catch(e){
     alert(e);
