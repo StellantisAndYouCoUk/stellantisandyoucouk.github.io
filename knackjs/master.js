@@ -1824,6 +1824,7 @@ function hideScanApp(){
 function fillDataToKnack(message){
   hideScanApp();
   $('input[name="'+message.pdfAssetField+'"]').val(message.pdfAssetId);
+  $('input[name="'+message.pdfAssetField+'"]').removeClass('input-error');
   $('div[id="kn-input-'+message.pdfAssetField+'"] div[class="kn-asset-current"]').html(message.fileName);
   $('#'+message.pdfAssetField+'_upload').hide();
   $('div[id="kn-input-'+message.pdfAssetField+'"] div[class="kn-file-upload"]').html('File uploaded successfully.');
@@ -5269,6 +5270,7 @@ function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null
   //alert(fieldName);
   //alert(fileId);
   $('input[name="'+fieldName+'"]').val(fileId);
+  $('input[name="'+fieldName+'"]').removeClass('input-error');
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html('photoImg.jpg');
   $('#'+$('input[name="'+fieldName+'"]').attr('name')+'_upload').hide();
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+' .kn-file-upload').html('File uploaded successfully.');
@@ -5307,6 +5309,7 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
   //alert(fileId);
   $('input[name="'+fieldName+'"]').val(fileId);
   $('input[name="'+fieldName+'"]').removeAttr('disabled');
+  $('input[name="'+fieldName+'"]').removeClass('input-error');
   $('input[id="'+fieldName+'_offlinefile"]').val(null);
   $('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html(filename);
   //$('div[id="kn-input-'+$('input[name="'+fieldName+'"]').attr('name')+'"] div[class="kn-asset-current"]').html('photoImg.jpg');
