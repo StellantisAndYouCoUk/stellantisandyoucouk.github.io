@@ -4377,7 +4377,7 @@ img.notification-icon {
   display: inline-block;
   position: relative;
   margin: 0 1rem;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 img.user-icon {
@@ -4396,7 +4396,7 @@ img.user-icon {
   box-shadow: 0 0 10px rgba(136, 55, 105, 0.6); 
   border-radius: 50%;
   transition: box-shadow 0.3s ease-out;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 img.user-icon:hover {

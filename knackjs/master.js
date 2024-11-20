@@ -5367,14 +5367,48 @@ $(window).on('load', function() {
 
 // 2.Improvement
 
-$(document).on('knack-scene-render.scene_435', function(event, scene) {
-  const notificationIconHtml = `
-  <span class="bellicon__off">
-<a src="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
-    </a>
+// $(document).on('knack-scene-render.scene_435', function(event, scene) {
+//   const notificationIconHtml = `
+//   <span class="bellicon__off">
+// <a src="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
+//     </a>
 
-  <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
-</span>
-   `;
-   $(".kn-current_user").append(notificationIconHtml);
- });
+//   <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+// </span>
+//    `;
+//    $(".kn-current_user").append(notificationIconHtml);
+//  });
+
+
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
+  // Generate the notification icon HTML
+  const notificationIconHtml = `
+    <span class="bellicon__off">
+      <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
+      <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+    </span>
+  `;
+
+  // Append the notification icon HTML to the current user section
+  $(".kn-current_user").append(notificationIconHtml);
+
+  // Function to update the UI based on notification permission
+  const updateNotificationUI = () => {
+    if (Notification.permission === "granted") {
+      $("a.off").hide(); // Hide the notification link if permission is granted
+    } else {
+      $("a.off").show(); // Show the notification link if permission is not granted
+    }
+  };
+
+  // Initial check to update the UI
+  updateNotificationUI();
+
+  // Add click event to the notification link
+  $(document).on("click", ".not", function(e) {
+    e.preventDefault(); // Prevent default link behavior
+    requestNotificationPermission(); // Call your existing function
+    updateNotificationUI(); // Update the UI after requesting permission
+  });
+});
+
