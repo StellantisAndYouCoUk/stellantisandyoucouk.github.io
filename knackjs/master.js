@@ -5400,7 +5400,7 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
 
     if (isEdge) {
       // Create a popup if the user is on Edge
-      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg"
+      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
       MySwal.fire({
         allowEscapeKey: false,
         title: "Allow Notifications",
