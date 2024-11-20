@@ -310,7 +310,12 @@ const constraints = {
   height: { min: 1080, ideal: 720, max: 2988 },
   aspectRatio: 4/3,
   frameRate:{max: 30}
-  };
+};
+
+const appleConstraints = {
+  width: { min: 1440, ideal: 1280, max: 3984 },
+  height: { min: 1080, ideal: 720, max: 2988 }
+};
 
 function openCamera(getUserMediaC, constraints, torch = false){
   console.log(constraints);
@@ -396,7 +401,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
-  openCamera({video: {facingMode: {exact: "environment"}}},constraints,appSettings.torch);
+  openCamera({video: {facingMode: {exact: "environment"}}},appleConstraints,appSettings.torch);
 }
 
 
