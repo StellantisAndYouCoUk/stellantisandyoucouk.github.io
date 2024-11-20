@@ -5400,7 +5400,17 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
 
     if (isEdge) {
       // Create a popup if the user is on Edge
-      alert("You are using Microsoft Edge. Notifications are now set up!");
+      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg"
+      MySwal.fire({
+        allowEscapeKey: false,
+        title: "Allow Notifications",
+        html: `<p><strong>Step 1:</strong> Click <em>"Little bell icon on url"</em> to allow notifications.</p>`, 
+        imageUrl: gifUrlFirst,
+        imageAlt: "Custom GIF",
+        allowOutsideClick: false,
+        confirmButtonText: "OK"
+      });
+
   }
     // Request notification permission
     Notification.requestPermission().then(permission => {
