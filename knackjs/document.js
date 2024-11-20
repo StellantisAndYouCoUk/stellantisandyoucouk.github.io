@@ -191,7 +191,7 @@ if (OperatingSystem.Android()) {
       alert(err.name + ": " + err.message);
     });
   } else {
-    if (Knack.getUserAttributes().email.includes('hynek')){
+    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('david.male')){
       console.log('hynek')
       openCamera({'video':true},null);
     } else {
