@@ -4387,8 +4387,8 @@ img.user-icon {
 }
 
 
-p.not {
-  display: inline-block;
+a.not {
+  text-decoration: none; /* Removes the underline */
 }
 
 
