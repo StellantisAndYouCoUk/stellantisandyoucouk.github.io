@@ -5404,6 +5404,15 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
       } else if (permission === "denied") {
         console.log("User denied notification permissions.");
       }
+
+
+          // Detect if the browser is Edge
+    const isEdge = navigator.userAgent.includes("Edg");
+
+    if (isEdge) {
+        // Create a popup if the user is on Edge
+        alert("You are using Microsoft Edge. Notifications are now set up!");
+    }
   
       // Update the UI after checking the permission
       updateNotificationUI();
