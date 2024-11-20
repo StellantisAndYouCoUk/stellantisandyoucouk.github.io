@@ -152,7 +152,7 @@ function prepareCameraView(imgToSaveName){
 
       const track = mediaStream.getVideoTracks()[0];
 
-      track.applyConstraints(constraints);
+      if (constraints) track.applyConstraints(constraints);
   
       if (!OperatingSystem.iOS()) {
         imageCapture = new ImageCapture(track);
@@ -191,7 +191,11 @@ if (OperatingSystem.Android()) {
       alert(err.name + ": " + err.message);
     });
   } else {
-    openCamera({video: {facingMode: {exact: "environment"}}},constraints);
+    if (Knack.getUserAttributes().email.includes('hynek')){
+      openCamera({'video':true},null);
+    } else {
+      openCamera({video: {facingMode: {exact: "environment"}}},constraints);
+    }
   }
 
 
