@@ -4832,6 +4832,7 @@ function hideScanApp(){
 function fillDataToKnack(message){
   hideScanApp();
   $('input[name="'+message.pdfAssetField+'"]').val(message.pdfAssetId);
+  $('input[name="'+message.pdfAssetField+'"]').removeClass('input-error');
   $('div[id="kn-input-'+message.pdfAssetField+'"] div[class="kn-asset-current"]').html(message.fileName);
   $('#'+message.pdfAssetField+'_upload').hide();
   $('div[id="kn-input-'+message.pdfAssetField+'"] div[class="kn-file-upload"]').html('File uploaded successfully.');
