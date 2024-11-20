@@ -5396,6 +5396,8 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
+    const isEdge = navigator.userAgent.includes("Edg");
+
     if (isEdge) {
       // Create a popup if the user is on Edge
       alert("You are using Microsoft Edge. Notifications are now set up!");
@@ -5410,7 +5412,6 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
 
 
           // Detect if the browser is Edge
-    const isEdge = navigator.userAgent.includes("Edg");
 
 
   
