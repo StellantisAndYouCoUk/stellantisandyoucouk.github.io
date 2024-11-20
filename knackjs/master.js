@@ -5011,7 +5011,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
-      function showNotification(data) {
+      function showNotification(data, timer) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
@@ -5030,6 +5030,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           showCloseButton: true,
           allowEscapeKey: true,
           focusConfirm: false,
+          timer: timer,
           showCancelButton: true,
           cancelButtonText: "Ok",
           cancelButtonColor: "#28a745",
@@ -5109,7 +5110,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                showNotification(dataParsed);
+                
+                showNotification(dataParsed, 0);
                 showNotificationBackground(dataParsed.title,"",dataParsed.message);
 
                 // if (document.visibilityState === "visible") {
@@ -5118,6 +5120,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 // }else{
                 //   showNotification(dataParsed);
                 // }
+              }else{
+                showNotification(dataParsed, 3000);
+
               }
 
             }
