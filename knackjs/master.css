@@ -4359,7 +4359,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 .bellicon__off{
   display: flex;
   justify-content: center;
-  margin-left: 2em;
+  margin: 0 1rem;
   visibility: hidden;
 
 }
