@@ -4348,24 +4348,47 @@ n-link.kn-link-2.kn-link-page.kn-button,
 }
 /* After ask comment it out... */
  
-.kn-current_user {
+/* .kn-current_user {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   margin: 0.2rem;
-}
+} */
 
-.bellicon__off{
+/* .bellicon__off{
   display: flex;
   justify-content: center;
-  margin-left: 2em;
+  margin: 0 1rem;
   visibility: hidden;
 
+} */
+
+img.notification-icon {
+  position: absolute;
+  top: 0.8rem;
+  left: 1.7rem;
+  margin-left: 0.2rem;
 }
 
-span.not {
-  padding: 2px;
+
+
+.bellicon__off {
+  display: inline-block;
+  position: relative;
+  margin: 0 1rem;
+  /* visibility: hidden; */
+}
+
+img.user-icon {
+  position: relative;
+  top: 0.5rem;
+  left: 2rem;
+}
+
+
+a.not {
+  text-decoration: none; /* Removes the underline */
 }
 
 
@@ -4373,7 +4396,7 @@ img.user-icon {
   box-shadow: 0 0 10px rgba(136, 55, 105, 0.6); 
   border-radius: 50%;
   transition: box-shadow 0.3s ease-out;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 img.user-icon:hover {
@@ -4391,4 +4414,6 @@ img.user-icon:hover {
   opacity: 1;                   /* Transition to fully visible */
   transform: scale(1);          /* Transition to full size */
 }
+
+
 

@@ -5091,7 +5091,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             }
             
             async function runSync() {
-              let delayRandomNumber = Math.floor(Math.random() * 100) * 100; // Random delay
+              let delayRandomNumber = Math.floor(Math.random() * 1000) + 250 ; // Random delay
                 console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
                 await delay(delayRandomNumber); // Wait for the delay
                 console.log("This message appears after the delay");
@@ -5109,11 +5109,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                if (document.visibilityState === "visible") {
-                  showNotification(dataParsed);
-                }else{
-                  showNotificationBackground(dataParsed.title,"",dataParsed.message);
-                }
+                showNotification(dataParsed);
+                showNotificationBackground(dataParsed.title,"",dataParsed.message);
+
+                // if (document.visibilityState === "visible") {
+                //   showNotificationBackground(dataParsed.title,"",dataParsed.message);
+
+                // }else{
+                //   showNotification(dataParsed);
+                // }
               }
 
             }
@@ -5364,12 +5368,61 @@ $(window).on('load', function() {
 // 2.Improvement
 
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
+  // Generate the base notification icon HTML (always visible)
   const notificationIconHtml = `
-  <div class="bellicon__off">
-  <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon">
-  <span class="not">Off</span>
-  </div>
-           <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
-   `;
-   $(".kn-current_user").append(notificationIconHtml);
- });
+    <span class="bellicon__off">
+      <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+    </span>
+  `;
+
+  // Append the base notification icon HTML to the current user section
+  $(".kn-current_user").append(notificationIconHtml);
+
+  // Function to dynamically update the UI for notification permission
+
+  const updateNotificationUI = () => {
+    if (Notification.permission !== "granted") {
+      // Check if the link is already appended
+      if ($(".bellicon__off .not").length === 0) {
+        $(".bellicon__off").prepend(`
+          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
+        `);
+      }
+    } else {
+      // If permission is granted, ensure the link is removed
+      $(".bellicon__off .not").remove();
+    }
+  };
+  
+  $(document).on("click", ".not", function (e) {
+    e.preventDefault(); // Prevent default link behavior
+    const isEdge = navigator.userAgent.includes("Edg");
+
+    if (isEdge) {
+      // Create a popup if the user is on Edge
+      alert("You are using Microsoft Edge. Notifications are now set up!");
+  }
+    // Request notification permission
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+        console.log("User granted notification permissions.");
+      } else if (permission === "denied") {
+        console.log("User denied notification permissions.");
+      }
+
+
+          // Detect if the browser is Edge
+
+
+  
+      // Update the UI after checking the permission
+      updateNotificationUI();
+    });
+  });
+  
+  // Initial check to update the UI
+  updateNotificationUI();
+
+  
+});
+
