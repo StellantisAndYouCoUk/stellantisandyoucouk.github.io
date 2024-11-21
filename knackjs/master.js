@@ -5031,6 +5031,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowEscapeKey: true,
           focusConfirm: false,
           timer: timer,
+          iconHtml: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+          customClass: {
+            icon: 'rotate-y',
+          },
           showCancelButton: true,
           cancelButtonText: "Ok",
           cancelButtonColor: "#28a745",
