@@ -5331,6 +5331,21 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 // Notification Read
 
 function requestNotificationPermission() {
+  const updateNotificationUI = () => {
+    if (Notification.permission !== "granted") {
+      // Check if the link is already appended
+      if ($(".bellicon__off .not").length === 0) {
+        $(".bellicon__off").prepend(`
+          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
+        `);
+      }
+    } else {
+      // If permission is granted, ensure the link is removed
+      $(".bellicon__off .not").remove();
+    }
+  };
+
+
   // Check if the Notification API is supported
   if ('Notification' in window) {
       // Check the current permission status
@@ -5338,6 +5353,7 @@ function requestNotificationPermission() {
           // If permission is neither granted nor denied, ask for permission
           Notification.requestPermission().then(permission => {
               if (permission === 'granted') {
+                updateNotificationUI()
                   console.log('User granted notification permissions.');
                   // You can proceed with sending notifications or other related actions
               } else if (permission === 'denied') {
@@ -5360,6 +5376,7 @@ function requestNotificationPermission() {
 // // Using jQuery to call the function when the page is ready
 $(document).ready(function() {
   requestNotificationPermission();
+
   console.log("Request Sended");
 });
 
