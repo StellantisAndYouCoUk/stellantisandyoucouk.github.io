@@ -5282,20 +5282,6 @@ function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null
   if (nextAction){
     nextAction(fieldName, fileId, filename, recordId);
   }
-  if (fieldName === 'field_2718'){
-    console.log('Motab Photo');
-    let dataToSend = {
-      recordId:getRecordIdFromHref(location.href),
-      imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg'
-    }
-    $.ajax({
-      url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
-      type: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(dataToSend),
-      async: true
-    })
-  }
   let f = uploadList.find(el => el.field === fieldName);
   if (f){
     f.uploaded = true;
