@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Notifications Panel</title>
+</head>
+<body>
+  <div class="notifications-panel">
+    <div class="notifications-header">
+      <div class="notifications-status">
+        <span class="bell-icon">&#128276;</span> Notifications are on
+      </div>
+    </div>
+    <p class="notification-message">
+      You’re set to receive email and browser notifications for everything all the time.
+    </p>
+    <button class="focus-mode-button">Turn on Focus Mode</button>
+    <div class="notification-links">
+      <a href="#">Change your notification settings</a><br>
+      <a href="#">Turn notifications off</a>
+    </div>
+    <div class="personal-settings">
+      <p class="personal-settings-header">Personal Settings</p>
+      <ul>
+        <li><a href="#">Profile, password, 2FA</a></li>
+        <li><a href="#">My devices (Get our free mobile apps)</a></li>
+        <li><a href="#">Preferences</a></li>
+        <li><a href="#">Out of Office</a></li>
+        <li><a href="#">Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- CSS -->
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1c1f26;
+    color: #e3e6eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .notifications-panel {
+    background-color: #2c313a;
+    padding: 20px;
+    width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #404550;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .notifications-status {
+    font-weight: bold;
+  }
+
+  .bell-icon {
+    margin-right: 5px;
+  }
+
+  .notification-message {
+    margin: 0 0 15px;
+  }
+
+  .focus-mode-button {
+    background-color: #6272a4;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .focus-mode-button:hover {
+    background-color: #7283b8;
+  }
+
+  .notification-links a {
+    color: #82aaff;
+    text-decoration: none;
+  }
+
+  .notification-links a:hover {
+    text-decoration: underline;
+  }
+
+  .personal-settings {
+    margin-top: 20px;
+  }
+
+  .personal-settings-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .personal-settings ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .personal-settings li {
+    margin-bottom: 8px;
+  }
+
+  .personal-settings a {
+    color: #82aaff;
+    text-decoration: none;
+  }
+
+  .personal-settings a:hover {
+    text-decoration: underline;
+  }
+</style>
