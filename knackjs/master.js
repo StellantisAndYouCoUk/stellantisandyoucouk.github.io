@@ -5011,7 +5011,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
-      function showNotification(data) {
+      function showNotification(data, timer) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
@@ -5030,6 +5030,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           showCloseButton: true,
           allowEscapeKey: true,
           focusConfirm: false,
+          timer: timer,
           showCancelButton: true,
           cancelButtonText: "Ok",
           cancelButtonColor: "#28a745",
@@ -5109,7 +5110,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                showNotification(dataParsed);
+                
+                showNotification(dataParsed, 0);
                 showNotificationBackground(dataParsed.title,"",dataParsed.message);
 
                 // if (document.visibilityState === "visible") {
@@ -5118,6 +5120,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 // }else{
                 //   showNotification(dataParsed);
                 // }
+              }else{
+                showNotification(dataParsed, 3000);
+
               }
 
             }
@@ -5347,11 +5352,24 @@ function requestNotificationPermission() {
 }
 
 // // Using jQuery to call the function when the page is ready
-$(window).on('load', function() {
+$(document).ready(function() {
   requestNotificationPermission();
+  console.log("Request Sended");
 });
 
 // 2.Improvement
+$(document).ready(function() {
+  const currentUserElement = $('.kn-current_user'); // Find the element with the class
+  if (currentUserElement.length > 0) {
+    const elementId = currentUserElement.attr('id'); // Get the element's ID
+    console.log('Element ID:', elementId);
+  } else {
+    console.log('No element with the class .kn-current_user was found.');
+  }
+});
+
+
+
 
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
@@ -5386,7 +5404,17 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
 
     if (isEdge) {
       // Create a popup if the user is on Edge
-      alert("You are using Microsoft Edge. Notifications are now set up!");
+      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
+      Swal.fire({
+        allowEscapeKey: false,
+        title: "Allow Notifications",
+        html: `<p><strong>Step 1:</strong> Click <em>"Little bell icon on url"</em> to allow notifications.</p>`, 
+        imageUrl: gifUrlFirst,
+        imageAlt: "Custom GIF",
+        allowOutsideClick: false,
+        confirmButtonText: "OK"
+      });
+
   }
     // Request notification permission
     Notification.requestPermission().then(permission => {
