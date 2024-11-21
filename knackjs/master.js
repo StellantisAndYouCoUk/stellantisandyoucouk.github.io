@@ -5032,6 +5032,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowEscapeKey: true,
           focusConfirm: false,
           timer: timer,
+          icon: 'success',
           iconHtml: doubleCheckIcon,
           customClass: {
             icon: 'rotate-y',
