@@ -5377,7 +5377,7 @@ $(document).ready(function() {
 
 
 
-$(document).on('knack-scene-render.scene_435', function(event, scene) {
+$(document).on('knack-scene-render.any', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
   const notificationIconHtml = `
     <span class="bellicon__off">
