@@ -5016,7 +5016,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
         console.log("Notification ID:", notificationId);
-      
+      const icon = "'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'";
         // Show the notification using Swal
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
@@ -5031,7 +5031,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowEscapeKey: true,
           focusConfirm: false,
           timer: timer,
-          iconHtml: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+          iconHtml: icon,
           customClass: {
             icon: 'rotate-y',
           },
