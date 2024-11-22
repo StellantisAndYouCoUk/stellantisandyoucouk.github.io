@@ -4427,7 +4427,10 @@ img.user-icon:hover {
   }
 }
 
-
+.personal-settings a {
+  color: #82aaff;
+  text-decoration: none;
+}
 
 .notifications-panel {
   position: absolute;
@@ -4450,6 +4453,7 @@ img.user-icon:hover {
   margin-bottom: 10px;
   color: white;
 }
+
 
 .notifications-status {
   font-weight: bold;
