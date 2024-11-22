@@ -5011,6 +5011,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
       const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
+      console.log("event source implemented" + eventSource)
+
       function showNotification(data, timer) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
