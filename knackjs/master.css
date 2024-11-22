@@ -4514,7 +4514,7 @@ img.user-icon:hover {
 }
 
 .personal-settings a {
-  color: whitesmoke;
+  color: whitesmoke !important;
   text-decoration: none;
 }
 
