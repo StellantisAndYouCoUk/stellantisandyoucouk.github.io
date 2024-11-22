@@ -5398,8 +5398,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
   const notificationIconHtml = `
     <span class="bellicon__off">
+    <span class="user">
       <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
     </span>
+      </span>
   `;
 
   // Append the base notification icon HTML to the current user section
