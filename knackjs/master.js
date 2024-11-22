@@ -5452,6 +5452,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 $(document).ready(function () {
   // Click event on user icon
   $('.user-icon').on('click', function (event) {
+     console.log("Clicked to load function")
       event.stopPropagation(); // Prevent the click from bubbling to the document
 
       // Check if dropdown content is already loaded
