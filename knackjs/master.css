@@ -4486,6 +4486,11 @@ img.user-icon:hover {
 .notification-links a {
   color: hsl(209 54% 58% / 1) !important;
   text-decoration: none;
+  display: block;
+}
+
+.notification-links {
+  margin-top: 1rem; 
 }
 
 .notification-links a:hover {
