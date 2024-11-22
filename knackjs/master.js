@@ -5465,7 +5465,7 @@ $(document).ready(function () {
                   $('.user').append(`<div class="dropdown-content">${data}</div>`);
               },
               error: function () {
-                  console.error('Failed to load dropdown content');
+                  alert('Failed to load dropdown content');
               }
           });
       } else {
