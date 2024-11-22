@@ -4487,6 +4487,7 @@ img.user-icon:hover {
   color: hsl(209 54% 58% / 1) !important;
   text-decoration: none;
   display: block;
+  margin: 0.25rem auto;
 }
 
 .notification-links {
