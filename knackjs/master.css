@@ -4484,7 +4484,7 @@ img.user-icon:hover {
 }
 
 .notification-links a {
-  color: hsl(209 54% 58% / 1);
+  color: hsl(209 54% 58% / 1) !important;
   text-decoration: none;
 }
 
@@ -4521,11 +4521,6 @@ img.user-icon:hover {
 .personal-settings a:hover {
   text-decoration: underline;
 }
-
-.kn-content a {
-color:  #e2e4e7;
-}
-
 
 /* Media query for screens less than 768px */
 @media screen and (max-width: 768px) {
