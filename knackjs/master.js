@@ -5449,7 +5449,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 });
 
 
-$(document).ready(function () {
   // Click event on user icon
   $('.user-icon').on('click', function (event) {
      console.log("Clicked to load function")
@@ -5484,4 +5483,3 @@ $(document).ready(function () {
   $('.user').on('click', function (event) {
       event.stopPropagation(); // Prevent the click from propagating to the document
   });
-});
