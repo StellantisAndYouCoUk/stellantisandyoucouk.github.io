@@ -3944,20 +3944,22 @@ $(document).on('knack-view-render.view_3841', function (event, view, data) {
 });
 
 function motabReturnsImageUpload(fieldName, fileId, filename, recordId){
-  console.log('motabReturnsImageUpload');
-  let dataToSend = {
-    recordId:(recordId?recordId:getRecordIdFromHref(location.href)),
-    imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg',
-    successMakeWebhook : 'https://hook.eu1.make.celonis.com/kln78kilvne9gknkl8mcupp6v3imktxq',
-    failMakeWebhook : 'https://hook.eu1.make.celonis.com/3but1lwjptm6gqi3a0m7uulceuhx8znt'
+  console.log('motabReturnsImageUpload', fieldName);
+  if (fieldName === 'field_2718'){
+    let dataToSend = {
+      recordId:(recordId?recordId:getRecordIdFromHref(location.href)),
+      imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg',
+      successMakeWebhook : 'https://hook.eu1.make.celonis.com/kln78kilvne9gknkl8mcupp6v3imktxq',
+      failMakeWebhook : 'https://hook.eu1.make.celonis.com/3but1lwjptm6gqi3a0m7uulceuhx8znt'
+    }
+    $.ajax({
+      url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(dataToSend),
+      async: true
+    })
   }
-  $.ajax({
-    url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify(dataToSend),
-    async: true
-  })
 }
 
 
