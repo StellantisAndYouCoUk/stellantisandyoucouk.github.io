@@ -5381,18 +5381,6 @@ $(document).ready(function() {
 });
 
 // 2.Improvement
-// $(document).ready(function() {
-//   const currentUserElement = $('.kn-current_user'); // Find the element with the class
-//   if (currentUserElement.length > 0) {
-//     const elementId = currentUserElement.attr('id'); // Get the element's ID
-//     console.log('Element ID:', elementId);
-//   } else {
-//     console.log('No element with the class .kn-current_user was found.');
-//   }
-// });
-
-
-
 
 $(document).on('knack-scene-render.any', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
@@ -5449,11 +5437,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         console.log("User denied notification permissions.");
       }
 
-
-          // Detect if the browser is Edge
-
-
-  
       // Update the UI after checking the permission
       updateNotificationUI();
     });
@@ -5465,3 +5448,39 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   
 });
 
+
+$(document).ready(function () {
+  // Click event on user icon
+  $('.user-icon').on('click', function (event) {
+      event.stopPropagation(); // Prevent the click from bubbling to the document
+
+      // Check if dropdown content is already loaded
+      if ($('.user .dropdown-content').length === 0) {
+          // Load dropdown content via AJAX only if it's not already loaded
+          $.ajax({
+              url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
+              type: 'GET',
+              success: function (data) {
+                  // Append fetched content while preserving existing .user-icon
+                  $('.user').append(`<div class="dropdown-content">${data}</div>`);
+              },
+              error: function () {
+                  console.error('Failed to load dropdown content');
+              }
+          });
+      } else {
+          // Toggle visibility of the dropdown content
+          $('.user .dropdown-content').toggle();
+      }
+  });
+
+  // Close dropdown when clicking outside
+  $(document).on('click', function () {
+      $('.user .dropdown-content').hide(); // Hide only the dropdown content
+  });
+
+  // Prevent click inside dropdown from closing it
+  $('.user').on('click', function (event) {
+      event.stopPropagation(); // Prevent the click from propagating to the document
+  });
+});

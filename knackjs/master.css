@@ -4483,10 +4483,13 @@ img.user-icon:hover {
 
 .notification-links a:hover {
   text-decoration: underline;
+  color: white;
 }
 
 .personal-settings {
   margin-top: 20px;
+  color: white;
+
 }
 
 .personal-settings-header {
