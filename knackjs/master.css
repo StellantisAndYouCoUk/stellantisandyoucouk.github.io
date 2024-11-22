@@ -4525,3 +4525,20 @@ img.user-icon:hover {
 .kn-content a {
 color:  #e2e4e7;
 }
+
+/* Media query for screens less than 768px */
+@media screen and (max-width: 768px) {
+  .notifications-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      max-height: none; /* Remove default max height */
+      overflow-y: auto; /* Keep scroll if content overflows */
+      padding: 20px; /* Optional: Add padding inside the panel */
+      z-index: 1000;
+  }
+}
