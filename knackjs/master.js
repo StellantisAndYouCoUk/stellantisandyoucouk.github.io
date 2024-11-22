@@ -5016,8 +5016,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
         console.log("Notification ID:", notificationId);
-      
-        // Show the notification using Swal
+  //    const doubleCheckIcon =
+  // '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32"><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z" fill="currentColor" /></svg>'
+  //       // Show the notification using Swal
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
@@ -5031,6 +5032,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowEscapeKey: true,
           focusConfirm: false,
           timer: timer,
+          // icon: 'success',
+          // iconHtml: doubleCheckIcon,
+          // customClass: {
+          //   icon: 'rotate-y',
+          // },
           showCancelButton: true,
           cancelButtonText: "Ok",
           cancelButtonColor: "#28a745",
@@ -5325,6 +5331,21 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 // Notification Read
 
 function requestNotificationPermission() {
+  const updateNotificationUI = () => {
+    if (Notification.permission !== "granted") {
+      // Check if the link is already appended
+      if ($(".bellicon__off .not").length === 0) {
+        $(".bellicon__off").prepend(`
+          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
+        `);
+      }
+    } else {
+      // If permission is granted, ensure the link is removed
+      $(".bellicon__off .not").remove();
+    }
+  };
+
+
   // Check if the Notification API is supported
   if ('Notification' in window) {
       // Check the current permission status
@@ -5332,6 +5353,7 @@ function requestNotificationPermission() {
           // If permission is neither granted nor denied, ask for permission
           Notification.requestPermission().then(permission => {
               if (permission === 'granted') {
+                updateNotificationUI()
                   console.log('User granted notification permissions.');
                   // You can proceed with sending notifications or other related actions
               } else if (permission === 'denied') {
@@ -5354,29 +5376,20 @@ function requestNotificationPermission() {
 // // Using jQuery to call the function when the page is ready
 $(document).ready(function() {
   requestNotificationPermission();
+
   console.log("Request Sended");
 });
 
 // 2.Improvement
-$(document).ready(function() {
-  const currentUserElement = $('.kn-current_user'); // Find the element with the class
-  if (currentUserElement.length > 0) {
-    const elementId = currentUserElement.attr('id'); // Get the element's ID
-    console.log('Element ID:', elementId);
-  } else {
-    console.log('No element with the class .kn-current_user was found.');
-  }
-});
 
-
-
-
-$(document).on('knack-scene-render.scene_435', function(event, scene) {
+$(document).on('knack-scene-render.any', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
   const notificationIconHtml = `
     <span class="bellicon__off">
+    <span class="user">
       <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
     </span>
+      </span>
   `;
 
   // Append the base notification icon HTML to the current user section
@@ -5424,11 +5437,6 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
         console.log("User denied notification permissions.");
       }
 
-
-          // Detect if the browser is Edge
-
-
-  
       // Update the UI after checking the permission
       updateNotificationUI();
     });
@@ -5440,3 +5448,41 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   
 });
 
+$(document).on('knack-scene-render.any', function(event, scene) {
+
+  // Click event on user icon
+  $('.user-icon').on('click', function (event) {
+     console.log("Clicked to load function")
+      event.stopPropagation(); // Prevent the click from bubbling to the document
+
+      // Check if dropdown content is already loaded
+      if ($('.user .dropdown-content').length === 0) {
+          // Load dropdown content via AJAX only if it's not already loaded
+          $.ajax({
+              url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
+              type: 'GET',
+              success: function (data) {
+                  // Append fetched content while preserving existing .user-icon
+                  $('.user').append(`<div class="dropdown-content">${data}</div>`);
+              },
+              error: function () {
+                  alert('Failed to load dropdown content');
+              }
+          });
+      } else {
+          // Toggle visibility of the dropdown content
+          $('.user .dropdown-content').toggle();
+      }
+  });
+
+  // Close dropdown when clicking outside
+  $(document).on('click', function () {
+      $('.user .dropdown-content').hide(); // Hide only the dropdown content
+  });
+
+  // Prevent click inside dropdown from closing it
+  $('.user').on('click', function (event) {
+      event.stopPropagation(); // Prevent the click from propagating to the document
+  });
+
+});
