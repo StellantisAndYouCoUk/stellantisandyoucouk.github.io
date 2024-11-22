@@ -4502,6 +4502,7 @@ img.user-icon:hover {
 .personal-settings {
   margin-top: 20px;
   color: white;
+  visibility: hidden;
 
 }
 
