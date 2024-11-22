@@ -4521,3 +4521,7 @@ img.user-icon:hover {
 .personal-settings a:hover {
   text-decoration: underline;
 }
+
+.kn-content a {
+color:  #e2e4e7;
+}
