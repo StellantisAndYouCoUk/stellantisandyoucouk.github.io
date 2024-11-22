@@ -4484,7 +4484,7 @@ img.user-icon:hover {
 }
 
 .notification-links a {
-  color: 210, 92.4%, 69%;
+  color: hsl(209 54% 58% / 1);
   text-decoration: none;
 }
 
