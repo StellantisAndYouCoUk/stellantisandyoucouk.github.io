@@ -5480,3 +5480,23 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   });
 
 });
+
+$(document).on('knack-scene-render.scene_436', function(event, scene) {
+  console.log('knack-scene-render.scene_436');
+  let url = window.location.href;
+  if (url.includes('redirectApp=')){
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectURL = urlParams.get('redirectApp');
+    console.log(redirectURL);
+  }
+});
+
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
+  console.log('knack-scene-render.scene_435');
+  let url = window.location.href;
+  if (url.includes('redirectApp=')){
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectURL = urlParams.get('redirectApp');
+    console.log(redirectURL);
+  }
+});
