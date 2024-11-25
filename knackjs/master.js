@@ -5067,6 +5067,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 .getElementById("popup-cancel-button")
                 .addEventListener("click", () => {
                   Swal.close();
+                  console.log("Clicked Notification");
                 });
             }
       
@@ -5083,10 +5084,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
-              requireInteraction: false,
+              requireInteraction: true,
               badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
                       });
+              notification.onclose = function(){
+                console.log("Background Notification closed.");
+              }
 
         }
 
@@ -5136,18 +5140,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
             }
             
             runSync();
-
-
-
-
-
-        // Create a unique identifier using notification ID and current timestamp
-        
-
-                 
-
-      
-
         } catch (error) {
           console.error("Failed to process message:", error);
         }
