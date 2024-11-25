@@ -5496,8 +5496,9 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   let url = window.location.href;
   if (url.includes('redirectApp=')){
     let redirectUrl = url.substring(url.indexOf('?redirectApp=')+13)
-    console.log('redirectUrl',atob(redirectUrl))
+    redirectUrl = atob(redirectUrl);
+    console.log('redirectUrl',redirectUrl);
     var token = Knack.getUserAttributes().values["field_6440"];
-    setTimeout(function () { document.location = atob(redirectUrl)+'&token='+token; }, 100)
+    setTimeout(function () { document.location = redirectUrl+(redirectUrl.includes('?')?'&':'?')+'token='+token; }, 100)
   }
 });
