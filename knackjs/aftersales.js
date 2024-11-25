@@ -53,6 +53,9 @@ var submitUserLoginForm = function() {
   let token = getTokenFromURL(url);
 
   if (!token){
+    if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
+      console.log('on page direct without login');
+    }
     return;
   }
 
