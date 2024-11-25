@@ -4958,42 +4958,42 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 //Mayank code 
 let eventSource = null;
 
-$(document).on('knack-scene-render.scene_2335', function(event, scene) {
+// $(document).on('knack-scene-render.scene_2335', function(event, scene) {
 
-let publishURL = '';
-let subscribeURL = '';
+//   let publishURL = '';
+//   let subscribeURL = '';
 
-      function createNotificationUrl(value){
-       publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
-       subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
+//         function createNotificationUrl(value){
+//         publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
+//         subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
 
-       return subscribeURL;
-      }
+//         return subscribeURL;
+//         }
 
       
 
 
 
-function createLink(url, linkText) {
-  let $link = $('<a class="kn-link kn-link-2 kn-link-page kn-button"></a>');
-  $link.attr('href', url);
-  $link.attr('target', '_blank');
-  $link.text(linkText);
+//         function createLink(url, linkText) {
+//           let $link = $('<a class="kn-link kn-link-2 kn-link-page kn-button"></a>');
+//           $link.attr('href', url);
+//           $link.attr('target', '_blank');
+//           $link.text(linkText);
 
-  let $div = $('<div class="control"></div>').append($link);
-  $('.view_7519').append($div);
+//           let $div = $('<div class="control"></div>').append($link);
+//           $('.view_7519').append($div);
 
-}
+//         }
 
-  //  Indivial Users
-      const userAttributes = Knack.getUserAttributes();
-      const userValue = userAttributes.id;
+//         //  Indivial Users
+//             const userAttributes = Knack.getUserAttributes();
+//             const userValue = userAttributes.id;
 
-      createNotificationUrl(userValue)
+//             createNotificationUrl(userValue)
 
-    createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable Desktop Notification');
+//           createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable Desktop Notification');
 
-});
+// }); 
 
 
 
@@ -5010,6 +5010,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
       const userValue = userAttributes.id;
       const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
+
+      console.log("event source implemented" + eventSource)
 
       function showNotification(data, timer) {
         parsedData = data;
@@ -5065,6 +5067,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 .getElementById("popup-cancel-button")
                 .addEventListener("click", () => {
                   Swal.close();
+                  console.log("Clicked Notification");
                 });
             }
       
@@ -5081,10 +5084,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body,
-              requireInteraction: false,
+              requireInteraction: true,
               badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
                       });
+              notification.onclose = function(){
+                console.log("Background Notification closed.");
+              }
 
         }
 
@@ -5134,18 +5140,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
             }
             
             runSync();
-
-
-
-
-
-        // Create a unique identifier using notification ID and current timestamp
-        
-
-                 
-
-      
-
         } catch (error) {
           console.error("Failed to process message:", error);
         }
