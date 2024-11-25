@@ -137,6 +137,9 @@ function getTokenFromURL(url){
     if (tokenS.indexOf('&')!==-1){
       tokenS = tokenS.substring(tokenS,tokenS.indexOf('&'));
     } 
+    if (tokenS.indexOf('#')!==-1){
+      tokenS = tokenS.substring(tokenS,tokenS.indexOf('#'));
+    } 
     return decodeURIComponent(tokenS);
   } else { return null}
 }
