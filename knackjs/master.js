@@ -5485,6 +5485,7 @@ $(document).on('knack-scene-render.scene_436', function(event, scene) {
   console.log('knack-scene-render.scene_436');
   let url = window.location.href;
   if (url.includes('redirectApp=')){
+    console.log('will be redirected after login')
     let redirectUrl = url.substring(url.indexOf('?redirectApp=')+13);
     console.log('redirectUrl',atob(redirectUrl))
   }
