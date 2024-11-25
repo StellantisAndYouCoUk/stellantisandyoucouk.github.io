@@ -148,8 +148,8 @@ var submitUserLoginForm = function() {
   }
 
   var url = window.location.toString();
-  let token1 = getTokenFromURL(url);
-  if (!token1){
+  let token = getTokenFromURL(url);
+  if (!token){
     if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
       console.log('on page direct without login');
       setTimeout(function () { document.location = 'https://www.stellantisandyou.co.uk/digital#home/?redirectApp='+btoa(url); }, 100)
@@ -163,8 +163,6 @@ var submitUserLoginForm = function() {
         return;
     }
 
-    var params = new URLSearchParams( window.location.search);   
-    var token = params.get('token');
     token = atob(token);
 
     if (!token.includes('#')){
