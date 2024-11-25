@@ -131,13 +131,32 @@ hashCode = function(elem) {
   return hash;
 };
 
+function getTokenFromURL(url){
+  if (url.indexOf('token=')!==-1){
+    let tokenS = url.substring(url.indexOf('token=')+6);
+    if (tokenS.indexOf('&')!==-1){
+      tokenS = tokenS.substring(tokenS,tokenS.indexOf('&'));
+    } 
+    return decodeURIComponent(tokenS);
+  } else { return null}
+}
+
 var submitUserLoginForm = function() {
   //console.log('submitUserForm');
   if ($('[id="email"]').length===0){ 
     return;
   }
 
-    var url = window.location.toString();
+  var url = window.location.toString();
+  let token1 = getTokenFromURL(url);
+  if (!token1){
+    if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
+      console.log('on page direct without login');
+      setTimeout(function () { document.location = 'https://www.stellantisandyou.co.uk/digital#home/?redirectApp='+btoa(url); }, 100)
+    }
+    return;
+  }
+
     if (!url.indexOf('https://www.stellantisandyou.co.uk/digital-orders?') === 0) {
         //alert("Invalid URL");
         console.log('Different URL')
