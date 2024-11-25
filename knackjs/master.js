@@ -5496,5 +5496,7 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   if (url.includes('redirectApp=')){
     let redirectUrl = url.substring(url.indexOf('?redirectApp=')+13)
     console.log('redirectUrl',atob(redirectUrl))
+    var token = Knack.getUserAttributes().values["field_6440"];
+    setTimeout(function () { document.location = atob(redirectUrl)+'&token='+token; }, 100)
   }
 });
