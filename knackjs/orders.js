@@ -162,6 +162,7 @@ var submitUserLoginForm = function() {
         console.log('Different URL')
         return;
     }
+    console.log(token);
 
     token = atob(token);
 
