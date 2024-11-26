@@ -119,6 +119,7 @@ function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
+        $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
     }
 
     if (page.includes('flows.html')){
@@ -131,6 +132,7 @@ function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
+        $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
     }
 
     if (page.includes('runs.html')){
@@ -144,6 +146,7 @@ function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
+        $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
     }
 }
 
