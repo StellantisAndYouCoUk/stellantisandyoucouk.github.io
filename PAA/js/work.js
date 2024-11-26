@@ -81,7 +81,7 @@ function work(){
     let page = window.location.href;
     //Login page
     $("a[id='loginButton']").bind("click", function() {
-        let loginReq = paaPostRequest({'action':'login','email':$('[id="inputEmail"]').attr('value'),'password':$('[id="inputPassword"]').attr('value')});
+        let loginReq = paaPostRequest({'action':'login','email':$('[id="inputEmail"]').val(),'password':$('[id="inputPassword"]').val()});
         console.log(loginReq,loginReq.success);
         if (loginReq.success){
             createCookie('paaToken',loginReq.token,1);
