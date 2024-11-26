@@ -153,6 +153,6 @@ function formatRunDetails(run){
         d += 'Retry count: '+run.retryCount+'<br />';
         d += 'Error:<br />'+run.statusDescription+'<br />';;
     }
-    d += '<a _target="blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
+    d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     return d;
 }
