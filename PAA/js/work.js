@@ -1,11 +1,3 @@
-function checkAuth(){
-    if (window.location.href.includes('login.html')) return;
-    let paaToken = readCookie('paaToken');
-    if (!paaToken){
-        window.location = './login.html'
-    }
-}
-
 function createCookie(name, value, days) {
     var expires;
 
@@ -47,20 +39,25 @@ function callPostHttpRequest(url, headers,payloadObject){
         contentType: 'application/json',
         data: dataToSend,
         async: false
-      }
-      if (headers) requestObj.beforeSend = function(request) {
-        request.setRequestHeader("token", "apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw");
-      },
+      };
       console.log(requestObj);
       var rData = $.ajax(requestObj).responseText;
-      return rData;
+      return JSON.parse(rData);
     } catch(exception) {
       console.log(exception);
     }
 }
 
 function paaPostRequest(payloadObject){
-    return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
+    return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
+}
+
+function checkAuth(){
+    if (window.location.href.includes('login.html')) return;
+    let paaToken = readCookie('paaToken');
+    if (!paaToken){
+        window.location = './login.html';
+    }
 }
 
 checkAuth();
@@ -73,7 +70,13 @@ function work(){
     //Login page
     $("a[id='loginButton']").bind("click", function() {
         let loginReq = paaPostRequest({'action':'login','username':$('[id="inputEmail"]').text().trim(),'password':$('[id="inputPassword"]').text().trim()});
-        console.log(loginReq);
+        console.log(loginReq,loginReq.success);
+        if (loginReq.success){
+            createCookie('paaToken',loginReq.token,1);
+            window.location = './index.html';
+        } else {
+            $('div[class="card-header"]').append('Wrong credentials')
+        }
         return false;
     });
 
