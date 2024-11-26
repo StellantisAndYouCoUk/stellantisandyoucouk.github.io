@@ -1,5 +1,5 @@
 function checkAuth(){
-    if (window.location.href.includes('login.htlm')) return;
+    if (window.location.href.includes('login.html')) return;
     let paaToken = readCookie('paaToken');
     if (!paaToken){
         window.location = './login.html'
@@ -37,8 +37,44 @@ function eraseCookie(name) {
     createCookie(name, "", -1);
 }
 
+function callPostHttpRequest(url, headers,payloadObject){
+    try{
+      let commandURL = url ;
+      let dataToSend = JSON.stringify(payloadObject) ;
+      let requestObj = {
+        url: commandURL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: dataToSend,
+        async: false
+      }
+      if (headers) requestObj.beforeSend = function(request) {
+        request.setRequestHeader("token", "apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw");
+      },
+      console.log(requestObj);
+      var rData = $.ajax(requestObj).responseText;
+      return rData;
+    } catch(exception) {
+      console.log(exception);
+    }
+}
+
+function paaPostRequest(payloadObject){
+    return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
+}
+
 checkAuth();
 
-$("a[id='loginButton']").bind( "click", function() {
-    alert( "User clicked on 'foo.'" );
+$( document ).ready(function() {
+    work();
 });
+
+function work(){
+    //Login page
+    $("a[id='loginButton']").bind("click", function() {
+        let loginReq = paaPostRequest({'action':'login','username':$('[id="inputEmail"]').text().trim(),'password':$('[id="inputPassword"]').text().trim()});
+        console.log(loginReq);
+        return false;
+    });
+
+}
