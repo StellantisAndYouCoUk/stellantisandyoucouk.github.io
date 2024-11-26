@@ -138,8 +138,8 @@ function work(){
         let tM = req.map(function (el){
             return '<tr><td>'+el.flowName+'</td><td>'+el.status+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (new Date(el.completedDateTime)-new Date(el.createdDateTime))+'</td><td></td></tr>';
         })
-        $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
-        const datatablesSimple = document.getElementById('datatablesSimpleFlows');
+        $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));
+        const datatablesSimple = document.getElementById('datatablesSimpleRuns');
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
