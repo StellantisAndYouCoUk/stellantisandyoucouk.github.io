@@ -154,4 +154,5 @@ function formatRunDetails(run){
         d += 'Error:<br />'+run.statusDescription+'<br />';;
     }
     d += '<a _target="blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
+    return d;
 }
