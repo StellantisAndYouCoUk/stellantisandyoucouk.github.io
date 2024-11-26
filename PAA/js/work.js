@@ -146,3 +146,12 @@ function work(){
         }
     }
 }
+
+function formatRunDetails(run){
+    let d = 'Input:<br />'+JSON.stringify(run.flowInput)+'<br />';
+    if (run.status==='failed'){
+        d += 'Retry count: '+run.retryCount+'<br />';
+        d += 'Error:<br />'+run.statusDescription+'<br />';;
+    }
+    d += '<a _target="blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
+}
