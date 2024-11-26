@@ -60,13 +60,13 @@ function checkAuth(){
     }
 }
 
-checkAuth();
+//checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser){
     eraseCookie('paaToken');
-    checkAuth();
+    //checkAuth();
 }
 
 $( document ).ready(function() {
@@ -99,8 +99,13 @@ function work(){
         window.location = './login.html';
     });
 
+    $('div[class="sb-sidenav-footer"]').append(loggedInUser.displayName)
     if (page.includes('index.html')){
-        $('div[class="sb-sidenav-footer"]').append(loggedInUser.displayName)
+        
+    }
+
+    if (page.includes('machines.html')){
+        $('table[id="datatablesSimpleMachines"]>tbody').append('<tr><td>aaaa</td></tr>')
     }
 
 }
