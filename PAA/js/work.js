@@ -105,7 +105,15 @@ function work(){
     }
 
     if (page.includes('machines.html')){
-        $('table[id="datatablesSimpleMachines"]>tbody').append('<tr><td>aaaa</td></tr>')
+        let req = paaPostRequest({'action':'getMachines','token':paaToken});
+        let tM = req.map(function (el){
+            return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.connectionId?'Avalable':'Not set')+'</td></tr>';
+        })
+        $('table[id="datatablesSimpleMachines"]>tbody').append(tM.join(''));
+        const datatablesSimple = document.getElementById('datatablesSimpleMachines');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
     }
 
 }
