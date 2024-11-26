@@ -48,6 +48,11 @@ function callPostHttpRequest(url, headers,payloadObject){
     }
 }
 
+function pad(n) {return n < 10 ? "0"+n : n;}
+function dateTimeToGB(dateobj){
+    return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear()+' '+dateobj.toLocaleTimeString("en-GB");
+}
+
 function paaPostRequest(payloadObject){
     return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
 }
@@ -107,7 +112,7 @@ function work(){
     if (page.includes('machines.html')){
         let req = paaPostRequest({'action':'getMachines','token':paaToken});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.connectionId?'Avalable':'Not set')+'</td></tr>';
+            return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td></tr>';
         })
         $('table[id="datatablesSimpleMachines"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleMachines');
@@ -116,4 +121,27 @@ function work(){
         }
     }
 
+    if (page.includes('flows.html')){
+        let req = paaPostRequest({'action':'getFlows','token':paaToken});
+        let tM = req.map(function (el){
+            return '<tr><td>'+el.name+'</td><td>'+el.inputs+'</td></tr>';
+        })
+        $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
+        const datatablesSimple = document.getElementById('datatablesSimpleFlows');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
+    }
+
+    if (page.includes('runs.html')){
+        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+        let tM = req.map(function (el){
+            return '<tr><td>'+el.flowName+'</td><td>'+el.status+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (new Date(el.completedDateTime)-new Date(el.createdDateTime))+'</td><td></td></tr>';
+        })
+        $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
+        const datatablesSimple = document.getElementById('datatablesSimpleFlows');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
+    }
 }
