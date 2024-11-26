@@ -136,7 +136,7 @@ function work(){
     if (page.includes('runs.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.flowName+'</td><td>'+el.status+'</td><td>'+el.priority+'</td><td>'+JSON.stringify(el.flowInput)+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ dateTimeToGB(new Date(el.startedDateTime))+'</td><td>'+ dateTimeToGB(new Date(el.completedDateTime))+'</td><td></td></tr>';
+            return '<tr><td>'+el.flowName+'</td><td>'+el.status+'</td><td>'+el.priority+'</td><td data-tooltip="'+JSON.stringify(el.flowInput)+'">Show input</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ dateTimeToGB(new Date(el.startedDateTime))+'</td><td>'+ dateTimeToGB(new Date(el.completedDateTime))+'</td><td></td></tr>';
         })
         console.log(tM[0]);
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));
