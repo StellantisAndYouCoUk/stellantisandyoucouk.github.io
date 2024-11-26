@@ -62,14 +62,26 @@ function checkAuth(){
 
 checkAuth();
 
+var paaToken = readCookie('paaToken');
+var loggedInUser = getLoggedInUser();
+if (!loggedInUser){
+    eraseCookie('paaToken');
+    checkAuth();
+}
+
 $( document ).ready(function() {
     work();
 });
 
+function getLoggedInUser(){
+    return paaPostRequest({'action':'userInfo','token':paaToken});
+}
+
 function work(){
+    let page = window.location.href;
     //Login page
     $("a[id='loginButton']").bind("click", function() {
-        let loginReq = paaPostRequest({'action':'login','username':$('[id="inputEmail"]').text().trim(),'password':$('[id="inputPassword"]').text().trim()});
+        let loginReq = paaPostRequest({'action':'login','email':$('[id="inputEmail"]').text().trim(),'password':$('[id="inputPassword"]').text().trim()});
         console.log(loginReq,loginReq.success);
         if (loginReq.success){
             createCookie('paaToken',loginReq.token,1);
@@ -79,5 +91,16 @@ function work(){
         }
         return false;
     });
+
+    //Logout
+    $("a[id='logoutButton']").bind("click", function() {
+        let req = paaPostRequest({'action':'logout','token':paaToken});
+        eraseCookie('paaToken');
+        window.location = './login.html';
+    });
+
+    if (page.includes('index.html')){
+        $('div[class="sb-sidenav-footer"]').append(loggedInUser.displayName)
+    }
 
 }
