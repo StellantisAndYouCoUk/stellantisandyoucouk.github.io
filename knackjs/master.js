@@ -5458,7 +5458,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-    if (isEdge) {
+    if (isEdge && Notification.permission !== 'denied') {
       // Create a popup if the user is on Edge
       const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
       Swal.fire({
