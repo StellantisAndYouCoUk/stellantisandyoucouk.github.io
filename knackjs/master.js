@@ -5402,10 +5402,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
-      $(".bellicon__off").css({
-        "background-color": "",
-        "border": ""
-      });
+      $(".bellicon__off .not").removeAttr("background-color");
+      $(".bellicon__off .not").removeAttr("border");
+
     }
   };
   
