@@ -69,7 +69,7 @@ function checkAuth(){
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
-if (!loggedInUser){
+if (!loggedInUser.email){
     eraseCookie('paaToken');
     //checkAuth();
 }
