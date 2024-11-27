@@ -147,6 +147,9 @@ function work(){
             new simpleDatatables.DataTable(datatablesSimple);
         }
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
+        setTimeout(() => {
+            work();
+        }, 3*60000);
     }
 }
 
