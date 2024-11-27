@@ -5410,21 +5410,35 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     const isEdge = navigator.userAgent.includes("Edg");
 
 
+    if (Notification.permission === 'denied') {
+      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif";
 
-
-    if(Notification.permission==='denied'){
-      const html = ``
-      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
       Swal.fire({
-        allowEscapeKey: false,
-        title: "Allow Notifications",
-        html: `<p><strong>Step 1:</strong> Copy <button id="show-url"><em>Show URL</em></button> to allow notifications.</p>`, 
+        title: 'Notification Blocked',
+        html: `<p>Please copy it and paste it into your browser's address bar:</p>
+               <input type="text" id="url-input" value="${url}" readonly style="width: 100%; padding: 8px; border: 1px solid #ccc;">`,
+        confirmButtonText: 'Copy to Clipboard',
         imageUrl: gifUrlFirst,
         imageAlt: "Custom GIF",
-        allowOutsideClick: false,
-        confirmButtonText: "OK"
+        focusConfirm: false,
+        preConfirm: () => {
+          const input = document.getElementById('url-input');
+          input.select();
+          document.execCommand('copy');
+          return input.value;
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Show success and then open a new tab
+          Swal.fire('Copied!', 'The URL has been copied to your clipboard.', 'success')
+            .then(() => {
+              window.open(url, 'Allow Notification'); // Open the URL in a new tab
+            });
+        }
       });
-  }
+    }
+
+
 
 
     if (isEdge) {
