@@ -5418,8 +5418,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         html: `<p>Please copy it and paste it into your browser's address bar:</p>
                <input type="text" id="url-input" value="${url}" readonly style="width: 100%; padding: 8px; border: 1px solid #ccc;">`,
         confirmButtonText: 'Copy to Clipboard',
-        imageUrl: gifUrlFirst,
-        imageAlt: "Custom GIF",
         focusConfirm: false,
         preConfirm: () => {
           const input = document.getElementById('url-input');
@@ -5430,7 +5428,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       }).then((result) => {
         if (result.isConfirmed) {
           // Show success and then open a new tab
-          Swal.fire('Copied!', 'The URL has been copied to your clipboard.', 'success')
+          Swal.fire({
+            title: 'Copied!',
+            text: 'The URL has been copied to your clipboard.',
+            imageUrl: gifUrlFirst, // GIF displayed here
+            imageAlt: "Success GIF",
+            confirmButtonText: 'OK'
+          })
             .then(() => {
               window.open(); // Open the URL in a new tab
             });
