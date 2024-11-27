@@ -5412,7 +5412,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
     if (Notification.permission === 'denied') {
       const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif";
-
+      const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
       Swal.fire({
         title: 'Notification Blocked',
         html: `<p>Please copy it and paste it into your browser's address bar:</p>
