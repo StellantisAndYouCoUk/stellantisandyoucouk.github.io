@@ -5409,6 +5409,24 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     e.preventDefault(); // Prevent default link behavior
     const isEdge = navigator.userAgent.includes("Edg");
 
+
+
+
+    if(Notification.permission==='denied'){
+      const html = ``
+      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
+      Swal.fire({
+        allowEscapeKey: false,
+        title: "Allow Notifications",
+        html: `<p><strong>Step 1:</strong> Copy <button id="show-url"><em>Show URL</em></button> to allow notifications.</p>`, 
+        imageUrl: gifUrlFirst,
+        imageAlt: "Custom GIF",
+        allowOutsideClick: false,
+        confirmButtonText: "OK"
+      });
+  }
+
+
     if (isEdge) {
       // Create a popup if the user is on Edge
       const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
@@ -5422,7 +5440,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         confirmButtonText: "OK"
       });
 
-  }
+      }
+
+    
     // Request notification permission
     Notification.requestPermission().then(permission => {
       if (permission === "granted") {
