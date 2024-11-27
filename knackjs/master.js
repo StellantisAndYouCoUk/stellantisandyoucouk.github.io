@@ -5469,16 +5469,17 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
     
     // Request notification permission
-    Notification.requestPermission().then(permission => {
-      if (permission === "granted") {
-        console.log("User granted notification permissions.");
-      } else if (permission === "denied") {
-        console.log("User denied notification permissions.");
-      }
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          console.log("User granted notification permissions.");
+          updateNotificationUI();
+        } else if (permission === "denied") {
+          console.log("User denied notification permissions.");
+        }
 
-      // Update the UI after checking the permission
-      updateNotificationUI();
-    });
+        // Update the UI after checking the permission
+        updateNotificationUI();
+      });
   });
   
   // Initial check to update the UI
