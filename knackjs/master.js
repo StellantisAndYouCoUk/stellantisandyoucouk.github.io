@@ -5417,7 +5417,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       Swal.fire({
         title: 'Whoops! Notifications are Blocked',
         html: `<p>Please click the button below to copy the URL to your clipboard to be able to navigate settings:</p>`,
-        icon: "error",
+        icon: "warning",
         confirmButtonText: 'Copy',
         focusConfirm: false,
         preConfirm: () => {
