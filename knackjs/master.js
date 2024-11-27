@@ -5411,7 +5411,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
     if (Notification.permission === 'denied') {
-      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif";
+      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notificationBlocked.gif";
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
       Swal.fire({
@@ -5433,7 +5433,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           Swal.fire({
             title: '',
             text: 'Click Navigate it to paste url and allow notification in settings',
-            imageUrl: gifUrlFirst, // GIF displayed here
+            imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
             confirmButtonText: 'Navigate it'
           })
