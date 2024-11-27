@@ -5432,7 +5432,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           // Show success and then open a new tab
           Swal.fire('Copied!', 'The URL has been copied to your clipboard.', 'success')
             .then(() => {
-              window.open(url, 'Allow Notification'); // Open the URL in a new tab
+              window.open(); // Open the URL in a new tab
             });
         }
       });
