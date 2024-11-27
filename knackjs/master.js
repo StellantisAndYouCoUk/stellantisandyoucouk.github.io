@@ -5443,7 +5443,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           // Show success and then open a new tab
           Swal.fire({
             title: '',
-            text: 'Click \'Navigate\' to paste the URL and enable notifications in your settings.',
+            text: 'Click Navigate and paste the URL into new tab and enable notifications in your settings.',
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
             confirmButtonText: 'Navigate'
