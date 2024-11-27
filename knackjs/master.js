@@ -5431,8 +5431,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         if (result.isConfirmed) {
           // Show success and then open a new tab
           Swal.fire({
-            title: 'Copied!',
-            text: 'The URL has been copied to your clipboard.',
+            title: '',
+            text: 'Click Navigate it to paste url and allow notification in settings',
             imageUrl: gifUrlFirst, // GIF displayed here
             imageAlt: "Success GIF",
             confirmButtonText: 'Navigate it'
