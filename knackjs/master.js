@@ -5426,7 +5426,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       Swal.fire({
         title: 'Whoops! Notifications are Blocked',
-        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the URL, so you can easily update your settings and turn them back on.</p>`,
+        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the settings URL, so you can easily update your settings and turn them back on.</p>`,
         icon: "warning",
         confirmButtonText: 'Copy',
         focusConfirm: false,
