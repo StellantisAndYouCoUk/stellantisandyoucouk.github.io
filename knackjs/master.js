@@ -5408,6 +5408,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       });
     }
   };
+  updateNotificationUI();
   
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
