@@ -4367,7 +4367,6 @@ n-link.kn-link-2.kn-link-page.kn-button,
 img.notification-icon {
   position: absolute;
   top: 0.3rem;
-  left: 1.4rem;
   margin-left: 0.2rem;
   width: 24px;
   height: 24px;
@@ -4382,14 +4381,16 @@ img.notification-icon {
   background-color: white;
   border-radius: 10%;
   padding-left: 3px;
-  top: 0.3px
+  padding-right: 3px;
+  top: 0.3px;
+  border: 1px dashed red;
   /* visibility: hidden; */
 }
 
 img.user-icon {
   position: relative;
   top: 0.2rem;
-  left: 2.2rem;
+  left: 2.3rem;
 }
 
 
