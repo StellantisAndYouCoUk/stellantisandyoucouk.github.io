@@ -5336,6 +5336,11 @@ function requestNotificationPermission() {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
+      $(".bellicon__off").css({
+        "background-color": "hsl(0deg 0% 92.16%)",
+        "border": "unset"
+      });
+      
     }
   };
 
