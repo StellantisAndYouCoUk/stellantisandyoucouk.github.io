@@ -5415,8 +5415,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
       Swal.fire({
-        title: 'Notification Blocked but dont worry',
-        html: `<p>Please click the button below to copy the URL to your clipboard:</p>`,
+        title: 'Notification Blocked',
+        html: `<p>Please click the button below to copy the URL to your clipboard to be able to navigate settings:</p>`,
         confirmButtonText: 'Copy',
         focusConfirm: false,
         preConfirm: () => {
