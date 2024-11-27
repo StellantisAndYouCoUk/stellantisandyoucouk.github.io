@@ -5396,18 +5396,60 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       // Check if the link is already appended
       if ($(".bellicon__off .not").length === 0) {
         $(".bellicon__off").prepend(`
-          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg" alt="Notification Bell" class="notification-icon"></a>
+          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
         `);
       }
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
+      $(".bellicon__off .not").removeAttr("background-color");
+      $(".bellicon__off .not").removeAttr("border");
+
     }
   };
   
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
     const isEdge = navigator.userAgent.includes("Edg");
+
+
+    if (Notification.permission === 'denied') {
+      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notificationBlocked.gif";
+      const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
+
+      Swal.fire({
+        title: 'Whoops! Notifications are Blocked',
+        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the URL, so you can easily update your settings and turn them back on.</p>`,
+        icon: "warning",
+        confirmButtonText: 'Copy',
+        focusConfirm: false,
+        preConfirm: () => {
+          // Copy URL to clipboard
+          navigator.clipboard.writeText(url).then(() => {
+            console.log('URL copied to clipboard');
+          }).catch(err => {
+            console.error('Error copying URL: ', err);
+          });
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Show success and then open a new tab
+          Swal.fire({
+            title: '',
+            text: 'Click \'Navigate\' to paste the URL and enable notifications in your settings.',
+            imageUrl: gifUrlBlocked, // GIF displayed here
+            imageAlt: "Success GIF",
+            confirmButtonText: 'Navigate'
+          })
+            .then(() => {
+              window.open(); // Open the URL in a new tab
+            });
+        }
+      });
+    }
+
+
+
 
     if (isEdge) {
       // Create a popup if the user is on Edge
@@ -5422,7 +5464,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         confirmButtonText: "OK"
       });
 
-  }
+      }
+
+    
     // Request notification permission
     Notification.requestPermission().then(permission => {
       if (permission === "granted") {
