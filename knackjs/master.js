@@ -5336,6 +5336,11 @@ function requestNotificationPermission() {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
+      $(".bellicon__off").css({
+        "background-color": "hsl(0deg 0% 92.16%)",
+        "border": "unset"
+      });
+      
     }
   };
 
@@ -5402,11 +5407,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
-      $(".bellicon__off .not").removeAttr("background-color");
-      $(".bellicon__off .not").removeAttr("border");
-
+      $(".bellicon__off").css({
+        "background-color": "hsl(0deg 0% 92.16%)",
+        "border": "unset"
+      });
     }
   };
+  updateNotificationUI();
   
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
@@ -5419,7 +5426,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       Swal.fire({
         title: 'Whoops! Notifications are Blocked',
-        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the URL, so you can easily update your settings and turn them back on.</p>`,
+        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the settings URL, so you can easily update your settings and turn them back on.</p>`,
         icon: "warning",
         confirmButtonText: 'Copy',
         focusConfirm: false,
@@ -5436,7 +5443,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           // Show success and then open a new tab
           Swal.fire({
             title: '',
-            text: 'Click \'Navigate\' to paste the URL and enable notifications in your settings.',
+            text: 'Click Navigate and paste the URL into new tab and enable notifications in your settings.',
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
             confirmButtonText: 'Navigate'
@@ -5451,7 +5458,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-    if (isEdge) {
+    if (isEdge && Notification.permission !== 'denied') {
       // Create a popup if the user is on Edge
       const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
       Swal.fire({
@@ -5468,16 +5475,17 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
     
     // Request notification permission
-    Notification.requestPermission().then(permission => {
-      if (permission === "granted") {
-        console.log("User granted notification permissions.");
-      } else if (permission === "denied") {
-        console.log("User denied notification permissions.");
-      }
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          console.log("User granted notification permissions.");
+          updateNotificationUI();
+        } else if (permission === "denied") {
+          console.log("User denied notification permissions.");
+        }
 
-      // Update the UI after checking the permission
-      updateNotificationUI();
-    });
+        // Update the UI after checking the permission
+        updateNotificationUI();
+      });
   });
   
   // Initial check to update the UI
