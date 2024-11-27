@@ -5413,17 +5413,19 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     if (Notification.permission === 'denied') {
       const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif";
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
+
       Swal.fire({
-        title: 'Notification Blocked',
-        html: `<p>Please copy it and paste it into your browser's address bar:</p>
-               <input type="text" id="url-input" value="${url}" readonly style="width: 100%; padding: 8px; border: 1px solid #ccc;">`,
-        confirmButtonText: 'Copy to Clipboard',
+        title: 'Notification Blocked but dont worry',
+        html: `<p>Please click the button below to copy the URL to your clipboard:</p>`,
+        confirmButtonText: 'Copy',
         focusConfirm: false,
         preConfirm: () => {
-          const input = document.getElementById('url-input');
-          input.select();
-          document.execCommand('copy');
-          return input.value;
+          // Copy URL to clipboard
+          navigator.clipboard.writeText(url).then(() => {
+            console.log('URL copied to clipboard');
+          }).catch(err => {
+            console.error('Error copying URL: ', err);
+          });
         }
       }).then((result) => {
         if (result.isConfirmed) {
@@ -5433,7 +5435,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             text: 'The URL has been copied to your clipboard.',
             imageUrl: gifUrlFirst, // GIF displayed here
             imageAlt: "Success GIF",
-            confirmButtonText: 'OK'
+            confirmButtonText: 'Navigate it'
           })
             .then(() => {
               window.open(); // Open the URL in a new tab
