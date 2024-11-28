@@ -65,13 +65,13 @@ function checkAuth(){
     }
 }
 
-checkAuth();
+//checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    checkAuth();
+    //checkAuth();
 }
 
 $( document ).ready(function() {
@@ -125,7 +125,7 @@ function work(){
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+el.inputs+'</td></tr>';
+            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+el.inputs+'"</td></tr>';
         })
         $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleFlows');
@@ -133,12 +133,14 @@ function work(){
             new simpleDatatables.DataTable(datatablesSimple);
         }
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
     }
 
     if (page.includes('runs.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.flowName+'</td><td>'+el.status+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):'')+'</td><td>'+ (el.completedDateTime&&el.startedDateTime?((new Date(el.completedDateTime)-new Date(el.startedDateTime))/60000):'')+'</td><td>'+formatRunDetails(el)+'</td></tr>';
+            return '<tr><td>'+el.flowName+'</td><td'+(el.status==='succeded'?' class="bg-success"':'')+'>'+el.status+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):'')+'</td><td>'+ (el.completedDateTime&&el.startedDateTime?((new Date(el.completedDateTime)-new Date(el.startedDateTime))/60000):'')+'</td><td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el)+'</td><td><a target="_blank" href="'+el.hrefDetails+'">Open</a></td></tr>';
         })
         console.log(tM[0]);
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));
@@ -153,12 +155,17 @@ function work(){
     }
 }
 
+function fillModal(what, fromWhere){
+    console.log('fillModal',what,$('#'+fromWhere).html())
+    $('#'+what).html($('#'+fromWhere).html());
+}
+
 function formatRunDetails(run){
-    let d = 'Input:<br />'+JSON.stringify(run.flowInput)+'<br />';
+    let d = '<div id="runDetailsText-'+run.runId+'" style="display: none">Input:<br />'+JSON.stringify(run.flowInput,null,2)+'<br />';
     if (run.status==='failed'){
         d += 'Retry count: '+run.retryCount+'<br />';
         d += 'Error:<br />'+run.statusDescription+'<br />';;
     }
-    d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
+    d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br /></div>';
     return d;
 }
