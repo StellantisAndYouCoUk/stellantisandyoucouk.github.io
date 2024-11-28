@@ -142,7 +142,8 @@ function work(){
         let tM = req.map(function (el){
             return '<tr><td>'+el.flowName+'</td><td'+(el.status==='succeded'?' class="bg-success"':'')+'>'+el.status+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):'')+'</td><td>'+ (el.completedDateTime&&el.startedDateTime?((new Date(el.completedDateTime)-new Date(el.startedDateTime))/60000):'')+'</td><td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el)+'</td><td><a target="_blank" href="'+el.hrefDetails+'">Open</a></td></tr>';
         })
-        console.log(tM[0]);
+        //console.log(tM[0]);
+        $('table[id="datatablesSimpleRuns"]>tbody').html('')
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleRuns');
         if (datatablesSimple) {
@@ -151,7 +152,7 @@ function work(){
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
         setTimeout(() => {
             work();
-        }, 3*60000);
+        }, 60000);
     }
 }
 
