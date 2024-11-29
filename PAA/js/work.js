@@ -193,11 +193,12 @@ function work(){
             table.draw();
         }
 
-        
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
+
+        let isSomethingActive = req.find(el => el.status!=='succeded' && el.status !=='failed');
         setTimeout(() => {
             work();
-        }, 60000);
+        }, (isSomethingActive?15000:60000));
     }
 }
 
