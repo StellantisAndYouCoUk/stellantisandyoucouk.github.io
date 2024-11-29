@@ -150,6 +150,15 @@ function work(){
         console.log(tMJ);
         /*$('table[id="datatablesSimpleRuns"]>tbody').html('')
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));*/
+
+        /* ajax: {
+        url: 'data.json',
+        contentType: 'application/json',
+        type: 'POST',
+        data: function (d) {
+            return JSON.stringify(d);
+        }
+    }*/
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{data: tMJ,columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
@@ -159,9 +168,29 @@ function work(){
                 { data: 'Started',title: 'Started'},
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
-            ]});
+            ],initComplete: function () {
+                this.api()
+                    .columns()
+                    .every(function () {
+                        let column = this;
+                        let title = column.header().textContent;
+         
+                        // Create input element
+                        let input = document.createElement('input');
+                        input.placeholder = title;
+                        column.header().append(input);
+         
+                        // Event listener for user input
+                        input.addEventListener('keyup', () => {
+                            if (column.search() !== this.value) {
+                                column.search(input.value).draw();
+                            }
+                        });
+                    });
+            }});
         } else {
             table.data = tMJ;
+            table.draw();
         }
 
         
