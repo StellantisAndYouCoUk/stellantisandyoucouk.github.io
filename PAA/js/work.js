@@ -82,6 +82,8 @@ function getLoggedInUser(){
     return paaPostRequest({'action':'userInfo','token':paaToken});
 }
 
+var table = null;
+
 function work(){
     let page = window.location.href;
     //Login page
@@ -148,15 +150,20 @@ function work(){
         console.log(tMJ);
         /*$('table[id="datatablesSimpleRuns"]>tbody').html('')
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));*/
-        let table = new DataTable('#datatablesSimpleRuns',{data: tMJ,columns: [
-            { data: 'Flow Name',title: 'Flow Name'},
-            { data: 'State',title: 'State'},
-            { data: 'Priority',title: 'Priority'},
-            { data: 'Requested',title: 'Requested'},
-            { data: 'Started',title: 'Started'},
-            { data: 'Details',title:'Details' },
-            { data: 'In PA',title: 'In PA'}
-        ]});
+        if (!table){
+            table = new DataTable('#datatablesSimpleRuns',{data: tMJ,columns: [
+                { data: 'Flow Name',title: 'Flow Name'},
+                { data: 'State',title: 'State'},
+                { data: 'Priority',title: 'Priority'},
+                { data: 'Requested',title: 'Requested'},
+                { data: 'Started',title: 'Started'},
+                { data: 'Details',title:'Details' },
+                { data: 'In PA',title: 'In PA'}
+            ]});
+        } else {
+            table.data = tMJ;
+        }
+
         
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
         setTimeout(() => {
