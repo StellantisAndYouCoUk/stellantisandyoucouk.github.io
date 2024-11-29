@@ -149,14 +149,15 @@ function work(){
         /*$('table[id="datatablesSimpleRuns"]>tbody').html('')
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));*/
         let table = new DataTable('#datatablesSimpleRuns',{data: tMJ,columns: [
-            { data: 'Flow Name' },
-            { data: 'State' },
-            { data: 'Priority' },
-            { data: 'Requested' },
-            { data: 'Started' },
-            { data: 'Details' },
-            { data: 'In PA' }
+            { data: 'Flow Name',title: 'Flow Name'},
+            { data: 'State',title: 'State'},
+            { data: 'Priority',title: 'Priority'},
+            { data: 'Requested',title: 'Requested'},
+            { data: 'Started',title: 'Started'},
+            { data: 'Details',title:'Details' },
+            { data: 'In PA',title: 'In PA'}
         ]});
+        
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
         setTimeout(() => {
             work();
