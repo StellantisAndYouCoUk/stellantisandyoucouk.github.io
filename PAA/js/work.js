@@ -142,13 +142,21 @@ function work(){
         let tM = req.map(function (el){
             return '<tr><td>'+el.flowName+'</td><td>'+el.status+(el.retryCount?' R:'+el.retryCount:'')+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):'')+'</td><td>'+ (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):'')+'</td><td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el)+'</td><td><a target="_blank" href="'+el.hrefDetails+'">Open</a></td></tr>';
         })
-        //console.log(tM[0]);
-        $('table[id="datatablesSimpleRuns"]>tbody').html('')
-        $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));
-        const datatablesSimple = document.getElementById('datatablesSimpleRuns');
-        if (datatablesSimple) {
-            new simpleDatatables.DataTable(datatablesSimple);
-        }
+        let tMJ = req.map(function (el){
+            return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:''),'Priority':el.priority,'Requested':dateTimeToGB(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+        })
+        console.log(tMJ);
+        /*$('table[id="datatablesSimpleRuns"]>tbody').html('')
+        $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));*/
+        let table = new DataTable('#datatablesSimpleRuns',{data: tMJ,columns: [
+            { data: 'Flow Name' },
+            { data: 'State' },
+            { data: 'Priority' },
+            { data: 'Requested' },
+            { data: 'Started' },
+            { data: 'Details' },
+            { data: 'In PA' }
+        ]});
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
         setTimeout(() => {
             work();
