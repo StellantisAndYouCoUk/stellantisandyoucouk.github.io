@@ -168,7 +168,10 @@ function work(){
                 { data: 'Started',title: 'Started'},
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
-            ]/*,initComplete: function () {
+            ],
+            order: [[4, 'desc']],
+            pageLength: 25,
+            /*,initComplete: function () {
                 this.api()
                     .columns()
                     .every(function () {
@@ -193,7 +196,8 @@ function work(){
             table.draw();
         }
 
-        $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
+        $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
+        $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
 
         let isSomethingActive = req.find(el => el.status!=='succeded' && el.status !=='failed');
         setTimeout(() => {
