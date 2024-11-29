@@ -191,13 +191,13 @@ function work(){
                         });
                     });
             }*/});
+
+            $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
+            $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
         } else {
             table.data = tMJ;
             table.draw();
         }
-
-        $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
-        $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
 
         let isSomethingActive = req.find(el => el.status!=='succeded' && el.status !=='failed');
         setTimeout(() => {
