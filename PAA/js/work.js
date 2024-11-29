@@ -141,9 +141,9 @@ function work(){
 
     if (page.includes('runs.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-        let tM = req.map(function (el){
+        /*let tM = req.map(function (el){
             return '<tr><td>'+el.flowName+'</td><td>'+el.status+(el.retryCount?' R:'+el.retryCount:'')+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):'')+'</td><td>'+ (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):'')+'</td><td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el)+'</td><td><a target="_blank" href="'+el.hrefDetails+'">Open</a></td></tr>';
-        })
+        })*/
         let tMJ = req.map(function (el){
             return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:''),'Priority':el.priority,'Requested':dateTimeToGB(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
         })
@@ -168,7 +168,7 @@ function work(){
                 { data: 'Started',title: 'Started'},
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
-            ],initComplete: function () {
+            ]/*,initComplete: function () {
                 this.api()
                     .columns()
                     .every(function () {
@@ -187,7 +187,7 @@ function work(){
                             }
                         });
                     });
-            }});
+            }*/});
         } else {
             table.data = tMJ;
             table.draw();
