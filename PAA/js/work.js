@@ -167,6 +167,10 @@ function formatRunDetails(run){
         d += 'Retry count: '+run.retryCount+'<br />';
         d += 'Error:<br />'+run.statusDescription+'<br />';;
     }
+    if (run.status==='succeded' && run.retryHistory){
+        d += 'Retry count: '+run.retryCount+'<br />';
+        d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGB(el.startedDateTime) +' : '+ el.statusDescription+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a><br /></div>'}).join('<br />')
+    }
     d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br /></div>';
     return d;
 }
