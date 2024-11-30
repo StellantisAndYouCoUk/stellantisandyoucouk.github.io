@@ -169,6 +169,7 @@ function work(){
                   },
                 columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
+                { data: 'Machine',title: 'Machine'},
                 { data: 'State',title: 'State'},
                 { data: 'Priority',title: 'Priority'},
                 { data: 'Requested',title: 'Requested'},
@@ -220,7 +221,7 @@ function getRunsDataForTable(){
     let contentToHide = '';
     let tMJ = req.map(function (el){
         contentToHide += formatRunDetails(el);
-        return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="resurrectRun(\''+el.runId+'\');">Resurrect</button>':''),'Priority':el.priority,'Requested':dateTimeToGB(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+        return {'Flow Name':el.flowName,'Machine':(el.machine?el.machine.name:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="resurrectRun(\''+el.runId+'\');">Resurrect</button>':''),'Priority':el.priority,'Requested':dateTimeToGB(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
     $('div[id="runDetailsData"]').html('');
