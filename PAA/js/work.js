@@ -169,6 +169,7 @@ function work(){
                 { data: 'Priority',title: 'Priority'},
                 { data: 'Requested',title: 'Requested'},
                 { data: 'Started',title: 'Started'},
+                { data: 'Duration',title: 'Duration'},
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
             ],
