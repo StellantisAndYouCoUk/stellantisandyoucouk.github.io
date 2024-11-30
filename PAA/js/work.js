@@ -65,13 +65,13 @@ function checkAuth(){
     }
 }
 
-checkAuth();
+//checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    checkAuth();
+    //checkAuth();
 }
 
 $( document ).ready(function() {
@@ -108,7 +108,15 @@ function work(){
 
     $('div[class="sb-sidenav-footer"]').append(loggedInUser.displayName)
     if (page.includes('index.html')){
-        
+        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+        let today00 = new Date();
+        today00.setHours(0,0,0,0);
+        let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00);
+        $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' queued now'));
+        let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>today00);
+        $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
+        let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00);
+        $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
     }
 
     if (page.includes('machines.html')){
@@ -181,6 +189,7 @@ function work(){
             order: [['Requested', 'desc']],
             pageLength: 25,
             scroller: true,
+            search: getSearchFromUrl(),
             /*,initComplete: function () {
                 this.api()
                     .columns()
@@ -213,6 +222,12 @@ function work(){
             work();
         }, (isSomethingActive?15000:60000));
     }
+}
+
+function getSearchFromUrl(){
+    let s = window.location.search;
+    console.log('s',s)
+    return s;
 }
 
 function getRunsDataForTable(){
