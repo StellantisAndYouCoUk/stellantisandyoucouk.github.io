@@ -150,7 +150,7 @@ function work(){
             return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="resurrectRun(\''+el.runId+'\');">Resurrect</button>':''),'Priority':el.priority,'Requested':dateTimeToGB(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
         })
         console.log(tMJ);
-        $('div[id="layoutSidenav_content"]').append(contentToHide);
+        $('div[id="runDetailsData"]').append(contentToHide);
         /*$('table[id="datatablesSimpleRuns"]>tbody').html('')
         $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));*/
 
@@ -163,7 +163,11 @@ function work(){
         }
     }*/
         if (!table){
-            table = new DataTable('#datatablesSimpleRuns',{data: tMJ,columns: [
+            table = new DataTable('#datatablesSimpleRuns',{
+                ajax: function (data, callback, settings) {
+                    callback({data:getRunsDataForTable()});
+                  },
+                columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
                 { data: 'State',title: 'State'},
                 { data: 'Priority',title: 'Priority'},
@@ -173,8 +177,9 @@ function work(){
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
             ],
-            order: [[4, 'desc']],
+            order: [[3, 'desc']],
             pageLength: 25,
+            scroller: true,
             /*,initComplete: function () {
                 this.api()
                     .columns()
@@ -199,8 +204,7 @@ function work(){
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
             $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
         } else {
-            table.data = tMJ;
-            table.draw();
+            table.ajax.reload(null, false);
         }
 
         let isSomethingActive = req.find(el => el.status!=='succeded' && el.status !=='failed');
@@ -208,6 +212,20 @@ function work(){
             work();
         }, (isSomethingActive?15000:60000));
     }
+}
+
+function getRunsDataForTable(){
+    console.log('getRunsDataForTable')
+    let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+    let contentToHide = '';
+    let tMJ = req.map(function (el){
+        contentToHide += formatRunDetails(el);
+        return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="resurrectRun(\''+el.runId+'\');">Resurrect</button>':''),'Priority':el.priority,'Requested':dateTimeToGB(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+    })
+    console.log(tMJ);
+    $('div[id="runDetailsData"]').html('');
+    $('div[id="runDetailsData"]').append(contentToHide);
+    return tMJ;
 }
 
 function showModal(modalName,what, fromWhere){
