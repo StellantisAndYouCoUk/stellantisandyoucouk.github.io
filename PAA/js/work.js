@@ -178,7 +178,7 @@ function work(){
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
             ],
-            order: [[3, 'desc']],
+            order: [['Requested', 'desc']],
             pageLength: 25,
             scroller: true,
             /*,initComplete: function () {
