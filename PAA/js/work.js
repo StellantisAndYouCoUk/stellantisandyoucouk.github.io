@@ -227,7 +227,12 @@ function work(){
 function getSearchFromUrl(){
     let s = window.location.search;
     console.log('s',s)
-    return s;
+    if (s!==''){
+        return {
+            "search" : s.replace('?','')
+        }
+    }
+    return null;
 }
 
 function getRunsDataForTable(){
