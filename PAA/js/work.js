@@ -65,13 +65,13 @@ function checkAuth(){
     }
 }
 
-//checkAuth();
+checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    //checkAuth();
+    checkAuth();
 }
 
 $( document ).ready(function() {
@@ -106,7 +106,7 @@ function work(){
         window.location = './login.html';
     });
 
-    $('div[class="sb-sidenav-footer"]').append(loggedInUser.displayName)
+    $('#userName').text(loggedInUser.displayName)
     if (page.includes('index.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
         let today00 = new Date();
