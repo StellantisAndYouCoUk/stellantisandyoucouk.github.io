@@ -180,7 +180,7 @@ function work(){
                   },
                 columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
-                { data: 'LiveOrPrerod',title: 'Live'},
+                { data: 'LiveOrPreprod',title: 'Live'},
                 { data: 'Machine',title: 'Machine'},
                 { data: 'State',title: 'State'},
                 { data: 'Priority',title: 'Priority'},
