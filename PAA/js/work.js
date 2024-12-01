@@ -183,7 +183,7 @@ function work(){
                 { data: 'LiveOrPreprod',title: 'Live'},
                 { data: 'Machine',title: 'Machine'},
                 { data: 'State',title: 'State'},
-                { data: 'Priority',title: 'Priority'},
+                { data: 'Pri',title: 'Priority'},
                 { data: 'Requested',title: 'Requested'},
                 { data: 'Started',title: 'Started'},
                 { data: 'Duration',title: 'Duration'},
