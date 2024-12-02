@@ -434,7 +434,7 @@ $(document).on('knack-view-render.view_6288', function(event, view, data) {
 //Stapletons Page
 $(document).on('knack-view-render.view_7615', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
-  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#stapletons-sor-tyre-reporting/?token='+encodeURIComponent(token)  + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#stapletons-sor-tyre-reporting/?token='+encodeURIComponent(token)  + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 //tech view 2 est
