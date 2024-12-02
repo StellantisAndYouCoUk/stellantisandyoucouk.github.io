@@ -5398,8 +5398,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   `;
 
   // Append the base notification icon HTML to the current user section
-  $(".kn-current_user").append(notificationIconHtml);
-
+  if ($(".kn-current_user .bellicon__off").length === 0) {
+    $(".kn-current_user").append(notificationIconHtml);
+}
   // Function to dynamically update the UI for notification permission
 
   const updateNotificationUI = () => {
