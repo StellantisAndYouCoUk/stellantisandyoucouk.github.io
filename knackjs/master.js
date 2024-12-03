@@ -757,8 +757,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
   window.setTimeout(function() {
     let logOutLink = document.querySelector('a[class="kn-log-out"]');
-    logOutLink.onclick = logOutSlaveApps;
-  },2000);
+    if (logOutLink) logOutLink.onclick = logOutSlaveApps;
+  },1000);
 });
 
 function logOutSlaveApps(){
