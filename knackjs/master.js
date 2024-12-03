@@ -766,7 +766,7 @@ function logOutSlaveApps(){
   eraseCookie('XSRF-TOKEN');
   eraseCookie('laravel_session');
   const ordersAppBearer = readCookie('RDDigitalOrdersBearer');
-  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4','Bearer '+ordersAppBearer,'5ce32c6beddb680007b680e4');
+  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4?callback=jQuery17203752336806890808_1733223188835','Bearer '+ordersAppBearer,'5ce32c6beddb680007b680e4');
 }
 
 function callDeleteHttpRequest(url,authorization,appId){
@@ -776,8 +776,12 @@ function callDeleteHttpRequest(url,authorization,appId){
       url: commandURL,
       headers: {
         "Authorization": authorization,
-        "X-knack-application-id":appId,
-        "X-knack-rest-api-key":"renderer-session"
+        "X-Knack-Application-Id":appId,
+        "X-Knack-Rest-Api-Key":"renderer-session",
+        "Accept" : "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01",
+        "Origin":"https://custom-renderer-write.rd.knack.com",
+        "Referer":"https://custom-renderer-write.rd.knack.com/api/xdc.html?xdm_e=https%3A%2F%2Fwww.stellantisandyou.co.uk&xdm_c=default4902&xdm_p=1",
+        "X-Knack-New-Builder":"true"
       },
       type: 'DELETE',
       async: false
