@@ -151,7 +151,7 @@ var submitUserLoginForm = function() {
     console.log('Logout requested');
     window.setTimeout(function() {
       $('a[class="kn-log-out"]').click()
-    },2000);
+    },1000);
   }
 
   if ($('[id="email"]').length===0){ 
