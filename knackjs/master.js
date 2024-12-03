@@ -777,11 +777,13 @@ function callDeleteHttpRequest(url,authorization,appId){
       headers: {
         "Authorization": authorization,
         "X-Knack-Application-Id":appId,
+        "x-knack-application-id":appId,
         "X-Knack-Rest-Api-Key":"renderer-session",
         "Accept" : "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01",
         "Origin":"https://custom-renderer-write.rd.knack.com",
         "Referer":"https://custom-renderer-write.rd.knack.com/api/xdc.html?xdm_e=https%3A%2F%2Fwww.stellantisandyou.co.uk&xdm_c=default4902&xdm_p=1",
-        "X-Knack-New-Builder":"true"
+        "X-Knack-New-Builder":"true",
+        "X-Requested-With":"XMLHttpRequest"
       },
       type: 'DELETE',
       async: false
