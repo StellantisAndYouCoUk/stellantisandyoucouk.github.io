@@ -152,6 +152,7 @@ var submitUserLoginForm = function() {
 
   var url = window.location.toString();
   if (url.includes('?logOut=true')){
+    console.log('Logout requested');
     window.setTimeout(function() {
       $('a[class="kn-log-out"]').click()
     },2000);
