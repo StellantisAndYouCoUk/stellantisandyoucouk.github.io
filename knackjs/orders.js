@@ -147,12 +147,6 @@ function getTokenFromURL(url){
 var submitUserLoginForm = function() {
   //console.log('submitUserForm');
   var url = window.location.toString();
-  if (url.includes('?logOut=true')){
-    console.log('Logout requested');
-    window.setTimeout(function() {
-      $('a[class="kn-log-out"]').click()
-    },1000);
-  }
 
   if ($('[id="email"]').length===0){ 
     return;
@@ -2957,6 +2951,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     dateTimeOfFirstRun = new Date();
     window.location.reload(false);
   }
+
+  createCookie('RDDigitalOrdersBearer',Knack.session.user.token,1);
 
   //version check every day
   /*var versionRefreshTime = readCookie('RDDigitalOrdersVersionRefreshTime');

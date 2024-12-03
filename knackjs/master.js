@@ -765,7 +765,27 @@ function logOutSlaveApps(){
   console.log('logOutSlaveApps');
   eraseCookie('XSRF-TOKEN');
   eraseCookie('laravel_session');
+  const ordersAppBearer = readCookie('RDDigitalOrdersBearer');
+  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4','Bearer '+ordersAppBearer);
 }
+
+function callDeleteHttpRequest(url,authorization){
+  try{
+    let commandURL = url ;
+    var rData = $.ajax({
+      url: commandURL,
+      headers: {
+        "Authorization": authorization
+      },
+      type: 'DELETE',
+      async: false
+    }).responseText;
+    return rData;
+  } catch(exception) {
+    console.log(exception);
+  }
+}
+
 
   function getVersionFromApify(){
     try {
