@@ -146,10 +146,6 @@ function getTokenFromURL(url){
 
 var submitUserLoginForm = function() {
   //console.log('submitUserForm');
-  if ($('[id="email"]').length===0){ 
-    return;
-  }
-
   var url = window.location.toString();
   if (url.includes('?logOut=true')){
     console.log('Logout requested');
@@ -157,6 +153,11 @@ var submitUserLoginForm = function() {
       $('a[class="kn-log-out"]').click()
     },2000);
   }
+
+  if ($('[id="email"]').length===0){ 
+    return;
+  }
+
   let token = getTokenFromURL(url);
   if (!token){
     if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
