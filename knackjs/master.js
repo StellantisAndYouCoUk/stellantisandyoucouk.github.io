@@ -754,46 +754,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         window.location.href = 'https://www.stellantisandyou.co.uk/digital#browser-incompatible-user-page/';
     }, 500);
   }
-
-  window.setTimeout(function() {
-    let logOutLink = document.querySelector('a[class="kn-log-out"]');
-    if (logOutLink) logOutLink.onclick = logOutSlaveApps;
-  },1000);
 });
-
-function logOutSlaveApps(){
-  console.log('logOutSlaveApps');
-  eraseCookie('XSRF-TOKEN');
-  eraseCookie('laravel_session');
-  const ordersAppBearer = readCookie('RDDigitalOrdersBearer');
-  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4?callback=jQuery17203752336806890808_1733223188835','Bearer '+ordersAppBearer,'5ce32c6beddb680007b680e4');
-}
-
-function callDeleteHttpRequest(url,authorization,appId){
-  try{
-    let commandURL = url ;
-    var rData = $.ajax({
-      url: commandURL,
-      headers: {
-        "Authorization": authorization,
-        "X-Knack-Application-Id":appId,
-        "x-knack-application-id":appId,
-        "X-Knack-Rest-Api-Key":"renderer-session",
-        "Accept" : "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01",
-        "Origin":"https://custom-renderer-write.rd.knack.com",
-        "Referer":"https://custom-renderer-write.rd.knack.com/api/xdc.html?xdm_e=https%3A%2F%2Fwww.stellantisandyou.co.uk&xdm_c=default4902&xdm_p=1",
-        "X-Knack-New-Builder":"true",
-        "X-Requested-With":"XMLHttpRequest"
-      },
-      type: 'DELETE',
-      async: false
-    }).responseText;
-    return rData;
-  } catch(exception) {
-    console.log(exception);
-  }
-}
-
 
   function getVersionFromApify(){
     try {

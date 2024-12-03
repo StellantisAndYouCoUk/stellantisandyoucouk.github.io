@@ -145,6 +145,41 @@ function getTokenFromURL(url){
 }
 
 var submitUserLoginForm = function() {
+  let url = window.location.href;
+  let token = getTokenFromURL(url);
+  token = atob(token);
+  if (!token){
+    if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
+      console.log('on page direct without login');
+      setTimeout(function () { document.location = 'https://www.stellantisandyou.co.uk/digital#home/?redirectApp='+btoa(url); }, 100)
+    }
+    return;
+  }
+  if (!token.includes('#')){
+    console.log('Wrong token');
+    return;
+  }
+  let userName2 = token.split('#')[0];
+  let password = token.split('#')[1];
+
+  if (Knack.session.user && userName2!==Knack.session.user.values.email.email){
+    console.log('different user');
+    setTimeout(function () { $('a[class="kn-log-out"]').eq(0).click(); setTimeout(function () { document.location = url; }, 1000);}, 1000);
+  }
+
+  if ($('[id="email"]').length===0){
+    return;
+  }
+    
+    //type userName from url, my secret password and click login
+    //if auth successfully then it shows the app, otherwise login screen
+    $('[id="email"]').val(userName2);
+    //alert('Pass'+hashCode(userName).toString());
+    $('[id="password"]').val(password);
+    $('input[type="submit"]').click();
+};
+
+var submitUserLoginFormOLD = function() {
   //console.log('submitUserForm');
   var url = window.location.toString();
 

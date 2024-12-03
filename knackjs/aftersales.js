@@ -48,14 +48,9 @@ function getTokenFromURL(url){
 }
 
 var submitUserLoginForm = function() {
-  if ($('[id="email"]').length===0){
-    return;
-  }
-
   let url = window.location.href;
-    
   let token = getTokenFromURL(url);
-
+  token = atob(token);
   if (!token){
     if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
       console.log('on page direct without login');
@@ -63,8 +58,6 @@ var submitUserLoginForm = function() {
     }
     return;
   }
-
-  token = atob(token);
   if (!token.includes('#')){
     console.log('Wrong token');
     return;
@@ -75,6 +68,10 @@ var submitUserLoginForm = function() {
   if (Knack.session.user && userName2!==Knack.session.user.values.email.email){
     console.log('different user');
     setTimeout(function () { $('a[class="kn-log-out"]').eq(0).click(); setTimeout(function () { document.location = url; }, 1000);}, 1000);
+  }
+
+  if ($('[id="email"]').length===0){
+    return;
   }
     
     //type userName from url, my secret password and click login
