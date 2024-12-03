@@ -765,23 +765,7 @@ function logOutSlaveApps(){
   console.log('logOutSlaveApps');
   eraseCookie('XSRF-TOKEN');
   eraseCookie('laravel_session');
-  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4');
 }
-
-function callDeleteHttpRequest(url){
-  try{
-    let commandURL = url ;
-    var rData = $.ajax({
-      url: commandURL,
-      type: 'DELETE',
-      async: false
-    }).responseText;
-    return rData;
-  } catch(exception) {
-    console.log(exception);
-  }
-}
-
 
   function getVersionFromApify(){
     try {
