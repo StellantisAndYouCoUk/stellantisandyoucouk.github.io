@@ -766,7 +766,7 @@ function logOutSlaveApps(){
   eraseCookie('XSRF-TOKEN');
   eraseCookie('laravel_session');
   const ordersAppBearer = readCookie('RDDigitalOrdersBearer');
-  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4','Bearer '+ordersAppBearer),'5ce32c6beddb680007b680e4';
+  callDeleteHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/5ce32c6beddb680007b680e4','Bearer '+ordersAppBearer,'5ce32c6beddb680007b680e4');
 }
 
 function callDeleteHttpRequest(url,authorization,appId){
