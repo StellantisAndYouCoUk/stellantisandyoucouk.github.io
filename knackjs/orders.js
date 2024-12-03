@@ -151,6 +151,11 @@ var submitUserLoginForm = function() {
   }
 
   var url = window.location.toString();
+  if (url.includes('?logOut=true')){
+    window.setTimeout(function() {
+      $('a[class="kn-log-out"]').click()
+    },2000);
+  }
   let token = getTokenFromURL(url);
   if (!token){
     if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
