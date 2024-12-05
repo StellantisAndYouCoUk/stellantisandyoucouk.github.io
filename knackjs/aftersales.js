@@ -66,7 +66,6 @@ var submitUserLoginForm = function() {
   let password = token.split('#')[1];
 
   let masterUserEmail = readCookie('SYmasterAppUserEmail');
-  console.log('masterUserEmail',masterUserEmail)
 
   if ((Knack.session.user && userName2!==Knack.session.user.values.email.email) || (masterUserEmail && Knack.session.user && masterUserEmail!==Knack.session.user.values.email.email)){
     console.log('different user');
