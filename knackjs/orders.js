@@ -147,6 +147,7 @@ function getTokenFromURL(url){
 var submitUserLoginForm = function() {
   let url = window.location.href;
   let token = getTokenFromURL(url);
+  if (token) token = atob(token);
   token = atob(token);
   if (!token){
     if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
