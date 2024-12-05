@@ -728,6 +728,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     //window.location.reload(false);
     setTimeout(function () { $('a[class="kn-log-out"]').eq(0).click(); setTimeout(function () { window.location.reload(false); }, 1000);}, 1000);
   }
+
+  createCookie('SYmasterAppUserEmail',(Knack.session.user?Knack.session.user.values.email.email:null),1);
+
   /*
   var versionRefreshTime = readCookie('RDDigitalVersionRefreshTime');
   console.log('versionRefreshTime',versionRefreshTime);

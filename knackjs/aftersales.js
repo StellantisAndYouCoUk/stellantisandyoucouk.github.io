@@ -65,7 +65,9 @@ var submitUserLoginForm = function() {
   let userName2 = token.split('#')[0];
   let password = token.split('#')[1];
 
-  if (Knack.session.user && userName2!==Knack.session.user.values.email.email){
+  let masterUserEmail = readCookie('SYmasterAppUserEmail');
+
+  if ((Knack.session.user && userName2!==Knack.session.user.values.email.email) || (masterUserEmail && Knack.session.user && masterUserEmail!==Knack.session.user.values.email.email)){
     console.log('different user');
     setTimeout(function () { $('a[class="kn-log-out"]').eq(0).click(); setTimeout(function () { document.location = url; }, 1000);}, 1000);
   }
