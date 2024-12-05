@@ -2990,6 +2990,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
   createCookie('RDDigitalOrdersBearer',Knack.session.user.token,1);
 
+    //check for master links
+    for (let o = 0;o<$('a[href*="https://www.stellantisandyou.co.uk/digital"]').length;o++){
+      $('a[href*="https://www.stellantisandyou.co.uk/digital"]').eq(0).attr('target','_parent');
+    }
+
   //version check every day
   /*var versionRefreshTime = readCookie('RDDigitalOrdersVersionRefreshTime');
   if (!versionRefreshTime){
