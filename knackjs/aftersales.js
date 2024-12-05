@@ -2208,6 +2208,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     window.location.reload(false);
   }
 
+  //check for master links
+  for (let o = 0;o<$('a[href*="https://www.stellantisandyou.co.uk/digital"]').length;o++){
+    $('a[href*="https://www.stellantisandyou.co.uk/digital"]').eq(0).attr('target','_parent');
+  }
+
   //version check every day
   /*
   var versionRefreshTime = readCookie('RDDigitalAftersalesVersionRefreshTime');
