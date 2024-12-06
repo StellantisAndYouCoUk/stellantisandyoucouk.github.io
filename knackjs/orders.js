@@ -149,7 +149,6 @@ var submitUserLoginForm = function() {
   let token = getTokenFromURL(url);
   console.log('token',token);
   if (token) token = atob(token);
-  token = atob(token);
   if (!token){
     if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
       console.log('on page direct without login');
