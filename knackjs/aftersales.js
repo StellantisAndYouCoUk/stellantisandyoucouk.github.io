@@ -5563,3 +5563,11 @@ $(document).on('knack-scene-render.scene_1230', function(event, scene) {
 // $(document).on('knack-view-render.view_4230', function(event, scene) {
 // $('#view_4230').css('flex','0')
 //  });
+
+//hide sales prospect filter
+$(document).on('knack-view-render.view_4342', function (event, view, data) {
+
+$('#div.kn-records-nav > div.level').hide();
+
+
+ });
