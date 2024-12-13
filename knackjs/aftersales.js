@@ -4586,10 +4586,12 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 	  $('th[class="field_3361"]').hide();
     $('td[class*="field_3361"]').hide();
 
-// phone numbers over export to EM
+/* phone numbers over export to EM
 	 tooltipsTable('1313','4342','field_3444','col-0');	
 	  $('th[class="field_3444"]').hide();
     $('td[class*="field_3444"]').hide();
+
+    */
 	/* $('div[id="view_4342"] table>tbody>tr').each(function(){
 	 $(this).find('td[data-field-key="field_3358"]').attr('data-tooltip',getFieldForRowID('view_4342','field_3280',$(this).attr('id')));
       $(this).find('td[data-field-key="field_3358"]').addClass('tooltip-left');
