@@ -5564,11 +5564,5 @@ $(document).on('knack-scene-render.scene_1230', function(event, scene) {
 // $('#view_4230').css('flex','0')
 //  });
 
-//hide filters for sales prospect
-$(document).on('knack-view-render.view_4342', function (event, view, data) {
 
-$("#view_4342 > div.kn-records-nav.__web-inspector-hide-shortcut__");
-
-
- });
  
