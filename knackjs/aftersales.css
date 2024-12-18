@@ -2324,5 +2324,10 @@ max-height: 100%;
 
 
 #view_4483{
+
 	flex: none;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    text-align: center;
 }
