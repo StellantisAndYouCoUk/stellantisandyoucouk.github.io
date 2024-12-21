@@ -300,11 +300,7 @@ function showScreenDetails(index) {
                 selector.Elements.forEach(element => {
                     if (!element.Ignore) {
                         const elementItem = document.createElement('li');
-                        const attributesSummary = Object.entries(element.Attributes || {})
-                            .map(([key, value]) => `${key}: ${value}`)
-                            .join(', ');
-
-                        elementItem.textContent = `${element.Name || 'Unnamed Element'} (${attributesSummary})`;
+                        elementItem.textContent = `${element.Name || 'Unnamed Element'} - ${element.Operation || 'No Operation'} - ${element.Value || 'No Value'}`;
                         elementsList.appendChild(elementItem);
                     }
                 });
@@ -334,7 +330,6 @@ function showScreenDetails(index) {
     document.getElementById('screen-list').style.display = 'none';
     document.getElementById('editor-container').style.display = 'block';
 }
-
 
 function getSearchFromUrl(){
     let s = window.location.search;
