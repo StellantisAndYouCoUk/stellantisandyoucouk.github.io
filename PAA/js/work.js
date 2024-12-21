@@ -228,7 +228,7 @@ function work(){
     }
 
     if (page.includes('uicoll.html')){
-        const jsonData = callPostHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/PAA/assets/external_controlRepository.appmask')
+        const jsonData = callPostHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
 
         const form = document.getElementById('json-form');
         createEditor(form, jsonData);
