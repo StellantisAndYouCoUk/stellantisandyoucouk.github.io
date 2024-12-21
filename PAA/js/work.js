@@ -289,7 +289,7 @@ function showScreenDetails(index) {
         const selectorsList = document.createElement('ul');
         screen.Selectors.forEach(selector => {
             const selectorItem = document.createElement('li');
-            selectorItem.textContent = selector;
+            selectorItem.textContent = selector.Name || 'Unnamed Selector';
             selectorsList.appendChild(selectorItem);
         });
         detailsContainer.appendChild(selectorsList);
@@ -304,7 +304,7 @@ function showScreenDetails(index) {
         const controlsList = document.createElement('ul');
         screen.Controls.forEach(control => {
             const controlItem = document.createElement('li');
-            controlItem.textContent = control;
+            controlItem.textContent = control.Name || 'Unnamed Control';
             controlsList.appendChild(controlItem);
         });
         detailsContainer.appendChild(controlsList);
@@ -313,6 +313,7 @@ function showScreenDetails(index) {
     document.getElementById('screen-list').style.display = 'none';
     document.getElementById('editor-container').style.display = 'block';
 }
+
 
 function getSearchFromUrl(){
     let s = window.location.search;
