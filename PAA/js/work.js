@@ -247,7 +247,7 @@ function work(){
         const jsonData = callGetHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
 
         const form = document.getElementById('json-form');
-        createEditor(form, jsonData);
+        showScreenList();
     }
 }
 
