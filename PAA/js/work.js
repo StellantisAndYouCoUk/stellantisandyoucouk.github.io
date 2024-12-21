@@ -298,10 +298,14 @@ function showScreenDetails(index) {
             if (selector.Elements) {
                 const elementsList = document.createElement('ul');
                 selector.Elements.forEach(element => {
-                    if (!element.Ignore) {
-                        const elementItem = document.createElement('li');
-                        elementItem.textContent = `${element.Name || 'Unnamed Element'} - ${element.Operation || 'No Operation'} - ${element.Value || 'No Value'}`;
-                        elementsList.appendChild(elementItem);
+                    if (element.Attributes) {
+                        Object.entries(element.Attributes).forEach(([attrName, attrValue]) => {
+                            if (!attrValue.Ignore) {
+                                const elementItem = document.createElement('li');
+                                elementItem.textContent = `${attrName} - ${attrValue.Operation || 'No Operation'} - ${attrValue.Value || 'No Value'}`;
+                                elementsList.appendChild(elementItem);
+                            }
+                        });
                     }
                 });
                 selectorItem.appendChild(elementsList);
