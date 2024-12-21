@@ -247,6 +247,11 @@ function work(){
     if (page.includes('uicoll.html')){
         jsonData = callGetHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
         showScreenList();
+
+        document.getElementById('back-button').addEventListener('click', () => {
+            document.getElementById('screen-list').style.display = 'block';
+            document.getElementById('editor-container').style.display = 'none';
+        });
     }
 }
 
@@ -308,11 +313,6 @@ function showScreenDetails(index) {
     document.getElementById('screen-list').style.display = 'none';
     document.getElementById('editor-container').style.display = 'block';
 }
-
-document.getElementById('back-button').addEventListener('click', () => {
-    document.getElementById('screen-list').style.display = 'block';
-    document.getElementById('editor-container').style.display = 'none';
-});
 
 function getSearchFromUrl(){
     let s = window.location.search;
