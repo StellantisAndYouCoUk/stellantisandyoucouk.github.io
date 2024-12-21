@@ -250,59 +250,69 @@ function work(){
     }
 }
 
-function createEditor(container, data, parentKey = '') {
-    Object.keys(data).forEach(key => {
-        const value = data[key];
-        const fullKey = parentKey ? `${parentKey}.${key}` : key;
-
-        const wrapper = document.createElement('div');
-
-        const label = document.createElement('label');
-        label.textContent = key;
-        wrapper.appendChild(label);
-
-        if (typeof value === 'object' && value !== null) {
-            const nestedContainer = document.createElement('div');
-            nestedContainer.classList.add('nested');
-            createEditor(nestedContainer, value, fullKey);
-            wrapper.appendChild(nestedContainer);
-        } else {
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.name = fullKey;
-            input.value = value;
-            wrapper.appendChild(input);
-        }
-
-        container.appendChild(wrapper);
-    });
-}
-
 function showScreenList() {
     const screenList = document.getElementById('screens');
     const screens = jsonData.Screens || [];
-    console.log(screens);
+    screenList.innerHTML = '';
 
     screens.forEach((screen, index) => {
         const listItem = document.createElement('li');
         const button = document.createElement('button');
         button.textContent = screen.Name || `Screen ${index + 1}`;
-        button.addEventListener('click', () => editScreen(index));
+        button.addEventListener('click', () => showScreenDetails(index));
         listItem.appendChild(button);
         screenList.appendChild(listItem);
     });
 }
 
-function editScreen(index) {
-    const editorContainer = document.getElementById('editor-container');
-    const form = document.getElementById('json-form');
+function showScreenDetails(index) {
+    const screen = jsonData.Screens[index];
+    const detailsContainer = document.getElementById('screen-details');
+    detailsContainer.innerHTML = '';
 
-    form.innerHTML = ''; // Clear previous form
-    createEditor(form, jsonData.Screens[index]);
+    // Display screen name
+    const nameElement = document.createElement('h3');
+    nameElement.textContent = `Screen Name: ${screen.Name}`;
+    detailsContainer.appendChild(nameElement);
+
+    // Display selectors
+    if (screen.Selectors) {
+        const selectorsTitle = document.createElement('h4');
+        selectorsTitle.textContent = 'Selectors:';
+        detailsContainer.appendChild(selectorsTitle);
+
+        const selectorsList = document.createElement('ul');
+        screen.Selectors.forEach(selector => {
+            const selectorItem = document.createElement('li');
+            selectorItem.textContent = selector;
+            selectorsList.appendChild(selectorItem);
+        });
+        detailsContainer.appendChild(selectorsList);
+    }
+
+    // Display controls
+    if (screen.Controls) {
+        const controlsTitle = document.createElement('h4');
+        controlsTitle.textContent = 'Controls:';
+        detailsContainer.appendChild(controlsTitle);
+
+        const controlsList = document.createElement('ul');
+        screen.Controls.forEach(control => {
+            const controlItem = document.createElement('li');
+            controlItem.textContent = control;
+            controlsList.appendChild(controlItem);
+        });
+        detailsContainer.appendChild(controlsList);
+    }
 
     document.getElementById('screen-list').style.display = 'none';
-    editorContainer.style.display = 'block';
+    document.getElementById('editor-container').style.display = 'block';
 }
+
+document.getElementById('back-button').addEventListener('click', () => {
+    document.getElementById('screen-list').style.display = 'block';
+    document.getElementById('editor-container').style.display = 'none';
+});
 
 function getSearchFromUrl(){
     let s = window.location.search;
