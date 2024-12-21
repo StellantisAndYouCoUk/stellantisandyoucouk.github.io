@@ -281,6 +281,7 @@ function createEditor(container, data, parentKey = '') {
 function showScreenList() {
     const screenList = document.getElementById('screens');
     const screens = jsonData.Screens || [];
+    console.log(screens);
 
     screens.forEach((screen, index) => {
         const listItem = document.createElement('li');
