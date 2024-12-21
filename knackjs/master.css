@@ -4027,6 +4027,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5807 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5807 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_5807 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
 #view_5808 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5808 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5815 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4183,6 +4184,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5807 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5807 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_5807 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
 #view_5808 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5808 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5815 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4403,7 +4405,7 @@ img.notification-icon {
 
 img.user-icon {
   position: relative;
-  top: 0.2rem;
+  top: 0.5rem;
   left: 2.3rem;
 }
 
@@ -4463,6 +4465,7 @@ img.user-icon:hover {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   color: white;
+  left: -5em;
 }
 
 .notifications-header {
