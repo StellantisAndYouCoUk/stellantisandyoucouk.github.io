@@ -48,6 +48,22 @@ function callPostHttpRequest(url, headers,payloadObject){
     }
 }
 
+function callGetHttpRequest(url, headers){
+    try{
+      let commandURL = url ;
+      let requestObj = {
+        url: commandURL,
+        type: 'GET',
+        async: false
+      };
+      console.log(requestObj);
+      var rData = $.ajax(requestObj).responseText;
+      return JSON.parse(rData);
+    } catch(exception) {
+      console.log(exception);
+    }
+}
+
 function pad(n) {return n < 10 ? "0"+n : n;}
 function dateTimeToGB(dateobj){
     return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear()+' '+dateobj.toLocaleTimeString("en-GB");
