@@ -226,6 +226,41 @@ function work(){
             work();
         }, (isSomethingActive?15000:60000));
     }
+
+    if (page.includes('uicoll.html')){
+        const jsonData = callPostHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/PAA/assets/external_controlRepository.appmask')
+
+        const form = document.getElementById('json-form');
+        createEditor(form, jsonData);
+    }
+}
+
+function createEditor(container, data, parentKey = '') {
+    Object.keys(data).forEach(key => {
+        const value = data[key];
+        const fullKey = parentKey ? `${parentKey}.${key}` : key;
+
+        const wrapper = document.createElement('div');
+
+        const label = document.createElement('label');
+        label.textContent = key;
+        wrapper.appendChild(label);
+
+        if (typeof value === 'object' && value !== null) {
+            const nestedContainer = document.createElement('div');
+            nestedContainer.classList.add('nested');
+            createEditor(nestedContainer, value, fullKey);
+            wrapper.appendChild(nestedContainer);
+        } else {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = fullKey;
+            input.value = value;
+            wrapper.appendChild(input);
+        }
+
+        container.appendChild(wrapper);
+    });
 }
 
 function getSearchFromUrl(){

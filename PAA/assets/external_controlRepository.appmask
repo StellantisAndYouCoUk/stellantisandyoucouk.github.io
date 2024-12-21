@@ -1,0 +1,4326 @@
+{
+  "Screens": [
+    {
+      "Controls": [
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Edit",
+          "InstanceId": "dc8e3069-0825-47b1-8fa7-9a9ad4632bb9",
+          "Name": "Edit 'Password:' 2",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLEdit32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "1383"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Password:"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Password",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Edit 'Password:'",
+                  "Tag": "edit"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "edit",
+          "ScreenshotPath": "controlRepo-screenshots\\8af862d2-4b9f-4e64-87ee-91ca69533b5b.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "a77cb46b-e56d-4278-b3c3-f795439911e1",
+          "Name": "Button 'Connect'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "Button"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "1"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Connect"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Connect'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\8486e93b-09cf-449d-b6dc-e4e6ddc774a4.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "c48c351c-f31f-4e7b-b0fc-c1b63eabbcfc",
+          "Name": "Button 'OK' Login",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "#32770"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "System information"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Window 'System information'",
+                  "Tag": "window"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "Button"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "2"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "OK"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'OK'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\92add800-c62a-4b64-bcf7-c7a5cba303d4.png"
+        }
+      ],
+      "Handle": {
+        "value": 0
+      },
+      "ProcessName": null,
+      "ScreenShot": null,
+      "ElementTypeName": "Window",
+      "InstanceId": "850db16c-a08f-49ab-b101-e0b3716ab9f0",
+      "Name": "Login Autoline Window",
+      "SelectorCount": 1,
+      "Selectors": [
+        {
+          "CustomSelector": null,
+          "Elements": [
+            {
+              "Attributes": [
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Class",
+                  "Operation": "EqualTo",
+                  "Value": "KerridgeAbout"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Enabled",
+                  "Operation": "EqualTo",
+                  "Value": true
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Id",
+                  "Operation": "EqualTo",
+                  "Value": ""
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Name",
+                  "Operation": "EqualTo",
+                  "Value": "KCML Client"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": true,
+                  "Name": "Ordinal",
+                  "Operation": "EqualTo",
+                  "Value": 0
+                },
+                {
+                  "Ignore": false,
+                  "IsOrdinal": false,
+                  "Name": "Process",
+                  "Operation": "EqualTo",
+                  "Value": "kclient"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Visible",
+                  "Operation": "EqualTo",
+                  "Value": true
+                }
+              ],
+              "CustomValue": null,
+              "Ignore": false,
+              "Name": "Window 'KCML Client'",
+              "Tag": "window"
+            }
+          ],
+          "Ignore": false,
+          "ImageSelector": null,
+          "IsCustom": false,
+          "IsImageBased": false,
+          "IsWindowsInstance": false,
+          "Name": "Default Selector",
+          "Properties": []
+        }
+      ],
+      "Tag": "window",
+      "ScreenshotPath": "controlRepo-screenshots\\0101098a-edd6-4c22-9ab3-56cdc58b605e.png"
+    },
+    {
+      "Controls": [
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "cc9e4fbc-479f-4b65-8ba9-4bd752a6f743",
+          "Name": "List Item ModuleToUse",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Preprod (ahbo1/2227)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Preprod (ahbo1/2227)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26684"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "${ModuleToUse}"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'Point of sale'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\263e16ca-92b7-45fe-9e7b-c27921ce332c.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "44780d22-183c-44e0-8e37-95fa669dc5e4",
+          "Name": "List Item Selected DealershipToUse",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Preprod (ahbo1/2227)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Preprod (ahbo1/2227)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26686"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "StartsWith",
+                      "Value": "${StockbookWritedownInput.companyCode}"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'BW. R&D Coventry'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\d0028ede-4f70-41fe-b206-dc3b6825290b.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "0036b093-7c35-41ac-9205-191588aec1e0",
+          "Name": "Button 'OK'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Preprod (ahbo1/2227)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Preprod (ahbo1/2227)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLButton_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "1"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "OK"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'OK'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\c6d3e184-043d-4509-bbf9-a87ce75cfd60.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "229ae7ab-e03e-4af5-b807-be413ab0c6ce",
+          "Name": "List Item 'Vehicle administration'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Vehicle stockbooks - Sale / Sheffield / Nottingham (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Vehicle stockbooks - Sale / Sheffield / Nottingham (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26683"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Vehicle administration"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'Vehicle administration'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\d7542b81-321f-430a-8d01-2000d9128ace.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "bc571689-0fc4-4bf0-91fc-5594d7e67722",
+          "Name": "Button 'Open'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLMenuTool_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "62"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'KCMLMenuTool_32'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ToolBar_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "66"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Tool Bar 'ToolBar_Class'",
+                  "Tag": "toolbar"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Open"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Open'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\d835d83a-e83a-43a0-99f7-a0e0a08e5184.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Edit",
+          "InstanceId": "cf7a4701-b3cd-4448-8425-ba44cfb9fca8",
+          "Name": "Edit 'KCMLDBEdit_32'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLMasterForm_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Vehicle Search Window"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Window 'Vehicle Search Window'",
+                  "Tag": "window"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Vehicle Search Window"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Vehicle Search Window'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDBEdit_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26708"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Password",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Edit 'KCMLDBEdit_32'",
+                  "Tag": "edit"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "edit",
+          "ScreenshotPath": "controlRepo-screenshots\\576dbefe-5574-4e47-bea7-930ef8d19db5.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "aaa0a0aa-b753-4dfa-878a-80fc99bb3c7d",
+          "Name": "Button 'Amend'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLMenuTool_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "62"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'KCMLMenuTool_32'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ToolBar_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "66"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Tool Bar 'ToolBar_Class'",
+                  "Tag": "toolbar"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Amend"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Amend'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\fe9af637-544d-497d-9eda-8de94960d927.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Tab Item",
+          "InstanceId": "92787b55-455f-473e-9405-44f870bc6c92",
+          "Name": "Tab Item 'Purchase Brief'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Vehicle Administration - Amend mode [U021242] - Sale / Sheffield / Nottingham (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Vehicle Administration - Amend mode [U021242] - Sale / Sheffield / Nottingham (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KTab"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26683"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'KTab'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KTabEars"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Tab 'KTabEars'",
+                  "Tag": "tab"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Purchase Brief"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Tab Item 'Purchase Brief'",
+                  "Tag": "tabitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "tabitem",
+          "ScreenshotPath": "controlRepo-screenshots\\c8b8536f-b194-40e1-9c58-32481b30acd0.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Edit",
+          "InstanceId": "80c94cc8-59a6-45c4-bdd8-d431ba68df50",
+          "Name": "Edit 'Adjusted stock value'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Vehicle Administration - Amend mode [U021242] - Sale / Sheffield / Nottingham (ahbo1/8190)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Vehicle Administration - Amend mode [U021242] - Sale / Sheffield / Nottingham (ahbo1/8190)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KTab"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26683"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'KTab'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'KCMLDlgWndClass_32'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDBEdit_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "27484"
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Adjusted stock value"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Password",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Edit 'Adjusted stock value'",
+                  "Tag": "edit"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "edit",
+          "ScreenshotPath": "controlRepo-screenshots\\2a9644c2-fe05-4fc7-9ecb-321f4521342f.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "d210de5e-4f46-45bf-9721-48b4c0e451da",
+          "Name": "Button 'Save'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLMenuTool_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "62"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'KCMLMenuTool_32'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ToolBar_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "66"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Tool Bar 'ToolBar_Class'",
+                  "Tag": "toolbar"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Save"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Save'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\b2937725-6f9b-4ad6-8a5e-475131645caf.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "7d3a95fa-3243-41a0-8235-b9dc164eaf39",
+          "Name": "Button 'OK' Reasons for warning vehicle save",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLMasterForm_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Reasons for warning vehicle save"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Window 'Reasons for warning vehicle save'",
+                  "Tag": "window"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Reasons for warning vehicle save"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Reasons for warning vehicle save'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLButton_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "1"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "OK"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'OK'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\90ee7a2c-e7bb-4fec-88c8-1fa645d0605d.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "e574fc8b-59b2-4a91-abe6-c9610f6b4c45",
+          "Name": "List Item 'Sales ledger'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Pre-Prod (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Pre-Prod (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26684"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Sales ledger"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'Sales ledger'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\3cd674bd-c4f1-45fa-b08a-881804c31be5.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "1204168e-9034-4237-9db8-85c6a4d29282",
+          "Name": "List Item 'Print daybooks'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Sales ledger - Wimbledon / Croydon / (Kingsto (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Sales ledger - Wimbledon / Croydon / (Kingsto (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26683"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Print daybooks"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'Print daybooks'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\3c73b34d-ba88-440f-af7a-4e7a6143c34f.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "15d53a20-ac0a-4470-be1d-880a9c18a0ae",
+          "Name": "Button 'Print'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Print SL daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Print SL daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLButton_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "1"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Print"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Print'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\ca7147c1-bf82-4de1-953f-b7bc8779f257.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "5fec1866-18d6-4570-8cdb-f28176f98b21",
+          "Name": "Button 'Done'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Print SL daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Print SL daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLButton_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26686"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Done"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Done'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\9535c8e6-7066-4db1-a23c-ba4e23d00e09.png"
+        }
+      ],
+      "Handle": {
+        "value": 0
+      },
+      "ProcessName": null,
+      "ScreenShot": null,
+      "ElementTypeName": "Window",
+      "InstanceId": "c09c872b-6032-422c-9f5f-8fb4ae774b6a",
+      "Name": "Main Autoline Window",
+      "SelectorCount": 1,
+      "Selectors": [
+        {
+          "CustomSelector": null,
+          "Elements": [
+            {
+              "Attributes": [
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Class",
+                  "Operation": "EqualTo",
+                  "Value": "KCMLMasterForm_32"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Enabled",
+                  "Operation": "EqualTo",
+                  "Value": true
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Id",
+                  "Operation": "EqualTo",
+                  "Value": ""
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Name",
+                  "Operation": "EndsWith",
+                  "Value": "hbo1/2227)"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": true,
+                  "Name": "Ordinal",
+                  "Operation": "EqualTo",
+                  "Value": 0
+                },
+                {
+                  "Ignore": false,
+                  "IsOrdinal": false,
+                  "Name": "Process",
+                  "Operation": "Contains",
+                  "Value": "kclient"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Visible",
+                  "Operation": "EqualTo",
+                  "Value": true
+                }
+              ],
+              "CustomValue": null,
+              "Ignore": false,
+              "Name": "Window 'Service Point Of Sale - R&D Coventry (BW) - R&D Coventry (ahbo1/2227)'",
+              "Tag": "window"
+            }
+          ],
+          "Ignore": false,
+          "ImageSelector": null,
+          "IsCustom": false,
+          "IsImageBased": false,
+          "IsWindowsInstance": false,
+          "Name": "Default Selector",
+          "Properties": []
+        }
+      ],
+      "Tag": "window",
+      "ScreenshotPath": "controlRepo-screenshots\\29f75697-cfa3-4313-ad55-8206adb74619.png"
+    },
+    {
+      "Controls": [
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "5de1327b-297a-4181-bb1f-f14841ca8c8f",
+          "Name": "List Item 'Purchase ledger'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Pre-Prod (ahbo1/1860)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Pre-Prod (ahbo1/1860)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26684"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Purchase ledger"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'Purchase ledger'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\b1c11276-b2dc-4c64-9b81-551a6c46a2d6.png"
+        }
+      ],
+      "Handle": {
+        "value": 0
+      },
+      "ProcessName": null,
+      "ScreenShot": null,
+      "ElementTypeName": "Window",
+      "InstanceId": "9d4bc4fc-3cce-494e-99c1-b1b41c31f78b",
+      "Name": "Window 'CDK Pre-Prod (ahbo1/1860)'",
+      "SelectorCount": 1,
+      "Selectors": [
+        {
+          "CustomSelector": null,
+          "Elements": [
+            {
+              "Attributes": [
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Class",
+                  "Operation": "EqualTo",
+                  "Value": "KCMLMasterForm_32"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Enabled",
+                  "Operation": "EqualTo",
+                  "Value": true
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Id",
+                  "Operation": "EqualTo",
+                  "Value": ""
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Name",
+                  "Operation": "EqualTo",
+                  "Value": "CDK Pre-Prod (ahbo1/1860)"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": true,
+                  "Name": "Ordinal",
+                  "Operation": "EqualTo",
+                  "Value": 0
+                },
+                {
+                  "Ignore": false,
+                  "IsOrdinal": false,
+                  "Name": "Process",
+                  "Operation": "EqualTo",
+                  "Value": "kclient"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Visible",
+                  "Operation": "EqualTo",
+                  "Value": true
+                }
+              ],
+              "CustomValue": null,
+              "Ignore": false,
+              "Name": "Window 'CDK Pre-Prod (ahbo1/1860)'",
+              "Tag": "window"
+            }
+          ],
+          "Ignore": false,
+          "ImageSelector": null,
+          "IsCustom": false,
+          "IsImageBased": false,
+          "IsWindowsInstance": false,
+          "Name": "Default Selector",
+          "Properties": []
+        }
+      ],
+      "Tag": "window",
+      "ScreenshotPath": "controlRepo-screenshots\\0f797556-0b34-46c8-8536-42a188c7cd5f.png"
+    },
+    {
+      "Controls": [
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "List Item",
+          "InstanceId": "0ad9e2bb-963e-4239-a62c-1f4f4a5987c2",
+          "Name": "List Item 'Nominal ledger'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Pre-Prod (ahbo1/1861)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Pre-Prod (ahbo1/1861)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "ListBox_Class"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26684"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List 'ListBox_Class'",
+                  "Tag": "list"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Checked",
+                      "Operation": "EqualTo",
+                      "Value": null
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Nominal ledger"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Selected",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "List Item 'Nominal ledger'",
+                  "Tag": "listitem"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "listitem",
+          "ScreenshotPath": "controlRepo-screenshots\\68553ea8-dcba-4e30-8921-55ed642decb1.png"
+        },
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "a69a4718-ef3b-43d9-9450-8c9385803b4c",
+          "Name": "Button 'Exit'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "CDK Pre-Prod (ahbo1/1861)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'CDK Pre-Prod (ahbo1/1861)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLButton_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "26687"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": false
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Exit"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Exit'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\2eb4cbbe-222a-46d4-bed3-49ee856a0372.png"
+        }
+      ],
+      "Handle": {
+        "value": 0
+      },
+      "ProcessName": null,
+      "ScreenShot": null,
+      "ElementTypeName": "Window",
+      "InstanceId": "9d0dc728-7515-42b2-808d-c038386bb966",
+      "Name": "Window 'CDK Pre-Prod (ahbo1/1861)'",
+      "SelectorCount": 1,
+      "Selectors": [
+        {
+          "CustomSelector": null,
+          "Elements": [
+            {
+              "Attributes": [
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Class",
+                  "Operation": "EqualTo",
+                  "Value": "KCMLMasterForm_32"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Enabled",
+                  "Operation": "EqualTo",
+                  "Value": true
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Id",
+                  "Operation": "EqualTo",
+                  "Value": ""
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Name",
+                  "Operation": "EqualTo",
+                  "Value": "CDK Pre-Prod (ahbo1/1861)"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": true,
+                  "Name": "Ordinal",
+                  "Operation": "EqualTo",
+                  "Value": 0
+                },
+                {
+                  "Ignore": false,
+                  "IsOrdinal": false,
+                  "Name": "Process",
+                  "Operation": "EqualTo",
+                  "Value": "kclient"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Visible",
+                  "Operation": "EqualTo",
+                  "Value": true
+                }
+              ],
+              "CustomValue": null,
+              "Ignore": false,
+              "Name": "Window 'CDK Pre-Prod (ahbo1/1861)'",
+              "Tag": "window"
+            }
+          ],
+          "Ignore": false,
+          "ImageSelector": null,
+          "IsCustom": false,
+          "IsImageBased": false,
+          "IsWindowsInstance": false,
+          "Name": "Default Selector",
+          "Properties": []
+        }
+      ],
+      "Tag": "window",
+      "ScreenshotPath": "controlRepo-screenshots\\35abf849-acb6-4a4a-a2e9-cfdd59af691e.png"
+    },
+    {
+      "Controls": [
+        {
+          "AutomationProtocol": "uia3",
+          "ScreenShot": null,
+          "ElementTypeName": "Button",
+          "InstanceId": "b8c02ba7-2974-4cb3-bc05-8058d8a56413",
+          "Name": "Button 'Exit'",
+          "SelectorCount": 1,
+          "Selectors": [
+            {
+              "CustomSelector": null,
+              "Elements": [
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLDlgWndClass_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": ""
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Print daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1861)"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Process",
+                      "Operation": "EqualTo",
+                      "Value": "kclient"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Pane 'Print daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1861)'",
+                  "Tag": "pane"
+                },
+                {
+                  "Attributes": [
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Class",
+                      "Operation": "EqualTo",
+                      "Value": "KCMLButton_32"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Enabled",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Id",
+                      "Operation": "EqualTo",
+                      "Value": "2"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "IsDefault",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    },
+                    {
+                      "Ignore": false,
+                      "IsOrdinal": false,
+                      "Name": "Name",
+                      "Operation": "EqualTo",
+                      "Value": "Exit"
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": true,
+                      "Name": "Ordinal",
+                      "Operation": "EqualTo",
+                      "Value": 0
+                    },
+                    {
+                      "Ignore": true,
+                      "IsOrdinal": false,
+                      "Name": "Visible",
+                      "Operation": "EqualTo",
+                      "Value": true
+                    }
+                  ],
+                  "CustomValue": null,
+                  "Ignore": false,
+                  "Name": "Button 'Exit'",
+                  "Tag": "button"
+                }
+              ],
+              "Ignore": false,
+              "ImageSelector": null,
+              "IsCustom": false,
+              "IsImageBased": false,
+              "IsWindowsInstance": false,
+              "Name": "Default Selector",
+              "Properties": []
+            }
+          ],
+          "Tag": "button",
+          "ScreenshotPath": "controlRepo-screenshots\\9011d31f-14a7-451c-a780-5bff6e66ef14.png"
+        }
+      ],
+      "Handle": {
+        "value": 0
+      },
+      "ProcessName": null,
+      "ScreenShot": null,
+      "ElementTypeName": "Window",
+      "InstanceId": "6ff083df-f285-478c-90ec-1a788d1b9113",
+      "Name": "Window 'Print  ...  (ahbo1/1861)'",
+      "SelectorCount": 1,
+      "Selectors": [
+        {
+          "CustomSelector": null,
+          "Elements": [
+            {
+              "Attributes": [
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Class",
+                  "Operation": "EqualTo",
+                  "Value": "KCMLMasterForm_32"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Enabled",
+                  "Operation": "EqualTo",
+                  "Value": true
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Id",
+                  "Operation": "EqualTo",
+                  "Value": ""
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Name",
+                  "Operation": "EqualTo",
+                  "Value": "Print daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1861)"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": true,
+                  "Name": "Ordinal",
+                  "Operation": "EqualTo",
+                  "Value": 0
+                },
+                {
+                  "Ignore": false,
+                  "IsOrdinal": false,
+                  "Name": "Process",
+                  "Operation": "EqualTo",
+                  "Value": "kclient"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Visible",
+                  "Operation": "EqualTo",
+                  "Value": true
+                }
+              ],
+              "CustomValue": null,
+              "Ignore": false,
+              "Name": "Window 'Print daybooks - Wimbledon / Croydon / (Kingsto (ahbo1/1861)'",
+              "Tag": "window"
+            }
+          ],
+          "Ignore": false,
+          "ImageSelector": null,
+          "IsCustom": false,
+          "IsImageBased": false,
+          "IsWindowsInstance": false,
+          "Name": "Default Selector",
+          "Properties": []
+        }
+      ],
+      "Tag": "window",
+      "ScreenshotPath": "controlRepo-screenshots\\a6b5be29-464a-4f88-8807-2d4d7de444ca.png"
+    },
+    {
+      "Controls": [],
+      "Handle": {
+        "value": 0
+      },
+      "ProcessName": null,
+      "ScreenShot": null,
+      "ElementTypeName": "Window",
+      "InstanceId": "0b25cd54-bce6-487d-91b4-7bc93061f14b",
+      "Name": "Window 'KCML Client'",
+      "SelectorCount": 1,
+      "Selectors": [
+        {
+          "CustomSelector": null,
+          "Elements": [
+            {
+              "Attributes": [
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Class",
+                  "Operation": "EqualTo",
+                  "Value": "KerridgeAbout"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Enabled",
+                  "Operation": "EqualTo",
+                  "Value": true
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Id",
+                  "Operation": "EqualTo",
+                  "Value": ""
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Name",
+                  "Operation": "EqualTo",
+                  "Value": "KCML Client"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": true,
+                  "Name": "Ordinal",
+                  "Operation": "EqualTo",
+                  "Value": 0
+                },
+                {
+                  "Ignore": false,
+                  "IsOrdinal": false,
+                  "Name": "Process",
+                  "Operation": "EqualTo",
+                  "Value": "kclient"
+                },
+                {
+                  "Ignore": true,
+                  "IsOrdinal": false,
+                  "Name": "Visible",
+                  "Operation": "EqualTo",
+                  "Value": true
+                }
+              ],
+              "CustomValue": null,
+              "Ignore": false,
+              "Name": "Window 'KCML Client'",
+              "Tag": "window"
+            }
+          ],
+          "Ignore": false,
+          "ImageSelector": null,
+          "IsCustom": false,
+          "IsImageBased": false,
+          "IsWindowsInstance": false,
+          "Name": "Default Selector",
+          "Properties": []
+        }
+      ],
+      "Tag": "window",
+      "ScreenshotPath": "controlRepo-screenshots\\e3a582c0-5a96-491c-956b-422ee119982a.png"
+    }
+  ],
+  "Version": 1
+}
