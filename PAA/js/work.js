@@ -279,6 +279,31 @@ function createEditor(container, data, parentKey = '') {
     });
 }
 
+function showScreenList() {
+    const screenList = document.getElementById('screens');
+    const screens = jsonData.screens || [];
+
+    screens.forEach((screen, index) => {
+        const listItem = document.createElement('li');
+        const button = document.createElement('button');
+        button.textContent = screen.name || `Screen ${index + 1}`;
+        button.addEventListener('click', () => editScreen(index));
+        listItem.appendChild(button);
+        screenList.appendChild(listItem);
+    });
+}
+
+function editScreen(index) {
+    const editorContainer = document.getElementById('editor-container');
+    const form = document.getElementById('json-form');
+
+    form.innerHTML = ''; // Clear previous form
+    createEditor(form, jsonData.screens[index]);
+
+    document.getElementById('screen-list').style.display = 'none';
+    editorContainer.style.display = 'block';
+}
+
 function getSearchFromUrl(){
     let s = window.location.search;
     console.log('s',s)
