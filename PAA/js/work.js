@@ -286,7 +286,7 @@ function showScreenList() {
     screens.forEach((screen, index) => {
         const listItem = document.createElement('li');
         const button = document.createElement('button');
-        button.textContent = screen.name || `Screen ${index + 1}`;
+        button.textContent = screen.Name || `Screen ${index + 1}`;
         button.addEventListener('click', () => editScreen(index));
         listItem.appendChild(button);
         screenList.appendChild(listItem);
@@ -298,7 +298,7 @@ function editScreen(index) {
     const form = document.getElementById('json-form');
 
     form.innerHTML = ''; // Clear previous form
-    createEditor(form, jsonData.screens[index]);
+    createEditor(form, jsonData.Screens[index]);
 
     document.getElementById('screen-list').style.display = 'none';
     editorContainer.style.display = 'block';
