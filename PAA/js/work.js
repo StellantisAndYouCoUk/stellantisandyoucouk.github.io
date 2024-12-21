@@ -289,7 +289,28 @@ function showScreenDetails(index) {
         const selectorsList = document.createElement('ul');
         screen.Selectors.forEach(selector => {
             const selectorItem = document.createElement('li');
-            selectorItem.textContent = selector.Name || 'Unnamed Selector';
+
+            // Create selector summary
+            const selectorName = document.createElement('strong');
+            selectorName.textContent = selector.Name || 'Unnamed Selector';
+            selectorItem.appendChild(selectorName);
+
+            if (selector.Elements) {
+                const elementsList = document.createElement('ul');
+                selector.Elements.forEach(element => {
+                    if (!element.Ignore) {
+                        const elementItem = document.createElement('li');
+                        const attributesSummary = Object.entries(element.Attributes || {})
+                            .map(([key, value]) => `${key}: ${value}`)
+                            .join(', ');
+
+                        elementItem.textContent = `${element.Name || 'Unnamed Element'} (${attributesSummary})`;
+                        elementsList.appendChild(elementItem);
+                    }
+                });
+                selectorItem.appendChild(elementsList);
+            }
+
             selectorsList.appendChild(selectorItem);
         });
         detailsContainer.appendChild(selectorsList);
