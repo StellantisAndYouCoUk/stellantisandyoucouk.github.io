@@ -102,6 +102,7 @@ function getLoggedInUser(){
 }
 
 var table = null;
+var jsonData = null;
 
 function work(){
     let page = window.location.href;
@@ -244,9 +245,8 @@ function work(){
     }
 
     if (page.includes('uicoll.html')){
-        const jsonData = callGetHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
+        jsonData = callGetHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
 
-        const form = document.getElementById('json-form');
         showScreenList();
     }
 }
