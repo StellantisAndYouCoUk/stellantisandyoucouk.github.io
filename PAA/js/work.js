@@ -246,7 +246,6 @@ function work(){
 
     if (page.includes('uicoll.html')){
         jsonData = callGetHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
-
         showScreenList();
     }
 }
