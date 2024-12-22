@@ -155,7 +155,7 @@ function work(){
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+el.inputs+'"</td></tr>';
+            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+el.inputs+'"</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td></tr>';
         })
         $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleFlows');
@@ -245,7 +245,9 @@ function work(){
     }
 
     if (page.includes('uicoll.html')){
-        let respU = paaPostRequest({'action':'getSharedUI','token':paaToken});
+        let qV = getUrlVars();
+        console.log(qV['flow']);
+        let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
         jsonData = JSON.parse(atob(respU.data.content))
         showScreenList();
 
@@ -260,6 +262,19 @@ function work(){
             document.getElementById('editor-container').style.display = 'none';
         });
     }
+}
+
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
 
 function uploadToGitHub(){
