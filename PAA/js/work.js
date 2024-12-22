@@ -254,9 +254,9 @@ function work(){
 
         const buttonUpload = document.createElement('button');
         buttonUpload.textContent = 'Upload to GitHub';
-        buttonUpload.addEventListener('click', () => uploadToGitHub());
+        buttonUpload.addEventListener('click', () => uploadControlsToGitHub(qV['flow']));
 
-        $('div[id="screen-list"]').append(buttonUpload);
+        $('#uploadToGitHub').append(buttonUpload);
 
         document.getElementById('back-button').addEventListener('click', () => {
             document.getElementById('screen-list').style.display = 'block';
@@ -278,9 +278,10 @@ function getUrlVars()
     return vars;
 }
 
-function uploadToGitHub(){
+function uploadControlsToGitHub(flowName){
+    console.log('uploadControlsToGitHub',flowName);
     $('#actionInfo').text('Upload to GitHub started');
-    let respU = paaPostRequest({'action':'uploadSharedUI','token':paaToken,'data':jsonData});
+    let respU = paaPostRequest({'action':'uploadSharedUI','token':paaToken,'flowName':flowName,'data':jsonData});
     console.log(respU);
     if (respU.success){
         $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
