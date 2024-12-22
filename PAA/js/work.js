@@ -282,7 +282,7 @@ function showScreenDetails(index) {
     detailsContainer.appendChild(nameElement);
 
     // Display selectors
-    /*if (screen.Selectors) {
+    if (screen.Selectors) {
         const selectorsTitle = document.createElement('h4');
         selectorsTitle.textContent = 'Selectors:';
         detailsContainer.appendChild(selectorsTitle);
@@ -315,7 +315,7 @@ function showScreenDetails(index) {
             selectorsList.appendChild(selectorItem);
         });
         detailsContainer.appendChild(selectorsList);
-    }*/
+    }
 
     // Display controls
     if (screen.Controls) {
