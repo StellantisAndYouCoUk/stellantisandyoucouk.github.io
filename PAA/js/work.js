@@ -245,7 +245,8 @@ function work(){
     }
 
     if (page.includes('uicoll.html')){
-        jsonData = paaPostRequest({'action':'getSharedUI','token':paaToken});
+        let respU = paaPostRequest({'action':'getSharedUI','token':paaToken});
+        jsonData = JSON.parse(atob(respU.data.content))
         showScreenList();
 
         document.getElementById('back-button').addEventListener('click', () => {
