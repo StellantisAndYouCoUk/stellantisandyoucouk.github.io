@@ -84,13 +84,13 @@ function checkAuth(){
     }
 }
 
-//checkAuth();
+checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    //checkAuth();
+    checkAuth();
 }
 
 $( document ).ready(function() {
@@ -263,8 +263,15 @@ function work(){
 }
 
 function uploadToGitHub(){
+    $('#actionInfo').text('Upload to GitHub started');
     let respU = paaPostRequest({'action':'uploadSharedUI','token':paaToken,'data':jsonData});
     console.log(respU);
+    if (respU.success){
+        $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
+    } else {
+        $('#actionInfo').text('Upload to GitHub ERROR');
+    }
+    clearActionInfoAfter15sec();
 }
 
 function showScreenList() {
@@ -373,6 +380,14 @@ function copyToWindow(screenInstanceId,controlInstanceId){
     console.log(cJ);
     let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveTo);
     toWindow.Controls.push(cJ);
+    $('#actionInfo').text('Control '+cJ.Name+' created in '+toWindow.Name);
+    clearActionInfoAfter15sec();
+}
+
+function clearActionInfoAfter15sec(){
+    setTimeout(() => {
+        $('#actionInfo').text('');
+    }, 15000);
 }
 
 function getSearchFromUrl(){
