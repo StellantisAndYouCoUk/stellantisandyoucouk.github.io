@@ -245,7 +245,7 @@ function work(){
     }
 
     if (page.includes('uicoll.html')){
-        jsonData = callGetHttpRequest('https://stellantisandyoucouk.github.io/PAA/assets/external_controlRepository.appmask')
+        jsonData = paaPostRequest({'action':'getSharedUI','token':paaToken});
         showScreenList();
 
         document.getElementById('back-button').addEventListener('click', () => {
