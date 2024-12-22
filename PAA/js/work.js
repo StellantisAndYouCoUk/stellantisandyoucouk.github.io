@@ -247,6 +247,7 @@ function work(){
     if (page.includes('uicoll.html')){
         let qV = getUrlVars();
         console.log(qV['flow']);
+        $('h1').text(qV['flow'])
         let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
         jsonData = JSON.parse(atob(respU.data.content))
         showScreenList();
