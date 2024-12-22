@@ -84,13 +84,13 @@ function checkAuth(){
     }
 }
 
-checkAuth();
+//checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    checkAuth();
+    //checkAuth();
 }
 
 $( document ).ready(function() {
