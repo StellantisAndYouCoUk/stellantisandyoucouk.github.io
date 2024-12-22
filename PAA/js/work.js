@@ -84,13 +84,13 @@ function checkAuth(){
     }
 }
 
-checkAuth();
+//checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    checkAuth();
+    //checkAuth();
 }
 
 $( document ).ready(function() {
@@ -249,11 +249,20 @@ function work(){
         jsonData = JSON.parse(atob(respU.data.content))
         showScreenList();
 
+        const buttonUpload = document.createElement('button');
+        button.textContent = 'Upload to GitHub';
+        button.addEventListener('click', () => uploadToGitHub());
+
         document.getElementById('back-button').addEventListener('click', () => {
             document.getElementById('screen-list').style.display = 'block';
             document.getElementById('editor-container').style.display = 'none';
         });
     }
+}
+
+function uploadToGitHub(){
+    let respU = paaPostRequest({'action':'uploadSharedUI','token':paaToken,'data':jsonData});
+    console.log(respU);
 }
 
 function showScreenList() {
@@ -303,7 +312,7 @@ function showScreenDetails(index) {
                         Object.entries(element.Attributes).forEach(([attrName, attrValue]) => {
                             if (!attrValue.Ignore) {
                                 const elementItem = document.createElement('li');
-                                elementItem.textContent = `${attrName} - ${attrValue.Operation || 'No Operation'} - ${attrValue.Value || 'No Value'}`;
+                                elementItem.textContent = `${attrValue.Name} - ${attrValue.Operation || 'No Operation'} - ${attrValue.Value || 'No Value'}`;
                                 elementsList.appendChild(elementItem);
                             }
                         });
@@ -327,6 +336,23 @@ function showScreenDetails(index) {
         screen.Controls.forEach(control => {
             const controlItem = document.createElement('li');
             controlItem.textContent = control.Name || 'Unnamed Control';
+            const buttonE = document.createElement('button');
+            buttonE.textContent = `Edit`;
+            buttonE.addEventListener('click', () => showControlDetails(control.InstanceId));
+            controlItem.appendChild(buttonE);
+            const buttonM = document.createElement('button');
+            buttonM.textContent = `Copy to `;
+            buttonM.addEventListener('click', () => copyToWindow(screen.InstanceId,control.InstanceId));
+            controlItem.appendChild(buttonM);
+            var selectList = document.createElement("select");
+            selectList.id = "windowForC_"+control.InstanceId;
+            controlItem.appendChild(selectList);
+            for (var i = 0; i < jsonData.Screens.length; i++) {
+                var option = document.createElement("option");
+                option.value = jsonData.Screens[i].InstanceId;
+                option.text = jsonData.Screens[i].Name;
+                selectList.appendChild(option);
+            }
             controlsList.appendChild(controlItem);
         });
         detailsContainer.appendChild(controlsList);
@@ -334,6 +360,15 @@ function showScreenDetails(index) {
 
     document.getElementById('screen-list').style.display = 'none';
     document.getElementById('editor-container').style.display = 'block';
+}
+
+function copyToWindow(screenInstanceId,controlInstanceId){
+    let screenMoveTo = $('select[id*="'+controlInstanceId+'"]>option:selected').val();
+    console.log('screenMoveTo',screenMoveTo);
+    let cJ = jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId);
+    console.log(cJ);
+    let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveTo);
+    toWindow.Controls.push(cJ);
 }
 
 function getSearchFromUrl(){
