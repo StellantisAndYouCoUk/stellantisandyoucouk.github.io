@@ -277,11 +277,11 @@ function showScreenDetails(index) {
 
     // Display screen name
     const nameElement = document.createElement('h3');
-    nameElement.textContent = `Screen Name: ${screen.Name}`;
+    nameElement.textContent = `Name: ${screen.Name}`;
     detailsContainer.appendChild(nameElement);
 
     // Display selectors
-    if (screen.Selectors) {
+    /*if (screen.Selectors) {
         const selectorsTitle = document.createElement('h4');
         selectorsTitle.textContent = 'Selectors:';
         detailsContainer.appendChild(selectorsTitle);
@@ -314,7 +314,7 @@ function showScreenDetails(index) {
             selectorsList.appendChild(selectorItem);
         });
         detailsContainer.appendChild(selectorsList);
-    }
+    }*/
 
     // Display controls
     if (screen.Controls) {
