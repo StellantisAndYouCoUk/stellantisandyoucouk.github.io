@@ -250,8 +250,10 @@ function work(){
         showScreenList();
 
         const buttonUpload = document.createElement('button');
-        button.textContent = 'Upload to GitHub';
-        button.addEventListener('click', () => uploadToGitHub());
+        buttonUpload.textContent = 'Upload to GitHub';
+        buttonUpload.addEventListener('click', () => uploadToGitHub());
+
+        $('div[id="screen-list"]').append(buttonUpload);
 
         document.getElementById('back-button').addEventListener('click', () => {
             document.getElementById('screen-list').style.display = 'block';
