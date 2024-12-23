@@ -281,7 +281,7 @@ function getUrlVars()
 function uploadControlsToGitHub(flowName){
     console.log('uploadControlsToGitHub',flowName);
     $('#actionInfo').text('Upload to GitHub started');
-    let respU = paaPostRequest({'action':'uploadSharedUI','token':paaToken,'flowName':flowName,'data':jsonData});
+    let respU = paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
     console.log(respU);
     if (respU.success){
         $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
