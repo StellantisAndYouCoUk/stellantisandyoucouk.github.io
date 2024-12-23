@@ -127,6 +127,7 @@ function work(){
     });
 
     $('#userName').text(loggedInUser.displayName)
+    let qV = getUrlVars();
     if (page.includes('index.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
         let today00 = new Date();
@@ -140,7 +141,7 @@ function work(){
     }
 
     if (page.includes('machines.html')){
-        let req = paaPostRequest({'action':'getMachines','token':paaToken});
+        let req = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
             return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.capacity===0?(el.attendedModeAvailable?'Available':'Not Ready')+' - '+dateTimeToGB(new Date(el.attendedModeAvailableTestDateTime)):'')+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td></tr>';
         })
@@ -153,7 +154,7 @@ function work(){
     }
 
     if (page.includes('flows.html')){
-        let req = paaPostRequest({'action':'getFlows','token':paaToken});
+        let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
             return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+el.inputs+'"</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td></tr>';
         })
@@ -245,7 +246,6 @@ function work(){
     }
 
     if (page.includes('uicoll.html')){
-        let qV = getUrlVars();
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
         let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
