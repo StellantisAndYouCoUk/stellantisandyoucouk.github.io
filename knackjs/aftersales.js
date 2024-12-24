@@ -5189,10 +5189,9 @@ var defineButtonsAll = [];
 
 function syButtonsFilter(viewId,index){
   let dbView = defineButtonsAll.find(el => el.viewId === viewId);
+  dbView.selectedIndex = index;
   let dbA1 = dbView.defineButtons[index];
   console.log(viewId, index,dbA1,JSON.stringify(dbA1.filters));
-  $('div[id="syButtons_'+viewId+'"] li[class="is-active"]').removeClass('is-active');
-  $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+index+'"]').parent().addClass('is-active');
   Knack.views['view_'+viewId].model.setFilters('{"match":"and","rules":'+JSON.stringify(dbA1.filters)+'}');
   Knack.views['view_'+viewId].model.fetch();
 }
@@ -5208,6 +5207,10 @@ function renderSYSearchButtons(viewId, defineButtons){
     buttonsDiv += dbA1.defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter(\''+viewId+'\','+index+'); return false;"><span>'+el.linkText+'</span></a></li>').join('');
     buttonsDiv += '</ul></div>';
     $('div[id="view_'+viewId+'"] div[class="kn-records-nav"]').prepend(buttonsDiv);
+  }
+  if (dbA1.selectedIndex){
+    $('div[id="syButtons_'+viewId+'"] li[class="is-active"]').removeClass('is-active');
+    $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').parent().addClass('is-active');
   }
 }
 
