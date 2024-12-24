@@ -5187,6 +5187,7 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
 
 function syButtonsFilter(defineButtons,index){
   console.log(defineButtons,index);
+  $('div[id="syButtons"] li[class="is-active"]').removeClass('is-active');
   $('div[id="syButtons"] a[id="syButtons_'+index+'"]').parent().addClass('is-active');
 }
 
