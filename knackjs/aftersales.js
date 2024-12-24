@@ -5189,7 +5189,7 @@ var defineButtonsAll = [];
 
 function syButtonsFilter(viewId,index){
   let dbA1 = defineButtonsAll.find(el => el.viewId === viewId);
-  console.log(viewId, index,dbA1);
+  console.log(viewId, index,dbA1,JSON.stringify(dbA1.filters));
   $('div[id="syButtons_'+viewId+'"] li[class="is-active"]').removeClass('is-active');
   $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+index+'"]').parent().addClass('is-active');
   Knack.views['view_'+viewId].model.setFilters('{"match":"and","rules":'+JSON.stringify(dbA1.filters)+'}');
