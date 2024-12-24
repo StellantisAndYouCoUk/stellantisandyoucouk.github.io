@@ -5185,8 +5185,8 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
   $('[id="view_4008"]').hide();
 });
 
-function syButtonsFilter(defineButtons,index){
-  console.log(defineButtons,index);
+function syButtonsFilter(index,linkText,filters){
+  console.log(index,linkText,filters);
   $('div[id="syButtons"] li[class="is-active"]').removeClass('is-active');
   $('div[id="syButtons"] a[id="syButtons_'+index+'"]').parent().addClass('is-active');
 }
@@ -5195,7 +5195,7 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
   let defineButtons = [{linkText:'All',filters:[]},{linkText:'TODAY\'s Jobs',filters:[{"field":"field_2279","value":true,"operator":"is"}]},{linkText:'Comp. TODAY',filters:[{"field":"field_2719","value":true,"operator":"is not blank"}]},{linkText:'Time Agreed TODAY',filters:[{"field":"field_1117","value":true,"operator":"is today"}]},{linkText:'Checked In TODAY',filters:[{"field":"field_763","value":true,"operator":"is today"}]},{linkText:'Write up TODAY',filters:[{"field":"field_2722","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is today"}]},{linkText:'Ready to Invoice',filters:[{"field":"field_1717","value":"Parts + Labour","operator":"contains"}]},{linkText:'Currently Clocked',filters:[{"field":"field_1537","value":"Working on Currently","operator":"contains"}]},{linkText:'Never Clocked',filters:[{"field":"field_787","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is blank"}]},{linkText:'Parts Avail',filters:[{"field":"field_985","value":"Working On Currently","operator":"is blank"}]},{linkText:'Parts Unavail',filters:[{"field":"field_985","value":"Working On Currently","operator":"is not blank"}]},{linkText:'Wait. Auth (VHC)',filters:[{"field":"field_2297","value":"CPL","operator":"is"}]},{linkText:'No CA\'s Linked',filters:[{"field":"field_1121","value":"","operator":"is blank"}]},{linkText:'Outstanding Messages',filters:[{"field":"field_2578","value":"","operator":"is not blank"}]},{linkText:'i0001',filters:[{"field":"field_756","value":"i0001","operator":"is"}]},{linkText:'i0002',filters:[{"field":"field_756","value":"i0002","operator":"is"}]},{linkText:'Await\' Wash',filters:[{"field":"field_2201","value":"Added to Service Wash List","operator":"is"}]},{linkText:'Wash Comp',filters:[{"field":"field_2201","value":"Service Wash Complete","operator":"is"}]},{linkText:'C/D Collected',filters:[{"field":"field_2785","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is not blank"}]}]
   if ($('div[id="view_2686"] div[class="kn-records-nav"]>div[id="syButtons"]').length===0){
     let buttonsDiv = '<div id="syButtons" class="js-filter-menu tabs is-toggle is-flush"><ul>';
-    buttonsDiv += defineButtons.map((el,index) =>'<li><a id="syButtons_'+index+'" onclick="syButtonsFilter(defineButtons,'+index+'); return false;";><span>'+el.linkText+'</span></a></li>').join('');
+    buttonsDiv += defineButtons.map((el,index) =>'<li><a id="syButtons_'+index+'" onclick="syButtonsFilter('+index+','+el.linkText+','+el.filters+'); return false;";><span>'+el.linkText+'</span></a></li>').join('');
     buttonsDiv += '</ul></div>';
     $('div[class="kn-records-nav"]').prepend(buttonsDiv);
   }
