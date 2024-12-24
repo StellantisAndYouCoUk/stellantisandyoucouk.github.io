@@ -5202,7 +5202,7 @@ function renderSYSearchButtons(viewId, defineButtons){
   }
   if ($('div[id="view_'+viewId+'"] div[class="kn-records-nav"]>div[id*="syButtons"]').length===0){
     let buttonsDiv = '<div id="syButtons_'+viewId+'" class="js-filter-menu tabs is-toggle is-flush"><ul>';
-    buttonsDiv += dbA1.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter('+viewId+','+index+'"); return false;"><span>'+el.linkText+'</span></a></li>').join('');
+    buttonsDiv += dbA1.defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter('+viewId+','+index+'"); return false;"><span>'+el.linkText+'</span></a></li>').join('');
     buttonsDiv += '</ul></div>';
     $('div[id="view_'+viewId+'"] div[class="kn-records-nav"]').prepend(buttonsDiv);
   }
