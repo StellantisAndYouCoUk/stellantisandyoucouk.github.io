@@ -5189,7 +5189,7 @@ var defineButtonsAll = [];
 
 function syButtonsFilter(viewId,index){
   let dbA1 = defineButtonsAll.find(el => el.viewId === viewId);
-  console.log(index,dbA1);
+  console.log(viewId, index,dbA1);
   $('div[id="syButtons"] li[class="is-active"]').removeClass('is-active');
   $('div[id="syButtons"] a[id="syButtons_'+viewId+'_'+index+'"]').parent().addClass('is-active');
 }
