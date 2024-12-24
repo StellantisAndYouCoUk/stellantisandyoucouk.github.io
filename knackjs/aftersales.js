@@ -5194,7 +5194,7 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
   
   setTimeout(function(){
     console.log($('div[id="view_2686"] div[class*="js-filter-menu"]'))
-    if ($('select[name="cA"]').length===0) $( sel ).insertAfter('div[id="view_2686"] div[class*="js-filter-menu"]');
+    if ($('select[name="cA"]').length===0) $( sel ).insertAfter('div[id="view_2686"] a[class="kn-button search"]');
 
     $('select[name="cA"]').on('change', function() {
       var optionSelected = $("option:selected", this);
