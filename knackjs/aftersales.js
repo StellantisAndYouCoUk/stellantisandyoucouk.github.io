@@ -5188,6 +5188,7 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
 var defineButtonsAll = [];
 
 function syButtonsFilter(viewId,index){
+  Knack.showSpinner();
   let dbView = defineButtonsAll.find(el => el.viewId === viewId);
   dbView.selectedIndex = index;
   let dbA1 = dbView.defineButtons[index];
