@@ -5185,16 +5185,24 @@ $(document).on('knack-view-render.view_4008', function(event, view, records) {
   $('[id="view_4008"]').hide();
 });
 
-function syButtonsFilter(viewId,index,linkText,filters){
-  console.log(index,linkText,filters);
+var defineButtonsAll = [];
+
+function syButtonsFilter(viewId,index){
+  let dbA1 = defineButtonsAll.find(el => el.viewId === viewId);
+  console.log(index,dbA1);
   $('div[id="syButtons"] li[class="is-active"]').removeClass('is-active');
   $('div[id="syButtons"] a[id="syButtons_'+viewId+'_'+index+'"]').parent().addClass('is-active');
 }
 
 function renderSYSearchButtons(viewId, defineButtons){
+  let dbA1 = defineButtonsAll.find(el => el.viewId === viewId);
+  if (!dbA1){
+    dbA1 = {viewId:viewId, defineButtons: defineButtons};
+    defineButtonsAll.push(dbA1);
+  }
   if ($('div[id="view_'+viewId+'"] div[class="kn-records-nav"]>div[id*="syButtons"]').length===0){
     let buttonsDiv = '<div id="syButtons_'+viewId+'" class="js-filter-menu tabs is-toggle is-flush"><ul>';
-    buttonsDiv += defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter('+viewId+','+index+',"'+el.linkText+'","'+JSON.stringify(el.filters)+'"); return false;"><span>'+el.linkText+'</span></a></li>').join('');
+    buttonsDiv += dbA1.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter('+viewId+','+index+'"); return false;"><span>'+el.linkText+'</span></a></li>').join('');
     buttonsDiv += '</ul></div>';
     $('div[id="view_'+viewId+'"] div[class="kn-records-nav"]').prepend(buttonsDiv);
   }
