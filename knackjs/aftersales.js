@@ -5196,7 +5196,7 @@ function renderSYSearchButtons(viewId, defineButtons){
     let buttonsDiv = '<div id="syButtons_'+viewId+'" class="js-filter-menu tabs is-toggle is-flush"><ul>';
     buttonsDiv += defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter('+viewId+','+index+','+el.linkText+','+el.filters+'); return false;";><span>'+el.linkText+'</span></a></li>').join('');
     buttonsDiv += '</ul></div>';
-    $('div[class="kn-records-nav"]').prepend(buttonsDiv);
+    $('div[id="view_'+viewId+'"] div[class="kn-records-nav"]').prepend(buttonsDiv);
   }
 }
 
