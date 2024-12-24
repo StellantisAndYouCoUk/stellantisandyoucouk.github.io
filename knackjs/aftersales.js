@@ -5200,7 +5200,7 @@ function renderSYSearchButtons(viewId, defineButtons){
     dbA1 = {viewId:viewId, defineButtons: defineButtons};
     defineButtonsAll.push(dbA1);
   }
-  if ($('div[id="view_'+viewId+'"] div[class="kn-records-nav"]>div[id*="syButtons"]').length===0){
+  if ($('div[id="syButtons_'+viewId+'"]').length===0){
     let buttonsDiv = '<div id="syButtons_'+viewId+'" class="js-filter-menu tabs is-toggle is-flush"><ul>';
     buttonsDiv += dbA1.defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter("'+viewId+'",'+index+'); return false;"><span>'+el.linkText+'</span></a></li>').join('');
     buttonsDiv += '</ul></div>';
