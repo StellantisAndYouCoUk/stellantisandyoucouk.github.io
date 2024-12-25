@@ -5192,7 +5192,7 @@ function syButtonsFilter(viewId,index){
   let dbView = defineButtonsAll.find(el => el.viewId === viewId);
   dbView.selectedIndex = index;
   let dbA1 = dbView.defineButtons[index];
-  console.log(viewId, index,dbA1,JSON.stringify(dbA1.filters));
+  //console.log(viewId, index,dbA1,JSON.stringify(dbA1.filters));
   Knack.views['view_'+viewId].model.setFilters('{"match":"and","rules":'+JSON.stringify(dbA1.filters)+'}');
   Knack.views['view_'+viewId].model.fetch();
 }
