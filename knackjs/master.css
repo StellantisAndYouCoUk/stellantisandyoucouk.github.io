@@ -4568,3 +4568,17 @@ img.user-icon:hover {
       z-index: 1000;
   }
 }
+
+
+#view_7607 .kn-entries-summary{
+  display: none;
+}
+
+
+#view_7607 .dashboard-title-link {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
