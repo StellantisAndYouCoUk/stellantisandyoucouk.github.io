@@ -5213,9 +5213,11 @@ function renderSYSearchButtons(viewId, defineButtons){
     $('div[id="syButtons_'+viewId+'"] li[class="is-active"]').removeClass('is-active');
     $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').parent().addClass('is-active');
   }
-  for (let i = 0;i<dbA1.defineButtons[dbA1.selectedIndex].filters.length;i++){
-    console.log(dbA1.defineButtons[dbA1.selectedIndex].filters[i].field)
-    $('li[class="tag kn-tag-filter kn-filter-'+dbA1.defineButtons[dbA1.selectedIndex].filters[i].field+'"]').hide();
+  if (dbA1.selectedIndex && dbA1.defineButtons[dbA1.selectedIndex].filters){
+    for (let i = 0;i<dbA1.defineButtons[dbA1.selectedIndex].filters.length;i++){
+      console.log(dbA1.defineButtons[dbA1.selectedIndex].filters[i].field)
+      $('li[class="tag kn-tag-filter kn-filter-'+dbA1.defineButtons[dbA1.selectedIndex].filters[i].field+'"]').hide();
+    }
   }
 }
 
