@@ -4578,7 +4578,6 @@ img.user-icon:hover {
 #view_7686 .dashboard-title-link {
   display: flex;
   gap: 1rem;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
 }
