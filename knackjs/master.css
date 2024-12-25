@@ -4568,3 +4568,16 @@ img.user-icon:hover {
       z-index: 1000;
   }
 }
+
+
+#view_7607 .kn-entries-summary{
+  display: none;
+}
+
+
+#view_7686 .login-link {
+  background-color: #ff8a0042;
+  border-radius: 25px;
+  padding: 5px;
+  text-align: center;
+}
