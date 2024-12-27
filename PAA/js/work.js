@@ -138,7 +138,11 @@ function work(){
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
         let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00);
         $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
-        $('#flowRunsSummary').html(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>today00),['flowName','status']));
+        $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>today00),['flowName','status']));
+        const datatablesSimple = document.getElementById('datatablesSimpleFlowRunsSummary');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
     }
 
     if (page.includes('machines.html')){
@@ -254,11 +258,11 @@ function work(){
 
 function getFlowRunsSummary(data,groupFields){
     let d = getArraySummary(data, groupFields);
-    let o = '<table><thead><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr></thead><tbody>';
+    let o = '';// '<table><thead><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr></thead><tbody>';
     for (let i =0;i<d.length;i++){
         o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i].count+'</td></tr>'
     }
-    o += '</tbody></table>';
+    //o += '</tbody></table>';
     return o;
 }
 
