@@ -84,13 +84,13 @@ function checkAuth(){
     }
 }
 
-checkAuth();
+//checkAuth();
 
 var paaToken = readCookie('paaToken');
 var loggedInUser = getLoggedInUser();
 if (!loggedInUser.email){
     eraseCookie('paaToken');
-    checkAuth();
+    //checkAuth();
 }
 
 $( document ).ready(function() {
@@ -138,6 +138,7 @@ function work(){
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
         let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00);
         $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
+        $('#flowRunsSummary').html(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>today00),['flowName','status']));
     }
 
     if (page.includes('machines.html')){
@@ -170,9 +171,6 @@ function work(){
 
     if (page.includes('runs.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-        /*let tM = req.map(function (el){
-            return '<tr><td>'+el.flowName+'</td><td>'+el.status+(el.retryCount?' R:'+el.retryCount:'')+'</td><td>'+el.priority+'</td><td>'+ dateTimeToGB(new Date(el.createdDateTime))+'</td><td>'+ (el.startedDateTime?dateTimeToGB(new Date(el.startedDateTime)):'')+'</td><td>'+ (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):'')+'</td><td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#runDetails" onclick="fillModal(\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');">Show details</button>'+formatRunDetails(el)+'</td><td><a target="_blank" href="'+el.hrefDetails+'">Open</a></td></tr>';
-        })*/
        let contentToHide = '';
         let tMJ = req.map(function (el){
             contentToHide += formatRunDetails(el);
@@ -180,17 +178,6 @@ function work(){
         })
         console.log(tMJ);
         $('div[id="runDetailsData"]').append(contentToHide);
-        /*$('table[id="datatablesSimpleRuns"]>tbody').html('')
-        $('table[id="datatablesSimpleRuns"]>tbody').append(tM.join(''));*/
-
-        /* ajax: {
-        url: 'data.json',
-        contentType: 'application/json',
-        type: 'POST',
-        data: function (d) {
-            return JSON.stringify(d);
-        }
-    }*/
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
@@ -263,6 +250,38 @@ function work(){
             document.getElementById('editor-container').style.display = 'none';
         });
     }
+}
+
+function getFlowRunsSummary(data,groupFields){
+    let d = getArraySummary(data, groupFields);
+    let o = '<table><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr>';
+    for (let i =0;i<d.length;i++){
+        o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i].count+'</td></tr>'
+    }
+    o += '</table>';
+    return o;
+}
+
+function getArraySummary(data,groupFields){
+    let sumData = data.reduce(function(output,val){
+        let f = output.find(function(el){
+            for (let i = 0;i<groupFields.length;i++){
+                if (val[groupFields[i]]!==el[groupFields[i]]) return false;
+            }
+            return true;
+        })
+        if (!f){
+            let newO = {count:1};
+            for (let i = 0;i<groupFields.length;i++){
+                newO[groupFields[i]] = val[groupFields[i]];
+            }
+            output.push(newO);
+        } else {
+            f.count += 1;
+        }
+        return output;
+    },[])
+    return sumData;
 }
 
 function getUrlVars()
