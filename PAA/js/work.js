@@ -175,13 +175,13 @@ function work(){
 
     if (page.includes('runs.html')){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-       let contentToHide = '';
+       /*let contentToHide = '';
         let tMJ = req.map(function (el){
-            contentToHide += formatRunDetails(el);
+            contentToHide += formatRunDetails(el,machines);
             return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
         })
         console.log(tMJ);
-        $('div[id="runDetailsData"]').append(contentToHide);
+        $('div[id="runDetailsData"]').append(contentToHide);*/
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
@@ -443,10 +443,11 @@ function getSearchFromUrl(){
 
 function getRunsDataForTable(){
     console.log('getRunsDataForTable')
+    let machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
     let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
     let contentToHide = '';
     let tMJ = req.map(function (el){
-        contentToHide += formatRunDetails(el);
+        contentToHide += formatRunDetails(el,machines);
         return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
@@ -465,7 +466,12 @@ function resurrectRun(runId){
     paaPostRequest({'action':'resurrectRun','token':paaToken,'runId':runId});
 }
 
-function formatRunDetails(run){
+function reRunInPreprod(runId){
+    console.log('reRunInPreprod',runId);
+    console.log('machine',$('#preProdMachine').find(":selected").text())
+}
+
+function formatRunDetails(run, machines){
     let d = '<div id="runDetailsText-'+run.runId+'" style="display: none">Input:<br />'+JSON.stringify(run.flowInput,null,2)+'<br />';
     if (run.status==='failed'){
         d += 'Retry count: '+run.retryCount+'<br />';
@@ -475,6 +481,10 @@ function formatRunDetails(run){
         d += 'Retry count: '+run.retryCount+'<br />';
         d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGBNoYear(new Date(el.startedDateTime)) +' : '+ el.statusDescription+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a>'}).join('<br />')
     }
-    d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br /></div>';
+    d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
+    if (JSON.stringify(run.flowInput).includes('liveOrPreprod')){
+        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode"><option>attended mode</option><option>unattended mode</option></select></div>';
+    }
+    d += '</div>';
     return d;
 }
