@@ -497,7 +497,7 @@ function formatRunDetails(run, machines){
         d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGBNoYear(new Date(el.startedDateTime)) +' : '+ el.statusDescription+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a>'}).join('<br />')
     }
     d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
-    if (JSON.stringify(run.flowInput).includes('liveOrPreprod')){
+    if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
         d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended mode</option><option>unattended mode</option></select></div>';
     }
     d += '</div>';
