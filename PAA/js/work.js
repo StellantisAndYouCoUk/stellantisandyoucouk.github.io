@@ -132,11 +132,11 @@ function work(){
         let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
         let today00 = new Date();
         today00.setHours(0,0,0,0);
-        let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00);
+        let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' queued now'));
-        let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>today00);
+        let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
-        let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00);
+        let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
         const datatablesSimple = document.getElementById('datatablesSimpleFlowRunsSummary');
