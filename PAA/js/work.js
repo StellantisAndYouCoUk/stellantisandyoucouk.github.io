@@ -254,11 +254,11 @@ function work(){
 
 function getFlowRunsSummary(data,groupFields){
     let d = getArraySummary(data, groupFields);
-    let o = '<table><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr>';
+    let o = '<table class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns"><thead><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr></thead><tbody>';
     for (let i =0;i<d.length;i++){
         o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i].count+'</td></tr>'
     }
-    o += '</table>';
+    o += '</tbody></table>';
     return o;
 }
 
