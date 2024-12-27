@@ -468,8 +468,8 @@ function resurrectRun(runId){
 
 function reRunInPreprod(runId){
     console.log('reRunInPreprod',runId);
-    console.log('machine',$('#preProdMachine').find(":selected").text())
-    console.log('mode',$('#preProdMode').find(":selected").text())
+    console.log('machine',$('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val())
+    console.log('mode',$('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val())
 }
 
 function formatRunDetails(run, machines){
@@ -484,7 +484,7 @@ function formatRunDetails(run, machines){
     }
     d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     if (JSON.stringify(run.flowInput).includes('liveOrPreprod')){
-        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode"><option>attended mode</option><option>unattended mode</option></select></div>';
+        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended mode</option><option>unattended mode</option></select></div>';
     }
     d += '</div>';
     return d;
