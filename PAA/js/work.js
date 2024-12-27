@@ -469,6 +469,7 @@ function resurrectRun(runId){
 function reRunInPreprod(runId){
     console.log('reRunInPreprod',runId);
     console.log('machine',$('#preProdMachine').find(":selected").text())
+    console.log('mode',$('#preProdMode').find(":selected").text())
 }
 
 function formatRunDetails(run, machines){
