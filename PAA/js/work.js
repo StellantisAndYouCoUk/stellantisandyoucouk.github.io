@@ -483,7 +483,7 @@ function reRunInPreprod(runId){
         runMode : $('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val(),
         noRetry : true
     }
-    return callPostHttpRequest('https://davidmale--server.apify.actor/powerAutomateNewRequest',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, runData)
+    return callPostHttpRequest('https://davidmale--server.apify.actor/powerAutomateNewRequest?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',runData)
 }
 
 function formatRunDetails(run, machines){
