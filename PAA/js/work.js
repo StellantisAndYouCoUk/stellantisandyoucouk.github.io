@@ -48,6 +48,33 @@ function callPostHttpRequest(url, headers,payloadObject){
     }
 }
 
+function callPostHttpRequestWithCompress(url, headers,payloadObject){
+    try{
+      let commandURL = url ;
+      const stream = new Blob([JSON.stringify(payloadObject)], {type: 'application/json'}).stream();
+      const compressedReadableStream = stream.pipeThrough(
+        new CompressionStream("gzip")
+        );
+        const compressedResponse = new Response(compressedReadableStream);
+        const blob = compressedResponse.blob();
+      let requestObj = {
+        url: commandURL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: blob,
+        async: false,
+        headers: {
+            'Content-Encoding': 'gzip',
+        }
+      };
+      console.log(requestObj);
+      var rData = $.ajax(requestObj).responseText;
+      return JSON.parse(rData);
+    } catch(exception) {
+      console.log(exception);
+    }
+}
+
 function callGetHttpRequest(url, headers){
     try{
       let commandURL = url ;
@@ -74,6 +101,10 @@ function dateTimeToGBNoYear(dateobj){
 
 function paaPostRequest(payloadObject){
     return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
+}
+
+function paaPostRequestWithCompress(payloadObject){
+    return callPostHttpRequestWithCompress('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
 }
 
 function checkAuth(){
@@ -320,7 +351,7 @@ function getUrlVars()
 function uploadControlsToGitHub(flowName){
     console.log('uploadControlsToGitHub',flowName);
     $('#actionInfo').text('Upload to GitHub started');
-    let respU = paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
+    let respU = paaPostRequestWithCompress({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
     console.log(respU);
     if (respU.success){
         $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
