@@ -268,7 +268,7 @@ function getFlowStatusData(flowData){
 }
 
 function changeFlowStatus(flowName,status){
-    let res = paaPostRequest({flowName:flowName,newStatus:status});
+    let res = paaPostRequest({action:'changeFlowStatus',flowName:flowName,newStatus:status});
     window.location = './flows.html?refresh=true';
 }
 
