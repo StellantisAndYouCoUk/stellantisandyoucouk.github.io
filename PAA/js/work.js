@@ -161,7 +161,7 @@ function work(){
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+el.inputs+'"</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td></tr>';
+            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+getFlowStatusData(el)+'</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td>'+el.inputs+'"</td></tr>';
         })
         $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleFlows');
@@ -254,6 +254,22 @@ function work(){
             document.getElementById('editor-container').style.display = 'none';
         });
     }
+}
+
+function getFlowStatusData(flowData){
+    let o = '';
+    o += (!flowData.statusData?'ready':flowData.statusData.status)+'<br />';
+    if (!flowData.statusData || flowData.statusData.status==='ready'){
+        o += '<a href="#" onclick="changeFlowStatus(\''+flowData.name+'\',\'stopped\'); return false;">Stop flow</a>';
+    } else {
+        o += '<a href="#" onclick="changeFlowStatus(\''+flowData.name+'\',\'ready\'); return false;">Enable flow</a>';
+    }
+    return o;
+}
+
+function changeFlowStatus(flowName,status){
+    let res = paaPostRequest({flowName:flowName,newStatus:status});
+    window.location = './flows.html?refresh=true';
 }
 
 function getFlowRunsSummary(data,groupFields){
