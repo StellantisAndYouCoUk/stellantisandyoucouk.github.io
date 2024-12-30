@@ -48,20 +48,22 @@ function callPostHttpRequest(url, headers,payloadObject){
     }
 }
 
-function callPostHttpRequestWithCompress(url, headers,payloadObject){
+async function callPostHttpRequestWithCompress(url, headers,payloadObject){
     try{
       let commandURL = url ;
       const stream = new Blob([JSON.stringify(payloadObject)], {type: 'application/json'}).stream();
       const compressedReadableStream = stream.pipeThrough(
         new CompressionStream("gzip")
         );
-        const compressedResponse = new Response(compressedReadableStream);
-        const blob = compressedResponse.blob();
+        const compressedResponse = await new Response(compressedReadableStream);
+        const blob = await compressedResponse.blob();
+        const buffer = await blob.arrayBuffer();
+        console.log(buffer);
       let requestObj = {
         url: commandURL,
         type: 'POST',
         contentType: 'application/json',
-        data: blob,
+        data: buffer,
         async: false,
         headers: {
             'Content-Encoding': 'gzip',
@@ -103,8 +105,8 @@ function paaPostRequest(payloadObject){
     return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
 }
 
-function paaPostRequestWithCompress(payloadObject){
-    return callPostHttpRequestWithCompress('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
+async function paaPostRequestWithCompress(payloadObject){
+    return await callPostHttpRequestWithCompress('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
 }
 
 function checkAuth(){
@@ -348,10 +350,10 @@ function getUrlVars()
     return vars;
 }
 
-function uploadControlsToGitHub(flowName){
+async function uploadControlsToGitHub(flowName){
     console.log('uploadControlsToGitHub',flowName);
     $('#actionInfo').text('Upload to GitHub started');
-    let respU = paaPostRequestWithCompress({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
+    let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
     console.log(respU);
     if (respU.success){
         $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
