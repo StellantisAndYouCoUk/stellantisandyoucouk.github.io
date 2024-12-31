@@ -5509,30 +5509,42 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 $(document).on('knack-scene-render.any', function(event, scene) {
 
+  $.ajax({
+    url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
+    type: 'GET',
+    success: function (data) {
+        // Append fetched content while preserving existing .user-icon
+        $('.user').append(`<div class="dropdown-content">${data}</div>`);
+    },
+    error: function () {
+        alert('Failed to load dropdown content');
+    }
+});
+
   // Click event on user icon
-  $('.user-icon').on('click', function (event) {
-     console.log("Clicked to load function")
+  // $('.user-icon').on('click', function (event) {
+  //    console.log("Clicked to load function")
       // event.stopPropagation(); // Prevent the click from bubbling to the document
 
       // Check if dropdown content is already loaded
       // if ($('.user .dropdown-content').length === 0) {
       //     // Load dropdown content via AJAX only if it's not already loaded
-          $.ajax({
-              url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
-              type: 'GET',
-              success: function (data) {
-                  // Append fetched content while preserving existing .user-icon
-                  $('.user').append(`<div class="dropdown-content">${data}</div>`);
-              },
-              error: function () {
-                  alert('Failed to load dropdown content');
-              }
-          });
+          // $.ajax({
+          //     url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
+          //     type: 'GET',
+          //     success: function (data) {
+          //         // Append fetched content while preserving existing .user-icon
+          //         $('.user').append(`<div class="dropdown-content">${data}</div>`);
+          //     },
+          //     error: function () {
+          //         alert('Failed to load dropdown content');
+          //     }
+          // });
       // } else {
       //     // Toggle visibility of the dropdown content
       //     $('.user .dropdown-content').toggle();
       // }
-  });
+  // });
 
   // Close dropdown when clicking outside
   // $(document).on('click', function () {
