@@ -4458,6 +4458,7 @@ img.user-icon:hover {
 .notifications-panel {
   position: absolute;
   position-anchor: --profile-button;
+  position-try-fallbacks: --bottom;
   margin: 0;
   inset: auto;
   top: anchor(bottom);
@@ -4599,6 +4600,11 @@ img.user-icon:hover {
 }
 
 
+@position-try --bottom{
+  inset: auto;
+  bottom: anchor(bottom);
+  right: anchor(left);
+}
 
 /* #view_7686 .login-link {
   background-color: #ff8a0042;
