@@ -4457,6 +4457,12 @@ img.user-icon:hover {
 
 .notifications-panel {
   position: absolute;
+  position-anchor: --profile-button;
+  margin: 0;
+  inset: auto;
+  top: anchor(bottom);
+  left: anchor(right);
+  margin-block-start: 6px;
   z-index: 2;
   margin: 1rem;
   background-color: #2c313a;
@@ -4578,7 +4584,14 @@ img.user-icon:hover {
   background-color: #ebebeb;
   border:0;
   margin-left: 4rem;
+  anchor-name: --profile-button;
 }
+
+.notifications-panel:popover {
+
+}
+
+
 /* #view_7686 .login-link {
   background-color: #ff8a0042;
   border-radius: 25px;
