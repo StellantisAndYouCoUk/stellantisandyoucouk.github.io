@@ -4575,9 +4575,10 @@ img.user-icon:hover {
 }
 
 
-#view_7686 .login-link {
+/* #view_7686 .login-link {
   background-color: #ff8a0042;
   border-radius: 25px;
   padding: 5px;
   text-align: center;
-}
+  text-decoration: none;
+} */
