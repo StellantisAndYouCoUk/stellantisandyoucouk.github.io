@@ -5398,7 +5398,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   const notificationIconHtml = `
     <span class="bellicon__off">
     <span class="user">
+      <button popovertarget="notifications-panel" class="user-button">
       <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+      </button>
     </span>
       </span>
   `;

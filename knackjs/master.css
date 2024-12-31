@@ -4574,7 +4574,9 @@ img.user-icon:hover {
   display: none;
 }
 
-
+.user-button {
+  background-color: #ebebeb;
+}
 /* #view_7686 .login-link {
   background-color: #ff8a0042;
   border-radius: 25px;
