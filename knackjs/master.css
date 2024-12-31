@@ -4481,6 +4481,9 @@ img.user-icon:hover {
 
 .notifications-panel:popover-open {
   opacity: 1;
+  @starting-style {
+    opacity: 0;
+  }
 
 }
 
