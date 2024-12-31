@@ -4576,6 +4576,8 @@ img.user-icon:hover {
 
 .user-button {
   background-color: #ebebeb;
+  border:0;
+  margin-left: 2rem;
 }
 /* #view_7686 .login-link {
   background-color: #ff8a0042;
