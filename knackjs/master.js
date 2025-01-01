@@ -5398,7 +5398,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   const notificationIconHtml = `
     <span class="bellicon__off">
     <span class="user">
+      <button popovertarget="notifications-panel" class="user-button">
       <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+      </button>
     </span>
       </span>
   `;
@@ -5509,40 +5511,52 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 $(document).on('knack-scene-render.any', function(event, scene) {
 
+  $.ajax({
+    url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
+    type: 'GET',
+    success: function (data) {
+        // Append fetched content while preserving existing .user-icon
+        $('.user').append(`<div class="dropdown-content">${data}</div>`);
+    },
+    error: function () {
+        alert('Failed to load dropdown content');
+    }
+});
+
   // Click event on user icon
-  $('.user-icon').on('click', function (event) {
-     console.log("Clicked to load function")
-      event.stopPropagation(); // Prevent the click from bubbling to the document
+  // $('.user-icon').on('click', function (event) {
+  //    console.log("Clicked to load function")
+      // event.stopPropagation(); // Prevent the click from bubbling to the document
 
       // Check if dropdown content is already loaded
-      if ($('.user .dropdown-content').length === 0) {
-          // Load dropdown content via AJAX only if it's not already loaded
-          $.ajax({
-              url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
-              type: 'GET',
-              success: function (data) {
-                  // Append fetched content while preserving existing .user-icon
-                  $('.user').append(`<div class="dropdown-content">${data}</div>`);
-              },
-              error: function () {
-                  alert('Failed to load dropdown content');
-              }
-          });
-      } else {
-          // Toggle visibility of the dropdown content
-          $('.user .dropdown-content').toggle();
-      }
-  });
+      // if ($('.user .dropdown-content').length === 0) {
+      //     // Load dropdown content via AJAX only if it's not already loaded
+          // $.ajax({
+          //     url: 'https://stellantisandyoucouk.github.io/modalHTML/user.html', // Replace with your actual URL
+          //     type: 'GET',
+          //     success: function (data) {
+          //         // Append fetched content while preserving existing .user-icon
+          //         $('.user').append(`<div class="dropdown-content">${data}</div>`);
+          //     },
+          //     error: function () {
+          //         alert('Failed to load dropdown content');
+          //     }
+          // });
+      // } else {
+      //     // Toggle visibility of the dropdown content
+      //     $('.user .dropdown-content').toggle();
+      // }
+  // });
 
   // Close dropdown when clicking outside
-  $(document).on('click', function () {
-      $('.user .dropdown-content').hide(); // Hide only the dropdown content
-  });
+  // $(document).on('click', function () {
+  //     $('.user .dropdown-content').hide(); // Hide only the dropdown content
+  // });
 
   // Prevent click inside dropdown from closing it
-  $('.user').on('click', function (event) {
-      event.stopPropagation(); // Prevent the click from propagating to the document
-  });
+  // $('.user').on('click', function (event) {
+  //     event.stopPropagation(); // Prevent the click from propagating to the document
+  // });
 
 });
 
