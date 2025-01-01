@@ -463,9 +463,10 @@ function showScreenDetails(index) {
 function copyToWindow(screenInstanceId,controlInstanceId){
     let screenMoveTo = $('select[id*="'+controlInstanceId+'"]>option:selected').val();
     console.log('screenMoveTo',screenMoveTo);
+    let controlToCopy = jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId);
     let cJ = Object.assign({},jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId));
-    cJ.InstanceId = crypto.randomUUID();
-    cJ.Name = cJ.Name + ' copy';
+    controlToCopy.InstanceId = crypto.randomUUID();
+    controlToCopy.Name = cJ.Name+ ' old';
     console.log(cJ);
     let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveTo);
     toWindow.Controls.push(cJ);
