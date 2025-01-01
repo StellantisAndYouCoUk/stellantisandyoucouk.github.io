@@ -355,22 +355,22 @@ function getUrlVars()
 async function uploadControlsToGitHub(flowName){
     console.log('uploadControlsToGitHub',flowName);
     $('#actionInfo').text('Prepare data');
+    let newFlowCode = flowCode;
     let screensToMerge = jsonData.Screens.filter(el => el.mergeToScreen);
     if (screensToMerge.length>0){
-        let newFlowCode = flowCode;
         for (let i = 0;i<screensToMerge.length;i++){
             let mergeTo = jsonData.Screens.find(el => el.InstanceId === screensToMerge[i].mergeToScreen);
             for (let j = 0;j<screensToMerge[i].Controls.length;j++){
                 copyToWindowInt(screensToMerge[i].InstanceId,screensToMerge[i].Controls[j].InstanceId,mergeTo.InstanceId);
             }
-            console.log('from','appmask[\\\''+screensToMerge[i].Name.replaceAll('\'','\\\\\\\'')+'\\\']', 'to','appmask[\\\''+mergeTo.Name+'\\\']');
-            newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name+'\']','appmask[\''+mergeTo.Name+'\']')
+            console.log('from','appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']', 'to','appmask[\''+mergeTo.Name+'\']');
+            newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']','appmask[\''+mergeTo.Name+'\']')
         }
-        flowCode = newFlowCode;
+        console.log(newFlowCode);
     }
     return;
     $('#actionInfo').text('Upload to GitHub started');
-    let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
+    let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData,'code':newFlowCode});
     console.log(respU);
     if (respU.success){
         $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
