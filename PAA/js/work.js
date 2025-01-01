@@ -136,6 +136,7 @@ function getLoggedInUser(){
 
 var table = null;
 var jsonData = null;
+var flowCode = null;
 
 function work(){
     let page = window.location.href;
@@ -273,7 +274,8 @@ function work(){
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
         let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
-        jsonData = JSON.parse(atob(respU.data.content))
+        jsonData = JSON.parse(atob(respU.data.content));
+        flowCode = atob(respU.code.content);
         showScreenList();
 
         const buttonUpload = document.createElement('button');
@@ -352,6 +354,21 @@ function getUrlVars()
 
 async function uploadControlsToGitHub(flowName){
     console.log('uploadControlsToGitHub',flowName);
+    $('#actionInfo').text('Prepare data');
+    let screensToMerge = jsonData.Screens.filter(el => el.mergeToScreen);
+    if (screensToMerge.length>0){
+        let newFlowCode = flowCode;
+        for (let i = 0;i<screensToMerge.length;i++){
+            let mergeTo = jsonData.Screens.find(el => el.InstanceId === screensToMerge[i].mergeToScreen);
+            for (let j = 0;j<screensToMerge[i].Controls.length;j++){
+                copyToWindowInt(screensToMerge[i].InstanceId,screensToMerge[i].Controls[j].InstanceId,mergeTo.InstanceId);
+            }
+            console.log('from','appmask[\\\''+screensToMerge[i].Name.replaceAll('\'','\\\\\\\'')+'\\\']', 'to','appmask[\\\''+mergeTo.Name+'\\\']');
+            newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name+'\']','appmask[\''+mergeTo.Name+'\']')
+        }
+        flowCode = newFlowCode;
+    }
+    return;
     $('#actionInfo').text('Upload to GitHub started');
     let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
     console.log(respU);
@@ -424,6 +441,29 @@ function showScreenDetails(index) {
         detailsContainer.appendChild(selectorsList);
     }
 
+    const selectorsTitle = document.createElement('h4');
+    selectorsTitle.textContent = 'Merge screen to:';
+    detailsContainer.appendChild(selectorsTitle);
+    if (screen.mergeToScreen){
+        const strongMT = document.createElement('strong');
+        strongMT.textContent = 'This screen will be merged to '+screen.mergeToScreen;
+        detailsContainer.appendChild(strongMT);
+    } else {
+        var selectList = document.createElement("select");
+        selectList.id = "newWindowFor_"+screen.InstanceId;
+        detailsContainer.appendChild(selectList);
+        for (var i = 0; i < jsonData.Screens.length; i++) {
+            var option = document.createElement("option");
+            option.value = jsonData.Screens[i].InstanceId;
+            option.text = jsonData.Screens[i].Name;
+            selectList.appendChild(option);
+        }
+        const buttonM = document.createElement('button');
+        buttonM.textContent = `Merge`;
+        buttonM.addEventListener('click', () => mergeWindowToWindow(screen.InstanceId));
+        detailsContainer.appendChild(buttonM);
+    }
+
     // Display controls
     if (screen.Controls) {
         const controlsTitle = document.createElement('h4');
@@ -460,18 +500,30 @@ function showScreenDetails(index) {
     document.getElementById('editor-container').style.display = 'block';
 }
 
+function mergeWindowToWindow(screenInstanceId){
+    let screenMoveTo = $('select[id="newWindowFor_'+screenInstanceId+'"]>option:selected').val();
+    console.log('screenMoveTo',screenMoveTo);
+    jsonData.Screens.find(el => el.InstanceId === screenInstanceId).mergeToScreen = screenMoveTo;
+    $('#back-button').click();
+}
+
 function copyToWindow(screenInstanceId,controlInstanceId){
     let screenMoveTo = $('select[id*="'+controlInstanceId+'"]>option:selected').val();
     console.log('screenMoveTo',screenMoveTo);
+    let res = copyToWindowInt(screenInstanceId,controlInstanceId, screenMoveTo)
+    $('#actionInfo').text('Control '+res.controlName+' created in '+res.newWindowName);
+    clearActionInfoAfter15sec();
+}
+
+function copyToWindowInt(screenInstanceId,controlInstanceId, screenMoveToInstanceId){
     let controlToCopy = jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId);
     let cJ = Object.assign({},jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId));
     controlToCopy.InstanceId = crypto.randomUUID();
     controlToCopy.Name = cJ.Name+ ' old';
     console.log(cJ);
-    let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveTo);
+    let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveToInstanceId);
     toWindow.Controls.push(cJ);
-    $('#actionInfo').text('Control '+cJ.Name+' created in '+toWindow.Name);
-    clearActionInfoAfter15sec();
+    return {controlName: cJ.Name, newWindowName:toWindow.Name};
 }
 
 function clearActionInfoAfter15sec(){
