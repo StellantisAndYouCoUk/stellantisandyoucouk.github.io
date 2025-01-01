@@ -548,7 +548,7 @@ function formatRunDetails(run, machines){
     }
     d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
-        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended mode</option><option>unattended mode</option></select></div>';
+        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode</div>';
     }
     d += '</div>';
     return d;
