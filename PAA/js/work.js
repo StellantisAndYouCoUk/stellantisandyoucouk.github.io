@@ -384,9 +384,11 @@ async function uploadControlsToGitHub(flowName){
             for (let j = 0;j<screensToMerge[i].Controls.length;j++){
                 copyToWindowInt(screensToMerge[i].InstanceId,screensToMerge[i].Controls[j].InstanceId,mergeTo.InstanceId);
             }
-            console.log('from','appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']', 'to','appmask[\''+mergeTo.Name+'\']');
+            console.log('from','appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']', 'to','appmask[\''+mergeTo.Name.replaceAll('\'','\\\'')+'\']');
             newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']','appmask[\''+mergeTo.Name.replaceAll('\'','\\\'')+'\']')
         }
+        newFlowCode = newFlowCode.replaceAll('\r','\\r');
+        newFlowCode = newFlowCode.replaceAll('\n','\\n')
         console.log(newFlowCode);
     }
     $('#actionInfo').text('Upload to GitHub started');
