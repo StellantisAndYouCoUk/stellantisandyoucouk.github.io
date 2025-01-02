@@ -364,7 +364,7 @@ async function uploadControlsToGitHub(flowName){
                 copyToWindowInt(screensToMerge[i].InstanceId,screensToMerge[i].Controls[j].InstanceId,mergeTo.InstanceId);
             }
             console.log('from','appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']', 'to','appmask[\''+mergeTo.Name+'\']');
-            newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']','appmask[\''+mergeTo.Name+'\']')
+            newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']','appmask[\''+mergeTo.Name.replaceAll('\'','\\\'')+'\']')
         }
         console.log(newFlowCode);
     }
