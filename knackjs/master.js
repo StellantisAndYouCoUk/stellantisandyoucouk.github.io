@@ -5405,9 +5405,37 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       </span>
   `;
 
+  const userHTML = `
+  <div id="notifications-panel" popover class="notifications-panel">
+  <div class="notifications-header">
+    <div class="notifications-status">
+      <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
+      Notifications are under development. Please hold tight while we make them awesome! ❤️
+      — Your Digi Team 😊
+    </div>
+  </div>
+  <p class="notification-message">
+    You’re set to receive browser notifications for everything all the time.
+  </p>
+  <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
+  <div class="notification-links">
+    <a href="#">Change your notification settings(Under Development!!)</a>
+  </div>
+  <div class="personal-settings" >
+    <p class="personal-settings-header">Personal Settings (Under Development!!)</p>
+    <ul>
+      <li><a href="#">Profile, password, 2FA</a></li>
+      <li><a href="#">Preferences</a></li>
+      <li><a href="#">Out of Office</a></li>
+    </ul>
+  </div>
+</div> 
+  `;
+
   // Append the base notification icon HTML to the current user section
   if ($(".kn-current_user .bellicon__off").length === 0) {
     $(".kn-current_user").append(notificationIconHtml);
+    console.log("icon added");
 }
   // Function to dynamically update the UI for notification permission
 
