@@ -136,6 +136,7 @@ function getLoggedInUser(){
 
 var table = null;
 var jsonData = null;
+var flowCode = null;
 
 function work(){
     let page = window.location.href;
@@ -273,7 +274,8 @@ function work(){
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
         let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
-        jsonData = JSON.parse(atob(respU.data.content))
+        jsonData = JSON.parse(atob(respU.data.content));
+        flowCode = atob(respU.code.content);
         showScreenList();
 
         const buttonUpload = document.createElement('button');
@@ -352,8 +354,23 @@ function getUrlVars()
 
 async function uploadControlsToGitHub(flowName){
     console.log('uploadControlsToGitHub',flowName);
+    $('#actionInfo').text('Prepare data');
+    let newFlowCode = flowCode;
+    let screensToMerge = jsonData.Screens.filter(el => el.mergeToScreen);
+    if (screensToMerge.length>0){
+        for (let i = 0;i<screensToMerge.length;i++){
+            let mergeTo = jsonData.Screens.find(el => el.InstanceId === screensToMerge[i].mergeToScreen);
+            for (let j = 0;j<screensToMerge[i].Controls.length;j++){
+                copyToWindowInt(screensToMerge[i].InstanceId,screensToMerge[i].Controls[j].InstanceId,mergeTo.InstanceId);
+            }
+            console.log('from','appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']', 'to','appmask[\''+mergeTo.Name+'\']');
+            newFlowCode = newFlowCode.replaceAll('appmask[\''+screensToMerge[i].Name.replaceAll('\'','\\\'')+'\']','appmask[\''+mergeTo.Name+'\']')
+        }
+        console.log(newFlowCode);
+    }
+    return;
     $('#actionInfo').text('Upload to GitHub started');
-    let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData});
+    let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData,'code':newFlowCode});
     console.log(respU);
     if (respU.success){
         $('#actionInfo').text('Upload to GitHub FINISHED SUCCESS');
@@ -424,6 +441,29 @@ function showScreenDetails(index) {
         detailsContainer.appendChild(selectorsList);
     }
 
+    const selectorsTitle = document.createElement('h4');
+    selectorsTitle.textContent = 'Merge screen to:';
+    detailsContainer.appendChild(selectorsTitle);
+    if (screen.mergeToScreen){
+        const strongMT = document.createElement('strong');
+        strongMT.textContent = 'This screen will be merged to '+screen.mergeToScreen;
+        detailsContainer.appendChild(strongMT);
+    } else {
+        var selectList = document.createElement("select");
+        selectList.id = "newWindowFor_"+screen.InstanceId;
+        detailsContainer.appendChild(selectList);
+        for (var i = 0; i < jsonData.Screens.length; i++) {
+            var option = document.createElement("option");
+            option.value = jsonData.Screens[i].InstanceId;
+            option.text = jsonData.Screens[i].Name;
+            selectList.appendChild(option);
+        }
+        const buttonM = document.createElement('button');
+        buttonM.textContent = `Merge`;
+        buttonM.addEventListener('click', () => mergeWindowToWindow(screen.InstanceId));
+        detailsContainer.appendChild(buttonM);
+    }
+
     // Display controls
     if (screen.Controls) {
         const controlsTitle = document.createElement('h4');
@@ -460,17 +500,30 @@ function showScreenDetails(index) {
     document.getElementById('editor-container').style.display = 'block';
 }
 
+function mergeWindowToWindow(screenInstanceId){
+    let screenMoveTo = $('select[id="newWindowFor_'+screenInstanceId+'"]>option:selected').val();
+    console.log('screenMoveTo',screenMoveTo);
+    jsonData.Screens.find(el => el.InstanceId === screenInstanceId).mergeToScreen = screenMoveTo;
+    $('#back-button').click();
+}
+
 function copyToWindow(screenInstanceId,controlInstanceId){
     let screenMoveTo = $('select[id*="'+controlInstanceId+'"]>option:selected').val();
     console.log('screenMoveTo',screenMoveTo);
-    let cJ = Object.assign({},jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId));
-    cJ.InstanceId = crypto.randomUUID();
-    cJ.Name = cJ.Name + ' copy';
-    console.log(cJ);
-    let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveTo);
-    toWindow.Controls.push(cJ);
-    $('#actionInfo').text('Control '+cJ.Name+' created in '+toWindow.Name);
+    let res = copyToWindowInt(screenInstanceId,controlInstanceId, screenMoveTo)
+    $('#actionInfo').text('Control '+res.controlName+' created in '+res.newWindowName);
     clearActionInfoAfter15sec();
+}
+
+function copyToWindowInt(screenInstanceId,controlInstanceId, screenMoveToInstanceId){
+    let controlToCopy = jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId);
+    let cJ = Object.assign({},jsonData.Screens.find(el => el.InstanceId === screenInstanceId).Controls.find(el => el.InstanceId === controlInstanceId));
+    controlToCopy.InstanceId = crypto.randomUUID();
+    controlToCopy.Name = cJ.Name+ ' old';
+    console.log(cJ);
+    let toWindow = jsonData.Screens.find(el => el.InstanceId === screenMoveToInstanceId);
+    toWindow.Controls.push(cJ);
+    return {controlName: cJ.Name, newWindowName:toWindow.Name};
 }
 
 function clearActionInfoAfter15sec(){
@@ -497,7 +550,7 @@ function getRunsDataForTable(){
     let contentToHide = '';
     let tMJ = req.map(function (el){
         contentToHide += formatRunDetails(el,machines);
-        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':'')+(el.status==='running'?'<br /><a href="#" onclick="cancelRun(\''+el.runId+'\');return false;">Cancel run</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
     $('div[id="runDetailsData"]').html('');
@@ -513,6 +566,10 @@ function showModal(modalName,what, fromWhere){
 
 function resurrectRun(runId){
     paaPostRequest({'action':'resurrectRun','token':paaToken,'runId':runId});
+}
+
+function cancelRun(runId){
+    paaPostRequest({'action':'cancelRun','token':paaToken,'runId':runId});
 }
 
 function reRunInPreprod(runId){
@@ -548,7 +605,7 @@ function formatRunDetails(run, machines){
     }
     d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
-        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended mode</option><option>unattended mode</option></select></div>';
+        d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode</div>';
     }
     d += '</div>';
     return d;
