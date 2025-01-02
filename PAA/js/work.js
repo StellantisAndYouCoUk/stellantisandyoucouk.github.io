@@ -273,21 +273,31 @@ function work(){
     if (page.includes('uicoll.html')){
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
-        let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
-        jsonData = JSON.parse(atob(respU.data.content));
-        flowCode = atob(respU.code.content);
-        showScreenList();
+        const buttonCodeToPA = document.createElement('button');
+        buttonCodeToPA.textContent = 'Upload from GitHub to PA';
+        buttonCodeToPA.addEventListener('click', () => codeFromGithubToPA(qV['flow']));
 
-        const buttonUpload = document.createElement('button');
-        buttonUpload.textContent = 'Upload to GitHub';
-        buttonUpload.addEventListener('click', () => uploadControlsToGitHub(qV['flow']));
+        $('#uploadToGitHub').append(buttonCodeToPA);
 
-        $('#uploadToGitHub').append(buttonUpload);
+        try {
+            let respU = paaPostRequest({'action':'getUIControls','flowName':qV['flow'],'token':paaToken});
+            jsonData = JSON.parse(atob(respU.data.content));
+            flowCode = atob(respU.code.content);
+            showScreenList();
 
-        document.getElementById('back-button').addEventListener('click', () => {
-            document.getElementById('screen-list').style.display = 'block';
-            document.getElementById('editor-container').style.display = 'none';
-        });
+            const buttonUpload = document.createElement('button');
+            buttonUpload.textContent = 'Process UI to GitHub and PowerAutomate';
+            buttonUpload.addEventListener('click', () => uploadControlsToGitHub(qV['flow']));
+
+            $('#uploadToGitHub').append(buttonUpload);
+
+            document.getElementById('back-button').addEventListener('click', () => {
+                document.getElementById('screen-list').style.display = 'block';
+                document.getElementById('editor-container').style.display = 'none';
+            });
+        } catch (ex){
+            
+        }
     }
 }
 
@@ -350,6 +360,17 @@ function getUrlVars()
         vars[hash[0]] = hash[1];
     }
     return vars;
+}
+
+async function codeFromGithubToPA(flowName){
+    let respU = await paaPostRequest({'action':'codeFromGitHubToPA','token':paaToken,'flowName':flowName});
+    console.log(respU);
+    if (respU.success){
+        $('#actionInfo').text('Code from GitHub to PA FINISHED SUCCESS');
+    } else {
+        $('#actionInfo').text('Code from GitHub to PA ERROR');
+    }
+    clearActionInfoAfter15sec();
 }
 
 async function uploadControlsToGitHub(flowName){
