@@ -5581,3 +5581,25 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
     setTimeout(function () { document.location = redirectUrl+(redirectUrl.includes('?')?'&':'?')+'token='+token; }, 100)
   }
 });
+
+
+
+
+$(document).on('knack-scene-render.scene_2305', function(event, scene) {
+  // Attach event listener to the form submission
+  $('form').on('submit', function (event) {
+    // Get the Postal Code input
+    const postcodeInput = $('#zip');
+
+    // Check if the Postal Code field is empty
+    if (!postcodeInput.val().trim()) {
+      event.preventDefault(); // Stop form submission
+      alert('Please fill out the Postal Code field!'); // Show an alert
+      postcodeInput.addClass('input-error'); // Add error styling
+      postcodeInput.focus(); // Focus on the empty field
+      return false; // Explicitly stop submission
+    } else {
+      postcodeInput.removeClass('input-error'); // Remove error styling if filled
+    }
+  });
+});
