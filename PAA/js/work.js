@@ -368,7 +368,6 @@ async function uploadControlsToGitHub(flowName){
         }
         console.log(newFlowCode);
     }
-    return;
     $('#actionInfo').text('Upload to GitHub started');
     let respU = await paaPostRequest({'action':'setUIControls','token':paaToken,'flowName':flowName,'data':jsonData,'code':newFlowCode});
     console.log(respU);
