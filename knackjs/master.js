@@ -5436,6 +5436,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   if ($(".kn-current_user .bellicon__off").length === 0) {
     $(".kn-current_user").append(notificationIconHtml);
     console.log("icon added");
+    $(".kn-current_user").append(userHTML);
+    console.log("userhtml added");
+
 }
   // Function to dynamically update the UI for notification permission
 
