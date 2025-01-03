@@ -5095,11 +5095,24 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function showNotificationBackground(title, icon = '', body) {   
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body,
+              body: body.message,
               requireInteraction: true,
               badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
                       });
+              
+              if (body.click) {
+                  notification.onclick = function () {
+                  window.open(body.click, '_blank');
+                  console.log("Notification clicked.");
+                  };
+              } 
+              else {
+                console.log("No click action provided.");
+              }
+                      
+  
+
               notification.onclose = function(){
                 console.log("Background Notification closed.");
               }
@@ -5136,7 +5149,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 
                 showNotification(dataParsed, 0);
-                showNotificationBackground(dataParsed.title,"",dataParsed.message);
+                showNotificationBackground(dataParsed.title,"",dataParsed);
 
                 // if (document.visibilityState === "visible") {
                 //   showNotificationBackground(dataParsed.title,"",dataParsed.message);
