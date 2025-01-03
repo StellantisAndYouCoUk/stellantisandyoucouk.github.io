@@ -570,7 +570,7 @@ function getRunsDataForTable(){
     let contentToHide = '';
     let tMJ = req.map(function (el){
         contentToHide += formatRunDetails(el,machines);
-        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':'')+(el.status==='running'?'<br /><a href="#" onclick="cancelRun(\''+el.runId+'\');return false;">Cancel run</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':'')+(el.status==='running'?'<br /><a href="#" onclick="cancelRun(\''+el.runId+'\');return false;">Cancel run</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>'+(el.outputs?'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
     $('div[id="runDetailsData"]').html('');
@@ -628,5 +628,9 @@ function formatRunDetails(run, machines){
         d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode</div>';
     }
     d += '</div>';
+    if (run.outputs){
+        d += '<div id="runOutputsText-'+run.runId+'" style="display: none">Output:<br />'+JSON.stringify(run.outputs,null,2)+'<br /></div>';
+    }
+    
     return d;
 }
