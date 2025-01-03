@@ -5100,6 +5100,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
               badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
                       });
+
+              notification.onclick = function() {
+                 window.open('https://google.com', '_blank');
+                 console.log("Notification clicked.");
+              };
+
               notification.onclose = function(){
                 console.log("Background Notification closed.");
               }
