@@ -201,7 +201,7 @@ function work(){
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+getFlowStatusData(el)+'</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td>'+el.inputs+'"</td></tr>';
+            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+getFlowStatusData(el)+'</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td></td></tr>';
         })
         $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleFlows');
