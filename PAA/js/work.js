@@ -110,6 +110,7 @@ async function paaPostRequestWithCompress(payloadObject){
 }
 
 function checkAuth(){
+    if (window.location.href.includes('file:/')) return;
     if (window.location.href.includes('login.html')) return;
     let paaToken = readCookie('paaToken');
     if (!paaToken){
