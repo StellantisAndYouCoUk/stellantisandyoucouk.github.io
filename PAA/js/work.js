@@ -162,7 +162,7 @@ function work(){
 
     if (!loggedInUser.isAutolineOpen){
         if ($("#autolineClosed").length===0){
-            $('nav[class="sb-topnav navbar navbar-expand navbar-dark bg-dark"]').append('<div id="autolineClosed">Autoline Closed</div>');
+            $('nav[class="sb-topnav navbar navbar-expand navbar-dark bg-dark"]').append('<div id="autolineClosed" class="navbar-brand ps-3">Autoline Closed</div>');
         }
     }
 
