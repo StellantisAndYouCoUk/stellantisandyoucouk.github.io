@@ -310,7 +310,7 @@ function work(){
 
 function getFlowStatusData(flowData){
     let o = '';
-    o += (!flowData.statusData?'ready':flowData.statusData.status)+'<br />';
+    o += (!flowData.statusData?'ready':flowData.statusData.status)+'&nbsp;';
     if (!flowData.statusData || flowData.statusData.status==='ready'){
         o += '<a href="#" onclick="changeFlowStatus(\''+flowData.name+'\',\'stopped\'); return false;">Stop flow</a>';
     } else {
