@@ -160,6 +160,12 @@ function work(){
         window.location = './login.html';
     });
 
+    if (!loggedInUser.isAutolineOpen){
+        if ($("#autolineClosed").length===0){
+            $('nav[class="sb-topnav navbar navbar-expand navbar-dark bg-dark"]').append('<div id="autolineClosed">Autoline Closed</div>');
+        }
+    }
+
     $('#userName').text(loggedInUser.displayName)
     let qV = getUrlVars();
     if (page.includes('index.html')){
