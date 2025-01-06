@@ -339,17 +339,28 @@ function work(){
             console.log(jNew);
             try {
                 let jNewJSON = JSON.parse(jNew);
-                globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit] = jNewJSON;
+                if (globalPageData.flowIntegrationEdit===-1){
+                    globalPageData.flowData.integrations.push(jNewJSON);
+                } else {
+                    globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit] = jNewJSON;
+                }
             } catch (ex){
                 alert('JSON can not be parsed',ex);
                 return;
             }
             let respU = paaPostRequest({'action':'uploadIntegrationsForFlow','token':paaToken,'flowName':globalPageData.flowData.name,'integrations':globalPageData.flowData.integrations});
             console.log(respU);
+            globalPageData.flowIntegrationEdit = null;
+            document.getElementById('editor-container').style.display = 'none';
         });
         document.getElementById('back-button').addEventListener('click', () => {
             globalPageData.flowIntegrationEdit = null;
             document.getElementById('editor-container').style.display = 'none';
+        });
+        document.getElementById('add-button').addEventListener('click', () => {
+            globalPageData.flowIntegrationEdit = -1;
+            $('#integration-details-edit').val('')
+            $('#editor-container').show();
         });
     }
 }
