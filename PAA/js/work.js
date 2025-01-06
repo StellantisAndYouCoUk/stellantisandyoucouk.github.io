@@ -337,30 +337,36 @@ function work(){
             }
             let jNew = $('#integration-details-edit').val();
             console.log(jNew);
+            let jNewJSON = {}
             try {
-                let jNewJSON = JSON.parse(jNew);
-                if (globalPageData.flowIntegrationEdit===-1){
-                    globalPageData.flowData.integrations.push(jNewJSON);
-                } else {
-                    globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit] = jNewJSON;
-                }
+                jNewJSON = JSON.parse(jNew);
             } catch (ex){
-                alert('JSON can not be parsed',ex);
+                console.log(ex);
+                alert('JSON can not be parsed');
                 return;
+            }
+            if (globalPageData.flowIntegrationEdit===-1){
+                if (!globalPageData.flowData.integrations) globalPageData.flowData.integrations = [];
+                globalPageData.flowData.integrations.push(jNewJSON);
+            } else {
+                globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit] = jNewJSON;
             }
             let respU = paaPostRequest({'action':'uploadIntegrationsForFlow','token':paaToken,'flowName':globalPageData.flowData.name,'integrations':globalPageData.flowData.integrations});
             console.log(respU);
             globalPageData.flowIntegrationEdit = null;
             document.getElementById('editor-container').style.display = 'none';
+            $('#add-button').show();
         });
         document.getElementById('back-button').addEventListener('click', () => {
             globalPageData.flowIntegrationEdit = null;
             document.getElementById('editor-container').style.display = 'none';
+            $('#add-button').show();
         });
         document.getElementById('add-button').addEventListener('click', () => {
             globalPageData.flowIntegrationEdit = -1;
             $('#integration-details-edit').val('')
             $('#editor-container').show();
+            $('#add-button').hide();
         });
     }
 }
@@ -371,6 +377,7 @@ function editIntegration(index){
     console.log('to edit',globalPageData.flowData.integrations[index]);
     $('#integration-details-edit').val(JSON.stringify(globalPageData.flowData.integrations[index],null,2))
     $('#editor-container').show();
+    $('#add-button').hide();
 }
 
 function getFlowStatusData(flowData){
