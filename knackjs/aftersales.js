@@ -5612,3 +5612,14 @@ $(document).on('knack-scene-render.scene_1230', function(event, scene) {
 
 
  
+//hide customer email address from Aftersales Follow up call "Pending"
+$(document).on('knack-view-render.view_632', function (event, view, data) {
+	     $('th[class="field_2189"]').hide();
+    $('td[class*="field_2189"]').hide();
+}); 
+
+//hide customer email address from Aftersales Follow up call "Awaiting"
+$(document).on('knack-view-render.view_738', function (event, view, data) {
+	     $('th[class="field_2189"]').hide();
+    $('td[class*="field_2189"]').hide();
+}); 
