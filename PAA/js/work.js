@@ -337,13 +337,15 @@ function work(){
             }
             let jNew = $('#integration-details-edit').val();
             console.log(jNew);
-            //try {
+            try {
                 let jNewJSON = JSON.parse(jNew);
                 globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit] = jNewJSON;
-            /*} catch (ex){
+            } catch (ex){
                 alert('JSON can not be parsed',ex);
                 return;
-            }*/
+            }
+            let respU = paaPostRequest({'action':'uploadIntegrationsForFlow','token':paaToken,'flowName':globalPageData.flowData.name,'integrations':globalPageData.flowData.integrations});
+            console.log(respU);
         });
         document.getElementById('back-button').addEventListener('click', () => {
             globalPageData.flowIntegrationEdit = null;
