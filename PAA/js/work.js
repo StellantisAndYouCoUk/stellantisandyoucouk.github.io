@@ -139,6 +139,8 @@ var table = null;
 var jsonData = null;
 var flowCode = null;
 
+var globalPageData = {};
+
 function work(){
     let page = window.location.href;
     //Login page
@@ -202,7 +204,7 @@ function work(){
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?el.integrations.length:'')+'</td><td>'+getFlowStatusData(el)+'</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td></td></tr>';
+            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?'Int: '+el.integrations.length:'')+'&nbsp;<a href="flowIntegrations.html?flow='+el.name+'">Integrations</a></td><td>'+getFlowStatusData(el)+'</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td></td></tr>';
         })
         $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleFlows');
@@ -306,6 +308,56 @@ function work(){
             
         }
     }
+
+    if (page.includes('flowIntegrations.html')){
+        console.log(qV['flow']);
+        $('h1').text(qV['flow'])
+        
+        let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':false});
+        let f = req.find(el =>el.name === qV['flow']);
+        globalPageData.flowData = f;
+        console.log(f.integrations);
+        if (f.integrations){
+            let intUl = document.getElementById('integrations');
+            f.integrations.forEach((integ, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = integ.executeLiveOrPreprod.join(',')+ ' - '+integ.statuses.join(',')+'  '
+                const button = document.createElement('button');
+                button.textContent = 'Edit';
+                button.addEventListener('click', () => editIntegration(index));
+                listItem.appendChild(button);
+                intUl.appendChild(listItem);
+            });
+        }
+
+        document.getElementById('save-button').addEventListener('click', () => {
+            if (globalPageData.flowIntegrationEdit===null || globalPageData.flowIntegrationEdit===undefined){
+                alert('problem');
+                return;
+            }
+            let jNew = $('#integration-details-edit').val();
+            console.log(jNew);
+            //try {
+                let jNewJSON = JSON.parse(jNew);
+                globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit] = jNewJSON;
+            /*} catch (ex){
+                alert('JSON can not be parsed',ex);
+                return;
+            }*/
+        });
+        document.getElementById('back-button').addEventListener('click', () => {
+            globalPageData.flowIntegrationEdit = null;
+            document.getElementById('editor-container').style.display = 'none';
+        });
+    }
+}
+
+function editIntegration(index){
+    if (!globalPageData.flowData) return;
+    globalPageData.flowIntegrationEdit = index;
+    console.log('to edit',globalPageData.flowData.integrations[index]);
+    $('#integration-details-edit').val(JSON.stringify(globalPageData.flowData.integrations[index],null,2))
+    $('#editor-container').show();
 }
 
 function getFlowStatusData(flowData){
