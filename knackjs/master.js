@@ -5053,7 +5053,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           // },
           showCancelButton: true,
           cancelButtonText: "Close",
-          cancelButtonColor: "#28a745",
+          cancelButtonColor: "#FF0000",
           showConfirmButton: !!parsedData.click,
           confirmButtonText: `${parsedData.click
             ? `<i class="fa fa-external-link-alt"></i> Go to Link`
