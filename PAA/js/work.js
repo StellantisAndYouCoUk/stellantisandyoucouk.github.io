@@ -313,22 +313,7 @@ function work(){
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
         
-        let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':false});
-        let f = req.find(el =>el.name === qV['flow']);
-        globalPageData.flowData = f;
-        console.log(f.integrations);
-        if (f.integrations){
-            let intUl = document.getElementById('integrations');
-            f.integrations.forEach((integ, index) => {
-                const listItem = document.createElement('li');
-                listItem.textContent = integ.executeLiveOrPreprod.join(',')+ ' - '+integ.statuses.join(',')+'  '
-                const button = document.createElement('button');
-                button.textContent = 'Edit';
-                button.addEventListener('click', () => editIntegration(index));
-                listItem.appendChild(button);
-                intUl.appendChild(listItem);
-            });
-        }
+        refreshIntegrations(qV['flow'])
 
         document.getElementById('save-button').addEventListener('click', () => {
             if (globalPageData.flowIntegrationEdit===null || globalPageData.flowIntegrationEdit===undefined){
@@ -367,6 +352,27 @@ function work(){
             $('#integration-details-edit').val('')
             $('#editor-container').show();
             $('#add-button').hide();
+            refreshIntegrations(qV['flow'])
+        });
+    }
+}
+
+function refreshIntegrations(flowName){
+    let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':false});
+    let f = req.find(el =>el.name === flowName);
+    globalPageData.flowData = f;
+    console.log(f.integrations);
+    if (f.integrations){
+        let intUl = document.getElementById('integrations');
+        $('#integrations').empty()
+        f.integrations.forEach((integ, index) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = integ.executeLiveOrPreprod.join(',')+ ' - '+integ.statuses.join(',')+'  '
+            const button = document.createElement('button');
+            button.textContent = 'Edit';
+            button.addEventListener('click', () => editIntegration(index));
+            listItem.appendChild(button);
+            intUl.appendChild(listItem);
         });
     }
 }
