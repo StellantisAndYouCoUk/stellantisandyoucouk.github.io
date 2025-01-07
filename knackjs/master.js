@@ -5052,13 +5052,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
           //   icon: 'rotate-y',
           // },
           showCancelButton: true,
-          cancelButtonText: "Ok",
+          cancelButtonText: "Close",
           cancelButtonColor: "#28a745",
           showConfirmButton: !!parsedData.click,
           confirmButtonText: `${parsedData.click
             ? `<i class="fa fa-external-link-alt"></i> Go to Link`
             : ""}`,
-          confirmButtonAriaLabel: "Go to Link",
+          confirmButtonAriaLabel: "Click To Open",
           preConfirm: () => {
             if (parsedData.click) {
               window.open(parsedData.click, "_blank");
