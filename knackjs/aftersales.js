@@ -4540,7 +4540,7 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1532"]').hide();	    
     });
 
-//Sales prospecting Hover over tables
+/*Sales prospecting Hover over tables
 
 $(document).on('knack-view-render.view_4342', function(event, scene) {
 //Hover for sales prospecting
@@ -4591,16 +4591,64 @@ $(document).on('knack-view-render.view_4342', function(event, scene) {
 	  $('th[class="field_3444"]').hide();
     $('td[class*="field_3444"]').hide();
 
-    */
+    
 	/* $('div[id="view_4342"] table>tbody>tr').each(function(){
 	 $(this).find('td[data-field-key="field_3358"]').attr('data-tooltip',getFieldForRowID('view_4342','field_3280',$(this).attr('id')));
       $(this).find('td[data-field-key="field_3358"]').addClass('tooltip-left');
 		  $('th[class="field_3280"]').hide();
-    $('td[class*="field_3280"]').hide();*/
+    $('td[class*="field_3280"]').hide();
 
 	
-	});
+	}); */
+		
+//Sales prospecting Hover over tables for sales advisor view
 
+$(document).on('knack-view-render.view_4488', function(event, scene) {
+//Hover for sales prospecting
+//scene, view, field to have hover, hover info
+//Service Details over Reg 
+		 tooltipsTable('1313','4488','field_3350','field_3359');	
+	  $('th[class="field_3350"]').hide();
+    $('td[class*="field_3350"]').hide();
+
+//vhc work over model
+		 tooltipsTable('1313','4488','field_3351','field_3354');	
+	  $('th[class="field_3351"]').hide();
+    $('td[class*="field_3351"]').hide();	
+	
+//historic visit over due in
+		 tooltipsTable('1313','4488','field_3352','field_3248');	
+	  $('th[class="field_3352"]').hide();
+    $('td[class*="field_3352"]').hide();	
+	
+//cust. name/emax notes over last contact
+		 tooltipsTable('1313','4488','field_3353','field_3330');	
+	  $('th[class="field_3353"]').hide();
+    $('td[class*="field_3353"]').hide();	
+
+
+//date sold over sold new/used
+		 tooltipsTable('1313','4488','field_3355','field_3371');	
+	  $('th[class="field_3355"]').hide();
+    $('td[class*="field_3355"]').hide();
+
+//1 Link cust.name over name
+		 tooltipsTable('1313','4488','field_3356','field_3372');	
+	  $('th[class="field_3356"]').hide();
+    $('td[class*="field_3356"]').hide();
+
+//Finance Details Over Finance
+		 tooltipsTable('1313','4488','field_3357','field_3349');	
+	  $('th[class="field_3357"]').hide();
+    $('td[class*="field_3357"]').hide();		
+
+//Mileage over AT data
+		 tooltipsTable('1313','4488','field_3361','field_3358');	
+	  $('th[class="field_3361"]').hide();
+    $('td[class*="field_3361"]').hide();
+	
+	
+	});
 //Hover's for sales prospecting Search Table
 
 $(document).on('knack-view-render.view_4431', function(event, scene) {
