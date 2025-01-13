@@ -1375,7 +1375,7 @@ $(document).on('knack-form-submit.view_7702', function(event, view, data) {
 
   
 
-	commandURL = "https://hook.eu1.make.celonis.com/6vjxtlzh1vy3q1hyiokydopv5h8ejpjr?recordid=" + data.id ;
+	commandURL = "https://hook.eu1.make.celonis.com/5cy2gpglkgikkgwgnuuvoo85bawswymv?recordid=" + data.id ;
 
 
  	$.get(commandURL, function(data, status){
