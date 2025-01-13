@@ -1364,7 +1364,7 @@ $(document).on('knack-form-submit.view_4099', function(event, view, data) {
 
 // Code to wait following Form Submission while record is created
 
-$(document).on('knack-form-submit.view_7702', function(event, view, data) { 
+$(document).on('knack-form-submit.view_7704', function(event, view, data) { 
 
 
 	setTimeout(function(){ 
