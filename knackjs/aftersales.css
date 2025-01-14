@@ -2317,11 +2317,16 @@ max-height: 100%;
 }
 
 
-#view_4342>.kn-records-nav {
+/* #view_4342>.kn-records-nav {
 	visibility: hidden;
 }
+*/
 
+/*css hide filter menu on salesa advisor prospect*/
 
+#view_4488>.kn-records-nav {
+	visibility: hidden;
+}
 
 #view_4483{
 

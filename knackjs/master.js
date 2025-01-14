@@ -1359,6 +1359,37 @@ $(document).on('knack-form-submit.view_4099', function(event, view, data) {
 
 });
 
+
+// DEPOSIT REDIRECT (for taking additional deposit from same customer)
+
+// Code to wait following Form Submission while record is created
+
+$(document).on('knack-form-submit.view_7704', function(event, view, data) { 
+
+
+	setTimeout(function(){ 
+
+    	Knack.showSpinner();
+
+    }, 0); 
+
+  
+
+	commandURL = "https://hook.eu1.make.celonis.com/5cy2gpglkgikkgwgnuuvoo85bawswymv?recordid=" + data.id ;
+
+
+ 	$.get(commandURL, function(data, status){
+
+
+      Knack.hideSpinner();
+
+      $(".kn-message.success").html("<b>" + data + "</b>");
+
+
+    });
+
+});
+
 //Hide Crumbtrail & Header
 $(document).on('knack-scene-render.scene_1298', function (event, view, data) {
 	$('[class="kn-container"]').hide();
@@ -5052,13 +5083,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
           //   icon: 'rotate-y',
           // },
           showCancelButton: true,
-          cancelButtonText: "Ok",
-          cancelButtonColor: "#28a745",
+          cancelButtonText: "Close",
+          cancelButtonColor: "#FF0000",
           showConfirmButton: !!parsedData.click,
           confirmButtonText: `${parsedData.click
             ? `<i class="fa fa-external-link-alt"></i> Go to Link`
             : ""}`,
-          confirmButtonAriaLabel: "Go to Link",
+          confirmButtonAriaLabel: "Click To Open",
           preConfirm: () => {
             if (parsedData.click) {
               window.open(parsedData.click, "_blank");
