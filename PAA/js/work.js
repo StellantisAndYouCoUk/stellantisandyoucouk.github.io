@@ -283,7 +283,7 @@ function work(){
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
         const buttonCodeToPA = document.createElement('button');
-        buttonCodeToPA.textContent = 'Upload from GitHub to PA';
+        buttonCodeToPA.textContent = 'Upload code from GitHub to PA';
         buttonCodeToPA.addEventListener('click', () => codeFromGithubToPA(qV['flow']));
 
         $('#uploadToGitHub').append(buttonCodeToPA);
@@ -714,7 +714,17 @@ function formatRunDetails(run, machines){
     }
     d += '</div>';
     if (run.outputs){
-        d += '<div id="runOutputsText-'+run.runId+'" style="display: none">Output:<br />'+JSON.stringify(run.outputs,null,2)+'<br /></div>';
+        d += '<div id="runOutputsText-'+run.runId+'" style="display: none">Output:<br />'+JSON.stringify(run.outputs,null,2);
+        if (run.outputs.FlowOutput && run.outputs.FlowOutput.data && run.outputs.FlowOutput.data.length>0){
+            let failedD = run.outputs.FlowOutput.data.filter(el => !el.success);
+            d += '<br />Failed data:<br />' +JSON.stringify(failedD,null,2)
+            if (run.flowInput && run.flowInput.data && run.flowInput.data.length>0){
+                let newFlowInput = Object.assign({},run.flowInput);
+                newFlowInput.data = newFlowInput.data.filter(el => (failedD.find(el2 => el2.RegNumber === el.RegNumber)===undefined?false:true))
+                d += '<br />To rerun input:<br />' +JSON.stringify(newFlowInput,null,2)
+            }
+        }
+        d += '</div>';
     }
     
     return d;
