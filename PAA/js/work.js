@@ -204,7 +204,7 @@ function work(){
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.integrations?'Int: '+el.integrations.length:'')+'&nbsp;<a href="flowIntegrations.html?flow='+el.name+'">Integrations</a></td><td>'+getFlowStatusData(el)+'</td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td></td></tr>';
+            return '<tr><td>'+el.name+'</td><td><a href="#" onclick="showRun(\''+el.name+'\'); return false;">Run</a></td><td>'+getFlowStatusData(el)+'</td><td>'+(el.integrations?'Int: '+el.integrations.length:'')+'&nbsp;<a href="flowIntegrations.html?flow='+el.name+'">Integrations</a></td><td><a href="uicoll.html?flow='+el.name+'">Edit UI</a></td><td></td></tr>';
         })
         $('table[id="datatablesSimpleFlows"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleFlows');
@@ -214,6 +214,9 @@ function work(){
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+        let machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
+        $('#runMachine').html('<option>'+machines.map(el => el.name).join('</option><option>')+'</option>')
     }
 
     if (page.includes('runs.html')){
@@ -355,6 +358,48 @@ function work(){
             refreshIntegrations(qV['flow'])
         });
     }
+}
+
+function showRun(flowName){
+    $('#editor-container').show();
+    $('#flowName').text(flowName);
+    globalPageData.flowToRun = flowName;
+}
+
+function runFlow(){
+    $('#validationMessage').text('');
+    if (!globalPageData.flowToRun){
+        $('#validationMessage').text('No flow selected');
+        return false;
+    }
+    let newInputStr = $('#runInput').val();
+    if (newInputStr===''){
+        $('#validationMessage').text('Input can not be empty');
+        return false;
+    }
+    let newInput = {};
+    try {
+        newInput = JSON.parse(newInputStr);
+    } catch (ex){
+        console.log(ex);
+        $('#validationMessage').text('Error parsing JSON input');
+        return false;
+    }
+    if (!newInput.liveOrPreprod){
+        $('#validationMessage').text('liveOrPreprod property is mandatory for input');
+        return false;
+    }
+    let runData = {
+        priority : $('#runPriority').val(),
+        flowName : globalPageData.flowToRun,
+        flowInput : newInput,
+        preferedMachineName : $('#runMachine').val(),
+        runMode :$('#runMode').val(),
+        noRetry : true
+    }
+    console.log(runData);
+    $('#editor-container').hide();
+    return callPostHttpRequest('https://davidmale--server.apify.actor/powerAutomateNewRequest?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'},runData)
 }
 
 function refreshIntegrations(flowName){

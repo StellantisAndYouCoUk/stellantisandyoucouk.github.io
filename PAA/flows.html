@@ -88,6 +88,20 @@
                             <li class="breadcrumb-item active">List of flows available to run</li>
                         </ol>
                         <div class="card mb-4">
+                            <div id="editor-container" style="display:none;">
+                                <h2>Run flow</h2>
+                                <div id="runflow-details">
+                                    <h3 id="flowName"></h3>
+                                    <div id="validationMessage" style="color:red"></div>
+                                    Machine: <select id="runMachine"></select><br/>
+                                    Mode: <select id="runMode"><option>attended</option><option>unattended</option></select></br>
+                                    Priority: <select id="runPriority"><option>1</option><option selected>5</option><option>10</option></select><br/>
+                                    Input:<br/><textarea id="runInput" cols="100" rows="5"></textarea><br/>
+                                    <button id="run-button" onclick="runFlow(); return false;">Run</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                             </div>
@@ -96,8 +110,9 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Integrations</th>
+                                            <th>Manual run</th>
                                             <th>Status</th>
+                                            <th>Integrations</th>
                                             <th>UI Elements</th>
                                             <th>Inputs</th>
                                         </tr>
@@ -105,8 +120,9 @@
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Integrations</th>
+                                            <th>Manual run</th>
                                             <th>Status</th>
+                                            <th>Integrations</th>
                                             <th>UI Elements</th>
                                             <th>Inputs</th>
                                         </tr>
