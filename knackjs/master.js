@@ -5585,6 +5585,16 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 });
 
 
+$(document).on('knack-records-render.view_7588', function (event, scene, records) {
+    $("#view_7588").find("td.field_10279").each(function () {
+        if ($(this).text().trim() !== "") {
+            $(this).find("a").text("");
+            $(this).find("a").append("<i style=\"vertical-align: baseline !important;\" class=\"fa fa-file\"></i>&nbsp;View");
+        }
+    });
+});
+
+
 
 $(document).on('knack-scene-render.scene_436', function(event, scene) {
   console.log('knack-scene-render.scene_436');
