@@ -725,6 +725,7 @@ function cancelRun(runId){
 
 function reRunInPreprod(runId){
     console.log('reRunInPreprod',runId);
+    $('button[aria-label="Close"]').click();
     let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
     let run = req.find(el => el.runId === runId);
     console.log('machine',$('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val())
@@ -740,7 +741,6 @@ function reRunInPreprod(runId){
         runMode : $('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val(),
         noRetry : true
     }
-    $('button[aria-label="Close"]').click();
     return callPostHttpRequest('https://davidmale--server.apify.actor/powerAutomateNewRequest?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'},runData)
 }
 
