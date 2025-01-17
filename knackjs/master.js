@@ -5624,11 +5624,13 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
 
 
 $(document).on('knack-scene-render.scene_2305', function(event, scene) {
+  console.log("Scene_2305 running");
+
   // Attach event listener to the form submission
   $('form').on('submit', function (event) {
     // Get the Postal Code input
     const postcodeInput = $('#zip');
-    console.log("Scene_2305 running for postcode check");
+    console.log("Scene_2305 running for postcode check frm");
     // Check if the Postal Code field is empty
     if (!postcodeInput.val().trim()) {
       event.preventDefault(); // Stop form submission
