@@ -245,31 +245,12 @@ function work(){
                 { data: 'Duration',title: 'Duration'},
                 { data: 'Details',title:'Details' },
                 { data: 'In PA',title: 'In PA'}
-            ],
-            order: [['Requested', 'desc']],
-            pageLength: 25,
-            scroller: true,
-            search: getSearchFromUrl(),
-            /*,initComplete: function () {
-                this.api()
-                    .columns()
-                    .every(function () {
-                        let column = this;
-                        let title = column.header().textContent;
-         
-                        // Create input element
-                        let input = document.createElement('input');
-                        input.placeholder = title;
-                        column.header().append(input);
-         
-                        // Event listener for user input
-                        input.addEventListener('keyup', () => {
-                            if (column.search() !== this.value) {
-                                column.search(input.value).draw();
-                            }
-                        });
-                    });
-            }*/});
+                ],
+                order: [['Requested', 'desc']],
+                pageLength: 25,
+                scroller: true,
+                search: getSearchFromUrl(),
+            });
 
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
             $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
