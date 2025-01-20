@@ -511,6 +511,12 @@ $(document).on('knack-view-render.view_7480', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #democourtesy-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Demo and Courtesy Management
+$(document).on('knack-view-render.view_7711', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #courtesy-and-demo-vehicle-management" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Service Sales Prospecting
 $(document).on('knack-view-render.view_7517', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
@@ -5624,11 +5630,13 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
 
 
 $(document).on('knack-scene-render.scene_2305', function(event, scene) {
+  console.log("Scene_2305 running");
+
   // Attach event listener to the form submission
   $('form').on('submit', function (event) {
     // Get the Postal Code input
     const postcodeInput = $('#zip');
-
+    console.log("Scene_2305 running for postcode check frm");
     // Check if the Postal Code field is empty
     if (!postcodeInput.val().trim()) {
       event.preventDefault(); // Stop form submission
