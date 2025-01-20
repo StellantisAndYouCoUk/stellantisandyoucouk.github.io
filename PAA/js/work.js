@@ -101,6 +101,26 @@ function dateTimeToGBNoYear(dateobj){
     return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+' '+dateobj.toLocaleTimeString("en-GB");
 }
 
+async function fillGlobalVarWithRequest(globalVar,payloadObject, callback){
+    try{
+        let commandURL = 'https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw';
+        let dataToSend = JSON.stringify(payloadObject) ;
+        let requestObj = {
+          url: commandURL,
+          type: 'POST',
+          contentType: 'application/json',
+          data: dataToSend
+        };
+        console.log(requestObj);
+        $.ajax(requestObj).done(function( data ) {
+            globalVar =  data;
+            if (callback) callback();
+          });
+      } catch(exception) {
+        console.log(exception);
+      }
+}
+
 function paaPostRequest(payloadObject){
     return callPostHttpRequest('https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
 }
@@ -220,14 +240,16 @@ function work(){
     }
 
     if (page.includes('runs.html')){
-        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-       /*let contentToHide = '';
-        let tMJ = req.map(function (el){
-            contentToHide += formatRunDetails(el,machines);
-            return {'Flow Name':el.flowName,'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='failed'?'<a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>','In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
-        })
-        console.log(tMJ);
-        $('div[id="runDetailsData"]').append(contentToHide);*/
+        if (!globalPageData.machines || (difFromNowInSeconds(globalPageData.machinesTimeStamp)>12)) {
+            //globalPageData.machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
+            fillGlobalVarWithRequest(globalPageData.machines,{'action':'getMachines','token':paaToken, 'refresh':false})
+            globalPageData.machinesTimeStamp = new Date();
+        }
+        if (!globalPageData.runs || (difFromNowInSeconds(globalPageData.runsTimeStamp)>12)){
+            //globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+            fillGlobalVarWithRequest(globalPageData.runs,{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
+            globalPageData.runsTimeStamp = new Date();
+        }
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
@@ -255,13 +277,17 @@ function work(){
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
             $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
         } else {
-            table.ajax.reload(null, false);
+            //table.ajax.reload(null, false);
         }
 
-        let isSomethingActive = req.find(el => el.status!=='succeded' && el.status !=='failed');
+        let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed');
         setTimeout(() => {
             work();
-        }, (isSomethingActive?15000:60000));
+        }, (isSomethingActive?15000:45000));
+
+        if ($('#reloadButton').length===0){
+            $('div[class="dt-layout-cell dt-layout-start"]').append('<a id="reloadButton" href="#" onclick="reloadRuns(); return false;">Reload</a>');
+        }
     }
 
     if (page.includes('uicoll.html')){
@@ -340,6 +366,19 @@ function work(){
             refreshIntegrations(qV['flow'])
         });
     }
+}
+
+function reloadRuns(){
+    fillGlobalVarWithRequest(globalPageData.runs,{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
+    globalPageData.runsTimeStamp = new Date();
+}
+
+function refereshRuns(){
+    table.ajax.reload(null, false);
+}
+
+function difFromNowInSeconds(date){
+    return (new Date - date)/1000;
 }
 
 function showRun(flowName){
@@ -677,11 +716,17 @@ function getSearchFromUrl(){
 
 function getRunsDataForTable(){
     console.log('getRunsDataForTable')
-    let machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
-    let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+    if (!globalPageData.machines){
+        console.log('globalPageData.machines blank')
+        globalPageData.machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
+    }
+    if (!globalPageData.runs){
+        console.log('globalPageData.runs blank')
+        globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+    }
     let contentToHide = '';
-    let tMJ = req.map(function (el){
-        contentToHide += formatRunDetails(el,machines);
+    let tMJ = globalPageData.runs.map(function (el){
+        contentToHide += formatRunDetails(el,globalPageData.machines);
         return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Run Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':'')+(el.status==='running'?'<br /><a href="#" onclick="cancelRun(\''+el.runId+'\');return false;">Cancel run</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
