@@ -114,7 +114,9 @@ async function fillGlobalVarWithRequest(globalVar,payloadObject, callback){
         console.log(requestObj);
         $.ajax(requestObj).done(function( data ) {
             globalVar =  data;
-            if (callback) callback();
+            try{
+                callback();
+            } catch (ex){}
           });
       } catch(exception) {
         console.log(exception);
@@ -374,6 +376,7 @@ function reloadRuns(){
 }
 
 function refereshRuns(){
+    console.log('refreshRuns')
     table.ajax.reload(null, false);
 }
 
