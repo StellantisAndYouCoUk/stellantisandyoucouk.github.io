@@ -116,7 +116,7 @@ async function fillGlobalVarWithRequest(globalVar,payloadObject, callback){
             globalVar =  data;
             try{
                 callback();
-            } catch (ex){}
+            } catch (ex){console.log(ex)}
           });
       } catch(exception) {
         console.log(exception);
