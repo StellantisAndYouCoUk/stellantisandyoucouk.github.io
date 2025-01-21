@@ -101,7 +101,7 @@ function dateTimeToGBNoYear(dateobj){
     return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+' '+dateobj.toLocaleTimeString("en-GB");
 }
 
-async function fillGlobalVarWithRequest(globalVar,payloadObject, callback){
+async function fillGlobalVarWithRequest(globalVarPropName,payloadObject, callback){
     try{
         let commandURL = 'https://davidmale--server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw';
         let dataToSend = JSON.stringify(payloadObject) ;
@@ -113,7 +113,7 @@ async function fillGlobalVarWithRequest(globalVar,payloadObject, callback){
         };
         console.log(requestObj);
         $.ajax(requestObj).done(function( data ) {
-            globalVar =  data;
+            globalPageData[globalVarPropName] = data;
             try{
                 if (callback) callback();
             } catch (ex){}
@@ -244,12 +244,12 @@ function work(){
     if (page.includes('runs.html')){
         if (!globalPageData.machines || (difFromNowInSeconds(globalPageData.machinesTimeStamp)>12)) {
             //globalPageData.machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
-            fillGlobalVarWithRequest(globalPageData.machines,{'action':'getMachines','token':paaToken, 'refresh':false})
+            fillGlobalVarWithRequest('machines',{'action':'getMachines','token':paaToken, 'refresh':false})
             globalPageData.machinesTimeStamp = new Date();
         }
         if (!globalPageData.runs || (difFromNowInSeconds(globalPageData.runsTimeStamp)>12)){
             //globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-            fillGlobalVarWithRequest(globalPageData.runs,{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
+            fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
             globalPageData.runsTimeStamp = new Date();
         }
         if (!table){
@@ -371,7 +371,7 @@ function work(){
 }
 
 function reloadRuns(){
-    fillGlobalVarWithRequest(globalPageData.runs,{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
+    fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
     globalPageData.runsTimeStamp = new Date();
 }
 
@@ -732,7 +732,7 @@ function getRunsDataForTable(){
         contentToHide += formatRunDetails(el,globalPageData.machines);
         return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Run Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.runId+'\');return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\');return false;">Cancel run</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runDetailsText-'+el.runId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
-    //console.log(tMJ);
+    console.log(tMJ);
     $('div[id="runDetailsData"]').html('');
     $('div[id="runDetailsData"]').append(contentToHide);
     return tMJ;
