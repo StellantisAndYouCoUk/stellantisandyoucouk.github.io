@@ -5548,8 +5548,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
-            imageHeight: 800,
-            imageWidth: 1200,
+            imageHeight: 400,
+            imageWidth: 1400,
             confirmButtonText: 'Copy Url'
           })
             .then(() => {
