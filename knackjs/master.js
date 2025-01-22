@@ -5544,9 +5544,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         <ul style="text-align: center ;">
                           <li>Click to <strong>Copy Url</strong> button and paste the copied URL into a new browser tab.</li>
                           <li>Enable notifications in your browser settings.</li>
+                          <li>Don't forget to refresh your page</li>
                         </ul>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
+            imageWidth: 600,
             imageAlt: "Success GIF",
             confirmButtonText: 'Copy Url'
           })
