@@ -4399,14 +4399,13 @@ img.notification-icon {
   padding-left: 3px;
   padding-right: 12px;
   padding-top: 4px;
-  top: 0.3px;
+  bottom: 0.1px;
   border: 1px dashed red;
   /* visibility: hidden; */
 }
 
 img.user-icon {
   position: relative;
-  bottom: 0.1px;
   left: 2.3rem;
   display: none;
 }
