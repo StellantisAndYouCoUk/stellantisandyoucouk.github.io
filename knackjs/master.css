@@ -4397,7 +4397,8 @@ img.notification-icon {
   background-color: white;
   border-radius: 10%;
   padding-left: 3px;
-  padding-right: 3px;
+  padding-right: 12px;
+  padding-top: 4px;
   top: 0.3px;
   border: 1px dashed red;
   /* visibility: hidden; */
@@ -4405,7 +4406,7 @@ img.notification-icon {
 
 img.user-icon {
   position: relative;
-  top: 0.5rem;
+  bottom: 0.1px;
   left: 2.3rem;
   display: none;
 }
