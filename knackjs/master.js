@@ -5541,15 +5541,15 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ol style="text-align: left;">
+                        <ul style="text-align: left;">
                           <li>Paste the copied URL into a new browser tab.</li>
                           <li>Enable notifications in your browser settings.</li>
-                        </ol>
+                        </ul>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
-            imageHeight: 400,
-            imageWidth: 1400,
+            imageHeight: 300,
+            imageWidth: 1600,
             confirmButtonText: 'Copy Url'
           })
             .then(() => {
