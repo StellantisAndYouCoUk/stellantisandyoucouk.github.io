@@ -787,7 +787,7 @@ function formatRunDetails(run, machines){
     if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
         d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode</div>';
     }
-    if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod') && run.status==='succeded'){
+    if (run.status==='succeded'){
         d += '<a href="#" onclick="resurrectRun(\''+run.queueId+'\'); return false;">Resurrect - it will run this successful run again !</a>';
     }
     d += '</div>';
