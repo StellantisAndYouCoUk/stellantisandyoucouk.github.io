@@ -5538,8 +5538,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         if (result.isConfirmed) {
           // Show success and then open a new tab
           Swal.fire({
-            title: 'Click the blue "Copy Url" button bellow',
-            text: '',
+            title: '',
+            text: 'Click the blue "Copy Url" button bellow and paste it to the new tab.',
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
             confirmButtonText: 'Copy Url'
