@@ -5464,21 +5464,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       — Your Digi Team 😊
     </div>
   </div>
-  <p class="notification-message">
-    You’re set to receive browser notifications for everything all the time.
-  </p>
   <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
   <div class="notification-links">
-    <a href="#">Change your notification settings(Under Development!!)</a>
-  </div>
-  <div class="personal-settings" >
-    <p class="personal-settings-header">Personal Settings (Under Development!!)</p>
-    <ul>
-      <li><a href="#">Profile, password, 2FA</a></li>
-      <li><a href="#">Preferences</a></li>
-      <li><a href="#">Out of Office</a></li>
-    </ul>
-  </div>
 </div> 
   `;
 
