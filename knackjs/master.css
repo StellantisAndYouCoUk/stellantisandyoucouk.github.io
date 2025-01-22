@@ -4382,7 +4382,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 
 img.notification-icon {
   position: absolute;
-  top: 0.3rem;
+  bottom: 0.1px;
   margin-left: 0.2rem;
   width: 24px;
   height: 24px;
@@ -4399,7 +4399,7 @@ img.notification-icon {
   padding-left: 3px;
   padding-right: 12px;
   padding-top: 4px;
-  bottom: 0.1px;
+  top: 0.3px;
   border: 1px dashed red;
   /* visibility: hidden; */
 }
