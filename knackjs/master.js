@@ -5522,7 +5522,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       Swal.fire({
         title: 'Whoops! Notifications are Blocked',
-        html: `<h3>To turned on notification, click the blue <bold>Copy</bold> button bellow.</h3>`,
+        html: `<h3>To turn on notification, click the blue <strong>Copy</strong> button below.</h3>`,
         icon: "warning",
         confirmButtonText: 'Copy',
         focusConfirm: false,
@@ -5539,9 +5539,17 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           // Show success and then open a new tab
           Swal.fire({
             title: '',
-            html: `<p>Click the blue "Copy Url" and paste this URL into new tab and ENABLE notifications in your settings.</p>`,
+            html: `
+                        <h2>Steps to Enable Notifications</h2>
+                        <ol style="text-align: left;">
+                          <li>Paste the copied URL into a new browser tab.</li>
+                          <li>Enable notifications in your browser settings.</li>
+                        </ol>
+            `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
+            imageHeight: 800,
+            imageWidth: 1200,
             confirmButtonText: 'Copy Url'
           })
             .then(() => {
