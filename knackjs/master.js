@@ -5541,7 +5541,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ul style="text-align: center ;">
+                        <ul">
                           <li>Click to <strong>Copy Url</strong> button and paste the copied URL into a new browser tab.</li>
                           <li>Enable notifications in your browser settings.</li>
                           <li>Don't forget to refresh your page</li>
