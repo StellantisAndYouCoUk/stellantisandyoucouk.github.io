@@ -4614,3 +4614,13 @@ img.user-icon:hover {
   text-align: center;
   text-decoration: none;
 } */
+
+
+
+.listOfSteps{
+  text-align: left;
+}
+
+.listOfSteps li {
+  margin: 1rem;
+}

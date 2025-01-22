@@ -5541,10 +5541,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ul">
+                        <ul class="listOfSteps">
                           <li>Click to <strong>Copy Url</strong> button and paste the copied URL into a new browser tab.</li>
                           <li>Enable notifications in your browser settings.</li>
-                          <li>Don't forget to refresh your page</li>
+                          <li>When you finish don't forget to refresh your page</li>
                         </ul>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
