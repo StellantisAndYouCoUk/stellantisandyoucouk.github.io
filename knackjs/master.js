@@ -5522,7 +5522,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       Swal.fire({
         title: 'Whoops! Notifications are Blocked',
-        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the settings URL, so you can easily update your settings and turn them back on.</p>`,
+        html: `<p>To turned on notification, click the blue "Copy" button bellow.</p>`,
         icon: "warning",
         confirmButtonText: 'Copy',
         focusConfirm: false,
@@ -5538,11 +5538,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         if (result.isConfirmed) {
           // Show success and then open a new tab
           Swal.fire({
-            title: '',
-            text: 'Click Navigate and paste the URL into new tab and enable notifications in your settings.',
+            title: 'Click the blue "Copy Url" button bellow',
+            text: '',
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageAlt: "Success GIF",
-            confirmButtonText: 'Navigate'
+            confirmButtonText: 'Copy Url'
           })
             .then(() => {
               window.open(); // Open the URL in a new tab
