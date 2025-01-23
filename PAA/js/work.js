@@ -777,7 +777,7 @@ function formatRunDetails(run, machines){
     let d = '<div id="queueDetailsText-'+run.queueId+'" style="display: none">Input:<br />'+JSON.stringify(run.flowInput,null,2)+'<br />';
     if (run.status==='failed'){
         d += 'Retry count: '+run.retryCount+'<br />';
-        d += 'Error:<br />'+run.statusDescription+'<br />';;
+        d += 'Error:<br />'+(run.statusDescription?run.statusDescription.substring(0,150):'')+'<br />';;
     }
     if (run.hrefDetails) d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     if (run.runId){
