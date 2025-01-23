@@ -790,7 +790,7 @@ function formatRunDetails(run, machines){
     }
     if (run.retryHistory){
         d += 'Retry count: '+run.retryCount+'<br />';
-        d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGBNoYear(new Date(el.startedDateTime)) +' : '+ el.statusDescription.substring(0,100)+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a>'}).join('<br />')
+        d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGBNoYear(new Date(el.startedDateTime)) +' : '+ (el.statusDescription?el.statusDescription.substring(0,100):'')+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a>'}).join('<br />')
     }
     d += '</div>';
     if (run.outputs){
