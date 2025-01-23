@@ -782,7 +782,7 @@ function formatRunDetails(run, machines){
     if (run.hrefDetails) d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     if (run.runId){
         if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
-            d += '<a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode<br />';
+            d += '<br /><br /><a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode<br />';
         }
     }
     if (run.status==='succeded'){
@@ -790,7 +790,7 @@ function formatRunDetails(run, machines){
     }
     if (run.retryHistory){
         d += 'Retry count: '+run.retryCount+'<br />';
-        d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGBNoYear(new Date(el.startedDateTime)) +' : '+ el.statusDescription+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a>'}).join('<br />')
+        d += 'Retry summary:<br />'+run.retryHistory.map(function(el){ return  dateTimeToGBNoYear(new Date(el.startedDateTime)) +' : '+ el.statusDescription.substring(0,100)+' - <a target="_blank" href="'+el.hrefDetails+'">Run details in PA</a>'}).join('<br />')
     }
     d += '</div>';
     if (run.outputs){
