@@ -535,7 +535,16 @@ $(document).on('knack-view-render.view_7628', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-hub-reporting/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+// Policy Approval Pages
+$(document).on('knack-view-render.view_7716', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#policy-approval-request?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
 
+$(document).on('knack-view-render.view_7720', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#manage-policy-approval-requests?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
 
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
