@@ -5464,21 +5464,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       — Your Digi Team 😊
     </div>
   </div>
-  <p class="notification-message">
-    You’re set to receive browser notifications for everything all the time.
-  </p>
   <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
   <div class="notification-links">
-    <a href="#">Change your notification settings(Under Development!!)</a>
-  </div>
-  <div class="personal-settings" >
-    <p class="personal-settings-header">Personal Settings (Under Development!!)</p>
-    <ul>
-      <li><a href="#">Profile, password, 2FA</a></li>
-      <li><a href="#">Preferences</a></li>
-      <li><a href="#">Out of Office</a></li>
-    </ul>
-  </div>
 </div> 
   `;
 
@@ -5497,7 +5484,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       // Check if the link is already appended
       if ($(".bellicon__off .not").length === 0) {
         $(".bellicon__off").prepend(`
-          <a href="#" class="not">Off<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
+          <a href="#" class="not">Notifications OFF<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
         `);
       }
     } else {
@@ -5522,7 +5509,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       Swal.fire({
         title: 'Whoops! Notifications are Blocked',
-        html: `<p>It seems like notifications are turned off for this site. No worries! Just click the button below to copy the settings URL, so you can easily update your settings and turn them back on.</p>`,
+        html: `<h3>To turn on notification, click the blue <strong>Copy</strong> button below.</h3>`,
         icon: "warning",
         confirmButtonText: 'Copy',
         focusConfirm: false,
@@ -5539,10 +5526,18 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           // Show success and then open a new tab
           Swal.fire({
             title: '',
-            text: 'Click Navigate and paste the URL into new tab and enable notifications in your settings.',
+            html: `
+                        <h2>Steps to Enable Notifications</h2>
+                        <ul class="listOfSteps">
+                          <li>Click to <strong>Copy Url</strong> button and paste the copied URL into a new browser tab.</li>
+                          <li>Enable notifications in your browser settings.</li>
+                          <li>When you finish don't forget to refresh your page</li>
+                        </ul>
+            `,
             imageUrl: gifUrlBlocked, // GIF displayed here
+            imageWidth: 600,
             imageAlt: "Success GIF",
-            confirmButtonText: 'Navigate'
+            confirmButtonText: 'Copy Url'
           })
             .then(() => {
               window.open(); // Open the URL in a new tab
