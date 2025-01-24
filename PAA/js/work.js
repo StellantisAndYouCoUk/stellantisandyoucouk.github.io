@@ -725,7 +725,7 @@ function getRunsDataForTable(){
     }
     if (!globalPageData.runs){
         console.log('globalPageData.runs blank')
-        globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+        globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
     }
     let contentToHide = '';
     let tMJ = globalPageData.runs.map(function (el){
