@@ -261,7 +261,7 @@ function work(){
                 { data: 'Flow Name',title: 'Flow Name'},
                 { data: 'LiveOrPreprod',title: 'Live'},
                 { data: 'Machine',title: 'Machine'},
-                { data: 'Run Mode',title: 'Run Mode'},
+                { data: 'Mode',title: 'Mode'},
                 { data: 'State',title: 'State'},
                 { data: 'Priority',title: 'Pri'},
                 { data: 'Requested',title: 'Requested'},
@@ -730,13 +730,23 @@ function getRunsDataForTable(){
     let contentToHide = '';
     let tMJ = globalPageData.runs.map(function (el){
         contentToHide += formatRunDetails(el,globalPageData.machines);
-        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Run Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\');return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\');return false;">Cancel run</a>':''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\');return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\');return false;">Cancel run</a>':'')+(el.status==='succeded'?getSuccOutputDet(el):''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
     $('div[id="runDetailsData"]').html('');
     $('div[id="runDetailsData"]').append(contentToHide);
     return tMJ;
 }
+
+function getSuccOutputDet(run){
+    let retText = '';
+    if (run.outputs && run.outputs.FlowOutput && run.outputs.FlowOutput.data && run.outputs.FlowOutput.data.length>0){
+        let succ = run.outputs.FlowOutput.data.filter(el => el.success);
+        let fail = run.outputs.FlowOutput.data.filter(el => !el.success);
+        retText = '<br />S:'+succ.length+', F:'+fail.length
+    }
+    return retText;
+} 
 
 function showModal(modalName,what, fromWhere){
     $('#'+what).html($('#'+fromWhere).html());
