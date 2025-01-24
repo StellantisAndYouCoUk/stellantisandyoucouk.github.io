@@ -194,7 +194,7 @@ function work(){
     $('#userName').text(loggedInUser.displayName)
     let qV = getUrlVars();
     if (page.includes('index.html')){
-        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
         let today00 = new Date();
         today00.setHours(0,0,0,0);
         let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
@@ -249,7 +249,7 @@ function work(){
         }
         if (!globalPageData.runs || (difFromNowInSeconds(globalPageData.runsTimeStamp)>12)){
             //globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-            fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
+            fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]},refereshRuns)
             globalPageData.runsTimeStamp = new Date();
         }
         if (!table){
@@ -371,7 +371,7 @@ function work(){
 }
 
 function reloadRuns(){
-    fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]},refereshRuns)
+    fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]},refereshRuns)
     globalPageData.runsTimeStamp = new Date();
 }
 
@@ -765,7 +765,7 @@ function cancelRun(queueId){
 function reRunInPreprod(runId){
     console.log('reRunInPreprod',runId);
     $('button[aria-label="Close"]').click();
-    let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
+    let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
     let run = req.find(el => el.runId === runId);
     console.log('machine',$('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val())
     console.log('mode',$('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val())
