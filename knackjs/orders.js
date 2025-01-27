@@ -132,16 +132,21 @@ hashCode = function(elem) {
 };
 
 function getTokenFromURL(url){
-  if (url.indexOf('token=')!==-1){
-    let tokenS = url.substring(url.indexOf('token=')+6);
-    if (tokenS.indexOf('&')!==-1){
-      tokenS = tokenS.substring(tokenS,tokenS.indexOf('&'));
-    } 
-    if (tokenS.indexOf('#')!==-1){
-      tokenS = tokenS.substring(tokenS,tokenS.indexOf('#'));
-    } 
-    return decodeURIComponent(tokenS);
-  } else { return null}
+  try {
+    if (url.indexOf('token=')!==-1){
+      let tokenS = url.substring(url.indexOf('token=')+6);
+      if (tokenS.indexOf('&')!==-1){
+        tokenS = tokenS.substring(tokenS,tokenS.indexOf('&'));
+      } 
+      if (tokenS.indexOf('#')!==-1){
+        tokenS = tokenS.substring(tokenS,tokenS.indexOf('#'));
+      } 
+      return decodeURIComponent(tokenS);
+    } else { return null}
+  } catch (ex){
+    console.log('getTokenFromURL',ex);
+    return null;
+  }
 }
 
 var submitUserLoginForm = function() {
