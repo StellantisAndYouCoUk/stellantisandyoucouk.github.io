@@ -3584,6 +3584,11 @@ $(document).on('knack-view-render.view_2686', function (event, view, data) {
 
 $(document).on('knack-scene-render.scene_753', function(event, scene) {
   recursiveSceneRefresh('753',['view_2686'],120000);
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('AddFilters',addFilters);
+  addFilters.onclick = function(this){
+    console.log('addFilters clicked')
+  }
 });
 
 //Workshop Controller all in one table (Off-site jobs)
