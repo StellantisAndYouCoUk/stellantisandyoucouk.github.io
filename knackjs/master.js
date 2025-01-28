@@ -5563,9 +5563,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
     const isEdge = navigator.userAgent.includes("Edg");
+    const isTablet = userAgent.includes("ipad") ||
+                 userAgent.includes("tablet") ||
+                 userAgent.includes("playbook") ||
+                 (userAgent.includes("android") && !userAgent.includes("mobile"));
 
 
-    if (Notification.permission === 'denied') {
+
+    if (Notification.permission === 'denied' && !isTablet) {
       const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notification-allow.png";
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
@@ -5611,7 +5616,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-    if (isEdge && Notification.permission !== 'denied') {
+    if (isEdge && Notification.permission !== 'denied' && !isTablet) {
       // Create a popup if the user is on Edge
       const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
       Swal.fire({
@@ -5624,6 +5629,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         confirmButtonText: "OK"
       });
 
+      }
+
+      if(isTablet){
+        alert("You are using tablet");
       }
 
     
