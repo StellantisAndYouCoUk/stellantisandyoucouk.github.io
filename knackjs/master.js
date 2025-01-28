@@ -5609,7 +5609,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           })
             .then((result) => {
               if(result.isConfirmed){
-              window.location.reload(true);
+                if (Notification.permission === 'granted') window.location.reload(true);
               }
             });
         // }
