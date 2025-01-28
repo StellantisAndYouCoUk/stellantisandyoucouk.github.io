@@ -5587,7 +5587,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             html: `
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg" class="notification-icon"> icon on the url</li>
+                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                           <li>Click Allow Notification</li>
                           <li>Click to refresh your page</li>
                         </ul>
@@ -5606,7 +5606,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                   Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"> to start again.</p>`,
+                    html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  class="notification-icon"> to start again.</p>`,
                   });
 
                 };
