@@ -5587,7 +5587,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             html: `
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
+                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg" class="notification-icon"> icon on the url</li>
                           <li>Click Allow Notification</li>
                           <li>Click to refresh your page</li>
                         </ul>
