@@ -3587,7 +3587,10 @@ $(document).on('knack-scene-render.scene_753', function(event, scene) {
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
   console.log('AddFilters',addFilters);
   addFilters.onclick = function(){
-    console.log('addFilters clicked')
+    console.log('addFilters clicked');
+    setTimeout(function () { 
+      $('div[id="kn-filters-form"] option[value="field_2586"]').remove();
+    }, 1000);
   }
 });
 
