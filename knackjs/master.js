@@ -5645,6 +5645,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             // Show success and then open a new tab
             Swal.fire({
               title: '',
+              position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
                           <ul class="listOfSteps">
