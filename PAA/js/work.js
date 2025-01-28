@@ -249,7 +249,7 @@ function work(){
         }
         if (!globalPageData.runs || (difFromNowInSeconds(globalPageData.runsTimeStamp)>12)){
             //globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-            fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]},refereshRuns)
+            fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
             globalPageData.runsTimeStamp = new Date();
         }
         if (!table){
@@ -371,7 +371,7 @@ function work(){
 }
 
 function reloadRuns(){
-    fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]},refereshRuns)
+    fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
     globalPageData.runsTimeStamp = new Date();
 }
 
@@ -725,7 +725,7 @@ function getRunsDataForTable(){
     }
     if (!globalPageData.runs){
         console.log('globalPageData.runs blank')
-        globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
+        globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
     }
     let contentToHide = '';
     let tMJ = globalPageData.runs.map(function (el){
