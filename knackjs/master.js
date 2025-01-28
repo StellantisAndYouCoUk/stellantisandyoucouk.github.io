@@ -5603,12 +5603,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         </ul>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
-            imageWidth: 600,
+            // imageWidth: 600,
             imageAlt: "Success GIF",
             confirmButtonText: 'Refresh The Page'
           })
-            .then(() => {
+            .then((result) => {
+              if(result.isConfirmed){
               window.location.reload(true);
+              }
             });
         // }
       });
