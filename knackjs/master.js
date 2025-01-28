@@ -5228,7 +5228,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
             }
             
             async function runSync() {
-              var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
               let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650 ; // Random delay
                 console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
                 await delay(delayRandomNumber); // Wait for the delay
