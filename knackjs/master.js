@@ -5609,7 +5609,17 @@ $(document).on('knack-scene-render.any', function(event, scene) {
           })
             .then((result) => {
               if(result.isConfirmed){
-                if (Notification.permission === 'granted') window.location.reload(true);
+                if (Notification.permission === 'granted') {
+                  window.location.reload(true)
+
+                }else{
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "You didn't enable the notification",
+                  });
+
+                };
               }
             });
         // }
