@@ -5631,8 +5631,39 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       }
 
-      if(isTablet){
-        alert("You are using tablet");
+
+      if (Notification.permission === 'denied' && isTablet) {
+        const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Android-Edge-Blocked.gif";
+  
+        Swal.fire({
+          title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+          html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
+          icon: "warning",
+          confirmButtonText: 'Click here to see how you can enable notifications',
+          focusConfirm: false,
+        }).then((result) => {
+            // Show success and then open a new tab
+            Swal.fire({
+              title: '',
+              html: `
+                          <h2>Steps to Enable Notifications</h2>
+                          <ul class="listOfSteps">
+                            <li>Touch to <strong>🔒</strong> icon into the URL.</li>
+                            <li>Touch Permissions and Touch Notification Blocked</li>
+                            <li>Enable Toggled into the Allow Notifications</li>
+                            <li>Don't forget to refresh page</li>
+                          </ul>
+              `,
+              imageUrl: gifUrlBlocked, // GIF displayed here
+              imageWidth: 600,
+              imageAlt: "Success GIF",
+              confirmButtonText: 'OK'
+            })
+              .then(() => {
+                window.open(); // Open the URL in a new tab
+              });
+          
+        });
       }
 
     
