@@ -5513,14 +5513,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
     if (Notification.permission === 'denied') {
-      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notificationBlocked.gif";
+      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notification-allow.png";
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
       Swal.fire({
-        title: 'Whoops! Notifications are Blocked',
-        html: `<h3>To turn on notification, click the blue <strong>Copy</strong> button below.</h3>`,
+        title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+        html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled ¯\_(ツ)_/¯</h3>`,
         icon: "warning",
-        confirmButtonText: 'Copy',
+        confirmButtonText: 'Click here to enable notifications',
         focusConfirm: false,
         preConfirm: () => {
           // Copy URL to clipboard
