@@ -5623,7 +5623,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       Swal.fire({
         allowEscapeKey: false,
         title: "Allow Notifications",
-        html: `<p><strong>Step 1:</strong> Click <em>"Little <img src="https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif">icon on url"</em> to allow notifications.</p>`, 
+        html: `<p><strong>Step 1:</strong> Click <em>"Little <img src="https://stellantisandyoucouk.github.io/imagesStore/bell-slash.svg">icon on url"</em> to allow notifications.</p>`, 
         imageUrl: gifUrlFirst,
         imageAlt: "Custom GIF",
         allowOutsideClick: false,
