@@ -5660,7 +5660,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               confirmButtonText: 'OK'
             })
               .then(() => {
-                window.open(); // Open the URL in a new tab
+                window.location.reload(true);
               });
           
         });
