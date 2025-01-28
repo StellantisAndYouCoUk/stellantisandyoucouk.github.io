@@ -3590,7 +3590,7 @@ $(document).on('knack-scene-render.scene_753', function(event, scene) {
     console.log('addFilters clicked');
     setTimeout(function () { 
       $('div[id="kn-filters-form"] option[value="field_2586"]').remove();
-    }, 1000);
+    }, 200);
   }
 });
 
