@@ -740,6 +740,54 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   let isToday = (today.toDateString() == dateTimeOfFirstRun.toDateString());
   if (!isToday){
     dateTimeOfFirstRun = new Date();
+    
+    // Notify user if user blocked notification.
+    console.log("Run once in a day...");
+
+
+    if (Notification.permission === 'denied') {
+      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notification-allow.png";
+      const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
+
+      Swal.fire({
+        title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+        html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
+        icon: "warning",
+        confirmButtonText: 'Click here to enable notifications',
+        focusConfirm: false,
+        preConfirm: () => {
+          // Copy URL to clipboard
+          navigator.clipboard.writeText(url).then(() => {
+            console.log('URL copied to clipboard');
+          }).catch(err => {
+            console.error('Error copying URL: ', err);
+          });
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Show success and then open a new tab
+          Swal.fire({
+            title: '',
+            html: `
+                        <h2>Steps to Enable Notifications</h2>
+                        <ul class="listOfSteps">
+                          <li>Click to <strong>Copy Url</strong> button and paste the copied URL into a new browser tab.</li>
+                          <li>Enable notifications in your browser settings.</li>
+                          <li>When you finish don't forget to refresh your page</li>
+                        </ul>
+            `,
+            imageUrl: gifUrlBlocked, // GIF displayed here
+            imageWidth: 600,
+            imageAlt: "Success GIF",
+            confirmButtonText: 'Copy Url'
+          })
+            .then(() => {
+              window.open(); // Open the URL in a new tab
+            });
+        }
+      });
+    }
+
     //window.location.reload(false);
     setTimeout(function () { $('a[class="kn-log-out"]').eq(0).click(); setTimeout(function () { window.location.reload(false); }, 1000);}, 1000);
   }
