@@ -5572,7 +5572,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
     if (Notification.permission === 'denied' && !isTablet && !isPhone) {
-      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/notification-allow.png";
+      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
       Swal.fire({
@@ -5580,37 +5580,37 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
         icon: "warning",
         confirmButtonText: 'Click here to enable notifications',
-        focusConfirm: false,
-        preConfirm: () => {
-          // Copy URL to clipboard
-          navigator.clipboard.writeText(url).then(() => {
-            console.log('URL copied to clipboard');
-          }).catch(err => {
-            console.error('Error copying URL: ', err);
-          });
-        }
+        focusConfirm: false
+        // preConfirm: () => {
+        //   // Copy URL to clipboard
+        //   navigator.clipboard.writeText(url).then(() => {
+        //     console.log('URL copied to clipboard');
+        //   }).catch(err => {
+        //     console.error('Error copying URL: ', err);
+        //   });
+        // }
       }).then((result) => {
-        if (result.isConfirmed) {
+        // if (result.isConfirmed) {
           // Show success and then open a new tab
           Swal.fire({
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
-                          <li>Click to <strong>Copy Url</strong> button and paste the copied URL into a new browser tab.</li>
-                          <li>Enable notifications in your browser settings.</li>
-                          <li>When you finish don't forget to refresh your page</li>
+                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
+                          <li>Click Allow Notification</li>
+                          <li>Click to refresh your page</li>
                         </ul>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             imageWidth: 600,
             imageAlt: "Success GIF",
-            confirmButtonText: 'Copy Url'
+            confirmButtonText: 'Refresh The Page'
           })
             .then(() => {
-              window.open(); // Open the URL in a new tab
+              window.location.reload(true);
             });
-        }
+        // }
       });
     }
 
@@ -5623,7 +5623,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       Swal.fire({
         allowEscapeKey: false,
         title: "Allow Notifications",
-        html: `<p><strong>Step 1:</strong> Click <em>"Little <img src="https://stellantisandyoucouk.github.io/imagesStore/bell.svg">icon on url"</em> to allow notifications.</p>`, 
+        html: `<p><strong>Step 1:</strong> Click <em>"Little <img src="https://stellantisandyoucouk.github.io/imagesStore/bell.svg"> icon on url"</em> to allow notifications.</p>`, 
         imageUrl: gifUrlFirst,
         imageAlt: "Custom GIF",
         allowOutsideClick: false,
