@@ -5518,7 +5518,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
       Swal.fire({
         title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-        html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled ¯\_(ツ)_/¯</h3>`,
+        html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
         icon: "warning",
         confirmButtonText: 'Click here to enable notifications',
         focusConfirm: false,
