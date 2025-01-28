@@ -5182,6 +5182,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
             if (confirmButton) confirmButton.id = "popup-confirm-button";
           },
         });
+      }else{
+        console.log("Missing Notification");
       }
       }
       
