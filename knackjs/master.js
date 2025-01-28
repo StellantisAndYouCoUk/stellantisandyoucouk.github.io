@@ -5581,17 +5581,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         icon: "warning",
         confirmButtonText: 'Click here to enable notifications',
         focusConfirm: false
-        // preConfirm: () => {
-        //   // Copy URL to clipboard
-        //   navigator.clipboard.writeText(url).then(() => {
-        //     console.log('URL copied to clipboard');
-        //   }).catch(err => {
-        //     console.error('Error copying URL: ', err);
-        //   });
-        // }
       }).then((result) => {
-        // if (result.isConfirmed) {
-          // Show success and then open a new tab
           Swal.fire({
             title: '',
             html: `
@@ -5616,7 +5606,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                   Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "You didn't enable the notification",
+                    html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"> to start again.</p>`,
                   });
 
                 };
