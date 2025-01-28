@@ -5194,7 +5194,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
                 
-                // showNotification(dataParsed, 0);
+                showNotification(dataParsed, 0);
                 showNotificationBackground(dataParsed.title,"",dataParsed);
 
                 // if (document.visibilityState === "visible") {
