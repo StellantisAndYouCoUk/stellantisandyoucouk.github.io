@@ -5563,10 +5563,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
     const isEdge = navigator.userAgent.includes("Edg");
-    const isTablet = navigator.userAgent.toLowerCase.includes("ipad") ||
-                 navigator.userAgent.toLowerCase.includes("tablet") ||
-                 navigator.userAgent.toLowerCase.includes("playbook") ||
-                 (navigator.userAgent.toLowerCase.includes("android") && !navigator.userAgent.includes("mobile"));
+    const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
+                 navigator.userAgent.toLowerCase().includes("tablet") ||
+                 navigator.userAgent.toLowerCase().includes("playbook") ||
+                 (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
 
 
 
