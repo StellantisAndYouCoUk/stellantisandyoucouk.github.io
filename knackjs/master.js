@@ -5720,6 +5720,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     icon: "error",
                     title: "Oops...",
                     html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
+                    allowOutsideClick: false
                   });
 
                 };
