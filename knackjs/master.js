@@ -5786,10 +5786,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               imageUrl: gifUrlBlocked, // GIF displayed here
               imageWidth: 600,
               imageAlt: "Success GIF",
-              confirmButtonText: 'OK'
+              confirmButtonText: 'OK',
+              allowOutsideClick: false,
+              allowEscapeKey: false
             })
-              .then(() => {
+              .then((result) => {
+                if(result.isConfirmed){
                 window.location.reload(true);
+                }
               });
           
         });
