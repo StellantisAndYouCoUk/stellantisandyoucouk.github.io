@@ -211,7 +211,7 @@ function work(){
         let isSomethingActiveD = req.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
             work();
-        }, (isSomethingActiveD?15000:45000));
+        }, (isSomethingActiveD?30000:60000));
 
     }
 
