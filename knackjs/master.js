@@ -5691,11 +5691,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         title: 'Whoops! You have previously <strong>blocked</strong> notifications',
         html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
         icon: "warning",
-        confirmButtonText: 'Click here to enable notifications',
-        allowOutsideClick: false
-              }).then((result) => {
+        confirmButtonText: 'Click here to enable notifications'
+                    }).then((result) => {
           Swal.fire({
             title: '',
+            allowOutsideClick: false,
             html: `
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
