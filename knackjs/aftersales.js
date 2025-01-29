@@ -800,7 +800,7 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
         //console.log(Knack.views["view_"+viewID].model.data);
         if (data.value<Knack.views["view_"+viewID].model.data.models[0].attributes[field]){
           console.log('change up');
-          showNotification('Virtual reception','','New Aftersales Virtual Reception Message')
+          // showNotification('Virtual reception','','New Aftersales Virtual Reception Message')
         }
       }
       data.value = Knack.views["view_"+viewID].model.data.models[0].attributes[field];
@@ -831,10 +831,10 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
           console.log('newRec', newRec)
           if (newRec.length>0){
             for (newRecOne of newRec){
-              showNotification(notifTitle,'',fillTextFromData(notifText, newRecOne.attributes))
+              // showNotification(notifTitle,'',fillTextFromData(notifText, newRecOne.attributes))
             }
           } else {
-            showNotification(notifTitle,'','Detail not on current list page')
+            // showNotification(notifTitle,'','Detail not on current list page')
           }
         }
       }
