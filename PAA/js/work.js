@@ -220,7 +220,9 @@ function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
-        $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'))
+        $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'));
+        let allowAttendedRuns = paaPostRequest({'action':'getAllowAttendedRuns','token':paaToken})
+        $('#allowAttendedBotsText').text('Allow Attended Bot Runs: '+(allowAttendedRuns.allowAttendedRuns?'Yes':'No'));
     }
 
     if (page.includes('flows.html')){
