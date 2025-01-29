@@ -820,7 +820,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url</li>
-                          <li>Click Reset Permissions</li>
+                          <li>Click Reset Permissions and Click somewhere on the page.</li>
                           <li>Click to Reload the page</li>
                           <li>Click Allow Notification</li>
                         </ul>
@@ -5700,7 +5700,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url</li>
-                          <li>Click Reset Permissions</li>
+                          <li>Click Reset Permissions and Click somewhere on the page.</li>
                           <li>Click to Reload the page</li>
                           <li>Click Allow Notification</li>
                         </ul>
@@ -5708,7 +5708,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             imageUrl: gifUrlBlocked, // GIF displayed here
             // imageWidth: 600,
             imageAlt: "Success GIF",
-            confirmButtonText: 'Refresh The Page'
+            confirmButtonText: 'Refresh the page'
           })
             .then((result) => {
               if(result.isConfirmed){
