@@ -4624,3 +4624,12 @@ img.user-icon:hover {
 .listOfSteps li {
   margin: 1rem;
 }
+
+
+img.sliders{
+  width: 30px;
+  height: 30px;
+  background-color: #445760;
+  border-radius: 50%;
+  padding: 2px;
+}

@@ -819,7 +819,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             html: `
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.png"> icon on the url</li>
+                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url</li>
                           <li>Click Reset Permissions</li>
                           <li>Click to Reload the page</li>
                           <li>Click Allow Notification</li>
@@ -5699,7 +5699,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             html: `
                         <h2>Steps to Enable Notifications</h2>
                         <ul class="listOfSteps">
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.png"> icon on the url</li>
+                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url</li>
                           <li>Click Reset Permissions</li>
                           <li>Click to Reload the page</li>
                           <li>Click Allow Notification</li>
