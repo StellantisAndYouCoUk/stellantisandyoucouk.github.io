@@ -395,9 +395,24 @@ function loadAppData(){
     sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
 }
 
+function manageRunsList(){
+
+}
+
+function getRunsServerData(dataName,refreshCallback, otherParams){
+    if (refreshCallback && globalPageData[dataName]){
+        refreshServerData(dataName,otherParams, true, refreshCallback);
+        return globalPageData[dataName];
+    }
+    return refreshServerData(dataName,otherParams);
+}
+
 function getServerData(dataName,refreshCallback=null, otherParams = {}, maxSecFromRefresh = 60){
     if (globalPageData[dataName] && globalPageData[dataName+'TimeStamp'] && difFromNowInSeconds(new Date(globalPageData[dataName+'TimeStamp']))<maxSecFromRefresh){
         return globalPageData[dataName];
+    }
+    if (dataName==='runs'){
+        return getRunsServerData(dataName,refreshCallback, otherParams, maxSecFromRefresh)
     }
     if (refreshCallback && globalPageData[dataName]){
         refreshServerData(dataName,otherParams, true, refreshCallback);
