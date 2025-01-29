@@ -399,7 +399,7 @@ function loadAppData(){
 }
 
 function getServerData(dataName, otherParams = {}, maxSecFromRefresh = 60){
-    if (globalPageData[dataName] && globalPageData[dataName+'TimeStamp'] && (new Date() - new Date(globalPageData[dataName+'TimeStamp']))<maxSecFromRefresh*1000){
+    if (globalPageData[dataName] && globalPageData[dataName+'TimeStamp'] && difFromNowInSeconds(new Date(globalPageData[dataName+'TimeStamp']))<maxSecFromRefresh){
         return globalPageData[dataName];
     }
     return refreshServerData(dataName,otherParams);
