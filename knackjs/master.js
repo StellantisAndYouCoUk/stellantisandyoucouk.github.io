@@ -5692,6 +5692,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
         icon: "warning",
         confirmButtonText: 'Click here to enable notifications',
+        allowOutsideClick: false,
         focusConfirm: false
       }).then((result) => {
           Swal.fire({
