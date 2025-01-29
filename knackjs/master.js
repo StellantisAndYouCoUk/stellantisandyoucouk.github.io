@@ -5563,7 +5563,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   $(document).on("click", ".not", function (e) {
     e.preventDefault(); // Prevent default link behavior
     const isEdge = navigator.userAgent.includes("Edg");
-    const isChrome = !navigator.userAgent.includes("Edg") &&!navigator.userAgent.includes("Chrome")
+    const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
     const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
                  navigator.userAgent.toLowerCase().includes("tablet") ||
                  navigator.userAgent.toLowerCase().includes("playbook") ||
