@@ -4637,7 +4637,6 @@ img.sliders{
 
 .reload-icon{
   background-color: #80D1F5;
-  color: white;
-  border-radius: 10%;
+  border-radius: 40%;
   padding: 10px;
 }
