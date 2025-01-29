@@ -5179,7 +5179,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 imageAlt: "Success GIF",
                 allowEscapeKey: false,
                 allowOutsideClick: false,
-                confirmButtonText: 'Refresh The Page'
+                confirmButtonText: 'Refresh Your Page'
               })
                 .then((result) => {
                   if(result.isConfirmed){
@@ -5661,7 +5661,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                           <li>Click Allow Notification</li>
-                          <li>Click to refresh your page</li>
+                          <li>Click to Refresh The Page</li>
                         </ol>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
