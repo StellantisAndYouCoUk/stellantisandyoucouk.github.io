@@ -296,11 +296,12 @@ function work(){
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
             $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
         } else {
-            //table.ajax.reload(null, false);
+            refereshRunsTable();
         }
 
         let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
+            console.log('runsWorkReload')
             work();
         }, (isSomethingActive?15000:45000));
 
