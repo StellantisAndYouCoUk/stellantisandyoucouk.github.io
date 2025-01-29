@@ -220,6 +220,7 @@ function work(){
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
         let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
+        $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').html('');
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
         const datatablesSimple = document.getElementById('datatablesSimpleFlowRunsSummary');
         if (datatablesSimple) {
