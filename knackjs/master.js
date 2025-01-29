@@ -5162,9 +5162,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
             icon: "warning",
             confirmButtonText: 'Click here to enable notifications',
-            focusConfirm: false,
-            allowEscapeKey: false,
-            allowOutsideClick: false
+            focusConfirm: false
           }).then((result) => {
               Swal.fire({
                 title: '',
@@ -5212,9 +5210,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             title: 'Whoops! You have previously <strong>blocked</strong> notifications',
             html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
             icon: "warning",
-            confirmButtonText: 'Click here to enable notifications',
-            allowEscapeKey: false,
-            allowOutsideClick: false
+            confirmButtonText: 'Click here to enable notifications'
                         }).then((result) => {
               Swal.fire({
                 title: '',
@@ -5232,6 +5228,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 imageUrl: gifUrlBlocked, // GIF displayed here
                 // imageWidth: 600,
                 imageAlt: "Success GIF",
+                allowEscapeKey: false,
+                allowOutsideClick: false,
                 confirmButtonText: 'Refresh the page'
               })
                 .then((result) => {
