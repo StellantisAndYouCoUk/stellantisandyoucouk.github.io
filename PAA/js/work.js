@@ -114,6 +114,8 @@ async function fillGlobalVarWithRequest(globalVarPropName,payloadObject, callbac
         console.log(requestObj);
         $.ajax(requestObj).done(function( data ) {
             globalPageData[globalVarPropName] = data;
+            globalPageData[globalVarPropName+'TimeStamp'] = new Date();
+            sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
             try{
                 if (callback) callback();
             } catch (ex){}
@@ -161,9 +163,19 @@ var table = null;
 var jsonData = null;
 var flowCode = null;
 
-var globalPageData = {};
+var globalPageData = null;
 
 function work(){
+    console.log('globalPageData1',globalPageData);
+    if (!globalPageData){
+        try {
+            globalPageData = JSON.parse(sessionStorage.getItem('globalPageData'));
+            console.log('globalPageData2',globalPageData);
+        } catch (ex){
+            globalPageData = {};
+        }
+        if (!globalPageData) globalPageData = {};
+    }
     let page = window.location.href;
     //Login page
     $("a[id='loginButton']").bind("click", function() {
@@ -191,10 +203,15 @@ function work(){
         }
     }
 
+    if (!globalPageData.appLoaded){
+        console.log('appNotLoaded',globalPageData.appLoaded)
+        loadAppData();
+    }
+
     $('#userName').text(loggedInUser.displayName)
     let qV = getUrlVars();
     if (page.includes('index.html')){
-        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
+        let req = getServerData('runs'); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
         let today00 = new Date();
         today00.setHours(0,0,0,0);
         let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
@@ -216,8 +233,9 @@ function work(){
     }
 
     if (page.includes('machines.html')){
-        let req = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':(qV['refresh']?true:false)});
-        let tM = req.map(function (el){
+        //let req = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':(qV['refresh']?true:false)});
+        let machines = getServerData('machines');
+        let tM = machines.map(function (el){
             return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.capacity===0?(el.attendedModeAvailable?'Available':'Not Ready')+' - '+dateTimeToGB(new Date(el.attendedModeAvailableTestDateTime)):'')+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td></tr>';
         })
         $('table[id="datatablesSimpleMachines"]>tbody').append(tM.join(''));
@@ -249,11 +267,6 @@ function work(){
     }
 
     if (page.includes('runs.html')){
-        if (!globalPageData.machines || (difFromNowInSeconds(globalPageData.machinesTimeStamp)>12)) {
-            //globalPageData.machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
-            fillGlobalVarWithRequest('machines',{'action':'getMachines','token':paaToken, 'refresh':false})
-            globalPageData.machinesTimeStamp = new Date();
-        }
         if (!globalPageData.runs || (difFromNowInSeconds(globalPageData.runsTimeStamp)>12)){
             //globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
             fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
@@ -374,6 +387,38 @@ function work(){
             $('#add-button').hide();
             refreshIntegrations(qV['flow'])
         });
+    }
+}
+
+function loadAppData(){
+    console.log('loadData')
+    getServerData('machines');
+    getServerData('runs');
+    globalPageData.appLoaded = true;
+    sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
+}
+
+function getServerData(dataName, otherParams = {}, maxSecFromRefresh = 60){
+    if (globalPageData[dataName] && globalPageData[dataName+'TimeStamp'] && (new Date() - new Date(globalPageData[dataName+'TimeStamp']))<maxSecFromRefresh*1000){
+        return globalPageData[dataName];
+    }
+    return refreshServerData(dataName,otherParams);
+}
+
+function refreshServerData(dataName, otherParams = {}, async = false){
+    let serverDataGetList = [{ name : 'machines', action:'getMachines'},{name:'runs',action:'getRuns',defaultParams:{'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]}}];
+    let serverDataGet = serverDataGetList.find(el => el.name === dataName);
+    let payload = {'action':serverDataGet.action,'token':paaToken};
+    if (serverDataGet.defaultParams) Object.assign(payload,serverDataGet.defaultParams);
+    if (otherParams) Object.assign(payload,otherParams);
+    if (async){
+        fillGlobalVarWithRequest(dataName,payload)
+    } else {
+        let data = paaPostRequest(payload);
+        globalPageData[dataName+'TimeStamp'] = new Date();
+        globalPageData[dataName] = data;
+        sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
+        return data;
     }
 }
 
@@ -726,17 +771,13 @@ function getSearchFromUrl(){
 
 function getRunsDataForTable(){
     console.log('getRunsDataForTable')
-    if (!globalPageData.machines){
-        console.log('globalPageData.machines blank')
-        globalPageData.machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
-    }
     if (!globalPageData.runs){
         console.log('globalPageData.runs blank')
         globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
     }
     let contentToHide = '';
     let tMJ = globalPageData.runs.map(function (el){
-        contentToHide += formatRunDetails(el,globalPageData.machines);
+        contentToHide += formatRunDetails(el,getServerData('machines'));
         return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\');return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\');return false;">Cancel run</a>':'')+(el.status==='succeded'?getSuccOutputDet(el):''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
