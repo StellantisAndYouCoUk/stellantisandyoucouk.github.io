@@ -211,7 +211,7 @@ function work(){
     $('#userName').text(loggedInUser.displayName)
     let qV = getUrlVars();
     if (page.includes('index.html')){
-        let req = getServerData('runs'); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
+        let req = getServerData('runs', work); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
         let today00 = new Date();
         today00.setHours(0,0,0,0);
         let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
@@ -234,10 +234,11 @@ function work(){
 
     if (page.includes('machines.html')){
         //let req = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':(qV['refresh']?true:false)});
-        let machines = getServerData('machines');
+        let machines = getServerData('machines', work);
         let tM = machines.map(function (el){
             return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.capacity===0?(el.attendedModeAvailable?'Available':'Not Ready')+' - '+dateTimeToGB(new Date(el.attendedModeAvailableTestDateTime)):'')+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td></tr>';
         })
+        $('table[id="datatablesSimpleMachines"]>tbody').html('');
         $('table[id="datatablesSimpleMachines"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleMachines');
         if (datatablesSimple) {
@@ -267,11 +268,6 @@ function work(){
     }
 
     if (page.includes('runs.html')){
-        if (!globalPageData.runs || (difFromNowInSeconds(globalPageData.runsTimeStamp)>12)){
-            //globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','filters':[]});
-            fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
-            globalPageData.runsTimeStamp = new Date();
-        }
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
@@ -398,21 +394,25 @@ function loadAppData(){
     sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
 }
 
-function getServerData(dataName, otherParams = {}, maxSecFromRefresh = 60){
+function getServerData(dataName,refreshCallback=null, otherParams = {}, maxSecFromRefresh = 60){
     if (globalPageData[dataName] && globalPageData[dataName+'TimeStamp'] && difFromNowInSeconds(new Date(globalPageData[dataName+'TimeStamp']))<maxSecFromRefresh){
+        return globalPageData[dataName];
+    }
+    if (refreshCallback && globalPageData[dataName]){
+        refreshServerData(dataName,otherParams, true, refreshCallback);
         return globalPageData[dataName];
     }
     return refreshServerData(dataName,otherParams);
 }
 
-function refreshServerData(dataName, otherParams = {}, async = false){
+function refreshServerData(dataName, otherParams = {}, async = false, callback=null){
     let serverDataGetList = [{ name : 'machines', action:'getMachines'},{name:'runs',action:'getRuns',defaultParams:{'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]}}];
     let serverDataGet = serverDataGetList.find(el => el.name === dataName);
     let payload = {'action':serverDataGet.action,'token':paaToken};
     if (serverDataGet.defaultParams) Object.assign(payload,serverDataGet.defaultParams);
     if (otherParams) Object.assign(payload,otherParams);
     if (async){
-        fillGlobalVarWithRequest(dataName,payload)
+        fillGlobalVarWithRequest(dataName,payload,callback)
     } else {
         let data = paaPostRequest(payload);
         globalPageData[dataName+'TimeStamp'] = new Date();
@@ -423,11 +423,12 @@ function refreshServerData(dataName, otherParams = {}, async = false){
 }
 
 function reloadRuns(){
-    fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
-    globalPageData.runsTimeStamp = new Date();
+    refreshServerData('runs',{},true,refereshRunsTable);
+    //fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
+    //globalPageData.runsTimeStamp = new Date();
 }
 
-function refereshRuns(){
+function refereshRunsTable(){
     console.log('refreshRuns')
     table.ajax.reload(null, false);
 }
@@ -771,13 +772,10 @@ function getSearchFromUrl(){
 
 function getRunsDataForTable(){
     console.log('getRunsDataForTable')
-    if (!globalPageData.runs){
-        console.log('globalPageData.runs blank')
-        globalPageData.runs = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
-    }
+    let runs = getServerData('runs',refereshRunsTable)
     let contentToHide = '';
-    let tMJ = globalPageData.runs.map(function (el){
-        contentToHide += formatRunDetails(el,getServerData('machines'));
+    let tMJ = runs.map(function (el){
+        contentToHide += formatRunDetails(el,getServerData('machines',null,{},300));
         return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\');return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\');return false;">Cancel run</a>':'')+(el.status==='succeded'?getSuccOutputDet(el):''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     console.log(tMJ);
