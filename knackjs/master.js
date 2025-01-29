@@ -5693,8 +5693,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         icon: "warning",
         confirmButtonText: 'Click here to enable notifications',
         allowOutsideClick: false,
-        focusConfirm: false
-      }).then((result) => {
+              }).then((result) => {
           Swal.fire({
             title: '',
             html: `
