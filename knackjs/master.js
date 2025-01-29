@@ -5620,7 +5620,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-    if (Notification.permission === 'denied' && !isTablet && !isPhone && !isEdge && isChrome) {
+    if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
       const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
 
       Swal.fire({
