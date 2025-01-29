@@ -5220,8 +5220,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                             <ol class="listOfSteps">
                               <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                               <li>Click Reset Permissions.</li>
-                              <li>Click anywhere on the page.</li>
-                              <li>Click to <span class="reload-icon">Reload</span> on the page.</li>
+                              <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg"> icon on the url.</li>
                               <li>Click Allow Notification</li>
                             </ol>
                 `,
@@ -5713,8 +5712,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                           <li>Click Reset Permissions.</li>
-                          <li>Click anywhere on the page.</li>
-                          <li>Click to <span class="reload-icon">Reload</span> on the page.</li>
+                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg"> icon on the url.</li>
                           <li>Click Allow Notification</li>
                         </ol>
             `,
