@@ -301,7 +301,6 @@ function work(){
 
         let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
-            console.log('runsWorkReload')
             work();
         }, (isSomethingActive?15000:45000));
 
@@ -763,7 +762,6 @@ function clearActionInfoAfter15sec(){
 
 function getSearchFromUrl(){
     let s = window.location.search;
-    console.log('s',s)
     if (s!==''){
         return {
             "search" : s.replace('?','')
