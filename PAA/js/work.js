@@ -208,6 +208,11 @@ function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
+        let isSomethingActiveD = req.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
+        setTimeout(() => {
+            work();
+        }, (isSomethingActiveD?15000:45000));
+
     }
 
     if (page.includes('machines.html')){
@@ -284,7 +289,7 @@ function work(){
             //table.ajax.reload(null, false);
         }
 
-        let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed');
+        let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
             work();
         }, (isSomethingActive?15000:45000));
