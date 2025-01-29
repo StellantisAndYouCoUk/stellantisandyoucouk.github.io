@@ -771,11 +771,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ul class="listOfSteps">
+                        <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                           <li>Click Allow Notification</li>
                           <li>Click to refresh your page</li>
-                        </ul>
+                        </ol>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             // imageWidth: 600,
@@ -818,12 +818,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ul class="listOfSteps">
+                        <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url</li>
                           <li>Click Reset Permissions and Click somewhere on the page.</li>
                           <li>Click to <span class="reload-icon">Reload</span> the page</li>
                           <li>Click Allow Notification</li>
-                        </ul>
+                        </ol>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             // imageWidth: 600,
@@ -5653,11 +5653,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ul class="listOfSteps">
+                        <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                           <li>Click Allow Notification</li>
                           <li>Click to refresh your page</li>
-                        </ul>
+                        </ol>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             // imageWidth: 600,
@@ -5704,13 +5704,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             allowOutsideClick: false,
             html: `
                         <h2>Steps to Enable Notifications</h2>
-                        <ul class="listOfSteps">
+                        <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                           <li>Click Reset Permissions.</li>
                           <li>Click anywhere on the page.</li>
                           <li>Click to <span class="reload-icon">Reload</span> on the page.</li>
                           <li>Click Allow Notification</li>
-                        </ul>
+                        </ol>
             `,
             imageUrl: gifUrlBlocked, // GIF displayed here
             // imageWidth: 600,
@@ -5772,12 +5772,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
-                          <ul class="listOfSteps">
+                          <ol class="listOfSteps">
                             <li>Touch to <strong>🔒</strong> icon into the URL.</li>
                             <li>Touch Permissions and Touch Notification Blocked</li>
                             <li>Enable Toggled into the Allow Notifications</li>
                             <li>Don't forget to refresh page</li>
-                          </ul>
+                          </ol>
               `,
               imageUrl: gifUrlBlocked, // GIF displayed here
               imageWidth: 600,
@@ -5808,12 +5808,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
-                          <ul class="listOfSteps">
+                          <ol class="listOfSteps">
                             <li>Touch to <strong>🔒</strong> icon into the URL.</li>
                             <li>Touch Permissions and Touch Notification Blocked</li>
                             <li>Enable Toggled into the Allow Notifications</li>
                             <li>Don't forget to refresh page</li>
-                          </ul>
+                          </ol>
               `,
               imageUrl: gifUrlBlocked, // GIF displayed here
               imageWidth: 600,
