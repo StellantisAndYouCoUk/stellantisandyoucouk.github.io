@@ -4633,3 +4633,12 @@ img.sliders{
   border-radius: 50%;
   padding: 2px;
 }
+
+
+.reload{
+  width: 45px;
+  height: 45px;
+  background-color: #80D1F5;
+  color: white;
+  border-radius: 10%;
+}
