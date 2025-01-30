@@ -246,8 +246,8 @@ function work(){
             new simpleDatatables.DataTable(datatablesSimple);
         }
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'));
-        let allowAttendedRuns = paaPostRequest({'action':'getAllowAttendedRuns','token':paaToken})
-        $('#allowAttendedBotsText').text('Allow Attended Bot Runs: '+(allowAttendedRuns.allowAttendedRuns?'Yes':'No'));
+        let allowAttendedRuns = paaPostRequest({'action':'getMachineSettings','token':paaToken})
+        $('#allowAttendedBotsText').text('Allow Attended Bot Runs: '+(allowAttendedRuns.allowAttendedRuns?'Yes':'No')+', Number of machines to leave free over priority 1'+allowAttendedRuns.numberOfMachinesToLeaveFreeOverPriority1);
     }
 
     if (page.includes('flows.html')){
@@ -264,7 +264,7 @@ function work(){
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
-        let machines = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':false});
+        let machines = getServerData('machines',null,{},300);
         $('#runMachine').html('<option>'+machines.map(el => el.name).join('</option><option>')+'</option>')
     }
 
