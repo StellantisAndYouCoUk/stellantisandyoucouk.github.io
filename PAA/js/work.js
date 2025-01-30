@@ -247,7 +247,8 @@ function work(){
         }
         $('div[class="datatable-search"]').after($('div[class="datatable-dropdown"]'));
         let allowAttendedRuns = paaPostRequest({'action':'getMachineSettings','token':paaToken})
-        $('#allowAttendedBotsText').text('Allow Attended Bot Runs: '+(allowAttendedRuns.allowAttendedRuns?'Yes':'No')+ ' - <a href="#" onclick="enableAttendedRuns('+allowAttendedRuns+'); return false;">'+(allowAttendedRuns.allowAttendedRuns?'Enable':'Disable')+ '</a> / Number of machines to leave free over priority 1 : '+allowAttendedRuns.numberOfMachinesToLeaveFreeOverPriority1);
+        $('#allowAttendedBotsText').html('Allow Attended Bot Runs: '+(allowAttendedRuns.allowAttendedRuns?'Yes':'No')+ ' - <a href="#" onclick="enableAttendedRuns('+!allowAttendedRuns.allowAttendedRuns+'); return false;">'+(allowAttendedRuns.allowAttendedRuns?'Disable':'Enable')+ '</a> / Number of machines to leave free over priority 1 : '+allowAttendedRuns.numberOfMachinesToLeaveFreeOverPriority1);
+        if (qV['refresh']) paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':true});
     }
 
     if (page.includes('flows.html')){
@@ -385,6 +386,11 @@ function work(){
             refreshIntegrations(qV['flow'])
         });
     }
+}
+
+function enableAttendedRuns(enable){
+    let res = paaPostRequest({'action':'setAllowAttendedRuns','token':paaToken,'allowAttendedRuns':enable});
+    work();
 }
 
 function loadAppData(){
