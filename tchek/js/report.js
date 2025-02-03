@@ -21,6 +21,9 @@ function work(){
 
     let reportD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/A9g4nVwadc9Zjbzlg/records/'+qV['date']+'_'+qV['regNumber']+'_reportData');
     console.log(reportD);
+    if (reportD.error){
+        $('#dataContent').append('<b>The report for the Registration Number and Date was not found</b>')
+    }
 
     let html = '';
     let odd = true;
