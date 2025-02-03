@@ -4723,6 +4723,8 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
 	
 	});
 
+
+
 //Hover's for sales prospecting Bar Chart
 
 $(document).on('knack-view-render.view_4435', function(event, scene) {
