@@ -27,6 +27,9 @@ function work(){
 
     let html = '';
     let odd = true;
+    reportD.map(el => el.isAnyDamageInCarPartInStatusDELETED = isAnyDamageInCarPartInStatus(el,'DELETED'));
+    reportD = reportD.sort((a,b) => (a.isAnyDamageInCarPartInStatusDELETED && !b.isAnyDamageInCarPartInStatusDELETED?-1:1))
+    console.log(reportD)
     for (let i = 0;i<reportD.length;i++){
         if (odd) html += '<div class="row">'
         html += '<div class="col-xl-6"><div class="card mb-4"><div class="card-header">'+reportD[i].vehiclePartLabel+' - '+reportD[i].vehiclePartLocationLabel+'</div><div class="card-body"><div class="row">';
@@ -43,6 +46,17 @@ function work(){
     }
     
     $('#dataContent').append(html)
+}
+
+function isAnyDamageInCarPartInStatus(carPart, status){
+    let isAnyDamageInCarPartInStatusO = false;
+    carPart.images.map(function (el){
+        el.damages.map(function (el2){
+            console.log(el2.status)
+            if (el2.status===status) isAnyDamageInCarPartInStatusO = true;
+        })
+    })
+    return isAnyDamageInCarPartInStatusO;
 }
 
 function callGetHttpRequest(url, headers){
