@@ -32,7 +32,7 @@ function work(){
     console.log(reportD)
     for (let i = 0;i<reportD.length;i++){
         if (odd) html += '<div class="row">'
-        html += '<div class="col-xl-6"><div class="card mb-4"><div class="card-header">'+reportD[i].vehiclePartLabel+' - '+reportD[i].vehiclePartLocationLabel+'</div><div class="card-body"><div class="row">';
+        html += '<div class="col-xl-6"><div class="card mb-4"><div class="card-header" '+(reportD[i].isAnyDamageInCarPartInStatusDELETED?'style="background-color:rgb(231, 185, 168);"':'style="background-color:rgb(141, 211, 206);"')+'">'+reportD[i].vehiclePartLabel+' - '+reportD[i].vehiclePartLocationLabel+'</div><div class="card-body"><div class="row">';
         for (let j = 0;j<reportD[i].images.length;j++){
             html +='<div class="card mb-4 col-auto col"><a href="'+reportD[i].images[j].imageUrl+'" target="_blank"><img src="'+reportD[i].images[j].thumbUrl+'" width="250"></a><br>';
             for (let k = 0;k<reportD[i].images[j].damages.length;k++){
