@@ -4723,59 +4723,6 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
 	
 	});
 
-//Hover's for sales prospecting List
-
-$(document).on('knack-view-render.view_4510', function(event, scene) {
-//Hover for sales prospecting
-//scene, view, field to have hover, hover info
-//Service Details over Reg 
-		 tooltipsTable('1340','4510','field_3350','field_3359');	
-	  $('th[class="field_3350"]').hide();
-    $('td[class*="field_3350"]').hide();
-
-//vhc work over model
-		 tooltipsTable('1340','4510','field_3351','field_3354');	
-	  $('th[class="field_3351"]').hide();
-    $('td[class*="field_3351"]').hide();	
-	
-//historic visit over due in
-		 tooltipsTable('1340','4510','field_3352','field_3248');	
-	  $('th[class="field_3352"]').hide();
-    $('td[class*="field_3352"]').hide();	
-	
-//cust. name/emax notes over last contact
-		 tooltipsTable('1340','4510','field_3353','field_3330');	
-	  $('th[class="field_3353"]').hide();
-    $('td[class*="field_3353"]').hide();	
-
-
-//date sold over sold new/used
-		 tooltipsTable('1340','4510','field_3355','field_3371');	
-	  $('th[class="field_3355"]').hide();
-    $('td[class*="field_3355"]').hide();
-
-//1 Link cust.name over name
-		 tooltipsTable('1340','4510','field_3356','field_3372');	
-	  $('th[class="field_3356"]').hide();
-    $('td[class*="field_3356"]').hide();
-
-//Finance Details Over Finance
-		 tooltipsTable('1340','4510','field_3357','field_3349');	
-	  $('th[class="field_3357"]').hide();
-    $('td[class*="field_3357"]').hide();		
-
-//Mileage over AT data
-		 tooltipsTable('1340','4510','field_3361','field_3358');	
-	  $('th[class="field_3361"]').hide();
-    $('td[class*="field_3361"]').hide();	
-	/* $('div[id="view_4510"] table>tbody>tr').each(function(){
-	 $(this).find('td[data-field-key="field_3358"]').attr('data-tooltip',getFieldForRowID('view_4510','field_3280',$(this).attr('id')));
-      $(this).find('td[data-field-key="field_3358"]').addClass('tooltip-left');
-		  $('th[class="field_3280"]').hide();
-    $('td[class*="field_3280"]').hide();*/
-
-	
-	});
 
 
 //Hover's for sales prospecting Bar Chart
