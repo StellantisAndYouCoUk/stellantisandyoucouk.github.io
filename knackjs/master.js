@@ -5338,7 +5338,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 
                 showNotification(dataParsed, 0);
                 
-                if(!dataParsed.title.toString().includes("Hi,") || !dataParsed.title.toString().includes("Deposit")){
+                if(!dataParsed.title.toString().includes("Hi,") && !dataParsed.title.toString().includes("Deposit")){
                 showNotificationBackground(dataParsed.title,"",dataParsed);
                 }
                 // if (document.visibilityState === "visible") {
@@ -5385,7 +5385,7 @@ function createdMotabReturnsViewImageUpload(){
     spiritLine : false,
     imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
     imageOverlayEffect : true,
-    imageOverlayOpacity : null,
+    imageOverlayOpacity : nul
     allowLandscape : true,
     allowPortrait : false,
     actionAfterPhoto : 'compare', // none, readable, compare,
