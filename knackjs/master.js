@@ -1417,6 +1417,36 @@ $(document).on('knack-form-submit.view_7704', function(event, view, data) {
 
 });
 
+// Part Exchange V2 REDIRECT (when aesthetic repair costs are updated)
+
+// Code to wait following Form Submission while record is created
+
+$(document).on('knack-form-submit.view_7748', function(event, view, data) { 
+
+
+	setTimeout(function(){ 
+
+    	Knack.showSpinner();
+
+    }, 0); 
+
+  
+
+	commandURL = "https://hook.eu1.make.celonis.com/qyqthqzxxmfe57y3271yxpapbjeb4qas?recordid=" + data.id ;
+
+
+ 	$.get(commandURL, function(data, status){
+
+
+      Knack.hideSpinner();
+
+      $(".kn-message.success").html("<b>" + data + "</b>");
+
+
+    });
+
+});
+
 //Hide Crumbtrail & Header
 $(document).on('knack-scene-render.scene_1298', function (event, view, data) {
 	$('[class="kn-container"]').hide();
