@@ -5338,7 +5338,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 
                 showNotification(dataParsed, 0);
                 
-                if(!dataParsed.title.toString().includes("Hi,")){
+                if(!dataParsed.title.toString().includes("Hi,") || !dataParsed.title.toString().includes("Deposit")){
                 showNotificationBackground(dataParsed.title,"",dataParsed);
                 }
                 // if (document.visibilityState === "visible") {
