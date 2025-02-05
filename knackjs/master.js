@@ -5337,8 +5337,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 
                 showNotification(dataParsed, 0);
+                
+                if(!dataParsed.title.toString().includes("Hi,")){
                 showNotificationBackground(dataParsed.title,"",dataParsed);
-
+                }
                 // if (document.visibilityState === "visible") {
                 //   showNotificationBackground(dataParsed.title,"",dataParsed.message);
 
