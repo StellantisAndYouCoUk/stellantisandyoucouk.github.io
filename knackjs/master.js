@@ -5139,7 +5139,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
  
 
       if (Notification.permission === 'granted'){
-        if(!parsedData.title.toString().includes("Message")){
+        if(!parsedData.title.toString().includes("Message") && !parsedData.title.toString().includes("Waiting Sales")){
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
