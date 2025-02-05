@@ -1670,7 +1670,7 @@ $(document).on('knack-view-render.view_7045', function(event, view, data) {
 });
 
 $(document).on('knack-view-render.view_7056', function(event, view, data) {
-  console.log('view7045');
+  console.log('view7056');
   Knack.fn.hideExpand("view_7056");
 });
 
