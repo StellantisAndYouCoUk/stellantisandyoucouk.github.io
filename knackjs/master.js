@@ -1669,6 +1669,11 @@ $(document).on('knack-view-render.view_7045', function(event, view, data) {
   Knack.fn.hideExpand("view_7045");
 });
 
+$(document).on('knack-view-render.view_7056', function(event, view, data) {
+  console.log('view7045');
+  Knack.fn.hideExpand("view_7056");
+});
+
 
 // MANAGER VIEWS
 
