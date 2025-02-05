@@ -5385,7 +5385,7 @@ function createdMotabReturnsViewImageUpload(){
     spiritLine : false,
     imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
     imageOverlayEffect : true,
-    imageOverlayOpacity : nul
+    imageOverlayOpacity : null,
     allowLandscape : true,
     allowPortrait : false,
     actionAfterPhoto : 'compare', // none, readable, compare,
