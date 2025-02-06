@@ -5155,7 +5155,8 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
     console.log('customerAddress',customerAddress, 'customAddress',customAddress);
     if ((customerAddress!=='' && useCustomerAddress) || customAddress){
       if (!status || !status.addressData || (customAddress && status.addressToUse !==customAddress)){
-        let addressToUse = $('div[class="field_308"]>div>span>span').html().replace('<br>',', ');
+        let addressToUse = $('div[class="field_308"]>div>span>span').html();
+        if (addressToUse) addressToUse = addressToUse.replace('<br>',', ');
         if (customAddress) addressToUse = customAddress;
         let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:addressToUse});
         console.log('closestD',closestD)
