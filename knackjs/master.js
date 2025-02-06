@@ -257,6 +257,13 @@ $(document).on('knack-view-render.any', function(event, view, data) {
 
 //MASTER/SLAVE CONNECT - the scene have one view of Account details, where is only email field without header, the source of IFRAME is the public address of slave page
 
+	//Deliver Broker Management
+	
+	$(document).on('knack-view-render.view_6288', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#delivery-broker-management1/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 $(document).on('knack-view-render.view_2163', function(event, view, data) {
     var token = Knack.getUserAttributes().values["field_6440"];
     $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
@@ -426,15 +433,15 @@ $(document).on('knack-view-render.view_6234', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#bulk-cronos-orders-to-tag-in-customer-first/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
-$(document).on('knack-view-render.view_6288', function(event, view, data) {
+/*$(document).on('knack-view-render.view_6288', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-vehicle-administration/fleet-master-doc/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
-});
+});*/
 
 //Stapletons Page
 $(document).on('knack-view-render.view_7615', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
-  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#stapletons-sor-tyre-reporting/?token='+encodeURIComponent(token)  + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#tyre-availability-reporting/?token='+encodeURIComponent(token)  + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 //tech view 2 est
@@ -565,7 +572,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 {view:'view_5743',url:'#aftersales-service-reporting/post-visit-reporting/'},
 {view:'view_5744',url:'#aftersales-service-reporting/post-visit-invoice-reporting/'},
 {view:'view_5745',url:'#aftersales-service-reporting/digital-adoption/'},
-{view:'view_5746',url:'#aftersales-service-reporting/virtual-reception/'},
+{view:'view_5746',url:'#aftersales-service-reporting/messages-reporting/'},
 {view:'view_5747',url:'#aftersales-service-reporting/regional-aftersales-reporting/'},
 {view:'view_6169',url:'#after-sales-vehicle-lookup/manager-tours/'},
 /*Workshop control*/ {view:'view_6483',url:'#after-sales-vehicle-lookup/workshop-control/'},
@@ -576,7 +583,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 /*TECH V3*/{view:'view_6379',url:'#after-sales-vehicle-lookup/technician-view-my-jobs-v2/'},
 /*Daily activity snapshot*/{view:'view_6388',url:'#aftersales-service-reporting/activity-snapshot/'},		
 /*Colection/Delivery Driver*/ {view:'view_6462',url:'#cd-check-in/'},
-/*Stapletons Tyre Stock Profiling*/ {view:'view_7468',url:'#tyres-availability-tracking-by-dealer--region'},
+/*Stapletons Tyre Stock Profiling*/ {view:'view_7468',url:'#tyre-availability-reporting'},
 /*Parts sales reporting {view:'view_4929 ',url:'#parts-sales-reporting/'},*/
 {view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'},
 /*Workshop capacity*/ {view:'view_7528',url:'#aftersales-service-reporting/workshop-capacity/'},
@@ -1410,6 +1417,36 @@ $(document).on('knack-form-submit.view_7704', function(event, view, data) {
 
 });
 
+// Part Exchange V2 REDIRECT (when aesthetic repair costs are updated)
+
+// Code to wait following Form Submission while record is created
+
+$(document).on('knack-form-submit.view_7748', function(event, view, data) { 
+
+
+	setTimeout(function(){ 
+
+    	Knack.showSpinner();
+
+    }, 0); 
+
+  
+
+	commandURL = "https://hook.eu1.make.celonis.com/qyqthqzxxmfe57y3271yxpapbjeb4qas?recordid=" + data.id ;
+
+
+ 	$.get(commandURL, function(data, status){
+
+
+      Knack.hideSpinner();
+
+      $(".kn-message.success").html("<b>" + data + "</b>");
+
+
+    });
+
+});
+
 //Hide Crumbtrail & Header
 $(document).on('knack-scene-render.scene_1298', function (event, view, data) {
 	$('[class="kn-container"]').hide();
@@ -1660,6 +1697,11 @@ $(document).on('knack-view-render.view_6989', function(event, view, data) {
 $(document).on('knack-view-render.view_7045', function(event, view, data) {
   console.log('view7045');
   Knack.fn.hideExpand("view_7045");
+});
+
+$(document).on('knack-view-render.view_7056', function(event, view, data) {
+  console.log('view7056');
+  Knack.fn.hideExpand("view_7056");
 });
 
 
@@ -5097,7 +5139,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
  
 
       if (Notification.permission === 'granted'){
-        if(!parsedData.title.toString().includes("Message")){
+        if(!parsedData.title.toString().includes("Message") && !parsedData.title.toString().includes("Waiting Sales")){
         Swal.fire({
           title: `<strong>${parsedData.title}</strong>`,
           html: `
@@ -5330,8 +5372,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 
                 showNotification(dataParsed, 0);
+                
+                if(!dataParsed.title.toString().includes("Hi,") && !dataParsed.title.toString().includes("Deposit")){
                 showNotificationBackground(dataParsed.title,"",dataParsed);
-
+                }
                 // if (document.visibilityState === "visible") {
                 //   showNotificationBackground(dataParsed.title,"",dataParsed.message);
 
