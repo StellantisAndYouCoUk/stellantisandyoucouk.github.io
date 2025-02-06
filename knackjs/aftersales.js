@@ -5186,7 +5186,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
     if (status && (status.lastVisitData || status.addressData)){
       availabilityHTML(status, useCustomerAddress, customAddress);
     } else {
-      $('div[id="view_3923"]>div').html('<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getCustomAddressForTravelDistance();" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Update Address for W/shop Lead Time</span></span> <!----></a></span></div></div>');
+      $('div[id="view_3923"]>div').html('<b>Workshop Availability</b><br /><div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getCustomAddressForTravelDistance();" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Update Address for W/shop Lead Time</span></span> <!----></a></span></div></div>');
     }
 
     if (retry < 10 && (!status.lastVisitData || !status.addressData)){
