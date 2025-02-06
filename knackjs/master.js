@@ -572,7 +572,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 {view:'view_5743',url:'#aftersales-service-reporting/post-visit-reporting/'},
 {view:'view_5744',url:'#aftersales-service-reporting/post-visit-invoice-reporting/'},
 {view:'view_5745',url:'#aftersales-service-reporting/digital-adoption/'},
-{view:'view_5746',url:'#aftersales-service-reporting/virtual-reception/'},
+{view:'view_5746',url:'#aftersales-service-reporting/messages-reporting/'},
 {view:'view_5747',url:'#aftersales-service-reporting/regional-aftersales-reporting/'},
 {view:'view_6169',url:'#after-sales-vehicle-lookup/manager-tours/'},
 /*Workshop control*/ {view:'view_6483',url:'#after-sales-vehicle-lookup/workshop-control/'},
