@@ -115,7 +115,7 @@ async function fillGlobalVarWithRequest(globalVarPropName,payloadObject, callbac
         $.ajax(requestObj).done(function( data ) {
             globalPageData[globalVarPropName] = data;
             globalPageData[globalVarPropName+'TimeStamp'] = new Date();
-            sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
+            saveAppData();
             try{
                 if (callback) callback();
             } catch (ex){}
@@ -169,9 +169,11 @@ function work(){
     console.log('globalPageData1',globalPageData);
     if (!globalPageData){
         try {
-            globalPageData = JSON.parse(sessionStorage.getItem('globalPageData'));
+            let lzwString = sessionStorage.getItem('globalPageData');
+            globalPageData = JSON.parse(arrayBufferToString(gzip.unzip(base64ToArrayBuffer(lzwString),{level:9})));
             console.log('globalPageData2',globalPageData);
         } catch (ex){
+            console.log(ex);
             globalPageData = {};
         }
         if (!globalPageData) globalPageData = {};
@@ -388,6 +390,35 @@ function work(){
     }
 }
 
+function arrayBufferToBase64( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
+}
+
+function arrayBufferToString( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return binary;
+}
+
+function base64ToArrayBuffer(base64) {
+    var binaryString = atob(base64);
+    var bytes = new Uint8Array(binaryString.length);
+    for (var i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    return new Uint8Array(bytes.buffer);
+}
+
 function enableAttendedRuns(enable){
     let res = paaPostRequest({'action':'setAllowAttendedRuns','token':paaToken,'allowAttendedRuns':enable});
     work();
@@ -398,7 +429,10 @@ function loadAppData(){
     getServerData('machines');
     getServerData('runs');
     globalPageData.appLoaded = true;
-    sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
+}
+
+function saveAppData(){
+    sessionStorage.setItem("globalPageData",arrayBufferToBase64(gzip.zip(JSON.stringify(globalPageData),{level:9})));
 }
 
 function manageRunsList(){
@@ -439,7 +473,7 @@ function refreshServerData(dataName, otherParams = {}, async = false, callback=n
         let data = paaPostRequest(payload);
         globalPageData[dataName+'TimeStamp'] = new Date();
         globalPageData[dataName] = data;
-        sessionStorage.setItem("globalPageData",JSON.stringify(globalPageData));
+        saveAppData();
         return data;
     }
 }
