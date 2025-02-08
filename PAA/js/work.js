@@ -462,7 +462,7 @@ function getServerData(dataName,refreshCallback=null, otherParams = {}, maxSecFr
 }
 
 function refreshServerData(dataName, otherParams = {}, async = false, callback=null){
-    let serverDataGetList = [{ name : 'machines', action:'getMachines'},{name:'runs',action:'getRuns',defaultParams:{'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]}}];
+    let serverDataGetList = [{ name : 'machines', action:'getMachines'},{name:'runs',action:'getRuns',defaultParams:{'sortField':'createdDateTime','sortDirection':'Desc','limit':1500,'filters':[]}}];
     let serverDataGet = serverDataGetList.find(el => el.name === dataName);
     let payload = {'action':serverDataGet.action,'token':paaToken};
     if (serverDataGet.defaultParams) Object.assign(payload,serverDataGet.defaultParams);
