@@ -423,6 +423,17 @@ body {
   font-weight: bold;
 }
 
+/*Used Stock Management VHC Auth/Awaiting Auth filters to change colour */
+
+#view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(34) > a,
+#view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(35) > a {
+
+  background-color: #ffa100;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
 /* Used Vehicle Deal File Reg No. */
 
 /********** Stock Search Button to DS Imagery Page ***********/
