@@ -159,6 +159,11 @@ function getLoggedInUser(){
     return paaPostRequest({'action':'userInfo','token':paaToken});
 }
 
+function pad(n) {return n < 10 ? "0"+n : n;}
+function dateToGB(dateobj){
+    return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
+}
+
 var table = null;
 var jsonData = null;
 var flowCode = null;
@@ -213,17 +218,25 @@ function work(){
     $('#userName').text(loggedInUser.displayName)
     let qV = getUrlVars();
     if (page.includes('index.html')){
+        let sumDate = qV['date'];
+        console.log('sumDate',sumDate);
         let req = getServerData('runs', work); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
-        let today00 = new Date();
-        today00.setHours(0,0,0,0);
-        let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        let sumDateStart = new Date();
+        sumDateStart.setHours(0,0,0,0);
+        if (sumDate==='yesterday'){
+            sumDateStart.setDate(sumDateStart.getDate()-1);
+        }
+        $('#sumDate').text(dateToGB(sumDateStart))
+        let sumDateEnd = new Date(sumDateStart.getTime());
+        sumDateEnd.setHours(23,59,59,59);
+        let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' queued now'));
-        let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
-        let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').html('');
-        $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>today00 && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
+        $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
         const datatablesSimple = document.getElementById('datatablesSimpleFlowRunsSummary');
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
