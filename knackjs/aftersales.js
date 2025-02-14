@@ -4703,10 +4703,11 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
     $('td[class*="field_3355"]').hide();
 
 //1 Link cust.name over name
-		 tooltipsTable('1313','4431','field_3356','field_3372');	
+		 tooltipsTable('1313','4431','field_3507','field_3372');	
 	  $('th[class="field_3356"]').hide();
     $('td[class*="field_3356"]').hide();
-
+  $('th[class="field_3507"]').hide();
+    $('td[class*="field_3507"]').hide();
 //Finance Details Over Finance
 		 tooltipsTable('1313','4431','field_3357','field_3349');	
 	  $('th[class="field_3357"]').hide();
