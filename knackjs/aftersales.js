@@ -4504,6 +4504,8 @@ $(document).on('knack-view-render.view_3278', function (event, view, data) {
     $('td[class*="field_1532"]').hide();
     $('th[class="field_2298"]').hide();
     $('td[class*="field_2298"]').hide();
+$('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
     });
 	
 //hover for labour details on workshop Today's jobs not checked in
@@ -4677,10 +4679,18 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
     $('td[class*="field_3355"]').hide();
 
 //1 Link cust.name over name
-		 tooltipsTable('1313','4431','field_3356','field_3372');	
+		 tooltipsTable('1313','4431','field_3507','field_3372');	
 	  $('th[class="field_3356"]').hide();
     $('td[class*="field_3356"]').hide();
-
+  $('th[class="field_3507"]').hide();
+    $('td[class*="field_3507"]').hide();
+	
+ /* $('div[id="view_4431"] table>tbody>tr').each(function(){
+  
+	/$('div[id="view_4431"] table>tbody>tr').each(function(){
+	 $(this).find('td[data-field-key="field_3372"]').attr('data-tooltip',getFieldForRowID('view_4431','field_3507',$(this).attr('id')));
+      $(this).find('td[data-field-key="field_3372"]').addClass('tooltip-left');*/
+	
 //Finance Details Over Finance
 		 tooltipsTable('1313','4431','field_3357','field_3349');	
 	  $('th[class="field_3357"]').hide();
@@ -4690,11 +4700,7 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
 		 tooltipsTable('1313','4431','field_3361','field_3358');	
 	  $('th[class="field_3361"]').hide();
     $('td[class*="field_3361"]').hide();	
-	/* $('div[id="view_4431"] table>tbody>tr').each(function(){
-	 $(this).find('td[data-field-key="field_3358"]').attr('data-tooltip',getFieldForRowID('view_4431','field_3280',$(this).attr('id')));
-      $(this).find('td[data-field-key="field_3358"]').addClass('tooltip-left');
-		  $('th[class="field_3280"]').hide();
-    $('td[class*="field_3280"]').hide();*/
+	
 
 	
 	});
