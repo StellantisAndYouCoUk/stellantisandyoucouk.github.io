@@ -4708,10 +4708,12 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
     $('td[class*="field_3356"]').hide();
   $('th[class="field_3507"]').hide();
     $('td[class*="field_3507"]').hide();
-
-	/* $('div[id="view_4431"] table>tbody>tr').each(function(){
+	
+  $('div[id="view_4431"] table>tbody>tr').each(function(){
+  
+	/$('div[id="view_4431"] table>tbody>tr').each(function(){
 	 $(this).find('td[data-field-key="field_3372"]').attr('data-tooltip',getFieldForRowID('view_4431','field_3507',$(this).attr('id')));
-      $(this).find('td[data-field-key="field_3372"]').addClass('tooltip-left');*/
+      $(this).find('td[data-field-key="field_3372"]').addClass('tooltip-left');
 	
 //Finance Details Over Finance
 		 tooltipsTable('1313','4431','field_3357','field_3349');	
