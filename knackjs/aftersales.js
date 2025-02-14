@@ -19,14 +19,14 @@ const deleteEmpty = (objectA) => {
 return objectA
 }
 
-
+/*
 //MOVED TO SCENE RENDER
 //HIDE THE LOGO AND logged in user in all pages
 $(document).on('knack-view-render.any', function (event, view, data) {
 	$('[class="kn-container"]').hide();
 	$('[class="kn-info kn-container"]').hide();
   submitUserLoginForm();
-});
+});*/
 
 function getTokenFromURL(url){
   if (url.indexOf('token=')!==-1){
@@ -2146,9 +2146,9 @@ function getVersionFromApify(){
 var dateTimeOfFirstRun = null;
 
 $(document).on('knack-scene-render.any', function(event, scene) {
-  /*$('[class="kn-container"]').hide();
+  $('[class="kn-container"]').hide();
 	$('[class="kn-info kn-container"]').hide();
-  submitUserLoginForm();*/
+  submitUserLoginForm();
 
    //**************************************************************************************************************
 //****** Hynek's Code to check version on user Browser with what is stored in Apify. If version is different, 
