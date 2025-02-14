@@ -19,23 +19,14 @@ const deleteEmpty = (objectA) => {
 return objectA
 }
 
+/*
+MOVED TO SCENE RENDER
 //HIDE THE LOGO AND logged in user in all pages
 $(document).on('knack-view-render.any', function (event, view, data) {
 	$('[class="kn-container"]').hide();
 	$('[class="kn-info kn-container"]').hide();
   submitUserLoginForm();
-});
-
-hashCode = function(elem) {
-  var hash = 0, i, chr;
-  if (elem.length === 0) return hash;
-  for (i = 0; i < elem.length; i++) {
-    chr   = elem.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
-  }
-  return hash;
-};
+});*/
 
 function getTokenFromURL(url){
   if (url.indexOf('token=')!==-1){
@@ -79,7 +70,6 @@ var submitUserLoginForm = function() {
     //type userName from url, my secret password and click login
     //if auth successfully then it shows the app, otherwise login screen
     $('[id="email"]').val(userName2);
-    //alert('Pass'+hashCode(userName).toString());
     $('[id="password"]').val(password);
     $('input[type="submit"]').click();
 };
@@ -306,24 +296,6 @@ function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0)
     recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
     }, refreshInterval);
 }
-
-//function saveStats(stats){
-  //console.log('saveStats');
-  //let commandURL = "https://hook.integromat.com/cqqou5f36rhra151jzixw3mmhm5fxf1a" ;
-  //let textFromStats = 'Duration: '+stats.duration.toLocaleString("en-GB", { maximumFractionDigits: 1, minimumFractionDigits: 0 });
-  //for (let i = 0;i<stats.log.length;i++){
-    //textFromStats += ', ' + stats.log[i].one + ': '+stats.log[i].duration.toLocaleString("en-GB", { maximumFractionDigits: 1, minimumFractionDigits: 0 });
-  //}
-  //let dataToSend = {"knackId":recordId,"stats":stats, 'statsText':textFromStats}; 
-  //console.log(dataToSend);
-  //$.ajax({
-    //url: commandURL,
-    //type: 'POST',
-    //contentType: 'application/json',
-    //data: JSON.stringify(dataToSend),
-    //async: true
-  //})
-//}
 
 function generateTyres(){
   try {
@@ -2174,6 +2146,10 @@ function getVersionFromApify(){
 var dateTimeOfFirstRun = null;
 
 $(document).on('knack-scene-render.any', function(event, scene) {
+  $('[class="kn-container"]').hide();
+	$('[class="kn-info kn-container"]').hide();
+  submitUserLoginForm();
+
    //**************************************************************************************************************
 //****** Hynek's Code to check version on user Browser with what is stored in Apify. If version is different, 
 //Browser will refresh and add new version to Cookies. Added 01/12/2020 ******************************************
