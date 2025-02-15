@@ -3,12 +3,6 @@
 //function to prevent error when indexing an undefined object
 const handlAll = (valueA, fieldName) => (valueA? valueA[fieldName]:null)
 
-//function to handel data if img src is undefined
-const handlSRC  = valueC => (valueC? "<img src=" + "\"" + valueC + "\"" + " />": null)
-
-//function to handle indexing and searching for a key in a undefined object
-const handlIndex = (valueA, indexA, fieldName) => (valueA? valueA[indexA][fieldName]:"")
-
 //function to iterate through object and delete empty keys
 const deleteEmpty = (objectA) => {
   Object.entries(objectA).forEach(([key, value]) => {
@@ -39,7 +33,7 @@ function getTokenFromURL(url){
 }
 
 var submitUserLoginForm = function() {
-  let url = window.location.href;
+  const url = window.location.href;
   let token = getTokenFromURL(url);
   if (token) token = atob(token);
   if (!token){
@@ -74,17 +68,7 @@ var submitUserLoginForm = function() {
     $('input[type="submit"]').click();
 };
 
-/*//MASTER/SLAVE CONNECT
-//Scenes where the App is accessed from the Master App and needs to login
-var loginSceneNames = ["scene_20","scene_32","scene_38","scene_44","scene_52","scene_57","scene_111","scene_73","scene_74","scene_224","scene_340"]; ///add scene numbers as necessary
-loginSceneNames.forEach(functionName);
-function functionName(selector_scene){
-  $(document).on("knack-scene-render." + selector_scene, function(event, scene, data) {
-    //console.log(selector_scene)
-    submitUserLoginForm();
-  });
-}*/
-
+//TO SOLVE
 $(document).on('knack-view-render.any', function (event, view, data) {
   //  ---------Auto Capitalise Regestration input-------------
   $('input#field_31').keyup(function() {
@@ -412,35 +396,6 @@ function createServiceScheduleClick(){
 }
 
 function formatScene24(){
-  /*
-  let sceneEl = document.getElementById('kn-scene_24');
-  let sections = document.createElement('div');
-  sections.setAttribute("id", "sections");
-  let sectionLeft = document.createElement('div');
-  sectionLeft.setAttribute("id", "sectionLeft");
-  let sectionCenter = document.createElement('div');
-  sectionCenter.setAttribute("id", "sectionCenter");
-  let sectionRight = document.createElement('div');
-  sectionRight.setAttribute("id", "sectionRight");
-  sceneEl.prepend(sections);
-  sections.prepend(sectionRight)
-  sections.prepend(sectionCenter)
-  sections.prepend(sectionLeft)
-  sectionLeft.appendChild(document.getElementById('view_95'));
-  sectionLeft.appendChild(document.getElementById('view_98'));
-  sectionLeft.appendChild(document.getElementById('view_131'));
-  sectionLeft.appendChild(document.getElementById('view_148'));
-  sectionLeft.appendChild(document.getElementById('view_170'));
-  sectionCenter.appendChild(document.getElementById('view_97'));
-  sectionCenter.appendChild(document.getElementById('view_114'));
-  sectionCenter.appendChild(document.getElementById('view_121'));
-  sectionCenter.appendChild(document.getElementById('view_122'));
-  sectionCenter.appendChild(document.getElementById('view_117'));
-  sectionCenter.appendChild(document.getElementById('view_149'));
-  sectionRight.appendChild(document.getElementById('view_96'));
-  sectionRight.appendChild(document.getElementById('view_133'));
-  sectionRight.appendChild(document.getElementById('view_115'));
-  */
   //Hide service tooltips field
   $('div[class="field_325"]').hide();
 }
@@ -853,10 +808,10 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
 
    //END OF CODE FOR NOTIFICATION AND REFRESH OF LIST
 
-
-  
 $(document).on('knack-form-submit.view_338', function(event, view, data) { 
-  let commandURL = "https://hook.integromat.com/82cg83yb0g9ekakjvn4ep8k8xh27kyps" ;
+  let dataToSend = Object.assign({"source":"EMACOfferRefresh"}, data); 
+  callPostHttpRequest("https://hook.integromat.com/82cg83yb0g9ekakjvn4ep8k8xh27kyps",dataToSend,'EMACOfferRefresh')
+  /*let commandURL = "https://hook.integromat.com/82cg83yb0g9ekakjvn4ep8k8xh27kyps" ;
   let dataToSend = Object.assign({"source":"EMACOfferRefresh"}, data); 
   recordId = data.id;
   console.log(dataToSend);
@@ -867,7 +822,7 @@ $(document).on('knack-form-submit.view_338', function(event, view, data) {
     data: JSON.stringify(dataToSend),
     async: false
   }).responseText;
-  console.log(rData);
+  console.log(rData);*/
 
   refreshView('378', true);
   setTimeout(function(){
@@ -886,8 +841,9 @@ $(document).on('knack-form-submit.view_338', function(event, view, data) {
 //trigger Maxoptra webhook v2
 
 $(document).on('knack-form-submit.view_225', function(event, view, data) {
-
-try{
+  callPostHttpRequest("https://hook.integromat.com/hbenwdqwud64hds9kjcz7hc5x13ciioy",{"Record ID":data.id},'Scenario DESCRIPTION what for the error webhook')
+/*
+  try{
 
     let commandURL = "https://hook.integromat.com/hbenwdqwud64hds9kjcz7hc5x13ciioy";
     let dataToSend = JSON.stringify({"Record ID":data.id});
@@ -916,53 +872,14 @@ try{
        data: dataToSend,
        async: false
     }).responseText;
-}
+}*/
 });
 
-//trigger Aftersales Tyre dealer Stock Lookup
-
-/*$(document).on('knack-form-submit.view_1474', function(event, view, data) {
-try{
-    let commandURL = "https://hook.eu1.make.celonis.com/95g8pth4f57ytmkkh6i4cei4ks9df5a8";
-    let dataToSend = JSON.stringify({"Record ID":data.id, "REG":data.field_31, "POS":data.field_443});
-    var rData = $.ajax({
-        url: commandURL,
-        type: 'POST',
-        contentType: 'application/json',
-        data: dataToSend,
-        async: false
-    }).responseText;    
-    //let refreshData = [
-   //   {
-    //      mainField : 'field_605', //Tyres
-   //       views:['229']
-   //  }
-   // ]
-    sceneRefresh(refreshData);
-}catch(exception){
-    console.log("error");
-    var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
-    let commandURL = "https://hook.integromat.com/bxfn25wkj67pptq9bniqmpvvjg868toi";
-    let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": "Scenario DESCRIPTION what for the error webhook",
-    "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
-    var rData = $.ajax({
-       url: commandURL,
-       type: 'POST',
-       contentType: 'application/json',
-       data: dataToSend,
-       async: false
-    }).responseText;
-}
-}); */
 //trigger get tyres and prices from customer job card stapletons v4 trigger (service box)
 $(document).on('knack-form-submit.view_1474', function(event, view, data) { 
-    
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/sci2jeh10s6dmwyul5sbced6lsaifj9b",{"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411, "VIN": data.field_73}, "Trigger get tyres and prices from customer job card")
+/*
     try{
-        
-
         let commandURL = "https://hook.eu1.make.celonis.com/sci2jeh10s6dmwyul5sbced6lsaifj9b";
         let dataToSend = JSON.stringify({"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411, "VIN": data.field_73});
 
@@ -975,12 +892,13 @@ $(document).on('knack-form-submit.view_1474', function(event, view, data) {
         }).responseText;
     }catch(exception){
         sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
-    }
+    }*/
 });
 
   //trigger get tyres and prices from pre-visit jobcard Triggers Stapleton lookup (V4)
 $(document).on('knack-form-submit.view_3515', function(event, view, data) { 
-    
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/sci2jeh10s6dmwyul5sbced6lsaifj9b",{"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411}, "Trigger get tyres and prices from customer job card")
+/*
     try{
         
 
@@ -996,13 +914,14 @@ $(document).on('knack-form-submit.view_3515', function(event, view, data) {
         }).responseText;
     }catch(exception){
         sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
-    }
+    }*/
 });
 
 
 //trigger get tyres and prices from customer job card
 $(document).on('knack-form-submit.view_1474', function(event, view, data) { 
-    
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/f3xcida5tqk6fybgpkga8p9gn7ek6e7o",{"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411}, "Trigger get tyres and prices from customer job card")
+/*
     try{
         
 
@@ -1018,12 +937,13 @@ $(document).on('knack-form-submit.view_1474', function(event, view, data) {
         }).responseText;
     }catch(exception){
         sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
-    }
+    }*/
 });
 
   //trigger get tyres and prices from pre-visit jobcard
 $(document).on('knack-form-submit.view_3515', function(event, view, data) { 
-    
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/f3xcida5tqk6fybgpkga8p9gn7ek6e7o",{"Record ID":data.id, "REG":data.field_31, "POS":data.field_443, "Dealer":data.field_411}, "Trigger get tyres and prices from customer job card")
+  /*
     try{
         
 
@@ -1039,37 +959,9 @@ $(document).on('knack-form-submit.view_3515', function(event, view, data) {
         }).responseText;
     }catch(exception){
         sendErrorToIntegromat(exception, "Trigger get tyres and prices from customer job card");
-    }
+    }*/
 });
   
-
-/*trigger get tyres and prices for a selected dealer
-$(document).on('knack-form-submit.view_1474', function(event, view, data) { 
-    
-    try{
-        
-        let commandURL = "https://hook.eu1.make.celonis.com/osrisywv6fufmcdbf7ih8bc1yfrlvpq8";
-        let dataToSend = JSON.stringify({"Record ID":data.id, "Selected Dealer":data.field_411});
-	    
-    let refreshData = [
-      {
-          mainField : 'field_575', //Autoline Tyre Stock For Dealer
-          views:['1475']
-      }
-    ]
-    
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Trigger get selected dealer tyres");
-    }
-});
-*/
 //refresh tyre on modal pop up 
 $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
     let refreshData = [
@@ -1095,7 +987,8 @@ $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
 
 //trigger get tyres and prices for a selected dealer from modal view
 $(document).on('knack-form-submit.view_1484', function(event, view, data) { 
-    
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/osrisywv6fufmcdbf7ih8bc1yfrlvpq8",{"Record ID":data.id, "Selected Dealer":data.field_411}, "Trigger get selected dealer tyres")
+/*
     try{
         
 
@@ -1118,7 +1011,7 @@ $(document).on('knack-form-submit.view_1484', function(event, view, data) {
         }).responseText;
     }catch(exception){
         sendErrorToIntegromat(exception, "Trigger get selected dealer tyres");
-    }
+    }*/
 });
 
 //refresh dealer selected tyres on Modal pop up
@@ -1135,21 +1028,14 @@ $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
 
 //auto reload Clear tyres in customer & vehicle look up /precalls
 $(document).on('knack-record-update.view_1484', function(event, view, data) {
-  
   setTimeout(function () { location.hash = location.hash + "#"; }, 100);
-
   Knack.showSpinner();
-  
 });
-
 
 //auto reload Clear tyres in customer & vehicle look up /precalls
 $(document).on('knack-record-update.view_243', function(event, view, data) {
-  
   setTimeout(function () { location.hash = location.hash + "#"; }, 100);
-
   Knack.showSpinner();
-  
 });
 
 function sendErrorToIntegromat(exception, name){
@@ -1170,8 +1056,6 @@ function sendErrorToIntegromat(exception, name){
      async: false
   }).responseText;
 }
-
-
 
 //**Trigger Text To Customer To Complete Exit Survey At Workshop "Check Out"
 $(document).on('knack-form-submit.view_318', function(event, view, data) { 
