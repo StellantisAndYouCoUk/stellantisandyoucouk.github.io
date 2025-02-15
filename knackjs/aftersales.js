@@ -13,15 +13,6 @@ const deleteEmpty = (objectA) => {
 return objectA
 }
 
-/*
-//MOVED TO SCENE RENDER
-//HIDE THE LOGO AND logged in user in all pages
-$(document).on('knack-view-render.any', function (event, view, data) {
-	$('[class="kn-container"]').hide();
-	$('[class="kn-info kn-container"]').hide();
-  submitUserLoginForm();
-});*/
-
 function getTokenFromURL(url){
   if (url.indexOf('token=')!==-1){
     let tokenS = url.substring(url.indexOf('token=')+6);
@@ -67,14 +58,6 @@ var submitUserLoginForm = function() {
     $('[id="password"]').val(password);
     $('input[type="submit"]').click();
 };
-
-//TO SOLVE
-$(document).on('knack-view-render.any', function (event, view, data) {
-  //  ---------Auto Capitalise Regestration input-------------
-  $('input#field_31').keyup(function() {
-      this.value = this.value.toUpperCase().replace(new RegExp(' ','g'),'').replace(new RegExp('	','g'),''); 
-  });
-});
 
 // function to create the weeb hooks for knack
 function callPostHttpRequest(url, payloadObject, callName){
@@ -1565,6 +1548,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       window.location.reload(false);
     }
   }*/
+
+  //  ---------Auto Capitalise Regestration input-------------
+  $('input#field_31').keyup(function() {
+    this.value = this.value.toUpperCase().replace(new RegExp(' ','g'),'').replace(new RegExp('	','g'),''); 
+});
 });
 
 //HIDE DATA FROM TYRE LOOK UP 
