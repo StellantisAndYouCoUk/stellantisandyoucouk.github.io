@@ -1342,6 +1342,11 @@ $(document).on('knack-scene-render.scene_90', function(event, scene) {
   refreshWithData('1190', 'TITLE', 'TEXT $field_351', 'field_1518');
 });
 
+// Refresh Virtual Reception table on All Jobs For Prague Demo        
+$(document).on('knack-scene-render.scene_415', function(event, scene) {
+  refreshWithData('1190', 'TITLE', 'TEXT $field_351', 'field_1518');
+});
+
 // Refresh Main Table on Contact Centre Feedback Page every 5 mins
 $(document).on('knack-scene-render.scene_526',function(event, scene) {
  recursiveSceneRefresh('526',['view_1528'],300000)
