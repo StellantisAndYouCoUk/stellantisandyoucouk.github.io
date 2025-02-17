@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time OCR with Search Criteria</title>
+  <!-- Tesseract.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+  <!-- Compromise.js CDN -->
+  <script src="https://unpkg.com/compromise@13.11.3/builds/compromise.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    video, canvas {
+      width: 100%;
+      max-height: 400px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    #output {
+      white-space: pre-wrap;
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .results, .search-list {
+      margin-top: 20px;
+    }
+    .results p, .search-list ul {
+      background: #eef;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .search-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .search-list li {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Real-Time OCR with Search Criteria and Sound Alert</h1>
+    <video id="video" autoplay></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <div class="loader" id="loader"></div>
+    <h2>Extracted Text:</h2>
+    <pre id="output">No text extracted yet.</pre>
+    <div class="search-list">
+      <h2>Search Items:</h2>
+      <ul id="search-items">
+        <!-- Search items will be listed here -->
+      </ul>
+    </div>
+    <div class="results">
+      <h2>Identified Matches:</h2>
+      <p id="matches">None found yet</p>
+    </div>
+    <audio id="match-sound" src="match-sound.mp3"></audio>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const output = document.getElementById('output');
+    const loader = document.getElementById('loader');
+    const searchItemsList = document.getElementById('search-items');
+    const matchesOutput = document.getElementById('matches');
+    const matchSound = document.getElementById('match-sound');
+    const ctx = canvas.getContext('2d');
+
+    // JSON body of items to search for
+    const searchCriteria = [
+      { partNumber: 'ABC123' },
+      { partNumber: 'XYZ789' },
+      { partNumber: 'QWE456' }
+    ];
+
+    // Display the search criteria on the page
+    function displaySearchItems() {
+      searchItemsList.innerHTML = '';
+      searchCriteria.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `Part Number: ${item.partNumber}`;
+        searchItemsList.appendChild(li);
+      });
+    }
+
+    // Access the user's camera
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+        startRealTimeOCR(); // Start OCR after the stream starts
+      })
+      .catch((err) => {
+        console.error('Error accessing the camera:', err);
+      });
+
+    // Function to capture the current frame from the video feed and run OCR
+    function performOCR() {
+      // Set canvas dimensions to match video dimensions
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Perform OCR using Tesseract.js
+      canvas.toBlob((blob) => {
+        Tesseract.recognize(
+          blob,
+          'eng',
+          { logger: m => console.log(m) }
+        ).then(({ data: { text } }) => {
+          output.textContent = text;
+
+          // Process the captured text and check for matches
+          checkForMatches(text);
+        }).catch(err => {
+          console.error('Error during OCR:', err);
+        });
+      });
+    }
+
+    // Check for matches in the extracted text
+    function checkForMatches(text) {
+      let foundMatches = [];
+
+      // Check if any of the search criteria part numbers are in the extracted text
+      searchCriteria.forEach((item, index) => {
+        if (text.includes(item.partNumber)) {
+          foundMatches.push(item.partNumber);
+
+          // Play sound when match is found
+          matchSound.play();
+
+          // Eliminate the found item from the list
+          searchCriteria.splice(index, 1);
+        }
+      });
+
+      // Update the matches output and search list
+      if (foundMatches.length > 0) {
+        matchesOutput.textContent = `Found: ${foundMatches.join(', ')}`;
+        displaySearchItems(); // Refresh the displayed search items
+      }
+    }
+
+    // Start real-time OCR processing every 2 seconds
+    function startRealTimeOCR() {
+      setInterval(() => {
+        loader.style.display = 'block'; // Show loader while processing
+        performOCR();
+        loader.style.display = 'none';  // Hide loader when done
+      }, 2000); // Perform OCR every 2 seconds
+    }
+
+    // Initial display of search items
+    displaySearchItems();
+  </script>
+</body>
+</html>
