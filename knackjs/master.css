@@ -4424,7 +4424,7 @@ img.notification-icon {
 img.user-icon {
   position: relative;
   left: 2.3rem;
-  display: none;
+  /* display: none; */
 }
 
 
