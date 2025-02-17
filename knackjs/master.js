@@ -5657,7 +5657,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       Notifications are under development. Please hold tight while we make them awesome! ❤️
       — Your Digi Team 😊
     </div>
-    <button href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</button>
+    <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
 
   </div>
   <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
