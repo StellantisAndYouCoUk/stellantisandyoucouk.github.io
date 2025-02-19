@@ -3089,13 +3089,19 @@ $(document).on('knack-scene-render.scene_1382', function(event, scene) {
   //Tooltip table 3805
   tooltipsTable('1382','3805','field_1532','field_2586');
   tooltipsTable('1382','3805','field_1537','field_2213');  
+	
+  recursiveSceneRefresh('1382',['view_3805'],300000);
+	console.log('Recursivecallscene_1382');
+	});
+
+$(document).on('knack-scene-render.scene_1050', function(event, scene) {	
   //Tooltip table 3595
-  tooltipsTable('1382','3595','field_1532','field_2586');
-	tooltipsTable('1382','3595','field_1537','field_2213');  
+  tooltipsTable('1050','3595','field_1532','field_2586');
+	tooltipsTable('1050','3595','field_1537','field_2213');  
   //Tooltip table 3307
-  tooltipsTable('1382','3307','field_1532','field_2586');
-	tooltipsTable('1382','3307','field_1537','field_2213');  
-	tooltipsTable('1382','3307','field_2298','field_2272');
+  tooltipsTable('1050','3307','field_1532','field_2586');
+	tooltipsTable('1050','3307','field_1537','field_2213');  
+	tooltipsTable('1050','3307','field_2298','field_2272');
 
   recursiveSceneRefresh('1050',['view_3307','view_3595','view_3805'],300000);
 	console.log('Recursivecallscene_1050');
