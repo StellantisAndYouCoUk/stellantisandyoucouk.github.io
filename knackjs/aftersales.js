@@ -1342,6 +1342,11 @@ $(document).on('knack-scene-render.scene_90', function(event, scene) {
   refreshWithData('1190', 'TITLE', 'TEXT $field_351', 'field_1518');
 });
 
+// Refresh Virtual Reception table on All Jobs For Prague Demo        
+$(document).on('knack-scene-render.scene_415', function(event, scene) {
+  refreshWithData('1190', 'TITLE', 'TEXT $field_351', 'field_1518');
+});
+
 // Refresh Main Table on Contact Centre Feedback Page every 5 mins
 $(document).on('knack-scene-render.scene_526',function(event, scene) {
  recursiveSceneRefresh('526',['view_1528'],300000)
@@ -3080,10 +3085,16 @@ $(document).on('knack-scene-render.scene_981', function(event, scene) {
 });
 
 // refresh workshop table v1
-$(document).on('knack-scene-render.scene_1050', function(event, scene) {
+$(document).on('knack-scene-render.scene_1382', function(event, scene) {
   //Tooltip table 3805
-  tooltipsTable('1050','3805','field_1532','field_2586');
-  tooltipsTable('1050','3805','field_1537','field_2213');  
+  tooltipsTable('1382','3805','field_1532','field_2586');
+  tooltipsTable('1382','3805','field_1537','field_2213');  
+	
+  recursiveSceneRefresh('1382',['view_3805'],300000);
+	console.log('Recursivecallscene_1382');
+	});
+
+$(document).on('knack-scene-render.scene_1050', function(event, scene) {	
   //Tooltip table 3595
   tooltipsTable('1050','3595','field_1532','field_2586');
 	tooltipsTable('1050','3595','field_1537','field_2213');  
