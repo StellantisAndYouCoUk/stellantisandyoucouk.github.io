@@ -2135,6 +2135,7 @@ function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tool
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').html(tooltipTitle + modifyTooltipHTML(tdUnderMouse.parentElement.querySelector('td[data-field-key="'+tooltipFieldId+'"]').innerHTML));
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').show();
           console.log('placeTo',placeToShow);
+          console.log($('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').width())
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX+(placeToShow==='left'?-100:10), top: e.pageY });
         } else {
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').hide();
