@@ -2095,7 +2095,7 @@ function getTextFromHTML(s) {
 };
 
 let shownTooltipIdT = null;
-function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tooltipTitle = ''){
+function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tooltipTitle = '', placeToShow='right'){
     $('th[class="'+tooltipFieldId+'"]').hide();
     $('td[class*="'+tooltipFieldId+'"]').hide();
 
@@ -2134,7 +2134,8 @@ function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tool
         if (tdUnderMouse && tdUnderMouse.getAttribute('data-field-key')===showTooltipFieldId){
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').html(tooltipTitle + modifyTooltipHTML(tdUnderMouse.parentElement.querySelector('td[data-field-key="'+tooltipFieldId+'"]').innerHTML));
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').show();
-          $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX+10, top: e.pageY });
+          console.log($('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').width);
+          $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX+(placeToShow==='left'?-100:10), top: e.pageY });
         } else {
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').hide();
         }
@@ -3248,7 +3249,7 @@ $(document).on('knack-view-render.view_4488', function(event, scene) {
   $('td[class*="field_3355"]').hide();
 
   //1 Link cust.name over name
-	tooltipsTable('1313','4488','field_3356','field_3372');	
+	tooltipsTable('1313','4488','field_3356','field_3372','','left');	
 	$('th[class="field_3356"]').hide();
   $('td[class*="field_3356"]').hide();
 
