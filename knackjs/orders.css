@@ -4073,90 +4073,31 @@ color: #FFFFFF;
 /* 2 Hour Pre Delivery Check */
 #view_3976 {border-left: 10px solid #32a1ce;}
 
-/*** Admin Docs to Review ***/
-
-/* Digital Invoice */
-#view_3655 > section > div > div:nth-child(8) > div:nth-child(1) > div > div.kn-detail.field_6611 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Manual Invoice */
-#view_3655 > section > div > div:nth-child(8) > div:nth-child(1) > div > div.kn-detail.field_6567 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Supplementary Invoice */
-#view_3655 > section > div > div:nth-child(8) > div:nth-child(1) > div > div.kn-detail.field_6752 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Additional Warranty */
-#view_3655 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.field_6435 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Additional Warranty Not Required */
-#view_3655 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.field_6539 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* CRI Confirmation */
-#view_3655 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.field_6757 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* TLC and CRI Not Applicable V1 */
-#view_3655 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.field_6538 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* TLC and CRI Not Applicable V2 */
-#view_3655 > section > div > div:nth-child(9) > div:nth-child(1) > div > div.kn-detail.field_7002 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Supaguard Confirmation */
-#view_3655 > section > div > div:nth-child(10) > div:nth-child(1) > div > div.kn-detail.field_6431 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Supaguard Not Applicable */
-#view_3655 > section > div > div:nth-child(10) > div:nth-child(1) > div > div.kn-detail.field_6497 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Service Plan Conf */
-#view_3655 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.field_6428 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* No Service Plan */
-#view_3655 > section > div > div:nth-child(11) > div:nth-child(1) > div > div.kn-detail.field_6599 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Service Schedule */
-#view_3655 > section > div > div:nth-child(12) > div:nth-child(1) > div > div.kn-detail.field_6609 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Credit Note 1 */
-#view_3655 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.field_6617 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Credit Note 2 */
-#view_3655 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.field_6618 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Credit Note 3 */
-#view_3655 > section > div > div:nth-child(13) > div:nth-child(1) > div > div.kn-detail.field_6619 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Reg Consent Doc */
-#view_3655 > section > div > div:nth-child(17) > div:nth-child(1) > div > div.kn-detail.field_6409 > div.kn-detail-label {border-left: 10px solid #DE3163;}
-
-/* Customer P/X Invoice and V5 */
-#view_3972 {border-left: 10px solid #DE3163;}
-
-
-/*** ADMIN & MANAGER TO REVIEW ***/
-
 /* TCF Post Sale Pack */
-#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6418 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6418 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* TCF Post Sale Pack NOT Required */
-#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6764 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6764 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* Handover Checklist */
-#view_3973 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6615 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3973 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6615 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* Manual Handover Checklist */
-#view_3973 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6470 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3973 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6470 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* GAP/TLC Registration */
-#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6537 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_6537 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* Finance Acceptance */
-#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7184 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7184 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* Finance Acceptance */
-#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7935 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7935 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* Latest Order Form */
-#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
-#view_3655 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-right: 10px solid #DE3163; border-left: 10px solid #32a1ce;}
+#view_3655 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
 /* Links to New Deal File Admin Audit */
 
