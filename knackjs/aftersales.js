@@ -3233,7 +3233,7 @@ $(document).on('knack-view-render.view_4488', function(event, scene) {
   $('td[class*="field_3351"]').hide();	
 	
   //historic visit over due in
-	tooltipsTable('1313','4488','field_3352','field_3248');	
+	tooltipsTable('1313','4488','field_3352','field_3248','','left');	
 	$('th[class="field_3352"]').hide();
   $('td[class*="field_3352"]').hide();	
 	
@@ -3275,7 +3275,7 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
     $('td[class*="field_3351"]').hide();	
 	
     //historic visit over due in
-		 tooltipsTable('1313','4431','field_3352','field_3248');	
+		 tooltipsTable('1313','4431','field_3352','field_3248','','left');	
 	  $('th[class="field_3352"]').hide();
     $('td[class*="field_3352"]').hide();	
 	
@@ -3320,7 +3320,7 @@ $(document).on('knack-view-render.view_4435', function(event, scene) {
     $('td[class*="field_3351"]').hide();	
 	
     //historic visit over due in
-		 tooltipsTable('1340','4435','field_3352','field_3248');	
+		 tooltipsTable('1340','4435','field_3352','field_3248','','left');	
 	  $('th[class="field_3352"]').hide();
     $('td[class*="field_3352"]').hide();	
 	
