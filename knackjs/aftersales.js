@@ -2136,7 +2136,7 @@ function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tool
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').show();
           console.log('placeTo',placeToShow);
           console.log($('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').width())
-          $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX+(placeToShow==='left'?-100:10), top: e.pageY });
+          $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX+(placeToShow==='left'?-200:10), top: e.pageY });
         } else {
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').hide();
         }
