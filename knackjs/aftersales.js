@@ -2134,10 +2134,7 @@ function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tool
         if (tdUnderMouse && tdUnderMouse.getAttribute('data-field-key')===showTooltipFieldId){
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').html(tooltipTitle + modifyTooltipHTML(tdUnderMouse.parentElement.querySelector('td[data-field-key="'+tooltipFieldId+'"]').innerHTML));
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').show();
-          console.log('placeTo',placeToShow);
-          console.log($('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').width())
-          console.log( e.pageX, e.pageX+(placeToShow==='left'?-$('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').width():10));
-          $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX+10, top: e.pageY });
+          $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX-50, top: e.pageY });
         } else {
           $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').hide();
         }
