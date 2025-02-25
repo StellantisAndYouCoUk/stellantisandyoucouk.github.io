@@ -3814,6 +3814,7 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
   if (addFilters){
     addFilters.onclick = function(){
       setTimeout(function () { 
+        console.log('remove from filter')
         $('div[id="kn-filters-form"] option[value="field_2586"]').remove();
       }, 200);
     }
