@@ -3822,7 +3822,7 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
           let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
           let allowFilterField = addedAlowedFilters.find(el => el===filterField) || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
           if (!allowFilterField){
-            $('div[id="kn-filters-form"] select[name="field"] option').eq(i).remove();
+            $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
           }
         }
       }, 200);
