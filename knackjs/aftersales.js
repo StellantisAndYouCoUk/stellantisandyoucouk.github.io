@@ -905,6 +905,24 @@ function sendErrorToIntegromat(exception, name){
   }).responseText;
 }
 
+// POLICY APPROVAL //
+
+//Policy Approval - Sales Manager Form Submitted 
+$(document).on('knack-form-submit.view_4504', function(event, view, data) { 
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/uc8ukh74we81hhvauoboeuoc3hf8cfpo", {"Record ID":data.id, "Source": "Sales Manager Approval Form"},"Policy Approval Form Submitted");  
+});
+
+//Policy Approval - General Manager Form Submitted 
+$(document).on('knack-form-submit.view_4530', function(event, view, data) { 
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/uc8ukh74we81hhvauoboeuoc3hf8cfpo", {"Record ID":data.id, "Source": "General Manager Approval Form"},"Policy Approval Form Submitted");  
+});
+
+//Policy Approval - Service Manager Form Submitted 
+$(document).on('knack-form-submit.view_4595', function(event, view, data) { 
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/uc8ukh74we81hhvauoboeuoc3hf8cfpo", {"Record ID":data.id, "Source": "Service Manager Approval Form"},"Policy Approval Form Submitted");  
+});
+
+
 //**Trigger Text To Customer To Complete Exit Survey At Workshop "Check Out"
 $(document).on('knack-form-submit.view_318', function(event, view, data) { 
   callPostHttpRequest("https://hook.integromat.com/wio8wmbeqg4p81kwshmegg7h7fsfawz7",{"Record ID":data.id}, "Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"")
