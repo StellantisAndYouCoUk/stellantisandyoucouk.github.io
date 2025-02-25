@@ -3813,7 +3813,7 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
   console.log('addFilters',addFilters)
   if (addFilters){
-    let addedAlowedFilters = ['fied_1121']
+    let addedAlowedFilters = ['field_1121']
     addFilters.onclick = function(){
       setTimeout(function () { 
         console.log('remove from filter')
