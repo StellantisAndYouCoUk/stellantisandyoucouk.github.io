@@ -3783,7 +3783,7 @@ function renderSYSearchButtons(viewId, defineButtons){
     if (dbA1.defineButtons[dbA1.selectedIndex].filters.length>0){
       if ($('div[id="view_2686"] li[class*="tag kn-tag-filter"]').length===0){
         console.log('index selected but not filtered')
-        $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').click();
+        //$('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').click();
       }
     }
   }
