@@ -5983,13 +5983,3 @@ $(document).on('knack-scene-render.scene_2305', function(event, scene) {
   });
 });
 
-// DISABLE SIGNATURE FIELD TEST ONCE INPUTTED UPON VIEW RENDER
-$(document).on('knack-view-render.view_7748', function(event, view) {
-
- if ($('#view_7748 #field_10423').val() != "") {
-
-      $('#view_7748 #field_10423').attr('disabled', 'disabled'); // disable Signature Field
-
-    }; // end if
-
-});
