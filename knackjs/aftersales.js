@@ -3805,12 +3805,12 @@ function renderSYSearchButtons(viewId, defineButtons){
       }
     }
   }
-  if (dbA1.selectedIndex && dbA1.defineButtons[dbA1.selectedIndex].filters){
+  /*if (dbA1.selectedIndex && dbA1.defineButtons[dbA1.selectedIndex].filters){
     for (let i = 0;i<dbA1.defineButtons[dbA1.selectedIndex].filters.length;i++){
       console.log(dbA1.defineButtons[dbA1.selectedIndex].filters[i].field)
       $('li[class="tag kn-tag-filter kn-filter-'+dbA1.defineButtons[dbA1.selectedIndex].filters[i].field+'"]').hide();
     }
-  }
+  }*/
 }
 
 $(document).on('knack-view-render.view_2686', function(event, view, records) {
