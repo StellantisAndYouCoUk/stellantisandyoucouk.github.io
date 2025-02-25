@@ -3813,10 +3813,17 @@ $(document).on('knack-view-render.view_2686', function(event, view, records) {
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
   console.log('addFilters',addFilters)
   if (addFilters){
+    let addedAlowedFilters = ['fied_1121']
     addFilters.onclick = function(){
       setTimeout(function () { 
         console.log('remove from filter')
-        $('div[id="kn-filters-form"] option[value="field_2586"]').remove();
+        for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
+          let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
+          let allowFilterField = addedAlowedFilters.find(el => el===filterField) || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
+          if (!allowFilterField){
+            $('div[id="kn-filters-form"] select[name="field"] option').eq(i).remove();
+          }
+        }
       }, 200);
     }
   }
