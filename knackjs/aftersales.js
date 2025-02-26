@@ -908,7 +908,7 @@ function sendErrorToIntegromat(exception, name){
 // POLICY APPROVAL //
 
 //Policy Approval - Sales Manager Form Submitted 
-$(document).on('knack-form-submit.view_4504', function(event, view, data) { 
+$(document).on('knack-form-submit.view_4602', function(event, view, data) { 
   callPostHttpRequest("https://hook.eu1.make.celonis.com/uc8ukh74we81hhvauoboeuoc3hf8cfpo", {"Record ID":data.id, "Source": "Sales Manager Approval Form"},"Policy Approval Form Submitted");  
 });
 
