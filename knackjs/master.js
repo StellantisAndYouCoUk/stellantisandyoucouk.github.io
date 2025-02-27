@@ -565,6 +565,24 @@ $(document).on('knack-view-render.view_7793', function(event, view, data) {
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-fleet-invoice-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+// Head Office Fleet Order Reporting
+$(document).on('knack-view-render.view_7804', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-fleet-order-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+// Head Office Retail and Motability Invoice Reporting
+$(document).on('knack-view-render.view_7805', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-retail-and-motability-invoice-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+// Head Office Retail and Motability Order Reporting
+$(document).on('knack-view-render.view_7806', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-retail-and-motability-order-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
 			     {view:'view_6510',url:'#aftersales-key-tag-search'},
