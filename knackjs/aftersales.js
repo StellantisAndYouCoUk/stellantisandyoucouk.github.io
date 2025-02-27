@@ -2619,7 +2619,7 @@ $(document).on('knack-view-render.view_2722', function (event, view, data) {
       }, 200);
     }
   }
-  
+
   tooltipsTable('755','2722','field_1532','field_2586');
 	tooltipsTable('755','2722','field_1537','field_2213');
 	tooltipsTable('755','2722','field_2298','field_2272');
@@ -2635,6 +2635,25 @@ $(document).on('knack-view-render.view_2722', function (event, view, data) {
 $(document).on('knack-view-render.view_2892', function (event, view, data) {
   let defineButtons = [{linkText:'All',filters:[]},{linkText:'TODAY\'s Jobs',filters:[{"field_name":"CA Today's Jobs that Still Has Labour And/OR Parts still To Complete","field":"field_2279","value":true,"operator":"is"}]},{linkText:'Comp. TODAY',filters:[{"field_name":"Date/Time Workshop marked as job completed for today","field":"field_2719","value":true,"operator":"is not blank"}]},{linkText:'Time Agreed TODAY',filters:[{"field_name":"Agreed Collection Time with Customer","field":"field_1117","value":true,"operator":"is today"}]},{linkText:'Checked In TODAY',filters:[{"field_name":"Date Vehicle Checked In Onsite (From Autoline)","field":"field_763","value":true,"operator":"is today"}]},{linkText:'Write up TODAY',filters:[{"field_name":"Date/Time Technician Write up completed","field":"field_2722","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is today"}]},{linkText:'Ready to Invoice',filters:[{"field_name":"ready to invoice","field":"field_1717","value":"Parts + Labour","operator":"contains"}]},{linkText:'NOT Checked Out',filters:[{"field":"field_1658","value":"","operator":"is blank"}]},{linkText:'Currently Clocked',filters:[{"field":"field_1537","value":"Working on Currently","operator":"contains"}]},{linkText:'Never Clocked',filters:[{"field":"field_787","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is blank"}]},{linkText:'Parts Avail',filters:[{"field":"field_985","value":"Working On Currently","operator":"is blank"}]},{linkText:'Parts Unavail',filters:[{"field":"field_985","value":"Working On Currently","operator":"is not blank"}]},{linkText:'Wait. Auth (VHC)',filters:[{"field":"field_2297","value":"CPL","operator":"is"}]},{linkText:'Outstanding Messages',filters:[{"field":"field_2578","value":"","operator":"is not blank"}]},{linkText:'i0001',filters:[{"field":"field_756","value":"i0001","operator":"is"}]},{linkText:'i0002',filters:[{"field":"field_756","value":"i0002","operator":"is"}]},{linkText:'Await\' Wash',filters:[{"field":"field_2201","value":"Added to Service Wash List","operator":"is"}]},{linkText:'Wash Comp',filters:[{"field":"field_2201","value":"Service Wash Complete","operator":"is"}]},{linkText:'C/D Collected',filters:[{"field":"field_2785","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is not blank"}]}]
   renderSYSearchButtons('2892',defineButtons);
+
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    let addedAlowedFilters = ['field_1121']
+    addFilters.onclick = function(){
+      setTimeout(function () { 
+        console.log('remove from filter')
+        for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
+          console.log(i);
+          let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
+          let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
+          if (!allowFilterField){
+            $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
+          }
+        }
+      }, 200);
+    }
+  }
 
   tooltipsTable('934','2892','field_1532','field_2586');
 	tooltipsTable('934','2892','field_1537','field_2213');
