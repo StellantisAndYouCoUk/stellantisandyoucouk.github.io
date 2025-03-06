@@ -251,7 +251,7 @@ function work(){
     if (page.includes('machines.html')){
         //let req = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let machines = getServerData('machines', work);
-        let tM = machines.sort((a,b)=>(a.name>b.name?1:-1)).map(function (el){
+        let tM = machines.sort((a,b)=>(a.capacity>b.capacity?-1:(a.capacity<b.capacity?1:(a.name>b.name?1:-1)))).map(function (el){
             return '<tr><td>'+el.name+'</td><td>'+(el.enabled?'Yes':'No')+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.capacity===0?(el.attendedModeAvailable?'Available':'Not Ready')+' - '+dateTimeToGB(new Date(el.attendedModeAvailableTestDateTime)):'')+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td><td><a href="#" onclick="editMachine(\''+el.name+'\')">Edit</a></td></tr>';
         })
         $('table[id="datatablesSimpleMachines"]>tbody').html('');
