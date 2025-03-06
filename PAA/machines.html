@@ -92,25 +92,39 @@
                                 <i class="fas fa-table me-1"></i>
                             </div>
                             <div class="card-body">
+                                <div id="editor-container" style="display:none;">
+                                    <h2>Machine Details</h2>
+                                    <div id="machine-details">
+                                        <span id="machineName"></span><br />
+                                        Connection ID: <input id="connectionId"><br />
+                                        Enabled: <select id="enabled"><option value=1>Yes</option><option value=0>No</option></select><br />
+                                        <button id="save-button" onclick="saveMachine(); return false;">Save</button><br />
+                                    </div>
+                                    <button id="back-button" onclick="$('#editor-container').hide(); return false;">Close</button><br />
+                                </div>
                                 <table id="datatablesSimpleMachines">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
+                                            <th>Enabled</th>
                                             <th>Locked</th>
                                             <th>Type</th>
                                             <th>Capacity</th>
                                             <th>Attended Status</th>
                                             <th>Connection</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Name</th>
+                                            <th>Enabled</th>
                                             <th>Locked</th>
                                             <th>Type</th>
                                             <th>Capacity</th>
                                             <th>Attended Status</th>
                                             <th>Connection</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>

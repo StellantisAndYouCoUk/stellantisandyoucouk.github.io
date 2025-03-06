@@ -251,8 +251,8 @@ function work(){
     if (page.includes('machines.html')){
         //let req = paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let machines = getServerData('machines', work);
-        let tM = machines.map(function (el){
-            return '<tr><td>'+el.name+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.capacity===0?(el.attendedModeAvailable?'Available':'Not Ready')+' - '+dateTimeToGB(new Date(el.attendedModeAvailableTestDateTime)):'')+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td></tr>';
+        let tM = machines.sort((a,b)=>(a.name>b.name?1:-1)).map(function (el){
+            return '<tr><td>'+el.name+'</td><td>'+(el.enabled?'Yes':'No')+'</td><td>'+(el.serverLocked?'Server Locked':(el.localLocked?'Local Locked':'Free'))+'</td><td></td><td>'+el.capacity+'</td><td>'+(el.capacity===0?(el.attendedModeAvailable?'Available':'Not Ready')+' - '+dateTimeToGB(new Date(el.attendedModeAvailableTestDateTime)):'')+'</td><td>'+(el.connectionId?'Available':'Not set')+'</td><td><a href="#" onclick="editMachine(\''+el.name+'\')">Edit</a></td></tr>';
         })
         $('table[id="datatablesSimpleMachines"]>tbody').html('');
         $('table[id="datatablesSimpleMachines"]>tbody').append(tM.join(''));
@@ -400,6 +400,36 @@ function work(){
             $('#add-button').hide();
             refreshIntegrations(qV['flow'])
         });
+    }
+}
+
+function saveMachine(){
+    let machineName = $('#machineName').text();
+    console.log(machineName);
+    let machines = getServerData('machines',null,{},300);
+    let fM = machines.find(el => el.name === machineName);
+    console.log(fM,document.querySelector('#enabled').value,document.querySelector('#connectionId').value);
+    if (fM){
+        paaPostRequest({'action':'setMachineData','token':paaToken,'machineName':machineName,'connectionId':document.querySelector('#connectionId').value,'enabled':(document.querySelector('#enabled').value==='1'?true:false)})
+    }
+    $('#editor-container').hide();
+    getServerData('machines',null,{},0);
+    work();
+}
+
+function editMachine(machineName){
+    let machines = getServerData('machines',null,{},300);
+    let fM = machines.find(el => el.name === machineName);
+    console.log(fM);
+    $('#editor-container').show();
+    $('#machineName').text(machineName);
+    $('#connectionId').attr('value',fM.connectionId);
+    if (fM.enabled){
+        $('select[id="enabled"]>option[value=1]').attr('selected',true);
+        $('select[id="enabled"]>option[value=0]').removeAttr('selected')
+    } else {
+        $('select[id="enabled"]>option[value=0]').attr('selected',true);
+        $('select[id="enabled"]>option[value=1]').removeAttr('selected')
     }
 }
 
