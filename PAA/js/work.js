@@ -229,12 +229,14 @@ function work(){
         $('#sumDate').text(dateToGB(sumDateStart))
         let sumDateEnd = new Date(sumDateStart.getTime());
         sumDateEnd.setHours(23,59,59,59);
-        let t0 = req.filter(el => (el.status==='queued' || el.status==='running') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
-        $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' queued now'));
+        let t0 = req.filter(el => (el.status==='queuedOnServer' || el.status==='running') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' running now'));
         let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
         let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardFailedRunsToday').html(t2.length + ' failed runs today');
+        let t4 = req.filter(el => (el.status==='queued') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        $('#dashboardQueuedRuns').html((t4.length===0?'Nothing queued':t4.length + ' queued now'));
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').html('');
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
         const datatablesSimple = document.getElementById('datatablesSimpleFlowRunsSummary');
