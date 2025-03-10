@@ -229,7 +229,7 @@ function work(){
         $('#sumDate').text(dateToGB(sumDateStart))
         let sumDateEnd = new Date(sumDateStart.getTime());
         sumDateEnd.setHours(23,59,59,59);
-        let t0 = req.filter(el => (el.status==='queuedOnServer' || el.status==='running') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        let t0 = req.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' running now'));
         let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
