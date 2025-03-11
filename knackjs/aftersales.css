@@ -2374,3 +2374,14 @@ max-height: 100%;
 #view_4408 .kn-detail-label {
   background-color: transparent;
 }
+
+/*Make Technician Valet background red*/
+
+#view_3223 .field_2201 {
+Background-color: red;
+}
+
+#view_3086 .field_2201 {
+Background-color: red;
+}
+
