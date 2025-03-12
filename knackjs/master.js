@@ -5109,47 +5109,6 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 //Mayank code 
 let eventSource = null;
 
-// $(document).on('knack-scene-render.scene_2335', function(event, scene) {
-
-//   let publishURL = '';
-//   let subscribeURL = '';
-
-//         function createNotificationUrl(value){
-//         publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}`;
-//         subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${value}/sse`;
-
-//         return subscribeURL;
-//         }
-
-      
-
-
-
-//         function createLink(url, linkText) {
-//           let $link = $('<a class="kn-link kn-link-2 kn-link-page kn-button"></a>');
-//           $link.attr('href', url);
-//           $link.attr('target', '_blank');
-//           $link.text(linkText);
-
-//           let $div = $('<div class="control"></div>').append($link);
-//           $('.view_7519').append($div);
-
-//         }
-
-//         //  Indivial Users
-//             const userAttributes = Knack.getUserAttributes();
-//             const userValue = userAttributes.id;
-
-//             createNotificationUrl(userValue)
-
-//           createLink(subscribeURL.substr(0, subscribeURL.length - 4), 'Enable Desktop Notification');
-
-// }); 
-
-
-
-
-
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
   let notificationId;
@@ -5169,128 +5128,125 @@ $(document).on("knack-view-render.any", function (event, scene) {
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
         console.log("Notification ID:", notificationId);
-  //    const doubleCheckIcon =
-  // '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="32"><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z" fill="currentColor" /></svg>'
-  //       // Show the notification using Swal
 
  
 
-      if (Notification.permission === 'granted'){
-        if(!parsedData.title.toString().includes("Message") && !parsedData.title.toString().includes("Waiting Sales")){
-        Swal.fire({
-          title: `<strong>${parsedData.title}</strong>`,
-          html: `
-            ${parsedData.attachment && parsedData.attachment.url
-              ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
-              : ""
-            }
-            ${parsedData.message || ""}
-          `,
-          showCloseButton: true,
-          allowEscapeKey: true,
-          focusConfirm: false,
-          timer: timer,
-          // icon: 'success',
-          // iconHtml: doubleCheckIcon,
-          // customClass: {
-          //   icon: 'rotate-y',
-          // },
-          showCancelButton: true,
-          cancelButtonText: "Close",
-          cancelButtonColor: "#FF0000",
-          showConfirmButton: !!parsedData.click,
-          confirmButtonText: `${parsedData.click
-            ? `<i class="fa fa-external-link-alt"></i> Go to Link`
-            : ""}`,
-          confirmButtonAriaLabel: "Click To Open",
-          preConfirm: () => {
-            if (parsedData.click) {
-              window.open(parsedData.click, "_blank");
-            }
-          },
-          didOpen: () => {
-            const popup = document.querySelector('.swal2-popup');
-            if (popup) {
-              popup.classList.add('swal2-show'); // Trigger the transition effect
-            }
-      
-            const cancelButton = Swal.getCancelButton();
-            const confirmButton = Swal.getConfirmButton();
-      
-            if (cancelButton) {
-              cancelButton.id = "popup-cancel-button";
-              document
-                .getElementById("popup-cancel-button")
-                .addEventListener("click", () => {
-                  Swal.close();
-                  console.log("Clicked Notification");
-                });
-            }
-      
-            if (confirmButton) confirmButton.id = "popup-confirm-button";
-          },
-        });
-      }
-      }else{
-        console.log("Missing Notification");
+        if (Notification.permission === 'granted'){
+          if(!parsedData.title.toString().includes("Message") && !parsedData.title.toString().includes("Waiting Sales")){
+            Swal.fire({
+              title: `<strong>${parsedData.title}</strong>`,
+              html: `
+                ${parsedData.attachment && parsedData.attachment.url
+                  ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+                  : ""
+                }
+                ${parsedData.message.Message || ""}
+              `,
+              showCloseButton: true,
+              allowEscapeKey: true,
+              focusConfirm: false,
+              timer: timer,
+              // icon: 'success',
+              // iconHtml: doubleCheckIcon,
+              // customClass: {
+              //   icon: 'rotate-y',
+              // },
+              showCancelButton: true,
+              cancelButtonText: "Close",
+              cancelButtonColor: "#FF0000",
+              showConfirmButton: !!parsedData.click,
+              confirmButtonText: `${parsedData.click
+                ? `<i class="fa fa-external-link-alt"></i> Go to Link`
+                : ""}`,
+              confirmButtonAriaLabel: "Click To Open",
+              preConfirm: () => {
+                if (parsedData.click) {
+                  window.open(parsedData.click, "_blank");
+                }
+              },
+              didOpen: () => {
+                const popup = document.querySelector('.swal2-popup');
+                if (popup) {
+                  popup.classList.add('swal2-show'); // Trigger the transition effect
+                }
+          
+                const cancelButton = Swal.getCancelButton();
+                const confirmButton = Swal.getConfirmButton();
+          
+                if (cancelButton) {
+                  cancelButton.id = "popup-cancel-button";
+                  document
+                    .getElementById("popup-cancel-button")
+                    .addEventListener("click", () => {
+                      Swal.close();
+                      console.log("Clicked Notification");
+                    });
+                }
+          
+                if (confirmButton) confirmButton.id = "popup-confirm-button";
+              },
+            });
+          }
+        }else{
+            console.log("Missing Notification");
 
 
-        const isEdge = navigator.userAgent.includes("Edg");
-        const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
-        const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
-                     navigator.userAgent.toLowerCase().includes("tablet") ||
-                     navigator.userAgent.toLowerCase().includes("playbook") ||
-                     (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
+            const isEdge = navigator.userAgent.includes("Edg");
+            const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
+            const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
+                        navigator.userAgent.toLowerCase().includes("tablet") ||
+                        navigator.userAgent.toLowerCase().includes("playbook") ||
+                        (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
+            
+            const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
         
-        const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
-    
-    
-        if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
-          const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
-          const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
-    
-          Swal.fire({
-            title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-            html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
-            icon: "warning",
-            confirmButtonText: 'Click here to enable notifications',
-            focusConfirm: false
-          }).then((result) => {
+        
+            if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
+              const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
+              const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
+        
               Swal.fire({
-                title: '',
-                html: `
-                            <h2>Steps to Enable Notifications</h2>
-                            <ol class="listOfSteps">
-                              <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
-                              <li>Click Allow Notification</li>
-                              <li>Click to refresh your page</li>
-                            </ol>
-                `,
-                imageUrl: gifUrlBlocked, // GIF displayed here
-                // imageWidth: 600,
-                imageAlt: "Success GIF",
-                allowEscapeKey: false,
-                allowOutsideClick: false,
-                confirmButtonText: 'Refresh Your Page'
-              })
-                .then((result) => {
-                  if(result.isConfirmed){
-                    if (Notification.permission === 'granted') {
-                      window.location.reload(true)
-    
-                    }else{
-                      Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
-                      });
-    
-                    };
-                  }
-                });
-            // }
-          });
-        }
+                title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+                html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
+                icon: "warning",
+                confirmButtonText: 'Click here to enable notifications',
+                focusConfirm: false
+              }).then((result) => {
+                  Swal.fire({
+                    title: '',
+                    html: `
+                                <h2>Steps to Enable Notifications</h2>
+                                <ol class="listOfSteps">
+                                  <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
+                                  <li>Click Allow Notification</li>
+                                  <li>Click to refresh your page</li>
+                                </ol>
+                    `,
+                    imageUrl: gifUrlBlocked, // GIF displayed here
+                    // imageWidth: 600,
+                    imageAlt: "Success GIF",
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    confirmButtonText: 'Refresh Your Page'
+                  })
+                    .then((result) => {
+                      if(result.isConfirmed){
+                        if (Notification.permission === 'granted') {
+                          window.location.reload(true)
+        
+                        }else{
+                          Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
+                          });
+        
+                        };
+                      }
+                    });
+                // }
+              });
+            }
     
     
     
