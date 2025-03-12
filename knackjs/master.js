@@ -5131,8 +5131,16 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
  
 
+
         if (Notification.permission === 'granted'){
           if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales")){
+
+            
+            let confirmButtonAriaLabel = "Click To Open"
+
+            if(message.ClickButtonTitle){
+              confirmButtonAriaLabel = message.ClickButtonTitle;
+            }
             Swal.fire({
               title: `<strong>${message.Title}</strong>`,
               html: `
@@ -5158,7 +5166,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               confirmButtonText: `${message.Click
                 ? `<i class="fa fa-external-link-alt"></i> Go to Link`
                 : ""}`,
-              confirmButtonAriaLabel: "Click To Open",
+              confirmButtonAriaLabel: confirmButtonAriaLabel,
               preConfirm: () => {
                 if (message.Click) {
                   window.open(message.Click, "_blank");
