@@ -5352,7 +5352,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 
 
                 let dataParsed = JSON.parse(e.data);
-                dataParse = JSON.parse(dataParsed.message)
+                dataParsed = JSON.parse(dataParsed.message)
                 console.log(JSON.stringify(dataParsed));
                 
 
