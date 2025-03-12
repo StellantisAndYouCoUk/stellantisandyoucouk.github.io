@@ -4163,7 +4163,9 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_7620 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7620 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_7620 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
-#view_7620 > div > a.kn-link.kn-link-5.kn-link-page.kn-button {
+#view_7620 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_7514 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_7788 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #005F80;
   color: #ffffff;
   font-weight: bold;
@@ -4330,7 +4332,9 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_7620 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7620 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_7620 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
-#view_7620 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button {
+#view_7620 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_7514 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_7788 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #014157;
   color: #ffffff;
   font-weight: bold;
