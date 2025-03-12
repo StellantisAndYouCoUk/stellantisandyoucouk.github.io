@@ -2916,6 +2916,21 @@ $(document).on('knack-view-render.view_3566', function (event, view, data) {
 //courtesy inspection page
 $(document).on('knack-view-render.view_3592', function (event, view, data) {
   embedPhotoApp();
+	 let appSettings2718 = {
+    spiritLine : false,
+    imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
+    imageOverlayEffect : true,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : false,
+    actionAfterPhoto : 'compare', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Does the photo match the template?',
+    uploadMethod : 'field', //knack, make, field
+    uploadField : 'field_2718',
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
+    app_id : '6040dd9a301633001bca5b4e'
+  }
   let appSettings1914 = {uploadMethod : 'field', uploadField : 'field_1914',app_id : '6040dd9a301633001bca5b4e',actionAfterPhoto : 'none'}
   createPhotoButton(appSettings1914,'1914');
   let appSettings2477 = {uploadMethod : 'field', uploadField : 'field_2477', app_id : '6040dd9a301633001bca5b4e',actionAfterPhoto : 'none'}
