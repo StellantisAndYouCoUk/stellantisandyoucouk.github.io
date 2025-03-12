@@ -4490,6 +4490,10 @@ img.user-icon:hover {
   transform: scale(1);          /* Transition to full size */
 }
 
+.swal2-popup.swal2-modal.swal2-show {
+  font-family: ubuntu;
+}
+
 
 
 .rotate-y {
