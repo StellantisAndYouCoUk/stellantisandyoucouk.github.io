@@ -5367,11 +5367,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 
                 showNotification(dataParsed, 0);
                 
-                if(!dataParsed.title.toString().includes("Hi,") && !dataParsed.title.toString().includes("Deposit")){
-                showNotificationBackground(dataParsed.title,"",dataParsed);
+                if(!dataParsed.Title.toString().includes("Hi,") && !dataParsed.Title.toString().includes("Deposit")){
+                showNotificationBackground(dataParsed.Title,"",dataParsed);
                 }
                 // if (document.visibilityState === "visible") {
-                //   showNotificationBackground(dataParsed.title,"",dataParsed.message);
+                //   showNotificationBackground(dataParsed.Title,"",dataParsed.Message);
 
                 // }else{
                 //   showNotification(dataParsed);
