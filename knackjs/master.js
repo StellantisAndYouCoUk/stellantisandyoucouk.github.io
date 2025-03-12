@@ -5132,15 +5132,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
  
 
         if (Notification.permission === 'granted'){
-          if(!parsedData.title.toString().includes("Message") && !parsedData.title.toString().includes("Waiting Sales")){
+          if(!parsedData.Title.toString().includes("Message") && !parsedData.Title.toString().includes("Waiting Sales")){
             Swal.fire({
-              title: `<strong>${parsedData.title}</strong>`,
+              title: `<strong>${parsedData.Title}</strong>`,
               html: `
                 ${parsedData.attachment && parsedData.attachment.url
                   ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
                   : ""
                 }
-                ${parsedData.message.Message || ""}
+                ${parsedData.Message || ""}
               `,
               showCloseButton: true,
               allowEscapeKey: true,
