@@ -5123,7 +5123,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       console.log("event source implemented" + eventSource)
 
-      function showNotification(data, timer) {
+      function showNotification(data, message, timer) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
@@ -5132,15 +5132,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
  
 
         if (Notification.permission === 'granted'){
-          if(!parsedData.Title.toString().includes("Message") && !parsedData.Title.toString().includes("Waiting Sales")){
+          if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales")){
             Swal.fire({
-              title: `<strong>${parsedData.Title}</strong>`,
+              title: `<strong>${message.Title}</strong>`,
               html: `
-                ${parsedData.Attachment && parsedData.Attachment.url
-                  ? `<img src='${parsedData.Attachment.url}' style="max-width: 100%; height: auto;">`
+                ${message.Attachment && message.Attachment.url
+                  ? `<img src='${message.Attachment.url}' style="max-width: 100%; height: auto;">`
                   : ""
                 }
-                ${parsedData.Message || ""}
+                ${message.Message || ""}
               `,
               showCloseButton: true,
               allowEscapeKey: true,
@@ -5154,14 +5154,14 @@ $(document).on("knack-view-render.any", function (event, scene) {
               showCancelButton: true,
               cancelButtonText: "Close",
               cancelButtonColor: "#FF0000",
-              showConfirmButton: !!parsedData.Click,
-              confirmButtonText: `${parsedData.Click
+              showConfirmButton: !!message.Click,
+              confirmButtonText: `${message.Click
                 ? `<i class="fa fa-external-link-alt"></i> Go to Link`
                 : ""}`,
               confirmButtonAriaLabel: "Click To Open",
               preConfirm: () => {
-                if (parsedData.Click) {
-                  window.open(parsedData.Click, "_blank");
+                if (message.Click) {
+                  window.open(message.Click, "_blank");
                 }
               },
               didOpen: () => {
@@ -5317,9 +5317,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                       });
               
-              if (body.click) {
+              if (body.Click) {
                   notification.onclick = function () {
-                  window.open(body.click, '_blank');
+                  window.open(body.Click, '_blank');
                   console.log("Notification clicked.");
                   };
               } 
@@ -5351,9 +5351,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 console.log("This message appears after the delay");
                 
 
-                let dataParsed = JSON.parse(e.data);
-                dataParsed = JSON.parse(dataParsed.message)
-                console.log(JSON.stringify(dataParsed));
+                const dataParsed = JSON.parse(e.data);
+                console.log("DataParsed", JSON.stringify(dataParsed));
+
+                const messageParsed = JSON.parse(dataParsed.message)
+                console.log("MessageParsed ", JSON.stringify(messageParsed));
                 
 
 
@@ -5365,10 +5367,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
                 
-                showNotification(dataParsed, 0);
+                showNotification(dataParsed, messageParsed, 0);
                 
-                if(!dataParsed.Title.toString().includes("Hi,") && !dataParsed.Title.toString().includes("Deposit")){
-                showNotificationBackground(dataParsed.Title,"",dataParsed);
+                if(!messageParsed.Title.toString().includes("Hi,") && !messageParsed.Title.toString().includes("Deposit")){
+                showNotificationBackground(messageParsed.Title,"",messageParsed);
                 }
                 // if (document.visibilityState === "visible") {
                 //   showNotificationBackground(dataParsed.Title,"",dataParsed.Message);
@@ -5377,7 +5379,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 //   showNotification(dataParsed);
                 // }
               }else{
-                showNotification(dataParsed, 3000);
+                showNotification(dataParsed, messageParsed, 3000);
 
               }
 
