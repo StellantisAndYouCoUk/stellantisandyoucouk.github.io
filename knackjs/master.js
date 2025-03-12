@@ -5351,7 +5351,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 console.log("This message appears after the delay");
                 
 
-                const dataParsed = JSON.parse(e.data);
+                let dataParsed = JSON.parse(e.data);
+                dataParse = JSON.parse(dataParsed.message)
                 console.log(JSON.stringify(dataParsed));
                 
 
