@@ -5136,8 +5136,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
             Swal.fire({
               title: `<strong>${parsedData.Title}</strong>`,
               html: `
-                ${parsedData.attachment && parsedData.attachment.url
-                  ? `<img src='${parsedData.attachment.url}' style="max-width: 100%; height: auto;">`
+                ${parsedData.Attachment && parsedData.Attachment.url
+                  ? `<img src='${parsedData.Attachment.url}' style="max-width: 100%; height: auto;">`
                   : ""
                 }
                 ${parsedData.Message || ""}
@@ -5154,14 +5154,14 @@ $(document).on("knack-view-render.any", function (event, scene) {
               showCancelButton: true,
               cancelButtonText: "Close",
               cancelButtonColor: "#FF0000",
-              showConfirmButton: !!parsedData.click,
-              confirmButtonText: `${parsedData.click
+              showConfirmButton: !!parsedData.Click,
+              confirmButtonText: `${parsedData.Click
                 ? `<i class="fa fa-external-link-alt"></i> Go to Link`
                 : ""}`,
               confirmButtonAriaLabel: "Click To Open",
               preConfirm: () => {
-                if (parsedData.click) {
-                  window.open(parsedData.click, "_blank");
+                if (parsedData.Click) {
+                  window.open(parsedData.Click, "_blank");
                 }
               },
               didOpen: () => {
