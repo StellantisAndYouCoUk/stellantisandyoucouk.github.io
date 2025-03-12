@@ -5137,7 +5137,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               title: `<strong>${message.Title}</strong>`,
               html: `
                 ${message.Attach && message.Attach.url
-                  ? `<img src='${message.Attach.url}' style="max-width: 100%; height: auto; border-radious: 20px">`
+                  ? `<img src='${message.Attach.url}' style="max-width: 100%; height: auto;">`
                   : ""
                 }
                 ${message.Message || ""}
