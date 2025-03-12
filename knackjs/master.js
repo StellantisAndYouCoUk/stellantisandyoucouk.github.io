@@ -5311,7 +5311,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function showNotificationBackground(title, icon = '', body) {   
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body.message,
+              body: body.Message,
               requireInteraction: true,
               badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
