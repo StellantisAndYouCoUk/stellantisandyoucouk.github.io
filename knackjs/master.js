@@ -5148,7 +5148,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                   ? `<img src='${data.attachment.url}' style="max-width: 100%; height: auto; border-radius: 25px;">`
                   : ""
                 }
-                ${message.Message || ""}
+                <div class="notification-message">${message.Message || ""}</div>
               `,
               showCloseButton: true,
               allowEscapeKey: true,
