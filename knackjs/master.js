@@ -5136,8 +5136,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
             Swal.fire({
               title: `<strong>${message.Title}</strong>`,
               html: `
-                ${message.Attachment && message.Attachment.url
-                  ? `<img src='${message.Attachment.url}' style="max-width: 100%; height: auto;">`
+                ${message.Attach && message.Attach.url
+                  ? `<img src='${message.Attach.url}' style="max-width: 100%; height: auto; border-radious: 20px">`
                   : ""
                 }
                 ${message.Message || ""}
