@@ -5134,7 +5134,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
   // Edge
-  function inAppPopUpSwalEdge(title, htmlTitle, icon){
+  function inAppPopUpSwalEdge(title, htmlTitle){
 
     Swal.fire({
       title: title,
@@ -5181,7 +5181,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
   }
   
   // Chrome
-  function inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText){
+  function inAppPopUpSwalChrome(title, htmlTitle){
 
     Swal.fire({
       title: title,
@@ -5335,8 +5335,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
               const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
               const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
            
-
-              inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText);
+              console.log("In App Pop Up Blocked Message Edge")
+              inAppPopUpSwalEdge(title, htmlTitle);
             }
     
     
@@ -5344,10 +5344,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
     
         if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
-          console.log("inAppPopUpSwalChrome")
 
+          console.log("In App Pop Up Blocked Message Edge")
 
-          inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText);
+          inAppPopUpSwalChrome(title, htmlTitle);
         }
 
 
