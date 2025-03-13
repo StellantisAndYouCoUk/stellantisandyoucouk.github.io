@@ -5399,6 +5399,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
                           if(messageParsed.BlockedTitle){
             title = messageParsed.BlockedTitle
           }
+
+          if(messageParsed.BlockedMessage){
+            htmlTitle = `<h3>${messageParsed.BlockedMessage}</h3>`
+          }
                 
 
 
