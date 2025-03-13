@@ -5117,7 +5117,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
   let confirmButtonText = 'Click here to enable notifications';
 
 
-
+  title=`My Title`;
 
   let icon = 'warning';
 
