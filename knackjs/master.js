@@ -5115,7 +5115,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
   // Edge
-  function inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText){
+  function inAppPopUpSwalEdge(title, htmlTitle, icon){
 
     Swal.fire({
       title: title,
@@ -5168,7 +5168,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       title: title,
       html: htmlTitle,
       icon: icon,
-      confirmButtonText: confirmButtonText
+      confirmButtonText: 'Click here to enable notifications'
                   }).then((result) => {
         Swal.fire({
           title: '',
