@@ -5113,6 +5113,25 @@ $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
 
 
+  let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
+  let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
+  let confirmButtonText = 'Click here to enable notifications';
+
+
+
+  if(JSON.parse(parsedData.message).BlockedTitle){
+    title = JSON.parse(parsedData.message).BlockedTitle
+  }
+
+  if(JSON.parse(parsedData.message).BlockedMessage){
+    htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
+  }
+        
+
+
+
+
+
 
   // Edge
   function inAppPopUpSwalEdge(title, htmlTitle, icon){
@@ -5377,9 +5396,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
         }
 
         let notificationId;
-        let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
-        let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
-        let confirmButtonText = 'Click here to enable notifications';
 
         
             
@@ -5396,14 +5412,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 const messageParsed = JSON.parse(dataParsed.message)
                 console.log("MessageParsed ", JSON.stringify(messageParsed));
 
-                          if(messageParsed.BlockedTitle){
-            title = messageParsed.BlockedTitle
-          }
 
-          if(messageParsed.BlockedMessage){
-            htmlTitle = `<h3>${messageParsed.BlockedMessage}</h3>`
-          }
-                
 
 
           let uniqueNumberNotification = dataParsed.id;
