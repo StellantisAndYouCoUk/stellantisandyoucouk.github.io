@@ -5347,7 +5347,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
         if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
 
-          console.log("In App Pop Up Blocked Message Edge")
+          console.log("In App Pop Up Blocked Message Chrome")
+
+          title = JSON.parse(parsedData.message).BlockedTitle;
+          htmlTitle = JSON.parse(parsedData.message).BlockedMessage;
 
           inAppPopUpSwalChrome(title, htmlTitle, gifUrlBlocked);
         }
