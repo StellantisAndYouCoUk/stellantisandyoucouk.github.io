@@ -5109,24 +5109,15 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 //Mayank code 
 let eventSource = null;
 
+let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
+let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
+let confirmButtonText = 'Click here to enable notifications';
+
+
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
 
 
-  let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
-  let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
-  let confirmButtonText = 'Click here to enable notifications';
-
-
-
-  // if(JSON.parse(parsedData.message).BlockedTitle){
-  //   title = JSON.parse(parsedData.message).BlockedTitle
-  // }
-
-  // if(JSON.parse(parsedData.message).BlockedMessage){
-  //   htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
-  // }
-        
 
 
 
@@ -5336,6 +5327,17 @@ $(document).on("knack-view-render.any", function (event, scene) {
               const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
            
               console.log("In App Pop Up Blocked Message Edge")
+              
+  // if(JSON.parse(parsedData.message).BlockedTitle){
+  //   title = JSON.parse(parsedData.message).BlockedTitle
+  // }
+
+  // if(JSON.parse(parsedData.message).BlockedMessage){
+  //   htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
+  // }
+        
+
+
               inAppPopUpSwalEdge(title, htmlTitle);
             }
     
