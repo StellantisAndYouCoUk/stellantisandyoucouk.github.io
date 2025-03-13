@@ -4494,6 +4494,10 @@ img.user-icon:hover {
   font-family: ubuntu;
 }
 
+.notification-message{
+      margin: 1rem 0 0.5rem;
+}
+
 
 
 .rotate-y {
