@@ -5397,7 +5397,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 console.log("MessageParsed ", JSON.stringify(messageParsed));
 
                           if(messageParsed.BlockedTitle){
-            title = BlockedTitle
+            title = messageParsed.BlockedTitle
           }
                 
 
