@@ -4568,7 +4568,7 @@ img.user-icon:hover {
 
 /* Notification Button */
 
-.swal-confirm {
+#popup-confirm-button {
   background: hsl(340deg 100% 32%);
   border-radius: 12px;
   border: none;
@@ -4585,9 +4585,10 @@ img.user-icon:hover {
   background: hsl(345deg 100% 47%);
   color: white;
   transform: translateY(-6px);
+  margin-top: 0.7rem;
 }
 
-.swal-confirm:active .front {
+#popup-confirm-button:active .front {
   transform: translateY(-2px);
 }
 
