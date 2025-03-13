@@ -5113,6 +5113,53 @@ $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
   let notificationId;
 
+
+  function InAppPopUpSwal(title, htmlTitle, icon, confirmButtonText, htmlBody){
+
+    Swal.fire({
+      title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+      html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
+      icon: "warning",
+      confirmButtonText: 'Click here to enable notifications',
+      focusConfirm: false
+        }).then((result) => {
+            Swal.fire({
+              title: '',
+              html: `
+                      <h2>Steps to Enable Notifications</h2>
+                      <ol class="listOfSteps">
+                        <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
+                        <li>Click Allow Notification</li>
+                        <li>Click to refresh your page</li>
+                      </ol>
+          `,
+          imageUrl: gifUrlBlocked, // GIF displayed here
+          // imageWidth: 600,
+          imageAlt: "Success GIF",
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          confirmButtonText: 'Refresh Your Page'
+        })
+          .then((result) => {
+            if(result.isConfirmed){
+              if (Notification.permission === 'granted') {
+                window.location.reload(true)
+
+              }else{
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
+                });
+
+              };
+            }
+          });
+      // }
+    });
+
+  }
+
   if (eventSource === null) {
     const userAttributes = Knack.getUserAttributes();
 
@@ -5133,7 +5180,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
         if (Notification.permission === 'granted'){
-          if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales")){
+          if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales") || message.InAppPopUp){
 
             
             let confirmButtonAriaLabel = "Click To Open"
@@ -5217,48 +5264,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
             if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
               const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
               const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
+
+
+              InAppPopUpSwal();
         
-              Swal.fire({
-                title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-                html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
-                icon: "warning",
-                confirmButtonText: 'Click here to enable notifications',
-                focusConfirm: false
-              }).then((result) => {
-                  Swal.fire({
-                    title: '',
-                    html: `
-                                <h2>Steps to Enable Notifications</h2>
-                                <ol class="listOfSteps">
-                                  <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
-                                  <li>Click Allow Notification</li>
-                                  <li>Click to refresh your page</li>
-                                </ol>
-                    `,
-                    imageUrl: gifUrlBlocked, // GIF displayed here
-                    // imageWidth: 600,
-                    imageAlt: "Success GIF",
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    confirmButtonText: 'Refresh Your Page'
-                  })
-                    .then((result) => {
-                      if(result.isConfirmed){
-                        if (Notification.permission === 'granted') {
-                          window.location.reload(true)
-        
-                        }else{
-                          Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
-                          });
-        
-                        };
-                      }
-                    });
-                // }
-              });
+
             }
     
     
@@ -5382,7 +5392,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 
                 showNotification(dataParsed, messageParsed, 0);
                 
-                if(!messageParsed.Title.toString().includes("Hi,") && !messageParsed.Title.toString().includes("Deposit")){
+                if(!messageParsed.Title.toString().includes("Hi,") && !messageParsed.Title.toString().includes("Deposit") || messageParsed.DesktopNotification){
                 showNotificationBackground(messageParsed.Title,"",messageParsed);
                 }
                 // if (document.visibilityState === "visible") {
