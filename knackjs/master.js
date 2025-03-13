@@ -5177,7 +5177,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
     Swal.fire({
       title: title,
       html: htmlTitle,
-      icon: icon,
+      icon: 'warning',
       confirmButtonText: 'Click here to enable notifications'
                   }).then((result) => {
         Swal.fire({
