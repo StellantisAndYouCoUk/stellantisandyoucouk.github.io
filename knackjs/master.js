@@ -5112,14 +5112,22 @@ let eventSource = null;
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
   let notificationId;
+  let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
+  let htmlTitle = `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`
+  let confirmButtonText = 'Click here to enable notifications';
 
 
-  function InAppPopUpSwal(title, htmlTitle, icon, confirmButtonText, htmlBody){
+
+
+  let icon = 'warning';
+
+  // Edge
+  function inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText){
 
     Swal.fire({
-      title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-      html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
-      icon: "warning",
+      title: title,
+      html: htmlTitle,
+      icon: icon,
       confirmButtonText: 'Click here to enable notifications',
       focusConfirm: false
         }).then((result) => {
@@ -5157,6 +5165,55 @@ $(document).on("knack-view-render.any", function (event, scene) {
           });
       // }
     });
+
+  }
+  // Chrome
+  function inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText){
+
+    Swal.fire({
+      title: title,
+      html: htmlTitle,
+      icon: icon,
+      confirmButtonText: confirmButtonText
+                  }).then((result) => {
+        Swal.fire({
+          title: '',
+          allowOutsideClick: false,
+          html: `
+                      <h2>Steps to Enable Notifications</h2>
+                      <ol class="listOfSteps">
+                        <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
+                        <li>Click Reset Permissions.</li>
+                        <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg" class="arrow-clockwise"> icon on the url.</li>
+                        <li>Click Allow Notification</li>
+                      </ol>
+          `,
+          imageUrl: gifUrlBlocked, // GIF displayed here
+          // imageWidth: 600,
+          imageAlt: "Success GIF",
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          confirmButtonText: 'Refresh the page'
+        })
+          .then((result) => {
+            if(result.isConfirmed){
+              if (Notification.permission === 'granted') {
+                window.location.reload(true)
+
+              }else{
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
+                  allowOutsideClick: false
+                });
+
+              };
+            }
+          });
+      // }
+    });
+
 
   }
 
@@ -5265,10 +5322,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
               const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
-
-              InAppPopUpSwal();
-        
-
+              inAppPopUpSwalEdge();
             }
     
     
@@ -5276,50 +5330,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
     
         if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
-    
-          Swal.fire({
-            title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-            html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
-            icon: "warning",
-            confirmButtonText: 'Click here to enable notifications'
-                        }).then((result) => {
-              Swal.fire({
-                title: '',
-                allowOutsideClick: false,
-                html: `
-                            <h2>Steps to Enable Notifications</h2>
-                            <ol class="listOfSteps">
-                              <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
-                              <li>Click Reset Permissions.</li>
-                              <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg" class="arrow-clockwise"> icon on the url.</li>
-                              <li>Click Allow Notification</li>
-                            </ol>
-                `,
-                imageUrl: gifUrlBlocked, // GIF displayed here
-                // imageWidth: 600,
-                imageAlt: "Success GIF",
-                allowEscapeKey: false,
-                allowOutsideClick: false,
-                confirmButtonText: 'Refresh the page'
-              })
-                .then((result) => {
-                  if(result.isConfirmed){
-                    if (Notification.permission === 'granted') {
-                      window.location.reload(true)
-    
-                    }else{
-                      Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
-                        allowOutsideClick: false
-                      });
-    
-                    };
-                  }
-                });
-            // }
-          });
+          inAppPopUpSwalChrome();
         }
 
 
