@@ -5111,12 +5111,8 @@ let eventSource = null;
 
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
-  let notificationId;
-  let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
-  let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
-  let confirmButtonText = 'Click here to enable notifications';
 
-  let icon = 'warning';
+
 
   // Edge
   function inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText){
@@ -5124,7 +5120,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
     Swal.fire({
       title: title,
       html: htmlTitle,
-      icon: icon,
+      icon: 'warning',
       confirmButtonText: 'Click here to enable notifications',
       focusConfirm: false
         }).then((result) => {
@@ -5331,9 +5327,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
           console.log("inAppPopUpSwalChrome")
 
-          // if(messageParsed.BlockedTitle){
-          //   title = BlockedTitle
-          // }
+
           inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText);
         }
 
@@ -5381,6 +5375,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function delay(milliseconds) {
           return new Promise(resolve => setTimeout(resolve, milliseconds));
         }
+
+        let notificationId;
+        let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
+        let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
+        let confirmButtonText = 'Click here to enable notifications';
+
+        
             
             async function runSync() {
               let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650 ; // Random delay
@@ -5394,6 +5395,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 const messageParsed = JSON.parse(dataParsed.message)
                 console.log("MessageParsed ", JSON.stringify(messageParsed));
+
+                          if(messageParsed.BlockedTitle){
+            title = BlockedTitle
+          }
                 
 
 
