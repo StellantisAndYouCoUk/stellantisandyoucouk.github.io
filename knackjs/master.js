@@ -5159,7 +5159,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               // customClass: {
               //   icon: 'rotate-y',
               // },
-              showCancelButton: true,
+              showCancelButton: false,
               cancelButtonText: "Close",
               cancelButtonColor: "#FF0000",
               showConfirmButton: !!message.Click,
