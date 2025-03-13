@@ -5119,13 +5119,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 
-  if(JSON.parse(parsedData.message).BlockedTitle){
-    title = JSON.parse(parsedData.message).BlockedTitle
-  }
+  // if(JSON.parse(parsedData.message).BlockedTitle){
+  //   title = JSON.parse(parsedData.message).BlockedTitle
+  // }
 
-  if(JSON.parse(parsedData.message).BlockedMessage){
-    htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
-  }
+  // if(JSON.parse(parsedData.message).BlockedMessage){
+  //   htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
+  // }
         
 
 
