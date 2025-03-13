@@ -5331,9 +5331,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
           console.log("inAppPopUpSwalChrome")
 
-          if(messageParsed.BlockedTitle){
-            title = BlockedTitle
-          }
+          // if(messageParsed.BlockedTitle){
+          //   title = BlockedTitle
+          // }
           inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText);
         }
 
