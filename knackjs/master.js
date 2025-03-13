@@ -5113,8 +5113,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
   let notificationId;
   let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
-  let htmlTitle = `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`
+  let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
   let confirmButtonText = 'Click here to enable notifications';
+    console.log("Title hey", title);
+
+
+
 
 
   title=`My Title`;
