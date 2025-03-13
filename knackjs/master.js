@@ -5109,11 +5109,6 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 //Mayank code 
 let eventSource = null;
 
-let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
-let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
-let confirmButtonText = 'Click here to enable notifications';
-
-
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
 
@@ -5320,6 +5315,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
                         (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
             
             const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
+            
+            let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
+            let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
         
         
             if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
@@ -5328,13 +5326,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
            
               console.log("In App Pop Up Blocked Message Edge")
               
-  // if(JSON.parse(parsedData.message).BlockedTitle){
-  //   title = JSON.parse(parsedData.message).BlockedTitle
-  // }
-
-  // if(JSON.parse(parsedData.message).BlockedMessage){
-  //   htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
-  // }
 
               
           if(JSON.parse(parsedData.message).BlockedTitle){
@@ -5347,10 +5338,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
             htmlTitle = JSON.parse(parsedData.message).BlockedMessage;
 
           }
-
-               
-
-
               inAppPopUpSwalEdge(title, htmlTitle, gifUrlBlocked);
             }
     
