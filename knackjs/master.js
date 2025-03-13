@@ -5125,7 +5125,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
   // Edge
-  function inAppPopUpSwalEdge(title, htmlTitle){
+  function inAppPopUpSwalEdge(title, htmlTitle, gifUrlBlocked){
 
     Swal.fire({
       title: title,
@@ -5172,7 +5172,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
   }
   
   // Chrome
-  function inAppPopUpSwalChrome(title, htmlTitle){
+  function inAppPopUpSwalChrome(title, htmlTitle, gifUrlBlocked){
 
     Swal.fire({
       title: title,
@@ -5338,7 +5338,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         
 
 
-              inAppPopUpSwalEdge(title, htmlTitle);
+              inAppPopUpSwalEdge(title, htmlTitle, gifUrlBlocked);
             }
     
     
@@ -5349,7 +5349,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
           console.log("In App Pop Up Blocked Message Edge")
 
-          inAppPopUpSwalChrome(title, htmlTitle);
+          inAppPopUpSwalChrome(title, htmlTitle, gifUrlBlocked);
         }
 
 
