@@ -5115,13 +5115,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
   let title = `Whoops! You have previously <strong>blocked</strong> notifications`;
   let htmlTitle = `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`
   let confirmButtonText = 'Click here to enable notifications';
-    console.log("Title hey", title);
-
-
-
-
-
-  title=`My Title`;
 
   let icon = 'warning';
 
@@ -5337,6 +5330,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
         if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
           console.log("inAppPopUpSwalChrome")
+
+          if(messageParsed.BlockedTitle){
+            title = BlockedTitle
+          }
           inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText);
         }
 
