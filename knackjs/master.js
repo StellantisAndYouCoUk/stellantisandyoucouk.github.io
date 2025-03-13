@@ -5322,7 +5322,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
               const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
               const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
-              console.log("inAppPopUpSwalEdge")
+           
 
               inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText);
             }
@@ -5736,7 +5736,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
       const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
       const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
-      inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText);
+
       Swal.fire({
         title: 'Whoops! You have previously <strong>blocked</strong> notifications',
         html: `<h3>We can’t send you VR or other time sensitive notifications if this isn’t enabled 😕</h3>`,
