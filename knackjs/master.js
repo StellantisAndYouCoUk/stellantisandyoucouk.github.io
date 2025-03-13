@@ -5322,7 +5322,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
               const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
 
-              inAppPopUpSwalEdge();
+              inAppPopUpSwalEdge(title, htmlTitle, icon, confirmButtonText);
             }
     
     
@@ -5330,7 +5330,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
     
         if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
           const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
-          inAppPopUpSwalChrome();
+          inAppPopUpSwalChrome(title, htmlTitle, icon, confirmButtonText);
         }
 
 
