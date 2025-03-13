@@ -4585,7 +4585,6 @@ img.user-icon:hover {
   background: hsl(345deg 100% 47%);
   color: white;
   transform: translateY(-6px);
-  margin-top: 0.7rem;
 }
 
 #popup-confirm-button:active .front {
