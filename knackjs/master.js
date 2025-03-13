@@ -5164,7 +5164,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
               cancelButtonColor: "#FF0000",
               showConfirmButton: !!message.Click,
               confirmButtonText: `
-              <span class="front">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front">
               ${message.Click
                 ? `<i class="fa fa-external-link-alt"></i> ${confirmButtonAriaLabel}`
                 : ""}
