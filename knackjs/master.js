@@ -5181,15 +5181,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 const cancelButton = Swal.getCancelButton();
                 const confirmButton = Swal.getConfirmButton();
           
-                if (cancelButton) {
-                  cancelButton.id = "popup-cancel-button";
-                  document
-                    .getElementById("popup-cancel-button")
-                    .addEventListener("click", () => {
-                      Swal.close();
-                      console.log("Clicked Notification");
-                    });
-                }
+                // if (cancelButton) {
+                //   cancelButton.id = "popup-cancel-button";
+                //   document
+                //     .getElementById("popup-cancel-button")
+                //     .addEventListener("click", () => {
+                //       Swal.close();
+                //       console.log("Clicked Notification");
+                //     });
+                // }
           
                 if (confirmButton) confirmButton.id = "popup-confirm-button";
               },
