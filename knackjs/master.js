@@ -5335,7 +5335,20 @@ $(document).on("knack-view-render.any", function (event, scene) {
   // if(JSON.parse(parsedData.message).BlockedMessage){
   //   htmlTitle = `<h3>${JSON.parse(parsedData.message).BlockedMessage}</h3>`
   // }
-        
+
+              
+          if(JSON.parse(parsedData.message).BlockedTitle){
+            title = JSON.parse(parsedData.message).BlockedTitle;
+
+          }
+
+          if(JSON.parse(parsedData.message).BlockedMessage){
+
+            htmlTitle = JSON.parse(parsedData.message).BlockedMessage;
+
+          }
+
+               
 
 
               inAppPopUpSwalEdge(title, htmlTitle, gifUrlBlocked);
@@ -5349,8 +5362,18 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
           console.log("In App Pop Up Blocked Message Chrome")
 
-          title = JSON.parse(parsedData.message).BlockedTitle;
-          htmlTitle = JSON.parse(parsedData.message).BlockedMessage;
+          if(JSON.parse(parsedData.message).BlockedTitle){
+            title = JSON.parse(parsedData.message).BlockedTitle;
+
+          }
+
+          if(JSON.parse(parsedData.message).BlockedMessage){
+
+            htmlTitle = JSON.parse(parsedData.message).BlockedMessage;
+
+          }
+
+          
 
           inAppPopUpSwalChrome(title, htmlTitle, gifUrlBlocked);
         }
