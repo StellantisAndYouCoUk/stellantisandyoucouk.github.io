@@ -5381,7 +5381,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function showNotificationBackground(title, icon = '', body) {   
 
 
-          if ($('#serviceWorkerJS').length === 0) {
+          if (true) { 
             loadScript("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js?" + nowS, 'serviceWorkerJS', function() {
               console.log('Service Worker script loaded.');
             });
