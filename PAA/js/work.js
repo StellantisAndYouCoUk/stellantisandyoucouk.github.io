@@ -283,7 +283,7 @@ function work(){
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
         let machines = getServerData('machines',null,{},300);
-        $('#runMachine').html('<option>'+machines.map(el => el.name).join('</option><option>')+'</option>')
+        $('#runMachine').html('<option selected>Not set</option><option>'+machines.map(el => el.name).join('</option><option>')+'</option>')
     }
 
     if (page.includes('runs.html')){
@@ -571,10 +571,10 @@ function runFlow(){
         priority : $('#runPriority').val(),
         flowName : globalPageData.flowToRun,
         flowInput : newInput,
-        preferedMachineName : $('#runMachine').val(),
         runMode :$('#runMode').val(),
         noRetry : true
     }
+    if ($('#runMachine').val()!=="Not set") runData.preferedMachineName = $('#runMachine').val();
     console.log(runData);
     $('#editor-container').hide();
     return callPostHttpRequest('https://davidmale--server.apify.actor/powerAutomateNewRequest?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'},runData)
