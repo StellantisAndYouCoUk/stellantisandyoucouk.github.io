@@ -5380,6 +5380,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
         function showNotificationBackground(title, icon = '', body) {   
 
+
           const checkPermission = () => {
             if (!('serviceWorker' in navigator)) {
               throw new Error("No support for Service Worker!");
@@ -5388,17 +5389,26 @@ $(document).on("knack-view-render.any", function (event, scene) {
           
           const registerSW = async () => {
             try {
-              const nowS = Date.now(); // Ensure nowS is defined
-              const swUrl = `https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?${nowS}`;
-              
-              // Ensure the script is loaded before registration
-              loadScript(swUrl, "sw", () => {
-                console.log("Service Worker script loaded.");
-              });
+              const swCode = `
+                self.addEventListener('install', event => {
+                  console.log("Service Worker Installed!");
+                  self.skipWaiting();
+                });
           
-              // Register the service worker
-              const registration = await navigator.serviceWorker.register(swUrl, { scope: "/" });
-              
+                self.addEventListener('activate', event => {
+                  console.log("Service Worker Activated!");
+                });
+          
+                console.log("This message from Service Worker.");
+              `;
+          
+              // Convert the SW script into a Blob and create a temporary URL
+              const swBlob = new Blob([swCode], { type: 'application/javascript' });
+              const swUrl = URL.createObjectURL(swBlob);
+          
+              // Register the Service Worker
+              const registration = await navigator.serviceWorker.register(swUrl, { scope: '/' });
+          
               console.log("Service Worker registered successfully:", registration);
               return registration;
             } catch (error) {
@@ -5408,6 +5418,9 @@ $(document).on("knack-view-render.any", function (event, scene) {
           
           checkPermission();
           registerSW();
+
+          
+          
 
           
           
