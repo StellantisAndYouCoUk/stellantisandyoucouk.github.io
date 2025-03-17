@@ -5380,23 +5380,37 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
         function showNotificationBackground(title, icon = '', body) {   
 
-            const checkPermission = ()=>{
-              if (!('serviceWorker' in navigator)){
-                throw new Error("No support for service worker!")
-              }
+          const checkPermission = () => {
+            if (!('serviceWorker' in navigator)) {
+              throw new Error("No support for Service Worker!");
             }
-
-
-            const registerSW = async () =>{
-              loadScript("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?"+nowS,"", emptyCallback);
-              const registration = await navigator.serviceWorker.register('sw.js');
+          };
+          
+          const registerSW = async () => {
+            try {
+              const nowS = Date.now(); // Ensure nowS is defined
+              const swUrl = `https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?${nowS}`;
+              
+              // Ensure the script is loaded before registration
+              loadScript(swUrl, "sw", () => {
+                console.log("Service Worker script loaded.");
+              });
+          
+              // Register the service worker
+              const registration = await navigator.serviceWorker.register(swUrl, { scope: "/" });
+              
+              console.log("Service Worker registered successfully:", registration);
               return registration;
+            } catch (error) {
+              console.error("Service Worker registration failed:", error);
             }
+          };
+          
+          checkPermission();
+          registerSW();
 
-
-            checkPermission();
-            registerSW();
-
+          
+          
 
 
 
