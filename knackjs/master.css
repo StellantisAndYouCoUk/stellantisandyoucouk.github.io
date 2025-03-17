@@ -4490,6 +4490,14 @@ img.user-icon:hover {
   transform: scale(1);          /* Transition to full size */
 }
 
+.swal2-popup.swal2-modal.swal2-show {
+  font-family: ubuntu;
+}
+
+.notification-message{
+      margin: 1rem 0 0.5rem;
+}
+
 
 
 .rotate-y {
@@ -4558,9 +4566,81 @@ img.user-icon:hover {
   margin-right: 5px;
 }
 
-.notification-message {
-  margin: 0 0 15px;
+/* Notification Button */
+#popup-confirm-button {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
 }
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+.edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+.front {
+  display: block;
+  position: relative;
+  padding: 6px 21px;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+#popup-confirm-button:hover {
+  filter: brightness(110%);
+}
+#popup-confirm-button:hover .front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+#popup-confirm-button:active .front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+#popup-confirm-button:hover .shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+#popup-confirm-button:active .shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+#popup-confirm-button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* .notification-message {
+  margin: 0 0 15px;
+} */
 
 .focus-mode-button {
   background-color: #6272a4;
