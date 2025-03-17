@@ -5382,8 +5382,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
           if('serviceWorker' in navigator){
             navigator.serviceWorker.register('sw.js')
-            .then(()=>{console.log('service worker registered')})
-            .catch(()=>{console.log('service worker not registered')})
+            .then((reg)=>{console.log('service worker registered', reg)})
+            .catch((err)=>{console.log('service worker not registered', err)})
           }
 
 
