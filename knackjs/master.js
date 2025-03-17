@@ -5374,17 +5374,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
 
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/sw.js')
-              .then(reg => console.log("Service Worker Registered", reg))
-              .catch(err => console.log("Service Worker Registration Failed", err));
-      }
-
-      
-
-
-
-
+  
         function showNotificationBackground(title, icon = '', body) {   
 
             const checkPermission = ()=>{
