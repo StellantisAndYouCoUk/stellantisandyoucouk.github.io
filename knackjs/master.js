@@ -5381,6 +5381,16 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function showNotificationBackground(title, icon = '', body) {   
 
 
+          if ($('#serviceWorkerJS').length === 0) {
+            loadScript("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js?" + nowS, 'serviceWorkerJS', function() {
+              console.log('Service Worker script loaded.');
+            });
+          }
+
+
+
+
+
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body.Message,
