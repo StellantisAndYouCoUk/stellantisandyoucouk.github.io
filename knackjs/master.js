@@ -5395,7 +5395,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
             const registerSW = async () =>{
-              const registration = await navigator.serviceWorker.register('https://stellantisandyoucouk.github.io/goodwillHTML/sw.js');
+              loadScript("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?"+nowS,'serviceworkerjs', emptyCallback);
+              const registration = await navigator.serviceWorker.register('serviceworkerjs');
               return registration;
             }
 
