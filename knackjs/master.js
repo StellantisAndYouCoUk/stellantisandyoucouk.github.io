@@ -5382,10 +5382,48 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 
-            loadScript("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js?" + nowS, 'serviceWorkerJS', function() {
-              console.log('Service Worker script loaded.');
-            });
-    
+                        
+
+              // Load the Service Worker script dynamically
+              if ($('#serviceWorkerJS').length === 0) {
+                loadScript("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js?" + nowS, 'serviceWorkerJS', function() {
+                  console.log('Service Worker script loaded.');
+
+                  // Check permissions and register the Service Worker
+                  checkPermission()
+                    .then(() => registerSW())
+                    .then((registration) => {
+                      console.log('Service Worker registered successfully:', registration);
+                    })
+                    .catch((error) => {
+                      console.error('Service Worker registration failed:', error);
+                    });
+                });
+              }
+
+              // Function to check if Service Workers are supported
+              function checkPermission() {
+                return new Promise((resolve, reject) => {
+                  if (!('serviceWorker' in navigator)) {
+                    reject(new Error("No support for service worker!"));
+                  } else {
+                    console.log('Service Worker is supported.');
+                    resolve();
+                  }
+                });
+              }
+
+              // Function to register the Service Worker
+              async function registerSW() {
+                try {
+                  const registration = await navigator.serviceWorker.register("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js");
+                  console.log('Service Worker registered with scope:', registration.scope);
+                  return registration;
+                } catch (error) {
+                  console.error('Service Worker registration failed:', error);
+                  throw error;
+                }
+              }
 
 
 
