@@ -5381,53 +5381,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function showNotificationBackground(title, icon = '', body) {   
 
 
-          const checkPermission = () => {
-            if (!('serviceWorker' in navigator)) {
-              throw new Error("No support for Service Worker!");
-            }
-          };
-          
-          const registerSW = async () => {
-            try {
-              const swCode = `
-                self.addEventListener('install', event => {
-                  console.log("Service Worker Installed!");
-                  self.skipWaiting();
-                });
-          
-                self.addEventListener('activate', event => {
-                  console.log("Service Worker Activated!");
-                });
-          
-                console.log("This message from Service Worker.");
-              `;
-          
-              // Convert the SW script into a Blob and create a temporary URL
-              const swBlob = new Blob([swCode], { type: 'application/javascript' });
-              const swUrl = URL.createObjectURL(swBlob);
-          
-              // Register the Service Worker
-              const registration = await navigator.serviceWorker.register(swUrl, { scope: '/' });
-          
-              console.log("Service Worker registered successfully:", registration);
-              return registration;
-            } catch (error) {
-              console.error("Service Worker registration failed:", error);
-            }
-          };
-          
-          checkPermission();
-          registerSW();
-
-          
-          
-
-          
-          
-
-
-
-
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body.Message,
