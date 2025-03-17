@@ -5416,7 +5416,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               // Function to register the Service Worker
               async function registerSW() {
                 try {
-                  const registration = await navigator.serviceWorker.register("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js");
+                  const registration = await navigator.serviceWorker.register("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js");
                   console.log('Service Worker registered with scope:', registration.scope);
                   return registration;
                 } catch (error) {
