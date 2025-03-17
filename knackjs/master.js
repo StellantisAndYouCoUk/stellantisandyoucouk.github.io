@@ -5382,7 +5382,31 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       
 
+
+
+
         function showNotificationBackground(title, icon = '', body) {   
+
+            const checkPermission = ()=>{
+              if (!('serviceWorker' in navigator)){
+                throw new Error("No support for service worker!")
+              }
+            }
+
+
+            const registerSW = async () =>{
+              const registration = await navigator.serviceWorker.register('/goodwillHTML/sw.js');
+              return registration;
+            }
+
+
+            checkPermission();
+            registerSW();
+
+
+
+
+
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body.Message,
