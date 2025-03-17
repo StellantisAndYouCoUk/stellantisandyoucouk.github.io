@@ -5381,51 +5381,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
         function showNotificationBackground(title, icon = '', body) {   
 
 
-
-                        
-                console.log('Service Worker script loading.');
-              // Load the Service Worker script dynamically
-                loadScript("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?" + nowS, 'serviceWorkerJS', function() {
-                 
-
-                  // Check permissions and register the Service Worker
-                  checkPermission()
-                    .then(() => registerSW())
-                    .then((registration) => {
-                      console.log('Service Worker registered successfully:', registration);
-                    })
-                    .catch((error) => {
-                      console.error('Service Worker registration failed:', error);
-                    });
-                });
-              
-              // Function to check if Service Workers are supported
-              function checkPermission() {
-                return new Promise((resolve, reject) => {
-                  if (!('serviceWorker' in navigator)) {
-                    reject(new Error("No support for service worker!"));
-                  } else {
-                    console.log('Service Worker is supported.');
-                    resolve();
-                  }
-                });
-              }
-
-              // Function to register the Service Worker
-              async function registerSW() {
-                try {
-                  const registration = await navigator.serviceWorker.register("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js");
-                  console.log('Service Worker registered with scope:', registration.scope);
-                  return registration;
-                } catch (error) {
-                  console.error('Service Worker registration failed:', error);
-                  throw error;
-                }
-              }
-
-
-
-
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body.Message,
