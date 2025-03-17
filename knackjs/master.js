@@ -5385,7 +5385,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                         
                 console.log('Service Worker script loading.');
               // Load the Service Worker script dynamically
-                loadScript("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js?" + nowS, 'serviceWorkerJS', function() {
+                loadScript("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?" + nowS, 'serviceWorkerJS', function() {
                  
 
                   // Check permissions and register the Service Worker
