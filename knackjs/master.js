@@ -5374,32 +5374,103 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
 
-        function showNotificationBackground(title, icon = '', body) {   
-          var notification = new Notification(title, {
-              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body.Message,
-              requireInteraction: true,
-              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js')
+              .then(reg => console.log("Service Worker Registered", reg))
+              .catch(err => console.log("Service Worker Registration Failed", err));
+      }
 
-                      });
+
+
+        // function showNotificationBackground(title, icon = '', body) {   
+        //   var notification = new Notification(title, {
+        //       icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+        //       body: body.Message,
+        //       requireInteraction: true,
+        //       badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+
+        //               });
               
-              if (body.Click) {
-                  notification.onclick = function () {
-                  window.open(body.Click, '_blank');
-                  console.log("Notification clicked.");
-                  };
-              } 
-              else {
-                console.log("No click action provided.");
-              }
+        //       if (body.Click) {
+        //           notification.onclick = function () {
+        //           window.open(body.Click, '_blank');
+        //           console.log("Notification clicked.");
+        //           };
+        //       } 
+        //       else {
+        //         console.log("No click action provided.");
+        //       }
                       
   
 
-              notification.onclose = function(){
-                console.log("Background Notification closed.");
-              }
+        //       notification.onclose = function(){
+        //         console.log("Background Notification closed.");
+        //       }
 
-        }
+        // }
+
+        function showNotificationBackground(title, icon = '', body) {
+          if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('/sw.js')
+                  .then(reg => {
+                      console.log("Service Worker Registered", reg);
+                      return Notification.requestPermission();
+                  })
+                  .then(permission => {
+                      if (permission === "granted") {
+                          var notification = new Notification(title, {
+                              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+                              body: body.Message,
+                              requireInteraction: true,
+                              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+                          });
+                          
+                          if (body.Click) {
+                              notification.onclick = function () {
+                                  window.open(body.Click, '_blank');
+                                  console.log("Notification clicked.");
+                              };
+                          } else {
+                              console.log("No click action provided.");
+                          }
+                          
+                          notification.onclose = function () {
+                              console.log("Background Notification closed.");
+                          };
+                      } else {
+                          console.log("Notification permission denied.");
+                      }
+                  })
+                  .catch(err => console.log("Service Worker Registration Failed", err));
+          } else {
+              console.log("Service Worker not supported in this browser.");
+          }
+      
+          // Service Worker Logic Inside Function
+          if ('serviceWorker' in navigator && typeof importScripts === 'function') {
+              importScripts('https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js');
+              importScripts('https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js');
+      
+              self.addEventListener('install', event => {
+                  console.log('Service Worker Installed');
+                  self.skipWaiting();
+              });
+      
+              self.addEventListener('activate', event => {
+                  console.log('Service Worker Activated');
+              });
+      
+              self.addEventListener('push', event => {
+                  const data = event.data ? event.data.json() : {};
+                  self.registration.showNotification(data.title, {
+                      body: data.body,
+                      icon: data.icon,
+                      badge: data.badge,
+                      requireInteraction: true
+                  });
+              });
+          }
+      }
 
 
         try {
