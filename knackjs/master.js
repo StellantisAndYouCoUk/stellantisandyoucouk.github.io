@@ -5385,7 +5385,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
                         
 
               // Load the Service Worker script dynamically
-              if ($('#serviceWorkerJS').length === 0) {
                 loadScript("https://stellantisandyoucouk.github.io/goodwillHtml/sw.js?" + nowS, 'serviceWorkerJS', function() {
                   console.log('Service Worker script loaded.');
 
@@ -5399,8 +5398,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                       console.error('Service Worker registration failed:', error);
                     });
                 });
-              }
-
+              
               // Function to check if Service Workers are supported
               function checkPermission() {
                 return new Promise((resolve, reject) => {
