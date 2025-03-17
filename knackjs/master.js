@@ -5375,10 +5375,16 @@ $(document).on("knack-view-render.any", function (event, scene) {
       eventSource.onmessage = (e) => {
 
 
-
+            
 
 
         function showNotificationBackground(title, icon = '', body) {   
+
+          if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('sw.js')
+            .then(()=>{console.log('service worker registered')})
+            .catch(()=>{console.log('service worker not registered')})
+          }
 
 
           var notification = new Notification(title, {
