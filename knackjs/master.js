@@ -5374,7 +5374,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
 
-  
+
+
+
+
         function showNotificationBackground(title, icon = '', body) {   
 
             const checkPermission = ()=>{
@@ -5385,7 +5388,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
             const registerSW = async () =>{
-              const registration = await navigator.serviceWorker.register(loadScript("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?"+nowS,"", emptyCallback));
+              loadScript("https://stellantisandyoucouk.github.io/goodwillHTML/sw.js?"+nowS,"", emptyCallback);
+              const registration = await navigator.serviceWorker.register('sw.js');
               return registration;
             }
 
