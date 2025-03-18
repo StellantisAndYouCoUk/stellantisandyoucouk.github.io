@@ -5133,15 +5133,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
               title: '',
               html: `
                       <h2>Steps to Enable Notifications</h2>
+                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                         <li>Click Allow Notification</li>
                         <li>Click to refresh your page</li>
                       </ol>
           `,
-          imageUrl: gifUrlBlocked, // GIF displayed here
-          // imageWidth: 600,
-          imageAlt: "Success GIF",
           allowEscapeKey: false,
           allowOutsideClick: false,
           confirmButtonText: 'Refresh Your Page'
@@ -5180,6 +5178,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowOutsideClick: false,
           html: `
                       <h2>Steps to Enable Notifications</h2>
+                      <img class="swal2-image custom" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                         <li>Click Reset Permissions.</li>
@@ -5187,9 +5186,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                         <li>Click Allow Notification</li>
                       </ol>
           `,
-          imageUrl: gifUrlBlocked, // GIF displayed here
           // imageWidth: 600,
-          imageAlt: "Success GIF",
           allowEscapeKey: false,
           allowOutsideClick: false,
           confirmButtonText: 'Refresh the page'
@@ -5374,7 +5371,19 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // Handle incoming messages from the event source
       eventSource.onmessage = (e) => {
 
+
+            
+
+
         function showNotificationBackground(title, icon = '', body) {   
+
+          // if('serviceWorker' in navigator){
+          //   navigator.serviceWorker.register('https://stellantisandyoucouk.github.io/knackjs/sw.js')
+          //   .then((reg)=>{console.log('service worker registered', reg)})
+          //   .catch((err)=>{console.log('service worker not registered', err)})
+          // }
+
+
           var notification = new Notification(title, {
               icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
               body: body.Message,
@@ -5784,15 +5793,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
+                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                           <li>Click Allow Notification</li>
                           <li>Click to Refresh The Page</li>
                         </ol>
             `,
-            imageUrl: gifUrlBlocked, // GIF displayed here
-            // imageWidth: 600,
-            imageAlt: "Success GIF",
             allowEscapeKey: false,
             allowOutsideClick: false,
             confirmButtonText: 'Refresh The Page'
@@ -5835,6 +5843,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             allowOutsideClick: false,
             html: `
                         <h2>Steps to Enable Notifications</h2>
+                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                           <li>Click Reset Permissions.</li>
@@ -5842,9 +5851,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                           <li>Click Allow Notification</li>
                         </ol>
             `,
-            imageUrl: gifUrlBlocked, // GIF displayed here
-            // imageWidth: 600,
-            imageAlt: "Success GIF",
             confirmButtonText: 'Refresh the page'
           })
             .then((result) => {
@@ -5902,6 +5908,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
+                          <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                           <ol class="listOfSteps">
                             <li>Touch to <strong>🔒</strong> icon into the URL.</li>
                             <li>Touch Permissions and Touch Notification Blocked</li>
@@ -5909,8 +5916,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                             <li>Don't forget to refresh page</li>
                           </ol>
               `,
-              imageUrl: gifUrlBlocked, // GIF displayed here
-              imageWidth: 600,
+              // imageUrl: gifUrlBlocked, // GIF displayed here
+              // imageWidth: 600,
               imageAlt: "Success GIF",
               confirmButtonText: 'OK',
               allowOutsideClick: false,
@@ -5942,6 +5949,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
+                          <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                           <ol class="listOfSteps">
                             <li>Touch to <strong>🔒</strong> icon into the URL.</li>
                             <li>Touch Permissions and Touch Notification Blocked</li>
@@ -5949,9 +5957,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                             <li>Don't forget to refresh page</li>
                           </ol>
               `,
-              imageUrl: gifUrlBlocked, // GIF displayed here
               imageWidth: 600,
-              imageAlt: "Success GIF",
               confirmButtonText: 'OK'
             })
               .then(() => {
@@ -6041,6 +6047,16 @@ $(document).on('knack-scene-render.scene_2305', function(event, scene) {
     } else {
       postcodeInput.removeClass('input-error'); // Remove error styling if filled
     }
+  });
+});
+
+// Code to wait following Form Submission while Vehicle Image is being checked
+$(document).on('knack-form-submit.view_7877', function(event, view, data) { 
+	setTimeout(function(){ Knack.showSpinner();}, 0); 
+	const commandURL = "https://hook.eu1.make.celonis.com/qv79yzra6xny8hmpno2ex4u85l3n8jar?recordid=" + data.id ;
+  $.get(commandURL, function(data, status){
+    Knack.hideSpinner();
+    $(".kn-message.success").html("<b>" + data + "</b>");
   });
 });
 
