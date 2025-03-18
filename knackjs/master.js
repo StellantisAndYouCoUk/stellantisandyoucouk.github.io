@@ -5133,7 +5133,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               title: '',
               html: `
                       <h2>Steps to Enable Notifications</h2>
-                      <img class="swal2-image custom" src=${gifUrlBlocked} alt="Success GIF">
+                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                         <li>Click Allow Notification</li>
@@ -5377,11 +5377,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
         function showNotificationBackground(title, icon = '', body) {   
 
-          if('serviceWorker' in navigator){
-            navigator.serviceWorker.register('https://stellantisandyoucouk.github.io/knackjs/sw.js')
-            .then((reg)=>{console.log('service worker registered', reg)})
-            .catch((err)=>{console.log('service worker not registered', err)})
-          }
+          // if('serviceWorker' in navigator){
+          //   navigator.serviceWorker.register('https://stellantisandyoucouk.github.io/knackjs/sw.js')
+          //   .then((reg)=>{console.log('service worker registered', reg)})
+          //   .catch((err)=>{console.log('service worker not registered', err)})
+          // }
 
 
           var notification = new Notification(title, {
@@ -5793,15 +5793,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             title: '',
             html: `
                         <h2>Steps to Enable Notifications</h2>
+                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                           <li>Click Allow Notification</li>
                           <li>Click to Refresh The Page</li>
                         </ol>
             `,
-            imageUrl: gifUrlBlocked, // GIF displayed here
-            // imageWidth: 600,
-            imageAlt: "Success GIF",
             allowEscapeKey: false,
             allowOutsideClick: false,
             confirmButtonText: 'Refresh The Page'
@@ -5844,6 +5843,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             allowOutsideClick: false,
             html: `
                         <h2>Steps to Enable Notifications</h2>
+                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                           <li>Click Reset Permissions.</li>
@@ -5851,9 +5851,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                           <li>Click Allow Notification</li>
                         </ol>
             `,
-            imageUrl: gifUrlBlocked, // GIF displayed here
-            // imageWidth: 600,
-            imageAlt: "Success GIF",
             confirmButtonText: 'Refresh the page'
           })
             .then((result) => {
@@ -5911,6 +5908,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
+                          <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                           <ol class="listOfSteps">
                             <li>Touch to <strong>🔒</strong> icon into the URL.</li>
                             <li>Touch Permissions and Touch Notification Blocked</li>
@@ -5918,8 +5916,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                             <li>Don't forget to refresh page</li>
                           </ol>
               `,
-              imageUrl: gifUrlBlocked, // GIF displayed here
-              imageWidth: 600,
+              // imageUrl: gifUrlBlocked, // GIF displayed here
+              // imageWidth: 600,
               imageAlt: "Success GIF",
               confirmButtonText: 'OK',
               allowOutsideClick: false,
@@ -5951,6 +5949,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               position: "top-end",
               html: `
                           <h2>Steps to Enable Notifications</h2>
+                          <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                           <ol class="listOfSteps">
                             <li>Touch to <strong>🔒</strong> icon into the URL.</li>
                             <li>Touch Permissions and Touch Notification Blocked</li>
@@ -5958,9 +5957,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                             <li>Don't forget to refresh page</li>
                           </ol>
               `,
-              imageUrl: gifUrlBlocked, // GIF displayed here
               imageWidth: 600,
-              imageAlt: "Success GIF",
               confirmButtonText: 'OK'
             })
               .then(() => {
