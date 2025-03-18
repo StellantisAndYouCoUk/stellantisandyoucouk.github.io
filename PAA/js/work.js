@@ -502,7 +502,7 @@ function getRunsServerData(refreshCallback){
     }
     let lastNotSolved = globalPageData['runs'].filter(el => el.status !== 'failed' && el.status!=='succeded' && el.status!=='canceled');
     if (lastNotSolved.length===0){
-        globalPageData['runs'] = globalPageData['runs'].sort((a,b)=> (new Date(a.createdDateTime)>new Date(b.createdDateTime)?1:-1));
+        globalPageData['runs'] = globalPageData['runs'].sort((a,b)=> (new Date(a.createdDateTime)<new Date(b.createdDateTime)?1:-1));
         let otherParams1 = {filters:[{'field':'createdDateTime','value':globalPageData['runs'][0].createdDateTime}]};
         if (refreshCallback && globalPageData['runs']){
             refreshServerData('runs',otherParams1, true, refreshCallback,true);
