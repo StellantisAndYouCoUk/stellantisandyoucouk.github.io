@@ -6050,3 +6050,13 @@ $(document).on('knack-scene-render.scene_2305', function(event, scene) {
   });
 });
 
+// Code to wait following Form Submission while Vehicle Image is being checked
+$(document).on('knack-form-submit.view_7877', function(event, view, data) { 
+	setTimeout(function(){ Knack.showSpinner();}, 0); 
+	const commandURL = "https://hook.eu1.make.celonis.com/qv79yzra6xny8hmpno2ex4u85l3n8jar?recordid=" + data.id ;
+  $.get(commandURL, function(data, status){
+    Knack.hideSpinner();
+    $(".kn-message.success").html("<b>" + data + "</b>");
+  });
+});
+
