@@ -5133,7 +5133,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               title: '',
               html: `
                       <h2>Steps to Enable Notifications</h2>
-                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+                      <img class="swal2-image custom" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                         <li>Click Allow Notification</li>
@@ -5178,7 +5178,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowOutsideClick: false,
           html: `
                       <h2>Steps to Enable Notifications</h2>
-                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+                      <img class="swal2-image custom" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                         <li>Click Reset Permissions.</li>
