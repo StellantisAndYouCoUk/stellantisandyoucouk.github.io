@@ -4491,7 +4491,12 @@ img.user-icon:hover {
 }
 
 .swal2-popup.swal2-modal.swal2-show {
-  font-family: ubuntu;
+  font-family: "ubuntu", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.05rem;
 }
 
 .notification-message{
