@@ -5133,15 +5133,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
               title: '',
               html: `
                       <h2>Steps to Enable Notifications</h2>
+                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
                         <li>Click Allow Notification</li>
                         <li>Click to refresh your page</li>
                       </ol>
           `,
-          imageUrl: gifUrlBlocked, // GIF displayed here
-          // imageWidth: 600,
-          imageAlt: "Success GIF",
           allowEscapeKey: false,
           allowOutsideClick: false,
           confirmButtonText: 'Refresh Your Page'
@@ -5180,6 +5178,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
           allowOutsideClick: false,
           html: `
                       <h2>Steps to Enable Notifications</h2>
+                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
                         <li>Click Reset Permissions.</li>
@@ -5187,9 +5186,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
                         <li>Click Allow Notification</li>
                       </ol>
           `,
-          imageUrl: gifUrlBlocked, // GIF displayed here
           // imageWidth: 600,
-          imageAlt: "Success GIF",
           allowEscapeKey: false,
           allowOutsideClick: false,
           confirmButtonText: 'Refresh the page'
