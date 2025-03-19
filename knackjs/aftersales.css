@@ -951,6 +951,16 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
   	border-color: #FFFFFF;
 }
 
+#view_359 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(6) > a {
+	background-color: #2ab27b;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	transition-property: color;
+  	transition-duration: .3s;
+  	border-width: 2px;
+  	border-color: #FFFFFF;
+}
+
 
 /* Aftersales Parts Cash and Credit Account Application Status overview */
 
