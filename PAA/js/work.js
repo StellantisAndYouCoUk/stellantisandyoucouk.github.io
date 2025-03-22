@@ -569,8 +569,6 @@ function doUpdateGlobalData(oldData, newData, fieldToMatch){
 
 function reloadRuns(){
     refreshServerData('runs',{},true,refereshRunsTable);
-    //fillGlobalVarWithRequest('runs',{'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]},refereshRuns)
-    //globalPageData.runsTimeStamp = new Date();
 }
 
 function refereshRunsTable(){
@@ -921,7 +919,7 @@ function getRunsDataForTable(){
     runs = runs.sort((a,b)=> (new Date(a.createdDateTime)>new Date(b.createdDateTime)?1:-1));
     let tMJ = runs.map(function (el){
         contentToHide += formatRunDetails(el,getServerData('machines',null,{},300));
-        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\');return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queuedOnServer' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\');return false;">Cancel run</a>':'')+(el.status==='succeded'?getSuccOutputDet(el):'')+(el.status==='waiting'?'<br />'+dateTimeToGB(new Date(el.waitingStartSonestAt)):''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
+        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\'); alert(\'The run will be resurrected.\'); return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queuedOnServer' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\'); alert("The run will be cancelled."); return false;">Cancel run</a>':'')+(el.status==='succeded'?getSuccOutputDet(el):'')+(el.status==='waiting'?'<br />'+dateTimeToGB(new Date(el.waitingStartSonestAt)):''),'Priority':el.priority,'Requested':dateTimeToGBNoYear(new Date(el.createdDateTime)),'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Show details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Show output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a>'};
     })
     //console.log(tMJ);
     $('div[id="runDetailsData"]').html('');
@@ -947,6 +945,9 @@ function showModal(modalName,what, fromWhere){
 
 function resurrectRun(queueId){
     paaPostRequest({'action':'resurrectRun','token':paaToken,'queueId':queueId});
+    setTimeout(() => {
+        refreshServerData('runs',{},true,refereshRunsTable);
+    }, 2500);
 }
 
 function cancelRun(queueId){
