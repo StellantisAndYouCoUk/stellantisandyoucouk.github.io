@@ -5238,7 +5238,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
  
 
 
-        if (Notification.permission === 'granted'){
+        if (Notification.permission === 'granted' || message.ShowMessageDirectly){
           if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales") || message.InAppPopUp){
 
             
@@ -5306,7 +5306,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               },
             });
           }
-        }else{
+        }else {
             console.log("Missing Notification");
 
 
