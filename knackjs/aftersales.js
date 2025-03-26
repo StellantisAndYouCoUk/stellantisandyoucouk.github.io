@@ -3198,6 +3198,7 @@ $(document).on('knack-scene-render.scene_1382', function(event, scene) {
 	console.log('Recursivecallscene_1382');
 	});
 
+var scene_1050_refreshDateTime = new Date();
 $(document).on('knack-scene-render.scene_1050', function(event, scene) {	
   //Tooltip table 3595
   tooltipsTable('1050','3595','field_1532','field_2586');
@@ -3209,6 +3210,13 @@ $(document).on('knack-scene-render.scene_1050', function(event, scene) {
 
   recursiveSceneRefresh('1050',['view_3307','view_3595','view_3805'],300000);
 	console.log('Recursivecallscene_1050');
+
+  /*$('div[id="view_3307"] a[class*="knViewLink"]').on( "click", function() {
+    console.log('something clicked');
+    if (new Date()-scene_1050_refreshDateTime){
+
+    }
+  });*/
 });
 
 //hover for service details for pre-visit jobcard
