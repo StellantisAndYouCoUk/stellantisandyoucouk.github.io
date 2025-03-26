@@ -6000,7 +6000,7 @@ var scene_1050_refreshDateTime = new Date();
 $(document).on('knack-scene-render.scene_447', function(event, scene) {
   console.log('knack-scene-render.scene_447');
   $('div[id="view_7866"] a[class*="knViewLink"]').on( "click", function() {
-    console.log('something clicked');
+    console.log('something clicked',(new Date()-scene_1050_refreshDateTime));
     if ((new Date()-scene_1050_refreshDateTime)>1*60*1000){
       console.log('doRefresh')
     }
