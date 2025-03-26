@@ -553,6 +553,12 @@ $(document).on('knack-view-render.view_7720', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#manage-policy-approval-requests?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+// New Sales Virtual Reception
+$(document).on('knack-view-render.view_7930', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-virtual-reception" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Fleet Admin to do list
 $(document).on('knack-view-render.view_7753', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
@@ -5232,7 +5238,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
  
 
 
-        if (Notification.permission === 'granted'){
+        if (Notification.permission === 'granted' || message.ShowMessageDirectly){
           if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales") || message.InAppPopUp){
 
             
@@ -5300,7 +5306,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               },
             });
           }
-        }else{
+        }else {
             console.log("Missing Notification");
 
 
