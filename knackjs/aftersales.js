@@ -3301,7 +3301,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
     $('th[class="field_978"]').hide();
     $('td[class*="field_978"]').hide();
 
-    /*$('div[id="view_3307"] a[class*="knViewLink"]').on( "click", function() {
+    /*$('div[id="view_3307"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
       console.log('something clicked',(new Date()-view_3307_refreshDateTime));
       if ((new Date()-view_3307_refreshDateTime)>60*60*1000){
         view_3307_refreshDateTime = new Date()
