@@ -6002,7 +6002,9 @@ $(document).on('knack-scene-render.scene_447', function(event, scene) {
   $('div[id="view_7866"] a[class*="knViewLink"]').on( "click", function() {
     console.log('something clicked',(new Date()-scene_1050_refreshDateTime));
     if ((new Date()-scene_1050_refreshDateTime)>1*60*1000){
-      console.log('doRefresh')
+      scene_1050_refreshDateTime = new Date()
+      console.log('doRefresh');
+      document.location.reload();
     }
   });
 });
