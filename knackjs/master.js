@@ -5996,13 +5996,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   
 });
 
-var scene_1050_refreshDateTime = new Date();
-$(document).on('knack-scene-render.scene_447', function(event, scene) {
-  console.log('knack-scene-render.scene_447');
+var view_7866_refreshDateTime = new Date();
+$(document).on('knack-records-render.view_7866', function (event, scene, records) {
   $('div[id="view_7866"] a[class*="knViewLink"]').on( "click", function() {
-    console.log('something clicked',(new Date()-scene_1050_refreshDateTime));
-    if ((new Date()-scene_1050_refreshDateTime)>1*60*1000){
-      scene_1050_refreshDateTime = new Date()
+    console.log('something clicked',(new Date()-view_7866_refreshDateTime));
+    if ((new Date()-view_7866_refreshDateTime)>1*60*1000){
+      view_7866_refreshDateTime = new Date()
       console.log('doRefresh');
       document.location.reload();
     }
