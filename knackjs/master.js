@@ -6010,7 +6010,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   
 });
 
-
 // Hide card reader file name in Deposit table
 
 $(document).on('knack-records-render.view_7588', function (event, scene, records) {
