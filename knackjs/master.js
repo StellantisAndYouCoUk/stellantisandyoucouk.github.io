@@ -5251,17 +5251,17 @@ $(document).on("knack-view-render.any", function (event, scene) {
               confirmButtonAriaLabel = message.ClickButtonTitle;
             }
 
-            if(message.ShowCloseButton === "false"){
+            if(message.ShowCloseButton === false){
               ShowCloseButton = message.ShowCloseButton;
 
             }
 
-            if(message.AllowOutsideClick === "false"){
+            if(message.AllowOutsideClick === false){
               AllowOutsideClick = message.AllowOutsideClick;
 
             }
 
-            if(message.AllowEscapeKey === "false"){
+            if(message.AllowEscapeKey === false){
               AllowEscapeKey = message.AllowEscapeKey;
 
             }
