@@ -5245,6 +5245,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
             let confirmButtonAriaLabel = "Click To Open"
             let ShowCloseButton = true
             let AllowEscapeKey = true
+            let AllowOutsideClick = true
 
             if(message.ClickButtonTitle){
               confirmButtonAriaLabel = message.ClickButtonTitle;
@@ -5252,6 +5253,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
             if(message.ShowCloseButton === false){
               ShowCloseButton = message.ShowCloseButton;
+
+            }
+
+            if(message.AllowOutsideClick === false){
+              AllowOutsideClick = message.AllowOutsideClick;
 
             }
 
@@ -5280,6 +5286,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               //   icon: 'rotate-y',
               // },
               showCancelButton: false,
+              allowOutsideClick: AllowOutsideClick,
               cancelButtonText: "Close",
               cancelButtonColor: "#FF0000",
               showConfirmButton: !!message.Click,
