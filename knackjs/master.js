@@ -5243,10 +5243,24 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
             
             let confirmButtonAriaLabel = "Click To Open"
+            let showCloseButton = true
+            let allowEscapeKey = true
 
             if(message.ClickButtonTitle){
               confirmButtonAriaLabel = message.ClickButtonTitle;
             }
+
+            if(message.showCloseButton){
+              showCloseButton = message.showCloseButton;
+
+            }
+
+            if(message.allowEscapeKey){
+              allowEscapeKey = message.allowEscapeKey;
+
+            }
+
+
             Swal.fire({
               title: `<strong>${message.Title}</strong>`,
               html: `
@@ -5256,8 +5270,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 }
                 <div class="notification-message">${message.Message || ""}</div>
               `,
-              showCloseButton: true,
-              allowEscapeKey: true,
+              showCloseButton: showCloseButton,
+              allowEscapeKey: allowEscapeKey,
               focusConfirm: false,
               timer: timer,
               // icon: 'success',
