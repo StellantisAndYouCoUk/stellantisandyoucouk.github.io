@@ -1016,6 +1016,11 @@ $(document).on('knack-view-render.view_5016', function(event, view, data) {
   Knack.fn.hideExpand("view_5016");
 });
 
+$(document).on('knack-view-render.view_4719', function(event, view, data) {
+  console.log('view4719');
+  Knack.fn.hideExpand("view_4719");
+});
+
 // ADMIN VEHICLE ORDER ADMINISTRATION PAGE
 
 $(document).on('knack-view-render.view_2391', function(event, view, data) {
