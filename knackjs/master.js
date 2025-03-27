@@ -5250,12 +5250,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
               confirmButtonAriaLabel = message.ClickButtonTitle;
             }
 
-            if(message.ShowCloseButton){
+            if(message.ShowCloseButton === false){
               ShowCloseButton = message.ShowCloseButton;
 
             }
 
-            if(message.AllowEscapeKey){
+            if(message.AllowEscapeKey === false){
               AllowEscapeKey = message.AllowEscapeKey;
 
             }
