@@ -5243,20 +5243,20 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
             
             let confirmButtonAriaLabel = "Click To Open"
-            let showCloseButton = true
-            let allowEscapeKey = true
+            let ShowCloseButton = true
+            let AllowEscapeKey = true
 
             if(message.ClickButtonTitle){
               confirmButtonAriaLabel = message.ClickButtonTitle;
             }
 
-            if(message.showCloseButton){
-              showCloseButton = message.showCloseButton;
+            if(message.ShowCloseButton){
+              ShowCloseButton = message.ShowCloseButton;
 
             }
 
-            if(message.allowEscapeKey){
-              allowEscapeKey = message.allowEscapeKey;
+            if(message.AllowEscapeKey){
+              AllowEscapeKey = message.AllowEscapeKey;
 
             }
 
@@ -5270,8 +5270,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 }
                 <div class="notification-message">${message.Message || ""}</div>
               `,
-              showCloseButton: showCloseButton,
-              allowEscapeKey: allowEscapeKey,
+              showCloseButton: ShowCloseButton,
+              allowEscapeKey: AllowEscapeKey,
               focusConfirm: false,
               timer: timer,
               // icon: 'success',
