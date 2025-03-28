@@ -2188,7 +2188,7 @@ $(document).on('knack-form-submit.view_5429', function(event, view, data) {
     try{
 
         let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
-        let dataToSend = JSON.stringify({"Record ID":data.id, "Form":"New vehicle handover checklist", "Source Of Payload":"knack direct"});
+        let dataToSend = JSON.stringify({"Record ID":data.id, "Form":"Manufacturer Marketing Preferences Form", "Source Of Payload":"knack direct"});
 
       var rData = $.ajax({
         url: commandURL,
