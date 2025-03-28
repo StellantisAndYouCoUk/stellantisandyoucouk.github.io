@@ -429,6 +429,16 @@ $(document).on('knack-record-update.view_2767', function(event, view, data) {
   
 });
 
+//****************** Refresh Manufacturer Marketing Preferences Page if Selected to update ****************//
+
+$(document).on('knack-record-update.view_5433', function(event, view, data) {
+  
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+
+  Knack.showSpinner();
+  
+});
+
 //****************** Refresh Profit & Loss Sheet Page once New Vehicle and Part Exchange Info Submitted for Digital P&L Dealers ****************//
 
 $(document).on('knack-record-update.view_3836', function(event, view, data) {
