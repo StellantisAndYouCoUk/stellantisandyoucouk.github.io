@@ -2182,6 +2182,42 @@ $(document).on('knack-form-submit.view_2757', function(event, view, data) {
     }
 });
 
+// New Deal File - Capture PDFs – **Manufacturer Marketing Preferences Form**
+$(document).on('knack-form-submit.view_5429', function(event, view, data) { 
+    
+    try{
+
+        let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
+        let dataToSend = JSON.stringify({"Record ID":data.id, "Form":"New vehicle handover checklist", "Source Of Payload":"knack direct"});
+
+      var rData = $.ajax({
+        url: commandURL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: dataToSend,
+        async: false
+      }).responseText;
+      
+    }catch(exception){
+        console.log("error");
+        var today = new Date();
+        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time;
+
+        let commandURL = "https://hook.integromat.com/bxfn25wkj67pptq9bniqmpvvjg868toi";
+        let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": "New Deal File PDF - Manufacturer Marketing Preferences Form",
+        "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
+        var rData = $.ajax({
+           url: commandURL,
+           type: 'POST',
+           contentType: 'application/json',
+           data: dataToSend,
+           async: false
+        }).responseText;
+    }
+});
+
 // New Deal File - Enquiry Max TRIGGER INTEGROMAT to get insurance documents from Handover Checklist
 $(document).on('knack-form-submit.view_2757', function(event, view, data) { 
 	callPostHttpRequest("https://hook.eu1.make.celonis.com/6362il4kj9nelrnl4itsohyhumqs1hce",{"Record ID":data.id,"Form":"Handover checklist","Source Of Payload": "knack direct"},"Used Deal File - Capture PDFs TRIGGER INTEGROMAT UPON – *Used Deal File PDF - Handover Checklist signed at Dealer OR to be signed remotely {(Deal File)");  
