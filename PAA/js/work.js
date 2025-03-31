@@ -130,7 +130,7 @@ async function fillGlobalVarWithRequest(globalVarPropName,payloadObject, callbac
 }
 
 function paaPostRequest(payloadObject){
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/paaXHR',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw',{'token':'apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw'}, payloadObject)
 }
 
 async function paaPostRequestWithCompress(payloadObject){
