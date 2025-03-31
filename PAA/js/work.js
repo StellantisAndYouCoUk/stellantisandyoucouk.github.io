@@ -646,7 +646,7 @@ function runFlow(){
     if ($('#runMachine').val()!=="Not set") runData.preferedMachineName = $('#runMachine').val();
     console.log(runData);
     $('#editor-container').hide();
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'},runData)
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'},runData)
 }
 
 function refreshIntegrations(flowName){
@@ -999,7 +999,7 @@ function reRunInPreprod(runId){
         runMode : $('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val(),
         noRetry : true
     }
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'},runData)
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'},runData)
 }
 
 function formatRunDetails(run, machines){
