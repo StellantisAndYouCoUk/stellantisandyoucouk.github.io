@@ -1750,6 +1750,12 @@ $(document).on('knack-view-render.view_7056', function(event, view, data) {
 
 // MANAGER VIEWS
 
+$(document).on('knack-view-render.view_7762', function(event, view, data) {
+  console.log('view7762');
+  Knack.fn.hideExpand("view_7762");
+});
+
+
 $(document).on('knack-view-render.view_4310', function(event, view, data) {
   console.log('view4310');
   Knack.fn.hideExpand("view_4310");
