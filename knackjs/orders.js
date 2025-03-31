@@ -429,6 +429,16 @@ $(document).on('knack-record-update.view_2767', function(event, view, data) {
   
 });
 
+//****************** Refresh Manufacturer Marketing Preferences Page if Selected to update ****************//
+
+$(document).on('knack-record-update.view_5433', function(event, view, data) {
+  
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+
+  Knack.showSpinner();
+  
+});
+
 //****************** Refresh Profit & Loss Sheet Page once New Vehicle and Part Exchange Info Submitted for Digital P&L Dealers ****************//
 
 $(document).on('knack-record-update.view_3836', function(event, view, data) {
@@ -934,6 +944,11 @@ $(document).on('knack-view-render.view_4548', function(event, view, data) {
   Knack.fn.hideExpand("view_4548");
 });
 
+$(document).on('knack-view-render.view_5381', function(event, view, data) {
+  console.log('view5381');
+  Knack.fn.hideExpand("view_5381");
+});
+
 
 // MANAGER VIEWS
 $(document).on('knack-view-render.view_3810', function(event, view, data) {
@@ -1009,6 +1024,11 @@ $(document).on('knack-view-render.view_4537', function(event, view, data) {
 $(document).on('knack-view-render.view_5016', function(event, view, data) {
   console.log('view5016');
   Knack.fn.hideExpand("view_5016");
+});
+
+$(document).on('knack-view-render.view_4719', function(event, view, data) {
+  console.log('view4719');
+  Knack.fn.hideExpand("view_4719");
 });
 
 // ADMIN VEHICLE ORDER ADMINISTRATION PAGE
@@ -2151,6 +2171,42 @@ $(document).on('knack-form-submit.view_2757', function(event, view, data) {
 
         let commandURL = "https://hook.integromat.com/bxfn25wkj67pptq9bniqmpvvjg868toi";
         let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": "New Deal File PDF - New Vehicle handover checklist signed at Dealer OR to be signed remotely {(Deal File) New Vehicle Handover Checklist} Slave App",
+        "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
+        var rData = $.ajax({
+           url: commandURL,
+           type: 'POST',
+           contentType: 'application/json',
+           data: dataToSend,
+           async: false
+        }).responseText;
+    }
+});
+
+// New Deal File - Capture PDFs – **Manufacturer Marketing Preferences Form**
+$(document).on('knack-form-submit.view_5429', function(event, view, data) { 
+    
+    try{
+
+        let commandURL = "https://hook.eu1.make.celonis.com/4dol6uz8aoiou9zoryloi8mdbnm8qq3d";
+        let dataToSend = JSON.stringify({"Record ID":data.id, "Form":"Manufacturer Marketing Preferences Form", "Source Of Payload":"knack direct"});
+
+      var rData = $.ajax({
+        url: commandURL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: dataToSend,
+        async: false
+      }).responseText;
+      
+    }catch(exception){
+        console.log("error");
+        var today = new Date();
+        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time;
+
+        let commandURL = "https://hook.integromat.com/bxfn25wkj67pptq9bniqmpvvjg868toi";
+        let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": "New Deal File PDF - Manufacturer Marketing Preferences Form",
         "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
         var rData = $.ajax({
            url: commandURL,

@@ -5243,10 +5243,30 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
             
             let confirmButtonAriaLabel = "Click To Open"
+            let ShowCloseButton = true
+            let AllowEscapeKey = true
+            let AllowOutsideClick = true
 
             if(message.ClickButtonTitle){
               confirmButtonAriaLabel = message.ClickButtonTitle;
             }
+
+            if(message.ShowCloseButton === false){
+              ShowCloseButton = message.ShowCloseButton;
+
+            }
+
+            if(message.AllowOutsideClick === false){
+              AllowOutsideClick = message.AllowOutsideClick;
+
+            }
+
+            if(message.AllowEscapeKey === false){
+              AllowEscapeKey = message.AllowEscapeKey;
+
+            }
+
+
             Swal.fire({
               title: `<strong>${message.Title}</strong>`,
               html: `
@@ -5256,8 +5276,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                 }
                 <div class="notification-message">${message.Message || ""}</div>
               `,
-              showCloseButton: true,
-              allowEscapeKey: true,
+              showCloseButton: ShowCloseButton,
+              allowEscapeKey: AllowEscapeKey,
               focusConfirm: false,
               timer: timer,
               // icon: 'success',
@@ -5266,6 +5286,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
               //   icon: 'rotate-y',
               // },
               showCancelButton: false,
+              allowOutsideClick: AllowOutsideClick,
               cancelButtonText: "Close",
               cancelButtonColor: "#FF0000",
               showConfirmButton: !!message.Click,
