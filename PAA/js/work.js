@@ -272,6 +272,33 @@ function work(){
         if (qV['refresh']) paaPostRequest({'action':'getMachines','token':paaToken, 'refresh':true});
     }
 
+    if (page.includes('capacity.html')){
+        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/tLLjdlZ6svsgfZ6B4/records/runningArray');
+        let dataToG = dataD.map(function(el){
+            return {t:el.dateTime,y:el.runningJobs};
+        })
+        const ctx = document.getElementById("chart").getContext('2d');
+        const myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [{
+              label: 'Friday 28/03',
+              //backgroundColor: 'rgba(161, 198, 247, 1)',
+              borderColor: 'rgb(47, 128, 237)',
+              data: dataToG,
+            }]
+          },
+          options: {
+            scales: {
+              xAxes: [{
+                type: 'time'
+              }]
+            }
+          },
+        });
+    }
+
     if (page.includes('flows.html')){
         let req = paaPostRequest({'action':'getFlows','token':paaToken, 'refresh':(qV['refresh']?true:false)});
         let tM = req.map(function (el){
