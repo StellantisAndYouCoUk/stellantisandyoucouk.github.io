@@ -5241,11 +5241,16 @@ $(document).on("knack-view-render.any", function (event, scene) {
       
         console.log("Notification ID:", notificationId);
 
- 
+        let InAppPopUp = false;
+
+        if(typeof message.InAppPopUp === "boolean"){
+          InAppPopUp = message.InAppPopUp;
+        }
+
 
 
         if (Notification.permission === 'granted' || message.ShowMessageDirectly){
-          if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales") || message.InAppPopUp){
+          if(InAppPopUp){
 
             
             let confirmButtonAriaLabel = "Click To Open"
@@ -5481,8 +5486,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 
                 showNotification(dataParsed, messageParsed, 0);
+
+                let DesktopNotification = false;
+
+                if(typeof messageParsed.DesktopNotification === "boolean"){
+                  DesktopNotification = messageParsed.DesktopNotification;
+                }
+
                 
-                if(!messageParsed.Title.toString().includes("Hi,") && !messageParsed.Title.toString().includes("Deposit") || messageParsed.DesktopNotification){
+                if(DesktopNotification){
                 showNotificationBackground(messageParsed.Title,"",messageParsed);
                 }
                 // if (document.visibilityState === "visible") {
