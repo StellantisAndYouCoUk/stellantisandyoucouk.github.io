@@ -283,7 +283,7 @@ function work(){
           data: {
             labels: [],
             datasets: [{
-              label: 'Friday 28/03',
+              label: '31/03',
               //backgroundColor: 'rgba(161, 198, 247, 1)',
               borderColor: 'rgb(47, 128, 237)',
               data: dataToG,
