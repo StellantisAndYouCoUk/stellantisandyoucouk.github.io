@@ -273,7 +273,7 @@ function work(){
     }
 
     if (page.includes('capacity.html')){
-        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/tLLjdlZ6svsgfZ6B4/records/runningArray');
+        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/5hFLPAMvU9jtb7vxF/records/runningArray');
         let dataToG = dataD.map(function(el){
             return {t:el.dateTime,y:el.runningJobs};
         })
