@@ -142,7 +142,7 @@ body {
 #view_3508 > section > div > div > div > div > div > div > span > h2 > span,
 #view_3614 > section > div > div > div > div > div.field_4941 > div > span > h2 > span,
 #view_4098 > section > div > div:nth-child(1) > div > div > div > div > span > span,
-#view_7725 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div > div > span > span,
+#view_7725 > section > div > div:nth-child(1) > div:nth-child(1) > div > div > div > span > span,
 #view_4131 > section > div > div:nth-child(1) > div > div > div > div > span > span {
   background-color: #ffe74c;
   border-radius: 10px;
