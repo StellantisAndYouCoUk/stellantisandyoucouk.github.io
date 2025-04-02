@@ -524,6 +524,12 @@ $(document).on('knack-view-render.view_7711', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #courtesy-and-demo-vehicle-management" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Demo and Courtesy Admin Page
+$(document).on('knack-view-render.view_7946', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #admin-pages" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Service Sales Prospecting
 $(document).on('knack-view-render.view_7517', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
