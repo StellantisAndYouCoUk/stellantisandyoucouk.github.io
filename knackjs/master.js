@@ -5823,59 +5823,22 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 }
               } else {
                 // If permission is granted, ensure the link is removed
-                $(".bellicon__off .not").remove()
+                $(".bellicon__off .not").remove();
                 // $("#notificationPrompt").remove();
                 $("#notificationPrompt").replaceWith(notificationThanksHtml);
                 $(".bellicon__off").css({
                   "background-color": "hsl(0deg 0% 92.16%)",
                   "border": "unset"
                 });
+
+                $(document).on('knack-scene-render.scene_2335', function(event, scene) {
+                
                 console.log("Firework")
                 LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
-                  const defaults = {
-                    spread: 360,
-                    ticks: 50,
-                    gravity: 0,
-                    decay: 0.94,
-                    startVelocity: 30,
-                    shapes: ["star"],
-                    colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
-                  };
-                  
-                  function shoot() {
-                    confetti({
-                      ...defaults,
-                      particleCount: 40,
-                      scalar: 1.2,
-                      shapes: ["star"],
-                    });
-                  
-                    confetti({
-                      ...defaults,
-                      particleCount: 10,
-                      scalar: 0.75,
-                      shapes: ["circle"],
-                    });
-                  }
-                  
-                  setTimeout(shoot, 0);
-                  setTimeout(shoot, 100);
-                  setTimeout(shoot, 200);
-
-
+                  confetti()
               });
-
-
-              const previousPage = localStorage.getItem("previousPage");
-
-                // Redirect back if there's a stored page
-                if (previousPage) {
-                    localStorage.removeItem("previousPage"); // Clear it to prevent loops
-                    window.location.href = previousPage;
-                }
-
-                                
-
+                
+                })
 
                 
               }
@@ -5905,7 +5868,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
-                    localStorage.setItem("previousPage", window.location.href);
                     // window.setTimeout(function() {
                     //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
                     // }, 500);
