@@ -4864,3 +4864,12 @@ p.speech-bubble-inbound-1link:before {
  text-wrap: wrap !important;
 }
 
+
+
+/* Account Settings Bell Icon */
+
+.accountSettingsBellIcon{
+  bottom: unset;
+  width: 48px;
+  height: 48px;
+}
