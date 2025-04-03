@@ -5852,7 +5852,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 
               }
             };
- 
+  updateNotificationUI();
 
 
                 const isEdge = navigator.userAgent.includes("Edg");
@@ -5880,14 +5880,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 ) {
                     console.log("Redirect");
                     localStorage.setItem("previousPage", window.location.href);
-
-
+                
                     // window.setTimeout(function() {
                     //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
                     // }, 500);
                 }
      
- updateNotificationUI();
+
 
 
   
