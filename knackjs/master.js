@@ -5830,6 +5830,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                   "background-color": "hsl(0deg 0% 92.16%)",
                   "border": "unset"
                 });
+
+                $(document).on('knack-scene-render.scene_2335', function(event, scene) {
+                
+                console.log("Firework")
+                
+                })
+
+                
               }
             };
   updateNotificationUI();
