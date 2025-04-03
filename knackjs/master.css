@@ -4433,8 +4433,9 @@ n-link.kn-link-2.kn-link-page.kn-button,
  
 .accountSettingsBellIcon{
   bottom: unset;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
+  text-align: center;
 }
 
 
