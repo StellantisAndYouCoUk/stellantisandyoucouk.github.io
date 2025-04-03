@@ -4430,6 +4430,15 @@ n-link.kn-link-2.kn-link-page.kn-button,
   visibility: hidden;
 
 } */
+ 
+.accountSettingsBellIcon{
+  bottom: unset;
+  width: 48px;
+  height: 48px;
+}
+
+
+
 
 img.notification-icon {
   position: absolute;
@@ -4867,9 +4876,3 @@ p.speech-bubble-inbound-1link:before {
 
 
 /* Account Settings Bell Icon */
-
-.accountSettingsBellIcon{
-  bottom: unset;
-  width: 48px;
-  height: 48px;
-}
