@@ -3140,7 +3140,7 @@ $(document).on('knack-scene-render.scene_1313', function(event, scene) {
 // Hide File Name on Demo/Courtesy Page (show View instead)
 
 $(document).on('knack-records-render.view_5207', function (event, scene, records) {
-    $("#view_7588").find("td.field_8646").each(function () {
+    $("#view_5207").find("td.field_8646").each(function () {
         if ($(this).text().trim() !== "") {
             $(this).find("a").text("");
             $(this).find("a").append("<i style=\"vertical-align: baseline !important;\" class=\"fa fa-file\"></i>&nbsp;View");
