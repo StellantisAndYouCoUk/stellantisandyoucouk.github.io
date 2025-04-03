@@ -5717,7 +5717,7 @@ function requestNotificationPermission() {
     </div>
     </div>
     `
-    
+
   const updateNotificationUI = () => {
     if (Notification.permission !== "granted") {
       // Check if the link is already appended
@@ -5896,7 +5896,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
-                    localStorage.setItem("previousPage", window.location.href);
+                    
+                    if(localStorage.getItem("previousPage")!== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"){
+
+                      localStorage.setItem("previousPage", window.location.href);
+
+                    }
+
 
 
                   
