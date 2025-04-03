@@ -5855,14 +5855,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   updateNotificationUI();
 
 
-    const isEdge = navigator.userAgent.includes("Edg");
-    const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
-    const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
+                const isEdge = navigator.userAgent.includes("Edg");
+                const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
+                const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
                  navigator.userAgent.toLowerCase().includes("tablet") ||
                  navigator.userAgent.toLowerCase().includes("playbook") ||
                  (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
     
-    const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
+                  const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
 
               console.log("IsEdge: " + isEdge)
               console.log("isChrome: " + isChrome)
@@ -5872,7 +5872,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               // var user = Knack.getUserToken();
              
                 if (
-            
+                    Knack.getUserAttributes().toString() !== 'No user found' &&
                     Notification.permission === 'denied' &&
                     !isTablet &&
                     !isPhone &&
@@ -5880,9 +5880,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 ) {
                     console.log("Redirect");
                     localStorage.setItem("previousPage", window.location.href);
-                    // window.setTimeout(function() {
-                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    // }, 500);
+                    window.setTimeout(function() {
+                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    }, 500);
                 }
      
 
