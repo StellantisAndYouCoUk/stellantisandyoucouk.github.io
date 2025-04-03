@@ -5784,54 +5784,54 @@ $(document).on('knack-scene-render.any', function(event, scene) {
         <h2 style="color: green;">Thank you so much for enabling notifications! 😊</h2>
         <p>You now have full access to the Digital App.</p>
     </div>
-</div>
-`
-
-  const userHTML = `
-  <div id="notifications-panel" popover class="notifications-panel">
-  <div class="notifications-header">
-    <div class="notifications-status">
-      <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
-      Notifications are under development. Please hold tight while we make them awesome! ❤️
-      — Your Digi Team 😊
     </div>
-    // <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
+    `
 
-  </div>
-  <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
-  <div class="notification-links">
-</div> 
-  `;
+        const userHTML = `
+        <div id="notifications-panel" popover class="notifications-panel">
+        <div class="notifications-header">
+          <div class="notifications-status">
+            <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
+            Notifications are under development. Please hold tight while we make them awesome! ❤️
+            — Your Digi Team 😊
+          </div>
+          // <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
+
+        </div>
+        <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
+        <div class="notification-links">
+      </div> 
+        `;
 
   // Append the base notification icon HTML to the current user section
-  if ($(".kn-current_user .bellicon__off").length === 0) {
-    $(".kn-current_user").append(notificationIconHtml);
-    console.log("icon added");
-    $(".kn-current_user").append(userHTML);
-    console.log("userhtml added");
+          if ($(".kn-current_user .bellicon__off").length === 0) {
+            $(".kn-current_user").append(notificationIconHtml);
+            console.log("icon added");
+            $(".kn-current_user").append(userHTML);
+            console.log("userhtml added");
 
-}
+        }
   // Function to dynamically update the UI for notification permission
 
-  const updateNotificationUI = () => {
-    if (Notification.permission !== "granted") {
-      // Check if the link is already appended
-      if ($(".bellicon__off .not").length === 0) {
-        $(".bellicon__off").prepend(`
-          <a href="#" class="not">Notifications OFF<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
-        `);
-      }
-    } else {
-      // If permission is granted, ensure the link is removed
-      $(".bellicon__off .not").remove();
-      // $("#notificationPrompt").remove();
-      $("#notificationPrompt").replaceWith(notificationThanksHtml);
-      $(".bellicon__off").css({
-        "background-color": "hsl(0deg 0% 92.16%)",
-        "border": "unset"
-      });
-    }
-  };
+            const updateNotificationUI = () => {
+              if (Notification.permission !== "granted") {
+                // Check if the link is already appended
+                if ($(".bellicon__off .not").length === 0) {
+                  $(".bellicon__off").prepend(`
+                    <a href="#" class="not">Notifications OFF<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
+                  `);
+                }
+              } else {
+                // If permission is granted, ensure the link is removed
+                $(".bellicon__off .not").remove();
+                // $("#notificationPrompt").remove();
+                $("#notificationPrompt").replaceWith(notificationThanksHtml);
+                $(".bellicon__off").css({
+                  "background-color": "hsl(0deg 0% 92.16%)",
+                  "border": "unset"
+                });
+              }
+            };
   updateNotificationUI();
 
 
@@ -5844,9 +5844,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     
     const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
 
-
-
-
+              console.log("IsEdge: " + isEdge)
+              console.log("isChrome: " + isChrome)
+              console.log("isTablet: " + isTablet)
+              console.log("isPhone: " + isPhone)
+   
 
   
   $(document).on("click", ".not", function (e) {
