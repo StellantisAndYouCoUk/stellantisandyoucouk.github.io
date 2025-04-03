@@ -5897,7 +5897,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 ) {
                     console.log("Redirect");
                     
-                    if(localStorage.getItem("previousPage") === "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/" || localStorage.getItem("previousPage")){
+                    if(localStorage.getItem("previousPage") === "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/" || !localStorage.getItem("previousPage")
+                    ){
 
                       localStorage.setItem("previousPage", window.location.href);
 
