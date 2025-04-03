@@ -5866,15 +5866,15 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-                  $(document).on('knack-scene-render.scene_2335', function(event, scene) {
-                    console.log("Scene_2335 running");
+                  
+                    
                     console.log("Firework")
                     LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
                       confetti()
                     
                   });
           
-                    })
+              
           
           
           
