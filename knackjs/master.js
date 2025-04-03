@@ -5872,7 +5872,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               var user = Knack.getUserToken();
              
                 if (
-                    user &&
+            
                     Notification.permission === 'denied' &&
                     !isTablet &&
                     !isPhone &&
@@ -5880,9 +5880,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 ) {
                     console.log("Redirect");
                     localStorage.setItem("previousPage", window.location.href);
-                    window.setTimeout(function() {
-                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    }, 500);
+                    // window.setTimeout(function() {
+                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    // }, 500);
                 }
      
 
