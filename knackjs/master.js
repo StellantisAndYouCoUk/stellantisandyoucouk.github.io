@@ -5869,7 +5869,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               console.log("isTablet: " + isTablet)
               console.log("isPhone: " + isPhone)
 
-              var user = Knack.getUserToken();
+              // var user = Knack.getUserToken();
              
                 if (
             
