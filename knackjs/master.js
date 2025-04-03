@@ -5850,6 +5850,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               console.log("isPhone: " + isPhone)
 
               if (
+                Knack.getUserAttributes().id !== undefined &&
                 Notification.permission === 'denied' &&
                 !isTablet &&
                 !isPhone &&
