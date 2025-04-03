@@ -5739,10 +5739,15 @@ function requestNotificationPermission() {
       // Redirect back if there's a stored page
       if (previousPage) {
           localStorage.removeItem("previousPage"); // Clear it to prevent loops
-          window.location.href = previousPage;
+
+          setTimeout(() => {
+            window.location.href = previousPage;
+          }, 8000);
+
+          
+          
       }
-      
-      
+
     }
   };
 
