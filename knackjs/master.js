@@ -5852,7 +5852,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 
               }
             };
-  updateNotificationUI();
+ 
 
 
                 const isEdge = navigator.userAgent.includes("Edg");
@@ -5887,7 +5887,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     // }, 500);
                 }
      
-
+ updateNotificationUI();
 
 
   
