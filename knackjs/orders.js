@@ -3135,3 +3135,15 @@ function serviceVisitsTooltips(viewId = '324', fieldId = '325'){
 $(document).on('knack-scene-render.scene_1313', function(event, scene) {
   recursiveSceneRefresh('1313',['view_4594'],60000)
 });
+
+
+// Hide File Name on Demo/Courtesy Page (show View instead)
+
+$(document).on('knack-records-render.view_5207', function (event, scene, records) {
+    $("#view_7588").find("td.field_8646").each(function () {
+        if ($(this).text().trim() !== "") {
+            $(this).find("a").text("");
+            $(this).find("a").append("<i style=\"vertical-align: baseline !important;\" class=\"fa fa-file\"></i>&nbsp;View");
+        }
+    });
+});
