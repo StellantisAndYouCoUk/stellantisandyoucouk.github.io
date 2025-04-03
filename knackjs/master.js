@@ -5846,15 +5846,15 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-                  $(document).on('knack-scene-render.scene_2335', function(event, scene) {
+                  // $(document).on('knack-scene-render.scene_2335', function(event, scene) {
                                 
-                    console.log("Firework")
-                    LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
-                      confetti()
+                  //   console.log("Firework")
+                  //   LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
+                  //     confetti()
                     
-                  });
+                  // });
 
-                    })
+                  //   })
 
 
 
@@ -5888,9 +5888,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
                   
-                    // window.setTimeout(function() {
-                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    // }, 500);
+                    window.setTimeout(function() {
+                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    }, 500);
                 }
      
 
