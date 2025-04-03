@@ -5775,6 +5775,18 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       </span>
   `;
 
+
+  const notificationThanksHtml = `
+  <div class="container" style="text-align: center;">
+    <div id="allowedContent">
+        <h1><br></h1>
+        <h1>You've successfully enabled notifications! 🎉</h1>
+        <h2 style="color: green;">Thank you so much for enabling notifications! 😊</h2>
+        <p>You now have full access to the Digital App.</p>
+    </div>
+</div>
+`
+
   const userHTML = `
   <div id="notifications-panel" popover class="notifications-panel">
   <div class="notifications-header">
@@ -5812,7 +5824,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
-      $("#notificationPrompt").remove();
+      // $("#notificationPrompt").remove();
+      $("#notificationPrompt").replaceWith(notificationThanksHtml);
       $(".bellicon__off").css({
         "background-color": "hsl(0deg 0% 92.16%)",
         "border": "unset"
