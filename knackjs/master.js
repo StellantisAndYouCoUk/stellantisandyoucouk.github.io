@@ -5812,6 +5812,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
+      $("#notificationPrompt").remove();
       $(".bellicon__off").css({
         "background-color": "hsl(0deg 0% 92.16%)",
         "border": "unset"
