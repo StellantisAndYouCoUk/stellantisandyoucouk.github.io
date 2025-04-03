@@ -5881,21 +5881,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     console.log("Redirect");
                     localStorage.setItem("previousPage", window.location.href);
 
-                    if(Knack.getUserAttributes().toString()!=='No user found'){
 
-                      window.setTimeout(function () {
-                      try {
-                          window.location.href = "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/";
-                      } catch (error) {
-                          console.error("Redirection error:", error);
-                      }
-                  }, 500);
-                  }
-
-
-
-
-                  
                     // window.setTimeout(function() {
                     //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
                     // }, 500);
