@@ -5833,9 +5833,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     }
   };
   updateNotificationUI();
-  
-  $(document).on("click", ".not", function (e) {
-    e.preventDefault(); // Prevent default link behavior
+
+
     const isEdge = navigator.userAgent.includes("Edg");
     const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
     const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
@@ -5844,6 +5843,14 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                  (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
     
     const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
+
+
+
+
+
+  
+  $(document).on("click", ".not", function (e) {
+    e.preventDefault(); // Prevent default link behavior
 
 
     if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
