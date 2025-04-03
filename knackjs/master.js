@@ -5823,23 +5823,20 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 }
               } else {
                 // If permission is granted, ensure the link is removed
-                $(".bellicon__off .not").remove();
+                $(".bellicon__off .not").remove()
                 // $("#notificationPrompt").remove();
                 $("#notificationPrompt").replaceWith(notificationThanksHtml);
                 $(".bellicon__off").css({
                   "background-color": "hsl(0deg 0% 92.16%)",
                   "border": "unset"
                 });
-
-                $(document).on('knack-scene-render.scene_2335', function(event, scene) {
-                
                 console.log("Firework")
                 LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
                   confetti()
               });
-              
+
                 
-                })
+
 
                 
               }
