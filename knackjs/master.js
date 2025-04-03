@@ -5845,7 +5845,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
                 
               const previousPage = localStorage.getItem("previousPage");
-
+              console.log("Previous page" + previousPage);
               // Redirect back if there's a stored page
               if (previousPage) {
                   localStorage.removeItem("previousPage"); // Clear it to prevent loops
