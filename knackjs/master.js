@@ -5734,6 +5734,14 @@ function requestNotificationPermission() {
         "background-color": "hsl(0deg 0% 92.16%)",
         "border": "unset"
       });
+      const previousPage = localStorage.getItem("previousPage");
+      console.log("Previous page" + previousPage);
+      // Redirect back if there's a stored page
+      if (previousPage) {
+          localStorage.removeItem("previousPage"); // Clear it to prevent loops
+          window.location.href = previousPage;
+      }
+      
       
     }
   };
@@ -5842,15 +5850,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                   "background-color": "hsl(0deg 0% 92.16%)",
                   "border": "unset"
                 });
-
-                
-              const previousPage = localStorage.getItem("previousPage");
-              console.log("Previous page" + previousPage);
-              // Redirect back if there's a stored page
-              if (previousPage) {
-                  localStorage.removeItem("previousPage"); // Clear it to prevent loops
-                  window.location.href = previousPage;
-              }
                 
               }
             };
