@@ -5848,7 +5848,19 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               console.log("isChrome: " + isChrome)
               console.log("isTablet: " + isTablet)
               console.log("isPhone: " + isPhone)
-   
+
+              if (
+                Notification.permission === 'denied' &&
+                !isTablet &&
+                !isPhone &&
+                (isEdge || isChrome)
+              ) {
+                  console.log("Redirect");
+                  window.setTimeout(function() {
+                    window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                }, 500);
+
+              }
 
   
   $(document).on("click", ".not", function (e) {
