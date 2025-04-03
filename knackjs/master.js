@@ -4849,13 +4849,13 @@ $(document).on('knack-view-render.view_415', function (event, view, data) {
   serviceVisitsTooltips('415','8881');
 });
 
-$(document).on('knack-view-render.view_7733', function (event, view, data) {
+$(document).on('knack-view-render.view_7953', function (event, view, data) {
   if (document.getElementById("showHideMoreServiceVisits")){
     document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
     showHideMoreServiceVisits();
   }
   $('div[class="field_10363"]').hide();
-  serviceVisitsTooltips('7733','10363');
+  serviceVisitsTooltips('7953','10363');
 });
 
  function showHideMoreServiceVisits(){
