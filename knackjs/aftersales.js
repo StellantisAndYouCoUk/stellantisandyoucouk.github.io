@@ -3198,18 +3198,29 @@ $(document).on('knack-scene-render.scene_1382', function(event, scene) {
 	console.log('Recursivecallscene_1382');
 	});
 
+$(document).on('knack-scene-render.scene_1050', function(event, scene) {	
+  //Tooltip table 3595
+  tooltipsTable('1050','3595','field_1532','field_2586');
+	tooltipsTable('1050','3595','field_1537','field_2213');  
+  //Tooltip table 3307
+  tooltipsTable('1050','3307','field_1532','field_2586');
+	tooltipsTable('1050','3307','field_1537','field_2213');  
+	tooltipsTable('1050','3307','field_2298','field_2272');
+
+  recursiveSceneRefresh('1050',['view_3307','view_3805'],300000);
+	console.log('Recursivecallscene_1050');
+});
+
+
 $(document).on('knack-scene-render.scene_1411', function(event, scene) {	
   //Tooltip table 3595
   tooltipsTable('1411','3595','field_1532','field_2586');
 	tooltipsTable('1411','3595','field_1537','field_2213');  
-  //Tooltip table 3307
-  tooltipsTable('1411','3307','field_1532','field_2586');
-	tooltipsTable('1411','3307','field_1537','field_2213');  
-	tooltipsTable('1411','3307','field_2298','field_2272');
 
-  recursiveSceneRefresh('1411',['view_3307','view_3595','view_3805'],300000);
 	console.log('Recursivecallscene_1411');
+	recursiveSceneRefresh('1411',['view_3595'],300000);
 });
+
 
 //hover for service details for pre-visit jobcard
 $(document).on('knack-view-render.view_3500', function (event, view, data) {
