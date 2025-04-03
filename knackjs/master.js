@@ -5861,27 +5861,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                   "border": "unset"
                 });
 
-
-                setTimeout(() => {
-
-
-
-                  
-                    
-                    console.log("Firework")
-                    LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
-                      confetti()
-                    
-                  });
-          
-              
-          
-          
-          
-                  
-                }, 3000);
-
-                
               }
             };
                   updateNotificationUI();
@@ -5925,9 +5904,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
                   
-                    window.setTimeout(function() {
-                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    }, 500);
+                    // window.setTimeout(function() {
+                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    // }, 500);
                 }
      
 
