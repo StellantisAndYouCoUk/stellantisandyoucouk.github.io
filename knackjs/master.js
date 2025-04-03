@@ -5872,10 +5872,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               // var user = Knack.getUserToken();
              
                 if (
-                    Knack.getUserAttributes().toString() !== 'No user found' &&
                     Notification.permission === 'denied' &&
                     !isTablet &&
                     !isPhone &&
+                    Knack.getUserAttributes().toString() !== 'No user found' &&
                     (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
