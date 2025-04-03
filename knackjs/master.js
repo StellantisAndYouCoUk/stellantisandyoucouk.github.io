@@ -5851,7 +5851,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
           
                 if (
-                    Knack.getUserAttributes().id !== undefined &&
                     Notification.permission === 'denied' &&
                     !isTablet &&
                     !isPhone &&
