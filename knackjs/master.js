@@ -5736,9 +5736,34 @@ function requestNotificationPermission() {
       });
       const previousPage = localStorage.getItem("previousPage");
       console.log("Previous page" + previousPage);
+
+
+      setTimeout(() => {
+
+
+
+        $(document).on('knack-scene-render.scene_2335', function(event, scene) {
+                                
+          console.log("Firework")
+          LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
+            confetti()
+          
+        });
+
+          })
+
+          
+
+        
+      }, 3000);
+
+
+
       // Redirect back if there's a stored page
       if (previousPage) {
           localStorage.removeItem("previousPage"); // Clear it to prevent loops
+
+
 
           setTimeout(() => {
             window.location.href = previousPage;
@@ -5859,21 +5884,6 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               }
             };
                   updateNotificationUI();
-
-
-
-                  // $(document).on('knack-scene-render.scene_2335', function(event, scene) {
-                                
-                  //   console.log("Firework")
-                  //   LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
-                  //     confetti()
-                    
-                  // });
-
-                  //   })
-
-
-
 
 
                 const isEdge = navigator.userAgent.includes("Edg");
