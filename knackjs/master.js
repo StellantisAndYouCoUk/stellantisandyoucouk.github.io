@@ -5738,26 +5738,6 @@ function requestNotificationPermission() {
       console.log("Previous page" + previousPage);
 
 
-      setTimeout(() => {
-
-
-
-        $(document).on('knack-scene-render.scene_2335', function(event, scene) {
-                                
-          console.log("Firework")
-          LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
-            confetti()
-          
-        });
-
-          })
-
-          
-
-        
-      }, 3000);
-
-
 
       // Redirect back if there's a stored page
       if (previousPage) {
@@ -5884,6 +5864,27 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               }
             };
                   updateNotificationUI();
+
+                  setTimeout(() => {
+
+
+
+                    $(document).on('knack-scene-render.scene_2335', function(event, scene) {
+                      console.log("Scene_2335 running");
+                      console.log("Firework")
+                      LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
+                        confetti()
+                      
+                    });
+            
+                      })
+            
+            
+            
+                    
+                  }, 3000);
+
+
 
 
                 const isEdge = navigator.userAgent.includes("Edg");
