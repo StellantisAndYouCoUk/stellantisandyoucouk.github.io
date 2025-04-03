@@ -5836,7 +5836,16 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 console.log("Firework")
                 LazyLoad.js(['https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js'], function () {
                   confetti()
+                
               });
+
+              const previousPage = localStorage.getItem("previousPage");
+
+              // Redirect back if there's a stored page
+              if (previousPage) {
+                  localStorage.removeItem("previousPage"); // Clear it to prevent loops
+                  window.location.href = previousPage;
+              }
                 
                 })
 
@@ -5868,6 +5877,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
+                    localStorage.setItem("previousPage", window.location.href);
                     // window.setTimeout(function() {
                     //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
                     // }, 500);
