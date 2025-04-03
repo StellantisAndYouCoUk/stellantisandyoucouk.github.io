@@ -5849,7 +5849,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               console.log("isTablet: " + isTablet)
               console.log("isPhone: " + isPhone)
 
-              try {
+          
                 if (
                     Knack.getUserAttributes().id !== undefined &&
                     Notification.permission === 'denied' &&
@@ -5858,17 +5858,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
-                    window.setTimeout(function() {
-                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    }, 500);
+                    // window.setTimeout(function() {
+                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    // }, 500);
                 }
-            } catch (error) {
-                // Handle the error (e.g., log it or perform some fallback action)
-                console.error("Error checking user attributes:", error);
-            }
+     
 
 
-            
 
   
   $(document).on("click", ".not", function (e) {
