@@ -276,9 +276,15 @@ function work(){
     }
 
     if (page.includes('capacity.html')){
-        let yesterday = new Date();
-        yesterday.setDate(yesterday.getDate()-1);
-        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(yesterday));
+        let capacityDate = qV['date'];
+        if (!capacityDate || capacityDate===''){
+            capacityDate = new Date();
+            capacityDate.setDate(yesterday.getDate()-1);
+        } else {
+            capacityDate = new Date(capacityDate);
+        }
+
+        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(capacityDate));
         let dataToG = dataD.map(function(el){
             return {t:el.dateTime,y:el.runningJobs};
         })
