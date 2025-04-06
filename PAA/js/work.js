@@ -322,7 +322,7 @@ function work(){
         let dataToG1 = dataD1.map(function(el){
             return {t:el.dateTime,y:el.runDelay};
         })
-        const ctx1 = document.getElementById("chart").getContext('2d');
+        const ctx1 = document.getElementById("chart2").getContext('2d');
         const myChar1 = new Chart(ctx1, {
           type: 'line',
           data: {
