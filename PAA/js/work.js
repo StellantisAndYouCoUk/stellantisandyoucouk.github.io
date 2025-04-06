@@ -317,6 +317,31 @@ function work(){
             }
           },
         });
+
+        let dataD1 = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/FQYM1gpZnQPhgXSHo/records/datatoGr');
+        let dataToG1 = dataD1.map(function(el){
+            return {t:el.dateTime,y:el.runDelay};
+        })
+        const ctx1 = document.getElementById("chart").getContext('2d');
+        const myChar1 = new Chart(ctx1, {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [{
+              //label: dateToGB(capacityDate),
+              //backgroundColor: 'rgba(161, 198, 247, 1)',
+              borderColor: 'rgb(47, 128, 237)',
+              data: dataToG1,
+            }]
+          },
+          options: {
+            scales: {
+              xAxes: [{
+                type: 'time'
+              }]
+            }
+          },
+        });
     }
 
     if (page.includes('flows.html')){
