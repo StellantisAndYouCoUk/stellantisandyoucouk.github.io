@@ -294,7 +294,7 @@ function work(){
           data: {
             labels: [],
             datasets: [{
-              label: '31/03',
+              label: dateTimeToGB(capacityDate),
               //backgroundColor: 'rgba(161, 198, 247, 1)',
               borderColor: 'rgb(47, 128, 237)',
               data: dataToG,
