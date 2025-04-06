@@ -167,6 +167,9 @@ function pad(n) {return n < 10 ? "0"+n : n;}
 function dateToGB(dateobj){
     return pad(dateobj.getDate())+"/"+pad(dateobj.getMonth()+1)+"/"+dateobj.getFullYear();
 }
+function dateToAutoline(dateobj){
+    return dateobj.getFullYear()+"-"+pad(dateobj.getMonth()+1)+"-"+pad(dateobj.getDate());
+}
 
 var table = null;
 var jsonData = null;
@@ -273,7 +276,9 @@ function work(){
     }
 
     if (page.includes('capacity.html')){
-        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/5hFLPAMvU9jtb7vxF/records/runningArray');
+        let yesterday = new Date();
+        yesterday.setDate(yesterday.getDate()-1);
+        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(yesterday));
         let dataToG = dataD.map(function(el){
             return {t:el.dateTime,y:el.runningJobs};
         })
