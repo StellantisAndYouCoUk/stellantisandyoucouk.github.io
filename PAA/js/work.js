@@ -279,7 +279,7 @@ function work(){
         let capacityDate = qV['date'];
         if (!capacityDate || capacityDate===''){
             capacityDate = new Date();
-            capacityDate.setDate(yesterday.getDate()-1);
+            capacityDate.setDate(capacityDate.getDate()-1);
         } else {
             capacityDate = new Date(capacityDate);
         }
