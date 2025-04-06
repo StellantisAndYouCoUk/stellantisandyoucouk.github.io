@@ -291,7 +291,7 @@ function work(){
         dayBeforeC.setDate(dayBeforeC.getDate()-1);
         let dayAfterC = new Date(capacityDate.getTime());
         dayAfterC.setDate(dayAfterC.getDate()+1);
-        $('#dayMove').html('<a href="capacity.html?date='+dateToAutoline(dayBeforeC)+'">Prev day</a>'+(dayAfterC<=yesterday?'<a href="capacity.html?date='+dateToAutoline(dayAfterC)+'">Next day</a>':''));
+        $('#dayMove').html('<a href="capacity.html?date='+dateToAutoline(dayBeforeC)+'">Prev day</a>'+(dayAfterC<=yesterday?' &nbsp; &nbsp; <a href="capacity.html?date='+dateToAutoline(dayAfterC)+'">Next day</a>':''));
 
         let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(capacityDate));
         let dataToG = dataD.map(function(el){
