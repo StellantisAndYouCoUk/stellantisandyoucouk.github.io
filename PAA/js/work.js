@@ -299,7 +299,7 @@ function work(){
         })
         const ctx = document.getElementById("chart").getContext('2d');
         const myChart = new Chart(ctx, {
-          type: 'scatter',
+          type: 'line',
           data: {
             labels: [],
             datasets: [{
@@ -324,7 +324,7 @@ function work(){
         })
         const ctx1 = document.getElementById("chart2").getContext('2d');
         const myChar1 = new Chart(ctx1, {
-          type: 'line',
+          type: 'scatter',
           data: {
             labels: [],
             datasets: [{
