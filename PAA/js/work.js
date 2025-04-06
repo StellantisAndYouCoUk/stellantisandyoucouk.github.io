@@ -283,7 +283,13 @@ function work(){
         } else {
             capacityDate = new Date(capacityDate);
         }
-        $('#dayMove').html('<a href="capacity.html">Prev day</a>');
+        capacityDate.setHours(0,0,0,0);
+        let yesterday = new Date();
+        yesterday.setDate(yesterday.getDate()-1);
+        yesterday.setHours(0,0,0,0);
+        let dayBeforeC = new Date(capacityDate.getTime())
+        dayBeforeC.setDate(dayBeforeC.getDate()-1);
+        $('#dayMove').html('<a href="capacity.html?date='+dateToAutoline(dayBeforeC)+'">Prev day</a>');
 
         let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(capacityDate));
         let dataToG = dataD.map(function(el){
