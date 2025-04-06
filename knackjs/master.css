@@ -142,7 +142,7 @@ body {
 #view_3508 > section > div > div > div > div > div > div > span > h2 > span,
 #view_3614 > section > div > div > div > div > div.field_4941 > div > span > h2 > span,
 #view_4098 > section > div > div:nth-child(1) > div > div > div > div > span > span,
-#view_7725 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div > div > span > span,
+#view_7725 > section > div > div:nth-child(1) > div:nth-child(1) > div > div > div > span > span,
 #view_4131 > section > div > div:nth-child(1) > div > div > div > div > span > span {
   background-color: #ffe74c;
   border-radius: 10px;
@@ -305,7 +305,9 @@ body {
 #view_7725 .kn-detail-label,
 #view_7732 .kn-detail-label,
 #view_7733 .kn-detail-label,
-#view_7312 .kn-detail-label {
+#view_7312 .kn-detail-label,
+#view_7953 .kn-detail-label,
+#view_7952 .kn-detail-label {
   background-color: transparent;
 }
 
@@ -4062,6 +4064,8 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5817 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5817 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5817 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5817 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5817 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_7315 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7668 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5823 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4235,6 +4239,8 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5817 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5817 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5817 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5817 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_5817 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_7315 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7668 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5823 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4430,6 +4436,16 @@ n-link.kn-link-2.kn-link-page.kn-button,
   visibility: hidden;
 
 } */
+ 
+img.not.accountSettingsBellIcon{
+  bottom: unset;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+}
+
+
+
 
 img.notification-icon {
   position: absolute;
@@ -4864,3 +4880,6 @@ p.speech-bubble-inbound-1link:before {
  text-wrap: wrap !important;
 }
 
+
+
+/* Account Settings Bell Icon */

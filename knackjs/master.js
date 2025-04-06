@@ -524,6 +524,12 @@ $(document).on('knack-view-render.view_7711', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #courtesy-and-demo-vehicle-management" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Demo and Courtesy Admin Page
+$(document).on('knack-view-render.view_7946', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #admin-pages" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Service Sales Prospecting
 $(document).on('knack-view-render.view_7517', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
@@ -1749,6 +1755,11 @@ $(document).on('knack-view-render.view_7056', function(event, view, data) {
 
 
 // MANAGER VIEWS
+
+$(document).on('knack-view-render.view_7951', function(event, view, data) {
+  console.log('view7951');
+  Knack.fn.hideExpand("view_7951");
+});
 
 $(document).on('knack-view-render.view_7762', function(event, view, data) {
   console.log('view7762');
@@ -4838,13 +4849,13 @@ $(document).on('knack-view-render.view_415', function (event, view, data) {
   serviceVisitsTooltips('415','8881');
 });
 
-$(document).on('knack-view-render.view_7733', function (event, view, data) {
+$(document).on('knack-view-render.view_7953', function (event, view, data) {
   if (document.getElementById("showHideMoreServiceVisits")){
     document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
     showHideMoreServiceVisits();
   }
   $('div[class="field_10363"]').hide();
-  serviceVisitsTooltips('7733','10363');
+  serviceVisitsTooltips('7953','10363');
 });
 
  function showHideMoreServiceVisits(){
@@ -5241,11 +5252,16 @@ $(document).on("knack-view-render.any", function (event, scene) {
       
         console.log("Notification ID:", notificationId);
 
- 
+        let InAppPopUp = false;
+
+        if(typeof message.InAppPopUp === "boolean"){
+          InAppPopUp = message.InAppPopUp;
+        }
+
 
 
         if (Notification.permission === 'granted' || message.ShowMessageDirectly){
-          if(!message.Title.toString().includes("Message") && !message.Title.toString().includes("Waiting Sales") || message.InAppPopUp){
+          if(InAppPopUp){
 
             
             let confirmButtonAriaLabel = "Click To Open"
@@ -5481,8 +5497,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
                 
                 showNotification(dataParsed, messageParsed, 0);
+
+                let DesktopNotification = false;
+
+                if(typeof messageParsed.DesktopNotification === "boolean"){
+                  DesktopNotification = messageParsed.DesktopNotification;
+                }
+
                 
-                if(!messageParsed.Title.toString().includes("Hi,") && !messageParsed.Title.toString().includes("Deposit") || messageParsed.DesktopNotification){
+                if(DesktopNotification){
                 showNotificationBackground(messageParsed.Title,"",messageParsed);
                 }
                 // if (document.visibilityState === "visible") {
@@ -5684,6 +5707,17 @@ function fileUploadedSuccesfully(fieldName, fileId, filename){
 // Notification Read
 
 function requestNotificationPermission() {
+  const notificationThanksHtml = `
+  <div class="container" style="text-align: center;">
+    <div id="allowedContent">
+        <h1><br></h1>
+        <h1>You've successfully enabled notifications! 🎉</h1>
+        <h2 style="color: green;">Thank you so much for enabling notifications! 😊</h2>
+        <p>You now have full access to the Digital App.</p>
+    </div>
+    </div>
+    `
+
   const updateNotificationUI = () => {
     if (Notification.permission !== "granted") {
       // Check if the link is already appended
@@ -5695,11 +5729,30 @@ function requestNotificationPermission() {
     } else {
       // If permission is granted, ensure the link is removed
       $(".bellicon__off .not").remove();
+      $("#notificationPrompt").replaceWith(notificationThanksHtml);
       $(".bellicon__off").css({
         "background-color": "hsl(0deg 0% 92.16%)",
         "border": "unset"
       });
-      
+      const previousPage = localStorage.getItem("previousPage");
+      console.log("Previous page" + previousPage);
+
+
+
+      // Redirect back if there's a stored page
+      if (previousPage) {
+          localStorage.removeItem("previousPage"); // Clear it to prevent loops
+
+
+
+          setTimeout(() => {
+            window.location.href = previousPage;
+          }, 8000);
+
+          
+          
+      }
+
     }
   };
 
@@ -5752,61 +5805,116 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       </span>
   `;
 
-  const userHTML = `
-  <div id="notifications-panel" popover class="notifications-panel">
-  <div class="notifications-header">
-    <div class="notifications-status">
-      <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
-      Notifications are under development. Please hold tight while we make them awesome! ❤️
-      — Your Digi Team 😊
-    </div>
-    // <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
 
-  </div>
-  <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
-  <div class="notification-links">
-</div> 
-  `;
+  const notificationThanksHtml = `
+  <div class="container" style="text-align: center;">
+    <div id="allowedContent">
+        <h1><br></h1>
+        <h1>You've successfully enabled notifications! 🎉</h1>
+        <h2 style="color: green;">Thank you so much for enabling notifications! 😊</h2>
+        <p>You now have full access to the Digital App.</p>
+    </div>
+    </div>
+    `
+
+        const userHTML = `
+        <div id="notifications-panel" popover class="notifications-panel">
+        <div class="notifications-header">
+          <div class="notifications-status">
+            <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
+            Notifications are under development. Please hold tight while we make them awesome! ❤️
+            — Your Digi Team 😊
+          </div>
+          // <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
+
+        </div>
+        <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
+        <div class="notification-links">
+      </div> 
+        `;
 
   // Append the base notification icon HTML to the current user section
-  if ($(".kn-current_user .bellicon__off").length === 0) {
-    $(".kn-current_user").append(notificationIconHtml);
-    console.log("icon added");
-    $(".kn-current_user").append(userHTML);
-    console.log("userhtml added");
+          if ($(".kn-current_user .bellicon__off").length === 0) {
+            $(".kn-current_user").append(notificationIconHtml);
+            console.log("icon added");
+            $(".kn-current_user").append(userHTML);
+            console.log("userhtml added");
 
-}
+        }
   // Function to dynamically update the UI for notification permission
 
-  const updateNotificationUI = () => {
-    if (Notification.permission !== "granted") {
-      // Check if the link is already appended
-      if ($(".bellicon__off .not").length === 0) {
-        $(".bellicon__off").prepend(`
-          <a href="#" class="not">Notifications OFF<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
-        `);
-      }
-    } else {
-      // If permission is granted, ensure the link is removed
-      $(".bellicon__off .not").remove();
-      $(".bellicon__off").css({
-        "background-color": "hsl(0deg 0% 92.16%)",
-        "border": "unset"
-      });
-    }
-  };
-  updateNotificationUI();
-  
-  $(document).on("click", ".not", function (e) {
-    e.preventDefault(); // Prevent default link behavior
-    const isEdge = navigator.userAgent.includes("Edg");
-    const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
-    const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
+            const updateNotificationUI = () => {
+              if (Notification.permission !== "granted") {
+                // Check if the link is already appended
+                if ($(".bellicon__off .not").length === 0) {
+                  $(".bellicon__off").prepend(`
+                    <a href="#" class="not">Notifications OFF<img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif" alt="Notification Bell" class="notification-icon"></a>
+                  `);
+                }
+              } else {
+                // If permission is granted, ensure the link is removed
+                $(".bellicon__off .not").remove();
+                // $("#notificationPrompt").remove();
+                $("#notificationPrompt").replaceWith(notificationThanksHtml);
+                $(".bellicon__off").css({
+                  "background-color": "hsl(0deg 0% 92.16%)",
+                  "border": "unset"
+                });
+
+              }
+            };
+                  updateNotificationUI();
+
+
+
+
+
+                const isEdge = navigator.userAgent.includes("Edg");
+                const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
+                const isTablet = navigator.userAgent.toLowerCase().includes("ipad") ||
                  navigator.userAgent.toLowerCase().includes("tablet") ||
                  navigator.userAgent.toLowerCase().includes("playbook") ||
                  (navigator.userAgent.toLowerCase().includes("android") && !navigator.userAgent.includes("mobile"));
     
-    const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
+                  const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
+
+              console.log("IsEdge: " + isEdge)
+              console.log("isChrome: " + isChrome)
+              console.log("isTablet: " + isTablet)
+              console.log("isPhone: " + isPhone)
+
+              // var user = Knack.getUserToken();
+             
+                if (
+                    Notification.permission === 'denied' &&
+                    !isTablet &&
+                    !isPhone &&
+                    Knack.getUserAttributes().toString() !== 'No user found' &&
+                    (isEdge || isChrome)
+                ) {
+                    console.log("Redirect");
+                    
+                    if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
+                    ){
+
+                      localStorage.setItem("previousPage", window.location.href);
+
+                    }
+
+
+
+                  
+                    // window.setTimeout(function() {
+                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    // }, 500);
+                }
+     
+
+
+
+  
+  $(document).on("click", ".not", function (e) {
+    e.preventDefault(); // Prevent default link behavior
 
 
     if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
