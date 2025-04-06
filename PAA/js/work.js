@@ -283,6 +283,7 @@ function work(){
         } else {
             capacityDate = new Date(capacityDate);
         }
+        $('#dayMove').html('<a href="capacity.html">Prev day</a>');
 
         let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(capacityDate));
         let dataToG = dataD.map(function(el){
@@ -294,7 +295,7 @@ function work(){
           data: {
             labels: [],
             datasets: [{
-              label: dateTimeToGB(capacityDate),
+              label: dateToGB(capacityDate),
               //backgroundColor: 'rgba(161, 198, 247, 1)',
               borderColor: 'rgb(47, 128, 237)',
               data: dataToG,
