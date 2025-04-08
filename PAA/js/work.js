@@ -318,7 +318,7 @@ function work(){
           },
         });
 
-        let dataD1 = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/FQYM1gpZnQPhgXSHo/records/datatoGr');
+        let dataD1 = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_delay_Checkin-v2_'+dateToAutoline(capacityDate));
         let dataToG1 = dataD1.map(function(el){
             return {t:el.dateTime,y:el.runDelay};
         })
@@ -328,7 +328,7 @@ function work(){
           data: {
             labels: [],
             datasets: [{
-              label: 'CheckIn Start Delay',
+              label: 'CheckIn Start Delay '+dateToGB(capacityDate),
               //backgroundColor: 'rgba(161, 198, 247, 1)',
               borderColor: 'rgb(47, 128, 237)',
               data: dataToG1,
