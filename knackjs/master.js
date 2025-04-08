@@ -5888,11 +5888,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               console.log("isChrome: " + isChrome)
               console.log("isTablet: " + isTablet)
               console.log("isPhone: " + isPhone)
-
+              const excludedUserRoles = ['object_288','object_281','object_105'];
               // var user = Knack.getUserToken();
+              const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
              
                 if (
                     Notification.permission === 'denied' &&
+                    !isUserExcluded &&
                     !isTablet &&
                     !isPhone &&
                     Knack.getUserAttributes().toString() !== 'No user found' &&
