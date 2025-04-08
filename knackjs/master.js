@@ -5902,12 +5902,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 ) {
                     console.log("Redirect");
                     
-                    if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
-                    ){
+                    // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
+                    // ){
 
-                      localStorage.setItem("previousPage", window.location.href);
+                    //   localStorage.setItem("previousPage", window.location.href);
 
-                    }
+                    // }
 
 
 
