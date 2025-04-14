@@ -5210,9 +5210,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
                       <img class="swal2-image custom" src=${gifUrlBlocked} alt="Success GIF">
                       <ol class="listOfSteps">
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
-                        <li>Click Reset Permissions.</li>
+                        <li>Toggle Enable Notifications.</li>
                         <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg" class="arrow-clockwise"> icon on the url.</li>
-                        <li>Click Allow Notification</li>
                       </ol>
           `,
           // imageWidth: 600,
@@ -5873,7 +5872,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
-
+                
 
                 const isEdge = navigator.userAgent.includes("Edg");
                 const isChrome = !navigator.userAgent.includes("Edg") && navigator.userAgent.includes("Chrome")
@@ -5884,15 +5883,17 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     
                   const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
 
-              console.log("IsEdge: " + isEdge)
-              console.log("isChrome: " + isChrome)
-              console.log("isTablet: " + isTablet)
-              console.log("isPhone: " + isPhone)
-
+                  console.log("IsEdge: " + isEdge)
+                  console.log("isChrome: " + isChrome)
+                  console.log("isTablet: " + isTablet)
+                  console.log("isPhone: " + isPhone)
+              const excludedUserRoles = ['object_288','object_281','object_105', 'object_258','object_166','object_152','object_235','object_223'];
               // var user = Knack.getUserToken();
+              const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
              
                 if (
                     Notification.permission === 'denied' &&
+                    !isUserExcluded &&
                     !isTablet &&
                     !isPhone &&
                     Knack.getUserAttributes().toString() !== 'No user found' &&
@@ -5900,19 +5901,19 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 ) {
                     console.log("Redirect");
                     
-                    if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
-                    ){
+                    // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
+                    // ){
 
-                      localStorage.setItem("previousPage", window.location.href);
+                    //   localStorage.setItem("previousPage", window.location.href);
 
-                    }
+                    // }
 
 
 
                   
-                    // window.setTimeout(function() {
-                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    // }, 500);
+                    window.setTimeout(function() {
+                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    }, 500);
                 }
      
 
@@ -5993,9 +5994,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                         <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
                         <ol class="listOfSteps">
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
-                          <li>Click Reset Permissions.</li>
+                          <li>Toggle Enable Notifications.</li>
                           <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg" class="arrow-clockwise"> icon on the url.</li>
-                          <li>Click Allow Notification</li>
                         </ol>
             `,
             confirmButtonText: 'Refresh the page'
