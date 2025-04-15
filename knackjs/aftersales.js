@@ -1014,11 +1014,6 @@ $(document).on('knack-form-submit.view_867', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/nm7ndnq4ixrw3r5lx2slrimrxwg4g9ht", {"Record ID":data.id,"Origin":data.field_1107,"Auto Increment":data.field_1064},"Completed Other Pre Visit Digital Customer Incident Form")
 });
 
-//Submit form for GDPR preferences update in Check-in process
-$(document).on('knack-form-submit.view_732', function(event, view, data) { 
-  callPostHttpRequest("https://hook.eu1.make.celonis.com/whf6h2e18t2n2iqxhmorh4s8v9lcaf9m", {"Record ID":data.id, "Service GDPR PHONE":data.field_1048_raw, "Service GDPR EMAIL":data.field_1050_raw, "Service GDPR POST":data.field_1051_raw,
-  "Service GDPR SMS":data.field_1052_raw, "Sales GDPR PHONE":data.field_1054_raw, "Sales GDPR EMAIL":data.field_1055_raw,"Sales GDPR POST":data.field_1056_raw, "Sales GDPR SMS":data.field_1057_raw, "Customer Magic Number":data.field_1006_raw.replace(/[^0-9]/g,'')},"Submit form for GDPR preferences update in Check-in process")
-});
 
 //change the text color based on the input value
 $(document).on('knack-view-render.view_375', function(event, view, data) {
