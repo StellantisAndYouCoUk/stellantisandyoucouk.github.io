@@ -5841,9 +5841,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   // Append the base notification icon HTML to the current user section
           if ($(".kn-current_user .bellicon__off").length === 0) {
             $(".kn-current_user").append(notificationIconHtml);
-            console.log("icon added");
+            // console.log("icon added");
             $(".kn-current_user").append(userHTML);
-            console.log("userhtml added");
+            // console.log("userhtml added");
 
         }
   // Function to dynamically update the UI for notification permission
@@ -5888,10 +5888,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     
                   const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
 
-                  console.log("IsEdge: " + isEdge)
-                  console.log("isChrome: " + isChrome)
-                  console.log("isTablet: " + isTablet)
-                  console.log("isPhone: " + isPhone)
+                  // console.log("IsEdge: " + isEdge)
+                  // console.log("isChrome: " + isChrome)
+                  // console.log("isTablet: " + isTablet)
+                  // console.log("isPhone: " + isPhone)
               const excludedUserRoles = ['object_288','object_281','object_105', 'object_258','object_166','object_152','object_235','object_223'];
               // var user = Knack.getUserToken();
               const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
