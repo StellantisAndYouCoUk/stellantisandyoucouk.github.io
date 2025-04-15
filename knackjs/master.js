@@ -5872,6 +5872,11 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
 
 
+
+
+
+
+
                 
 
                 const isEdge = navigator.userAgent.includes("Edg");
@@ -5890,6 +5895,22 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               const excludedUserRoles = ['object_288','object_281','object_105', 'object_258','object_166','object_152','object_235','object_223'];
               // var user = Knack.getUserToken();
               const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
+
+              
+              if (
+                !isUserExcluded &&
+                Knack.getUserAttributes().toString() !== 'No user found' &&
+                Knack.getUserAttributes().values.field_10505 === ''
+            ) {
+                console.log("Redirect Testing to https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/");
+                
+                
+                // window.setTimeout(function() {
+                //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
+                // }, 500);
+            }
+
+
              
                 if (
                     Notification.permission === 'denied' &&
