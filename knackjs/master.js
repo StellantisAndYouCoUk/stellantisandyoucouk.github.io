@@ -5800,43 +5800,43 @@ $(document).ready(function() {
 
 $(document).on('knack-scene-render.any', function(event, scene) {
   // Generate the base notification icon HTML (always visible)
-  const notificationIconHtml = `
-    <span class="bellicon__off">
-    <span class="user">
-      <button popovertarget="notifications-panel" class="user-button">
-      <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
-      </button>
-    </span>
-      </span>
-  `;
+          const notificationIconHtml = `
+            <span class="bellicon__off">
+            <span class="user">
+              <button popovertarget="notifications-panel" class="user-button">
+              <img src="https://stellantisandyoucouk.github.io/imagesStore/user.svg" alt="User Icon" class="user-icon">
+              </button>
+            </span>
+              </span>
+          `;
 
 
-  const notificationThanksHtml = `
-  <div class="container" style="text-align: center;">
-    <div id="allowedContent">
-        <h1><br></h1>
-        <h1>You've successfully enabled notifications! 🎉</h1>
-        <h2 style="color: green;">Thank you so much for enabling notifications! 😊</h2>
-        <p>You now have full access to the Digital App.</p>
-    </div>
-    </div>
-    `
+          const notificationThanksHtml = `
+          <div class="container" style="text-align: center;">
+            <div id="allowedContent">
+                <h1><br></h1>
+                <h1>You've successfully enabled notifications! 🎉</h1>
+                <h2 style="color: green;">Thank you so much for enabling notifications! 😊</h2>
+                <p>You now have full access to the Digital App.</p>
+            </div>
+            </div>
+            `
 
-        const userHTML = `
-        <div id="notifications-panel" popover class="notifications-panel">
-        <div class="notifications-header">
-          <div class="notifications-status">
-            <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
-            Notifications are under development. Please hold tight while we make them awesome! ❤️
-            — Your Digi Team 😊
-          </div>
-          // <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
+                const userHTML = `
+                <div id="notifications-panel" popover class="notifications-panel">
+                <div class="notifications-header">
+                  <div class="notifications-status">
+                    <span class="bell-icon"><img src="https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg" alt=""></span>
+                    Notifications are under development. Please hold tight while we make them awesome! ❤️
+                    — Your Digi Team 😊
+                  </div>
+                  // <a href="https://stellantisandyoucouk.github.io/imagesStore/aiCameraTest/index.html">Ai Test</a>
 
-        </div>
-        <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
-        <div class="notification-links">
-      </div> 
-        `;
+                </div>
+                <a href="https://www.stellantisandyou.co.uk/digital#home/instant-notification/"><button class="focus-mode-button" popovertarget="notifications-panel" popovertargetaction="hide">Instant Push Notification</button></a>
+                <div class="notification-links">
+              </div> 
+                `;
 
   // Append the base notification icon HTML to the current user section
           if ($(".kn-current_user .bellicon__off").length === 0) {
@@ -5888,275 +5888,279 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     
                   const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
 
-                  // console.log("IsEdge: " + isEdge)
-                  // console.log("isChrome: " + isChrome)
-                  // console.log("isTablet: " + isTablet)
-                  // console.log("isPhone: " + isPhone)
+                  console.log("IsEdge: " + isEdge)
+                  console.log("isChrome: " + isChrome)
+                  console.log("isTablet: " + isTablet)
+                  console.log("isPhone: " + isPhone)
               const excludedUserRoles = ['object_288','object_281','object_105', 'object_258','object_166','object_152','object_235','object_223'];
               // var user = Knack.getUserToken();
-              const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
 
-              
-              if (
-                !isUserExcluded &&
-                Knack.getUserAttributes().roles.length!=0 &&
-                Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
-                Knack.getUserAttributes().toString() !== 'No user found' &&
-                Knack.getUserAttributes().values.field_10505 === ''
-            ) {
-                console.log("Redirect Testing to https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/");
+              $(document).on('knack-scene-render.scene_435', function(event, scene) {
+
+                            const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
+                            
+
+                          
+                          if (
+                            !isUserExcluded &&
+                            Knack.getUserAttributes().roles.length!=0 &&
+                            Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
+                            Knack.getUserAttributes().toString() !== 'No user found' &&
+                            Knack.getUserAttributes().values.field_10505 === ''
+                        ) {
+                            console.log("Redirect Testing to https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/");
+                            
+                            
+                            window.setTimeout(function() {
+                                window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
+                            }, 500);
+                        }
+
+
+                        
+                            if (
+                                Notification.permission === 'denied' &&
+                                Knack.getUserAttributes().roles.length!=0 &&
+                                !isUserExcluded &&
+                                !isTablet &&
+                                !isPhone &&
+                                Knack.getUserAttributes().toString() !== 'No user found' &&
+                                (isEdge || isChrome)
+                            ) {
+                                console.log("Redirect");
+                                
+                                // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
+                                // ){
+
+                                //   localStorage.setItem("previousPage", window.location.href);
+
+                                // }
+
+
+
+                              
+                                window.setTimeout(function() {
+                                    window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                                }, 500);
+                            }
                 
+
+              })
+
+  
+                $(document).on("click", ".not", function (e) {
+                  e.preventDefault(); // Prevent default link behavior
+
+
+                  if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
+                    const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
+                    const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
+
+                    Swal.fire({
+                      title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+                      html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
+                      icon: "warning",
+                      confirmButtonText: 'Click here to enable notifications',
+                      focusConfirm: false,
+                      allowEscapeKey: false,
+                      allowOutsideClick: false
+                    }).then((result) => {
+                        Swal.fire({
+                          title: '',
+                          html: `
+                                      <h2>Steps to Enable Notifications</h2>
+                                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+
+                                      <ol class="listOfSteps">
+                                        <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
+                                        <li>Click Allow Notification</li>
+                                        <li>Click to Refresh The Page</li>
+                                      </ol>
+                          `,
+                          allowEscapeKey: false,
+                          allowOutsideClick: false,
+                          confirmButtonText: 'Refresh The Page'
+                        })
+                          .then((result) => {
+                            if(result.isConfirmed){
+                              if (Notification.permission === 'granted') {
+                                window.location.reload(true)
+
+                              }else{
+                                Swal.fire({
+                                  icon: "error",
+                                  title: "Oops...",
+                                  html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
+                                });
+
+                              };
+                            }
+                          });
+                      // }
+                    });
+                  }
+
+
+
+
+                  if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
+                    const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
+
+                    Swal.fire({
+                      title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+                      html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
+                      icon: "warning",
+                      confirmButtonText: 'Click here to enable notifications',
+                      allowEscapeKey: false,
+                      allowOutsideClick: false
+                                  }).then((result) => {
+                        Swal.fire({
+                          title: '',
+                          allowOutsideClick: false,
+                          html: `
+                                      <h2>Steps to Enable Notifications</h2>
+                                      <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+                                      <ol class="listOfSteps">
+                                        <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
+                                        <li>Toggle Enable Notifications.</li>
+                                        <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg" class="arrow-clockwise"> icon on the url.</li>
+                                      </ol>
+                          `,
+                          confirmButtonText: 'Refresh the page'
+                        })
+                          .then((result) => {
+                            if(result.isConfirmed){
+                              if (Notification.permission === 'granted') {
+                                window.location.reload(true)
+
+                              }else{
+                                Swal.fire({
+                                  icon: "error",
+                                  title: "Oops...",
+                                  html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
+                                  allowOutsideClick: false
+                                });
+
+                              };
+                            }
+                          });
+                      // }
+                    });
+                  }
+
+
+
+
+                  if (isEdge && Notification.permission !== 'denied' && !isTablet && !isPhone) {
+                    // Create a popup if the user is on Edge
+                    const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
+                    Swal.fire({
+                      allowEscapeKey: false,
+                      title: "Allow Notifications",
+                      html: `<p><strong>Step 1:</strong> Click <em>"Little <img src="https://stellantisandyoucouk.github.io/imagesStore/bell.svg"> icon on url"</em> to allow notifications.</p>`, 
+                      imageUrl: gifUrlFirst,
+                      imageAlt: "Custom GIF",
+                      allowOutsideClick: false,
+                      confirmButtonText: "OK"
+                    });
+
+                  }
+
+
+                    if (Notification.permission === 'denied' && isTablet) {
+                      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Android-Edge-Blocked.gif";
                 
-                window.setTimeout(function() {
-                    window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
-                }, 500);
-            }
+                      Swal.fire({
+                        title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+                        html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
+                        icon: "warning",
+                        confirmButtonText: 'Click here to see how you can enable notifications',
+                        focusConfirm: false,
+                      }).then((result) => {
+                          // Show success and then open a new tab
+                          Swal.fire({
+                            title: '',
+                            position: "top-end",
+                            html: `
+                                        <h2>Steps to Enable Notifications</h2>
+                                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+                                        <ol class="listOfSteps">
+                                          <li>Touch to <strong>🔒</strong> icon into the URL.</li>
+                                          <li>Touch Permissions and Touch Notification Blocked</li>
+                                          <li>Enable Toggled into the Allow Notifications</li>
+                                          <li>Don't forget to refresh page</li>
+                                        </ol>
+                            `,
+                            // imageUrl: gifUrlBlocked, // GIF displayed here
+                            // imageWidth: 600,
+                            imageAlt: "Success GIF",
+                            confirmButtonText: 'OK',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                          })
+                            .then((result) => {
+                              if(result.isConfirmed){
+                              window.location.reload(true);
+                              }
+                            });
+                        
+                      });
+                    }
 
 
-             
-                if (
-                    Notification.permission === 'denied' &&
-                    Knack.getUserAttributes().roles.length!=0 &&
-                    !isUserExcluded &&
-                    !isTablet &&
-                    !isPhone &&
-                    Knack.getUserAttributes().toString() !== 'No user found' &&
-                    (isEdge || isChrome)
-                ) {
-                    console.log("Redirect");
-                    
-                    // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
-                    // ){
-
-                    //   localStorage.setItem("previousPage", window.location.href);
-
-                    // }
+                    if (Notification.permission === 'denied' && isPhone) {
+                      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Android-Edge-Blocked.gif";
+                
+                      Swal.fire({
+                        title: 'Whoops! You have previously <strong>blocked</strong> notifications',
+                        html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
+                        icon: "warning",
+                        confirmButtonText: 'Click here to see how you can enable notifications',
+                        focusConfirm: false,
+                      }).then((result) => {
+                          // Show success and then open a new tab
+                          Swal.fire({
+                            title: '',
+                            position: "top-end",
+                            html: `
+                                        <h2>Steps to Enable Notifications</h2>
+                                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
+                                        <ol class="listOfSteps">
+                                          <li>Touch to <strong>🔒</strong> icon into the URL.</li>
+                                          <li>Touch Permissions and Touch Notification Blocked</li>
+                                          <li>Enable Toggled into the Allow Notifications</li>
+                                          <li>Don't forget to refresh page</li>
+                                        </ol>
+                            `,
+                            imageWidth: 600,
+                            confirmButtonText: 'OK'
+                          })
+                            .then(() => {
+                              window.location.reload(true);
+                            });
+                        
+                      });
+                    }
 
 
 
                   
-                    window.setTimeout(function() {
-                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    }, 500);
-                }
-     
+                  // Request notification permission
+                    Notification.requestPermission().then(permission => {
+                      if (permission === "granted") {
+                        console.log("User granted notification permissions.");
+                        updateNotificationUI();
+                      } else if (permission === "denied") {
+                        console.log("User denied notification permissions.");
+                      }
 
-
-
-  
-  $(document).on("click", ".not", function (e) {
-    e.preventDefault(); // Prevent default link behavior
-
-
-    if (Notification.permission === 'denied' && !isTablet && !isPhone && isEdge && !isChrome) {
-      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Edge-Blocked-Allow.png";
-      const url = "chrome://settings/content/siteDetails?site=https%3A%2F%2Fwww.stellantisandyou.co.uk%2F";
-
-      Swal.fire({
-        title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-        html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
-        icon: "warning",
-        confirmButtonText: 'Click here to enable notifications',
-        focusConfirm: false,
-        allowEscapeKey: false,
-        allowOutsideClick: false
-      }).then((result) => {
-          Swal.fire({
-            title: '',
-            html: `
-                        <h2>Steps to Enable Notifications</h2>
-                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
-
-                        <ol class="listOfSteps">
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/lock.svg"> icon on the url</li>
-                          <li>Click Allow Notification</li>
-                          <li>Click to Refresh The Page</li>
-                        </ol>
-            `,
-            allowEscapeKey: false,
-            allowOutsideClick: false,
-            confirmButtonText: 'Refresh The Page'
-          })
-            .then((result) => {
-              if(result.isConfirmed){
-                if (Notification.permission === 'granted') {
-                  window.location.reload(true)
-
-                }else{
-                  Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
-                  });
-
-                };
-              }
-            });
-        // }
-      });
-    }
-
-
-
-
-    if (Notification.permission === 'denied' && !isTablet && !isPhone && isChrome) {
-      const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Chrome-Blocked-Allow.png";
-
-      Swal.fire({
-        title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-        html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
-        icon: "warning",
-        confirmButtonText: 'Click here to enable notifications',
-        allowEscapeKey: false,
-        allowOutsideClick: false
-                    }).then((result) => {
-          Swal.fire({
-            title: '',
-            allowOutsideClick: false,
-            html: `
-                        <h2>Steps to Enable Notifications</h2>
-                        <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
-                        <ol class="listOfSteps">
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/sliders-horizontal.svg" class="sliders"> icon on the url.</li>
-                          <li>Toggle Enable Notifications.</li>
-                          <li>Click to <img src="https://stellantisandyoucouk.github.io/imagesStore/arrow-clockwise.svg" class="arrow-clockwise"> icon on the url.</li>
-                        </ol>
-            `,
-            confirmButtonText: 'Refresh the page'
-          })
-            .then((result) => {
-              if(result.isConfirmed){
-                if (Notification.permission === 'granted') {
-                  window.location.reload(true)
-
-                }else{
-                  Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    html: `<p>You didn't enable the notifications. Please Click <img src="https://stellantisandyoucouk.github.io/imagesStore/notification.gif"  style="width:32px; height:32px;"> to start again.</p>`,
-                    allowOutsideClick: false
-                  });
-
-                };
-              }
-            });
-        // }
-      });
-    }
-
-
-
-
-    if (isEdge && Notification.permission !== 'denied' && !isTablet && !isPhone) {
-      // Create a popup if the user is on Edge
-      const gifUrlFirst = "https://stellantisandyoucouk.github.io/imagesStore/edgeNotificationAlert.gif"
-      Swal.fire({
-        allowEscapeKey: false,
-        title: "Allow Notifications",
-        html: `<p><strong>Step 1:</strong> Click <em>"Little <img src="https://stellantisandyoucouk.github.io/imagesStore/bell.svg"> icon on url"</em> to allow notifications.</p>`, 
-        imageUrl: gifUrlFirst,
-        imageAlt: "Custom GIF",
-        allowOutsideClick: false,
-        confirmButtonText: "OK"
-      });
-
-    }
-
-
-      if (Notification.permission === 'denied' && isTablet) {
-        const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Android-Edge-Blocked.gif";
-  
-        Swal.fire({
-          title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-          html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
-          icon: "warning",
-          confirmButtonText: 'Click here to see how you can enable notifications',
-          focusConfirm: false,
-        }).then((result) => {
-            // Show success and then open a new tab
-            Swal.fire({
-              title: '',
-              position: "top-end",
-              html: `
-                          <h2>Steps to Enable Notifications</h2>
-                          <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
-                          <ol class="listOfSteps">
-                            <li>Touch to <strong>🔒</strong> icon into the URL.</li>
-                            <li>Touch Permissions and Touch Notification Blocked</li>
-                            <li>Enable Toggled into the Allow Notifications</li>
-                            <li>Don't forget to refresh page</li>
-                          </ol>
-              `,
-              // imageUrl: gifUrlBlocked, // GIF displayed here
-              // imageWidth: 600,
-              imageAlt: "Success GIF",
-              confirmButtonText: 'OK',
-              allowOutsideClick: false,
-              allowEscapeKey: false
-            })
-              .then((result) => {
-                if(result.isConfirmed){
-                window.location.reload(true);
-                }
-              });
-          
-        });
-      }
-
-
-      if (Notification.permission === 'denied' && isPhone) {
-        const gifUrlBlocked = "https://stellantisandyoucouk.github.io/imagesStore/Android-Edge-Blocked.gif";
-  
-        Swal.fire({
-          title: 'Whoops! You have previously <strong>blocked</strong> notifications',
-          html: `<h3>We can’t send you time sensitive notifications if this isn’t enabled 😕</h3>`,
-          icon: "warning",
-          confirmButtonText: 'Click here to see how you can enable notifications',
-          focusConfirm: false,
-        }).then((result) => {
-            // Show success and then open a new tab
-            Swal.fire({
-              title: '',
-              position: "top-end",
-              html: `
-                          <h2>Steps to Enable Notifications</h2>
-                          <img class="swal2-image" src=${gifUrlBlocked} alt="Success GIF">
-                          <ol class="listOfSteps">
-                            <li>Touch to <strong>🔒</strong> icon into the URL.</li>
-                            <li>Touch Permissions and Touch Notification Blocked</li>
-                            <li>Enable Toggled into the Allow Notifications</li>
-                            <li>Don't forget to refresh page</li>
-                          </ol>
-              `,
-              imageWidth: 600,
-              confirmButtonText: 'OK'
-            })
-              .then(() => {
-                window.location.reload(true);
-              });
-          
-        });
-      }
-
-
-
-    
-    // Request notification permission
-      Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          console.log("User granted notification permissions.");
-          updateNotificationUI();
-        } else if (permission === "denied") {
-          console.log("User denied notification permissions.");
-        }
-
-        // Update the UI after checking the permission
-        updateNotificationUI();
-      });
-  });
-  
-  // Initial check to update the UI
-  updateNotificationUI();
+                      // Update the UI after checking the permission
+                      updateNotificationUI();
+                    });
+                });
+                
+                // Initial check to update the UI
+                updateNotificationUI();
 
   
 });
