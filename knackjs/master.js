@@ -763,11 +763,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             toggleHeaderVisibility('hidden');
         //}
         $('div[class*="kn-back-link"]').hide()
-    } else {
-        document.body.style.overflow = "auto"
-        toggleHeaderVisibility('shown');
-        $('div[class*="kn-back-link"]').show()
-    }
+      }
       
     /*if (scene.key === 'scene_860' || scene.key === 'scene_1269' || scene.key === 'scene_1271' || scene.key === 'scene_1273' || scene.key === 'scene_1279' || scene.key === 'scene_1339' || scene.key == 'scene_1362' || scene.key == 'scene_1412' || scene.key == 'scene_1497' || scene.key == 'scene_1505'|| scene.key === 'scene_1510' || scene.key === 'scene_1523' || scene.key === 'scene_1616'  || scene.key === 'scene_1631' || scene.key === 'scene_1636' || scene.key === 'scene_1644' || scene.key === 'scene_1651' || scene.key === 'scene_1656' || scene.key === 'scene_1665' || scene.key === 'scene_1757' || scene.key === 'scene_1758' || scene.key === 'scene_1759') {
 
@@ -5899,57 +5895,57 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               const excludedUserRoles = ['object_288','object_281','object_105', 'object_258','object_166','object_152','object_235','object_223'];
               // var user = Knack.getUserToken();
 
-              $(document).on('knack-scene-render.scene_435', function(event, scene) {
-
-                            const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
-                            
-
-                          
-                          if (
-                            !isUserExcluded &&
-                            Knack.getUserAttributes().roles.length!=0 &&
-                            Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
-                            Knack.getUserAttributes().toString() !== 'No user found' &&
-                            Knack.getUserAttributes().values.field_10505 === ''
-                        ) {
-                            console.log("Redirect Testing to https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/");
-                            
-                            
-                            window.setTimeout(function() {
-                                window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
-                            }, 500);
-                        }
-
-
-                        
-                            if (
-                                Notification.permission === 'denied' &&
-                                Knack.getUserAttributes().roles.length!=0 &&
-                                !isUserExcluded &&
-                                !isTablet &&
-                                !isPhone &&
-                                Knack.getUserAttributes().toString() !== 'No user found' &&
-                                (isEdge || isChrome)
-                            ) {
-                                console.log("Redirect");
-                                
-                                // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
-                                // ){
-
-                                //   localStorage.setItem("previousPage", window.location.href);
-
-                                // }
-
-
-
-                              
-                                window.setTimeout(function() {
-                                    window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                                }, 500);
-                            }
+                if(Knack.getUserAttributes().toString() !== 'No user found'){
+                
+                const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
                 
 
-              })
+              
+              if (
+                !isUserExcluded &&
+                Knack.getUserAttributes().roles.length!=0 &&
+                Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
+                Knack.getUserAttributes().toString() !== 'No user found' &&
+                Knack.getUserAttributes().values.field_10505 === ''
+            ) {
+                console.log("Redirect Testing to https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/");
+                
+                
+                window.setTimeout(function() {
+                    window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
+                }, 500);
+            }
+
+
+             
+                if (
+                    Notification.permission === 'denied' &&
+                    Knack.getUserAttributes().roles.length!=0 &&
+                    !isUserExcluded &&
+                    !isTablet &&
+                    !isPhone &&
+                    Knack.getUserAttributes().toString() !== 'No user found' &&
+                    (isEdge || isChrome)
+                ) {
+                    console.log("Redirect");
+                    
+                    // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
+                    // ){
+
+                    //   localStorage.setItem("previousPage", window.location.href);
+
+                    // }
+
+
+
+                  
+                    window.setTimeout(function() {
+                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    }, 500);
+                }
+     
+
+              }
 
   
                 $(document).on("click", ".not", function (e) {
