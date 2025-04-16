@@ -6239,7 +6239,7 @@ $(document).on('knack-scene-render.scene_2477', function(event, scene) {
 
     console.log("Hard Refresh");
     // Check if the Postal Code field is empty
-    location.reload();
+    window.location.href = 'https://www.stellantisandyou.co.uk/digital';
 
   });
 });
