@@ -5899,6 +5899,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               
               if (
                 !isUserExcluded &&
+                Knack.getUserAttributes().roles.length!=0 &&
                 Knack.getUserAttributes().toString() !== 'No user found' &&
                 Knack.getUserAttributes().values.field_10505 === ''
             ) {
@@ -5914,6 +5915,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
              
                 if (
                     Notification.permission === 'denied' &&
+                    Knack.getUserAttributes().roles.length!=0 &&
                     !isUserExcluded &&
                     !isTablet &&
                     !isPhone &&
