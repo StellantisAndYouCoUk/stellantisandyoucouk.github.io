@@ -6229,3 +6229,19 @@ $(document).on('knack-form-submit.view_7877', function(event, view, data) {
   });
 });
 
+
+$(document).on('knack-scene-render.scene_2477', function(event, scene) {
+  console.log("Scene_2477 running");
+
+  // Attach event listener to the form submission
+  $('form').on('submit', function (event) {
+    // Get the Postal Code input
+
+    console.log("Hard Refresh");
+    // Check if the Postal Code field is empty
+    location.reload();
+
+  });
+});
+
+
