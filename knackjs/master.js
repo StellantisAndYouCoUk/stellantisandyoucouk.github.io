@@ -5905,9 +5905,9 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 console.log("Redirect Testing to https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/");
                 
                 
-                // window.setTimeout(function() {
-                //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
-                // }, 500);
+                window.setTimeout(function() {
+                    window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/bring-your-own-device-policy/';
+                }, 500);
             }
 
 
