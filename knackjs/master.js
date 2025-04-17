@@ -5899,12 +5899,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 
                 const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
                 
-
+// Bring your own device redirect
               
               if (
                 !isUserExcluded &&
                 Knack.getUserAttributes().roles.length!=0 &&
-                Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
+                // Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
                 Knack.getUserAttributes().toString() !== 'No user found' &&
                 Knack.getUserAttributes().values.field_10505 === ''
             ) {
@@ -5916,7 +5916,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 }, 500);
             }
 
-
+// Enable notification redirect
              
                 if (
                     Notification.permission === 'denied' &&
