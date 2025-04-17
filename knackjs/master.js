@@ -5904,7 +5904,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
               if (
                 !isUserExcluded &&
                 Knack.getUserAttributes().roles.length!=0 &&
-                // Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
+                Knack.getUserAttributes().roles.some(item => 'object_98'.includes(item)) &&
                 Knack.getUserAttributes().toString() !== 'No user found' &&
                 Knack.getUserAttributes().values.field_10505 === ''
             ) {
