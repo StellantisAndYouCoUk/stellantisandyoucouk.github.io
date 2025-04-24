@@ -6250,70 +6250,16 @@ $(document).on('knack-scene-render.scene_2477', function(event, scene) {
 });
 
 
-function tooltipsTable(sceneId, viewId, tooltipFieldId, showTooltipFieldId, tooltipTitle = '', placeToShow='right'){
-  $('th[class="'+tooltipFieldId+'"]').hide();
-  $('td[class*="'+tooltipFieldId+'"]').hide();
-
-  if ($('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').length===0){
-    let tooltipDiv = document.createElement('div');
-    tooltipDiv.setAttribute("id", "tooltipDiv_"+viewId+'_'+tooltipFieldId);
-    tooltipDiv.setAttribute("class", "tooltipDiv");
-    tooltipDiv.setAttribute("style","background-color:white; background: white; position: fixed; display:none;");
-
-    if ($('div[id="kn-scene_'+sceneId+'"]').length!==0){
-      document.querySelector('div[id="kn-scene_'+sceneId+'"]').appendChild(tooltipDiv)
-    } else {
-      console.log('scene',sceneId,'not found');
-      let currentScene = $('div[id*="kn-scene_"]').eq(0).attr('id');
-      console.log('currentScene',currentScene);
-      document.querySelector('div[id="'+currentScene+'"]').appendChild(tooltipDiv)
-    }
-  }
-  
-  $('div[id="view_'+viewId+'"]').on("mouseleave", function (e) {
-    //console.log('HIDE AFTER LEAVE')
-    $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').hide();
-  });
-
-  $('div[id="view_'+viewId+'"]').on("mousemove", function (e) {
-      //console.log('on move');
-      let partOfTable = document.elementFromPoint(e.pageX, e.pageY - document.documentElement.scrollTop);
-      let tdUnderMouse = null;
-      if (partOfTable){
-        if (partOfTable.nodeName==='TD'){
-          tdUnderMouse = partOfTable;
-        } else if (partOfTable.parentElement && partOfTable.parentElement.nodeName==='TD') {
-          tdUnderMouse = partOfTable.parentElement;
-        }
-      }
-      if (tdUnderMouse && tdUnderMouse.getAttribute('data-field-key')===showTooltipFieldId){
-        $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').html(tooltipTitle + modifyTooltipHTML(tdUnderMouse.parentElement.querySelector('td[data-field-key="'+tooltipFieldId+'"]').innerHTML));
-        $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').show();
-        $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').offset({ left: e.pageX-(placeToShow==='left'?200:30), top: e.pageY+10 });
-      } else {
-        $('div[id="tooltipDiv_'+viewId+'_'+tooltipFieldId+'"]').hide();
-      }
-  });
-}
-
-function modifyTooltipHTML(html){
-return html.replace(new RegExp('class="','g'),'data-class="');
-}
 
 
 
+// $(document).on('knack-view-render.view_2324', function (event, view, data) {
+//   //This part is for tooltip of another field above field in list
+//   //This part of code hides field_330 from the list and then adds it as mouse over to field 380
+//   //It needs function "getFieldForRowID", also the field_330 NEEDS to be included in the list
+//   // tooltipsTable('540','1880','field_318','field_763');
 
-
-
-
-
-$(document).on('knack-scene-render.scene_2324', function (event, scene, data) {
-  //This part is for tooltip of another field above field in list
-  //This part of code hides field_330 from the list and then adds it as mouse over to field 380
-  //It needs function "getFieldForRowID", also the field_330 NEEDS to be included in the list
-  // tooltipsTable('540','1880','field_318','field_763');
-
-  // 4531 4535 4518
-  tooltipsTable('2324','4531','field_3597','field_3435');
-  console.log("2324 Running whoopppp")
-}); 
+//   // 4531 4535 4518
+//   tooltipsTable('2324','4531','field_3597','field_3435');
+//   console.log("2324 Running whoopppp")
+// }); 
