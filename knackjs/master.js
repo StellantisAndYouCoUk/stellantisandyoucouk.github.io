@@ -6252,7 +6252,7 @@ $(document).on('knack-scene-render.scene_2477', function(event, scene) {
 
 
 
-$(document).on('knack-view-render.view_2324', function (event, view, data) {
+$(document).on('knack-scene-render.scene_2324', function (event, scene, data) {
   //This part is for tooltip of another field above field in list
   //This part of code hides field_330 from the list and then adds it as mouse over to field 380
   //It needs function "getFieldForRowID", also the field_330 NEEDS to be included in the list
