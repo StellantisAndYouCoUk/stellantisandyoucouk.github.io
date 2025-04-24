@@ -6257,6 +6257,8 @@ $(document).on('knack-scene-render.scene_2324', function (event, scene, data) {
   //This part of code hides field_330 from the list and then adds it as mouse over to field 380
   //It needs function "getFieldForRowID", also the field_330 NEEDS to be included in the list
   // tooltipsTable('540','1880','field_318','field_763');
-  // tooltipsTable('540','1880','field_1537','field_899');
+
+  // 4531 4535 4518
+  tooltipsTable('2324','4531','field_3597','field_3435');
   console.log("2324 Running whoopppp")
 }); 
