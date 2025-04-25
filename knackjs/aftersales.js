@@ -4268,3 +4268,14 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 	  $('th[class="field_2189"]').hide();
     $('td[class*="field_2189"]').hide();
 }); 
+
+
+$(document).on('knack-view-render.view_4531', function(event, scene) {
+
+  //Hover for Stapleton Tyres
+  //scene, view, field to have hover, hover info
+  //Service Details over Reg 
+  tooltipsTable('1370','4531','field_3435','field_3597');  
+      $('th[class="field_3597"]').hide();
+      $('td[class*="field_3597"]').hide(); 
+    });
