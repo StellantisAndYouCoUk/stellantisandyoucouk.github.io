@@ -5250,7 +5250,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
 
-      if(userValue==="60b64c3799af93076ac29ff7"){
+      if(userValue ==="60b64c3799af93076ac29ff7"){
         subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`
         console.log("Subscribe Url changed to " + subscribeURL)
       }
