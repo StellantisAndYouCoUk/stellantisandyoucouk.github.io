@@ -5248,9 +5248,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       const userValue = userAttributes.id;
       console.log(`User Value: ${userValue}`);
 
-      const subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-
-
+      let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
       console.log("event source implemented: " + JSON.stringify(eventSource))
