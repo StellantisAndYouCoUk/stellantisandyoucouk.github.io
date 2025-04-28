@@ -5252,6 +5252,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       if(userValue==="60b64c3799af93076ac29ff7"){
         subscribeURL = `https://ntfy.sh/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`
+        console.log("Subscribe Url changed to " + subscribeURL)
       }
       eventSource = new EventSource(subscribeURL);
 
