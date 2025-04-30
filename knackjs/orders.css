@@ -3723,24 +3723,6 @@ color: #FFFFFF;
   display: inline-block;
 }
 
-/* Add Discrepancy Support Claim */
-
-#view_4533 > section > div > div > div > div > div > div > span > a > span {
-  color: #FFFFFF;
-  font-weight: bold;
-  background-color: #FFA100;
-  padding: 8px;
-  display: inline-block;
-}
-
-#view_4533 > section > div > div > div > div > div > div > span > a:hover > span {
-  color: #FFFFFF;
-  font-weight: bold;
-  background-color: #D18400;
-  padding: 8px;
-  display: inline-block;
-}
-
 /* Detail Labels on P&L Overview */
 
 #view_4037 .kn-detail-label {background-color: transparent;}

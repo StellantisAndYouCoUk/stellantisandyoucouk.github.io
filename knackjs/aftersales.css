@@ -2446,3 +2446,7 @@ Background-color: red;
 Background-color: red;
 }
 
+/* stapletons-tyre-stock-profiling options get rid of empty margin */
+div#view_4746 {
+	flex: 0;
+}
