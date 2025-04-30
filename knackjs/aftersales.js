@@ -24,6 +24,7 @@ function getTokenFromURL(url){
 }
 
 var submitUserLoginForm = function() {
+  console.log('submitUserLoginForm')
   const url = window.location.href;
   let token = getTokenFromURL(url);
   if (token) token = atob(token);
