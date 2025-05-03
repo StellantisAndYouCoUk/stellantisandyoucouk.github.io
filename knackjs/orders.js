@@ -3147,3 +3147,8 @@ $(document).on('knack-records-render.view_5207', function (event, scene, records
         }
     });
 });
+
+function triggerEssorRefresh(){
+  console.log('triggerEssorRefresh');
+  console.log(getRecordIdFromHref(location.href));
+}
