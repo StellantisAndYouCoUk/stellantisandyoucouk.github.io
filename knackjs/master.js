@@ -6185,7 +6185,7 @@ $(document).on('knack-records-render.view_7588', function (event, scene, records
 
 
 
-/*$(document).on('knack-scene-render.scene_436', function(event, scene) {
+$(document).on('knack-scene-render.scene_436', function(event, scene) {
   console.log('knack-scene-render.scene_436');
   let url = window.location.href;
   if (url.includes('redirectApp=')){
@@ -6206,7 +6206,6 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
     setTimeout(function () { document.location = redirectUrl+(redirectUrl.includes('?')?'&':'?')+'token='+token; }, 100)
   }
 });
-*/
 
 
 
