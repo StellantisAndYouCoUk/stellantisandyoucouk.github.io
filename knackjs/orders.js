@@ -152,7 +152,7 @@ function getTokenFromURL(url){
 var submitUserLoginForm = function() {
   let url = window.location.href;
   let token = getTokenFromURL(url);
-  console.log('token',token);
+  //console.log('token',token);
   if (token) token = atob(token);
   if (!token){
     if (!url.includes('#fleet-hub') && $('[id="email"]').length>0 && $('[id="password"]').length>0){
