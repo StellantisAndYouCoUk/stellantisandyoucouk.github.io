@@ -791,7 +791,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       createCookie('RDDigitalVersionTime',Date.now(),365);
       console.log('check version');
       var appVersionID = getVersionFromApify();
-      if (versionC!==appVersionID && appVersionID!==''){
+      if (versionC && versionC!==appVersionID && appVersionID!==''){
           console.log('not same');
           createCookie('RDDigitalVersion',appVersionID,365);
           window.location.reload(false);
