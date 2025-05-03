@@ -3148,6 +3148,12 @@ $(document).on('knack-records-render.view_5207', function (event, scene, records
     });
 });
 
+//this function just parses recordId from URL //maybe needs to be altered acording the use
+function getRecordIdFromHref(ur) {
+  var ur = ur.substr(0, ur.length - 1);
+  return ur.substr(ur.lastIndexOf('/') + 1)
+}
+
 function triggerEssorRefresh(){
   console.log('triggerEssorRefresh');
   console.log(getRecordIdFromHref(location.href));
