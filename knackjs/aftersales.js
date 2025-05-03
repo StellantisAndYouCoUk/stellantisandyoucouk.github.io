@@ -1545,6 +1545,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   let today = new Date();
   let isToday = (today.toDateString() == dateTimeOfFirstRun.toDateString());
   if (!isToday){
+    console.log('dateTimeOfFirstRun',dateTimeOfFirstRun)
     dateTimeOfFirstRun = new Date();
     window.location.reload(false);
   }
