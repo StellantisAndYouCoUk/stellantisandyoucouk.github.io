@@ -3157,4 +3157,5 @@ function getRecordIdFromHref(ur) {
 function triggerEssorRefresh(){
   console.log('triggerEssorRefresh');
   console.log(getRecordIdFromHref(location.href));
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/5746d46oj2qwo8kvasmun6belsnktikd",{"recordId":getRecordIdFromHref(location.href)},"Trigger Essor Data Refresh From Knack");  
 }
