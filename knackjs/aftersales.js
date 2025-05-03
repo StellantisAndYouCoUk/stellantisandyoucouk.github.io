@@ -24,7 +24,7 @@ function getTokenFromURL(url){
 }
 
 var submitUserLoginForm = function() {
-  console.log('submitUserLoginForm')
+  console.log('submitUserLoginForm');
   const url = window.location.href;
   let token = getTokenFromURL(url);
   if (token) token = atob(token);
@@ -1505,10 +1505,13 @@ function getVersionFromApify(){
 
 var dateTimeOfFirstRun = null;
 
+$(document).on('knack-view-render.any', function (event, view, data) {
+  submitUserLoginForm();
+});
+
 $(document).on('knack-scene-render.any', function(event, scene) {
   $('[class="kn-container"]').hide();
 	$('[class="kn-info kn-container"]').hide();
-  submitUserLoginForm();
 
   //**************************************************************************************************************
   //****** Hynek's Code to check version on user Browser with what is stored in Apify. If version is different, 
