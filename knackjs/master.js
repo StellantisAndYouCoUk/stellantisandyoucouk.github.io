@@ -5259,7 +5259,10 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
       const publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}`;
+      console.log(publishURL)
       const subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
+      console.log(subscribeURL)
+
       // let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       // eventSource = new EventSource(subscribeURL);
 
@@ -5442,7 +5445,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
       // Handle incoming messages from the event source
       // eventSource.onmessage = (e) => {
-      websocket.onopen = (e) => {
+      websocket.onmessage = (e) => {
 
             
 
