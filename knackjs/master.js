@@ -5447,56 +5447,56 @@ $(document).on("knack-view-render.any", function (event, scene) {
       // eventSource.onmessage = (e) => {
       websocket.onmessage = (e) => {
 
-            
+            console.log(JSON.stringify(e))
 
 
-        function showNotificationBackground(title, icon = '', body) {   
+            function showNotificationBackground(title, icon = '', body) {   
 
-          // if('serviceWorker' in navigator){
-          //   navigator.serviceWorker.register('https://stellantisandyoucouk.github.io/knackjs/sw.js')
-          //   .then((reg)=>{console.log('service worker registered', reg)})
-          //   .catch((err)=>{console.log('service worker not registered', err)})
-          // }
+              // if('serviceWorker' in navigator){
+              //   navigator.serviceWorker.register('https://stellantisandyoucouk.github.io/knackjs/sw.js')
+              //   .then((reg)=>{console.log('service worker registered', reg)})
+              //   .catch((err)=>{console.log('service worker not registered', err)})
+              // }
 
 
-          var notification = new Notification(title, {
-              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body.Message,
-              requireInteraction: true,
-              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+              var notification = new Notification(title, {
+                  icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+                  body: body.Message,
+                  requireInteraction: true,
+                  badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
 
-                      });
-              
-              if (body.Click) {
-                  notification.onclick = function () {
-                  window.open(body.Click, '_blank');
-                  console.log("Notification clicked.");
-                  };
-              } 
-              else {
-                console.log("No click action provided.");
-              }
+                          });
+                  
+                  if (body.Click) {
+                      notification.onclick = function () {
+                      window.open(body.Click, '_blank');
+                      console.log("Notification clicked.");
+                      };
+                  } 
+                  else {
+                    console.log("No click action provided.");
+                  }
+                          
+      
+
+                  notification.onclose = function(){
+                    console.log("Background Notification closed.");
+                  }
+
+            }
+
+
+              try {
                       
-  
+        
 
-              notification.onclose = function(){
-                console.log("Background Notification closed.");
+              function delay(milliseconds) {
+                return new Promise(resolve => setTimeout(resolve, milliseconds));
               }
 
-        }
+              let notificationId;
 
-
-        try {
-                
-  
-
-        function delay(milliseconds) {
-          return new Promise(resolve => setTimeout(resolve, milliseconds));
-        }
-
-        let notificationId;
-
-        
+              
             
             async function runSync() {
               let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650 ; // Random delay
@@ -5514,40 +5514,40 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 
-          let uniqueNumberNotification = dataParsed.id;
-          console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
+                let uniqueNumberNotification = dataParsed.id;
+                console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
-          if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
+                if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
 
-                localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
+                      localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                
-                showNotification(dataParsed, messageParsed, 0);
+                      
+                      showNotification(dataParsed, messageParsed, 0);
 
-                let DesktopNotification = false;
+                      let DesktopNotification = false;
 
-                if(typeof messageParsed.DesktopNotification === "boolean"){
-                  DesktopNotification = messageParsed.DesktopNotification;
-                }
+                      if(typeof messageParsed.DesktopNotification === "boolean"){
+                        DesktopNotification = messageParsed.DesktopNotification;
+                      }
 
-                
-                if(DesktopNotification){
-                showNotificationBackground(messageParsed.Title,"",messageParsed);
-                }
-                // if (document.visibilityState === "visible") {
-                //   showNotificationBackground(dataParsed.Title,"",dataParsed.Message);
+                      
+                      if(DesktopNotification){
+                      showNotificationBackground(messageParsed.Title,"",messageParsed);
+                      }
+                      // if (document.visibilityState === "visible") {
+                      //   showNotificationBackground(dataParsed.Title,"",dataParsed.Message);
 
-                // }else{
-                //   showNotification(dataParsed);
-                // }
-              }else{
-                showNotification(dataParsed, messageParsed, 3000);
+                      // }else{
+                      //   showNotification(dataParsed);
+                      // }
+                    }else{
+                      showNotification(dataParsed, messageParsed, 3000);
 
-              }
+                    }
 
-            }
-            
-            runSync();
+                  }
+                  
+                  runSync();
         } catch (error) {
           console.error("Failed to process message:", error);
         }
