@@ -5141,7 +5141,8 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 
 
 //Mayank code 
-let eventSource = null;
+// let eventSource = null;
+let websocket = null;
 
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
@@ -5246,17 +5247,27 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
   }
 
-  if (eventSource === null) {
+  // if (eventSource === null) {
+  if(websocket === null){
     const userAttributes = Knack.getUserAttributes();
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
       console.log(`User Value: ${userValue}`);
 
-      let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-      eventSource = new EventSource(subscribeURL);
 
-      console.log("event source implemented: " + JSON.stringify(eventSource))
+
+
+      const publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}`;
+      const subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
+      // let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      // eventSource = new EventSource(subscribeURL);
+
+      websocket = new WebSocket(subscribeURL);
+
+      // console.log("event source implemented: " + JSON.stringify(eventSource))
+       console.log("websocket implemented: " + JSON.stringify(websocket))
+
 
       function showNotification(data, message, timer) {
         parsedData = data;
@@ -5430,8 +5441,8 @@ $(document).on("knack-view-render.any", function (event, scene) {
       
 
       // Handle incoming messages from the event source
-      eventSource.onmessage = (e) => {
-
+      // eventSource.onmessage = (e) => {
+      websocket.onopen = (e) => {
 
             
 
@@ -5540,10 +5551,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
       };
 
       // Handle the EventSource error event
-      eventSource.onerror = (error) => {
-        console.error("EventSource failed:", error);
-        eventSource.close();
-        eventSource = null; // Reset the eventSource variable
+      // eventSource.onerror = (error) => {
+        websocket.onerror = (error) =>{
+        console.error("Websocket failed:", error);
+        // eventSource.close();
+        websocket.close();
+        websocket = null;
+        // eventSource = null; // Reset the eventSource variable
       };
     }
   }
