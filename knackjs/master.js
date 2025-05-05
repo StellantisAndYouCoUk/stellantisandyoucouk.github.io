@@ -5448,7 +5448,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
       websocket.onmessage = (e) => {
 
             console.log(JSON.stringify(e))
-
+            if(JSON.parse(e.data).message) {
 
             function showNotificationBackground(title, icon = '', body) {   
 
@@ -5548,9 +5548,11 @@ $(document).on("knack-view-render.any", function (event, scene) {
                   }
                   
                   runSync();
+                  
         } catch (error) {
           console.error("Failed to process message:", error);
         }
+      }
       };
 
       // Handle the EventSource error event
