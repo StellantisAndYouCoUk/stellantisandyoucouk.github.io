@@ -5141,8 +5141,7 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 
 
 //Mayank code 
-// let eventSource = null;
-let websocket = null;
+let eventSource = null;
 
 $(document).on("knack-view-render.any", function (event, scene) {
   // Initialize the EventSource only if it's not already set
@@ -5247,30 +5246,17 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
   }
 
-  // if (eventSource === null) {
-  if(websocket === null){
+  if (eventSource === null) {
     const userAttributes = Knack.getUserAttributes();
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
       console.log(`User Value: ${userValue}`);
 
+      let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
+      eventSource = new EventSource(subscribeURL);
 
-
-
-      const publishURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}`;
-      console.log(publishURL)
-      const subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
-      console.log(subscribeURL)
-
-      // let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
-      // eventSource = new EventSource(subscribeURL);
-
-      websocket = new WebSocket(subscribeURL);
-
-      // console.log("event source implemented: " + JSON.stringify(eventSource))
-       console.log("websocket implemented: " + JSON.stringify(websocket))
-
+      console.log("event source implemented: " + JSON.stringify(eventSource))
 
       function showNotification(data, message, timer) {
         parsedData = data;
@@ -5442,26 +5428,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
       }
       }
       
-      websocket.onopen = () => {
-        console.log("OnOpen")
-          };
+
       // Handle incoming messages from the event source
-      // eventSource.onmessage = (e) => {
+      eventSource.onmessage = (e) => {
 
-      // Handle the EventSource error event
-      // eventSource.onerror = (error) => {
-        websocket.onerror = (error) =>{
-        console.error("Websocket failed:", error);
-        // eventSource.close();
-        websocket.close();
-        websocket = null;
-        // eventSource = null; // Reset the eventSource variable
-      };
 
-      websocket.onmessage = (e) => {
+            
 
-        console.log(JSON.stringify(e))
-        if(JSON.parse(e.data).message) {
 
         function showNotificationBackground(title, icon = '', body) {   
 
@@ -5499,77 +5472,79 @@ $(document).on("knack-view-render.any", function (event, scene) {
         }
 
 
-          try {
-                  
-    
+        try {
+                
+  
 
-          function delay(milliseconds) {
-            return new Promise(resolve => setTimeout(resolve, milliseconds));
-          }
+        function delay(milliseconds) {
+          return new Promise(resolve => setTimeout(resolve, milliseconds));
+        }
 
-          let notificationId;
+        let notificationId;
 
-          
         
-        async function runSync() {
-          let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650 ; // Random delay
-            console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
-            await delay(delayRandomNumber); // Wait for the delay
-            console.log("This message appears after the delay");
             
+            async function runSync() {
+              let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650 ; // Random delay
+                console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
+                await delay(delayRandomNumber); // Wait for the delay
+                console.log("This message appears after the delay");
+                
 
-            const dataParsed = JSON.parse(e.data);
-            console.log("DataParsed", JSON.stringify(dataParsed));
+                const dataParsed = JSON.parse(e.data);
+                console.log("DataParsed", JSON.stringify(dataParsed));
 
-            const messageParsed = JSON.parse(dataParsed.message)
-            console.log("MessageParsed ", JSON.stringify(messageParsed));
-
-
+                const messageParsed = JSON.parse(dataParsed.message)
+                console.log("MessageParsed ", JSON.stringify(messageParsed));
 
 
-            let uniqueNumberNotification = dataParsed.id;
-            console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
-            if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
 
-                  localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
+          let uniqueNumberNotification = dataParsed.id;
+          console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
 
-                  
-                  showNotification(dataParsed, messageParsed, 0);
+          if(localStorage.getItem('notificationRandomNumber')!==uniqueNumberNotification){
 
-                  let DesktopNotification = false;
+                localStorage.setItem('notificationRandomNumber', uniqueNumberNotification)
 
-                  if(typeof messageParsed.DesktopNotification === "boolean"){
-                    DesktopNotification = messageParsed.DesktopNotification;
-                  }
+                
+                showNotification(dataParsed, messageParsed, 0);
 
-                  
-                  if(DesktopNotification){
-                  showNotificationBackground(messageParsed.Title,"",messageParsed);
-                  }
-                  // if (document.visibilityState === "visible") {
-                  //   showNotificationBackground(dataParsed.Title,"",dataParsed.Message);
+                let DesktopNotification = false;
 
-                  // }else{
-                  //   showNotification(dataParsed);
-                  // }
-                }else{
-                  showNotification(dataParsed, messageParsed, 3000);
-
+                if(typeof messageParsed.DesktopNotification === "boolean"){
+                  DesktopNotification = messageParsed.DesktopNotification;
                 }
 
+                
+                if(DesktopNotification){
+                showNotificationBackground(messageParsed.Title,"",messageParsed);
+                }
+                // if (document.visibilityState === "visible") {
+                //   showNotificationBackground(dataParsed.Title,"",dataParsed.Message);
+
+                // }else{
+                //   showNotification(dataParsed);
+                // }
+              }else{
+                showNotification(dataParsed, messageParsed, 3000);
+
               }
-              
-              runSync();
-              
-    } catch (error) {
-      console.error("Failed to process message:", error);
-    }
-  }
-  };
 
+            }
+            
+            runSync();
+        } catch (error) {
+          console.error("Failed to process message:", error);
+        }
+      };
 
-
+      // Handle the EventSource error event
+      eventSource.onerror = (error) => {
+        console.error("EventSource failed:", error);
+        eventSource.close();
+        eventSource = null; // Reset the eventSource variable
+      };
     }
   }
 });
