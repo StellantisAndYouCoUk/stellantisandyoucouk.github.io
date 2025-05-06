@@ -3475,6 +3475,54 @@ $(document).on('knack-view-render.view_4435', function(event, scene) {
     $('td[class*="field_3361"]').hide();	
 });
 
+//Hover's for sales prospecting from reporting 
+$(document).on('knack-view-render.view_4739', function(event, scene) {
+		tooltipsTable('1426','4739','field_3350','field_3359');	
+	  $('th[class="field_3350"]').hide();
+    $('td[class*="field_3350"]').hide();
+
+    //vhc work over model
+		 tooltipsTable('1426','4739','field_3351','field_3354');	
+	  $('th[class="field_3351"]').hide();
+    $('td[class*="field_3351"]').hide();	
+	
+    //historic visit over due in
+		 tooltipsTable('1426','4739','field_3352','field_3248','','left');	
+	  $('th[class="field_3352"]').hide();
+    $('td[class*="field_3352"]').hide();	
+	
+    //cust. name/emax notes over last contact
+		tooltipsTable('1426','4739','field_3353','field_3330');	
+	  $('th[class="field_3353"]').hide();
+    $('td[class*="field_3353"]').hide();	
+
+
+    //date sold over sold new/used
+		tooltipsTable('1426','4739','field_3355','field_3371');	
+	  $('th[class="field_3355"]').hide();
+    $('td[class*="field_3355"]').hide();
+
+    //1 Link cust.name over name
+		tooltipsTable('1426','4739','field_3507','field_3372','','left');	
+	  $('th[class="field_3356"]').hide();
+    $('td[class*="field_3356"]').hide();
+    $('th[class="field_3507"]').hide();
+    $('td[class*="field_3507"]').hide();    
+	
+    //Finance Details Over Finance
+		tooltipsTable('1426','4739','field_3357','field_3349');	
+	  $('th[class="field_3357"]').hide();
+    $('td[class*="field_3357"]').hide();		
+
+    //Mileage over AT data
+		tooltipsTable('1426','4739','field_3361','field_3358');	
+	  $('th[class="field_3361"]').hide();
+    $('td[class*="field_3361"]').hide();	
+});
+
+
+
+
 //hover for labour details on Quality Check View
 $(document).on('knack-view-render.view_3068', function (event, view, data) {
     $('th[class="field_1537"]').hide();
