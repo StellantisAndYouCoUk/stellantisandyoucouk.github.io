@@ -549,7 +549,7 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
 
   var recordId = '';
   $(document).on('knack-form-submit.view_71', function(event, view, data) { 
-    let commandURL = /*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=53yx2tuy820lvzuobdqex8jem2utgwil" ;
+    let commandURL = "https://hook.integromat.com/53yx2tuy820lvzuobdqex8jem2utgwil" ;
     let dataToSend = Object.assign({"source":"NEWRECORD"}, data); 
     recordId = data.id;
     console.log(dataToSend);
@@ -793,7 +793,7 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
    //END OF CODE FOR NOTIFICATION AND REFRESH OF LIST
 
 $(document).on('knack-form-submit.view_338', function(event, view, data) { 
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=82cg83yb0g9ekakjvn4ep8k8xh27kyps",Object.assign({"source":"EMACOfferRefresh"}, data),'EMACOfferRefresh')
+  callPostHttpRequest("https://hook.integromat.com/82cg83yb0g9ekakjvn4ep8k8xh27kyps",Object.assign({"source":"EMACOfferRefresh"}, data),'EMACOfferRefresh')
 
   refreshView('378', true);
   setTimeout(function(){
@@ -812,7 +812,7 @@ $(document).on('knack-form-submit.view_338', function(event, view, data) {
 //trigger Maxoptra webhook v2
 
 $(document).on('knack-form-submit.view_225', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=hbenwdqwud64hds9kjcz7hc5x13ciioy",{"Record ID":data.id},'Scenario DESCRIPTION what for the error webhook')
+  callPostHttpRequest("https://hook.integromat.com/hbenwdqwud64hds9kjcz7hc5x13ciioy",{"Record ID":data.id},'Scenario DESCRIPTION what for the error webhook')
 });
 
 //trigger get tyres and prices from customer job card stapletons v4 trigger (service box)
@@ -894,7 +894,7 @@ function sendErrorToIntegromat(exception, name){
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   const dateTime = date+' '+time;
 
-  let commandURL = /*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=bxfn25wkj67pptq9bniqmpvvjg868toi";
+  let commandURL = "https://hook.integromat.com/bxfn25wkj67pptq9bniqmpvvjg868toi";
   let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": name,
   "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
   var rData = $.ajax({
@@ -926,17 +926,17 @@ $(document).on('knack-form-submit.view_4595', function(event, view, data) {
 
 //**Trigger Text To Customer To Complete Exit Survey At Workshop "Check Out"
 $(document).on('knack-form-submit.view_318', function(event, view, data) { 
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=wio8wmbeqg4p81kwshmegg7h7fsfawz7",{"Record ID":data.id}, "Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"")
+  callPostHttpRequest("https://hook.integromat.com/wio8wmbeqg4p81kwshmegg7h7fsfawz7",{"Record ID":data.id}, "Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"")
 });
 
 //**Trigger Aftersales - Follow Up call - Text. 
 $(document).on('knack-form-submit.view_646', function(event, view, data) { 
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=vkginb5nf78dhi268ujtexqrctayfuab",{"Record ID":data.id}, "Aftersales - Follow Up Call Email")
+  callPostHttpRequest("https://hook.integromat.com/vkginb5nf78dhi268ujtexqrctayfuab",{"Record ID":data.id}, "Aftersales - Follow Up Call Email")
 });
 
 //**Trigger Aftersales - Exit Survey Email From Insecure (Customer Phone)
 $(document).on('knack-form-submit.view_310', function(event, view, data) { 
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=8k4weh9vuci1ffkk2ber72azmqjhmbvv",{"Record ID":data.id}, "Aftersales - Exit Survey Email from Insecure (customer phone)")
+  callPostHttpRequest("https://hook.integromat.com/8k4weh9vuci1ffkk2ber72azmqjhmbvv",{"Record ID":data.id}, "Aftersales - Exit Survey Email from Insecure (customer phone)")
 });
 
 // ----------  refresh customer account applications table every 60 seconds but not the page itself  ----------
@@ -958,7 +958,7 @@ $(document).on('knack-form-submit.view_1298', function(event, view, data) {
 
 //trigger aftersales - wip management notes to update
 $(document).on('knack-form-submit.view_654', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=s8j9klwniouvc81742i1hy8yxtc822ut",{"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_2190_raw, "Nom_wip":data.field_558_raw}, "trigger aftersales - wip management notes to update")
+  callPostHttpRequest("https://hook.integromat.com/s8j9klwniouvc81742i1hy8yxtc822ut",{"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_2190_raw, "Nom_wip":data.field_558_raw}, "trigger aftersales - wip management notes to update")
 });  
 
 //trigger aftersales - admin to uploadcase/warranty evidence and update notes
@@ -973,7 +973,7 @@ $(document).on('knack-form-submit.view_3472', function(event, view, data) {
       
 //trigger aftersales update notes triggered from C/D Driver where customer signs work 
 $(document).on('knack-form-submit.view_3221', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=s8j9klwniouvc81742i1hy8yxtc822ut",{"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_2190_raw, "Nom_wip":data.field_558_raw}, "trigger aftersales update notes triggered from C/D Driver where customer signs work ")
+  callPostHttpRequest("https://hook.integromat.com/s8j9klwniouvc81742i1hy8yxtc822ut",{"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_2190_raw, "Nom_wip":data.field_558_raw}, "trigger aftersales update notes triggered from C/D Driver where customer signs work ")
 });  
 
 // ----------  refresh status of tarot upload ----------
@@ -1256,7 +1256,7 @@ $(document).on('knack-scene-render.scene_148', function(event, scene) {
 // Exit Survey E-mails webhook to trigger – 
 $(document).on('knack-form-submit.view_307', function(event, view, data) { 
     let createData = {"Record ID":data.id};
-    callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=a7w9c122du5khow3a9ufyoezq7zdnh0x",deleteEmpty(createData),"Aftersales - Exit Survey Email from Tablet");    
+    callPostHttpRequest("https://hook.integromat.com/a7w9c122du5khow3a9ufyoezq7zdnh0x",deleteEmpty(createData),"Aftersales - Exit Survey Email from Tablet");    
 });
 
 // ------------ Refresh Aftersales Wip Management Table every 20 mins but not the page itself -----------------------//
@@ -1271,37 +1271,37 @@ $(document).on('knack-scene-render.scene_340', function(event, scene) {
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 $(document).on('knack-form-submit.view_1628', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://hook.integromat.com/2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 $(document).on('knack-form-submit.view_1182', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://hook.integromat.com/2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 $(document).on('knack-form-submit.view_1260', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://hook.integromat.com/2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 $(document).on('knack-form-submit.view_1261', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://hook.integromat.com/2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager within TECH VIEW
 $(document).on('knack-form-submit.view_2725', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://hook.integromat.com/2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 // Trigger Update To VR (Virtual Reception) Status
 $(document).on('knack-form-submit.view_1177', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3b7aqxlblay6r5egi5rev56ql8qiy4g2", {"Record ID":data.id},"Aftersales VR Update")
+  callPostHttpRequest("https://hook.integromat.com/3b7aqxlblay6r5egi5rev56ql8qiy4g2", {"Record ID":data.id},"Aftersales VR Update")
 });
 
 // Trigger When VR (Virtual Reception) Message Manually Added From Aftersales App
 $(document).on('knack-form-submit.view_1180', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=f1k56q7sd97mlqn37v37y9s759it9ghn", {"Record ID":data.id},"Aftersales VR New Message")
+  callPostHttpRequest("https://hook.integromat.com/f1k56q7sd97mlqn37v37y9s759it9ghn", {"Record ID":data.id},"Aftersales VR New Message")
 });
 
 //Refresh Virtual Reception table on Vehicle lookup page         
@@ -2402,7 +2402,7 @@ $(document).on('knack-form-submit.view_2362', function(event, view, data) {
 
 //trigger aftersales - wip management notes to update + is vehicle on site
 $(document).on('knack-form-submit.view_2361', function(event, view, data) {
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=s8j9klwniouvc81742i1hy8yxtc822ut", {"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_978_raw, "Nom_wip":data.field_558_raw},"trigger aftersales - wip management notes to update + is vehicle on site");
+  callPostHttpRequest("https://hook.integromat.com/s8j9klwniouvc81742i1hy8yxtc822ut", {"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_978_raw, "Nom_wip":data.field_558_raw},"trigger aftersales - wip management notes to update + is vehicle on site");
 });
 
 //Wip reporting "on-site" page hover for operator details 
@@ -2452,7 +2452,7 @@ $(document).on("knack-view-render.view_2351", function(event, view, data) {
 
 //**Trigger Text To Customer To Complete Exit Survey At job card v2
 $(document).on('knack-form-submit.view_2365', function(event, view, data) { 
-  callPostHttpRequest(/*integromat*/"https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=wio8wmbeqg4p81kwshmegg7h7fsfawz7", {"Record ID":data.id},"Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"");
+  callPostHttpRequest("https://hook.integromat.com/wio8wmbeqg4p81kwshmegg7h7fsfawz7", {"Record ID":data.id},"Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"");
 });
 
 // trigger to Send Data When Vehicle Is Checked Out From Customer Satisfaction check (sms) jobcard v2
