@@ -3164,3 +3164,84 @@ function triggerEssorRefresh(){
   $('a[href*="triggerEssorRefresh"]').parent().append('The Essor details will be rechecked in next few minutes.');
 }
 
+
+$(document).on('knack-form-submit.view_5115', function(event, view, data) { 
+  
+	console.log("form submitted")
+
+
+          const postcodeInput = $('#zip');
+          const street1Input = $('#street');
+          const street2Input = $('#street2');
+          const cityInput = $('#city');
+          const stateInput = $('#state');
+
+
+          console.log(`postcodeInput: ${postcodeInput}`)
+          console.log(`street1Input: ${street1Input}`)
+          console.log(`street2Input: ${street2Input}`)
+          console.log(`cityInput: ${cityInput}`)
+          console.log(`stateInput: ${stateInput}`)
+
+        // if (!postcodeInput.val().trim()) {
+        //     event.preventDefault(); // Stop form submission
+        //     alert('Please fill out Postcode'); // Show an alert
+        //     postcodeInput.addClass('input-error'); // Add error styling
+        //     postcodeInput.focus(); // Focus on the empty field
+        //     return false; // Explicitly stop submission
+        //   } else {
+        //     postcodeInput.removeClass('input-error');
+        // // Remove error styling if filled
+        //   };
+
+
+
+        // if (!street1Input.val().trim()) {
+        //     event.preventDefault(); // Stop form submission
+        //     alert('Please fill out Address Line 1'); // Show an alert
+        //     street1Input.addClass('input-error'); // Add error styling
+        //     street1Input.focus(); // Focus on the empty field
+        //     return false; // Explicitly stop submission
+        //   } else {
+        // street1Input.removeClass('input-error');
+        // // Remove error styling if filled
+        //   };
+
+
+        // if (!street2Input.val().trim()) {
+        //     event.preventDefault(); // Stop form submission
+        //     alert('Please fill out Address Line 2'); // Show an alert
+        //     street2Input.addClass('input-error'); // Add error styling
+        //     street2Input.focus(); // Focus on the empty field
+        //     return false; // Explicitly stop submission
+        //   } else {
+
+        // street2Input.removeClass('input-error');
+        // // Remove error styling if filled
+        //   };
+
+
+        // if (!cityInput.val().trim()) {
+        //     event.preventDefault(); // Stop form submission
+        //     alert('Please fill out City'); // Show an alert
+        //     cityInput.addClass('input-error'); // Add error styling
+        //     cityInput.focus(); // Focus on the empty field
+        //     return false; // Explicitly stop submission
+        //   } else {
+        // cityInput.removeClass('input-error');
+        // // Remove error styling if filled
+        //   }
+
+        // if (!stateInput.val().trim()) {
+        //     event.preventDefault(); // Stop form submission
+        //     alert('Please fill out County'); // Show an alert
+        //     stateInput.addClass('input-error'); // Add error styling
+        //     stateInput.focus(); // Focus on the empty field
+        //     return false; // Explicitly stop submission
+        //   } else {
+        // stateInput.removeClass('input-error');   // Remove error styling if filled
+        //   }
+
+
+
+});
