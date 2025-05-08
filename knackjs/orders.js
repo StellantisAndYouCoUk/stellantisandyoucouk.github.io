@@ -3169,8 +3169,7 @@ function triggerEssorRefresh(){
   
         console.log("form view")
 
-        $("#view_5115 .kn-submit input[type=submit]").on("click", function() {
-
+        $("#view_5115 button.kn-button.is-primary").on("click", function() {
           console.log("form submitted")
 
 
