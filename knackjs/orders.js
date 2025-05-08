@@ -3169,35 +3169,46 @@ function triggerEssorRefresh(){
   
         console.log("form view")
 
-        // $("#view_5115 button.kn-button.is-primary").on("click", function() {
-        //   console.log("form submitted")
+        $("#view_5115 button.kn-button.is-primary").on("click", function() {
+          console.log("form submitted")
+
+          const selectedOption = $('input[name="view_5115-field_8561"]:checked').val();
+          const postcodeInput = $('#zip');
+          const street1Input = $('#street');
+          const street2Input = $('#street2');
+          const cityInput = $('#city');
+          const stateInput = $('#state');
 
 
-        //   const postcodeInput = $('#zip');
-        //   const street1Input = $('#street');
-        //   const street2Input = $('#street2');
-        //   const cityInput = $('#city');
-        //   const stateInput = $('#state');
+
+          console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+          console.log(`street1Input: ${street1Input.val().trim()}`)
+          console.log(`street2Input: ${street2Input.val().trim()}`)
+          console.log(`cityInput: ${cityInput.val().trim()}`)
+          console.log(`stateInput: ${stateInput.val().trim()}`)
+          console.log(`selectedOption: ${selectedOption.val().trim()}`)
+
+
+          if (selectedOption === 'Services Required') {
+            console.log("Skipping postcode validation.");
+            postcodeInput.removeClass('input-error'); // optional cleanup
+            return true;
+          }
 
 
 
-        //   console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
-        //   console.log(`street1Input: ${street1Input.val().trim()}`)
-        //   console.log(`street2Input: ${street2Input.val().trim()}`)
-        //   console.log(`cityInput: ${cityInput.val().trim()}`)
-        //   console.log(`stateInput: ${stateInput.val().trim()}`)
 
-        // if (!postcodeInput.val().trim()) {
-        //     event.preventDefault(); // Stop form submission
-        //     alert('Please fill out Postcode'); // Show an alert
-        //     postcodeInput.addClass('input-error'); // Add error styling
-        //     postcodeInput.focus(); // Focus on the empty field
-        //     return false; // Explicitly stop submission
-        //   } else {
-        //     postcodeInput.removeClass('input-error');
-        // // Remove error styling if filled
-        //   };
-        // });
+        if (!postcodeInput.val().trim()) {
+            event.preventDefault(); // Stop form submission
+            alert('Please fill out Postcode'); // Show an alert
+            postcodeInput.addClass('input-error'); // Add error styling
+            postcodeInput.focus(); // Focus on the empty field
+            return false; // Explicitly stop submission
+          } else {
+            postcodeInput.removeClass('input-error');
+        // Remove error styling if filled
+          };
+        });
         });
 
         // if (!street1Input.val().trim()) {
