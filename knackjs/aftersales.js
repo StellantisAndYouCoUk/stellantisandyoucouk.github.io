@@ -2811,8 +2811,8 @@ function motabReturnsImageUpload(fieldName, fileId, filename, recordId){
     let dataToSend = {
       recordId:(recordId?recordId:getRecordIdFromHref(location.href)),
       imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg',
-      successMakeWebhook : 'https://hook.eu1.make.celonis.com/kln78kilvne9gknkl8mcupp6v3imktxq',
-      failMakeWebhook : 'https://hook.eu1.make.celonis.com/3but1lwjptm6gqi3a0m7uulceuhx8znt'
+      successMakeWebhook : 'https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=kln78kilvne9gknkl8mcupp6v3imktxq',
+      failMakeWebhook : 'https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3but1lwjptm6gqi3a0m7uulceuhx8znt'
     }
     $.ajax({
       url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
@@ -3035,8 +3035,8 @@ function imageUploadedSuccesfully(fieldName, fileId, filename, nextAction = null
     let dataToSend = {
       recordId: recordId,
       imageUrl : 'https://s3.eu-central-1.amazonaws.com/kn-custom-rd/assets/6040dd9a301633001bca5b4e/'+fileId+'/original/photoimg.jpg',
-      successMakeWebhook : 'https://hook.eu1.make.celonis.com/kln78kilvne9gknkl8mcupp6v3imktxq',
-      failMakeWebhook : 'https://hook.eu1.make.celonis.com/3but1lwjptm6gqi3a0m7uulceuhx8znt'
+      successMakeWebhook : 'https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=kln78kilvne9gknkl8mcupp6v3imktxq',
+      failMakeWebhook : 'https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3but1lwjptm6gqi3a0m7uulceuhx8znt'
     }
     $.ajax({
       url: 'https://davidmale--server.apify.actor/photoCheckMotability?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',
@@ -4199,7 +4199,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
         preConfirm: async (login) => {
           try {
             const githubUrl = `
-              https://hook.eu1.make.celonis.com/f3r16bgultmqh9gyyn5nexwbdll6elgs
+              https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=f3r16bgultmqh9gyyn5nexwbdll6elgs
             `;
             const response = callPostHttpRequest(githubUrl, {"BinLocation":login},"Servicebox bin location find");
             console.log(JSON.parse(response))
