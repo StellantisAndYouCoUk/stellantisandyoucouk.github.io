@@ -3189,7 +3189,7 @@ function triggerEssorRefresh(){
           console.log(`stateInput: ${stateInput.val().trim()}`)
 
 
-          if (selectedOption === 'Services Required') {
+          if (selectedOption === 'Services Required' || selectedOption === undefined) {
             console.log("Skipping validation.");
             postcodeInput.removeClass('input-error'); // optional cleanup
             return true;
