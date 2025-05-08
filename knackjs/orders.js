@@ -3165,35 +3165,41 @@ function triggerEssorRefresh(){
 }
 
 
-$(document).on('knack-view-render.view_5115', function(event, view) {
-          const form = $(`#view_5115 form`);
+      $(document).on('knack-view-render.view_5115', function(event, view, data) {
+  
+        console.log("form view")
+
+        $("#view_5115 .kn-submit input[type=submit]").on("click", function() {
 
           console.log("form submitted")
 
 
-          form.on('submit', function(e) {
-            const postcodeInput = $('#zip');
-            const street1Input = $('#street');
-            const street2Input = $('#street2');
-            const cityInput = $('#city');
-            const stateInput = $('#state');
-        
-            console.log(`postcodeInput: ${postcodeInput.val().trim()}`);
-            console.log(`street1Input: ${street1Input.val().trim()}`);
-            console.log(`street2Input: ${street2Input.val().trim()}`);
-            console.log(`cityInput: ${cityInput.val().trim()}`);
-            console.log(`stateInput: ${stateInput.val().trim()}`);
-        
-            if (!postcodeInput.val().trim()) {
-              e.preventDefault(); // This WILL now block submission
-              alert('Please fill out Postcode');
-              postcodeInput.addClass('input-error');
-              postcodeInput.focus();
-              return false;
-            } else {
-              postcodeInput.removeClass('input-error');
-            }
+          const postcodeInput = $('#zip');
+          const street1Input = $('#street');
+          const street2Input = $('#street2');
+          const cityInput = $('#city');
+          const stateInput = $('#state');
 
+
+
+          console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+          console.log(`street1Input: ${street1Input.val().trim()}`)
+          console.log(`street2Input: ${street2Input.val().trim()}`)
+          console.log(`cityInput: ${cityInput.val().trim()}`)
+          console.log(`stateInput: ${stateInput.val().trim()}`)
+
+        if (!postcodeInput.val().trim()) {
+            event.preventDefault(); // Stop form submission
+            alert('Please fill out Postcode'); // Show an alert
+            postcodeInput.addClass('input-error'); // Add error styling
+            postcodeInput.focus(); // Focus on the empty field
+            return false; // Explicitly stop submission
+          } else {
+            postcodeInput.removeClass('input-error');
+        // Remove error styling if filled
+          };
+        });
+        });
 
         // if (!street1Input.val().trim()) {
         //     event.preventDefault(); // Stop form submission
@@ -3242,5 +3248,4 @@ $(document).on('knack-view-render.view_5115', function(event, view) {
         //   }
 
 
-      });
-    });
+
