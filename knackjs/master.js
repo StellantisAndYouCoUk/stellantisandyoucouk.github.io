@@ -3646,11 +3646,6 @@ $(document).on('knack-form-submit.view_3562', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=vq733xr47qnzl4cb86q9ccmqoxvl62t1", {"Record ID":data.id},"(used deal file) - trigger intergromat to cancel used deal file");  
 });
 
-//Description - Used Deal File Profit Sheet - Franchise Selection
-$(document).on('knack-form-submit.view_4589', function(event, view, data) { 
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ca4xgxoccrc4zfzbotr3f3y2f65312ve", {"Record ID":data.id},"Description - Used Deal File Profit Sheet - Franchise Selection");
-});
-
 // Description - Used Deal File Profit Sheet - Franchise Selection
 $(document).on('knack-form-submit.view_4589', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=0s2n28ijchplc7orwld2r7nqw6lh7mm8", {"Knack Record ID":data.id},"Description - Used Deal File Profit Sheet - Franchise Selection");

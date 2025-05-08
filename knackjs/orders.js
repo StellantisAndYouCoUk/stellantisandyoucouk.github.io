@@ -3148,6 +3148,8 @@ $(document).on('knack-records-render.view_5207', function (event, scene, records
     });
 });
 
+
+
 //this function just parses recordId from URL //maybe needs to be altered acording the use
 function getRecordIdFromHref(ur) {
   var ur = ur.substr(0, ur.length - 1);
@@ -3161,3 +3163,4 @@ function triggerEssorRefresh(){
   $('a[href*="triggerEssorRefresh"]').attr('disabled','disabled');
   $('a[href*="triggerEssorRefresh"]').parent().append('The Essor details will be rechecked in next few minutes.');
 }
+
