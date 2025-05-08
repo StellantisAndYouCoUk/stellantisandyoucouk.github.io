@@ -3170,6 +3170,7 @@ function triggerEssorRefresh(){
         console.log("form view")
 
         $("#view_5115 button.kn-button.is-primary").on("click", function() {
+
           console.log("form submitted")
 
           const selectedOption = $('input[name="view_5115-field_8561"]:checked').val();
@@ -3186,7 +3187,6 @@ function triggerEssorRefresh(){
           console.log(`street2Input: ${street2Input.val().trim()}`)
           console.log(`cityInput: ${cityInput.val().trim()}`)
           console.log(`stateInput: ${stateInput.val().trim()}`)
-          console.log(`selectedOption: ${selectedOption.val().trim()}`)
 
 
           if (selectedOption === 'Services Required') {
