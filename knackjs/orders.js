@@ -3165,7 +3165,7 @@ function triggerEssorRefresh(){
 }
 
 
-$(document).on('knack-form-submit.view_5115', function(event, view, data) { 
+$(document).on('knack-form-submit.view_5115_submit', function(event, view, data) { 
   
           console.log("form submitted")
 
@@ -3175,7 +3175,7 @@ $(document).on('knack-form-submit.view_5115', function(event, view, data) {
           const street2Input = $('#street2');
           const cityInput = $('#city');
           const stateInput = $('#state');
-          
+
 
 
           console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
@@ -3184,16 +3184,16 @@ $(document).on('knack-form-submit.view_5115', function(event, view, data) {
           console.log(`cityInput: ${cityInput.val().trim()}`)
           console.log(`stateInput: ${stateInput.val().trim()}`)
 
-        // if (!postcodeInput.val().trim()) {
-        //     event.preventDefault(); // Stop form submission
-        //     alert('Please fill out Postcode'); // Show an alert
-        //     postcodeInput.addClass('input-error'); // Add error styling
-        //     postcodeInput.focus(); // Focus on the empty field
-        //     return false; // Explicitly stop submission
-        //   } else {
-        //     postcodeInput.removeClass('input-error');
-        // // Remove error styling if filled
-        //   };
+        if (!postcodeInput.val().trim()) {
+            event.preventDefault(); // Stop form submission
+            alert('Please fill out Postcode'); // Show an alert
+            postcodeInput.addClass('input-error'); // Add error styling
+            postcodeInput.focus(); // Focus on the empty field
+            return false; // Explicitly stop submission
+          } else {
+            postcodeInput.removeClass('input-error');
+        // Remove error styling if filled
+          };
 
 
 
