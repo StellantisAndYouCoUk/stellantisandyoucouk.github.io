@@ -3200,14 +3200,7 @@ function triggerEssorRefresh(){
 
         if (!postcodeInput.val().trim()) {
             event.preventDefault(); // Stop form submission
-            Swal.fire({
-              title: 'Error!',
-              text: 'Please fill out Postcode',
-              icon: 'error',
-              confirmButtonText: 'Ok'
-            })
-
-            // alert(''); // Show an alert
+            alert('Please fill out Postcode'); // Show an alert
             postcodeInput.addClass('input-error'); // Add error styling
             postcodeInput.focus(); // Focus on the empty field
             return false; // Explicitly stop submission
