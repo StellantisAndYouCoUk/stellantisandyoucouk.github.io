@@ -3262,20 +3262,6 @@ function triggerEssorRefresh(){
               }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         });
         });
 
