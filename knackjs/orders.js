@@ -3163,7 +3163,7 @@ function triggerEssorRefresh(){
 }
 
 
-
+//make Address compulsory on Fleet adding end customer address
 $(document).on('knack-scene-render.scene_1466', function(event, scene) {
   // Attach event listener to the form submission
   $('form').on('submit', function (event) {
