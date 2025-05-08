@@ -3190,7 +3190,7 @@ function triggerEssorRefresh(){
 
 
           if (selectedOption === 'Services Required') {
-            console.log("Skipping postcode validation.");
+            console.log("Skipping validation.");
             postcodeInput.removeClass('input-error'); // optional cleanup
             return true;
           }
@@ -3200,7 +3200,14 @@ function triggerEssorRefresh(){
 
         if (!postcodeInput.val().trim()) {
             event.preventDefault(); // Stop form submission
-            alert('Please fill out Postcode'); // Show an alert
+            Swal.fire({
+              title: 'Error!',
+              text: 'Please fill out Postcode',
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            })
+
+            // alert(''); // Show an alert
             postcodeInput.addClass('input-error'); // Add error styling
             postcodeInput.focus(); // Focus on the empty field
             return false; // Explicitly stop submission
