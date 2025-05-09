@@ -605,7 +605,7 @@ $(document).on('knack-form-submit.view_3676', function(event, view, data) {
 
   
 
-	commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=vxmlosfeinmtjdo3mfn3v7tfcqru491z?recordid=" + data.id ;
+	commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=vxmlosfeinmtjdo3mfn3v7tfcqru491z&recordid=" + data.id ;
 
 
  	$.get(commandURL, function(data, status){
