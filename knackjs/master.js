@@ -1431,7 +1431,7 @@ $(document).on('knack-form-submit.view_4099', function(event, view, data) {
 
   
 
-	commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=jidc5kuxt4ddjmhondkoyhjpgj6fm7o6?recordid=" + data.id ;
+	commandURL = "https://hook.integromat.com/jidc5kuxt4ddjmhondkoyhjpgj6fm7o6?recordid=" + data.id ;
 
 
  	$.get(commandURL, function(data, status){
