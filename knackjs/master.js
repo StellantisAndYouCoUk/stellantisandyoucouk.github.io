@@ -674,7 +674,7 @@ employeePortalConnectView.forEach(employeePortalConnectViewConnectViewFunction);
 function employeePortalConnectViewConnectViewFunction(selector_view){
   //console.log('create',selector_view)
   $(document).on("knack-view-render." + selector_view.view, function(event, scene, data) {
-    console.log(selector_view)
+    console.log('employeePortalConnectViewConnectViewFunction',selector_view)
     var token = Knack.getUserAttributes().values["field_6440"];
     $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/employee-portal'+selector_view.url+'?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
   });
