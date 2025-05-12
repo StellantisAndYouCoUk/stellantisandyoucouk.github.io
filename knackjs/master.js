@@ -672,7 +672,7 @@ var employeePortalConnectView = [{view:'view_7787',url:'#dashboard'}];
 employeePortalConnectView.forEach(employeePortalConnectViewConnectViewFunction);
 
 function employeePortalConnectViewConnectViewFunction(selector_view){
-  //console.log('create',selector_view)
+  console.log('create employeePortalConnectViewConnectViewFunction',selector_view)
   $(document).on("knack-view-render." + selector_view.view, function(event, scene, data) {
     console.log('employeePortalConnectViewConnectViewFunction',selector_view)
     var token = Knack.getUserAttributes().values["field_6440"];
