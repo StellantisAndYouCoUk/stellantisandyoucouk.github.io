@@ -12,7 +12,10 @@ function readCookie(name) {
 }
 
 $(document).on('knack-view-render.any', function (event, view, data) {
-  submitUserLoginForm();
+    $('[class="kn-container"]').hide();
+    $('[class="kn-info kn-container"]').hide();
+
+    submitUserLoginForm();
 });
 
 function getTokenFromURL(url){
