@@ -4337,3 +4337,39 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                 });
         
         
+
+        // Check Email valid in Tyre Report
+        $(document).on('knack-view-render.view_4524', function(event, view, data) {
+                
+          console.log("view 4524")
+          let howManyEmailsBeforeFormSubmit = $("#field_3569").val().split("\n").length
+                    
+          $("button.kn-button.is-primary").on("click", function() {
+              console.log(" 4524 form submitted")
+            let howManyEmailsAfterFormSubmit = $("#field_3569").val().split("\n").length
+
+            if(howManyEmailsAfterFormSubmit > howManyEmailsBeforeFormSubmit){
+
+              for (let index = howManyEmailsAfterFormSubmit-howManyEmailsBeforeFormSubmit; index < howManyEmailsAfterFormSubmit; index++) {
+                  let email = $("#field_3569").val().split("\n")[index];
+                  console.log("Email " + email);
+              }    
+            }    
+
+            
+            
+                      if (false) {
+                              event.preventDefault(); // Stop form submission
+                              alert('Please fill out Postcode'); // Show an alert
+                              postcodeInput.addClass('input-error'); // Add error styling
+                              postcodeInput.focus(); // Focus on the empty field
+                              return false; // Explicitly stop submission
+                            } else {
+                              postcodeInput.removeClass('input-error');
+                          // Remove error styling if filled
+                            };
+
+
+
+          })
+        });  
