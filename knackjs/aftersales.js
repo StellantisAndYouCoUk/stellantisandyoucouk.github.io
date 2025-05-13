@@ -4357,7 +4357,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                   if(!pattern.test(email)){
                              event.preventDefault(); // Stop form submission
                              if(email.length===0){
-                              alert(`Please remove empty space at the end before to Updadte!`); // Show an alert
+                              alert(`Please remove the empty space at the end before updating!`); // Show an alert
 
                              }else{
                               alert(`${email} is not a valid email!`); // Show an alert
