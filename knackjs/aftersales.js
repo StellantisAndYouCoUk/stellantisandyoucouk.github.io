@@ -4358,16 +4358,16 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
             
             
-                      if (false) {
-                              event.preventDefault(); // Stop form submission
-                              alert('Please fill out Postcode'); // Show an alert
-                              postcodeInput.addClass('input-error'); // Add error styling
-                              postcodeInput.focus(); // Focus on the empty field
-                              return false; // Explicitly stop submission
-                            } else {
-                              postcodeInput.removeClass('input-error');
-                          // Remove error styling if filled
-                            };
+                      // if (false) {
+                      //         event.preventDefault(); // Stop form submission
+                      //         alert('Please fill out Postcode'); // Show an alert
+                      //         postcodeInput.addClass('input-error'); // Add error styling
+                      //         postcodeInput.focus(); // Focus on the empty field
+                      //         return false; // Explicitly stop submission
+                      //       } else {
+                      //         postcodeInput.removeClass('input-error');
+                      //     // Remove error styling if filled
+                      //       };
 
 
 
