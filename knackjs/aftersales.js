@@ -4352,7 +4352,8 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
               for (let index = howManyEmailsAfterFormSubmit-howManyEmailsBeforeFormSubmit+1; index < howManyEmailsAfterFormSubmit; index++) {
                   let email = $("#field_3569").val().split("\n")[index];
-                  console.log("Email " + email);
+                  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  console.log(`Test Email for is ${email}: ${pattern.test(email)}`);
               }    
             }    
 
