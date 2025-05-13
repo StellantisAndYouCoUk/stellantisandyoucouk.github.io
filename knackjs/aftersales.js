@@ -4350,7 +4350,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
             if(howManyEmailsAfterFormSubmit > howManyEmailsBeforeFormSubmit){
 
-              for (let index = howManyEmailsAfterFormSubmit-howManyEmailsBeforeFormSubmit; index < howManyEmailsAfterFormSubmit; index++) {
+              for (let index = howManyEmailsAfterFormSubmit-howManyEmailsBeforeFormSubmit-1; index < howManyEmailsAfterFormSubmit; index++) {
                   let email = $("#field_3569").val().split("\n")[index];
                   console.log("Email " + email);
               }    
