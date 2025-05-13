@@ -4350,10 +4350,22 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
             if(howManyEmailsAfterFormSubmit > howManyEmailsBeforeFormSubmit){
 
-              for (let index = howManyEmailsAfterFormSubmit-howManyEmailsBeforeFormSubmit+1; index < howManyEmailsAfterFormSubmit; index++) {
+              for (let index = howManyEmailsBeforeFormSubmit; index < howManyEmailsAfterFormSubmit; index++) {
                   let email = $("#field_3569").val().split("\n")[index];
                   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                  console.log(`Test Email for is ${email}: ${pattern.test(email)}`);
+
+                  if(!pattern.test(email)){
+                             event.preventDefault(); // Stop form submission
+                              alert(`${email} is not a valid email`); // Show an alert
+                              $("#field_3569").addClass('input-error'); // Add error styling
+                              $("#field_3569").focus(); // Focus on the empty field
+                              return false; // Explicitly stop submission
+                  }else{
+                                      console.log(`Test Email for is ${email}: ${pattern.test(email)}`);
+                                      postcodeInput.removeClass('input-error');
+
+
+                  }
               }    
             }    
 
