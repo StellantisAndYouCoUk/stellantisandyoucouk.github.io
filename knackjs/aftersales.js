@@ -4362,7 +4362,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                               return false; // Explicitly stop submission
                   }else{
                                       console.log(`Test Email for is ${email}: ${pattern.test(email)}`);
-                                      postcodeInput.removeClass('input-error');
+                                      $("#field_3569").removeClass('input-error');
 
 
                   }
