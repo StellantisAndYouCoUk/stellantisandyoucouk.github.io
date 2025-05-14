@@ -3269,11 +3269,11 @@ function triggerEssorRefresh(){
 
 // Jason
   $(document).on('knack-view-render.view_4789', function(event, view, data) {
-  
-  console.log("view 4789")
+          
+                  console.log("view 4789")
             $("#view_4789 button.kn-button.is-primary").on("click", function() {
 
-  console.log("form submitted")
+              console.log("form submitted")
   
   //         const postcodeInput = $('#zip');
   //         const street1Input = $('#street');
@@ -3353,10 +3353,10 @@ function triggerEssorRefresh(){
 
           $(document).on('knack-view-render.view_4924', function(event, view, data) {
   
-  console.log("view 4924")
+              console.log("view 4924")
             $("#view_4924 button.kn-button.is-primary").on("click", function() {
 
-  console.log("form submitted")
+              console.log("form submitted")
   
   //         const postcodeInput = $('#zip');
   //         const street1Input = $('#street');
