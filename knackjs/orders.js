@@ -3268,21 +3268,21 @@ function triggerEssorRefresh(){
     
 
 // Jason
-  // $(document).on('knack-view-render.view_4789', function(event, view, data) {
+  $(document).on('knack-view-render.view_4789', function(event, view, data) {
   
-  // console.log("view 4789")
-  //           $("#view_4789 button.kn-button.is-primary").on("click", function() {
+  console.log("view 4789")
+            $("#view_4789 button.kn-button.is-primary").on("click", function() {
 
-  // console.log("form submitted")
+  console.log("form submitted")
   
-  // const postcodeInput = $('#zip');
+  //         const postcodeInput = $('#zip');
   //         const street1Input = $('#street');
   //         const street2Input = $('#street2');
   //         const cityInput = $('#city');
   //         const stateInput = $('#state');
     
     
-  //   console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+  //        console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
   //         console.log(`street1Input: ${street1Input.val().trim()}`)
   //         console.log(`street2Input: ${street2Input.val().trim()}`)
   //         console.log(`cityInput: ${cityInput.val().trim()}`)
@@ -3346,6 +3346,88 @@ function triggerEssorRefresh(){
   //           stateInput.removeClass('input-error');   // Remove error styling if filled
   //             }
 
-  //           })
-  //       });
+            })
+        });
         
+
+
+          $(document).on('knack-view-render.view_4924', function(event, view, data) {
+  
+  console.log("view 4924")
+            $("#view_4924 button.kn-button.is-primary").on("click", function() {
+
+  console.log("form submitted")
+  
+  //         const postcodeInput = $('#zip');
+  //         const street1Input = $('#street');
+  //         const street2Input = $('#street2');
+  //         const cityInput = $('#city');
+  //         const stateInput = $('#state');
+    
+    
+  //        console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+  //         console.log(`street1Input: ${street1Input.val().trim()}`)
+  //         console.log(`street2Input: ${street2Input.val().trim()}`)
+  //         console.log(`cityInput: ${cityInput.val().trim()}`)
+  //         console.log(`stateInput: ${stateInput.val().trim()}`)
+    
+    
+  //   if (!postcodeInput.val().trim()) {
+  //           event.preventDefault(); // Stop form submission
+  //           alert('Please fill out Postcode'); // Show an alert
+  //           postcodeInput.addClass('input-error'); // Add error styling
+  //           postcodeInput.focus(); // Focus on the empty field
+  //           return false; // Explicitly stop submission
+  //         } else {
+  //           postcodeInput.removeClass('input-error');
+  //       // Remove error styling if filled
+  //         };
+
+  //       if (!street1Input.val().trim()) {
+  //               event.preventDefault(); // Stop form submission
+  //               alert('Please fill out Address Line 1'); // Show an alert
+  //               street1Input.addClass('input-error'); // Add error styling
+  //               street1Input.focus(); // Focus on the empty field
+  //               return false; // Explicitly stop submission
+  //             } else {
+  //           street1Input.removeClass('input-error');
+  //           // Remove error styling if filled
+  //             };
+
+
+  //           if (!street2Input.val().trim()) {
+  //               event.preventDefault(); // Stop form submission
+  //               alert('Please fill out Address Line 2'); // Show an alert
+  //               street2Input.addClass('input-error'); // Add error styling
+  //               street2Input.focus(); // Focus on the empty field
+  //               return false; // Explicitly stop submission
+  //             } else {
+
+  //           street2Input.removeClass('input-error');
+  //           // Remove error styling if filled
+  //             };
+
+
+  //           if (!cityInput.val().trim()) {
+  //               event.preventDefault(); // Stop form submission
+  //               alert('Please fill out City'); // Show an alert
+  //               cityInput.addClass('input-error'); // Add error styling
+  //               cityInput.focus(); // Focus on the empty field
+  //               return false; // Explicitly stop submission
+  //             } else {
+  //           cityInput.removeClass('input-error');
+  //           // Remove error styling if filled
+  //             }
+
+  //           if (!stateInput.val().trim()) {
+  //               event.preventDefault(); // Stop form submission
+  //               alert('Please fill out County'); // Show an alert
+  //               stateInput.addClass('input-error'); // Add error styling
+  //               stateInput.focus(); // Focus on the empty field
+  //               return false; // Explicitly stop submission
+  //             } else {
+  //           stateInput.removeClass('input-error');   // Remove error styling if filled
+  //             }
+
+            })
+        });
