@@ -3167,11 +3167,11 @@ function triggerEssorRefresh(){
 
       $(document).on('knack-view-render.view_5115', function(event, view, data) {
   
-        console.log("form view")
+        // console.log("form view")
 
         $("#view_5115 button.kn-button.is-primary").on("click", function() {
 
-          console.log("form submitted")
+          // console.log("form submitted")
 
           const selectedOption = $('input[name="view_5115-field_8561"]:checked').val();
           const postcodeInput = $('#zip');
@@ -3182,11 +3182,11 @@ function triggerEssorRefresh(){
 
 
 
-          console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
-          console.log(`street1Input: ${street1Input.val().trim()}`)
-          console.log(`street2Input: ${street2Input.val().trim()}`)
-          console.log(`cityInput: ${cityInput.val().trim()}`)
-          console.log(`stateInput: ${stateInput.val().trim()}`)
+          // console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+          // console.log(`street1Input: ${street1Input.val().trim()}`)
+          // console.log(`street2Input: ${street2Input.val().trim()}`)
+          // console.log(`cityInput: ${cityInput.val().trim()}`)
+          // console.log(`stateInput: ${stateInput.val().trim()}`)
 
 
           if (selectedOption === 'Services Required' || selectedOption === undefined) {
@@ -3270,10 +3270,10 @@ function triggerEssorRefresh(){
 // Jason
   $(document).on('knack-view-render.view_4789', function(event, view, data) {
           
-                  console.log("view 4789")
+                  // console.log("view 4789")
             $("#view_4789 button.kn-button.is-primary").on("click", function() {
 
-              console.log("form submitted")
+              // console.log("form submitted")
   
               const postcodeInput = $('#zip');
               const street1Input = $('#street');
@@ -3282,11 +3282,11 @@ function triggerEssorRefresh(){
               const stateInput = $('#state');
         
         
-            console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
-              console.log(`street1Input: ${street1Input.val().trim()}`)
-              console.log(`street2Input: ${street2Input.val().trim()}`)
-              console.log(`cityInput: ${cityInput.val().trim()}`)
-              console.log(`stateInput: ${stateInput.val().trim()}`)
+            // console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+            //   console.log(`street1Input: ${street1Input.val().trim()}`)
+            //   console.log(`street2Input: ${street2Input.val().trim()}`)
+            //   console.log(`cityInput: ${cityInput.val().trim()}`)
+            //   console.log(`stateInput: ${stateInput.val().trim()}`)
         
         
         if (!postcodeInput.val().trim()) {
@@ -3353,10 +3353,10 @@ function triggerEssorRefresh(){
 
           $(document).on('knack-view-render.view_4924', function(event, view, data) {
   
-              console.log("view 4924")
+              // console.log("view 4924")
             $("#view_4924 button.kn-button.is-primary").on("click", function() {
 
-              console.log("form submitted")
+              // console.log("form submitted")
   
           const postcodeInput = $('#zip');
           const street1Input = $('#street');
@@ -3365,11 +3365,11 @@ function triggerEssorRefresh(){
           const stateInput = $('#state');
     
     
-         console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
-          console.log(`street1Input: ${street1Input.val().trim()}`)
-          console.log(`street2Input: ${street2Input.val().trim()}`)
-          console.log(`cityInput: ${cityInput.val().trim()}`)
-          console.log(`stateInput: ${stateInput.val().trim()}`)
+        //  console.log(`postcodeInput: ${postcodeInput.val().trim()}`)
+        //   console.log(`street1Input: ${street1Input.val().trim()}`)
+        //   console.log(`street2Input: ${street2Input.val().trim()}`)
+        //   console.log(`cityInput: ${cityInput.val().trim()}`)
+        //   console.log(`stateInput: ${stateInput.val().trim()}`)
     
     
     if (!postcodeInput.val().trim()) {
