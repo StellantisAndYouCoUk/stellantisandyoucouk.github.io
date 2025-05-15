@@ -3283,7 +3283,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
   let defineButtons = [{linkText:'All',filters:[]},{linkText:'W\'Shop Master List',filters:[{"field_name":"Workshop Today's Job","field":"field_3229","value":true,"operator":"is"}]},{linkText:'Parts Avail.',filters:[{"field_name":"Parts on status V,I,C,S","field":"field_985","value":true,"operator":"is blank"}]},{linkText:'Parts Unavail.',filters:[{"field_name":"Parts on status V,I,C,S","field":"field_985","value":true,"operator":"is not blank"}]},{linkText:'Checked In TODAY',filters:[{"field_name":"Date/Time Customer Signature from Service Check In / Inspection Completed","field":"field_2711","value":true,"operator":"is today"}]},{linkText:'Clocked On Now',filters:[{"field_name":"Workshop Controller labour Snapshot","field":"field_1537","value":"Working On Currently","operator":"contains"}]},{linkText:'Never Clocked',filters:[{"field_name":"Last Clocked Date ","field":"field_787","value":"","operator":"is blank"}]},{linkText:'Wait. Auth (VHC)',filters:[{"field":"field_2297","value":"CPL","operator":"is"}]},{linkText:'i0001',filters:[{"field":"field_756","value":"i0001","operator":"is"}]},{linkText:'i0002',filters:[{"field":"field_756","value":"i0002","operator":"is"}]},{linkText:'NO BON',filters:[{"field":"field_1472","value":"Power Supply Order NO BON","operator":"is"}]},{linkText:'Write up TODAY',filters:[{"field_name":"Date/Time Technician Write up completed","field":"field_2722","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is today"}]},{linkText:'W\'Shop Planned Before Today',filters:[{"field":"field_3429","value":"","operator":"is before today"}]},{linkText:'W\'Shop Planned Today',filters:[{"field":"field_3429","value":"","operator":"is today"}]},{linkText:'No W\'Shop Planned',filters:[{"field":"field_3429","value":"","operator":"is blank"}]},{linkText:'W\'Shop Planned After Today',filters:[{"field":"field_3429","value":"","operator":"is after today"}]}];
   console.log("renderSYSearchButtons('3307',defineButtons);")
   renderSYSearchButtons('3307',defineButtons);
-
+/*
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
   console.log('addFilters',addFilters)
   if (addFilters){
@@ -3302,7 +3302,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
       }, 200);
     }
   }
-
+*/
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
