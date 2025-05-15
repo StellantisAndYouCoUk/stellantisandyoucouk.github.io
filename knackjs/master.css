@@ -4190,7 +4190,8 @@ n-link.kn-link-2.kn-link-page.kn-button,
 }
 
 #view_5800 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
-#view_7973 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+#view_7973 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_8017 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #27a06f;
   color: #ffffff;
   font-weight: bold;
@@ -4371,6 +4372,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 }
 
 #view_5800 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_7973 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7973 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #1f7150;
   color: #ffffff;
