@@ -810,7 +810,8 @@ body {
 #view_6931 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_6932 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_6989 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_7045 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+#view_7045 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_7948 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
   background-color: #ffa100;
   color: #ffffff;
   font-weight: bold;
@@ -4190,7 +4191,8 @@ n-link.kn-link-2.kn-link-page.kn-button,
 }
 
 #view_5800 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
-#view_7973 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+#view_7973 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_8017 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #27a06f;
   color: #ffffff;
   font-weight: bold;
@@ -4371,6 +4373,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 }
 
 #view_5800 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_7973 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7973 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #1f7150;
   color: #ffffff;
