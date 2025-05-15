@@ -680,6 +680,19 @@ function employeePortalConnectViewConnectViewFunction(selector_view){
   });
 }
 
+var hrAppConnectView = [{view:'view_8013',url:'#home'}]; 
+//to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
+hrAppConnectView.forEach(hrAppConnectViewConnectViewFunction);
+
+function hrAppConnectViewConnectViewFunction(selector_view){
+  //console.log('create employeePortalConnectViewConnectViewFunction',selector_view)
+  $(document).on("knack-view-render." + selector_view.view, function(event, scene, data) {
+    console.log('hrAppConnectViewConnectViewFunction',selector_view)
+    var token = Knack.getUserAttributes().values["field_6440"];
+    $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/hr-portal'+selector_view.url+'?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  });
+}
+
 function openTab(url) {
   // Create link in memory
   var a = window.document.createElement("a");
