@@ -1172,7 +1172,14 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
   	font-weight: bold;
 }
 
+/* Spoke Co-ordinator filter menu */
 
+#view_4755 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
+{
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
 
 /* Aftersales Post Visit Reporting - Follow up call button */
 

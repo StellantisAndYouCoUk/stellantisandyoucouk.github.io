@@ -5265,18 +5265,17 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
-      console.log(`User Value: ${userValue}`);
+      // console.log(`User Value: ${userValue}`);
 
       let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
 
-      console.log("event source implemented: " + JSON.stringify(eventSource))
 
       function showNotification(data, message, timer) {
         parsedData = data;
         notificationId = parsedData.id; // Get the unique notification ID from the message
       
-        console.log("Notification ID:", notificationId);
+        // console.log("Notification ID:", notificationId);
 
         let InAppPopUp = false;
 
@@ -5909,10 +5908,10 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     
                   const isPhone = navigator.userAgent.toLowerCase().includes("mobile")
 
-                  console.log("IsEdge: " + isEdge)
-                  console.log("isChrome: " + isChrome)
-                  console.log("isTablet: " + isTablet)
-                  console.log("isPhone: " + isPhone)
+                  // console.log("IsEdge: " + isEdge)
+                  // console.log("isChrome: " + isChrome)
+                  // console.log("isTablet: " + isTablet)
+                  // console.log("isPhone: " + isPhone)
               const excludedUserRoles = ['object_288','object_281','object_105', 'object_258','object_166','object_152','object_235','object_223'];
               // var user = Knack.getUserToken();
 
