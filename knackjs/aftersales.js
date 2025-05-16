@@ -4405,8 +4405,6 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
                $(document).on('knack-view-render.view_4776', function(event, view, data) {
 
-                    $("button.kn-button.is-primary").on("click", function() {
-                    
                          let rows = $('div[class="kn-view kn-table view_4776"] table tr');
                           console.log('rows',rows.length);
                           for (i = 1; i < rows.length; i++) {
@@ -4426,7 +4424,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                             }
                           }
                     
-                    })
+                  
           
      
         });
