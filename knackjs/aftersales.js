@@ -4434,4 +4434,15 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
      
         });
 
+// Refresh when data appears for policy WIP view
+$(document).on("knack-scene-render.scene_1443", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_3703', //Autoline WIP Details
+          views:['4779']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+
 
