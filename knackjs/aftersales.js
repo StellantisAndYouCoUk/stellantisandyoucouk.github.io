@@ -4407,11 +4407,11 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
                     $("button.kn-button.is-primary").on("click", function() {
                     
-                         let rows = $('.kn-table.kn-view.view_4776 table tbody tr');
+                         let rows = $('div[class="kn-view kn-table view_4776"] table tr');
                           console.log('rows',rows.length);
                           for (i = 1; i < rows.length; i++) {
                             let currentRow = rows[i];
-                              console.log(currentRow);
+                              console.log("Current Row:" +currentRow);
                             const createClickHandler = function(row) {
                               return function() {
                                 var cell = row.id;
@@ -4422,7 +4422,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                              currentRow.children[7].onclick = createClickHandler(currentRow);
+                              currentRow.children[6].onclick = createClickHandler(currentRow);
                             }
                           }
                     
