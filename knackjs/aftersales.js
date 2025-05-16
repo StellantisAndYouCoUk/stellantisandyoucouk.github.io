@@ -4422,7 +4422,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                              currentRow.children[6].onclick = createClickHandler(currentRow);
+                              currentRow.children[7].onclick = createClickHandler(currentRow);
                             }
                           }
                     
