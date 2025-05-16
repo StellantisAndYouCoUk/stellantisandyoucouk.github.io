@@ -4402,9 +4402,14 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
         });  
 
 
-
+// If it's search we are looking view not table.
                $(document).on('knack-view-render.view_4776', function(event, view, data) {
 
+                      
+// Whenever we have time maybe 5 minutes i can show you find css elements here we are finding css elements by using this $('')
+// if html element has id pick id <a href="something.com" id="important">
+// you can pick this with $('#important')
+// if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.
                          let rows = $('div[class="kn-view kn-table view_4776"] table tr');
                           console.log('rows',rows.length);
                           for (i = 1; i < rows.length; i++) {
@@ -4415,7 +4420,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                                 var cell = row.id;
                                 
                                 console.log("Send request", cell);
-                                //  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=a61ljkqf5jw5d643274gixjtqdx5hgo8", {"recordId":cell, "Scenario":"vehicle customer look up" },"Aftersales- update individual LIVE WIPS 'touched today' and UPDATE Parts & Labour v4");
+                                callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=akfoo8ipo2cgwhy6prhc67dmxia455xz", {"recordId":cell, "Scenario":"prepare policy approval WIP" },"Prepare Policy Approval WIP");
                               };
                             };
                             if (currentRow.id!==''){
