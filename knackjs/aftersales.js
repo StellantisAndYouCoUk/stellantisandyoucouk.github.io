@@ -4415,14 +4415,14 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                             const createClickHandler = function(row) {
                               return function() {
                                 var cell = row.id;
-                                console.log('cell',cell);
+                                
                                 console.log("Send request", cell);
                                 //  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=a61ljkqf5jw5d643274gixjtqdx5hgo8", {"recordId":cell, "Scenario":"vehicle customer look up" },"Aftersales- update individual LIVE WIPS 'touched today' and UPDATE Parts & Labour v4");
                               };
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                              currentRow.children[7].onclick = createClickHandler(currentRow);
+                              currentRow.children[6].onclick = createClickHandler(currentRow);
                             }
                           }
                     
