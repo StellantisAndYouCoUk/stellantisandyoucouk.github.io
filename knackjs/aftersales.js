@@ -4439,7 +4439,7 @@ $(document).on("knack-scene-render.scene_1443", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_3703', //Autoline WIP Details
-          views:['4779']
+          views:['4779','4785']
       }
     ]
     sceneRefresh(refreshData);
