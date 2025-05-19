@@ -4440,7 +4440,7 @@ $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_3703', //Policy WIP Details
-          views:['4787']
+          views:['4787','4789']
       }
     ]
     sceneRefresh(refreshData);
