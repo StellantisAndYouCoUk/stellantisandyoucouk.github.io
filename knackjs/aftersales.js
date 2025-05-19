@@ -4435,7 +4435,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
         });
 
 // Refresh when data appears for policy WIP view
-/*
+
 $(document).on("knack-scene-render.scene_1443", function(event, scene, data) {
     let refreshData = [
       {
@@ -4445,6 +4445,6 @@ $(document).on("knack-scene-render.scene_1443", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
   });
-  */
+  
 
 
