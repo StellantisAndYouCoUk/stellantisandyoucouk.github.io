@@ -4439,8 +4439,8 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 $(document).on("knack-scene-render.scene_1443", function(event, scene, data) {
     let refreshData = [
       {
-          mainField : 'field_3703', //Autoline WIP Details
-          views:['4779','4785','4786']
+          mainField : 'field_3703', //Policy WIP Details
+          views:['4779']
       }
     ]
     sceneRefresh(refreshData);
