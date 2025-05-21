@@ -2468,3 +2468,14 @@ Background-color: red;
 div#view_4746 {
 	flex: 0;
 }
+
+/* Change colour of form confirmation message, used for parts cash and credit applications (colour #ffd489 is a more transparent version of #FFA100) */
+
+#view_4572 .kn-message{
+	background-color: #ffd489;
+}
+
+#view_4424 .kn-message{
+	background-color: #ffd489;
+}
+
