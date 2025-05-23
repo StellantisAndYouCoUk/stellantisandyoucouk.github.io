@@ -3291,7 +3291,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
       console.log('onclick')
       setTimeout(function () { 
         console.log('remove from filter')
-        let addedAlowedFilters = ['field_1121'/*,'field_2411'*/];
+        let addedAlowedFilters = ['field_1121','field_2411'];
         for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
           let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
           let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
