@@ -4400,3 +4400,51 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
           })
         });  
+
+
+// If it's search we are looking view not table.
+               $(document).on('knack-view-render.view_4776', function(event, view, data) {
+
+                      
+// Whenever we have time maybe 5 minutes i can show you find css elements here we are finding css elements by using this $('')
+// if html element has id pick id <a href="something.com" id="important">
+// you can pick this with $('#important')
+// if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.
+                         let rows = $('div[class="kn-view kn-table view_4776"] table tr');
+                          console.log('rows',rows.length);
+                          for (i = 1; i < rows.length; i++) {
+                            let currentRow = rows[i];
+                              console.log("Current Row:" +currentRow);
+                            const createClickHandler = function(row) {
+                              return function() {
+                                var cell = row.id;
+                                
+                                console.log("Send request", cell);
+                                callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=akfoo8ipo2cgwhy6prhc67dmxia455xz", {"recordId":cell, "Scenario":"prepare policy approval WIP" },"Prepare Policy Approval WIP");
+                              };
+                            };
+                            if (currentRow.id!==''){
+                                console.log(currentRow.id);
+                              currentRow.children[6].onclick = createClickHandler(currentRow);
+                            }
+                          }
+                    
+                  
+          
+     
+        });
+
+// Refresh when data appears for policy WIP view
+
+$(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_3703', //Policy WIP Details
+          views:['4787','4789']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+  
+
+
