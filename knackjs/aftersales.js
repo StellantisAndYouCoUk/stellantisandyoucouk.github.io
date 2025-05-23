@@ -3288,7 +3288,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
   console.log('addFilters',addFilters)
   if (addFilters){
     addFilters.onclick = function(){
-      console.log('onclick')
+      console.log('onclick 2')
       removeFilterFields(['field_1121','field_2411']);/*
       setTimeout(function () { 
         console.log('remove from filter')
