@@ -3288,9 +3288,10 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
   console.log('addFilters',addFilters)
   if (addFilters){
     addFilters.onclick = function(){
+      console.log('onclick')
       setTimeout(function () { 
         console.log('remove from filter')
-        let addedAlowedFilters = ['field_1121','field_2411'];
+        let addedAlowedFilters = ['field_1121'/*,'field_2411'*/];
         for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
           let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
           let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
@@ -3302,7 +3303,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
     }
   }
 
-  let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+  /*let addFilters2 = document.querySelector('a[id="add-filter-link"]');
   console.log('addFilters2',addFilters2)
   if (addFilters2){
     addFilters2.onclick = function(){
@@ -3318,7 +3319,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
         }
       }, 200);
     }
-  }
+  }*/
 
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
