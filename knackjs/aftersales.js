@@ -3303,7 +3303,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
     }
   }
 
-  /*let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+  let addFilters2 = document.querySelector('a[id="add-filter-link"]');
   console.log('addFilters2',addFilters2)
   if (addFilters2){
     addFilters2.onclick = function(){
@@ -3319,7 +3319,7 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
         }
       }, 200);
     }
-  }*/
+  }
 
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
