@@ -3287,8 +3287,9 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
   console.log('addFilters',addFilters)
   if (addFilters){
-    addFilters.onclick = removeFilterFields(['field_1121','field_2411']);/*function(){
+    addFilters.onclick = function(){
       console.log('onclick')
+      removeFilterFields(['field_1121','field_2411']);/*
       setTimeout(function () { 
         console.log('remove from filter')
         let addedAlowedFilters = ['field_1121','field_2411'];
@@ -3299,8 +3300,8 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
             $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
           }
         }
-      }, 200);
-    }*/
+      }, 200);*/
+    }
   }
 
   let addFilters2 = document.querySelector('a[id="add-filter-link"]');
