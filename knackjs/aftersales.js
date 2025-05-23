@@ -3289,36 +3289,12 @@ $(document).on('knack-view-render.view_3307', function (event, view, data) {
   if (addFilters){
     addFilters.onclick = function(){
       console.log('onclick 2')
-      removeFilterFields(['field_1121','field_2411']);/*
-      setTimeout(function () { 
-        console.log('remove from filter')
-        let addedAlowedFilters = ['field_1121','field_2411'];
-        for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
-          let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
-          let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
-          if (!allowFilterField){
-            $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
-          }
-        }
-      }, 200);*/
-    }
-  }
-
-  let addFilters2 = document.querySelector('a[id="add-filter-link"]');
-  console.log('addFilters2',addFilters2)
-  if (addFilters2){
-    addFilters2.onclick = function(){
-      setTimeout(function () { 
-        console.log('remove from filter')
-         let addedAlowedFilters = ['field_1121','field_2411'];
-        for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
-          let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
-          let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
-          if (!allowFilterField){
-            $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
-          }
-        }
-      }, 200);
+      removeFilterFields(['field_1121','field_2411']);
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+        console.log('onclick 3')
+        removeFilterFields(['field_1121','field_2411']);
+      }
     }
   }
 
