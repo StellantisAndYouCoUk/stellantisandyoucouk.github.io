@@ -2624,12 +2624,6 @@ color: #FFFFFF;
   	font-weight: bold;
 }
 
-#view_4537 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
-	background-color: #FFA100;
-  	color: #FFFFFF;
-  	font-weight: bold;
-}
-
 /*************** Deal File Overview ******************/
 
 #view_4036 .kn-detail-label {background-color: transparent;}
