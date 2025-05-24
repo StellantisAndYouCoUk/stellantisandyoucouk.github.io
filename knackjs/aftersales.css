@@ -2500,7 +2500,7 @@ div#view_4746 {
 /* Sent message (right, green bubble) */
 #chatHTML .header, #chatHTML #row2 {
     background: #dcf8c6;
-    text-align: right !important;
+    text-align: left !important;
     border-radius: 16px 0px 16px 16px;
     margin: 14px 3% 3px 15%;
     padding: 9px 14px 7px 12px;
