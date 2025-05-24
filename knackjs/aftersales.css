@@ -2482,7 +2482,7 @@ div#view_4746 {
 
 /* General chat container */
 #chatHTML {
-    max-width: 450px;
+    max-width: 600px;
     margin: 30px auto;
     padding: 0 4px;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
