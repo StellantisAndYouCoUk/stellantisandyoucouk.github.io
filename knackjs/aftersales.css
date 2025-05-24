@@ -2610,20 +2610,3 @@ div#view_4746 {
 #chatHTML div:empty {
     display: none;
 }
-
-/* Responsive: Adjust for small screens */
-@media (max-width: 600px) {
-    #chatHTML {
-        max-width: 98vw;
-        border-radius: 0;
-        padding: 0 1vw;
-    }
-    #chatHTML .header, 
-    #chatHTML #row2, 
-    #chatHTML #row1,
-    #chatHTML .layoutCollection1 {
-        max-width: 99vw;
-        margin-left: 1.2vw;
-        margin-right: 1.2vw;
-    }
-}
