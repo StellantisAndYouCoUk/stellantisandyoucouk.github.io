@@ -2480,3 +2480,150 @@ div#view_4746 {
 	background-color: #ffd489;
 }
 
+/* General chat container */
+#chatHTML {
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 0 4px;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+    background: #ece5dd; /* WhatsApp bg */
+    border-radius: 16px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+    min-height: 80vh;
+}
+
+/* Remove default <br> spacing*/
+#chatHTML br {
+    display: none;
+}
+
+/* Sent message (right, green bubble) */
+#chatHTML .header, #chatHTML #row2 {
+    background: #dcf8c6;
+    text-align: right !important;
+    border-radius: 16px 0px 16px 16px;
+    margin: 14px 3% 3px 15%;
+    padding: 9px 14px 7px 12px;
+    display: inline-block;
+    max-width: 83%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+}
+
+/* Sent meta-info, header */
+#chatHTML .header {
+    font-size: 0.93em;
+    margin-bottom: 1px;
+    font-weight: normal;
+    color: #1d4330;
+    background: transparent;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Received message (left, white bubble) */
+#chatHTML #row1,
+#chatHTML .layoutCollection1 {
+    background: #fff;
+    text-align: left !important;
+    border-radius: 0px 16px 16px 16px;
+    margin: 14px 15% 2px 3%;
+    padding: 9px 12px 7px 14px;
+    display: inline-block;
+    max-width: 83%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* Received meta-info */
+#chatHTML .layoutCollection1 {
+    font-size: 0.93em;
+    margin-bottom: 1px;
+    font-weight: normal;
+    color: #505959;
+    background: transparent;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Message subtitle styling */
+#chatHTML strong {
+    color: #075E54;
+    font-weight: 600;
+    font-size: 1.03em;
+}
+
+#chatHTML .header strong,
+#chatHTML p strong {
+    color: #25d366;   /* WhatsApp green */
+    font-weight: 600;
+    font-size: inherit;
+}
+
+/* Subtitles (like “Solution”, “ADDITIONAL INFORMATION REQUEST”) */
+#chatHTML .header strong:last-child,
+#chatHTML .layoutCollection1 + strong {
+    color: #128C7E;
+    font-size: 0.98em;
+    font-weight: 500;
+}
+
+/* Date/Time (try to dim them a bit) */
+#chatHTML .header, 
+#chatHTML .layoutCollection1 {
+    color: #929292;
+    font-weight: 400;
+}
+
+/* Chat pretext (message body) */
+#chatHTML pre.pretext {
+    background: none;
+    font-family: inherit;
+    font-size: 1em;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: none;
+    box-shadow: none;
+}
+
+/* Remove extra paddings from inline divs */
+#chatHTML [style^="padding-left"], 
+#chatHTML [style^="padding-right"] {
+    padding: 0 !important;
+}
+
+/* Spacing between messages */
+#chatHTML > * + *,
+#chatHTML div > br { 
+    margin-top: 0.5em; 
+    margin-bottom: 0.2em;
+}
+
+#chatHTML > div, #chatHTML > p {
+    margin-bottom: 0.5em;
+}
+
+/* Hide empty lines between */
+#chatHTML div:empty {
+    display: none;
+}
+
+/* Responsive: Adjust for small screens */
+@media (max-width: 600px) {
+    #chatHTML {
+        max-width: 98vw;
+        border-radius: 0;
+        padding: 0 1vw;
+    }
+    #chatHTML .header, 
+    #chatHTML #row2, 
+    #chatHTML #row1,
+    #chatHTML .layoutCollection1 {
+        max-width: 99vw;
+        margin-left: 1.2vw;
+        margin-right: 1.2vw;
+    }
+}
