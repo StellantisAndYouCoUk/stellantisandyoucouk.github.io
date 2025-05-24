@@ -2566,6 +2566,7 @@ div#view_4746 {
     color: #128C7E;
     font-size: 0.98em;
     font-weight: 500;
+	display: block;
 }
 
 /* Date/Time (try to dim them a bit) */
