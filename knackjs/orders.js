@@ -1019,9 +1019,6 @@ $(document).on('knack-view-render.view_3633', function(event, view, data) {
 });
 
 //
-//
-//
-//
 //**Function that will trigger a javascript error in integromat
 function sendErrorToIntegromat(exception, name, data){
   console.log("error", exception);
@@ -1041,10 +1038,6 @@ function sendErrorToIntegromat(exception, name, data){
      async: false
   }).responseText;
 }
-
-
-
-
 
 // New Deal File - Digital P&L – Triggering integromat to capture PDF of profit and loss overview to upload to knack
 $(document).on('knack-form-submit.view_3855', function(event, view, data) {
@@ -1154,15 +1147,6 @@ $(document).on('knack-form-submit.view_2630', function(event, view, data) {
       "Stock Number":data.field_6115_raw, "Handover Appointment Record ID from Master App":data.field_6628_raw, "Source Of Payload":"knack direct", "Valet Type": handlArrayID(data.field_7197_raw, "0", "identifier"), "Valet Journey": handlArrayID(data.field_7206_raw, "0", "id"),
       "SA valeter notes": data.field_7261_raw};
  
-    function deleteEmpty(objectA){
-        
-        for (const [key, value] of Object.entries(objectA)) {
-            if (value === undefined || value === null || value === ""){
-                delete objectA[key];
-            }
-        }
-        return objectA;
-    }
     //Iterate through all the values contained in createData and replaces any undefined values with ""
     //Will create the final form of the data sent using POST
     let dataToSend = JSON.stringify(deleteEmpty(createData));
@@ -1203,63 +1187,11 @@ $(document).on('knack-form-submit.view_2828', function(event, view, data) {
         callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4ps7dsjgushppofbwo4npmjdi8u0s8dw",{"RecordID":data.id, "Source Of Payload":"knack direct"},"Trigger GET New Vehicle Order from Showroom or Enquiry Max Scenario V3 {(Deal File) Digital Deal File} Slave App");
       }
 });
-        
-
-
 
 // New Deal File – **Trigger Integromat to GET New Vehicle Invoice From Autoline V2 {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/89782269?redirect=true
 $(document).on('knack-form-submit.view_2855', function(event, view, data) { 
-    
-     try{  
-         
-        // Searching an undefined collection/aray will result in an exception and the javascript will stop execution!
-        function handlAll(valueA, indexA, fieldName){ 
-            return (valueA? valueA[indexA][fieldName]:"");//This tests if valueA is not null or undefined, if yes it returns empty string, otherwise it returns property of fieldName of valueA
-        }
-
-        let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=c81bcra3lmhe7dlj3dvbcev551frqdf3";
-        var createData = {"Knack Deal File ID":data.id, "Dealer":handlAll(data.field_6048_raw, "0", "identifier"), "New Vehicle Stockbook Number from Showroom":data.field_6115_raw, "Source Of Payload":"knack direct"};
-
-        function deleteEmpty(objectA){
-        
-                for (const [key, value] of Object.entries(objectA)) {
-                    if (value === undefined || value === null || value === ""){
-                        delete objectA[key];
-                    }
-                }
-                return objectA;
-            }
-            //Iterate through all the values contained in createData and deletesany undefined object properties
-            //Will create the final form of the data sent using POST
-            let dataToSend = JSON.stringify(deleteEmpty(createData));
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    
-     }catch(exception){
-         console.log("error");
-        var today = new Date();
-        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date+' '+time;
-
-        let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=bxfn25wkj67pptq9bniqmpvvjg868toi";
-        let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": "Trigger Integromat to GET New Vehicle Invoice From Autoline V2 {(Deal File) Digital Deal File} Slave App",
-        "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
-        var rData = $.ajax({
-           url: commandURL,
-           type: 'POST',
-           contentType: 'application/json',
-           data: dataToSend,
-           async: false
-        }).responseText;
-     }
-  
+    var createData = {"Knack Deal File ID":data.id, "Dealer":handlIndex(data.field_6048_raw, "0", "identifier"), "New Vehicle Stockbook Number from Showroom":data.field_6115_raw, "Source Of Payload":"knack direct"};
+    callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=c81bcra3lmhe7dlj3dvbcev551frqdf3",createData,"Trigger Integromat to GET New Vehicle Invoice From Autoline V2 {(Deal File) Digital Deal File} Slave App");
 });
 
 
@@ -1279,58 +1211,10 @@ $(document).on('knack-form-submit.view_2630', function(event, view, data) {
 
 // New Deal File – **Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/72890073?redirect=true
 $(document).on('knack-form-submit.view_2574', function(event, view, data) { 
-    
-    try{
-        // Searching an undefined collection/aray will result in an exception and the javascript will stop execution!
-        function handlAll(valueA, indexA, fieldName){ 
-            return (valueA? valueA[indexA][fieldName]:"");//This tests if valueA is not null or undefined, if yes it returns empty string, otherwise it returns property of fieldName of valueA
-        }
-        
-        
-        let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=o8f4wtbtada9lh4bzgj34o3qc0dpa3dx";
-        var createData = {"Knack Digital Deal File ID":data.id, "Connected Dealer":handlAll(data.field_6048_raw,"0", "identifier"), "Dealer ID From Master App":data.field_6257_raw, "Part Exchange 1":data.field_6125_raw,
+    var createData = {"Knack Digital Deal File ID":data.id, "Connected Dealer":handlIndex(data.field_6048_raw,"0", "identifier"), "Dealer ID From Master App":data.field_6257_raw, "Part Exchange 1":data.field_6125_raw,
       "Part Exchange 3":data.field_6127_raw, "Part Exchange 2":data.field_6126_raw, "Source Of Payload":"knack direct"};
-
-        function deleteEmpty(objectA){
-        
-                for (const [key, value] of Object.entries(objectA)) {
-                    if (value === undefined || value === null || value === ""){
-                        delete objectA[key];
-                    }
-                }
-                return objectA;
-            }
-            //Iterate through all the values contained in createData and deletesany undefined object properties
-            //Will create the final form of the data sent using POST
-            let dataToSend = JSON.stringify(deleteEmpty(createData));
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch (exception){
-        console.log("error");
-        var today = new Date();
-        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date+' '+time;
-
-        let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=bxfn25wkj67pptq9bniqmpvvjg868toi";
-        let dataToSend = JSON.stringify({"ID":data.id, "Source":"Javascript error", "Function": "Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission {(Deal File) Digital Deal File} Slave App",
-        "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
-        var rData = $.ajax({
-           url: commandURL,
-           type: 'POST',
-           contentType: 'application/json',
-           data: dataToSend,
-           async: false
-        }).responseText;
-    }
+    callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=o8f4wtbtada9lh4bzgj34o3qc0dpa3dx",createData,"Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission {(Deal File) Digital Deal File} Slave App");
 });
-
 
 // New Deal File - Automated Comms – **New Deal File Automated Comms - New Vehicle Checked In {(Deal File) Vehicle Check In, Documents and Status} Slave App - Replaces https://zapier.com/app/editor/101944107?redirect=true
 $(document).on('knack-form-submit.view_2692', function(event, view, data) { 
@@ -1353,12 +1237,10 @@ $(document).on('knack-form-submit.view_2705', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=27gimyyfnsdz3jfji1q5b4ag65xx9wzc",{"Record ID":data.id, "Trigger":"Registration Consent Doc", "Source Of Payload":"knack direct"},"New Deal File Automated Comms - Registration Consent Doc (AFRL) {(Deal File) Digital Deal File} Slave App");
 });
 
-
 // New Deal File - Automated Comms – **New Deal File Automated Comms - Registration Consent Doc UPDATED (AFRL) {(Deal File) Digital Deal File} Slave App
 $(document).on('knack-form-submit.view_2706', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=27gimyyfnsdz3jfji1q5b4ag65xx9wzc",{"Record ID":data.id, "Trigger":"Registration Consent Doc", "Source Of Payload":"knack direct"},"New Deal File Automated Comms - Registration Consent Doc UPDATED (AFRL) {(Deal File) Digital Deal File} Slave App");
 });
-
 
 // New Deal File - Automated Commsv – **New Deal File Automated Comms - Vehicle Delivered and Deal File Contents Status {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/111571812?redirect=true
 $(document).on('knack-form-submit.view_3620', function(event, view, data) { 
@@ -1370,25 +1252,20 @@ $(document).on('knack-form-submit.view_3620', function(event, view, data) {
     callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=27gimyyfnsdz3jfji1q5b4ag65xx9wzc",{"Record ID":data.id, "Trigger":"Deal File Contents Complete", "Source Of Payload":"knack direct"},"New Deal File Automated Comms - Vehicle Delivered and Deal File Contents Status {(Deal File) Digital Deal File} Slave App");
   }});
 
-
 // New Deal File - Automated Comms – **New Deal File Automated Comms - Vehicle Invoice Retrieved {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/102299451?redirect=true
 $(document).on('knack-form-submit.view_2855', function(event, view, data) { 
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=27gimyyfnsdz3jfji1q5b4ag65xx9wzc",{"Record ID":data.id, "Trigger":"Vehicle Invoice", "Source Of Payload":"knack direct"},"New Deal File Automated Comms - Vehicle Invoice Retrieved {(Deal File) Digital Deal File} Slave App");
 });
-
-
 
 // New Deal File - Capture PDFs – **New Deal File PDF - Customer satisfaction survey signed online by Customer {(Deal File) Customer Satisfaction Survey} Slave App - Replaces https://zapier.com/app/editor/116187423?redirect=true
 $(document).on('knack-form-submit.view_3702', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"Customer satisfaction survey", "Source Of Payload":"knack direct"},"New Deal File PDF - Customer satisfaction survey signed online by Customer {(Deal File) Customer Satisfaction Survey} Slave App"); 
 });
 
-
 // New Deal File - Capture PDFs – **New Deal File PDF - Merge PRE Sale Pack and Customer Signature {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116785534?redirect=true
 $(document).on('knack-form-submit.view_3685', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=6aee4yo8i2g1chdo9hphjnaw4n42ldor",{"Record ID":data.id, "Form":"Pre Sale Pack", "Source Of Payload":"knack direct"},"New Deal File PDF - Merge PRE Sale Pack and Customer Signature {(Deal File) Digital Deal File} Slave App");
 });
-
 
 // New Deal File - Capture PDFs – **New Deal File PDF - New Vehicle handover checklist signed at Dealer OR to be signed remotely {(Deal File) New Vehicle Handover Checklist} Slave App - Replaces https://zapier.com/app/editor/100712090?redirect=true
 $(document).on('knack-form-submit.view_2757', function(event, view, data) { 
@@ -1410,7 +1287,6 @@ $(document).on('knack-form-submit.view_3693', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"New vehicle handover checklist", "Source Of Payload":"knack direct"},"New Deal File PDF - New Vehicle handover checklist signed online by Customer {(Deal File) New Vehicle Handover Checklist} Slave App");
 });
 
-
 // New Deal File - Capture PDFs – **New Deal File PDF - Part Ex Purchase Invoice signed at dealer or to be signed remotely {(Deal File) Customer Part Exchange Invoice} Slave App - Replaces https://zapier.com/app/editor/100725890?redirect=true
 $(document).on('knack-form-submit.view_2822', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"Part exchange purchase invoice", "Source Of Payload":"knack direct"},"New Deal File PDF - Part Ex Purchase Invoice signed at dealer or to be signed remotely {(Deal File) Customer Part Exchange Invoice} Slave App");
@@ -1421,12 +1297,10 @@ $(document).on('knack-form-submit.view_3683', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"Part exchange purchase invoice", "Source Of Payload":"knack direct"},"New Deal File - Capture PDFs – **New Deal File PDF - Part Ex Purchase Invoice signed online by Customer {(Deal File) Customer Part Exchange Invoice} Slave App");
 });
 
-
 // New Deal File - Capture PDFs – **New Deal File PDF - Service Schedule signed at dealer or to be signed remotely {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/100698595?redirect=true
 $(document).on('knack-form-submit.view_2778', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"Service schedule", "Source Of Payload":"knack direct"},"New Deal File - Capture PDFs – **New Deal File PDF - Service Schedule signed at dealer or to be signed remotely {(Deal File) Digital Deal File} Slave App");
 });
-
 
 // New Deal File - Capture PDFs – **New Deal File PDF - Service Schedule signed online by Customer {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116190873?redirect=true
 $(document).on('knack-form-submit.view_3690', function(event, view, data) {
@@ -1446,27 +1320,21 @@ $(document).on('knack-form-submit.view_2674', function(event, view, data) {
 },"New Deal File PDF - Vehicle Invoice signed at dealer or to be signed remotely {(Deal File) Digital Deal File} Slave App");
 });
 
-
-
 // New Deal File - **New Deal File PDF - Vehicle Invoice signed online by Customer {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116194118?redirect=true
 $(document).on('knack-form-submit.view_3680', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"Vehicle invoice", "Source Of Payload":"knack direct"},"New Deal File PDF - Vehicle Invoice signed online by Customer {(Deal File) Digital Deal File} Slave App");
 });
 
-
 //**New Deal File PDF - Merge POST Sale Pack and Customer Signature {(Deal File) Digital Deal File} Slave App https://zapier.com/app/editor/116785934?redirect=true
 $(document).on('knack-form-submit.view_3696', function(event, view, data) { 
-    
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=6aee4yo8i2g1chdo9hphjnaw4n42ldor",{"Record ID":data.id, "Form":"Post Sale Pack", "Source Of Payload":"knack direct"},"New Deal File PDF - Merge POST Sale Pack and Customer Signature {(Deal File) Digital Deal File} Slave App");
 });
-
 
 //**Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App https://zapier.com/app/editor/73106017?redirect=true
 $(document).on('knack-form-submit.view_2584', function(event, view, data) { 
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=o8f4wtbtada9lh4bzgj34o3qc0dpa3d",{"Knack Digital Deal File ID":data.id, "Connected Dealer":handlAll(data.field_6048_raw,"0", "identifier"), "Dealer ID From Master App":data.field_6257_raw, "Part Exchange 1":data.field_6125_raw,
     "Part Exchange 3":data.field_6127_raw, "Part Exchange 2":data.field_6126_raw, "Source Of Payload":"knack direct"},"Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App");
 });
-
 
 // New Deal File - NEW P& AND New Car Approved P&L for New Car DOC
 $(document).on('knack-form-submit.view_3927', function(event, view, data) {
@@ -1503,7 +1371,6 @@ $(document).on('knack-form-submit.view_4314', function(event, view, data) {
 });
 
 // ****************** CUSTOMER HANDOVER PACK TRIGGERS ********************
-
 //**New Deal File - Customer Signed Consolidated Handover Pack - Update Documents and Trigger PDF Capture
 $(document).on('knack-form-submit.view_4406', function(event, view, data) { 
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3ih7yd1o9ajo23arn5v72zar3nd5m22p",{"Record ID":data.id},"New Deal File - Customer Signed Consolidated Handover Pack - Update Documents and Trigger PDF Capture");
@@ -1518,8 +1385,7 @@ $(document).on('knack-form-submit.view_4402', function(event, view, data) {
 $(document).on('knack-form-submit.view_4403', function(event, view, data) { 
   if(data.field_6485_raw !== null && data.field_6485_raw !== undefined){
     callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=lnunp83lom13c9swu0vgabmurbjxj5x6",{"recordid":data.id,"field_6481_raw":data.field_6481_raw,"typeOfCustomerSurvey":"NEW","ConnectedDealer":data.field_6476_raw,"SalesAdvisor":data.field_6488_raw,"MaserAppDealerID":data.field_6678_raw},"NEW DEAL FILE CUSTOMER SATISFACTION SURVEY VAUXHALL – TRIGGER INTEGROMAT UPON CUSTOMER SURVEY FORM COMPLETION FROM CUSTOMER HANDOVER PACK");
-  }});
-
+}});
 
 // FLEET PROJECT
 // ATTACH BROKER TO ORDER - TRIGGER INTEGROMAT TO ATTACH BROKER ACCOUNT
