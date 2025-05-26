@@ -1053,7 +1053,7 @@ $(document).on('knack-form-submit.view_2765', function(event, view, data) {
 
 // New Deal File – **Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116816484?redirect=true
 $(document).on('knack-form-submit.view_2584', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=o8f4wtbtada9lh4bzgj34o3qc0dpa3dx",{"Knack Digital Deal File ID":data.id, "Connected Dealer":handlAll(data.field_6048_raw, "0", "identifier"),"Dealer ID From Master App":data.field_6257_raw,"Part Exchange 1":data.field_6125_raw,
+  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=o8f4wtbtada9lh4bzgj34o3qc0dpa3dx",{"Knack Digital Deal File ID":data.id, "Connected Dealer":handlIndex(data.field_6048_raw, "0", "identifier"),"Dealer ID From Master App":data.field_6257_raw,"Part Exchange 1":data.field_6125_raw,
     "Part Exchange 3":data.field_6127_raw, "Part Exchange 2":data.field_6126_raw, "Source Of Payload":"knack direct"},"Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App");
   });
 
@@ -1070,12 +1070,17 @@ $(document).on('knack-form-submit.view_3567', function(event, view, data) {
 // New Deal File – **Trigger For Integromat Upon New Vehicle Handover Form Submission {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/73986254?redirect=true
 // "Telephone No 4 ":data.field_6105_raw, THE NAME WAS DECLARED WITH A SPACE IN THE ZAPIER!
 $(document).on('knack-form-submit.view_2630', function(event, view, data) {
-    
-    try{
-        
-    // Searching an undefined collection/aray will result in an exception and the javascript will stop execution!
-    function handlAll(valueA, fieldName){ 
-        return (valueA? valueA[fieldName]:"");//This tests if valueA is not null or undefined, if yes it returns empty string, otherwise it returns property of fieldName of valueA
+    function handlData (valueB, stringB){
+      return (typeof valueB === "undefined" || valueB === null || valueB === "" || valueB === " ") ? "" : valueB + stringB;
+    }
+    //function to create the address string
+    function handlAddress(valueA){
+        if (typeof valueA !== "undefined" && valueA !== null){
+            return handlData(handlAll(valueA, "street"), ", ") + handlData(handlAll(valueA, "street2"), ", ") + handlData(handlAll(valueA, "city"), ", ") + 
+                    handlData(handlAll(valueA, "state"), " ") + handlData(handlAll(valueA, "zip"), "");
+        }else{
+            return "";
+        }
     }
     function handlArrayID(valueA, indexNumber, fieldName){
         if(valueA !== undefined && valueA !== null){
@@ -1084,19 +1089,10 @@ $(document).on('knack-form-submit.view_2630', function(event, view, data) {
         }else{
             return "";
         }
-        if(valueA !== "undefined" && valueA !== null){
-            console.log("The valueA: " + valueA);
-            return valueA.length > 0? valueA[indexNumber][fieldName]:"";
-        }else{
-            return "";
-        }
     }
-    
     function handlArray(valueA){
         if (Array.isArray(valueA)){
-            
             for (var i = 0; i < valueA.length; i++) {
-                
                 if(typeof valueA[i] !== "undefined" && valueA[i] !== null){
                     return valueA[i];
                     }
@@ -1105,24 +1101,13 @@ $(document).on('knack-form-submit.view_2630', function(event, view, data) {
             return data.field_6553_raw;
         }
     }
-    
-    //function to create the address string
-    function handlAddress(valueA){
-        if (typeof valueA !== "undefined" && valueA !== null){
-            
-            function handlData (valueB, stringB){
-                return (typeof valueB === "undefined" || valueB === null || valueB === "" || valueB === " ") ? "" : valueB + stringB;
-            }
-            return handlData(handlAll(valueA, "street"), ", ") + handlData(handlAll(valueA, "street2"), ", ") + handlData(handlAll(valueA, "city"), ", ") + 
-                    handlData(handlAll(valueA, "state"), " ") + handlData(handlAll(valueA, "zip"), "");
-            
-        }else{
-            return "";
-        }
+
+    function handlSRC (valueC){
+      return (valueC? "<img src=" + "\"" + valueC + "\"" + " />": "");
     }
-        var dateTime = "";
-        if(typeof data.field_6277_raw !== undefined && typeof data.field_6277_raw !== null){
-            
+
+    var dateTime = "";
+    if(typeof data.field_6277_raw !== undefined && typeof data.field_6277_raw !== null){
             var num = data.field_6277_raw.time;
             var hours = (num / 60);
             var rhours = Math.floor(hours);
@@ -1130,15 +1115,9 @@ $(document).on('knack-form-submit.view_2630', function(event, view, data) {
             var rminutes = Math.round(minutes);
             var time =  rhours.toString().padStart(2, '0') + ":" + rminutes.toString().padStart(2, '0');
             dateTime = data.field_6277_raw.date_formatted + " " + time;   
-        }
+    }
 
-        function handlSRC (valueC){
-            return (valueC? "<img src=" + "\"" + valueC + "\"" + " />": "");
-        }
-    let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ajxkfooskhy153u7ebtlipjmcfyp8guh";
-    
-    
-    var createData = {"Knack Record ID From New Vehicle Deal File":data.id, "Customer Address (Autoline Showroom)":handlAddress(data.field_6100_raw), "Autoline Showroom Order Number":data.field_6109_raw,
+  var createData = {"Knack Record ID From New Vehicle Deal File":data.id, "Customer Address (Autoline Showroom)":handlAddress(data.field_6100_raw), "Autoline Showroom Order Number":data.field_6109_raw,
       "Customer Name (Autoline Showroom)":data.field_6159_raw, "Telephone No 1 (Autoline Showroom)":handlAll(data.field_6101_raw, "formatted"), "Customer Name (Dialog":data.field_6070_raw, "Telephone No 4 (Autoline Showroom)":handlAll(data.field_6105_raw, "formatted"), 
       "Telephone No 3 (Autoline Showroom)":handlAll(data.field_6104_raw, "formatted"), "Telephone No 4 ":handlAll(data.field_6105_raw, "formatted"), "Customer Phone (Dialog)":data.field_6052_raw, "Vehicle Description (Autoline Showroom)":data.field_6110_raw, 
       "Vehicle Description (Dialog)":data.field_6281_raw, "Dealer ID from Master App":data.field_6257_raw, "Sales Adviser Email Linked to this order":handlAll(data.field_6280_raw, "email"), "Customer Email (Dialog)":handlAll(data.field_6102_raw, "email"),
@@ -1146,36 +1125,8 @@ $(document).on('knack-form-submit.view_2630', function(event, view, data) {
       "Key Tag Number":data.field_6267_raw, "Date of customer handover":dateTime, "Customer Email (Autoline)":handlAll(data.field_6102_raw, "email"), "Handover Notes":data.field_6278_raw, "Enquiry Max or Showroom Order":handlArray(data.field_6553_raw),
       "Stock Number":data.field_6115_raw, "Handover Appointment Record ID from Master App":data.field_6628_raw, "Source Of Payload":"knack direct", "Valet Type": handlArrayID(data.field_7197_raw, "0", "identifier"), "Valet Journey": handlArrayID(data.field_7206_raw, "0", "id"),
       "SA valeter notes": data.field_7261_raw};
- 
-    //Iterate through all the values contained in createData and replaces any undefined values with ""
-    //Will create the final form of the data sent using POST
-    let dataToSend = JSON.stringify(deleteEmpty(createData));
 
-    var rData = $.ajax({
-        url: commandURL,
-        type: 'POST',
-        contentType: 'application/json',
-        data: dataToSend,
-        async: false
-    }).responseText;
-    }catch(exception){
-        console.log("error");
-        var today = new Date();
-        var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        var dateTime = date+' '+time;
-
-        let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=bxfn25wkj67pptq9bniqmpvvjg868toi";
-        let dataToSend = JSON.stringify({"ID":data.id, "Source":"Javascript error", "Function": "New Deal File – **Trigger For Integromat Upon New Vehicle Handover Form Submission {(Deal File) Digital Deal File} Slave App",
-        "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
-        var rData = $.ajax({
-           url: commandURL,
-           type: 'POST',
-           contentType: 'application/json',
-           data: dataToSend,
-           async: false
-        }).responseText; 
-    }
+  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ajxkfooskhy153u7ebtlipjmcfyp8guh",createData,"New Deal File – **Trigger For Integromat Upon New Vehicle Handover Form Submission {(Deal File) Digital Deal File} Slave App");    
 });
 
 
