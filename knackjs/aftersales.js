@@ -3201,6 +3201,9 @@ $(document).on('knack-scene-render.scene_1459', function(event, scene) {
 
   recursiveSceneRefresh('1459',['view_4817','view_3805'],300000);
 	console.log('Recursivecallscene_1459');
+
+	    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
 });
 
 
