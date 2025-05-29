@@ -3191,9 +3191,8 @@ $(document).on('knack-scene-render.scene_1050', function(event, scene) {
 //technical ticket hovers
 
 $(document).on('knack-scene-render.scene_1459', function(event, scene) {	
-  //Tooltip table 3595
-  tooltipsTable('1459','3595','field_1532','field_2586');
-	tooltipsTable('1459','3595','field_1537','field_2213');  
+	    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
   //Tooltip table 4817
   tooltipsTable('1459','4817','field_1532','field_2586');
 	tooltipsTable('1459','4817','field_1537','field_2213');  
@@ -3202,8 +3201,6 @@ $(document).on('knack-scene-render.scene_1459', function(event, scene) {
   recursiveSceneRefresh('1459',['view_4817'],300000);
 	console.log('Recursivecallscene_1459');
 
-	    $('th[class="field_978"]').hide();
-    $('td[class*="field_978"]').hide();
 });
 
 
