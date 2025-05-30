@@ -3189,20 +3189,14 @@ $(document).on('knack-scene-render.scene_1050', function(event, scene) {
 });
 
 //technical ticket hovers
-
-$(document).on('knack-scene-render.scene_1459', function(event, scene) {	
-  //Tooltip table 4817
-  tooltipsTable('1459','4817','field_1532','field_2586');
+$(document).on('knack-view-render.view_4817', function (event, view, data) {
+	    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
+	  tooltipsTable('1459','4817','field_1532','field_2586');
 	tooltipsTable('1459','4817','field_1537','field_2213');  
 	tooltipsTable('1459','4817','field_2298','field_2272');
 
   recursiveSceneRefresh('1459',['view_4817'],300000);
-
-});
-
-$(document).on('knack-view-render.view_4817', function (event, view, data) {
-	    $('th[class="field_978"]').hide();
-    $('td[class*="field_978"]').hide();
 });
 
 
