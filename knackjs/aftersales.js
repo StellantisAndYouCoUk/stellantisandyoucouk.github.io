@@ -3199,7 +3199,6 @@ $(document).on('knack-scene-render.scene_1459', function(event, scene) {
 	tooltipsTable('1459','4817','field_2298','field_2272');
 
   recursiveSceneRefresh('1459',['view_4817'],300000);
-	console.log('Recursivecallscene_1459');
 
 });
 
