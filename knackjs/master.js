@@ -654,6 +654,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 {view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'},
 /*Workshop capacity*/ {view:'view_7528',url:'#aftersales-service-reporting/workshop-capacity/'},
 /*PO Upload*/ {view:'view_7571',url:'#po-upload/'},
+/*Telematics Leads and Exclusion Codes */ {view:'view_8032',url:'#telematics-c1st-leadexclusions/'},
 /* sales prospect*/ {view:'view_7517',url:'#service-sales-prospect'}]; 
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 aftersalesConnectView.forEach(aftersalesConnectViewFunction);
