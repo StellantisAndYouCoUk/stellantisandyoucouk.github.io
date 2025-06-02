@@ -4902,8 +4902,8 @@ p.speech-bubble-inbound-1link:before {
 
 /* General chat container */
 #chatHTML {
-    max-width: 600px;
-    margin: 30px auto;
+    max-width: 800px;
+    margin: 3px auto;
     padding: 0 4px;
     font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
     background: #ece5dd; /* WhatsApp bg */
