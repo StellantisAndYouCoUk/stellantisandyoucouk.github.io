@@ -1167,6 +1167,10 @@ $(document).on('knack-form-submit.view_2574', function(event, view, data) {
 
 // New Deal File - Automated Comms – **New Deal File Automated Comms - New Vehicle Checked In {(Deal File) Vehicle Check In, Documents and Status} Slave App - Replaces https://zapier.com/app/editor/101944107?redirect=true
 $(document).on('knack-form-submit.view_2692', function(event, view, data) { 
+  const today = new Date();
+  const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+  const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  const dateTime = date+' '+time;
   callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=27gimyyfnsdz3jfji1q5b4ag65xx9wzc",{"Record ID":data.id, "Trigger":"New Vehicle Check In", "Source Of Payload":"knack direct","userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "dateTime": dateTime},"New Deal File Automated Comms - New Vehicle Checked In {(Deal File) Vehicle Check In, Documents and Status} Slave App");
 });
 
