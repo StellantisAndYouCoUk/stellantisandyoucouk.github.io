@@ -992,6 +992,10 @@ $(document).on('knack-form-submit.view_1394', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=e681sgmbzwk1hgugd3ph4kr34addh61o", {"Record ID":data.id,"Origin":data.field_1815},"Pre Visit Digital Customer Incident Form DEV")
 });
 
+//trigger aftersales - Update Internal Job Status with Details
+$(document).on('knack-form-submit.view_4828', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/n7dnr5i4ygbv36ih7ycjkmrlv1t0udd7",{"Record ID":data.id, "Internal Status":data.field_3781_raw, "userName": Knack.getUserAttributes().name}, "trigger aftersales - Update Internal Status with details")
+});  
 
 //change the text color based on the input value
 $(document).on('knack-view-render.view_375', function(event, view, data) {
