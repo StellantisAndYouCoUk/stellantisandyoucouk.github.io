@@ -2611,3 +2611,10 @@ div#view_4746 {
 #chatHTML div:empty {
     display: none;
 }
+
+
+/* Line 2 text area in stapletons-tyre-stock-profiling */
+
+#field_358 {
+    margin-top: 2.4rem;
+}
