@@ -2245,6 +2245,12 @@ color: #FFFFFF;
   	font-weight: bold;
 }
 
+#view_3810 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(12) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
 /*** Deal File Manager Deals Awaiting Order Numbers ***/
 
 #view_5016 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {

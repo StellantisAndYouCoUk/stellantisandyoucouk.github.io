@@ -1587,7 +1587,7 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #view_3516 > section > div > div.kn-details-group.column-2.columns > div:nth-child(1) > div > div.kn-detail.kn-label-left.field_2983 > div.kn-detail-label,
 #view_1475 > section > div > div:nth-child(1) > div > div > div > div.kn-detail-label,
 #view_4527 .kn-detail-label,
-#view_4517 .kn-detail-label,
+#view_4839 .kn-detail-label,
 #view_4774 .kn-detail-label,
 #view_330 > section > div > div > div > div > div > div.kn-detail-label {
   background-color: transparent;
@@ -2610,4 +2610,11 @@ div#view_4746 {
 /* Hide empty lines between */
 #chatHTML div:empty {
     display: none;
+}
+
+
+/* Line 2 text area in stapletons-tyre-stock-profiling */
+
+#view_4524 #field_3589 {
+    margin-top: 2.4rem;
 }
