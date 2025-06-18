@@ -4218,20 +4218,6 @@ color: #FFFFFF;
 
 #view_3655 > section > div > div:nth-child(14) > div:nth-child(1) > div > div.kn-detail.field_7754 > div.kn-detail-label {border-left: 10px solid #32a1ce;}
 
-/*** Support Claims Required ***/
-
-#view_5569 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
-	background-color: #FF0000;
-  	color: #FFFFFF;
-  	font-weight: bold;
-}
-
-#view_5569 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
-	background-color: #2ab27b;
-  	color: #FFFFFF;
-  	font-weight: bold;
-}
-
 /* Links to New Deal File Admin Audit */
 
 #view_3799 > section > div > div > div > div > div > div > span > a {
