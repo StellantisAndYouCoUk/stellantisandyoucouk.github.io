@@ -4910,7 +4910,7 @@ p.speech-bubble-inbound-1link:before {
     background: #ece5dd; /* WhatsApp bg */
     border-radius: 16px;
     box-shadow: 0 2px 24px rgba(0,0,0,0.10);
-    min-height: 80vh;
+    min-height: 40vh;
 }
 
 /* Remove default <br> spacing*/
