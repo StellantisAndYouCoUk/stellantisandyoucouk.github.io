@@ -1429,7 +1429,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     window.location.reload(false);
   }
 
-  createCookie('RDDigitalOrdersBearer',Knack.session.user.token,1);
+  if (Knack.session && Knack.session.user) createCookie('RDDigitalOrdersBearer',Knack.session.user.token,1);
 
     //check for master links
     for (let o = 0;o<$('a[href*="https://www.stellantisandyou.co.uk/digital#"]').length;o++){
