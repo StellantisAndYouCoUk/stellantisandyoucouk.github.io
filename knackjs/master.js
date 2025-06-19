@@ -619,6 +619,13 @@ $(document).on('knack-view-render.view_7962', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#manufacturer-marketing-preferences" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//head office fleet forecast
+	$(document).on('knack-view-render.view_8084', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-fleet-forecasting-reporting/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
 			     {view:'view_6510',url:'#aftersales-key-tag-search'},
