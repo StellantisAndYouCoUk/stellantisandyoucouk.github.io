@@ -5034,3 +5034,11 @@ p.speech-bubble-inbound-1link:before {
 }
 
 /* Account Settings Bell Icon */
+
+
+
+/* Remove white empty space on pop-up */
+
+#view_8067 .group-layout-wrapper{
+  flex: none;
+}
