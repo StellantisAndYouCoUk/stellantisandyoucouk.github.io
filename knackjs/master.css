@@ -702,6 +702,7 @@ body {
 #view_7355 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7588 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_8064 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_8022 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7769 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7772 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7775 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
@@ -4910,7 +4911,7 @@ p.speech-bubble-inbound-1link:before {
     background: #ece5dd; /* WhatsApp bg */
     border-radius: 16px;
     box-shadow: 0 2px 24px rgba(0,0,0,0.10);
-    min-height: 80vh;
+    min-height: 40vh;
 }
 
 /* Remove default <br> spacing*/
@@ -5034,3 +5035,16 @@ p.speech-bubble-inbound-1link:before {
 }
 
 /* Account Settings Bell Icon */
+
+
+
+/* Remove white empty space on pop-up */
+
+#view_8067 .group-layout-wrapper.view-column > .kn-view {
+  flex: none;
+}
+
+/* change background in rpa process view */
+#view_8041 .kn-detail-label {
+    background-color: transparent;
+}
