@@ -3335,7 +3335,7 @@ let defineButtons = [{linkText:'All',"filters":[]},
 
 {linkText:"DC – Parts Need Ord","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete - Parts Need Ordering","operator":"contains"}]},
 
-{linkText:"DC – RPA","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete – Requires Prior Approval","operator":"contains"}]},
+{linkText:"DC – PRA","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete – Requires Prior Approval","operator":"contains"}]},
 
 {linkText:"Carry ORT","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Carrying Out Overnight Road Test","operator":"contains"}]}];
 	
