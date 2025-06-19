@@ -3336,8 +3336,6 @@ let defineButtons = [{linkText:'All',"filters":[]},
 
 {linkText:"DC – RPA","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete – Requires Prior Approval","operator":"contains"}]},
 
-{linkText:"DC – Approv'd, Parts Need Ord","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete – Approval gained, Parts Need Ordering","operator":"contains"}]},
-
 {linkText:"Carry ORT","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Carrying Out Overnight Road Test","operator":"contains"}]}];
 	
 console.log("renderSYSearchButtons('3307',defineButtons);")
