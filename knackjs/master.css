@@ -5039,6 +5039,6 @@ p.speech-bubble-inbound-1link:before {
 
 /* Remove white empty space on pop-up */
 
-#view_8067 .group-layout-wrapper{
+#view_8067 .group-layout-wrapper.view-column > .kn-view {
   flex: none;
 }
