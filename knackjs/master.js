@@ -257,6 +257,13 @@ $(document).on('knack-view-render.any', function(event, view, data) {
 
 //MASTER/SLAVE CONNECT - the scene have one view of Account details, where is only email field without header, the source of IFRAME is the public address of slave page
 
+
+//head office fleet forecast
+$(document).on('knack-view-render.view_8085', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-forecasting-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 	//Deliver Broker Management
 	
 	$(document).on('knack-view-render.view_6288', function(event, view, data) {
@@ -619,11 +626,6 @@ $(document).on('knack-view-render.view_7962', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#manufacturer-marketing-preferences" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
-//head office fleet forecast
-$(document).on('knack-view-render.view_8085', function(event, view, data) {
-  var token = Knack.getUserAttributes().values["field_6440"];
-  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-forecasting-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
-});
 
 
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
