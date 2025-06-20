@@ -1573,7 +1573,7 @@ function getRecordIdFromHref(ur) {
 function triggerEssorRefresh(){
   console.log('triggerEssorRefresh');
   console.log(getRecordIdFromHref(location.href));
-  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=5746d46oj2qwo8kvasmun6belsnktikd",{"recordId":getRecordIdFromHref(location.href)},"Trigger Essor Data Refresh From Knack");  
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/5746d46oj2qwo8kvasmun6belsnktikd",{"recordId":getRecordIdFromHref(location.href)},"Trigger Essor Data Refresh From Knack");  
   $('a[href*="triggerEssorRefresh"]').attr('disabled','disabled');
   $('a[href*="triggerEssorRefresh"]').parent().append('The Essor details will be rechecked in next few minutes.');
 }
