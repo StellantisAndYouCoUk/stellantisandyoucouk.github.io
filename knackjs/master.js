@@ -572,6 +572,12 @@ $(document).on('knack-view-render.view_8010', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#spoke-coordinator-visit-forms?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Tyre Stock Auditing
+$(document).on('knack-view-render.view_8101', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#tyre-stock-auditing?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 // New Sales Virtual Reception
 $(document).on('knack-view-render.view_7930', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
