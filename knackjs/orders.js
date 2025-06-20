@@ -1467,6 +1467,7 @@ function callPostHttpRequest(url, payloadObject, callName){
     }).responseText;
     return rData;
   } catch(exception) {
+    console.log('callPostHttpRequest',exception);
     sendErrorToIntegromat(exception, callName, payloadObject);
   }
 }
