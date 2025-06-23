@@ -267,7 +267,7 @@ $(document).on('knack-view-render.view_8085', function(event, view, data) {
 
 	//Deliver Broker Management
 	
-	$(document).on('knack-view-render.view_6288', function(event, view, data) {
+$(document).on('knack-view-render.view_6288', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#delivery-broker-management1/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });

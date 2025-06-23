@@ -549,7 +549,7 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
 
   var recordId = '';
   $(document).on('knack-form-submit.view_71', function(event, view, data) { 
-    let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=53yx2tuy820lvzuobdqex8jem2utgwil" ;
+    let commandURL = "https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=s9cuek15138uvwfki1sfohregcro72y3" ;
     let dataToSend = Object.assign({"source":"NEWRECORD"}, data); 
     recordId = data.id;
     console.log(dataToSend);
