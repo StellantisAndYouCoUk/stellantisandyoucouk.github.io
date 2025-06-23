@@ -4513,3 +4513,24 @@ $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
   
 
 
+$(document).on('knack-view-render.view_4863', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings3817 = {
+    spiritLine : false,
+    imageOverlay: null,
+    imageOverlayEffect : false,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : true,
+    actionAfterPhoto : 'readable', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Is the tyre description readable?',
+    uploadMethod : 'knack', //knack, make, field
+    uploadField : 'field_3817',
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
+    app_id : '6040dd9a301633001bca5b4e'
+  }
+  createPhotoButton(appSettings3817,'3817');
+
+  //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
+});
