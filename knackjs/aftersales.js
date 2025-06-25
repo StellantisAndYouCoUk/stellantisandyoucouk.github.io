@@ -2382,7 +2382,7 @@ $(document).on('knack-form-submit.view_2362', function(event, view, data) {
 
 //trigger aftersales - wip management notes to update + is vehicle on site
 $(document).on('knack-form-submit.view_2361', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=s8j9klwniouvc81742i1hy8yxtc822ut", {"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_978_raw, "Nom_wip":data.field_558_raw},"trigger aftersales - wip management notes to update + is vehicle on site");
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=a1ixxw9k9su6uv7ikvlwslklhg2mmkcw", {"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_978_raw, "Nom_wip":data.field_558_raw},"trigger aftersales - wip management notes to update + is vehicle on site");
 });
 
 //Wip reporting "on-site" page hover for operator details 
@@ -2432,7 +2432,7 @@ $(document).on("knack-view-render.view_2351", function(event, view, data) {
 
 //**Trigger Text To Customer To Complete Exit Survey At job card v2
 $(document).on('knack-form-submit.view_2365', function(event, view, data) { 
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=wio8wmbeqg4p81kwshmegg7h7fsfawz7", {"Record ID":data.id},"Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"");
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=jblvluz2ckc63ecbqsfy7n8g55rvxsik", {"Record ID":data.id},"Trigger Text To Customer To Complete Exit Survey At Workshop \"Check Out\"");
 });
 
 // trigger to Send Data When Vehicle Is Checked Out From Customer Satisfaction check (sms) jobcard v2
