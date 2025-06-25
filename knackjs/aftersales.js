@@ -1276,12 +1276,12 @@ $(document).on('knack-form-submit.view_2725', function(event, view, data) {
 
 // Trigger Update To VR (Virtual Reception) Status
 $(document).on('knack-form-submit.view_1177', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3b7aqxlblay6r5egi5rev56ql8qiy4g2", {"Record ID":data.id},"Aftersales VR Update")
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=eg038ofutim5lilwakogd64bdpcl63hp", {"Record ID":data.id},"Aftersales VR Update")
 });
 
 // Trigger When VR (Virtual Reception) Message Manually Added From Aftersales App
 $(document).on('knack-form-submit.view_1180', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=f1k56q7sd97mlqn37v37y9s759it9ghn", {"Record ID":data.id},"Aftersales VR New Message")
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=n61si6zv6na4hav63cyl7gvkvh78n73z", {"Record ID":data.id},"Aftersales VR New Message")
 });
 
 //Refresh Virtual Reception table on Vehicle lookup page         
