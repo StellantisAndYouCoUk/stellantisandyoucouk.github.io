@@ -894,7 +894,7 @@ function sendErrorToIntegromat(exception, name){
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   const dateTime = date+' '+time;
 
-  let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=bxfn25wkj67pptq9bniqmpvvjg868toi";
+  let commandURL = "https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3wfpzp5a383fxm2k5avvaxpqx8q1us7n";
   let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": name,
   "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
   var rData = $.ajax({
