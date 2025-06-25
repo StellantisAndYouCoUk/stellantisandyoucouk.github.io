@@ -549,7 +549,7 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
 
   var recordId = '';
   $(document).on('knack-form-submit.view_71', function(event, view, data) { 
-    let commandURL = "https://hook.eu1.make.celonis.com/s9cuek15138uvwfki1sfohregcro72y3" ;
+    let commandURL = "https://hook.eu1.make.celonis.com/r5pe7r3fvhmkq8x0q9lb8pq3kbive16p" ;
     let dataToSend = Object.assign({"source":"NEWRECORD"}, data); 
     recordId = data.id;
     console.log(dataToSend);
