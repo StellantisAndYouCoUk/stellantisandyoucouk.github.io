@@ -1261,17 +1261,17 @@ $(document).on('knack-form-submit.view_1182', function(event, view, data) {
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 $(document).on('knack-form-submit.view_1260', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4j0xi2h5k9xu0h1cq1yznekvwgbqk0p6", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager
 $(document).on('knack-form-submit.view_1261', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4j0xi2h5k9xu0h1cq1yznekvwgbqk0p6", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 //Trigger failed Quality check (QC) emails to workshop controller/ manager within TECH VIEW
 $(document).on('knack-form-submit.view_2725', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2tfc5ujqwtit3x3r60it41o6vmczrd0t", {"Record ID":data.id},"Failed Quality Check (QC)")
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4j0xi2h5k9xu0h1cq1yznekvwgbqk0p6", {"Record ID":data.id},"Failed Quality Check (QC)")
 });
 
 // Trigger Update To VR (Virtual Reception) Status
