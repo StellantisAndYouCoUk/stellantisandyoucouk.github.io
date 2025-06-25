@@ -793,7 +793,7 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
    //END OF CODE FOR NOTIFICATION AND REFRESH OF LIST
 
 $(document).on('knack-form-submit.view_338', function(event, view, data) { 
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=82cg83yb0g9ekakjvn4ep8k8xh27kyps",Object.assign({"source":"EMACOfferRefresh"}, data),'EMACOfferRefresh')
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=lto6g62cydbes3yrpzyx8mh2hedyb1qr",Object.assign({"source":"EMACOfferRefresh"}, data),'EMACOfferRefresh')
 
   refreshView('378', true);
   setTimeout(function(){
@@ -992,6 +992,10 @@ $(document).on('knack-form-submit.view_1394', function(event, view, data) {
   callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=e681sgmbzwk1hgugd3ph4kr34addh61o", {"Record ID":data.id,"Origin":data.field_1815},"Pre Visit Digital Customer Incident Form DEV")
 });
 
+//trigger aftersales - Update Internal Job Status with Details
+$(document).on('knack-form-submit.view_4828', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/n7dnr5i4ygbv36ih7ycjkmrlv1t0udd7",{"Record ID":data.id, "Internal Status":data.field_3781_raw, "userName": Knack.getUserAttributes().name}, "trigger aftersales - Update Internal Status with details")
+});  
 
 //change the text color based on the input value
 $(document).on('knack-view-render.view_375', function(event, view, data) {
@@ -3188,6 +3192,18 @@ $(document).on('knack-scene-render.scene_1050', function(event, scene) {
 	console.log('Recursivecallscene_1050');
 });
 
+//technical ticket hovers
+$(document).on('knack-view-render.view_4817', function (event, view, data) {
+	    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
+	  tooltipsTable('1459','4817','field_1532','field_2586');
+	tooltipsTable('1459','4817','field_1537','field_2213');  
+	tooltipsTable('1459','4817','field_2298','field_2272');
+
+  recursiveSceneRefresh('1459',['view_4817'],300000);
+});
+
+
 
 $(document).on('knack-scene-render.scene_1411', function(event, scene) {	
   //Tooltip table 3595
@@ -3280,8 +3296,50 @@ $(document).on('knack-view-render.view_3806', function (event, view, data) {
 var view_3307_refreshDateTime = new Date();
 //hover for labour details on workshop table
 $(document).on('knack-view-render.view_3307', function (event, view, data) {
-  let defineButtons = [{linkText:'All',filters:[]},{linkText:'W\'Shop Master List',filters:[{"field_name":"Workshop Today's Job","field":"field_3229","value":true,"operator":"is"}]},{linkText:'Parts Avail.',filters:[{"field_name":"Parts on status V,I,C,S","field":"field_985","value":true,"operator":"is blank"}]},{linkText:'Parts Unavail.',filters:[{"field_name":"Parts on status V,I,C,S","field":"field_985","value":true,"operator":"is not blank"}]},{linkText:'Checked In TODAY',filters:[{"field_name":"Date/Time Customer Signature from Service Check In / Inspection Completed","field":"field_2711","value":true,"operator":"is today"}]},{linkText:'Clocked On Now',filters:[{"field_name":"Workshop Controller labour Snapshot","field":"field_1537","value":"Working On Currently","operator":"contains"}]},{linkText:'Never Clocked',filters:[{"field_name":"Last Clocked Date ","field":"field_787","value":"","operator":"is blank"}]},{linkText:'Wait. Auth (VHC)',filters:[{"field":"field_2297","value":"CPL","operator":"is"}]},{linkText:'i0001',filters:[{"field":"field_756","value":"i0001","operator":"is"}]},{linkText:'i0002',filters:[{"field":"field_756","value":"i0002","operator":"is"}]},{linkText:'NO BON',filters:[{"field":"field_1472","value":"Power Supply Order NO BON","operator":"is"}]},{linkText:'Write up TODAY',filters:[{"field_name":"Date/Time Technician Write up completed","field":"field_2722","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is today"}]},{linkText:'W\'Shop Planned Before Today',filters:[{"field":"field_3429","value":"","operator":"is before today"}]},{linkText:'W\'Shop Planned Today',filters:[{"field":"field_3429","value":"","operator":"is today"}]},{linkText:'No W\'Shop Planned',filters:[{"field":"field_3429","value":"","operator":"is blank"}]},{linkText:'W\'Shop Planned After Today',filters:[{"field":"field_3429","value":"","operator":"is after today"}]},{linkText:'Jobs With Technical Tickets',filters:[{"field":"field_3756","value":"","operator":"is not blank"}]}];
-  console.log("renderSYSearchButtons('3307',defineButtons);")
+
+let defineButtons = [{linkText:'All',"filters":[]},
+
+{linkText:"W\'Shop Master List","filters":[{"field_name":"Workshop Today's Job","field":"field_3229","value":true,"operator":"is"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Parts Avail.","filters":[{"field_name":"Parts on status V,I,C,S","field":"field_985","value":true,"operator":"is blank"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Parts Unavail.","filters":[{"field_name":"Parts on status V,I,C,S","field":"field_985","value":true,"operator":"is not blank"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Checked In TODAY","filters":[{"field_name":"Date/Time Customer Signature from Service Check In / Inspection Completed","field":"field_2711","value":true,"operator":"is today"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Clocked On Now","filters":[{"field_name":"Workshop Controller labour Snapshot","field":"field_1537","value":"Working On Currently","operator":"contains"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Never Clocked","filters":[{"field_name":"Last Clocked Date ","field":"field_787","value":"","operator":"is blank"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Wait. Auth (VHC)","filters":[{"field":"field_2297","value":"CPL","operator":"is"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"i0001","filters":[{"field":"field_756","value":"i0001","operator":"is"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"i0002","filters":[{"field":"field_756","value":"i0002","operator":"is"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"NO BON","filters":[{"field":"field_1472","value":"Power Supply Order NO BON","operator":"is"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Write up TODAY","filters":[{"field_name":"Date/Time Technician Write up completed","field":"field_2722","value":{"date":"","time":"","am_pm":"Invalid date","hours":null,"all_day":false,"minutes":null},"operator":"is today"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"W\'Shop Planned Before Today","filters":[{"field":"field_3429","value":"","operator":"is before today"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"W\'Shop Planned Today","filters":[{"field":"field_3429","value":"","operator":"is today"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"No W\'Shop Planned","filters":[{"field":"field_3429","value":"","operator":"is blank"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete - Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"W\'Shop Planned After Today","filters":[{"field":"field_3429","value":"","operator":"is after today"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"Jobs With Technical Tickets","filters":[{"field":"field_3756","value":"","operator":"is not blank"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts on Order","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Parts Need Ordering","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Diag complete – Requires Prior Approval","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Required","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Technical Ticket - Created/Awaiting Response","operator":"does not contain"},{"field_name":"Internal Job Card Status","field":"field_3781","value":"Carrying Out Overnight Road Test","operator":"does not contain"}]},
+
+{linkText:"DC - Parts On Order","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete – Parts on Order","operator":"contains"}]},
+
+{linkText:"DC – Parts Need Ord","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete - Parts Need Ordering","operator":"contains"}]},
+
+{linkText:"DC – PRA","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Diag complete – Requires Prior Approval","operator":"contains"}]},
+
+{linkText:"Carry ORT","filters":[{"field_name":"Internal Job Card Status","field":"field_3781","value": "Carrying Out Overnight Road Test","operator":"contains"}]}];
+	
+console.log("renderSYSearchButtons('3307',defineButtons);")
   renderSYSearchButtons('3307',defineButtons);
  
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
@@ -4455,3 +4513,24 @@ $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
   
 
 
+$(document).on('knack-view-render.view_4863', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings3817 = {
+    spiritLine : false,
+    imageOverlay: null,
+    imageOverlayEffect : false,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : true,
+    actionAfterPhoto : 'readable', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Is the tyre description readable?',
+    uploadMethod : 'knack', //knack, make, field
+    uploadField : 'field_3817',
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
+    app_id : '6040dd9a301633001bca5b4e'
+  }
+  createPhotoButton(appSettings3817,'3817');
+
+  //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
+});

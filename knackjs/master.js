@@ -257,9 +257,17 @@ $(document).on('knack-view-render.any', function(event, view, data) {
 
 //MASTER/SLAVE CONNECT - the scene have one view of Account details, where is only email field without header, the source of IFRAME is the public address of slave page
 
+
+// Head Office Retail and Motability Order Reporting
+$(document).on('knack-view-render.view_8085', function(event, view, data) {
+  console.log('knack-view-render.view_8085')
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-fleet-forecasting-reporting/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 	//Deliver Broker Management
 	
-	$(document).on('knack-view-render.view_6288', function(event, view, data) {
+$(document).on('knack-view-render.view_6288', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#delivery-broker-management1/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
@@ -565,6 +573,12 @@ $(document).on('knack-view-render.view_8010', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#spoke-coordinator-visit-forms?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//Tyre Stock Auditing
+$(document).on('knack-view-render.view_8101', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#tyre-stock-auditing?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 // New Sales Virtual Reception
 $(document).on('knack-view-render.view_7930', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
@@ -619,6 +633,8 @@ $(document).on('knack-view-render.view_7962', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#manufacturer-marketing-preferences" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+
+
 var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'},
 //{view:'view_6483',url:'#workshop-control/'},
 			     {view:'view_6510',url:'#aftersales-key-tag-search'},
@@ -654,6 +670,7 @@ var aftersalesConnectView = [{view:'view_6320',url:'#technician-view-my-jobs-v2'
 {view:'view_6170',url:'#aftersales-service-reporting/manager-tour-reporting/'},
 /*Workshop capacity*/ {view:'view_7528',url:'#aftersales-service-reporting/workshop-capacity/'},
 /*PO Upload*/ {view:'view_7571',url:'#po-upload/'},
+/*Telematics Leads and Exclusion Codes */ {view:'view_8032',url:'#telematics-c1st-leadexclusions/'},
 /* sales prospect*/ {view:'view_7517',url:'#service-sales-prospect'}]; 
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 aftersalesConnectView.forEach(aftersalesConnectViewFunction);
