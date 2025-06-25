@@ -969,7 +969,7 @@ $(document).on('knack-view-render.view_5112', function(event, view, data) {
 
 // NEW DEAL FILE – TRIGGER INTEGROMAT UPON CUSTOMER SURVEY FORM COMPLETION
 $(document).on('knack-form-submit.view_2765', function(event, view, data) { 
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=lnunp83lom13c9swu0vgabmurbjxj5x6",{"recordid":data.id,"field_6481_raw":data.field_6481_raw,"typeOfCustomerSurvey":"NEW","ConnectedDealer":data.field_6476_raw,"SalesAdvisor":data.field_6488_raw,"MaserAppDealerID":data.field_6678_raw}," NEW DEAL FILE – TRIGGER INTEGROMAT UPON CUSTOMER SURVEY FORM COMPLETION");
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=9lmnclxxbi47vosq94nnxdswo5p3yqxm",{"recordid":data.id,"field_6481_raw":data.field_6481_raw,"typeOfCustomerSurvey":"NEW","ConnectedDealer":data.field_6476_raw,"SalesAdvisor":data.field_6488_raw,"MaserAppDealerID":data.field_6678_raw}," NEW DEAL FILE – TRIGGER INTEGROMAT UPON CUSTOMER SURVEY FORM COMPLETION");
 });
 
 $(document).on('knack-view-render.view_3633', function(event, view, data) {
@@ -1027,7 +1027,7 @@ function sendErrorToIntegromat(exception, name, data){
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   const dateTime = date+' '+time;
 
-  let commandURL = "https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=bxfn25wkj67pptq9bniqmpvvjg868toi";
+  let commandURL = "https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=3wfpzp5a383fxm2k5avvaxpqx8q1us7n";
   let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": name,
   "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
   var rData = $.ajax({
@@ -1041,25 +1041,25 @@ function sendErrorToIntegromat(exception, name, data){
 
 // New Deal File - Digital P&L – Triggering integromat to capture PDF of profit and loss overview to upload to knack
 $(document).on('knack-form-submit.view_3855', function(event, view, data) {
-    callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Payload": data, "Form": "NEW P&L", "Source Of Payload":"knack direct"},"New Deal File - Digital P&L – Triggering integromat to capture PDF of profit and loss overview to upload to knack");  
+    callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4dol6uz8aoiou9zoryloi8mdbnm8qq3d",{"Record ID":data.id, "Payload": data, "Form": "NEW P&L", "Source Of Payload":"knack direct"},"New Deal File - Digital P&L – Triggering integromat to capture PDF of profit and loss overview to upload to knack");  
 });
 
 // New Deal File - Capture PDFs – **New Deal File PDF - Customer satisfaction survey signed at dealer V2 {(Deal File) Customer Satisfaction Survey} Slave App - Replaces https://zapier.com/app/editor/116188221?redirect=true
 $(document).on('knack-form-submit.view_2765', function(event, view, data) { 
   if(data.field_6485_raw !== null && data.field_6485_raw !== undefined){
-    callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=ue6mctvmfbukksn2battr5cqtgnx135v",{"Record ID":data.id, "Form":"Customer satisfaction survey", "Source Of Payload":"knack direct"},"New Deal File PDF - Customer satisfaction survey signed at dealer V2 {(Deal File) Customer Satisfaction Survey} Slave App");
+    callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4dol6uz8aoiou9zoryloi8mdbnm8qq3d",{"Record ID":data.id, "Form":"Customer satisfaction survey", "Source Of Payload":"knack direct"},"New Deal File PDF - Customer satisfaction survey signed at dealer V2 {(Deal File) Customer Satisfaction Survey} Slave App");
   }
 });
 
 // New Deal File – **Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116816484?redirect=true
 $(document).on('knack-form-submit.view_2584', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=o8f4wtbtada9lh4bzgj34o3qc0dpa3dx",{"Knack Digital Deal File ID":data.id, "Connected Dealer":handlIndex(data.field_6048_raw, "0", "identifier"),"Dealer ID From Master App":data.field_6257_raw,"Part Exchange 1":data.field_6125_raw,
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=2njybq037hvkht23gn5h5mir6dbtgb2t",{"Knack Digital Deal File ID":data.id, "Connected Dealer":handlIndex(data.field_6048_raw, "0", "identifier"),"Dealer ID From Master App":data.field_6257_raw,"Part Exchange 1":data.field_6125_raw,
     "Part Exchange 3":data.field_6127_raw, "Part Exchange 2":data.field_6126_raw, "Source Of Payload":"knack direct"},"Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App");
   });
 
 // New Deal File – **New Deal File - Sign Online Feature Activated {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116816484?redirect=true
 $(document).on('knack-form-submit.view_3750', function(event, view, data) { 
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=891sve7f9q43lop42hpsa1wkt61qqfjy",{"Record ID":data.id, "Source Of Payload":"knack direct"},"New Deal File - Sign Online Feature Activated {(Deal File) Digital Deal File} Slave App");   
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=p80lt13r94jjwfnl1bpaanh97brqg1pd",{"Record ID":data.id, "Source Of Payload":"knack direct"},"New Deal File - Sign Online Feature Activated {(Deal File) Digital Deal File} Slave App");   
    });
 
 // New Deal File – **New deal File Zip Folder to email customers(Send directly to customer email address) {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/109007166?redirect=true
