@@ -812,7 +812,7 @@ $(document).on('knack-form-submit.view_338', function(event, view, data) {
 //trigger Maxoptra webhook v2
 
 $(document).on('knack-form-submit.view_225', function(event, view, data) {
-  callPostHttpRequest("https://davidmale--server.apify.actor/integromatWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=hbenwdqwud64hds9kjcz7hc5x13ciioy",{"Record ID":data.id},'Scenario DESCRIPTION what for the error webhook')
+  callPostHttpRequest("https://davidmale--server.apify.actor/makeWebhook?token=apify_api_nf36PzXI3ydzk2UnFjwWVzrzCHRWOc2srqhw&webhook=4l70u7asr9kcqgi7wah99l9wjiejkiv0",{"Record ID":data.id},'Scenario DESCRIPTION what for the error webhook')
 });
 
 //trigger get tyres and prices from customer job card stapletons v4 trigger (service box)
