@@ -512,7 +512,7 @@ $(document).on('knack-form-submit.view_3676', function(event, view, data) {
 	setTimeout(function(){ 
     	Knack.showSpinner();
     }, 0); 
-	commandURL = "https://hook.eu1.make.celonis.com/9utqmdbom708wa58f576ibtossnlkm9k&recordid=" + data.id ;
+	commandURL = "https://hook.eu1.make.celonis.com/9utqmdbom708wa58f576ibtossnlkm9k?recordid=" + data.id ;
  	$.get(commandURL, function(data, status){
       Knack.hideSpinner();
       $(".kn-message.success").html("<b>" + data + "</b>");

@@ -1480,7 +1480,7 @@ $(document).on('knack-form-submit.view_4099', function(event, view, data) {
 
   
 
-	commandURL = "https://hook.eu1.make.celonis.com/gptw91yi3uu6cpt8rogp4rrpsacdgjzb&recordid=" + data.id ;
+	commandURL = "https://hook.eu1.make.celonis.com/gptw91yi3uu6cpt8rogp4rrpsacdgjzb?recordid=" + data.id ;
 
 
  	$.get(commandURL, function(data, status){
@@ -1511,7 +1511,7 @@ $(document).on('knack-form-submit.view_7704', function(event, view, data) {
 
   
 
-	commandURL = "https://hook.eu1.make.celonis.com/5cy2gpglkgikkgwgnuuvoo85bawswymv&recordid=" + data.id ;
+	commandURL = "https://hook.eu1.make.celonis.com/5cy2gpglkgikkgwgnuuvoo85bawswymv?recordid=" + data.id ;
 
 
  	$.get(commandURL, function(data, status){
@@ -1541,7 +1541,7 @@ $(document).on('knack-form-submit.view_7748', function(event, view, data) {
 
   
 
-	commandURL = "https://hook.eu1.make.celonis.com/qyqthqzxxmfe57y3271yxpapbjeb4qas&recordid=" + data.id ;
+	commandURL = "https://hook.eu1.make.celonis.com/qyqthqzxxmfe57y3271yxpapbjeb4qas?recordid=" + data.id ;
 
 
  	$.get(commandURL, function(data, status){
@@ -4460,7 +4460,7 @@ $(document).on('knack-form-submit.view_6417', function(event, view, data) {
 
     }, 0); 
 
-	commandURL = "https://hook.eu1.make.celonis.com/p9n26bzq66ow91lzj0yavwghqq3k1cuc&recordid=" + data.id ;
+	commandURL = "https://hook.eu1.make.celonis.com/p9n26bzq66ow91lzj0yavwghqq3k1cuc?recordid=" + data.id ;
 
  	$.get(commandURL, function(data, status){
 
@@ -6276,7 +6276,7 @@ $(document).on('knack-scene-render.scene_2305', function(event, scene) {
 // Code to wait following Form Submission while Vehicle Image is being checked
 $(document).on('knack-form-submit.view_7877', function(event, view, data) { 
 	setTimeout(function(){ Knack.showSpinner();}, 0); 
-	const commandURL = "https://hook.eu1.make.celonis.com/qv79yzra6xny8hmpno2ex4u85l3n8jar&recordid=" + data.id ;
+	const commandURL = "https://hook.eu1.make.celonis.com/qv79yzra6xny8hmpno2ex4u85l3n8jar?recordid=" + data.id ;
   $.get(commandURL, function(data, status){
     Knack.hideSpinner();
     $(".kn-message.success").html("<b>" + data + "</b>");
