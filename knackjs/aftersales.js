@@ -2711,7 +2711,7 @@ $(document).on('knack-form-submit.view_2999', function(event, view, data) {
   });
 });
 
-// Code to wait following Form Submission while Licence Is Being Checked in Make - DVLA Coventry PILOT - Customer View
+// Code to wait following Form Submission while Licence Is Being Checked in Make - Customer View
 $(document).on('knack-form-submit.view_4353', function(event, view, data) { 
   setTimeout(function(){ Knack.showSpinner(); }, 0); 
   const commandURL = "https://hook.eu1.make.celonis.com/e5oxog44l3ple4fk40kyo99dyua24pxb?recordid=" + data.id ;
@@ -2722,20 +2722,31 @@ $(document).on('knack-form-submit.view_4353', function(event, view, data) {
 });
 
 // Code to wait following Form Submission while Licence Is Being Checked in Make - Customer Advisor View
-$(document).on('knack-form-submit.view_3047', function(event, view, data) { 
+
+$(document).on('knack-form-submit.view_4356', function(event, view, data) { 
   setTimeout(function(){ Knack.showSpinner(); }, 0); 
-	const commandURL = "https://hook.eu1.make.celonis.com/ouosl7cqftin4d5xk4ybco0q96t5bwk2?recordid=" + data.id ;
+  const commandURL = "https://hook.eu1.make.celonis.com/e5oxog44l3ple4fk40kyo99dyua24pxb?recordid=" + data.id ;
+  $.get(commandURL, function(data, status){
+    Knack.hideSpinner();
+    $(".kn-message.success").html("<b>" + data + "</b>");
+  });
+});
+
+$(document).on('knack-form-submit.view_4637', function(event, view, data) { 
+  setTimeout(function(){ Knack.showSpinner(); }, 0); 
+	const commandURL = "https://hook.eu1.make.celonis.com/e5oxog44l3ple4fk40kyo99dyua24pxb?recordid=" + data.id ;
 	$.get(commandURL, function(data, status){
     Knack.hideSpinner();
     $(".kn-message.success").html("<b>" + data + "</b>");
   });
 });
 
-// Code to wait following Form Submission while Licence Is Being Checked in Make - DVLA Coventry Pilot - Customer Advisor View
-$(document).on('knack-form-submit.view_4356', function(event, view, data) { 
+// Code to wait following Form Submission while Licence Is Being Checked in Make - Customer Submits Image of Licence
+
+$(document).on('knack-form-submit.view_3047', function(event, view, data) { 
   setTimeout(function(){ Knack.showSpinner(); }, 0); 
-  const commandURL = "https://hook.eu1.make.celonis.com/e5oxog44l3ple4fk40kyo99dyua24pxb?recordid=" + data.id ;
-  $.get(commandURL, function(data, status){
+	const commandURL = "https://hook.eu1.make.celonis.com/ouosl7cqftin4d5xk4ybco0q96t5bwk2?recordid=" + data.id ;
+	$.get(commandURL, function(data, status){
     Knack.hideSpinner();
     $(".kn-message.success").html("<b>" + data + "</b>");
   });
