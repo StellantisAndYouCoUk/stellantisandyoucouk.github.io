@@ -1171,7 +1171,7 @@ $(document).on('knack-form-submit.view_2692', function(event, view, data) {
   const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   const dateTime = date+' '+time;
-  callPostHttpRequest("https://hook.eu1.make.celonis.com/vay92ha2hxhc3mosembur448t05gain",{"Record ID":data.id, "Trigger":"New Vehicle Check In", "Source Of Payload":"knack direct","userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "dateTime": dateTime},"New Deal File Automated Comms - New Vehicle Checked In {(Deal File) Vehicle Check In, Documents and Status} Slave App");
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/vay92ha2hxhc3mosembur448t05gainc",{"Record ID":data.id, "Trigger":"New Vehicle Check In", "Source Of Payload":"knack direct","userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "dateTime": dateTime},"New Deal File Automated Comms - New Vehicle Checked In {(Deal File) Vehicle Check In, Documents and Status} Slave App");
 });
 
 // New Deal File - Automated Comms – **New Deal File Automated Comms - Profit & Loss Updated {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/102278316?redirect=true
