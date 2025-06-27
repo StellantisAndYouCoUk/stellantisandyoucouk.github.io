@@ -4112,17 +4112,20 @@ function deleteEmpty(objectA){
 function callPostHttpRequest(url, payloadObject, callName){
   try{
     let commandURL = url ;
-    let dataToSend = JSON.stringify(payloadObject) ;
+    let dataToSend = JSON.stringify(deleteEmpty(payloadObject)) ;
     var rData = $.ajax({
       url: commandURL,
       type: 'POST',
       contentType: 'application/json',
       data: dataToSend,
-      async: false
+      async: false,
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+        throw errorThrown;
+      }
     }).responseText;
     return rData;
   } catch(exception) {
-    console.log(exception);
+    console.log('callPostHttpRequest',exception);
     sendErrorToIntegromat(exception, callName, payloadObject);
   }
 }

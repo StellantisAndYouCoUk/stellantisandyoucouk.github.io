@@ -70,10 +70,14 @@ function callPostHttpRequest(url, payloadObject, callName){
       type: 'POST',
       contentType: 'application/json',
       data: dataToSend,
-      async: false
+      async: false,
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+        throw errorThrown;
+      }
     }).responseText;
     return rData;
   } catch(exception) {
+    console.log('callPostHttpRequest',exception);
     sendErrorToIntegromat(exception, callName, payloadObject);
   }
 }
