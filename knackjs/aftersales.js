@@ -74,7 +74,7 @@ function callPostHttpRequest(url, payloadObject, callName){
     }).responseText;
     return rData;
   } catch(exception) {
-    sendErrorToIntegromat(exception, callName);
+    sendErrorToIntegromat(exception, callName, payloadObject);
   }
 }
 
@@ -887,8 +887,8 @@ $(document).on('knack-record-update.view_243', function(event, view, data) {
   Knack.showSpinner();
 });
 
-function sendErrorToIntegromat(exception, name){
-  console.log("error");
+function sendErrorToIntegromat(exception, name, data = null){
+  console.log("error", exception);
   const today = new Date();
   const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

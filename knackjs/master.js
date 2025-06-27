@@ -4123,7 +4123,7 @@ function callPostHttpRequest(url, payloadObject, callName){
     return rData;
   } catch(exception) {
     console.log(exception);
-    sendErrorToIntegromat(exception, callName);
+    sendErrorToIntegromat(exception, callName, payloadObject);
   }
 }
 
@@ -4141,8 +4141,8 @@ function getHttpRequest(url){
   }
 }
 
-function sendErrorToIntegromat(exception, name){
-  console.log("error");
+function sendErrorToIntegromat(exception, name, data = null){
+  console.log("error", exception);
   const today = new Date();
   const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
