@@ -5051,7 +5051,8 @@ $(document).on('knack-scene-render.scene_1387', function(event, scene) {
 
 // Prep center confirmed work completed and email Dealer to complete work on their side
 $(document).on('knack-form-submit.view_3443', function(event, view, data) { 
-  callPostHttpRequest("https://hook.eu1.make.celonis.com/trczv626i072ohw51q1pxzxjkgct75xk", {"Record ID":data.id},"Prep Centre to email Dealer of work to be carried out")
+  //Removed by Hynek on 30/06/2025 - webhook removed from Make due to inactivity
+  //callPostHttpRequest("https://hook.eu1.make.celonis.com/trczv626i072ohw51q1pxzxjkgct75xk", {"Record ID":data.id},"Prep Centre to email Dealer of work to be carried out")
 });
 
 
