@@ -3370,7 +3370,6 @@ console.log("renderSYSearchButtons('3307',defineButtons);")
       }
     }
   }
-
     $('th[class="field_1537"]').hide();
     $('td[class*="field_1537"]').hide();
     $('th[class="field_1532"]').hide();
@@ -3389,6 +3388,35 @@ console.log("renderSYSearchButtons('3307',defineButtons);")
       }
     });
 });
+
+// Add filter menu to FOCUS awaiting/pending pages to allow custom filters
+
+$(document).on('knack-view-render.view_632', function (event, view, data) {
+
+let defineButtons = [{linkText:'All',"filters":[]},
+
+{linkText:"Not Completed","filters":[{"field_name":"Date/Time Follow Up Call Was Completed","field":"field_1004","value":{"all_day":false,"date":"","hours":null,"minutes":null,"am_pm":"Invalid+date","time":""},"operator":"is blank"}]},
+
+{linkText:"Completed","filters":[{"field_name":"Date/Time Follow Up Call Was Completed","field":"field_1004","value":{"all_day":false,"date":"","hours":null,"minutes":null,"am_pm":"Invalid+date","time":""},"operator":"is not blank"}]}];
+	
+console.log("renderSYSearchButtons('632',defineButtons);")
+  renderSYSearchButtons('632',defineButtons);
+ 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    addFilters.onclick = function(){
+      console.log('onclick 2')
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+        console.log('onclick 3')
+      }
+    }
+  }
+
+});
+
+
 
 function removeFilterFields(addedAlowedFilters){
   setTimeout(function () { 
