@@ -3458,6 +3458,7 @@ console.log("renderSYSearchButtons('321',defineButtons);")
       let addFilters2 = document.querySelector('a[id="add-filter-link"]');
       addFilters2.onclick = function(){
         console.log('onclick 3')
+	removeFilterFields(['field_2970','field_2214']);
       }
     }
   }
