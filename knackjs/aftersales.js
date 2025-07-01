@@ -3461,8 +3461,7 @@ console.log("renderSYSearchButtons('321',defineButtons);")
       }
     }
   }
-    $('th[class="field_2970"]').hide();
-    $('td[class*="field_2970"]').hide();
+
 });
 
 
