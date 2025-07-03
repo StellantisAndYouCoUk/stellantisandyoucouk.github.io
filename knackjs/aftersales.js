@@ -3903,7 +3903,7 @@ $(document).on('knack-scene-render.scene_1098', function(event, scene) {
   tooltipsTable('1098','3826','field_1537','field_2213');  
 });
 
-//Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
+/*Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
 $(document).on('knack-view-render.view_3878', function (event, view, data) {
   if ($('div[class="kn-table kn-view view_3878"]')){
       let rows = $('div[class="kn-table kn-view view_3878"] table tr');
@@ -3923,7 +3923,7 @@ $(document).on('knack-view-render.view_3878', function (event, view, data) {
       }
     }
  });
-
+*/
 //Aftersales Dealer to send Rejected back to Warranty admin
 $(document).on('knack-view-render.view_4277', function (event, view, data) {
   if ($('div[class="kn-table kn-view view_4277"]')){
