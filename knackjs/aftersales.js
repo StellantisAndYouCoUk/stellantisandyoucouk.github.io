@@ -3437,6 +3437,32 @@ console.log("renderSYSearchButtons('738',defineButtons);")
 
 });
 
+// Add filter menu to customer pre-call view
+
+$(document).on('knack-view-render.view_321', function (event, view, data) {
+
+let defineButtons = [{linkText:"To Do","filters":[{"field_name":"Status Of 48 Hour Customer Pre Call For Their Next Booking","field":"field_408","value":"Pre Call Complete","operator":"is not"}]},
+
+		     {linkText:"Done (All)","filters":[{"field_name":"Status Of 48 Hour Customer Pre Call For Their Next Booking","field":"field_408","value":"Pre Call Complete","operator":"is"}]},
+
+{linkText:"Done (Automated SMS)","filters":[{"field_name":"Date/Time SMS Automated Pre Call Sent","field":"field_2581","value":{"all_day":false,"date":"","hours":null,"minutes":null,"am_pm":"Invalid+date","time":""},"operator":"is not blank"}]}];
+	
+console.log("renderSYSearchButtons('321',defineButtons);")
+  renderSYSearchButtons('321',defineButtons);
+ 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    addFilters.onclick = function(){
+      console.log('onclick 2')
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+        console.log('onclick 3')
+      }
+    }
+  }
+
+});
 
 
 function removeFilterFields(addedAlowedFilters){
@@ -3877,7 +3903,7 @@ $(document).on('knack-scene-render.scene_1098', function(event, scene) {
   tooltipsTable('1098','3826','field_1537','field_2213');  
 });
 
-//Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
+/*Aftersales Workshop to mark Job card reports as Ready to invoice (RTI) for Warranty admin
 $(document).on('knack-view-render.view_3878', function (event, view, data) {
   if ($('div[class="kn-table kn-view view_3878"]')){
       let rows = $('div[class="kn-table kn-view view_3878"] table tr');
@@ -3897,7 +3923,7 @@ $(document).on('knack-view-render.view_3878', function (event, view, data) {
       }
     }
  });
-
+*/
 //Aftersales Dealer to send Rejected back to Warranty admin
 $(document).on('knack-view-render.view_4277', function (event, view, data) {
   if ($('div[class="kn-table kn-view view_4277"]')){
