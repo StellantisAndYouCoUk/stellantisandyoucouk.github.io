@@ -103,7 +103,7 @@ function dateTimeToGBNoYear(dateobj){
 
 async function fillGlobalVarWithRequest(globalVarPropName,payloadObject, callback, doUpdate = false, doUpdateUniqueId = null ){
     try{
-        let commandURL = 'https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2';
+        let commandURL = 'https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO';
         let dataToSend = JSON.stringify(payloadObject) ;
         let requestObj = {
           url: commandURL,
@@ -130,11 +130,11 @@ async function fillGlobalVarWithRequest(globalVarPropName,payloadObject, callbac
 }
 
 function paaPostRequest(payloadObject){
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'}, payloadObject)
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'}, payloadObject)
 }
 
 async function paaPostRequestWithCompress(payloadObject){
-    return await callPostHttpRequestWithCompress('https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'}, payloadObject)
+    return await callPostHttpRequestWithCompress('https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'}, payloadObject)
 }
 
 function checkAuth(){
@@ -691,7 +691,7 @@ function runFlow(){
     if ($('#runMachine').val()!=="Not set") runData.preferedMachineName = $('#runMachine').val();
     console.log(runData);
     $('#editor-container').hide();
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'},runData)
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
 }
 
 function refreshIntegrations(flowName){
@@ -1044,7 +1044,7 @@ function reRunInPreprod(runId){
         runMode : $('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val(),
         noRetry : true
     }
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{'token':'apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2'},runData)
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
 }
 
 function formatRunDetails(run, machines){
