@@ -2618,3 +2618,10 @@ div#view_4746 {
 #view_4524 #field_3589 {
     margin-top: 2.4rem;
 }
+
+
+/*Tyre Page get rid of white space  */
+
+#view_4774 .kn-detail-body {
+	white-space: nowrap;
+}
