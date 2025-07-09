@@ -2622,6 +2622,6 @@ div#view_4746 {
 
 /*Tyre Page get rid of white space  */
 
-#view_4774 .kn-detail-body {
+#view_4774 .kn-detail-body span{
 	white-space: nowrap;
 }
