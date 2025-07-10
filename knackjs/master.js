@@ -5819,8 +5819,8 @@ function requestNotificationPermission() {
   // Check if the Notification API is supported
   if ('Notification' in window) {
       // Check the current permission status
-	  // 
-      if (Notification.permission === 'default') {
+	  // Notification.permission === 'default'
+      if (false) {
           // If permission is neither granted nor denied, ask for permission
           Notification.requestPermission().then(permission => {
               if (permission === 'granted') {
