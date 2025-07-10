@@ -4509,7 +4509,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                     $('th[class="field_3597"]').hide();
                     $('td[class*="field_3597"]').hide();
 
-                tooltipsTable('1370','4531','field_3856','field_3855'); 
+                tooltipsTable('1370','4535','field_3856','field_3855'); 
                     $('th[class="field_3856"]').hide();
                     $('td[class*="field_3856"]').hide(); 
         });
@@ -4525,8 +4525,8 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
               
                 $('th[class="field_3597"]').hide();
                 $('td[class*="field_3597"]').hide();
-                
-            tooltipsTable('1370','4531','field_3856','field_3855');
+
+            tooltipsTable('1370','4518','field_3856','field_3855');
                 $('th[class="field_3856"]').hide();
                 $('td[class*="field_3856"]').hide();  
         });
