@@ -5320,7 +5320,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 
-        if (Notification.permission === 'granted' || message.ShowMessageDirectly){
+        if (true){
           if(InAppPopUp){
 
             
