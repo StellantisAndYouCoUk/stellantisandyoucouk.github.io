@@ -6645,3 +6645,7 @@ p.speech-bubble-inbound-1link:before {
   top: 6px;
  text-wrap: wrap !important;
 }
+
+#view_4845 thead th.field_8125 {
+	background-color:#0293d6;
+  }
