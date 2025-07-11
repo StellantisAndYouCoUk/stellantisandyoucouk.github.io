@@ -1004,7 +1004,7 @@ $(document).on('knack-form-submit.view_4828', function(event, view, data) {
   if ((new Date()-view_4828_refreshDateTime)>60*60*1000){
     view_4828_refreshDateTime = new Date()
     console.log('doRefresh view_4828');
-    document.location.reload();
+    setTimeout(function () { document.location.reload();}, 500);
   }
 });  
 
