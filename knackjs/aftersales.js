@@ -4487,39 +4487,56 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
 
 
 
-    $(document).on('knack-view-render.view_4531', function(event, scene) {
+        $(document).on('knack-view-render.view_4531', function(event, scene) {
 
-      //Hover for Stapleton Tyres
-      //scene, view, field to have hover, hover info
-      //Service Details over Reg 
-      tooltipsTable('1370','4531','field_3597','field_3435');  
-          $('th[class="field_3597"]').hide();
-          $('td[class*="field_3597"]').hide(); 
+          //Hover for Stapleton Tyres
+          //scene, view, field to have hover, hover info
+          //Service Details over Reg 
+            tooltipsTable('1370','4531','field_3597','field_3435');  
+                $('th[class="field_3597"]').hide();
+                $('td[class*="field_3597"]').hide();
+            
+            
+            tooltipsTable('1370','4531','field_3856','field_3855');  
+
+                $('th[class="field_3856"]').hide();
+                $('td[class*="field_3856"]').hide();   
         });
 
 
 
         $(document).on('knack-view-render.view_4535', function(event, scene) {
 
-          //Hover for Stapleton Tyres
-          //scene, view, field to have hover, hover info
-          //Service Details over Reg 
-          tooltipsTable('1370','4535','field_3597','field_3435');  
-              $('th[class="field_3597"]').hide();
-              $('td[class*="field_3597"]').hide(); 
-            });
+                //Hover for Stapleton Tyres
+                //scene, view, field to have hover, hover info
+                //Service Details over Reg 
+                tooltipsTable('1370','4535','field_3597','field_3435');
+                 
+  
+                    $('th[class="field_3597"]').hide();
+                    $('td[class*="field_3597"]').hide();
+
+                tooltipsTable('1370','4535','field_3856','field_3855'); 
+                    $('th[class="field_3856"]').hide();
+                    $('td[class*="field_3856"]').hide(); 
+        });
     
     
 
-            $(document).on('knack-view-render.view_4518', function(event, scene) {
+        $(document).on('knack-view-render.view_4518', function(event, scene) {
 
               //Hover for Stapleton Tyres
               //scene, view, field to have hover, hover info
               //Service Details over Reg 
-              tooltipsTable('1370','4518','field_3597','field_3435');  
-                  $('th[class="field_3597"]').hide();
-                  $('td[class*="field_3597"]').hide(); 
-                });
+            tooltipsTable('1370','4518','field_3597','field_3435');  
+              
+                $('th[class="field_3597"]').hide();
+                $('td[class*="field_3597"]').hide();
+
+            tooltipsTable('1370','4518','field_3856','field_3855');
+                $('th[class="field_3856"]').hide();
+                $('td[class*="field_3856"]').hide();  
+        });
         
         
 

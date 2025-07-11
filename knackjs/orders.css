@@ -6645,3 +6645,23 @@ p.speech-bubble-inbound-1link:before {
   top: 6px;
  text-wrap: wrap !important;
 }
+
+#view_4845 thead th.field_8125 {
+	background-color:#76df77;
+  }
+
+#view_4845 thead th.field_8127 {
+	background-color:#76df77;
+  }
+
+#view_4845 thead th.field_8172 {
+	background-color:#76df77;
+  }
+
+#view_4845 thead th.field_8158 {
+	background-color:#76df77;
+  }
+
+#view_4845 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link {
+	background-color:#76df77;
+  }
