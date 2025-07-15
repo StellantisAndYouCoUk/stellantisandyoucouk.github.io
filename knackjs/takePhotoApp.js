@@ -764,6 +764,7 @@ function afterConfirmPhoto(){
   }
 
   if (appSettings.leavePhotoAppOpen){
+    var img = document.querySelector("#cameraFrontpic");
     //CLEAR TAKEN PHOTO
     img.src = '';
     if (OperatingSystem.iOS()) {
