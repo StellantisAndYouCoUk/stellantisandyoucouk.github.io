@@ -4656,5 +4656,5 @@ $(document).on('knack-view-render.view_4863', function (event, view, data) {
 });
 
 $(document).on('knack-scene-render.scene_1480', function(event, scene) {
- recursiveSceneRefresh('1480',['view_4885'],60000)
+ recursiveSceneRefresh('1480',['view_4885'],10000)
 });
