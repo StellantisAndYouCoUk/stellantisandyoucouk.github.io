@@ -763,7 +763,17 @@ function afterConfirmPhoto(){
       }, 100);
   }
 
-  hidePhotoAppI();
+  if (appSettings.leavePhotoAppOpen){
+    //CLEAR TAKEN PHOTO
+    img.src = '';
+    if (OperatingSystem.iOS()) {
+      // on iOS devices it should hide the img tag when user agent clicks retake.
+      img.style.visibility = 'hidden';
+    }      
+    setLayout(true);
+  } else {
+    hidePhotoAppI();
+  }
 }
 
 function imageAfterKnackUpload(fieldName, imageId,fileName){
