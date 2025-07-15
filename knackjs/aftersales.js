@@ -4649,3 +4649,7 @@ $(document).on('knack-view-render.view_4863', function (event, view, data) {
 
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
+
+$(document).on('knack-scene-render.scene_1480', function(event, scene) {
+ recursiveSceneRefresh('1480',['view_4863'],60000)
+});
