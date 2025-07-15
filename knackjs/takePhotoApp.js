@@ -737,11 +737,12 @@ function afterConfirmPhoto(){
         }).responseText;
 
         try {
-          alert(rData)
+          //alert(rData)
+          console.log(rData);
         } catch (e) {
           alert('uploadFail_2:'+e.toString());
           alert(rData);
-          return {'status': 'fail'};
+          //return {'status': 'fail'};
         }
       });
       break;
