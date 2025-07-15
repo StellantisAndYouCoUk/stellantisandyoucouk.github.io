@@ -262,7 +262,12 @@ function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0)
     if ($('div[id="kn-scene_'+sceneId+'"]').length===0) {console.log('refresh '+sceneId+', another scene, stop refresh'); currentRefreshScene = currentRefreshScene.filter(el => el !== sceneId); return;} 
     //Refresh views
     for (let i = 0;i<viewsArray.length;i++){
-      if($("#"+viewsArray[i]+"").is(":visible")==true) Knack.views[viewsArray[i]].model.fetch();
+      if($("#"+viewsArray[i]+"").is(":visible")==true){
+        Knack.views[viewsArray[i]].model.fetch();
+        setTimeout(function(){
+            Knack.views[viewsArray[i]].render();
+        }, 50);
+      }
     }
     //Call me once again to do it after set refreshInterval
     recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
