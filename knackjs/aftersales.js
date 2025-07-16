@@ -4070,17 +4070,17 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
   let lastVisitedInClosest = false;
   let htmlTable = '<b>Workshop Availability</b><br />';
   if (customAddress) htmlTable += 'Workshop travel times shown for address: '+customAddress+'<br />';
-  htmlTable += '<table><tr><td>Dealer</td><td><b>Travl<br>Time<br>For<br>Cust</b></td><td><b>MOT</b></td><td><b>Rcall<br>/Inv</b></td><td><b>Min<br>Serv</b></td><td><b>Maj<br>Ser</b></td><td><b>Diag</b></td><td><b>C&D</b></td><td><b>Wait</b></td><td><b>Uber<br>Or<br>Lift</b></td></tr>';
+  htmlTable += '<table><tr><td>Dealer</td><td><b>Travl<br>Time<br>For<br>Cust</b></td><td><b>MOT</b></td><td><b>Rcall<br>/Inv</b></td><td><b>Min<br>Serv</b></td><td><b>Maj<br>Ser</b></td><td><b>Diag</b></td><td><b>C&D</b></td><td><b>Wait</b></td><td><b>Uber<br>Or<br>Lift</b></td><td><b>Taka</b></td></tr>';
   if (useCustomerAddress && status && status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
-      if (avail) htmlTable += '<tr><td>'+status.addressData.closestD[i].name.replace('Stellantis &You','')+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last Visited</b>':'')+'</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Lift').availability,'No service')+'</td></tr>';
+      if (avail) htmlTable += '<tr><td>'+shorthenDealerName(status.addressData.closestD[i].name.replace('Stellantis &You',''))+(status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit?'<br /><b>Last</b>':'')+'</td><td>'+parseInt(status.addressData.closestD[i].duration).toFixed(0)+' min</td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Lift').availability,'No serv')+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Takata').availability,'No serv')+'</td></tr>';
       if (status.lastVisitData && status.addressData.closestD[i].companyCode===status.lastVisitData.mapLastDealerVisit) lastVisitedInClosest = true;
     }
   }
   if (status && status.lastVisitData && status.lastVisitData!=='' && !lastVisitedInClosest){
     let avail = status.availabilityData.find(el => el.companyCode === status.lastVisitData.mapLastDealerVisit);
-    if (avail) htmlTable += '<tr><td>'+status.lastVisitData.lastDealerVisit.replace('Stellantis &You','')+'<br /><b>Last Visited</b></td><td></td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Lift').availability,'No service')+'</td></tr>';
+    if (avail) htmlTable += '<tr><td>'+shorthenDealerName(status.lastVisitData.lastDealerVisit.replace('Stellantis &You',''))+'<br /><b>Last</b></td><td></td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Small service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Lift').availability,'No serv')+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Takata').availability,'No serv')+'</td></tr>';
   }
   htmlTable += '</table>';
   if (!useCustomerAddress){
@@ -4089,6 +4089,12 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
   htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getCustomAddressForTravelDistance();" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Update Address for W/shop Lead Time</span></span> <!----></a></span></div></div>';
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
+}
+
+function shorthenDealerName(name){
+  let nameA = name.split(' ');
+  nameA = nameA.map(el => el.substring(0,5));
+  return nameA.join(' ');
 }
 
 $(document).on('knack-view-render.view_4008', function(event, view, records) {
