@@ -4072,7 +4072,7 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
   let lastVisitedInClosest = false;
   let htmlTable = '<b>Workshop Availability</b><br />';
   if (customAddress) htmlTable += 'Workshop travel times shown for address: '+customAddress+'<br />';
-  htmlTable += '<table><tr><td>Dealr</td><td><b>Travl<br>Time<br>For<br>Cust</b></td><td><b>M O T</b></td><td><b>Rcall<br>/Inv</b></td><td><b>All<br>Ser</b></td><td><b>Diag</b></td><td><b>C&D</b></td><td><b>Wait</b></td><td><b>Uber<br>Or<br>Lift</b></td><td><b>Taka</b></td></tr>';
+  htmlTable += '<table><tr><td>Dealr</td><td><b>Travl<br>Time<br>For<br>Cust</b></td><td><b>M<br />O<br />T</b></td><td><b>Rcal<br>/Inv</b></td><td><b>All<br>Ser</b></td><td><b>D<br />i<br />a<br />g</b></td><td><b>C<br />&<br />D</b></td><td><b>W<br />a<br />i<br />t</b></td><td><b>Ubr<br>Or<br>Lift</b></td><td><b>Taka</b></td></tr>';
   if (useCustomerAddress && status && status.addressData && status.addressData.closestD){
     for (let i = 0;i<status.addressData.closestD.length;i++){
       let avail = status.availabilityData.find(el => el.companyCode === status.addressData.closestD[i].companyCode);
