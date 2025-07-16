@@ -4067,6 +4067,8 @@ function getCustomAddressForTravelDistance(){
 }
 
 function availabilityHTML(status,useCustomerAddress,customAddress){
+  let regDate = newDateFromUK(vehicleRegDate($('div[class="field_318"]').text().trim()));
+  console.log('regDate',regDate);
   let lastVisitedInClosest = false;
   let htmlTable = '<b>Workshop Availability</b><br />';
   if (customAddress) htmlTable += 'Workshop travel times shown for address: '+customAddress+'<br />';
@@ -4089,6 +4091,19 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
   htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getCustomAddressForTravelDistance();" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Update Address for W/shop Lead Time</span></span> <!----></a></span></div></div>';
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
+}
+
+function vehicleRegDate(vehDescription){
+  if (!vehDescription.includes('registered on')) return null;
+  return vehDescription.substr(vehDescription.indexOf('registered on ')+14,10);
+}
+
+function newDateFromUK(str){
+    //console.log('newDateFromUK',str);
+    if (str && str.split('/').length===3){
+        if (isNaN(parseInt(str.split('/')[1]))) return undefined;
+        return new Date(str.split('/')[1]+'/'+str.split('/')[0]+'/'+str.split('/')[2])
+    } else { return undefined }
 }
 
 function shorthenDealerName(name){
