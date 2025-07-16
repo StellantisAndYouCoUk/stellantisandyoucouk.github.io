@@ -1057,11 +1057,6 @@ $(document).on('knack-form-submit.view_2584', function(event, view, data) {
     "Part Exchange 3":data.field_6127_raw, "Part Exchange 2":data.field_6126_raw, "Source Of Payload":"knack direct"},"Instant Trigger For Integromat to GET Digital P/X Appraisal For New Digital Deal File Upon Form Submission within Deal File P/X View {(Deal File) Digital Deal File} Slave App");
   });
 
-// New Deal File – **New Deal File - Sign Online Feature Activated {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/116816484?redirect=true
-$(document).on('knack-form-submit.view_3750', function(event, view, data) { 
-  callPostHttpRequest("https://hook.eu1.make.celonis.com/p80lt13r94jjwfnl1bpaanh97brqg1pd",{"Record ID":data.id, "Source Of Payload":"knack direct"},"New Deal File - Sign Online Feature Activated {(Deal File) Digital Deal File} Slave App");   
-   });
-
 // New Deal File – **New deal File Zip Folder to email customers(Send directly to customer email address) {(Deal File) Digital Deal File} Slave App - Replaces https://zapier.com/app/editor/109007166?redirect=true
 $(document).on('knack-form-submit.view_3567', function(event, view, data) { 
   callPostHttpRequest("https://hook.eu1.make.celonis.com/6r85ric1omr5xwdm4luvhxe9kyx2l4ca",{"Record ID":data.id, "Source Of Payload":"knack direct"},"New deal File Zip Folder to email customers(Send directly to customer email address) {(Deal File) Digital Deal File} Slave App");    
