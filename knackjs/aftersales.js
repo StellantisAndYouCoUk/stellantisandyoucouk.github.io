@@ -4642,6 +4642,32 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
      
         });
 
+
+               $(document).on('knack-view-render.view_4776', function(event, view, data) {
+                         let rows = $('div[class="kn-view kn-table view_4776"] table tr');
+                          console.log('rows',rows.length);
+                          for (i = 1; i < rows.length; i++) {
+                            let currentRow = rows[i];
+                              console.log("Current Row:" +currentRow);
+                            const createClickHandler = function(row) {
+                              return function() {
+                                var cell = row.id;
+                                
+                                console.log("Send request", cell);
+                                callPostHttpRequest("https://hook.eu1.make.celonis.com/1znvcwxp9k8q82jg36wkyxa3j1s9en3p", {"recordId":cell, "Scenario":"prepare policy approval WIP" },"Prepare Policy Approval WIP");
+                              };
+                            };
+                            if (currentRow.id!==''){
+                                console.log(currentRow.id);
+                              currentRow.children[7].onclick = createClickHandler(currentRow);
+                            }
+                          }
+                    
+                  
+          
+     
+        });
+
 // Refresh when data appears for policy WIP view
 
 $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
