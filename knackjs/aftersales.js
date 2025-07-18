@@ -4631,7 +4631,25 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                                 callPostHttpRequest("https://hook.eu1.make.celonis.com/akfoo8ipo2cgwhy6prhc67dmxia455xz", {"recordId":cell, "Scenario":"prepare policy approval WIP" },"Prepare Policy Approval WIP");
                               };
                             };
-				const createClickHandlerService = function(row) {
+                            if (currentRow.id!==''){
+                                console.log(currentRow.id);
+                              currentRow.children[6].onclick = createClickHandler(currentRow);
+                            }
+                          }
+                    
+                  
+          
+     
+        });
+
+
+               $(document).on('knack-view-render.view_4776', function(event, view, data) {
+                         let rows = $('div[class="kn-view kn-table view_4776"] table tr');
+                          console.log('rows',rows.length);
+                          for (i = 1; i < rows.length; i++) {
+                            let currentRow = rows[i];
+                              console.log("Current Row:" +currentRow);
+                            const createClickHandler = function(row) {
                               return function() {
                                 var cell = row.id;
                                 
@@ -4641,8 +4659,7 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                              currentRow.children[6].onclick = createClickHandler(currentRow);
-				currentRow.children[7].onclick = createClickHandlerService(currentRow);
+                              currentRow.children[7].onclick = createClickHandler(currentRow);
                             }
                           }
                     
