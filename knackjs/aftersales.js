@@ -4631,9 +4631,18 @@ $(document).on('knack-view-render.view_738', function (event, view, data) {
                                 callPostHttpRequest("https://hook.eu1.make.celonis.com/akfoo8ipo2cgwhy6prhc67dmxia455xz", {"recordId":cell, "Scenario":"prepare policy approval WIP" },"Prepare Policy Approval WIP");
                               };
                             };
+				const createClickHandlerService = function(row) {
+                              return function() {
+                                var cell = row.id;
+                                
+                                console.log("Send request", cell);
+                                callPostHttpRequest("https://hook.eu1.make.celonis.com/1znvcwxp9k8q82jg36wkyxa3j1s9en3p", {"recordId":cell, "Scenario":"prepare policy approval WIP" },"Prepare Policy Approval WIP");
+                              };
+                            };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
                               currentRow.children[6].onclick = createClickHandler(currentRow);
+				currentRow.children[7].onclick = createClickHandlerService(currentRow);
                             }
                           }
                     
