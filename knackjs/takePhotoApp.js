@@ -459,7 +459,7 @@ imageBeforeResize.onload = () => {
  //ONE STEP RESIZE
  if (Knack.getUserAttributes().email.includes('hynek')){
   let str = 'takePhotoImageWidth:'+takePhotoImageWidth+',takePhotoImageHeight:'+takePhotoImageHeight+',imageBeforeResize.width:'+imageBeforeResize.width+',imageBeforeResize.height:'+imageBeforeResize.height+',elem.width:'+elem.width+',elem.height:'+elem.height;
-  alert(str);
+  //alert(str);
 }
     ctx.drawImage(imageBeforeResize,0,0,imageBeforeResize.width,imageBeforeResize.height,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
     //ctx.drawImage(imageBeforeResize,0,0,elem.width,elem.height);//, imageBeforeResize.width * (1-percentOfPicture)/2, imageBeforeResize.height * (1-percentOfPicture)/2, imageBeforeResize.width * percentOfPicture,imageBeforeResize.height * percentOfPicture, 0, 0, 768, 576);
