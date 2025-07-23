@@ -6324,3 +6324,8 @@ $(document).on('knack-view-render.view_8023', function (event, view, data) {
 //   tooltipsTable('2324','4531','field_3597','field_3435');
 //   console.log("2324 Running whoopppp")
 // }); 
+
+window.addEventListener('error', function(event){
+  console.log('error',event.message, event.filename,event.lineno,event.colno, event.error);
+  sendErrorToIntegromat({message:'None'},'Unhandled exception',{message:event.message, filename:event.filename,lineno:event.lineno,colno:event.colno, error:event.error})
+});
