@@ -4108,7 +4108,7 @@ function deleteEmpty(objectA){
   return objectA;
 }
 
-function callPostHttpRequest(url, payloadObject, callName){
+function callPostHttpRequest(url, payloadObject, callName, retry = 0){
   try{
     let commandURL = url ;
     let dataToSend = JSON.stringify(deleteEmpty(payloadObject)) ;
@@ -4124,8 +4124,13 @@ function callPostHttpRequest(url, payloadObject, callName){
     }).responseText;
     return rData;
   } catch(exception) {
+    if (retry < 3){
+      setTimeout(function () {
+         callPostHttpRequest(url, payloadObject, callName, retry+1)
+      }, 2500);
+    }
     console.log('callPostHttpRequest',exception);
-    sendErrorToIntegromat(exception, callName, payloadObject);
+    sendErrorToIntegromat(exception, callName, payloadObject, retry);
   }
 }
 
@@ -4143,7 +4148,7 @@ function getHttpRequest(url){
   }
 }
 
-function sendErrorToIntegromat(exception, name, data = null){
+function sendErrorToIntegromat(exception, name, data = null, retry = 0){
   console.log("error", exception);
   const today = new Date();
   const date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -4152,7 +4157,7 @@ function sendErrorToIntegromat(exception, name, data = null){
 
   let commandURL = "https://hook.eu1.make.celonis.com/3wfpzp5a383fxm2k5avvaxpqx8q1us7n";
   let dataToSend = JSON.stringify({"Source":"Javascript error", "Function": name,
-  "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime});
+  "Payload": data, "userName": Knack.getUserAttributes().name, "userEmail": Knack.getUserAttributes().email, "Exception": exception.message, "dateTime": dateTime, "retry":retry});
   var rData = $.ajax({
      url: commandURL,
      type: 'POST',
