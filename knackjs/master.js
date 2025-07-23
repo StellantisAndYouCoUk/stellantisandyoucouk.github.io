@@ -6327,5 +6327,7 @@ $(document).on('knack-view-render.view_8023', function (event, view, data) {
 
 window.addEventListener('error', function(event){
   console.log('error',event.message, event.filename,event.lineno,event.colno, event.error);
-  sendErrorToIntegromat({message:'None'},'Unhandled exception',{message:event.message, filename:event.filename,lineno:event.lineno,colno:event.colno, error:event.error})
+  if (event.message !== 'Script error.'){
+    sendErrorToIntegromat({message:'None'},'Unhandled exception',{message:event.message, filename:event.filename,lineno:event.lineno,colno:event.colno, error:event.error})
+  }
 });
