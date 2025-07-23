@@ -4223,22 +4223,7 @@ $(document).on('knack-form-submit.view_6148', function(event, view, data) {
 
 //**Physical Stock Audit - List of Vehicles for Dealer Location Submitted
 $(document).on('knack-form-submit.view_5613', function(event, view, data) { 
-    
-    try{
-        
-        let commandURL = "https://hook.eu1.make.celonis.com/nhm24bkb1lyhbsx68o7bg4m75eas6psg";
-        let dataToSend = JSON.stringify({"Record ID":data.id});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Physical Stock Audit - List of Vehicles for Dealer Location Submitted");
-    }
+    callPostHttpRequest("https://hook.eu1.make.celonis.com/nhm24bkb1lyhbsx68o7bg4m75eas6psg", {"Record ID":data.id},"Physical Stock Audit - List of Vehicles for Dealer Location Submitted")
 });
 
 //**Physical Stock Audit - Mark Audit Complete Awaiting Review - Trigger Check for Previous Audit Comments
