@@ -3311,30 +3311,11 @@ $(document).on('knack-form-submit.view_3994', function(event, view, data) {
 
 //**Used Deal File - Credit Note Raised and Check VSB for Credit Note Number
 $(document).on('knack-form-submit.view_5239', function(event, view, data) { 
-    
-    try{
-        
-        let commandURL = "https://hook.eu1.make.celonis.com/85sviq3ae9gtfcjv1kscdxer2uwfps6w";
-        let dataToSend = JSON.stringify({"Record ID":data.id});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Used Deal File - Credit Note Raised and Check VSB for Credit Note Number");
-    }
+    callPostHttpRequest("https://hook.eu1.make.celonis.com/85sviq3ae9gtfcjv1kscdxer2uwfps6w",{"Record ID":data.id}, "Used Deal File - Credit Note Raised and Check VSB for Credit Note Number");
 });
-
 
 //
 //       USED VEHICLE CHECK IN
-//
-//
-//
 //
 
 // Used Vehicle Check in TRIGGER INTEGROMAT UPON – *Trigger For Integromat When Dealer Pushes Vehicle For Prep Centre {(Deal File) Used Vehicle Deal File} Replaces https://zapier.com/app/editor/88520373?redirect=true 
@@ -4200,22 +4181,7 @@ $(document).on('knack-scene-render.scene_1119', function(event, scene) {
 
 //**Used Stock Write Down - CAP Clean Value Added Manually - Check IF Write Down Required
 $(document).on('knack-form-submit.view_6148', function(event, view, data) { 
-    
-    try{
-        
-        let commandURL = "https://hook.eu1.make.celonis.com/594r2lsfx61t7qlgh7jxq1hocdhanecs";
-        let dataToSend = JSON.stringify({"Record ID":data.id});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Used Stock Write Down - CAP Clean Value Added Manually - Check IF Write Down Required");
-    }
+    callPostHttpRequest("https://hook.eu1.make.celonis.com/594r2lsfx61t7qlgh7jxq1hocdhanecs",{"Record ID":data.id}, "Used Stock Write Down - CAP Clean Value Added Manually - Check IF Write Down Required");
 });
 
 
@@ -4228,42 +4194,12 @@ $(document).on('knack-form-submit.view_5613', function(event, view, data) {
 
 //**Physical Stock Audit - Mark Audit Complete Awaiting Review - Trigger Check for Previous Audit Comments
 $(document).on('knack-form-submit.view_5231', function(event, view, data) { 
-    
-    try{
-        
-        let commandURL = "https://hook.eu1.make.celonis.com/t20x3g4rrr0macltptj5jhbpuv7cbblk";
-        let dataToSend = JSON.stringify({"Record ID":data.id});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Physical Stock Audit - Mark Audit Complete Awaiting Review - Trigger Check for Previous Audit Comments");
-    }
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/t20x3g4rrr0macltptj5jhbpuv7cbblk",{"Record ID":data.id}, "Physical Stock Audit - Mark Audit Complete Awaiting Review - Trigger Check for Previous Audit Comments");
 });
 
 //**Physical Stock Audit - Mark Review Complete - Email GM/DA for Summary Sheet Sign Off
 $(document).on('knack-form-submit.view_5511', function(event, view, data) { 
-    
-    try{
-        
-        let commandURL = "https://hook.eu1.make.celonis.com/h6huoxyagtg2n1181za2woix2bxyvin3";
-        let dataToSend = JSON.stringify({"Record ID":data.id});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Physical Stock Audit - Mark Review Complete - Email GM/DA for Summary Sheet Sign Off");
-    }
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/h6huoxyagtg2n1181za2woix2bxyvin3",{"Record ID":data.id}, "Physical Stock Audit - Mark Review Complete - Email GM/DA for Summary Sheet Sign Off");
 });
 
 // Refresh the table on Physical Stock Audit Page        
@@ -4975,64 +4911,21 @@ function recursivecallscene_1387(){
 */
 //Send Data When Valet is started for service wash
 $(document).on('knack-form-submit.view_4706', function(event, view, data) { 
-	
-   // $('#kn-input-field_6778').hide();
-    //$('th["kn-input kn-read-only kn-input-short_text control"]').hide();
-
-	
- if (data.field_6778 === "<b>Service Wash</b>")	
- { try{
-        
-
-        let commandURL = "https://hook.eu1.make.celonis.com/xtj6x2lksaknfdci6951x5lhe2oahur7";
-        let dataToSend = JSON.stringify({"Record ID":data.id, "TypeOfWash":data.field_6778, "AftersalesRecordID":data.field_6787});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Send Data When Valet is started for service wash");
-    }}
-	
+  if (data.field_6778 === "<b>Service Wash</b>")	{ 
+      callPostHttpRequest("https://hook.eu1.make.celonis.com/xtj6x2lksaknfdci6951x5lhe2oahur7",{"Record ID":data.id, "TypeOfWash":data.field_6778, "AftersalesRecordID":data.field_6787}, "Send Data When Valet is started for service wash");
+  }
 });
-
 
 //Send Data When service Valet is started for service wash
 $(document).on('knack-form-submit.view_6420', function(event, view, data) { 
-	
-   // $('#kn-input-field_6778').hide();
-    //$('th["kn-input kn-read-only kn-input-short_text control"]').hide();
-
-	
- if (data.field_6778 === "<b>Service Wash</b>")	
- { try{
-        
-
-        let commandURL = "https://hook.eu1.make.celonis.com/xtj6x2lksaknfdci6951x5lhe2oahur7";
-        let dataToSend = JSON.stringify({"Record ID":data.id, "TypeOfWash":data.field_6778, "AftersalesRecordID":data.field_6787});
-
-        var rData = $.ajax({
-            url: commandURL,
-            type: 'POST',
-            contentType: 'application/json',
-            data: dataToSend,
-            async: false
-        }).responseText;
-    }catch(exception){
-        sendErrorToIntegromat(exception, "Send Data When Valet is started for service wash");
-    }}
-	
+ if (data.field_6778 === "<b>Service Wash</b>")	 callPostHttpRequest("https://hook.eu1.make.celonis.com/xtj6x2lksaknfdci6951x5lhe2oahur7",{"Record ID":data.id, "TypeOfWash":data.field_6778, "AftersalesRecordID":data.field_6787}, "Send Data When Valet is started for service wash");
 });
-
 
 // service Valeting check in/out (Master App)
 $(document).on('knack-form-submit.view_6421', function(event, view, data) { 
   callPostHttpRequest("https://hook.eu1.make.celonis.com/2bv78j1wiujbmy5iyn59lfljcc090xh4", {"Record ID":data.id,"TypeOfWash":data.field_6778, "AftersalesRecordID":data.field_6787},"Valeting check in out (Master App)")
 });
+
 //refresh service wash table every 5 minutes
 $(document).on('knack-scene-render.scene_1387', function(event, scene) {
     recursiveSceneRefresh('1387',['view_6466'],30000)
@@ -5043,7 +4936,6 @@ $(document).on('knack-form-submit.view_3443', function(event, view, data) {
   //Removed by Hynek on 30/06/2025 - webhook removed from Make due to inactivity
   //callPostHttpRequest("https://hook.eu1.make.celonis.com/trczv626i072ohw51q1pxzxjkgct75xk", {"Record ID":data.id},"Prep Centre to email Dealer of work to be carried out")
 });
-
 
 function sendImageToCheck(assetId, fileName,knackField,knackId){
   let dataToSend = {
