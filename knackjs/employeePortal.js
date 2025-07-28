@@ -91,55 +91,76 @@ $(document).on('knack-view-render.view_7614', function (event, view, data) {
 
 });
 
-$(document).on('knack-view-render.view_7876', function (event, view, data) {
-    // Function to generate a unique identifier for each group
-    function getGroupId(groupRow) {
-        return 'group-state-' + view.key + '-' + groupRow.index();
-    }
+//***Code to minimise or expand groupings in a grid view***
 
-    // Function to toggle group visibility and icon
-    function toggleGroup(groupRow, forceCollapse = false) {
-        var groupId = getGroupId(groupRow);
-        var rowsToToggle = groupRow.nextUntil('.kn-table-group');
-        var isExpanded = rowsToToggle.first().is(':visible');
-
-        if (isExpanded || forceCollapse) {
-            rowsToToggle.hide();
-            groupRow.find('.expand-collapse').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
-            localStorage.setItem(groupId, 'collapsed');
-        } else {
-            rowsToToggle.show();
-            groupRow.find('.expand-collapse').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
-            localStorage.setItem(groupId, 'expanded');
-        }
-    }
-
-    // Initialize groups and add expand-collapse icon
-    $('#' + view.key + ' .kn-table-group').each(function () {
-        var groupRow = $(this);
-
-        // Add icon if not already present
-        if (!groupRow.find('.expand-collapse').length) {
-            groupRow.find('td:first').prepend('<i class="fa fa-plus-square-o expand-collapse" style="cursor: pointer; margin-right: 5px;"></i>');
-        }
-
-        // Attach click event to toggle group
-        groupRow.off('click').on('click', function () {
-            toggleGroup(groupRow);
-        });
-
-        // Collapse all groups on initial load
-        toggleGroup(groupRow, true);
-    });
-
-    // Restore group states from Local Storage
-    $('#' + view.key + ' .kn-table-group').each(function() {
-        var groupRow = $(this);
-        var groupId = getGroupId(groupRow);
-        var state = localStorage.getItem(groupId);
-
-        if (state === 'expanded') {
-            toggleGroup(groupRow);
-        }
-    });
+$(document).on("knack-records-render.view_7876", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
 });
+
+$(document).on("knack-records-render.view_7880", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+//Generic helper function to make the expandable groups work with any view
+function setupExpandableGridViewGroups(view) {
+  // Function to generate a unique identifier for each group
+  function getGroupId(groupRow) {
+    return "group-state-" + view.key + "-" + groupRow.index();
+  }
+
+  // Function to toggle group visibility and icon
+  function toggleGroup(groupRow, forceCollapse = false) {
+    var groupId = getGroupId(groupRow);
+    var rowsToToggle = groupRow.nextUntil(".kn-table-group");
+    var isExpanded = rowsToToggle.first().is(":visible");
+
+    if (isExpanded || forceCollapse) {
+      rowsToToggle.hide();
+      groupRow
+        .find(".expand-collapse")
+        .removeClass("fa-minus-square-o")
+        .addClass("fa-plus-square-o");
+      localStorage.setItem(groupId, "collapsed");
+    } else {
+      rowsToToggle.show();
+      groupRow
+        .find(".expand-collapse")
+        .removeClass("fa-plus-square-o")
+        .addClass("fa-minus-square-o");
+      localStorage.setItem(groupId, "expanded");
+    }
+  }
+
+  // Initialize groups and add expand-collapse icon
+  $("#" + view.key + " .kn-table-group").each(function () {
+    var groupRow = $(this);
+
+    // Add icon if not already present
+    if (!groupRow.find(".expand-collapse").length) {
+      groupRow
+        .find("td:first")
+        .prepend(
+          '<i class="fa fa-plus-square-o expand-collapse" style="cursor: pointer; margin-right: 5px;"></i>'
+        );
+    }
+
+    // Attach click event to toggle group
+    groupRow.off("click").on("click", function () {
+      toggleGroup(groupRow);
+    });
+
+    // Collapse all groups on initial load
+    toggleGroup(groupRow, true);
+  });
+
+  // Restore group states from Local Storage
+  $("#" + view.key + " .kn-table-group").each(function () {
+    var groupRow = $(this);
+    var groupId = getGroupId(groupRow);
+    var state = localStorage.getItem(groupId);
+
+    if (state === "expanded") {
+      toggleGroup(groupRow);
+    }
+  });
+}
