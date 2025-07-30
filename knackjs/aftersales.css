@@ -1172,6 +1172,15 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
   	font-weight: bold;
 }
 
+/* Digital user management table for credit applications */
+
+#view_4693 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
+{
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
 /* Spoke Co-ordinator filter menu */
 
 #view_4755 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a
@@ -2226,6 +2235,10 @@ div.tooltipDiv {
 }
 
 /*Expanding Modal Pop Ups*/
+.Modal_for_scene_1325 {
+    width: 99%;
+    height: 99vh;
+}
 
 .Modal_for_scene_1377 {
     width: 99%;
