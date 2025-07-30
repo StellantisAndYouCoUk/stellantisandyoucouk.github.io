@@ -4689,7 +4689,7 @@ $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
 
 $(document).on('knack-view-render.view_4863', function (event, view, data) {
   embedPhotoApp();
-  let appSettings3817 = {
+  let appSettings3901 = {
     spiritLine : false,
     imageOverlay: null,
     imageOverlayEffect : false,
@@ -4705,7 +4705,7 @@ $(document).on('knack-view-render.view_4863', function (event, view, data) {
     app_id : '6040dd9a301633001bca5b4e',
     leavePhotoAppOpen : true
   }
-  createPhotoButton(appSettings3817,'3817');
+  createPhotoButton(appSettings3901,'3901');
 
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
