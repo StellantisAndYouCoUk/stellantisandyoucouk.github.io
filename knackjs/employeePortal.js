@@ -101,6 +101,14 @@ $(document).on("knack-records-render.view_7880", function (event, view, data) {
     setupExpandableGridViewGroups(view);
 });
 
+$(document).on("knack-records-render.view_7883", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7884", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
 //Generic helper function to make the expandable groups work with any view
 function setupExpandableGridViewGroups(view) {
   // Function to generate a unique identifier for each group
