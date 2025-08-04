@@ -3817,7 +3817,8 @@ display: none;
 #view_5666 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button,
 #view_5667 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5667 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_5667 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button{
+#view_5667 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_8273 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button {
   padding: 8px 2px !important;
   font-size: 1.17em;
   font: "Calibri", sans-serif;
@@ -3847,7 +3848,8 @@ display: none;
 #view_5666 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
 #view_5667 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5667 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_5667 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button{
+#view_5667 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_8273 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
   padding: 8px 2px !important;
   font-size: 1.17em;
   font: "Calibri", sans-serif;
@@ -4171,7 +4173,6 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-7.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-9.kn-link-page.kn-button,
-#view_6327 > div.control > a.kn-link.kn-link-10.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-10.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_6327 > div.control > a.kn-link.kn-link-12.kn-link-page.kn-button,
@@ -4354,8 +4355,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
-#view_6327 > div.control > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
-#view_6327 > div.control > a.kn-link.kn-link-10.kn-button,
+#view_6327 > div.control > a:hover.kn-link.kn-link-10.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-12.kn-link-page.kn-button,
 #view_6327 > div.control > a:hover.kn-link.kn-link-13.kn-link-page.kn-button,
