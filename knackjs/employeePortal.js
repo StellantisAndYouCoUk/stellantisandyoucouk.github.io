@@ -93,10 +93,6 @@ $(document).on('knack-view-render.view_7614', function (event, view, data) {
 
 //***Code to minimise or expand groupings in a grid view***
 
-$(document).on("knack-records-render.view_7838", function (event, view, data) {
-    setupExpandableGridViewGroups(view);
-});
-
 $(document).on("knack-records-render.view_7857", function (event, view, data) {
     setupExpandableGridViewGroups(view);
 });
