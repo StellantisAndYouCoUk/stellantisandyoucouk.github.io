@@ -995,6 +995,14 @@ $(document).on('knack-scene-render.scene_224', function(event, scene) {
   recursiveSceneRefresh('224',['view_638'],30000);
 });
 
+
+// Refresh Tyre Stock Audit Table
+$(document).on('knack-scene-render.scene_1478', function(event, scene) {
+  recursiveSceneRefresh('1478',['view_4925'],30000);
+});
+
+
+
 // Trigger Customer Incident Form
 $(document).on('knack-form-submit.view_781', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/fbuumn73d29ycs7o5ell2c4kflbnkhfb", {"Record ID":data.id},"Send Pre Visit Digital Customer Incident Form V2")
