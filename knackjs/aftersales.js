@@ -474,10 +474,6 @@ function refreshScene24(){
       mainField : 'field_312', //EMAC - service plan Summary = Service plan
       views:['376','3503']
     },{
-      name : 'EMAC Service plan - offer',
-      mainField : 'field_348', //EMAC - service plan Summary = Service plan
-      views:['378','3504']
-    },{
       name : 'Tyres',
       mainField : 'field_247', //Tyres - Front = Stapletons
       views:['330','3509'],
@@ -805,23 +801,6 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
    }
 
    //END OF CODE FOR NOTIFICATION AND REFRESH OF LIST
-
-$(document).on('knack-form-submit.view_338', function(event, view, data) { 
-  callPostHttpRequest("https://hook.eu1.make.celonis.com/lto6g62cydbes3yrpzyx8mh2hedyb1qr",Object.assign({"source":"EMACOfferRefresh"}, data),'EMACOfferRefresh')
-
-  refreshView('378', true);
-  setTimeout(function(){
-    let refreshData = [
-      {
-        name : 'EMAC Service plan - offer',
-        mainField : 'field_348', //EMAC - service plan Summary = Service plan
-        views:['378']
-      }
-    ]
-    sceneRefresh(refreshData);
-  }, 1000);
-});
-
 
 //trigger Maxoptra webhook v2
 
