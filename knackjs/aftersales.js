@@ -2676,7 +2676,7 @@ $(document).on('knack-view-render.view_2892', function (event, view, data) {
 }); 
 
 $(document).on('knack-scene-render.scene_934', function(event, scene) {
-  recursiveSceneRefresh('934',['view_2892'],300000);
+  recursiveSceneRefresh('934',['view_2892'],120000);
 });
 
 // Trigger Licence Link - Customer Manually Enters Driving Licence
