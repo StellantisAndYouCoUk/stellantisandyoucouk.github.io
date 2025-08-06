@@ -3586,10 +3586,6 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
 		tooltipsTable('1313','4431','field_3357','field_3349');	
 	  $('th[class="field_3357"]').hide();
     $('td[class*="field_3357"]').hide();		
-
-//testing hover over a link
-		tooltipsTable('1313','4431','field_3357','#col-21');		
-
 	
     //Mileage over AT data
 		tooltipsTable('1313','4431','field_3361','field_3358');	
