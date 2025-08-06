@@ -4726,4 +4726,5 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                                 console.log(currentRow.id);
                               currentRow.children[20].onclick = createClickHandler(currentRow);
                             }
-                          });
+                          }
+		             });
