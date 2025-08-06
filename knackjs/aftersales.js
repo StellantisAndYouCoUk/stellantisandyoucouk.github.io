@@ -4702,7 +4702,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 });
 
 
-//Service To sales -GET HPI Metrics upon clicking search icon
+/*Service To sales -GET HPI Metrics upon clicking search icon
 // If it's search we are looking view not table.
                $(document).on('knack-view-render.view_4431', function(event, view, data) {
 
@@ -4727,4 +4727,4 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                               currentRow.children[20].onclick = createClickHandler(currentRow);
                             }
                           }
-		             });
+		             });*/
