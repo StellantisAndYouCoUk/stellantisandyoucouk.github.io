@@ -3587,6 +3587,11 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
 	  $('th[class="field_3357"]').hide();
     $('td[class*="field_3357"]').hide();		
 
+//testing hover over a link
+	   //Finance Details Over Finance
+		tooltipsTable('1313','4431','field_3357','knTableColumn__link');		
+
+	
     //Mileage over AT data
 		tooltipsTable('1313','4431','field_3361','field_3358');	
 	  $('th[class="field_3361"]').hide();
