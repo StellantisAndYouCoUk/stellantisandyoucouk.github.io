@@ -6550,34 +6550,6 @@ div.tooltipDiv {
   	font-weight: bold;
 }
 
-/*Fleet Hub Portal - Colouring Table Headers*/
-
-#view_4845 thead th.field_8125,
-#view_4845 thead th.field_8127,
-#view_4845 thead th.field_8172,
-#view_4845 thead th.field_8158,
-#view_4874 thead th.field_8125,
-#view_4874 thead th.field_8127,
-#view_4874 thead th.field_8172,
-#view_4874 thead th.field_8158,
-#view_4875 thead th.field_8125,
-#view_4875 thead th.field_8127,
-#view_4875 thead th.field_8172,
-#view_4875 thead th.field_8158,
-#view_4810 thead th.field_8125,
-#view_4810 thead th.field_8127,
-#view_4810 thead th.field_8172,
-#view_4810 thead th.field_8158 {
-	background-color:#76df77;
-  }
-
-#view_4845 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link,
-#view_4874 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link,
-#view_4875 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link,
-#view_4876 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link {
-	background-color:#76df77;
-  }
-
 /*Expanding Modal Pop Ups*/
 
 .Modal_for_scene_1394 {
