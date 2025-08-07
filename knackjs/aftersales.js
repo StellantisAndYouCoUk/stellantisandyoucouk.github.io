@@ -4715,7 +4715,6 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                             let currentRow = rows[i];
                               console.log("Current Row:" +currentRow);
                             const createClickHandler = function(row) {
-				    console.log("click Function")
                               return function() {
                                 var cell = row.id;
                                 
@@ -4725,7 +4724,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                              currentRow.children[20].onclick = createClickHandler(currentRow);
+                              currentRow.children[21].onclick = createClickHandler(currentRow);
                             }
                           }
 		             });
