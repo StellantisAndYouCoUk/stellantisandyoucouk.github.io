@@ -4710,7 +4710,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 // you can pick this with $('#important')
 // if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.	
                          let rows = $('div.kn-view.kn-table.view_4431 table.kn-table > tbody > tr');
-                          console.log('rows',rows.length);
+                          // console.log('rows',rows.length);
                           for (i = 0; i < rows.length; i++) {
                             let currentRow = rows[i];
                               // console.log("Current Row:", currentRow.outerHTML);
@@ -4718,12 +4718,12 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                               return function() {
                                 var cell = row.id;
                                 
-                                console.log("Send request", cell);
-                                // callPostHttpRequest("https://hook.eu1.make.celonis.com/dea132usj3mfn9pgvhhoo43m8ktx12s9", {"recordId":cell, "Scenario":"Service to sales - get HPI metrics" },"Service to sales - get HPI metrics");
+                                // console.log("Send request", cell);
+                                callPostHttpRequest("https://hook.eu1.make.celonis.com/dea132usj3mfn9pgvhhoo43m8ktx12s9", {"recordId":cell, "Scenario":"Service to sales - get HPI metrics" },"Service to sales - get HPI metrics");
                               };
                             };
                             if (currentRow.id!==''){
-                                console.log(currentRow.id);
+                                // console.log(currentRow.id);
                               currentRow.children[21].onclick = createClickHandler(currentRow);
                             }
                           }
