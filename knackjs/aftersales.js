@@ -4702,14 +4702,14 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 });
 
 
-/*Service To sales -GET HPI Metrics upon clicking search icon
+Service To sales -GET HPI Metrics upon clicking search icon
 // If it's search we are looking view not table.
                $(document).on('knack-view-render.view_4431', function(event, view, data) {
 
 // if html element has id pick id <a href="something.com" id="important">
 // you can pick this with $('#important')
 // if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.
-                         let rows = $('div[class="kn-view kn-table view_4431"] table tr');
+                         let rows = $('.col-21');
                           console.log('rows',rows.length);
                           for (i = 1; i < rows.length; i++) {
                             let currentRow = rows[i];
@@ -4719,7 +4719,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                                 var cell = row.id;
                                 
                                 console.log("Send request", cell);
-                                callPostHttpRequest("https://hook.eu1.make.celonis.com/dea132usj3mfn9pgvhhoo43m8ktx12s9", {"recordId":cell, "Scenario":"Service to sales - get HPI metrics" },"Service to sales - get HPI metrics");
+                                // callPostHttpRequest("https://hook.eu1.make.celonis.com/dea132usj3mfn9pgvhhoo43m8ktx12s9", {"recordId":cell, "Scenario":"Service to sales - get HPI metrics" },"Service to sales - get HPI metrics");
                               };
                             };
                             if (currentRow.id!==''){
@@ -4727,4 +4727,4 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                               currentRow.children[20].onclick = createClickHandler(currentRow);
                             }
                           }
-		             });*/
+		             });
