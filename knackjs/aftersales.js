@@ -4713,7 +4713,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                           console.log('rows',rows.length);
                           for (i = 1; i < rows.length; i++) {
                             let currentRow = rows[i];
-                              console.log("Current Row:", currentRow.outerHTML);
+                              // console.log("Current Row:", currentRow.outerHTML);
                             const createClickHandler = function(row) {
                               return function() {
                                 var cell = row.id;
@@ -4724,7 +4724,6 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                                console.log(currentRow.children[21]);
                               currentRow.children[21].onclick = createClickHandler(currentRow);
                             }
                           }
