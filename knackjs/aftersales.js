@@ -4724,7 +4724,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                             };
                             if (currentRow.id!==''){
                                 console.log(currentRow.id);
-                              currentRow.find('.col-21').onclick = createClickHandler(currentRow);
+                              currentRow.children[22].onclick = createClickHandler(currentRow);
                             }
                           }
 		             });
