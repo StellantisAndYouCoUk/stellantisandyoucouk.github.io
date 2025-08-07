@@ -4729,17 +4729,18 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                           }
 		             });
 
-					//spinner icon for HPi check on sales prospecting
-$(document).on('knack-record-update.view_4945', function(event, view, data) {
-  setTimeout(function () { location.hash = location.hash + "#"; }, 100);
-  Knack.showSpinner();
-});
-					
-					//scene refresh for when data is populated 
-$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
+//spinner icon for Sales prospecting HPI Check
+  $(document).on("knack-scene-render.scene_1512", function(event, scene) {
+    $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+	//line above is related to the modal pop up - please look at aftersales css Lines 3062-3065 or copy the below and adjust scene as necessary
+/*.Modal_for_scene_769 {
+    width: 90%;
+    height: 90vh;
+}*/
+    
     let refreshData = [
       {
-          mainField : 'field_3319', //Type of finance look up
+          mainField : 'field_3319', //recall-recheck - field must be empty for refresh to occur
           views:['4945']
       }
     ]
