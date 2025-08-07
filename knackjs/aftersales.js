@@ -4728,3 +4728,20 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
                             }
                           }
 		             });
+
+					//spinner icon for HPi check on sales prospecting
+$(document).on('knack-record-update.view_4945', function(event, view, data) {
+  setTimeout(function () { location.hash = location.hash + "#"; }, 100);
+  Knack.showSpinner();
+});
+					
+					//scene refresh for when data is populated 
+$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_3319', //Type of finance look up
+          views:['4945']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
