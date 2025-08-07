@@ -4708,13 +4708,14 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 
 // if html element has id pick id <a href="something.com" id="important">
 // you can pick this with $('#important')
-// if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.
+// if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.	
                          let rows = $('.col-21');
                           console.log('rows',rows.length);
                           for (i = 1; i < rows.length; i++) {
                             let currentRow = rows[i];
                               console.log("Current Row:" +currentRow);
                             const createClickHandler = function(row) {
+				    console.log("click Function")
                               return function() {
                                 var cell = row.id;
                                 
