@@ -1427,7 +1427,12 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 
 #view_4958 div.kn-details-group.column-1.columns div.kn-detail.field_3889{
     color: #ff0000;
-    font-size: 14px;
+    font-size: 18px;
+}
+
+#view_4958 div.kn-detail-label{
+    min-width: 215px;
+	max-width: 300px;
 }
 
 /*Centre Table Header In Digital Adoption Reporting Page*/
