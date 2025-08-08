@@ -2258,6 +2258,12 @@ div.tooltipDiv {
 }
 
 /*Expanding Modal Pop Ups*/
+
+.Modal_for_scene_1512 {
+    width: 50%;
+    height: 50vh;
+}
+
 .Modal_for_scene_1325 {
     width: 99%;
     height: 99vh;
