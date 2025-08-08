@@ -4737,11 +4737,13 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
     width: 90%;
     height: 90vh;
 }*/
+	  Console.log("Found modal");
     let refreshData = [
       {
           mainField : 'field_3319', //recall-recheck - field must be empty for refresh to occur
           views:['4945']
       }
     ]
+	  Console.log("Refreshing");
     sceneRefresh(refreshData);
   });
