@@ -4730,3 +4730,18 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 		             });
 
 
+  $(document).on("knack-scene-render.scene_1512", function(event, scene) {
+    $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+	//line above is related to the modal pop up - please look at aftersales css Lines 3062-3065 or copy the below and adjust scene as necessary
+/*.Modal_for_scene_769 {
+    width: 90%;
+    height: 90vh;
+}*/
+    let refreshData = [
+      {
+          mainField : 'field_3319', //recall-recheck - field must be empty for refresh to occur
+          views:['4945']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
