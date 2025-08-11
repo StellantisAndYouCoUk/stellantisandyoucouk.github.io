@@ -4730,14 +4730,14 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 		             });
 
 
-  $(document).on("knack-scene-render.scene_1512", function(event, scene) {
-    $(this).find('.Modal_for_scene_1512').addClass('Modal_for_' + Knack.router.current_scene_key)
+ // $(document).on("knack-scene-render.scene_1512", function(event, scene) {
+   // $(this).find('.Modal_for_scene_1512').addClass('Modal_for_' + Knack.router.current_scene_key)
 	//line above is related to the modal pop up - please look at aftersales css Lines 3062-3065 or copy the below and adjust scene as necessary
 /*.Modal_for_scene_769 {
     width: 90%;
     height: 90vh;
 }*/
-	  Console.log("Found modal");
+	 /* Console.log("Found modal");
     let refreshData = [
       {
           mainField : 'field_3319', //recall-recheck - field must be empty for refresh to occur
@@ -4746,4 +4746,16 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
     ]
 	  Console.log("Refreshing");
     sceneRefresh(refreshData);
+  }); */
+
+$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_3319', //Policy WIP Details
+          views:['44945']
+      }
+    ]
+    sceneRefresh(refreshData);
   });
+  
+
