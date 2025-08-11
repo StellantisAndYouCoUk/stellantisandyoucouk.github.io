@@ -4760,7 +4760,7 @@ $(document).on('knack-scene-render.scene_1512', function(event, scene, data) {
 
     let refreshData = [
       {
-          mainField : 'field_3357', //Policy WIP Details
+          mainField : 'field_3932', //Policy WIP Details
           views:['4945']
       }
     ]
