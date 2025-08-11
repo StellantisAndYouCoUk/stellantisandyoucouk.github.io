@@ -4748,19 +4748,26 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
     sceneRefresh(refreshData);
   }); */
 
-/*$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
+//show spinner
+$(document).on('knack-record-update.view_4945', function(event, view, data) {
+  setTimeout(function () { location.hash = location.hash + "#"; }, 100);
+  Knack.showSpinner();
+});
+
+
+
+$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_3319', //Policy WIP Details
-          views:['44945']
+          views:['4945']
       }
     ]
     sceneRefresh(refreshData);
   });
   
-*/
 
-$(document).on('knack-scene-render.scene_2262', function(event, scene) {
+/*$(document).on('knack-scene-render.scene_2262', function(event, scene) {
   //fillLoading('7312')
   refreshScene2262();
 });
@@ -4774,4 +4781,4 @@ $(document).on('knack-scene-render.scene_2262', function(event, scene) {
     }
   ]
   sceneRefresh(refreshData,null,1,null,false);
-}
+}*/
