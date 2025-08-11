@@ -4758,7 +4758,6 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 
 $(document).on('knack-scene-render.scene_1512', function(event, scene, data) {
 
-	console.log("Found scene 1512");
     let refreshData = [
       {
           mainField : 'field_3357', //Policy WIP Details
