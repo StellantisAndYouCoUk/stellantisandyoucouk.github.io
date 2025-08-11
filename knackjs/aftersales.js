@@ -4748,7 +4748,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
     sceneRefresh(refreshData);
   }); */
 
-$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
+/*$(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_3319', //Policy WIP Details
@@ -4758,4 +4758,20 @@ $(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
     sceneRefresh(refreshData);
   });
   
+*/
 
+$(document).on('knack-scene-render.scene_2262', function(event, scene) {
+  //fillLoading('7312')
+  refreshScene2262();
+});
+
+ function refreshScene2262(){
+  let refreshData = [
+    {
+        name : 'Vehicle',
+        mainField : 'field_10002', 
+        views:['7312']   
+    }
+  ]
+  sceneRefresh(refreshData,null,1,null,false);
+}
