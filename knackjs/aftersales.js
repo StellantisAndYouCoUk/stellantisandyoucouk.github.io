@@ -4749,11 +4749,11 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
   }); */
 
 //show spinner
-$(document).on('knack-view-render.view_4945', function(event, view, data) {
+/*$(document).on('knack-view-render.view_4945', function(event, view, data) {
   setTimeout(function () { location.hash = location.hash + "#"; }, 100);
   Knack.showSpinner();
 });
-
+*/
 
 
 $(document).on("knack-scene-render.scene_1512", function(event, scene, data) {
