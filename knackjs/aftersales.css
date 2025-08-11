@@ -72,6 +72,17 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 #kn-scene_22 th {font-size: 0.9rem; font-weight: normal;color:#a8aaac;}
 
 /*Make Sales prospect look like a reg*/
+#view_4961 > section > div > div.kn-details-group.column-1.columns > div > div > div > div > span {
+	background-color: #FFE74C;
+  	border-radius: 10px;
+  	font-size: 24px;
+  	font-weight: bold;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  	text-align: center;
+}
+
+/*Make Sales prospect look like a reg*/
 #view_4945 > section > div > div.kn-details-group.column-1.columns > div > div > div > div > span {
 	background-color: #FFE74C;
   	border-radius: 10px;
