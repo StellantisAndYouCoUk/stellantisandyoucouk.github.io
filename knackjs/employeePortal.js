@@ -133,7 +133,7 @@ $(document).on("knack-records-render.view_7851", function (event, view, data) {
     setupExpandableGridViewGroups(view);
 });
 
-$(document).on("knack-records-render.view_7889", function (event, view, data) {
+$(document).on("knack-records-render.view_7899", function (event, view, data) {
     setupExpandableGridViewGroups(view);
 });
 
