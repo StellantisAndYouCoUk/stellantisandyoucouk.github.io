@@ -474,10 +474,6 @@ function refreshScene24(){
       mainField : 'field_312', //EMAC - service plan Summary = Service plan
       views:['376','3503']
     },{
-      name : 'EMAC Service plan - offer',
-      mainField : 'field_348', //EMAC - service plan Summary = Service plan
-      views:['378','3504']
-    },{
       name : 'Tyres',
       mainField : 'field_247', //Tyres - Front = Stapletons
       views:['330','3509'],
@@ -806,23 +802,6 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
 
    //END OF CODE FOR NOTIFICATION AND REFRESH OF LIST
 
-$(document).on('knack-form-submit.view_338', function(event, view, data) { 
-  callPostHttpRequest("https://hook.eu1.make.celonis.com/lto6g62cydbes3yrpzyx8mh2hedyb1qr",Object.assign({"source":"EMACOfferRefresh"}, data),'EMACOfferRefresh')
-
-  refreshView('378', true);
-  setTimeout(function(){
-    let refreshData = [
-      {
-        name : 'EMAC Service plan - offer',
-        mainField : 'field_348', //EMAC - service plan Summary = Service plan
-        views:['378']
-      }
-    ]
-    sceneRefresh(refreshData);
-  }, 1000);
-});
-
-
 //trigger Maxoptra webhook v2
 
 $(document).on('knack-form-submit.view_225', function(event, view, data) {
@@ -933,7 +912,7 @@ $(document).on('knack-form-submit.view_4530', function(event, view, data) {
 });
 
 //Policy Approval - Service Manager Form Submitted 
-$(document).on('knack-form-submit.view_4595', function(event, view, data) { 
+$(document).on('knack-form-submit.view_4954', function(event, view, data) { 
   callPostHttpRequest("https://hook.eu1.make.celonis.com/uc8ukh74we81hhvauoboeuoc3hf8cfpo", {"Record ID":data.id, "Source": "Service Manager Approval Form"},"Policy Approval Form Submitted");  
 });
 
@@ -994,6 +973,14 @@ $(document).on('knack-form-submit.view_3221', function(event, view, data) {
 $(document).on('knack-scene-render.scene_224', function(event, scene) {
   recursiveSceneRefresh('224',['view_638'],30000);
 });
+
+
+// Refresh Tyre Stock Audit Table
+$(document).on('knack-scene-render.scene_1478', function(event, scene) {
+  recursiveSceneRefresh('1478',['view_4925'],30000);
+});
+
+
 
 // Trigger Customer Incident Form
 $(document).on('knack-form-submit.view_781', function(event, view, data) {
@@ -2689,7 +2676,7 @@ $(document).on('knack-view-render.view_2892', function (event, view, data) {
 }); 
 
 $(document).on('knack-scene-render.scene_934', function(event, scene) {
-  recursiveSceneRefresh('934',['view_2892'],300000);
+  recursiveSceneRefresh('934',['view_2892'],120000);
 });
 
 // Trigger Licence Link - Customer Manually Enters Driving Licence
@@ -3599,7 +3586,7 @@ $(document).on('knack-view-render.view_4431', function(event, scene) {
 		tooltipsTable('1313','4431','field_3357','field_3349');	
 	  $('th[class="field_3357"]').hide();
     $('td[class*="field_3357"]').hide();		
-
+	
     //Mileage over AT data
 		tooltipsTable('1313','4431','field_3361','field_3358');	
 	  $('th[class="field_3361"]').hide();
@@ -4713,3 +4700,70 @@ $(document).on('knack-view-render.view_4863', function (event, view, data) {
 $(document).on('knack-scene-render.scene_1480', function(event, scene) {
  recursiveSceneRefresh('1480',['view_4863','view_4911'],10000)
 });
+
+
+// Service To sales -GET HPI Metrics upon clicking search icon
+// If it's search we are looking view not table.
+               $(document).on('knack-view-render.view_4431', function(event, view, data) {
+
+// if html element has id pick id <a href="something.com" id="important">
+// you can pick this with $('#important')
+// if it's class like this example in 4411 line these all the class kn-view kn-table view_4776 find these class and pick tr inside these class elements.	
+                         let rows = $('div.kn-view.kn-table.view_4431 table.kn-table > tbody > tr');
+                          // console.log('rows',rows.length);
+                          for (i = 0; i < rows.length; i++) {
+                            let currentRow = rows[i];
+                              // console.log("Current Row:", currentRow.outerHTML);
+                            const createClickHandler = function(row) {
+                              return function() {
+                                var cell = row.id;
+                                
+                                // console.log("Send request", cell);
+                                callPostHttpRequest("https://hook.eu1.make.celonis.com/dea132usj3mfn9pgvhhoo43m8ktx12s9", {"recordId":cell, "Scenario":"Service to sales - get HPI metrics" },"Service to sales - get HPI metrics");
+                              };
+                            };
+                            if (currentRow.id!==''){
+                                // console.log(currentRow.id);
+                              currentRow.children[7].onclick = createClickHandler(currentRow);
+                            }
+                          }
+		             });
+
+
+ // $(document).on("knack-scene-render.scene_1512", function(event, scene) {
+   // $(this).find('.Modal_for_scene_1512').addClass('Modal_for_' + Knack.router.current_scene_key)
+	//line above is related to the modal pop up - please look at aftersales css Lines 3062-3065 or copy the below and adjust scene as necessary
+/*.Modal_for_scene_769 {
+    width: 90%;
+    height: 90vh;
+}*/
+	 /* Console.log("Found modal");
+    let refreshData = [
+      {
+          mainField : 'field_3319', //recall-recheck - field must be empty for refresh to occur
+          views:['4945']
+      }
+    ]
+	  Console.log("Refreshing");
+    sceneRefresh(refreshData);
+  }); */
+
+//show spinner
+/*$(document).on('knack-view-render.view_4945', function(event, view, data) {
+  setTimeout(function () { location.hash = location.hash + "#"; }, 100);
+  Knack.showSpinner();
+});
+*/
+
+
+$(document).on('knack-scene-render.scene_1512', function(event, scene, data) {
+
+    let refreshData = [
+      {
+          mainField : 'field_3933', //Policy WIP Details
+          views:['4945']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+  

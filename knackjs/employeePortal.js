@@ -93,11 +93,47 @@ $(document).on('knack-view-render.view_7614', function (event, view, data) {
 
 //***Code to minimise or expand groupings in a grid view***
 
+$(document).on("knack-records-render.view_7857", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
 $(document).on("knack-records-render.view_7876", function (event, view, data) {
     setupExpandableGridViewGroups(view);
 });
 
 $(document).on("knack-records-render.view_7880", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7883", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7884", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7885", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7886", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7887", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7888", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7851", function (event, view, data) {
+    setupExpandableGridViewGroups(view);
+});
+
+$(document).on("knack-records-render.view_7899", function (event, view, data) {
     setupExpandableGridViewGroups(view);
 });
 

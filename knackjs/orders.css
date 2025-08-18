@@ -2312,6 +2312,11 @@ color: #FFFFFF;
   	color: #FFFFFF;
   	font-weight: bold;
 }
+#view_5016 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(11) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
 
 /*** Deal Files Requiring Action ***/
 
@@ -2394,6 +2399,12 @@ color: #FFFFFF;
 }
 
 #view_4627 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_4627 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(4) > a {
 	background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
@@ -6542,41 +6553,12 @@ div.tooltipDiv {
 /*Fleet Hub Portal*/
 
 #view_4845 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_4874 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_4875 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5630 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_4876 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
         background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
 }
-
-/*Fleet Hub Portal - Colouring Table Headers*/
-
-#view_4845 thead th.field_8125,
-#view_4845 thead th.field_8127,
-#view_4845 thead th.field_8172,
-#view_4845 thead th.field_8158,
-#view_4874 thead th.field_8125,
-#view_4874 thead th.field_8127,
-#view_4874 thead th.field_8172,
-#view_4874 thead th.field_8158,
-#view_4875 thead th.field_8125,
-#view_4875 thead th.field_8127,
-#view_4875 thead th.field_8172,
-#view_4875 thead th.field_8158,
-#view_4810 thead th.field_8125,
-#view_4810 thead th.field_8127,
-#view_4810 thead th.field_8172,
-#view_4810 thead th.field_8158 {
-	background-color:#76df77;
-  }
-
-#view_4845 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link,
-#view_4874 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link,
-#view_4875 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link,
-#view_4876 > div.kn-table-wrapper > table > thead > tr > th.kn-table-action-link {
-	background-color:#76df77;
-  }
 
 /*Expanding Modal Pop Ups*/
 

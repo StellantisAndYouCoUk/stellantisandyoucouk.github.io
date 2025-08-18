@@ -1840,3 +1840,35 @@ function triggerEssorRefresh(){
 
             })
         });
+
+//Fleet Portal - Hovers for Vehicle Specification Info
+
+$(document).on('knack-view-render.view_4845', function (event, view, data) {
+  tooltipsTable('1406','4845','field_3347','field_3391');
+  tooltipsTable('1406','4845','field_4714','field_4715');
+  $('th[class="field_3347"]').hide();
+  $('td[class*="field_3347"]').hide(); 
+  $('th[class="field_4714"]').hide();
+  $('td[class*="field_4714"]').hide(); 
+}); 
+
+$(document).on('knack-view-render.view_4876', function (event, view, data) {
+  tooltipsTable('1406','4876','field_3347','field_3391');
+  tooltipsTable('1406','4876','field_4714','field_4715');
+  $('th[class="field_3347"]').hide();
+  $('td[class*="field_3347"]').hide(); 
+  $('th[class="field_4714"]').hide();
+  $('td[class*="field_4714"]').hide();
+}); 
+
+$(document).on('knack-view-render.view_5630', function (event, view, data) {
+  tooltipsTable('1406','5630','field_3347','field_3391');
+  tooltipsTable('1406','5630','field_4714','field_4715');
+  $('th[class="field_3347"]').hide();
+  $('td[class*="field_3347"]').hide(); 
+  $('th[class="field_4714"]').hide();
+  $('td[class*="field_4714"]').hide(); 
+}); 
+
+
+ 
