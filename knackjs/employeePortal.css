@@ -7,6 +7,12 @@
   	font-weight: bold;
 }
 
+/*Remove Grey Background For Detail Views*/
+
+#view_7892 .kn-detail-label {background-color: transparent;}
+#view_7864 .kn-detail-label {background-color: transparent;}
+#view_7893 .kn-detail-label {background-color: transparent;}
+#view_7865 .kn-detail-label {background-color: transparent;}
 
 
 
