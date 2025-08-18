@@ -4768,7 +4768,7 @@ $(document).on('knack-scene-render.scene_1512', function(event, scene, data) {
   });
   
 // Refresh for adding line wips
-$(document).on('knack-scene-render.scene_1487', function(event, scene, data) {
+$(document).on('knack-scene-render.scene_1519', function(event, scene, data) {
 
     let refreshData = [
       {
