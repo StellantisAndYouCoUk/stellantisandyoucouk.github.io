@@ -34,7 +34,7 @@ var submitUserLoginForm = function() {
   let token = getTokenFromURL(url);
   if (token) token = atob(token);
   if (!token){
-    if ($('[id="email"]').length>0 && $('[id="password"]').length>0){
+    if (!url.includes('#new-hire-form-completion') && $('[id="email"]').length>0 && $('[id="password"]').length>0){
       console.log('on page direct without login');
       setTimeout(function () { document.location = 'https://www.stellantisandyou.co.uk/digital#home/?redirectApp='+btoa(url); }, 100)
     }
