@@ -4773,7 +4773,7 @@ $(document).on('knack-scene-render.scene_1519', function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_3826', //Line Number
-          views:['4874','4875']
+          views:['4970','4972']
       }
     ]
     sceneRefresh(refreshData);
