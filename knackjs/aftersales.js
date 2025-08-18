@@ -4769,7 +4769,7 @@ $(document).on('knack-scene-render.scene_1512', function(event, scene, data) {
   
 // Refresh for adding line wips
 $(document).on('knack-scene-render.scene_1519', function(event, scene, data) {
-
+console.log('found scene 1519');
     let refreshData = [
       {
           mainField : 'field_3943', //Line Number
