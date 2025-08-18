@@ -1,0 +1,6 @@
+#view_7838 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_7838 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
