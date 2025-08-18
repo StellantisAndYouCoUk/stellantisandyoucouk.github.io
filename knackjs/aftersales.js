@@ -4773,7 +4773,7 @@ console.log('found scene 1519');
     let refreshData = [
       {
           mainField : 'field_3943', //Line Number
-          views:['4970','4972']
+          views:['4970']
       }
     ]
     sceneRefresh(refreshData);
