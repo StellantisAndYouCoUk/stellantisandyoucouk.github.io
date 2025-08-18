@@ -4779,15 +4779,4 @@ console.log('found scene 1524');
     sceneRefresh(refreshData);
   });
 
-// Refresh for Lines only
-$(document).on('knack-scene-render.scene_1524', function(event, scene, data) {
-console.log('found scene 1524');
-    let refreshData = [
-      {
-          mainField : 'field_4978', //Line Number
-          views:['4974','4976']
-      }
-    ]
-    sceneRefresh(refreshData);
-  });
 
