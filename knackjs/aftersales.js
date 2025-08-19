@@ -4768,12 +4768,12 @@ $(document).on('knack-scene-render.scene_1512', function(event, scene, data) {
   });
   
 // Refresh for adding line wips
-$(document).on('knack-scene-render.scene_1524', function(event, scene, data) {
-console.log('found scene 1524');
+$(document).on('knack-scene-render.scene_1487', function(event, scene, data) {
+console.log('found scene 1487');
     let refreshData = [
       {
-          mainField : 'field_3943', //Line Number
-          views:['4974','4976']
+          mainField : 'field_4877', //Line Number
+          views:['4874','4875']
       }
     ]
     sceneRefresh(refreshData);
