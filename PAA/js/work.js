@@ -571,6 +571,7 @@ function getRunsServerData(refreshCallback){
             return globalPageData['runs'];
         }
         setTimeout(() => {
+            console.log('getOffsetData')
             let otherParamsO = {"offset":2000};
             refreshServerData('runs',otherParamsO,false,null,true);
         }, 15000);
