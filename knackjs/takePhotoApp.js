@@ -451,10 +451,15 @@ imageBeforeResize.onload = () => {
   }*/
   let imageRatio = imageBeforeResize.width/imageBeforeResize.height;
 
-   const elem = document.createElement('canvas');
-   elem.width = (appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width);
-   elem.height = (appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
-   const ctx = elem.getContext('2d');
+  const elem = document.createElement('canvas');
+  
+  const widthRatio = (appSettings.resizeImageMaxWidth?imageBeforeResize.width/appSettings.resizeImageMaxWidth:1);
+  const heightRatio = (appSettings.resizeImageMaxHeight?imageBeforeResize.height/appSettings.resizeImageMaxHeight:1);
+  const maxRatio = (widthRatio>heightRatio?widthRatio:heightRatio);
+
+  elem.width = imageBeforeResize.width/maxRatio; //(appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width);
+  elem.height = imageBeforeResize.height/maxRatio; (appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
+  const ctx = elem.getContext('2d');
   //check if the resolution of the image is 4:3
  //ONE STEP RESIZE
  if (Knack.getUserAttributes().email.includes('hynek')){
