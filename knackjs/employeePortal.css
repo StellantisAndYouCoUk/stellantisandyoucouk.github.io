@@ -1,0 +1,18 @@
+/*Change Table Filters to Orange*/
+
+#view_7737 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_7857 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+  	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+/*Remove Grey Background For Detail Views*/
+
+#view_7892 .kn-detail-label {background-color: transparent;}
+#view_7864 .kn-detail-label {background-color: transparent;}
+#view_7893 .kn-detail-label {background-color: transparent;}
+#view_7865 .kn-detail-label {background-color: transparent;}
+
+
+

@@ -6655,3 +6655,38 @@ p.speech-bubble-inbound-1link:before {
   top: 6px;
  text-wrap: wrap !important;
 }
+
+/*==================STICKY HEADERS========================*/
+thead {
+  position:sticky;
+  top:0px;
+  z-index:7;
+}
+
+/* Sticky Headers - Repeat for each table you want a Sticky Header */
+
+/* All Orders, Unsold Orders and Delivered Grids */
+#view_4845 .kn-table-wrapper,
+#view_5630 .kn-table-wrapper,
+#view_4876 .kn-table-wrapper {
+max-height: 750px;
+}
+
+#view_4845 thead,
+#view_5630 thead,
+#view_4876 thead {
+display:table-header-group;
+z-index: 2;
+}
+
+#view_4845 th:first-child,
+#view_4845 tbody tr > :first-child,
+#view_5630 th:first-child,
+#view_5630 tbody tr > :first-child,
+#view_4876 th:first-child,
+#view_4876 tbody tr > :first-child {
+position: sticky;
+z-index: 1;
+left: 0;
+background: #ddd;
+}
