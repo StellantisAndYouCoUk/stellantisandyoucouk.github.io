@@ -4687,8 +4687,8 @@ $(document).on('knack-view-render.view_4863', function (event, view, data) {
     actionAfterPhotoReadableText : 'Is the barcode clear?',
     uploadMethod : 'make', //knack, make, field
     uploadWebhook : 'https://hook.eu1.make.celonis.com/ejyphheycdzary55o5mhb58auayu7ln5',
-    //resizeImageMaxHeight : 1000,
-    //resizeImageMaxWidth : 1000,
+    resizeImageMaxHeight : 2000,
+    resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
     leavePhotoAppOpen : true
   }
