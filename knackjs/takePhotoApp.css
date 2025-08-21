@@ -292,53 +292,53 @@ body {
 }
 
 @media screen and (orientation: portrait) {
-
-  /* portrait-specific styles */
-  /* video_container (video) doesn't respect height...
-       so we will fill it in completely in portrait mode
-    */
   #cameraVid_container {
-    width: 100%;
-    height: 80%;
-    top: 0
+    width: 80%;
+    height: 100%;
   }
 
-  /*#cameraVideo_overlay {
-    max-width: 100%;
-    height: 80%;
-  }*/
+  #cameraVid_container.left {
+    left: 20%;
+  }
 
+  /* we default to right */
   #cameraGui_controls {
-    top: 80%;
-    width: 100%;
-    height: 20%;
+    width: 20%;
+    height: 100%;
+    right: 0;
+    top: 0;
+  }
+
+  /* for the lefties */
+  #cameraGui_controls.left {
     left: 0;
   }
 
-  #cameraConfirm {
-    left: calc(20% - 32px);
-    top: calc(50% - 32px);
+  #cameraRetake {
+    left: calc(50% - 32px);
+    top: calc(18% - 32px);
   }
 
-  #cameraRetake {
-    left: calc(80% - 32px);
-    top: calc(50% - 32px);
+  #cameraConfirm {
+    left: calc(50% - 32px);
+    top: calc(82% - 32px);
   }
+  
 
   #cameraExit {
-    left: calc(20% - 32px);
-    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    top: calc(82% - 32px);
   }
 
   #cameraOverlayCanvasPA {
     position: fixed;
     display: none;
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 80%;
+    right: calc(80% - 32px);
+    bottom: 0;
   }
 }
 
