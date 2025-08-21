@@ -455,7 +455,7 @@ imageBeforeResize.onload = () => {
   
   const widthRatio = (appSettings.resizeImageMaxWidth?imageBeforeResize.width/appSettings.resizeImageMaxWidth:1);
   const heightRatio = (appSettings.resizeImageMaxHeight?imageBeforeResize.height/appSettings.resizeImageMaxHeight:1);
-  const maxRatio = (widthRatio>heightRatio?widthRatio:heightRatio);
+  const maxRatio = (widthRatio>heightRatio?(widthRatio>1?widthRatio:1):(heightRatio>1?heightRatio:1));
   console.log('maxRatio',maxRatio);
 
   elem.width = imageBeforeResize.width/maxRatio; //(appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width);
