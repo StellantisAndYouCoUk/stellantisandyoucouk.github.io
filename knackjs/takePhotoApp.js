@@ -459,7 +459,7 @@ imageBeforeResize.onload = () => {
   console.log('maxRatio',maxRatio);
 
   elem.width = imageBeforeResize.width/maxRatio; //(appSettings.resizeImageMaxWidth?(imageRatio>=1?appSettings.resizeImageMaxWidth:(appSettings.resizeImageHeight/imageBeforeResize.height)*imageBeforeResize.width): imageBeforeResize.width);
-  elem.height = imageBeforeResize.height/maxRatio; (appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
+  elem.height = imageBeforeResize.height/maxRatio; //(appSettings.resizeImageMaxHeight?(imageRatio>=1?((appSettings.resizeImageMaxWidth/imageBeforeResize.width)*imageBeforeResize.height):appSettings.resizeImageMaxHeight): imageBeforeResize.height);
   const ctx = elem.getContext('2d');
   //check if the resolution of the image is 4:3
  //ONE STEP RESIZE
