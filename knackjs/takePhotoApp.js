@@ -796,7 +796,7 @@ function imageAfterKnackUpload(fieldName, imageId,fileName){
   }
 }
 
-function setLayoutInPortrait(){
+function setLayoutInPortrait(takingPhotoI){
   //$("#cameraLine").hide();
   //$("#cameraSpiritCircle").hide();
   console.log('setLayoutInPortrait')
@@ -805,7 +805,7 @@ function setLayoutInPortrait(){
     $("#cameraRotate").show();
     if (appSettings.imageOverlay){ $("#cameraOverlayCanvasPA").hide()};
   } else {
-    $("#takePhoto").show();
+    if (takingPhotoI) $("#takePhoto").show();
     $("#cameraRotate").hide();
     if (appSettings.imageOverlay){ $("#cameraOverlayCanvasPA").show()};
     if (appSettings.imageOverlayEffect){
@@ -814,7 +814,7 @@ function setLayoutInPortrait(){
   }
 }
 
-function setLayoutInLandscape(){
+function setLayoutInLandscape(takingPhotoI){
 //$("#cameraLine").show();
 console.log('setLayoutInLandscape',appSettings.allowLandscape)
 if (!appSettings.allowLandscape){
@@ -822,7 +822,7 @@ if (!appSettings.allowLandscape){
   $("#cameraRotate").show();
   if (appSettings.imageOverlay){ $("#cameraOverlayCanvasPA").hide()};
  } else {
-  $("#takePhoto").show();
+  if (takingPhotoI) $("#takePhoto").show();
   $("#cameraRotate").hide();
   if (appSettings.imageOverlay){ $("#cameraOverlayCanvasPA").show()};
   if (appSettings.imageOverlayEffect){
@@ -851,12 +851,12 @@ function setLayout(takingPhotoI){
     //DETECT WHICH ORIENTATION THE USEER IS IN
     let isLandscape = false;
     if(window.innerHeight > window.innerWidth){
-      setLayoutInPortrait();
+      setLayoutInPortrait(takingPhotoI);
        isLandscape = false;
        //$(stop);
     }
     if(window.innerWidth > window.innerHeight){
-      setLayoutInLandscape();
+      setLayoutInLandscape(takingPhotoI);
       isLandscape = true;
     }
 
@@ -864,13 +864,13 @@ function setLayout(takingPhotoI){
 
     $(window).on("orientationchange",function(){
       if(window.orientation == 0 || window.orientation == 180){ //Portrait
-        setLayoutInPortrait()
+        setLayoutInPortrait(takingPhoto)
         isLandscape = false;
 
       }
       else if(window.orientation == 90 || window.orientation == 270) // Landscape
       {
-        setLayoutInLandscape();
+        setLayoutInLandscape(takingPhoto);
         isLandscape = true;
       }
     });
