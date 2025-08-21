@@ -570,6 +570,10 @@ function getRunsServerData(refreshCallback){
             refreshServerData('runs',null, true, refreshCallback);
             return globalPageData['runs'];
         }
+        setTimeout(() => {
+            let otherParamsO = {"offset":2000};
+            refreshServerData('runs',otherParamsO,false,null,true);
+        }, 15000);
         return refreshServerData('runs',null);
     }
     let lastNotSolved = globalPageData['runs'].filter(el => el.status !== 'failed' && el.status!=='succeded' && el.status!=='canceled');
