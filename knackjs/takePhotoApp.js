@@ -601,6 +601,11 @@ var takePhotoImageHeight = null;
 
   function takePhoto() {
     sndCameraTakePhoto.play();
+
+    //HIDE EXIT BUTTON
+    $("#cameraExit").hide();
+    setLayout(false);
+
     //sndCameraTakePhoto.currentTime=0;
     let srcSet = false;
 
@@ -638,10 +643,6 @@ var takePhotoImageHeight = null;
         console.log('takePhoto() error: ', error);
       });
     } 
-
-    //HIDE EXIT BUTTON
-    $("#cameraExit").hide();
-    setLayout(false);
 
     switch (appSettings.actionAfterPhoto){
       case 'none':
