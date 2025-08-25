@@ -572,9 +572,9 @@ function getRunsServerData(refreshCallback){
         }
         return refreshServerData('runs',null);
     }
-    if (globalPageData['runs'].length<3000){
+    if (globalPageData['runs'].length<3000 && globalPageData['runs'].length !== 0){
         console.log('getOffsetData')
-        let otherParamsO = {"offset":2000};
+        let otherParamsO = {"offset":globalPageData['runs'].length};
         refreshServerData('runs',otherParamsO,false,null,true);
     }
     let lastNotSolved = globalPageData['runs'].filter(el => el.status !== 'failed' && el.status!=='succeded' && el.status!=='canceled');
