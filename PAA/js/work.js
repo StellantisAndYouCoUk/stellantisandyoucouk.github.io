@@ -572,11 +572,11 @@ function getRunsServerData(refreshCallback){
         }
         return refreshServerData('runs',null);
     }
-    if (globalPageData['runs'].length<3000 && globalPageData['runs'].length !== 0){
+    /*if (globalPageData['runs'].length<3000 && globalPageData['runs'].length !== 0){
         console.log('getOffsetData')
         let otherParamsO = {"offset":globalPageData['runs'].length};
         refreshServerData('runs',otherParamsO,false,null,true);
-    }
+    }*/
     let lastNotSolved = globalPageData['runs'].filter(el => el.status !== 'failed' && el.status!=='succeded' && el.status!=='canceled');
     if (lastNotSolved.length===0){
         globalPageData['runs'] = globalPageData['runs'].sort((a,b)=> (new Date(a.createdDateTime)<new Date(b.createdDateTime)?1:-1));
