@@ -182,6 +182,7 @@ function work(){
     if (!globalPageData){
         try {
             let lzwString = sessionStorage.getItem('globalPageData');
+            console.log('lzwString.length',lzwString.length)
             globalPageData = JSON.parse(arrayBufferToString(gzip.unzip(base64ToArrayBuffer(lzwString),{level:9})));
             console.log('globalPageData2',globalPageData);
         } catch (ex){
