@@ -4779,4 +4779,16 @@ console.log('found scene 1487');
     sceneRefresh(refreshData);
   });
 
+var myWindow
 
+function openServiceBoxMyOrganizer(pdvCode, dateString, stage = 0){
+  switch (stage){
+    case 0:
+      myWindow = window.open('https://servicebox.mpsa.com/agenda/multisiteChangeAction.action?pdv='+pdvCode,'myWindow', "width=1, height=1");
+      setTimeout(function () { openServiceBoxMyOrganizer(pdvCode, dateString, 1) }, 500);
+      break;
+    case 1:
+      myWindow.close();
+      myWindow = window.open('https://servicebox.mpsa.com/agenda/planningReceptionnaire.action?date='+dateString,'ServiceBox')
+  }
+}
