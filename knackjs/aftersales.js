@@ -4785,7 +4785,7 @@ function openServiceBoxMyOrganizer(pdvCode, dateString, stage = 0){
   switch (stage){
     case 0:
       myWindow = window.open('https://servicebox.mpsa.com/agenda/multisiteChangeAction.action?pdv='+pdvCode,'myWindow', "width=1, height=1");
-      setTimeout(function () { openServiceBoxMyOrganizer(pdvCode, dateString, 1) }, 500);
+      setTimeout(function () { openServiceBoxMyOrganizer(pdvCode, dateString, 1) }, 2000);
       break;
     case 1:
       myWindow.close();
