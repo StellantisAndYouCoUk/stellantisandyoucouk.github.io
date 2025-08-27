@@ -4450,7 +4450,7 @@ $(document).on('knack-view-render.view_3773', function(event, view, data) {
 });
 
 
-$(document).on('knack-scene-render.scene_1230', function(event, scene) {
+$(document).on('knack-scene-render.scene_1368', function(event, scene) {
   let startTime = new Date(); // Log start time
   console.log("User started using the app at: " + startTime);
 
@@ -4469,23 +4469,25 @@ $(document).on('knack-scene-render.scene_1230', function(event, scene) {
     });
 
     if (navigator.sendBeacon) {
-        navigator.sendBeacon('https://ntfy.armojo.com/stapleton', payload);
+        navigator.sendBeacon('https://ntfy.stellantisandyou.co.uk/stapleton', payload);
         console.log("Usage time sent to ntfy server with sendBeacon.");
     } else {
         // Fallback to synchronous AJAX in case sendBeacon is not supported
-        $.ajax({
-            url: 'https://ntfy.armojo.com/stapleton',
-            type: 'POST',
-            data: payload,
-            contentType: "application/json",
-            async: false, // Make it synchronous to ensure it completes before the page unloads
-            success: function(response) {
-                console.log("Usage time sent to ntfy server.");
-            },
-            error: function(error) {
-                console.error("Error sending usage time", error);
-            }
-        });
+
+        
+        // $.ajax({
+        //     url: 'https://ntfy.armojo.com/stapleton',
+        //     type: 'POST',
+        //     data: payload,
+        //     contentType: "application/json",
+        //     async: false, // Make it synchronous to ensure it completes before the page unloads
+        //     success: function(response) {
+        //         console.log("Usage time sent to ntfy server.");
+        //     },
+        //     error: function(error) {
+        //         console.error("Error sending usage time", error);
+        //     }
+        // });
     }
 
     // Clear the stored start time to indicate the session ended
