@@ -4469,12 +4469,13 @@ $(document).on('knack-scene-render.scene_1368', function(event, scene) {
     });
 
     if (navigator.sendBeacon) {
-        navigator.sendBeacon('https://ntfy.stellantisandyou.co.uk/stapleton', payload);
+        navigator.sendBeacon('https://ntfy.stellantisandyou.co.uk/stapletons', payload);
         console.log("Usage time sent to ntfy server with sendBeacon.");
     } else {
         // Fallback to synchronous AJAX in case sendBeacon is not supported
 
-        
+        callPostHttpRequest("https://ntfy.stellantisandyou.co.uk/stapletons", payload, "Stapletons usage report...");
+
         // $.ajax({
         //     url: 'https://ntfy.armojo.com/stapleton',
         //     type: 'POST',
