@@ -1880,18 +1880,6 @@ $(document).on('knack-view-render.view_5630', function (event, view, data) {
   $('td[class*="field_4714"]').hide(); 
 }); 
 
-// FLEET HUB PROFIT & LOSS AND ORDER MANAGEMENT
-
-// Disable Free of Charge Metallic Paint Selection on P&L Page to enable the equation to calculate but user not change within the form
-$(document).on('knack-view-render.view_5646', function(event, view) {
-
- if ($('#view_5646 #field_9028').val() != "") {
-
-      $('#view_5646 #field_9028').attr('disabled', 'disabled'); // disable input field
-
-    }; // end if
-
-});
 
 
  
