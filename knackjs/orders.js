@@ -926,6 +926,16 @@ $(document).on('knack-view-render.view_4719', function(event, view, data) {
   Knack.fn.hideExpand("view_4719");
 });
 
+$(document).on('knack-view-render.view_5198', function(event, view, data) {
+  console.log('view5198');
+  Knack.fn.hideExpand("view_5198");
+});
+
+$(document).on('knack-view-render.view_5200', function(event, view, data) {
+  console.log('view5200');
+  Knack.fn.hideExpand("view_5200");
+});
+
 // ADMIN VEHICLE ORDER ADMINISTRATION PAGE
 
 $(document).on('knack-view-render.view_2391', function(event, view, data) {
@@ -1870,5 +1880,14 @@ $(document).on('knack-view-render.view_5630', function (event, view, data) {
   $('td[class*="field_4714"]').hide(); 
 }); 
 
+// FLEET HUB PROFIT SHEET & ORDER MANAGEMENT
+
+// Disable Free of Charge Metallic Paint Boolean on Profit Sheet Page to Enable Equation Calculation
+$(document).on('knack-view-render.view_5646', function(event, view) {
+
+      $('#view_5646 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
+
+
+});
 
  
