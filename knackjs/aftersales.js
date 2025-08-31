@@ -861,7 +861,7 @@ $(document).on('knack-form-submit.view_1484', function(event, view, data) {
 $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
     let refreshData = [
       {
-          mainField : 'field_575', //Dealer tyres
+          mainField : 'field_2984', //Dealer tyres
           views:['1475']
       }
     ]
@@ -1602,7 +1602,7 @@ $(document).on('knack-view-render.view_3515', function (event, view, data) {
 $(document).on("knack-scene-render.scene_508", function(event, scene, data) {
     let refreshData = [
       {
-          mainField : 'field_575', //Autoline Tyre Stock For Dealer
+          mainField : 'field_2984', //Autoline Tyre Stock For Dealer
           views:['1475']
       }
     ]
