@@ -4795,3 +4795,30 @@ function openServiceBoxMyOrganizer(pdvCode, dateString, stage = 0){
       myWindow = window.open('https://servicebox.mpsa.com/agenda/planningReceptionnaire.action?date='+dateString,'ServiceBox')
   }
 }
+
+
+//FILTERS FOR po UPLOAD
+$(document).on('knack-view-render.view_4390', function (event, view, data) {
+  let defineButtons = [
+  {linkText:'All',filters:[]},
+  {linkText:'To Be Reviewed',filters:[{"field_name":"Processing Status","field":"field_3375","value": "To Be Reviewed","operator":"is"},{"field_name":"Date/Time processed (From Hynek)","field":"field_3295","value": "","operator":"is blank"}]},
+  {linkText:'Manually Processed',filters:[{"field_name":"Processing Status","field":"field_3375","value": "Manually Processed","operator":"is"}]},
+  {linkText:'Auto Ordered',filters:[{"field_name":"Processing Status","field":"field_3375","value": "Auto Ordered","operator":"is"}]},
+  {linkText:'SuperSession',filters:[{"field_name":"Superseeded part number in order?","field":"field_3519","value": "Yes","operator":"is"}]},
+  {linkText:'Re-Uploads',filters:[{"field_name":"Date/Time retried Last Sent","field":"field_3473","value": "","operator":"is not blank"}]},
+  {linkText:'Invalid Price File',filters:[{"field_name":"Invalid Price files","field":"field_3409","value": "","operator":"is not blank"}]},
+  {linkText:'SG',filters:[{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "6079c2856e9561001d33ac06","operator":"is"}]},
+  {linkText:'DW',filters:[{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e33397134001c9eddfb","operator":"is"}]},
+  {linkText:'PM',filters:[{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e3172c89b001cf96043","operator":"is"}]},
+  {linkText:'PB',filters:[{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e32da646b001ca4a4b4","operator":"is"}]},
+  {linkText:'TS',filters:[{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e34090a8b001ba80537","operator":"is"}]},
+  {linkText:'FIAT',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "F","operator":"contains"}]},
+  {linkText:'Peugeot',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "P","operator":"contains"}]},
+  {linkText:'SG_F_TBR',filters:[{"field_name":"Processing Status","field":"field_3375","value": "To Be Reviewed","operator":"is"},{"field_name":"Date/Time processed (From Hynek)","field":"field_3295","value": "","operator":"is blank"},{"field_name":"Supplier Code","field":"field_3297","value": "F","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "6079c2856e9561001d33ac06","operator":"is"}]},
+  ]
+  renderSYSearchButtons('4390',defineButtons);
+
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+ 
+  }); 
