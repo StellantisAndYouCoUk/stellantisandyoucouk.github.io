@@ -4802,7 +4802,7 @@ function openServiceBoxMyOrganizer(pdvCode, dateString, stage = 0){
   let defineButtons = [
   {linkText:'All',filters:[]},
   {linkText:'To Be Reviewed',filters:[{"field_name":"Processing Status","field":"field_3375","value": "To Be Reviewed","operator":"is"}]},
-{linkText:'Bot Error',filters:[{"field_name":"Date/Time processed (From Hynek)","field":"field_3295","value": "","operator":"is blank"}]},
+  {linkText:'Bot Error',filters:[{"field_name":"Date/Time processed (From Hynek)","field":"field_3295","value": "","operator":"is blank"}]},
   {linkText:'Manually Processed',filters:[{"field_name":"Processing Status","field":"field_3375","value": "Manually Processed","operator":"is"}]},
   {linkText:'Auto Ordered',filters:[{"field_name":"Processing Status","field":"field_3375","value": "Auto Ordered","operator":"is"}]},
   {linkText:'SuperSession',filters:[{"field_name":"Superseeded part number in order?","field":"field_3519","value": "Yes","operator":"is"}]},
@@ -4822,7 +4822,15 @@ function openServiceBoxMyOrganizer(pdvCode, dateString, stage = 0){
   {linkText:'DW_F',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "F","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e33397134001c9eddfb","operator":"is"}]},
   {linkText:'DW_P',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "P","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e33397134001c9eddfb","operator":"is"}]},
   
-
+  {linkText:'PM_F',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "F","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e3172c89b001cf96043","operator":"is"}]},
+  {linkText:'PM_P',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "P","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e3172c89b001cf96043","operator":"is"}]},
+  
+  {linkText:'PB_F',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "F","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e32da646b001ca4a4b4","operator":"is"}]},
+  {linkText:'PB_P',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "P","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e32da646b001ca4a4b4","operator":"is"}]},
+  
+  {linkText:'TS_F',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "F","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e34090a8b001ba80537","operator":"is"}]},
+  {linkText:'TS_P',filters:[{"field_name":"Supplier Code","field":"field_3297","value": "P","operator":"contains"},{"field_name":"(GENERAL) Dealer Specific Information","field":"field_3291","value": "60935e34090a8b001ba80537","operator":"is"}]},
+  
   
   ]
   renderSYSearchButtons('4390',defineButtons);
