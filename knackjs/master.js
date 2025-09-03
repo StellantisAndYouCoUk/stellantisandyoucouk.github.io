@@ -1813,6 +1813,11 @@ $(document).on('knack-view-render.view_7056', function(event, view, data) {
   Knack.fn.hideExpand("view_7056");
 });
 
+$(document).on('knack-view-render.view_8396', function(event, view, data) {
+  console.log('view7056');
+  Knack.fn.hideExpand("view_7056");
+});
+
 
 // MANAGER VIEWS
 
