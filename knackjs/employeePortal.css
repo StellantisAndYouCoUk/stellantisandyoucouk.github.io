@@ -14,5 +14,11 @@
 #view_7893 .kn-detail-label {background-color: transparent;}
 #view_7865 .kn-detail-label {background-color: transparent;}
 
+/*Change Grid Filter Button Colour To Orange
 
+#view_7904 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+  background-color: #ffa100;
+  color: #ffffff;
+  font-weight: bold;
+}
 
