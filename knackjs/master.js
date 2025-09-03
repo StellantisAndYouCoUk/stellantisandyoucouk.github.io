@@ -1814,8 +1814,8 @@ $(document).on('knack-view-render.view_7056', function(event, view, data) {
 });
 
 $(document).on('knack-view-render.view_8396', function(event, view, data) {
-  console.log('view7056');
-  Knack.fn.hideExpand("view_7056");
+  console.log('view8396');
+  Knack.fn.hideExpand("view_8396");
 });
 
 
