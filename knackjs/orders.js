@@ -1890,4 +1890,11 @@ $(document).on('knack-view-render.view_5646', function(event, view) {
 
 });
 
+$(document).on('knack-view-render.view_5659', function(event, view) {
+
+      $('#view_5659 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
+
+
+});
+
  
