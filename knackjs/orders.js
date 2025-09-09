@@ -1892,6 +1892,12 @@ $(document).on('knack-view-render.view_5670', function(event, view) {
       $('#view_5670 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
 });
 
+//Refresh Profit Sheet Scene when Metallic Paint Updated
+$(document).on('knack-record-update.view_5669', function(event, view, data) {
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+  Knack.showSpinner();
+});
+
 // FLEET ORDER REQUEST SENT FOR APPROVAL
 
 $(document).on('knack-form-submit.view_5651', function(event, view, data) { 
