@@ -998,7 +998,7 @@ var view_4828_refreshDateTime =  new Date();
 $(document).on('knack-form-submit.view_4828', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/n7dnr5i4ygbv36ih7ycjkmrlv1t0udd7",{"Record ID":data.id, "Internal Status":data.field_3781_raw, "userName": Knack.getUserAttributes().name}, "trigger aftersales - Update Internal Status with details")
 
-  if ((new Date()-view_4828_refreshDateTime)>60*60*1000){
+  if ((new Date()-view_4828_refreshDateTime)>30*60*1000){
     view_4828_refreshDateTime = new Date()
     console.log('doRefresh view_4828');
     setTimeout(function () { document.location.reload();}, 500);
@@ -3386,7 +3386,7 @@ console.log("renderSYSearchButtons('3307',defineButtons);")
 
     $('div[id="view_3307"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
       console.log('something clicked',(new Date()-view_3307_refreshDateTime));
-      if ((new Date()-view_3307_refreshDateTime)>60*60*1000){
+      if ((new Date()-view_3307_refreshDateTime)>30*60*1000){
         view_3307_refreshDateTime = new Date()
         console.log('doRefresh');
         document.location.reload();
