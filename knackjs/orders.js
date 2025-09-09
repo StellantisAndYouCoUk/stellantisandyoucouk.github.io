@@ -1888,12 +1888,8 @@ $(document).on('knack-view-render.view_5630', function (event, view, data) {
 // FLEET HUB PROFIT SHEET & ORDER MANAGEMENT
 
 // Disable Free of Charge Metallic Paint Boolean on Profit Sheet Page to Enable Equation Calculation
-$(document).on('knack-view-render.view_5646', function(event, view) {
-      $('#view_5646 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
-});
-
-$(document).on('knack-view-render.view_5659', function(event, view) {
-      $('#view_5659 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
+$(document).on('knack-view-render.view_5670', function(event, view) {
+      $('#view_5670 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
 });
 
 // FLEET ORDER REQUEST SENT FOR APPROVAL
