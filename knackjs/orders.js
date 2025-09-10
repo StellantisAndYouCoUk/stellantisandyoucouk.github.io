@@ -1885,6 +1885,17 @@ $(document).on('knack-view-render.view_5630', function (event, view, data) {
   $('td[class*="field_4714"]').hide(); 
 }); 
 
+//Internal View of Fleet Portal Connected Orders - Hovers for Vehicle Specification Info
+
+$(document).on('knack-view-render.view_4856', function (event, view, data) {
+  tooltipsTable('1406','4856','field_3347','field_3391');
+  tooltipsTable('1406','4856','field_4714','field_4715');
+  $('th[class="field_3347"]').hide();
+  $('td[class*="field_3347"]').hide(); 
+  $('th[class="field_4714"]').hide();
+  $('td[class*="field_4714"]').hide(); 
+}); 
+
 // FLEET HUB PROFIT SHEET & ORDER MANAGEMENT
 
 // Disable Free of Charge Metallic Paint Boolean on Profit Sheet Page to Enable Equation Calculation
