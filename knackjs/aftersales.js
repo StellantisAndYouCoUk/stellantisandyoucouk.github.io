@@ -4840,3 +4840,9 @@ function openServiceBoxMyOrganizer(pdvCode, dateString, stage = 0){
   console.log('addFilters',addFilters)
  
   }); 
+
+// ADD, AMEND and DELETE LINES ON A WIP FROM CHECK IN
+$(document).on('knack-record-create.view_5033', function(event, view, data) { 
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+  Knack.showSpinner(); 
+});
