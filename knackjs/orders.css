@@ -6700,6 +6700,25 @@ left: 0;
 background: #ddd;
 }
 
+/* Delivery and Broker Management */
+
+#view_4645 .kn-table-wrapper {
+max-height: 750px;
+}
+
+#view_4645 thead {
+display:table-header-group;
+z-index: 2;
+}
+
+#view_4645 th:first-child,
+#view_4645 tbody tr > :first-child {
+position: sticky;
+z-index: 1;
+left: 0;
+background: #ddd;
+}
+
 /* Fleet Customer Portal - Internal View of Fleet Portal Connected Orders */
 
 #view_4856 .kn-table-wrapper {
