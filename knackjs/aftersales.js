@@ -4846,17 +4846,3 @@ $(document).on('knack-record-create.view_5033', function(event, view, data) {
   setTimeout(function () { location.hash = location.hash + "#"; }, 500);
   Knack.showSpinner(); 
 });
-
-//Accelerate 121 - Technician View
-var employeePortalConnectView = [{view:'view_5038',url:'#dashboard'}]; 
-//to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
-employeePortalConnectView.forEach(employeePortalConnectViewConnectViewFunction);
-
-function employeePortalConnectViewConnectViewFunction(selector_view){
-  //console.log('create employeePortalConnectViewConnectViewFunction',selector_view)
-  $(document).on("knack-view-render." + selector_view.view, function(event, scene, data) {
-    console.log('employeePortalConnectViewConnectViewFunction',selector_view)
-    var token = Knack.getUserAttributes().values["field_6440"];
-    $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/employee-portal'+selector_view.url+'?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
-  });
-}
