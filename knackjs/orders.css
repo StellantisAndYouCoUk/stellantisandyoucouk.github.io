@@ -6738,3 +6738,7 @@ left: 0;
 background: #ddd;
 }
 
+/* FLEET ORDER MANAGEMENT AND ORDER REQUESTS */
+/* Profit Sheet View */
+#view_5677 .kn-detail-label {background-color: transparent;}
+
