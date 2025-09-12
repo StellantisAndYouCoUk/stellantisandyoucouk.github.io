@@ -5864,6 +5864,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             }
 
                 // Enable notification redirect
+                //  && (isEdge || isChrome)
              
                 if (
                     Notification.permission === 'denied' &&
@@ -5871,8 +5872,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     !isUserExcluded &&
                     !isTablet &&
                     !isPhone &&
-                    Knack.getUserAttributes().toString() !== 'No user found' &&
-                    (isEdge || isChrome)
+                    Knack.getUserAttributes().toString() !== 'No user found'
                 ) {
                     console.log("Redirect");
                     
