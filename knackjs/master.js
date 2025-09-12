@@ -5846,7 +5846,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 
                 const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
                 
-// Bring your own device redirect
+              // Bring your own device redirect
               
               if (
                 !isUserExcluded &&
