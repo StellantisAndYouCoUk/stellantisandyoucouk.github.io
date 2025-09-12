@@ -5865,7 +5865,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
 
                 // Enable notification redirect
                 //  && (isEdge || isChrome)
-
+                
              
                 if (
                     Notification.permission === 'denied' &&
@@ -5873,24 +5873,24 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     !isUserExcluded &&
                     !isTablet &&
                     !isPhone &&
-                    Knack.getUserAttributes().toString() !== 'No user found' &&
-                    Knack.getUserAttributes().id=="649abd15f2292c09c47ae64a" 
+                    Knack.getUserAttributes().toString() !== 'No user found' && 
+                    (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
                     
-                    if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
-                    ){
+                    // if(window.location.href !== "https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/"
+                    // ){
 
-                      localStorage.setItem("previousPage", window.location.href);
+                    //   localStorage.setItem("previousPage", window.location.href);
 
-                    }
+                    // }
 
 
 
                   
-                    window.setTimeout(function() {
-                        window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
-                    }, 500);
+                    // window.setTimeout(function() {
+                    //     window.location.href = 'https://www.stellantisandyou.co.uk/digital#account-settings/enable-desktop-notification/';
+                    // }, 500);
                 }
      
 
