@@ -973,6 +973,11 @@ $(document).on('knack-view-render.view_5112', function(event, view, data) {
   Knack.fn.hideExpand("view_5112");
 });
 
+$(document).on('knack-view-render.view_5664', function(event, view, data) {
+  console.log('view5664');
+  Knack.fn.hideExpand("view_5664");
+});
+
 // END OF HIDE AND EXPAND CODE
 
 
@@ -1880,14 +1885,34 @@ $(document).on('knack-view-render.view_5630', function (event, view, data) {
   $('td[class*="field_4714"]').hide(); 
 }); 
 
+//Internal View of Fleet Portal Connected Orders - Hovers for Vehicle Specification Info
+
+$(document).on('knack-view-render.view_4856', function (event, view, data) {
+  tooltipsTable('1406','4856','field_3347','field_3391');
+  tooltipsTable('1406','4856','field_4714','field_4715');
+  $('th[class="field_3347"]').hide();
+  $('td[class*="field_3347"]').hide(); 
+  $('th[class="field_4714"]').hide();
+  $('td[class*="field_4714"]').hide(); 
+}); 
+
 // FLEET HUB PROFIT SHEET & ORDER MANAGEMENT
 
 // Disable Free of Charge Metallic Paint Boolean on Profit Sheet Page to Enable Equation Calculation
-$(document).on('knack-view-render.view_5646', function(event, view) {
+$(document).on('knack-view-render.view_5670', function(event, view) {
+      $('#view_5670 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
+});
 
-      $('#view_5646 #kn-input-field_9028 .kn-radio input').attr('disabled', 'disabled'); // disable input field
+//Refresh Profit Sheet Scene when Metallic Paint Updated
+$(document).on('knack-record-update.view_5669', function(event, view, data) {
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+  Knack.showSpinner();
+});
 
+// FLEET ORDER REQUEST SENT FOR APPROVAL
 
+$(document).on('knack-form-submit.view_5651', function(event, view, data) { 
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/4rfqrnc8eodf38k2zk2tubdgyng7nev6",{"recordid":data.id},"FLEET ORDER REQUEST SENT FOR APPROVAL");
 });
 
  

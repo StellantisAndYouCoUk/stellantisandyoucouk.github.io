@@ -555,9 +555,33 @@ function loadAppData(){
     globalPageData.appLoaded = true;
 }
 
-function saveAppData(){
-    sessionStorage.setItem("globalPageData",arrayBufferToBase64(gzip.zip(JSON.stringify(globalPageData),{level:9})));
+// function saveAppData(){
+//     sessionStorage.setItem("globalPageData",arrayBufferToBase64(gzip.zip(JSON.stringify(globalPageData),{level:9})));
+// }
+
+
+// Akif made changes just added try catch 
+
+
+function saveAppData() {
+    try {
+        const compressed = arrayBufferToBase64(
+            gzip.zip(JSON.stringify(globalPageData), { level: 9 })
+        );
+        sessionStorage.setItem("globalPageData", compressed);
+    } catch (e) {
+        if (e.name === "QuotaExceededError") {
+            console.warn("Storage quota exceeded, skipping save.");
+            // Optional: clear first
+            sessionStorage.removeItem("globalPageData");
+        } else {
+            throw e;
+        }
+    }
 }
+
+
+
 
 function manageRunsList(){
 

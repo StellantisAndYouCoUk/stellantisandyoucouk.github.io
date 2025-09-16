@@ -1813,6 +1813,11 @@ $(document).on('knack-view-render.view_7056', function(event, view, data) {
   Knack.fn.hideExpand("view_7056");
 });
 
+$(document).on('knack-view-render.view_8396', function(event, view, data) {
+  console.log('view8396');
+  Knack.fn.hideExpand("view_8396");
+});
+
 
 // MANAGER VIEWS
 
@@ -5841,7 +5846,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                 
                 const isUserExcluded = Knack.getUserAttributes().roles.some(item => excludedUserRoles.includes(item));
                 
-// Bring your own device redirect
+              // Bring your own device redirect
               
               if (
                 !isUserExcluded &&
@@ -5859,6 +5864,8 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             }
 
                 // Enable notification redirect
+                //  && (isEdge || isChrome)
+                
              
                 if (
                     Notification.permission === 'denied' &&
@@ -5866,7 +5873,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
                     !isUserExcluded &&
                     !isTablet &&
                     !isPhone &&
-                    Knack.getUserAttributes().toString() !== 'No user found' &&
+                    Knack.getUserAttributes().toString() !== 'No user found' && 
                     (isEdge || isChrome)
                 ) {
                     console.log("Redirect");
