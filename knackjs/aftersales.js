@@ -480,7 +480,7 @@ function refreshScene24(){
       //runAfter : generateTyres
     },{
       name : 'VHC',
-      mainField : 'field_302', //VHC - exists = VHC
+      mainField : 'field_241', //VHC - exists = VHC
       views:['328','3280','3511']
     },{
       name : 'Autoline - email valid',
