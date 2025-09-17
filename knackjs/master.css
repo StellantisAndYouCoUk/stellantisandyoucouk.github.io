@@ -445,6 +445,8 @@ body {
 
 /*Used Stock Management VHC Auth/Awaiting Auth filters to change colour */
 
+/* Commenting out to see if this fixes filter menu issue 
+
 #view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(34) > a,
 #view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(35) > a {
 
@@ -453,6 +455,7 @@ body {
   font-weight: bold;
 }
 
+*/
 
 /* Used Vehicle Deal File Reg No. */
 
