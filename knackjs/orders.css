@@ -6552,21 +6552,17 @@ div.tooltipDiv {
 
 /*Fleet Customer Portal - Table Filters*/
 
-#view_4856 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
-        background-color: #FFA100;
-  	color: #FFFFFF;
-  	font-weight: bold;
-}
-
-/*Internal View of Fleet Portal Connected Orders*/
-
 #view_4845 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_5630 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_4876 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+#view_4876 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5697 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5698 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5699 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
         background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
 }
+
 
 /*Expanding Modal Pop Ups*/
 
