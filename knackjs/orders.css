@@ -6721,17 +6721,25 @@ background: #ddd;
 
 /* Fleet Customer Portal - Internal View of Fleet Portal Connected Orders */
 
-#view_4856 .kn-table-wrapper {
+#view_5697 .kn-table-wrapper,
+#view_5698 .kn-table-wrapper,
+#view_5699 .kn-table-wrapper {
 max-height: 750px;
 }
 
-#view_4856 thead {
+#view_5697 thead,
+#view_5698 thead,
+#view_5699 thead {
 display:table-header-group;
 z-index: 2;
 }
 
-#view_4856 th:first-child,
-#view_4856 tbody tr > :first-child {
+#view_5697 th:first-child,
+#view_5697 tbody tr > :first-child,
+#view_5698 th:first-child,
+#view_5698 tbody tr > :first-child,
+#view_5699 th:first-child,
+#view_5699 tbody tr > :first-child {
 position: sticky;
 z-index: 1;
 left: 0;
