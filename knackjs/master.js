@@ -2120,18 +2120,22 @@ function showPhotoApp(appSettings){
 }
 
 function createPhotoButton(appSettings, fieldNumber, buttonText = 'Capture Photo'){
-  $('div[id="kn-input-field_'+fieldNumber+'"]').find('input').hide();
-  let fM = document.createElement("div");
-  fM.setAttribute("id", 'takePhoto_'+$('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id'));
-  fM.setAttribute("class", 'kn-detail-body');
-  fM.setAttribute('style','padding: 0.375em 0; cursor: pointer');
-  fM.innerHTML = '<span><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-camera"></i></span> <span class="knViewLink__label"><strong><span class="">'+buttonText+'</span></strong></span> <!----></span>'
-  fM.onclick = function(){
-    let mAppSettings = Object.assign({},appSettings);
-    mAppSettings.uploadField = $('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id');
-    showPhotoApp(mAppSettings);
+  try {
+      $('div[id="kn-input-field_'+fieldNumber+'"]').find('input').hide();
+    let fM = document.createElement("div");
+    fM.setAttribute("id", 'takePhoto_'+$('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id'));
+    fM.setAttribute("class", 'kn-detail-body');
+    fM.setAttribute('style','padding: 0.375em 0; cursor: pointer');
+    fM.innerHTML = '<span><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-camera"></i></span> <span class="knViewLink__label"><strong><span class="">'+buttonText+'</span></strong></span> <!----></span>'
+    fM.onclick = function(){
+      let mAppSettings = Object.assign({},appSettings);
+      mAppSettings.uploadField = $('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id');
+      showPhotoApp(mAppSettings);
+    }
+    document.querySelector('div[id="kn-input-'+$('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id')+'"]>div[class="kn-asset-current level"]').appendChild(fM) 
+  } catch (ex){
+    alert(ex.toString());
   }
-  document.querySelector('div[id="kn-input-'+$('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id')+'"]>div[class="kn-asset-current level"]').appendChild(fM) 
 }
 
 
