@@ -5511,27 +5511,31 @@ $(document).on('knack-view-render.view_7386', function (event, view, data) {
 });
 
 function createdMotabReturnsViewImageUpload(){
-  embedPhotoApp();
-  let appSettings10045 = {
-    spiritLine : false,
-    imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
-    imageOverlayEffect : true,
-    imageOverlayOpacity : null,
-    allowLandscape : true,
-    allowPortrait : false,
-    actionAfterPhoto : 'compare', // none, readable, compare,
-    actionAfterPhotoReadableText : 'Does the photo match the template?',
-    uploadMethod : 'field', //knack, make, field
-    uploadField : 'field_10045',
-    resizeImageMaxHeight : 1080,
-    resizeImageMaxWidth : 1440,
-    app_id : '591eae59e0d2123f23235769'
+  try {
+    embedPhotoApp();
+    let appSettings10045 = {
+      spiritLine : false,
+      imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
+      imageOverlayEffect : true,
+      imageOverlayOpacity : null,
+      allowLandscape : true,
+      allowPortrait : false,
+      actionAfterPhoto : 'compare', // none, readable, compare,
+      actionAfterPhotoReadableText : 'Does the photo match the template?',
+      uploadMethod : 'field', //knack, make, field
+      uploadField : 'field_10045',
+      resizeImageMaxHeight : 1080,
+      resizeImageMaxWidth : 1440,
+      app_id : '591eae59e0d2123f23235769'
+    }
+    createPhotoButton(appSettings10045,'10045');
+
+    let recordId = getRecordIdFromHref(location.href);
+
+    createOfflineFormSubmit('7387','591eae59e0d2123f23235769',motabReturnsImageUpload,recordId)
+  } catch (ex){
+    alert(ex);
   }
-  createPhotoButton(appSettings10045,'10045');
-
-  let recordId = getRecordIdFromHref(location.href);
-
-  createOfflineFormSubmit('7387','591eae59e0d2123f23235769',motabReturnsImageUpload,recordId)
 }
 
 function motabReturnsImageUpload(fieldName, fileId, filename, recordId){
