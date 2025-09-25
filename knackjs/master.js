@@ -2980,13 +2980,13 @@ function getCookie(name) {
 $(document).on('knack-view-render.view_3900', function(event, view, data) {
     //***** check if user is on mobile and is not in homescreen */
     let iH = IsInHomeScreen();
-    if (!iH && iH!==null){
+    /*if (!iH && iH!==null){
       alert('We found a problem with the breathing ghost image not aligning to the car when accessing our app as a web page and have now disabled this option. Please goto robinsandday.co.uk/digital and save to your home screen (pin to home screen). Opening our app from there resolves the alignment problem.');
       window.setTimeout(function() {
         window.location.href = 'https://www.stellantisandyou.co.uk/digital#home/';
       }, 500);
       return;
-    }
+    }*/
   $('[class="kn-view kn-back-link"]').hide();
 	prepareCameraView(location.origin+"/digital#used-vehicle-check-in/used-vehicle-check-in-2/"+getRecordIdFromHref(location.href)+"/used-vehicle-check-in-3/"+getRecordIdFromHref(location.href)+"/","591eae59e0d2123f23235769",'field_4944','scene_1543/views/view_5014'/*scene_1262/views/view_3904*/);
 });
@@ -2994,13 +2994,13 @@ $(document).on('knack-view-render.view_3900', function(event, view, data) {
 $(document).on('knack-view-render.view_3910', function(event, view, data) {
   //***** check if user is on mobile and is not in homescreen */
   let iH = IsInHomeScreen();
-  if (!iH && iH!==null){
+  /*if (!iH && iH!==null){
     alert('We found a problem with the breathing ghost image not aligning to the car when accessing our app as a web page and have now disabled this option. Please goto robinsandday.co.uk/digital and save to your home screen (pin to home screen). Opening our app from there resolves the alignment problem.');
     window.setTimeout(function() {
       window.location.href = 'https://www.stellantisandyou.co.uk/digital#home/';
     }, 500);
     return;
-  }
+  }*/
   $('[class="kn-view kn-back-link"]').hide();
 	prepareCameraView(location.origin+"/digital#new-appraisal/retail-appraisal-aesthetic-condition/"+getRecordIdFromHref(location.href)+"/","591eae59e0d2123f23235769",'field_532','scene_1544/views/view_5016'/*scene_1262/views/view_3911*/);
 });
@@ -3008,13 +3008,13 @@ $(document).on('knack-view-render.view_3910', function(event, view, data) {
 $(document).on('knack-view-render.view_6156', function(event, view, data) {
   //***** check if user is on mobile and is not in homescreen */
   let iH = IsInHomeScreen();
-  if (!iH && iH!==null){
+  /*if (!iH && iH!==null){
     alert('We found a problem with the breathing ghost image not aligning to the car when accessing our app as a web page and have now disabled this option. Please goto robinsandday.co.uk/digital and save to your home screen (pin to home screen). Opening our app from there resolves the alignment problem.');
     window.setTimeout(function() {
       window.location.href = 'https://www.stellantisandyou.co.uk/digital#home/';
     }, 500);
     return;
-  }
+  }*/
 $('[class="kn-view kn-back-link"]').hide();
 prepareCameraView(location.origin+"/digital#used-vehicle-check-in/used-vehicle-check-in-2/"+getRecordIdFromHref(location.href)+"/","591eae59e0d2123f23235769",'field_4944','scene_1543/views/view_5014'/*scene_1262/views/view_3904*/);
 });
@@ -3022,13 +3022,13 @@ prepareCameraView(location.origin+"/digital#used-vehicle-check-in/used-vehicle-c
 $(document).on('knack-view-render.view_6165', function(event, view, data) {
   //***** check if user is on mobile and is not in homescreen */
   let iH = IsInHomeScreen();
-  if (!iH && iH!==null){
+  /*f (!iH && iH!==null){
     alert('We found a problem with the breathing ghost image not aligning to the car when accessing our app as a web page and have now disabled this option. Please goto robinsandday.co.uk/digital and save to your home screen (pin to home screen). Opening our app from there resolves the alignment problem.');
     window.setTimeout(function() {
       window.location.href = 'https://www.stellantisandyou.co.uk/digital#home/';
     }, 500);
     return;
-  }
+  }*/
 $('[class="kn-view kn-back-link"]').hide();
 prepareCameraView(location.origin+"/digital#used-vehicle-check-in/used-vehicle-check-in-2/"+getRecordIdFromHref(location.href)+"/used-vehicle-check-in-3/"+getRecordIdFromHref(location.href)+"/vehicle-imagery-rejected-confirm-action/"+getRecordIdFromHref(location.href)+"/","591eae59e0d2123f23235769",'field_4944','scene_1543/views/view_5014'/*scene_1262/views/view_3904*/);
 });
