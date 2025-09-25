@@ -2121,7 +2121,12 @@ function showPhotoApp(appSettings){
 
 function createPhotoButton(appSettings, fieldNumber, buttonText = 'Capture Photo'){
   try {
-      $('div[id="kn-input-field_'+fieldNumber+'"]').find('input').hide();
+    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+        alert($('div[id="kn-input-field_'+fieldNumber+'"]').length);
+        alert($('div[id="kn-input-field_'+fieldNumber+'"]').find('input').length);
+        alert($('div[id*="kn-input-field_'+fieldNumber+'"]').length);
+    }
+    $('div[id="kn-input-field_'+fieldNumber+'"]').find('input').hide();
     let fM = document.createElement("div");
     fM.setAttribute("id", 'takePhoto_'+$('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id'));
     fM.setAttribute("class", 'kn-detail-body');
