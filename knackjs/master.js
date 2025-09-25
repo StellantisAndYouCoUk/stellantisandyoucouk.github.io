@@ -2724,7 +2724,7 @@ var calibrationValue = getCookie('rdSpiritCalibration');
 
 $(window).on("orientationchange",function(){
   if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-      alert('orientationchange'+window.orientation)
+      //alert('orientationchange'+window.orientation)
   }
   if(window.orientation == 0 || window.orientation == 180){ // Portrait
     $(stop);
