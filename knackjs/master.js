@@ -2675,6 +2675,9 @@ var calibrationValue = getCookie('rdSpiritCalibration');
     // you're in LANDSCAPE mode
     orientationStr = 'landscape';
   }
+  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+      alert('orientation'+orientationStr+alpha+beta+gamma+absolute)
+  }
   console.log('orientation',orientationStr,alpha,beta,gamma,absolute);
   let origBeta = beta;
 
