@@ -5503,10 +5503,16 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 $(document).on('knack-view-render.view_7387', function (event, view, data) {
+  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+        alert('knack-view-render.view_7387');
+  }
   createdMotabReturnsViewImageUpload();
 });
 
 $(document).on('knack-view-render.view_7386', function (event, view, data) {
+  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+        alert('knack-view-render.view_7386');
+  }
   createdMotabReturnsViewImageUpload();
 });
 
