@@ -445,6 +445,7 @@ body {
 
 /*Used Stock Management VHC Auth/Awaiting Auth filters to change colour */
 
+
 #view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(34) > a,
 #view_1149 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(35) > a {
 
@@ -452,6 +453,7 @@ body {
   color: #ffffff;
   font-weight: bold;
 }
+
 
 
 /* Used Vehicle Deal File Reg No. */
@@ -4078,6 +4080,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5807 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_5807 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
 #view_5807 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5807 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5808 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5808 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5815 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4108,6 +4111,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5825 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5825 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5825 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5825 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5826 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5826 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5831 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4268,6 +4272,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5807 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_5807 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
 #view_5807 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_5807 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5808 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5808 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5815 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4298,6 +4303,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5825 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5825 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5825 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5825 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5826 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5826 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5831 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,

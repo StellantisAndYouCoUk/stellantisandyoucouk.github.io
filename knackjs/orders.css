@@ -6552,21 +6552,16 @@ div.tooltipDiv {
 
 /*Fleet Customer Portal - Table Filters*/
 
-#view_4856 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
-        background-color: #FFA100;
-  	color: #FFFFFF;
-  	font-weight: bold;
-}
-
-/*Internal View of Fleet Portal Connected Orders*/
-
 #view_4845 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_5630 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_4876 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+#view_4876 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5703 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_5719 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
         background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
 }
+
 
 /*Expanding Modal Pop Ups*/
 
@@ -6721,17 +6716,25 @@ background: #ddd;
 
 /* Fleet Customer Portal - Internal View of Fleet Portal Connected Orders */
 
-#view_4856 .kn-table-wrapper {
+#view_5703 .kn-table-wrapper,
+#view_5719 .kn-table-wrapper,
+#view_5720 .kn-table-wrapper {
 max-height: 750px;
 }
 
-#view_4856 thead {
+#view_5703 thead,
+#view_5719 thead,
+#view_5720 thead {
 display:table-header-group;
 z-index: 2;
 }
 
-#view_4856 th:first-child,
-#view_4856 tbody tr > :first-child {
+#view_5703 th:first-child,
+#view_5703 tbody tr > :first-child,
+#view_5719 th:first-child,
+#view_5719 tbody tr > :first-child,
+#view_5720 th:first-child,
+#view_5720 tbody tr > :first-child {
 position: sticky;
 z-index: 1;
 left: 0;
@@ -6740,5 +6743,7 @@ background: #ddd;
 
 /* FLEET ORDER MANAGEMENT AND ORDER REQUESTS */
 /* Profit Sheet View */
-#view_5677 .kn-detail-label {background-color: transparent;}
+#view_5677 .kn-detail-label,
+#view_5688 .kn-detail-label,
+#view_5690 .kn-detail-label {background-color: transparent;}
 
