@@ -5512,6 +5512,9 @@ $(document).on('knack-view-render.view_7386', function (event, view, data) {
 
 function createdMotabReturnsViewImageUpload(){
   try {
+    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+        alert('embedPhotoApp');
+    }
     embedPhotoApp();
     let appSettings10045 = {
       spiritLine : false,
@@ -5527,6 +5530,9 @@ function createdMotabReturnsViewImageUpload(){
       resizeImageMaxHeight : 1080,
       resizeImageMaxWidth : 1440,
       app_id : '591eae59e0d2123f23235769'
+    }
+    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+        alert('createPhotoButton');
     }
     createPhotoButton(appSettings10045,'10045');
 
