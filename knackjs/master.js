@@ -2675,9 +2675,7 @@ var calibrationValue = getCookie('rdSpiritCalibration');
     // you're in LANDSCAPE mode
     orientationStr = 'landscape';
   }
-  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-      alert('orientation'+orientationStr+alpha+beta+gamma+absolute)
-  }
+
   console.log('orientation',orientationStr,alpha,beta,gamma,absolute);
   let origBeta = beta;
 
@@ -2725,6 +2723,9 @@ var calibrationValue = getCookie('rdSpiritCalibration');
   //IF THE USER CHANGES SCREEN ORIENTATION
 
 $(window).on("orientationchange",function(){
+  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
+      alert('orientationchange'+window.orientation)
+  }
   if(window.orientation == 0 || window.orientation == 180){ // Portrait
     $(stop);
     $("#cameraCalibrate").hide();
