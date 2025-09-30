@@ -4,7 +4,18 @@
   //this function just parses recordId from URL //maybe needs to be altered acording the use
   function getRecordIdFromHref(ur) {
     var ur = ur.substr(0, ur.length - 1);
-    return ur.substr(ur.lastIndexOf('/') + 1)
+    ur = ur.substr(ur.lastIndexOf('/') + 1);
+    if (ur.includes('?') || ur.length!==24){
+      try {
+        let tokenFromPage = $('input[name="id"]').attr('value');
+        if (tokenFromPage && tokenFromPage!=='' && tokenFromPage.length===24){
+          return tokenFromPage;
+        }
+      } catch (ex){
+
+      }
+    }
+    return ur;
   }
 
   //Uploads given fileBlob to given app_id file store
