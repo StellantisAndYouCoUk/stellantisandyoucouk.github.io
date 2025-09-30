@@ -4851,3 +4851,9 @@ $(document).on('knack-record-create.view_5033', function(event, view, data) {
 $(document).on('knack-scene-render.scene_961',function(event, scene) {
  recursiveSceneRefresh('961',['view_3878'],1800000)
 });
+
+// Update Physical Stock Quantity for Tyre Audit
+$(document).on('knack-record-create.view_5068', function(event, view, data) { 
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+  Knack.showSpinner(); 
+});
