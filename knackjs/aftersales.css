@@ -2694,7 +2694,9 @@ div#view_4746 {
 }
 
 /*Make Parts ordering table centered */
-#kn-input-field_3409 .table {
+#kn-input-field_3409 .table th,
+.table tr,
+.table td {
   margin: auto !important;
    text-align: center;
 }
