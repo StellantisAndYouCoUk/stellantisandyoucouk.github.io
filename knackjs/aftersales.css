@@ -2692,3 +2692,9 @@ div#view_4746 {
 .field_3798 .kn-detail-body>span>span {
 	white-space: nowrap;
 }
+
+/*Make Parts ordering table centered */
+#kn-input-field_3409 {
+  margin: auto !important;
+   text-align: center;
+}
