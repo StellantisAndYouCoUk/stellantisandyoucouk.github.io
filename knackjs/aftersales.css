@@ -2774,3 +2774,10 @@ div#view_4746 {
   	box-shadow:         3px 3px #ccc;
 }
 
+#syButtons_4390 > ul > li.is-active {
+	background-color: #ADAEB3;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
