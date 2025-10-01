@@ -2707,3 +2707,69 @@ div#view_4746 {
   text-align: center;
 }
 
+/*Make the menu buttons orange*/
+#syButtons_4390_0,
+#syButtons_4390_1,
+#syButtons_4390_2,
+#syButtons_4390_3,
+#syButtons_4390_4,
+#syButtons_4390_5,
+#syButtons_4390_6,
+#syButtons_4390_7,
+#syButtons_4390_13,
+#syButtons_4390_14 {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/*Make SG menu buttons*/
+#syButtons_4390_8,
+#syButtons_4390_15,
+#syButtons_4390_16 {
+	background-color: #FFA0000;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/*Make DW menu buttons*/
+#syButtons_4390_9,
+#syButtons_4390_17,
+#syButtons_4390_18 {
+	background-color: #0000FF;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/*Make PM menu buttons*/
+#syButtons_4390_10,
+#syButtons_4390_19,
+#syButtons_4390_20 {
+	background-color: #800080;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/*Make PB menu buttons*/
+#syButtons_4390_11,
+#syButtons_4390_21,
+#syButtons_4390_22 {
+	background-color: #808000;
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
+
+/*Make TS menu buttons*/
+#syButtons_4390_12,
+#syButtons_4390_23,
+#syButtons_4390_24 {
+	background-color: #A52A2A
+  	color: #FFFFFF;
+  	font-weight: bold;
+  	box-shadow:         3px 3px #ccc;
+}
