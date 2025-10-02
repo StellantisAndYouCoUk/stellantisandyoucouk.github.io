@@ -982,6 +982,7 @@ $(document).on('knack-scene-render.scene_1478', function(event, scene) {
 
 
 
+
 // Trigger Customer Incident Form
 $(document).on('knack-form-submit.view_781', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/fbuumn73d29ycs7o5ell2c4kflbnkhfb", {"Record ID":data.id},"Send Pre Visit Digital Customer Incident Form V2")
@@ -4675,7 +4676,12 @@ $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
   });
-  
+
+
+// Refresh Policy Approval Details - extra refresh of views for when users may have submitted multiple requests
+$(document).on('knack-scene-render.scene_1446', function(event, scene) {
+  recursiveSceneRefresh('1446',['view_5047'],10000);
+});
 
 
 $(document).on('knack-view-render.view_4863', function (event, view, data) {
