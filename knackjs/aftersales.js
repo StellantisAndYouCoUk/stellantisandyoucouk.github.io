@@ -4678,11 +4678,6 @@ $(document).on("knack-scene-render.scene_1446", function(event, scene, data) {
   });
 
 
-// Refresh Policy Approval Details - extra refresh of views for when users may have submitted multiple requests
-$(document).on('knack-scene-render.scene_1446', function(event, scene) {
-  recursiveSceneRefresh('1446',['view_5047'],10000);
-});
-
 
 $(document).on('knack-view-render.view_4863', function (event, view, data) {
   embedPhotoApp();
