@@ -859,6 +859,7 @@ function setLayout(takingPhotoI){
     $('#cameraGridCompare').hide();
     $("#cameraText").hide();
 
+    takePhotoButton.disabled = false;
     $('#cameraVid_container').show();
     $('#cameraGui_controls').show();
     $("#cameraExit").show();
