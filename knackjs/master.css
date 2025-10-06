@@ -830,7 +830,9 @@ body {
 #view_6932 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_6989 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7045 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
-#view_7948 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
+#view_7948 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_8408 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_8404 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a {
   background-color: #ffa100;
   color: #ffffff;
   font-weight: bold;
@@ -4218,6 +4220,18 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_8318 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_8318 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_8318 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_8446 > div > a.kn-link.kn-link-11.kn-link-page.kn-button,
+
 #view_8328 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #005F80;
   color: #ffffff;
@@ -4410,6 +4424,17 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_8318 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_8318 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_8318 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-7.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_8446 > div > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_8328 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
   background-color: #014157;
   color: #ffffff;

@@ -1653,7 +1653,7 @@ function triggerEssorRefresh(){
               };
 
 
-            if (!street2Input.val().trim()) {
+    /*        if (!street2Input.val().trim()) {
                 event.preventDefault(); // Stop form submission
                 alert('Please fill out Address Line 2'); // Show an alert
                 street2Input.addClass('input-error'); // Add error styling
@@ -1663,7 +1663,7 @@ function triggerEssorRefresh(){
 
             street2Input.removeClass('input-error');
             // Remove error styling if filled
-              };
+              }; */
 
 
             if (!cityInput.val().trim()) {
@@ -1737,7 +1737,7 @@ function triggerEssorRefresh(){
                   };
 
 
-                if (!street2Input.val().trim()) {
+              /*  if (!street2Input.val().trim()) {
                     event.preventDefault(); // Stop form submission
                     alert('Please fill out Address Line 2'); // Show an alert
                     street2Input.addClass('input-error'); // Add error styling
@@ -1748,7 +1748,7 @@ function triggerEssorRefresh(){
                 street2Input.removeClass('input-error');
                 // Remove error styling if filled
                   };
-
+*/
 
                 if (!cityInput.val().trim()) {
                     event.preventDefault(); // Stop form submission
@@ -1819,7 +1819,7 @@ function triggerEssorRefresh(){
               };
 
 
-            if (!street2Input.val().trim()) {
+          /*  if (!street2Input.val().trim()) {
                 event.preventDefault(); // Stop form submission
                 alert('Please fill out Address Line 2'); // Show an alert
                 street2Input.addClass('input-error'); // Add error styling
@@ -1830,7 +1830,7 @@ function triggerEssorRefresh(){
             street2Input.removeClass('input-error');
             // Remove error styling if filled
               };
-
+*/
 
             if (!cityInput.val().trim()) {
                 event.preventDefault(); // Stop form submission
