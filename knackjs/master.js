@@ -2121,11 +2121,6 @@ function showPhotoApp(appSettings){
 
 function createPhotoButton(appSettings, fieldNumber, buttonText = 'Capture Photo'){
   try {
-    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-        alert($('div[id="kn-input-field_'+fieldNumber+'"]').length);
-        alert($('div[id="kn-input-field_'+fieldNumber+'"]').find('input').length);
-        alert($('div[id*="kn-input-field_'+fieldNumber+'"]').length);
-    }
     $('div[id="kn-input-field_'+fieldNumber+'"]').find('input').hide();
     let fM = document.createElement("div");
     fM.setAttribute("id", 'takePhoto_'+$('div[id="kn-input-field_'+fieldNumber+'"]').attr('data-input-id'));
@@ -5503,24 +5498,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
 
 $(document).on('knack-view-render.view_7387', function (event, view, data) {
-  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-        alert('knack-view-render.view_7387');
-  }
   createdMotabReturnsViewImageUpload();
 });
 
 $(document).on('knack-view-render.view_7386', function (event, view, data) {
-  if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-        alert('knack-view-render.view_7386');
-  }
   createdMotabReturnsViewImageUpload();
 });
 
 function createdMotabReturnsViewImageUpload(){
   try {
-    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-        alert('embedPhotoApp');
-    }
     embedPhotoApp();
     let appSettings10045 = {
       spiritLine : false,
@@ -5536,9 +5522,6 @@ function createdMotabReturnsViewImageUpload(){
       resizeImageMaxHeight : 1080,
       resizeImageMaxWidth : 1440,
       app_id : '591eae59e0d2123f23235769'
-    }
-    if (Knack.getUserAttributes().email.includes('hynek') || Knack.getUserAttributes().email.includes('daniel.cheng') || Knack.getUserAttributes().email.includes('conor.power')){
-        alert('createPhotoButton');
     }
     createPhotoButton(appSettings10045,'10045');
 
