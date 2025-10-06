@@ -613,6 +613,8 @@ var takePhotoImageHeight = null;
   function takePhoto() {
     sndCameraTakePhoto.play();
 
+    takePhotoButton.disabled = true;
+
     //HIDE EXIT BUTTON
     $("#cameraExit").hide();
     setLayout(false);
