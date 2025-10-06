@@ -862,7 +862,7 @@ function setLayout(takingPhotoI){
     $('#cameraVid_container').show();
     $('#cameraGui_controls').show();
     $("#cameraExit").show();
-    $("#takePhoto").prop('disabled', false);
+    $("#takePhoto").removeAttr('disabled');
 
     if (appSettings.imageOverlay && appSettings.imageOverlayOpacity){
       $('#cameraOverlayCanvasPA').css({ opacity: appSettings.imageOverlayOpacity })
