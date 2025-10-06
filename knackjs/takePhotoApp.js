@@ -859,10 +859,10 @@ function setLayout(takingPhotoI){
     $('#cameraGridCompare').hide();
     $("#cameraText").hide();
 
-    takePhotoButton.disabled = false;
     $('#cameraVid_container').show();
     $('#cameraGui_controls').show();
     $("#cameraExit").show();
+    $("#takePhoto").prop('disabled', false);
 
     if (appSettings.imageOverlay && appSettings.imageOverlayOpacity){
       $('#cameraOverlayCanvasPA').css({ opacity: appSettings.imageOverlayOpacity })
