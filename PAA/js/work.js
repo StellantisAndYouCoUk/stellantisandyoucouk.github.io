@@ -590,8 +590,13 @@ function manageRunsList(){
 
 }
 
+let lastDateForRuns = null;
 function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
-    console.log('getRunsServerData')
+    console.log('getRunsServerData');
+    if (otherParams && otherParams.dateForRuns){
+        if (lastDateForRuns && lastDateForRuns!==otherParams.dateForRuns) globalPageData['runs'] = null;
+        lastDateForRuns = otherParams.dateForRuns;
+    }
     if (!globalPageData['runs'] || globalPageData['runs'].length === 0){
         if (refreshCallback && globalPageData['runs']){
             refreshServerData('runs',otherParams, true, refreshCallback);
