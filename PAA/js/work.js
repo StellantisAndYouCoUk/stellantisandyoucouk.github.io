@@ -363,13 +363,10 @@ function work(){
     }
 
     if (page.includes('runs.html')){
-        let dateForRuns = new Date();
-        if (qV['dateForRuns']) dateForRuns = new Date(qV['dateForRuns']);
-        $('#runsDate').text(dateToGB(dateForRuns));
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
-                    callback({data:getRunsDataForTable(dateForRuns)});
+                    callback({data:getRunsDataForTable()});
                   },
                 columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
@@ -590,14 +587,8 @@ function manageRunsList(){
 
 }
 
-let lastDateForRuns = null;
 function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
     console.log('getRunsServerData');
-    if (otherParams && otherParams.dateForRuns){
-        console.log(lastDateForRuns,otherParams.dateForRuns)
-        if (lastDateForRuns && lastDateForRuns!==otherParams.dateForRuns) globalPageData['runs'] = null;
-        lastDateForRuns = otherParams.dateForRuns;
-    }
     if (!globalPageData['runs'] || globalPageData['runs'].length === 0){
         if (refreshCallback && globalPageData['runs']){
             refreshServerData('runs',otherParams, true, refreshCallback);
@@ -1023,9 +1014,9 @@ function getSearchFromUrl(){
     return null;
 }
 
-function getRunsDataForTable(dateForRuns){
+function getRunsDataForTable(){
     console.log('getRunsDataForTable')
-    let runs = getServerData('runs',refereshRunsTable,{'dateForRuns':dateForRuns},15)
+    let runs = getServerData('runs',refereshRunsTable,null,15)
     let contentToHide = '';
     runs = runs.sort((a,b)=> (new Date(a.createdDateTime)>new Date(b.createdDateTime)?1:-1));
     let tMJ = runs.map(function (el){
