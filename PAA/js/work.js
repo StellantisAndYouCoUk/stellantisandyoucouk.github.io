@@ -364,6 +364,8 @@ function work(){
 
     if (page.includes('runs.html')){
         let dateForRuns = new Date();
+        if (qV['dateForRuns']) dateForRuns = new Date(qV['dateForRuns']);
+        $('#runsDate').text(dateToGB(dateForRuns));
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
