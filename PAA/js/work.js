@@ -594,7 +594,7 @@ function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
     console.log('getRunsServerData')
     if (!globalPageData['runs'] || globalPageData['runs'].length === 0){
         if (refreshCallback && globalPageData['runs']){
-            refreshServerData('runs',null, true, refreshCallback);
+            refreshServerData('runs',otherParams, true, refreshCallback);
             return globalPageData['runs'];
         }
         return refreshServerData('runs',null);
@@ -608,6 +608,7 @@ function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
     if (lastNotSolved.length===0){
         globalPageData['runs'] = globalPageData['runs'].sort((a,b)=> (new Date(a.createdDateTime)<new Date(b.createdDateTime)?1:-1));
         let otherParams1 = {filters:[{'field':'createdDateTime','value':globalPageData['runs'][0].createdDateTime}]};
+        Object.assign(otherParams1,otherParams);
         if (refreshCallback && globalPageData['runs']){
             refreshServerData('runs',otherParams1, true, refreshCallback,true);
             return globalPageData['runs'];
