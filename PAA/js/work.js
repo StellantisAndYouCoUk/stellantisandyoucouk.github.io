@@ -1008,7 +1008,7 @@ function clearActionInfoAfter15sec(){
 
 function getSearchFromUrl(){
     let s = window.location.search;
-    if (s!==''){
+    if (s!=='' && !s.includes('=')){
         return {
             "search" : s.replace('?','')
         }
