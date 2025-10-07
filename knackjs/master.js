@@ -603,6 +603,12 @@ $(document).on('knack-view-render.view_7804', function(event, view, data) {
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-fleet-order-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+// Head Office Fleet Registrations Reporting
+$(document).on('knack-view-render.view_8520', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-registrations-reporting" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 // Head Office Retail and Motability Invoice Reporting
 $(document).on('knack-view-render.view_7805', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
