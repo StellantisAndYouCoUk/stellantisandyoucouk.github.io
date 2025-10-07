@@ -594,6 +594,7 @@ let lastDateForRuns = null;
 function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
     console.log('getRunsServerData');
     if (otherParams && otherParams.dateForRuns){
+        console.log(lastDateForRuns,otherParams.dateForRuns)
         if (lastDateForRuns && lastDateForRuns!==otherParams.dateForRuns) globalPageData['runs'] = null;
         lastDateForRuns = otherParams.dateForRuns;
     }
