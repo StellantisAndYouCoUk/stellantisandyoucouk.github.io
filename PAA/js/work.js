@@ -659,7 +659,7 @@ function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
 
 function getRunLogsServerData(refreshCallback, maxSecFromRefresh, otherParams){
     console.log('getRunLogsServerData');
-    return refreshServerData('runLogs',otherParams,false,null,true);
+    return refreshServerData('runLogs',otherParams,false,null,false);
 }
 
 function getServerData(dataName,refreshCallback=null, otherParams = {}, maxSecFromRefresh = 60){
