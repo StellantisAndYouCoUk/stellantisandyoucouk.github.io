@@ -417,7 +417,7 @@ function work(){
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
-                    callback({data:getRunsDataForTable()});
+                    callback({data:getRunsDataForTableLogs()});
                   },
                 columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
