@@ -407,6 +407,13 @@ function work(){
     }
 
     if (page.includes('logs.html')){
+        let dateForLogs = qV['dateForLogs'];
+        if (!dateForLogs || dateForLogs===''){
+            dateForLogs = new Date();
+        } else {
+            dateForLogs = new Date(dateForLogs);
+        }
+        $('#dateForLogs').text(dateToGB(dateForLogs));
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
