@@ -657,12 +657,20 @@ function getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams){
     return refreshServerData('runs',otherParams2,false,null,true);
 }
 
+function getRunLogsServerData(refreshCallback, maxSecFromRefresh, otherParams){
+    console.log('getRunLogsServerData');
+    return refreshServerData('runs',otherParams,false,null,true);
+}
+
 function getServerData(dataName,refreshCallback=null, otherParams = {}, maxSecFromRefresh = 60){
     if (globalPageData[dataName] && globalPageData[dataName+'TimeStamp'] && difFromNowInSeconds(new Date(globalPageData[dataName+'TimeStamp']))<maxSecFromRefresh){
         return globalPageData[dataName];
     }
     if (dataName==='runs'){
         return getRunsServerData(refreshCallback, maxSecFromRefresh, otherParams)
+    }
+    if (dataName==='runLogs'){
+        return getRunLogsServerData(refreshCallback, maxSecFromRefresh, otherParams)
     }
     if (refreshCallback && globalPageData[dataName]){
         refreshServerData(dataName,otherParams, true, refreshCallback);
@@ -1052,6 +1060,21 @@ function getSearchFromUrl(){
 function getRunsDataForTable(){
     console.log('getRunsDataForTable')
     let runs = getServerData('runs',refereshRunsTable,null,15)
+    let contentToHide = '';
+    runs = runs.sort((a,b)=> (new Date(a.createdDateTime)>new Date(b.createdDateTime)?1:-1));
+    let tMJ = runs.map(function (el){
+        contentToHide += formatRunDetails(el,getServerData('machines',null,{},300));
+        return {'Flow Name':el.flowName,'LiveOrPreprod':(el.liveOrPreprod?el.liveOrPreprod:(el.flowInput && el.flowInput.liveOrPreprod?el.flowInput.liveOrPreprod:'')),'Machine':(el.machine?el.machine.name:''),'Mode':(el.runMode?el.runMode:''),'State':el.status+(el.retryCount?' R:'+el.retryCount:'')+(el.status==='queued' && el.flowStopped?'<br/>Flow stopped':'')+(el.status==='failed' || el.status==='canceled'?'<br /><a href="#" onclick="resurrectRun(\''+el.queueId+'\'); alert(\'The run will be resurrected.\'); return false;">Resurrect</a>':'')+(el.status==='running' || el.status==='queuedOnServer' || el.status==='queued'?'<br /><a href="#" onclick="cancelRun(\''+el.queueId+'\'); alert(\'The run will be cancelled.\'); return false;">Cancel run</a>':'')+(el.status==='succeded'?getSuccOutputDet(el):'')+(el.status==='waiting'?'<br />'+dateTimeToGB(new Date(el.waitingStartSonestAt)):''),'Priority':el.priority,'Requested':el.createdDateTime,'Started':(el.startedDateTime?dateTimeToGBNoYear(new Date(el.startedDateTime)):''),'Duration': (el.completedDateTime&&el.startedDateTime?(new Date((new Date(el.completedDateTime)-new Date(el.startedDateTime))).toISOString().substring(14, 19)):''),'Details':'<a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'queueDetailsText-'+el.queueId+'\');return false;">Details</a>'+(el.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+el.runId+'\');return false;">Output</a>':''),'In PA':'<a target="_blank" href="'+el.hrefDetails+'">Open</a><div id="addData" style="display: none;">'+JSON.stringify(el.flowInput,)+'</div>'};
+    })
+    //console.log(tMJ);
+    $('div[id="runDetailsData"]').html('');
+    $('div[id="runDetailsData"]').append(contentToHide);
+    return tMJ;
+}
+
+function getRunsDataForTableLogs(){
+    console.log('getRunsDataForTableLogs')
+    let runs = getServerData('runLogs',refereshRunsTable,null,15)
     let contentToHide = '';
     runs = runs.sort((a,b)=> (new Date(a.createdDateTime)>new Date(b.createdDateTime)?1:-1));
     let tMJ = runs.map(function (el){
