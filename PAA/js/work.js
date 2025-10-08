@@ -406,6 +406,41 @@ function work(){
         }
     }
 
+    if (page.includes('logs.html')){
+        if (!table){
+            table = new DataTable('#datatablesSimpleRuns',{
+                ajax: function (data, callback, settings) {
+                    callback({data:getRunsDataForTable()});
+                  },
+                columns: [
+                { data: 'Flow Name',title: 'Flow Name'},
+                { data: 'LiveOrPreprod',title: 'Live'},
+                { data: 'Machine',title: 'Machine'},
+                { data: 'Mode',title: 'Mode'},
+                { data: 'State',title: 'State'},
+                { data: 'Priority',title: 'Pri'},
+                { data: 'Requested',title: 'Requested',name:'Requested', "render": function(data, type) { return type === 'sort' ? data : dateTimeToGBNoYear(new Date(data));}},
+                { data: 'Started',title: 'Started'},
+                { data: 'Duration',title: 'Duration'},
+                { data: 'Details',title:'Details' },
+                { data: 'In PA',title: 'In PA'}
+                ],
+                order: {
+                    name: 'Requested',
+                    dir: 'desc'
+                },
+                pageLength: 25,
+                scroller: true,
+                search: getSearchFromUrl(),
+            });
+
+            $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
+            $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
+        } else {
+            refereshRunsTable();
+        }
+    }
+
     if (page.includes('uicoll.html')){
         console.log(qV['flow']);
         $('h1').text(qV['flow'])
