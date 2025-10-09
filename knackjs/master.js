@@ -3696,7 +3696,7 @@ $(document).on('knack-form-submit.view_407', function(event, view, data) {
 
 //User data update
 $(document).on('knack-form-submit.view_5', function(event, view, data) {
-  //callPostHttpRequest("https://api.apify.com/v2/acts/davidmale~auth/runs?token=jP5rS2dPuuxTGiEige3fCWp8D", {"action": "replicate_users"},"User data update");   
+  //callPostHttpRequest("https://api.apify.com/v2/acts/davidmale~auth/runs?token=", {"action": "replicate_users"},"User data update");   
 });
 
 //Valeting check out (Master App)
@@ -4099,7 +4099,7 @@ $('#view_5055 tbody input[type=checkbox]:checked').each(function() {
 
 //Trigger Auth Actor password sync when user resets password
 $(document).on('knack-form-submit.view_1141', function(event, view, data) {
-  callPostHttpRequest("https://api.apify.com/v2/acts/davidmale~auth/runs?token=jP5rS2dPuuxTGiEige3fCWp8D", {"action":"replicate_users", "userEmail":data.field_3_raw.email},"Call Auth Actor Password Sync")
+  callPostHttpRequest("https://api.apify.com/v2/acts/davidmale~auth/runs?token=apify_api_DwjTSAF8KyL5tYjb7I5xprmQqRB9bJ0YFCHd", {"action":"replicate_users", "userEmail":data.field_3_raw.email},"Call Auth Actor Password Sync")
 });
 
 function handlAll(valueA, fieldName){ 
