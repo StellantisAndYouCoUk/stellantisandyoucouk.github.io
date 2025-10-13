@@ -262,6 +262,7 @@ function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0)
   if (currentRefreshScene.includes(sceneId) && runCount === 0) {console.log('refresh '+sceneId+',new refresh of same scene, exiting'); return;}
   //Adding new scene refresh to list
   currentRefreshScene.push(sceneId);
+  if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
   setTimeout(function () { 
     //Check if we are still in the same scene, we are trying to refresh views, if not exit
     if ($('div[id="kn-scene_'+sceneId+'"]').length===0) {console.log('refresh '+sceneId+', another scene, stop refresh'); currentRefreshScene = currentRefreshScene.filter(el => el !== sceneId); return;} 
@@ -276,9 +277,9 @@ function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0)
     }
     //Call me once again to do it after set refreshInterval
     recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
-    /*try {
+    try {
       callPostHttpRequest('https://davidmale--server.apify.actor/knackRefreshData?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{function:'recursiveSceneRefresh',app:'aftersales',dateTime: new Date(),sceneId:sceneId,viewsArray:viewsArray,runCount:runCount,user:Knack.getUserAttributes().email})
-    } catch (ex){console.log(ex)}*/
+    } catch (ex){console.log(ex)}
     }, refreshInterval);
 }
 
@@ -729,10 +730,11 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
       }
       data.value = Knack.views["view_"+viewID].model.data.models[0].attributes[field];
     }
-    setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 6000);
-    /*try {
+    if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
+    setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
+    try {
       callPostHttpRequest('https://davidmale--server.apify.actor/knackRefreshData?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{function:'refreshWithData',app:'aftersales',dateTime: new Date(),viewId:viewID,user:Knack.getUserAttributes().email})
-    } catch (ex){console.log(ex)}*/
+    } catch (ex){console.log(ex)}
    }
 
   function refresh(viewID, notifTitle, notifText, data = null){
@@ -3187,9 +3189,9 @@ $(document).on('knack-form-submit.view_2881', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/l033812xruob5c383h0qlfz59oebzwak",{"Record ID":data.id}, "Aftersales - Exit Survey Email From FOLLOW UP from Jobcard v2") 
 });
 
-  //refresh  new tech page every 5 seconds
+  //refresh  new tech page every 60 seconds
 $(document).on('knack-scene-render.scene_935', function(event, scene) {
-  recursiveSceneRefresh('935',['view_2900','view_3126'],30000);
+  recursiveSceneRefresh('935',['view_2900','view_3126'],60000);
 });
 
 $(document).on('knack-scene-render.scene_981', function(event, scene) {
