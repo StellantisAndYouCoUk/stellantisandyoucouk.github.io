@@ -3189,13 +3189,13 @@ $(document).on('knack-form-submit.view_2881', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/l033812xruob5c383h0qlfz59oebzwak",{"Record ID":data.id}, "Aftersales - Exit Survey Email From FOLLOW UP from Jobcard v2") 
 });
 
-  //refresh  new tech page every 60 seconds
+  //refresh  new tech page every 30 seconds
 $(document).on('knack-scene-render.scene_935', function(event, scene) {
-  recursiveSceneRefresh('935',['view_2900','view_3126'],60000);
+  recursiveSceneRefresh('935',['view_2900','view_3126'],30000);
 });
 
 $(document).on('knack-scene-render.scene_981', function(event, scene) {
-  recursiveSceneRefresh('981',['view_3223','view_3086'],30000);
+  recursiveSceneRefresh('981',['view_3223','view_3086'],60000);
 });
 
 // refresh workshop table v1
