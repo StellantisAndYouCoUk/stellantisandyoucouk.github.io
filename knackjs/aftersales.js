@@ -277,9 +277,9 @@ function recursiveSceneRefresh(sceneId,viewsArray,refreshInterval, runCount = 0)
     }
     //Call me once again to do it after set refreshInterval
     recursiveSceneRefresh(sceneId,viewsArray,refreshInterval,runCount+1);
-    try {
+    /*try {
       callPostHttpRequest('https://davidmale--server.apify.actor/knackRefreshData?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{function:'recursiveSceneRefresh',app:'aftersales',dateTime: new Date(),sceneId:sceneId,viewsArray:viewsArray,runCount:runCount,user:Knack.getUserAttributes().email})
-    } catch (ex){console.log(ex)}
+    } catch (ex){console.log(ex)}*/
     }, refreshInterval);
 }
 
@@ -732,9 +732,9 @@ $(document).on("knack-scene-render.scene_1103", function(event, scene, data) {
     }
     if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
     setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
-    try {
+    /*try {
       callPostHttpRequest('https://davidmale--server.apify.actor/knackRefreshData?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{function:'refreshWithData',app:'aftersales',dateTime: new Date(),viewId:viewID,user:Knack.getUserAttributes().email})
-    } catch (ex){console.log(ex)}
+    } catch (ex){console.log(ex)}*/
    }
 
   function refresh(viewID, notifTitle, notifText, data = null){
