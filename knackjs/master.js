@@ -870,12 +870,13 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   console.log('dateTimeOfFirstRun',dateTimeOfFirstRun);
   let today = new Date();
   let isToday = (today.toDateString() == dateTimeOfFirstRun.toDateString());
-  if (!isToday){
+  let doLogout = (today-dateTimeOfFirstRun)>48*60*60*1000
+  if (!doLogout){
     dateTimeOfFirstRun = new Date();
     
     // Notify user if user blocked notification.
     // Delete this code after confirmed.
-    console.log("Run once in a day...");
+    console.log("Logout once in 48 hours");
 
     //window.location.reload(false);
     setTimeout(function () { $('a[class="kn-log-out"]').eq(0).click(); setTimeout(function () { window.location.reload(false); }, 1000);}, 1000);
