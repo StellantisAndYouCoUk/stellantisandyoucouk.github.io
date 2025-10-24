@@ -870,9 +870,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   console.log('dateTimeOfFirstRun',dateTimeOfFirstRun);
   let today = new Date();
   let isToday = (today.toDateString() == dateTimeOfFirstRun.toDateString());
-  let doLogout = false; 
-  console.log((today-dateTimeOfFirstRun))
-  console.log((today-dateTimeOfFirstRun)>48*60*60*1000)
+  let doLogout = (today-dateTimeOfFirstRun)>48*60*60*1000;
   if (doLogout){
     dateTimeOfFirstRun = new Date();
     
