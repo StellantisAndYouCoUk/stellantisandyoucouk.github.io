@@ -873,7 +873,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
   let doLogout = false; 
   console.log((today-dateTimeOfFirstRun))
   console.log((today-dateTimeOfFirstRun)>48*60*60*1000)
-  if (!doLogout){
+  if (doLogout){
     dateTimeOfFirstRun = new Date();
     
     // Notify user if user blocked notification.
