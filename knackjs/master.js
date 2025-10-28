@@ -591,7 +591,7 @@ $(document).on('knack-view-render.view_8530', function(event, view, data) {
 // New Sales Virtual Reception
 $(document).on('knack-view-render.view_7930', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
-  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-virtual-reception" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-messages" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 //Fleet Admin to do list
