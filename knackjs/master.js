@@ -6231,7 +6231,7 @@ $(document).on('knack-scene-render.scene_2477', function(event, scene) {
 
 // Voicemail display/play code for sales VR
 
-$(document).on('knack-view-render.view_8060', function (event, view, data) {
+$(document).on('knack-view-render.view_8059', function (event, view, data) {
   $('div[class*="field_10558"]>div[class="kn-detail-body"]>span').hide();
   var sound      = document.createElement('audio');
   sound.id       = 'audio-player';
