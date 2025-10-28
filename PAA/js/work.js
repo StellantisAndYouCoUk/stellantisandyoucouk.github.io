@@ -293,7 +293,7 @@ function work(){
         dayAfterC.setDate(dayAfterC.getDate()+1);
         $('#dayMove').html('<a href="capacity.html?date='+dateToAutoline(dayBeforeC)+'">Prev day</a>'+(dayAfterC<=yesterday?' &nbsp; &nbsp; <a href="capacity.html?date='+dateToAutoline(dayAfterC)+'">Next day</a>':''));
 
-        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_capacity_'+dateToAutoline(capacityDate));
+        let dataD = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/TY3z8mCFQtoouY2qG/records/zzz_capacity_'+dateToAutoline(capacityDate));
         let dataToG = dataD.map(function(el){
             return {t:el.dateTime,y:el.runningJobs};
         })
@@ -318,7 +318,7 @@ function work(){
           },
         });
 
-        let dataD1 = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/65psIOYdAXPxxSaaW/records/zzz_delay_Checkin-v2_'+dateToAutoline(capacityDate));
+        let dataD1 = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/TY3z8mCFQtoouY2qG/records/zzz_delay_Checkin-v2_'+dateToAutoline(capacityDate));
         let dataToG1 = dataD1.map(function(el){
             return {t:el.dateTime,y:el.runDelay};
         })
