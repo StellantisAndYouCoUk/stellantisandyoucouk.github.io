@@ -591,7 +591,7 @@ $(document).on('knack-view-render.view_8530', function(event, view, data) {
 // New Sales Virtual Reception
 $(document).on('knack-view-render.view_7930', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
-  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-virtual-reception" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-messages" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 //Fleet Admin to do list
@@ -6232,7 +6232,7 @@ $(document).on('knack-scene-render.scene_2477', function(event, scene) {
 
 // Voicemail display/play code for sales VR
 
-$(document).on('knack-view-render.view_7927', function (event, view, data) {
+$(document).on('knack-view-render.view_8059', function (event, view, data) {
   $('div[class*="field_10558"]>div[class="kn-detail-body"]>span').hide();
   var sound      = document.createElement('audio');
   sound.id       = 'audio-player';
@@ -6241,7 +6241,7 @@ $(document).on('knack-view-render.view_7927', function (event, view, data) {
   document.querySelector('div[class*="field_10558"]').appendChild(sound);
 })
 
-$(document).on('knack-view-render.view_8023', function (event, view, data) {
+$(document).on('knack-view-render.view_8065', function (event, view, data) {
   $('div[class*="field_10558"]>div[class="kn-detail-body"]>span').hide();
   var sound      = document.createElement('audio');
   sound.id       = 'audio-player';
