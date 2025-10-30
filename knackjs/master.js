@@ -836,6 +836,12 @@ $(document).on('knack-scene-render.any', function(event, scene) {
             toggleHeaderVisibility('hidden');
         //}
         $('div[class*="kn-back-link"]').hide()
+      } else {
+        document.body.style.overflow = ""
+        //if (window.matchMedia('(min-width: 768px)').matches !== false) {
+            toggleHeaderVisibility('hidden');
+        //}
+        $('div[class*="kn-back-link"]').show()
       }
       
     /*if (scene.key === 'scene_860' || scene.key === 'scene_1269' || scene.key === 'scene_1271' || scene.key === 'scene_1273' || scene.key === 'scene_1279' || scene.key === 'scene_1339' || scene.key == 'scene_1362' || scene.key == 'scene_1412' || scene.key == 'scene_1497' || scene.key == 'scene_1505'|| scene.key === 'scene_1510' || scene.key === 'scene_1523' || scene.key === 'scene_1616'  || scene.key === 'scene_1631' || scene.key === 'scene_1636' || scene.key === 'scene_1644' || scene.key === 'scene_1651' || scene.key === 'scene_1656' || scene.key === 'scene_1665' || scene.key === 'scene_1757' || scene.key === 'scene_1758' || scene.key === 'scene_1759') {
