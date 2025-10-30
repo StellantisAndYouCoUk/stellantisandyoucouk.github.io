@@ -1483,13 +1483,14 @@ function callPostHttpRequest(url, payloadObject, callName, retry = 0){
     }).responseText;
     return rData;
   } catch(exception) {
-if (retry < 3){
+    console.log('callPostHttpRequest',exception);
+    if (retry < 3){
       setTimeout(function () {
          callPostHttpRequest(url, payloadObject, callName, retry+1)
       }, 2500);
+    } else {
+      sendErrorToIntegromat(exception, callName, payloadObject, retry);
     }
-    console.log('callPostHttpRequest',exception);
-    sendErrorToIntegromat(exception, callName, payloadObject, retry);
   }
 }
 
