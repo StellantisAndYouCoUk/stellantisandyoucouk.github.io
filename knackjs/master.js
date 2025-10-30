@@ -830,7 +830,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
     //console.log('iframe-digital',$('iframe[src*="digital-"]').length);
     //console.log('after',$('iframe[src*="aftersales"]').length)
     if (/*hideScenes.find(el => el === scene.key) || */$('iframe[src*="digital-"]').length>0 || $('iframe[src*="aftersales"]').length>0){
-      //console.log('embeded iframe');
+      console.log('embeded iframe');
         document.body.style.overflow = "hidden"
         //if (window.matchMedia('(min-width: 768px)').matches !== false) {
             toggleHeaderVisibility('hidden');
