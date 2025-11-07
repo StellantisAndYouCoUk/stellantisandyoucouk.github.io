@@ -840,7 +840,7 @@ $(document).on('knack-scene-render.any', function(event, scene) {
       } else {
         document.body.style.overflow = ""
         //if (window.matchMedia('(min-width: 768px)').matches !== false) {
-            toggleHeaderVisibility('hidden');
+            //toggleHeaderVisibility('hidden');
         //}
         $('div[class*="kn-back-link"]').show()
       }
