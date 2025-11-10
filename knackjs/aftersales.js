@@ -4872,6 +4872,8 @@ $(document).on('knack-record-create.view_5068', function(event, view, data) {
 //Workshop view for Allocated technicians 
 $(document).on('knack-scene-render.scene_1574', function(event, scene) {	
   //Tooltip table 3595
+		$('th[class="field_978"]').hide();
+  $('td[class*="field_978"]').hide();
   tooltipsTable('1574','3595','field_1532','field_2586');
 	tooltipsTable('1574','3595','field_1537','field_2213');  
   //Tooltip table 5091
