@@ -4868,3 +4868,17 @@ $(document).on('knack-record-create.view_5068', function(event, view, data) {
   setTimeout(function () { location.hash = location.hash + "#"; }, 500);
   Knack.showSpinner(); 
 });
+
+//Workshop view for Allocated technicians 
+$(document).on('knack-scene-render.scene_1574', function(event, scene) {	
+  //Tooltip table 3595
+  tooltipsTable('1574','3595','field_1532','field_2586');
+	tooltipsTable('1574','3595','field_1537','field_2213');  
+  //Tooltip table 5091
+  tooltipsTable('1574','5091','field_1532','field_2586');
+	tooltipsTable('1574','5091','field_1537','field_2213');  
+	tooltipsTable('1574','5091','field_2298','field_2272');
+
+  recursiveSceneRefresh('1574',['view_5091','view_3805'],300000);
+	console.log('Recursivecallscene_1574');
+});
