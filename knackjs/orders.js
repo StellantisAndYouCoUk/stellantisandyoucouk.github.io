@@ -1621,13 +1621,19 @@ function triggerEssorRefresh(){
           // console.log(`street2Input: ${street2Input.val().trim()}`)
           // console.log(`cityInput: ${cityInput.val().trim()}`)
           // console.log(`stateInput: ${stateInput.val().trim()}`)
+			
+if (
+    selectedOption === 'Services Required' ||
+    selectedOption === 'Cancel Delivery' ||
+    selectedOption === 'Cancel Fitments' ||
+    selectedOption === 'Cancel Delivery & Fitments' ||
+    selectedOption === undefined
+) {
+    console.log("Skipping validation.");
+    postcodeInput.removeClass('input-error'); // optional cleanup
+    return true;
+}
 
-
-          if (selectedOption === 'Services Required' || selectedOption === undefined) {
-            console.log("Skipping validation.");
-            postcodeInput.removeClass('input-error'); // optional cleanup
-            return true;
-          }
 
 
 
