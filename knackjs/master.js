@@ -269,6 +269,15 @@ $(document).on('knack-view-render.view_8085', function(event, view, data) {
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#head-office-fleet-forecasting-reporting/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+
+	//third party CEVA
+	
+$(document).on('knack-view-render.view_8566', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#ceva-vehicles-api-interactions" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+
 	//Deliver Broker Management
 	
 $(document).on('knack-view-render.view_6288', function(event, view, data) {
