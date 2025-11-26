@@ -5136,7 +5136,7 @@ $(document).on("knack-view-render.any", function (event, scene) {
 
     if (userAttributes !== "No user found") {
       const userValue = userAttributes.id;
-      // console.log(`User Value: ${userValue}`);
+       console.log(`User Value: ${userValue}`);
 
       let subscribeURL = `https://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/sse`;
       eventSource = new EventSource(subscribeURL);
