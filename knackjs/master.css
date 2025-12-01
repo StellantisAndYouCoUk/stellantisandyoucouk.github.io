@@ -5012,8 +5012,8 @@ p.speech-bubble-inbound-sales:before {
   height: 0px;
   position: absolute;
   border-left: 10px solid transparent;
-  border-right: 10px solid #d33f25;
-  border-top: 10px solid #d33f25;
+  border-right: 10px solid #5c4985;
+  border-top: 10px solid #5c4985;
   border-bottom: 10px solid transparent;
   left: -19px;
   top: 6px;
@@ -5043,8 +5043,8 @@ p.speech-bubble-outbound-sales:before {
   height: 0px;
   position: absolute;
   border-left: 10px solid transparent;
-  border-right: 10px solid #d33f25;
-  border-top: 10px solid #d33f25;
+  border-right: 10px solid #498556;
+  border-top: 10px solid #498556;
   border-bottom: 10px solid transparent;
   left: -19px;
   top: 6px;
