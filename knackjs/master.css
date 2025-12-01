@@ -4991,7 +4991,7 @@ p.speech-bubble-inbound-1link:before {
 
 p.speech-bubble-inbound-sales {
   position: relative;
-  background: #d33f25;
+  background: #5c4985;
   border-radius: .4em;
   width:60%;
   display:flex;
@@ -5006,6 +5006,37 @@ p.speech-bubble-inbound-sales {
 } 
 
 p.speech-bubble-inbound-sales:before {
+  content: "";
+  width: 0px;
+  text-wrap: wrap;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #d33f25;
+  border-top: 10px solid #d33f25;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+ text-wrap: wrap !important;
+}
+
+p.speech-bubble-outbound-sales {
+  position: relative;
+  background: #498556;
+  border-radius: .4em;
+  width:60%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:white;
+  padding:1%;
+  margin:1px !important;
+  text-wrap: wrap !important;
+  display: inline-block!important;
+  left: 20px;
+} 
+
+p.speech-bubble-outbound-sales:before {
   content: "";
   width: 0px;
   text-wrap: wrap;
