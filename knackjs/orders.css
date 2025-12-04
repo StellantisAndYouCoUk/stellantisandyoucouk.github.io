@@ -3143,28 +3143,6 @@ color: #FFFFFF;
   border-left: 10px solid #32a1ce;
 }
 
-/****** Grey for Motability - No Files ******/
-
-#kn-scene_929 .kn-detail-body a.kn-link-page .motability, #kn-scene_961 .kn-detail-body a.kn-link-page .miscellaneous {
-  color: #FFFFFF;
-  background-color: #8D8E8E;
-  padding: 8px;
-  width: 250px;
-  display: inline-block;
-  border-left: 10px solid #DE3163;
-  border-right: 10px solid #32a1ce;
-}
-
-#kn-scene_929 .kn-detail-body a:hover.kn-link-page .motability, #kn-scene_961 .kn-detail-body a:hover.kn-link-page .miscellaneous {
-  color: #FFFFFF;
-  background-color: #463F3A;
-  padding: 8px;
-  width: 250px;
-  display: inline-block;
-  transition-property: color;
-  transition-duration: .3s;
-}
-
 
 /******* Links to Update Delivery and Deal File Contents Status *******/
 /**** Link from Deal File ****/
