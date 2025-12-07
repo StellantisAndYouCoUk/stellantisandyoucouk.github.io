@@ -129,6 +129,15 @@ async function work(){
         let data = compute(new Date($('#dateFrom').attr('value')),new Date($('#dateTo').attr('value')),parseInt($('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').attr('value')),parseInt($('#percentageOfAddedWWOOFersRegisteringGlobalMembership').attr('value')),parseInt($('#globalMembershipPrice').attr('value')),parseInt($('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').attr('value')))
         $('#referenceData').html('Total memberships: '+ data.totalWWOOFers)
         $('#globalMembershipData').html('Global memberships: '+ data.globalMembershipData.globalMembershipCount+'<br />Total income: '+data.globalMembershipData.globalMembershipTotal+'<br /><br />Surplus/deficit: '+data.globalMembershipData.globalMembershipRest)
+
+        let tM = data.wwoofersByCountry.map(function (el){
+            return '<tr><td>'+el.country+'</td><td>'+el.totalWWOOFers+'</td><td>'+el.totalIncome+' EUR</td><td>'+el.percentZero+'%</td></tr>';
+        })
+        $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').append(tM.join(''));
+        const datatablesSimple = document.getElementById('datatablesSimpleNationalOrganizationsResults');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
     });
     membershipDataG = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
 }
