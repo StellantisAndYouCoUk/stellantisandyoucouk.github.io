@@ -131,7 +131,7 @@ async function work(){
         $('#globalMembershipData').html('Global memberships: '+ Math.round(data.globalMembershipData.globalMembershipCount)+'<br />Total income: '+Math.round(data.globalMembershipData.globalMembershipTotal)+' EUR<br /><br />Surplus/deficit: '+Math.round(data.globalMembershipData.globalMembershipRest)+' EUR')
 
         let tM = data.wwoofersByCountry.map(function (el){
-            return '<tr><td>'+el.country+'</td><td>'+Math.round(el.totalWWOOFers)+'</td><td>'+el.totalIncome+' EUR</td><td>'+el.percentZero+'%</td></tr>';
+            return '<tr><td>'+el.country+'</td><td>'+Math.round(el.totalWWOOFers)+'</td><td>'+el.percentZero+'%</td><td>'+el.totalIncome+' EUR</td><td>'+el.globalMembershipTotal+' EUR</td><td>'+el.globalMembershipLocalMemberships+' EUR</td><td>'+el.globalMembershipShareOfGlobalMemberships+' EUR</td><td>'+el.globalMembershipsAddedVisitsCount+'</td><td>'+el.globalMembershipsAddedVisitsSum+' EUR</td></tr>';
         })
         $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleNationalOrganizationsResults');
