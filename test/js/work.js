@@ -124,7 +124,9 @@ function incomeFromMemberships(mA){
 var membershipData = null;
 
 async function work(){
+    console.log('work')
     document.getElementById('compute').addEventListener('click', () => {
+        console.log('click')
         console.log($('#dateFrom').attr('value'));
     });
     membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
