@@ -128,19 +128,21 @@ async function work(){
     document.getElementById('compute').addEventListener('click', () => {
         console.log('click')
         console.log($('#dateFrom').attr('value'));
+        let data = compute(new Date(('#dateFrom').attr('value')),new Date(('#dateTo').attr('value')),parseInt(('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').attr('value')),parseInt(('#percentageOfAddedWWOOFersRegisteringGlobalMembership').attr('value')),parseInt(('#globalMembershipPrice').attr('value')),parseInt(('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').attr('value')))
     });
     membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
 }
 
-function compute(){
-    let dateFrom = new Date("2025-01-01");
+function compute(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal,percentageOfAddedWWOOFersRegisteringGlobalMembership,globalMembershipPrice,moreVisitsToCountriesBecauseOfGlobalMultiplicator){
+    /*let dateFrom = new Date("2025-01-01");
     let dateTo = new Date("2025-07-01");
     let percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal = 15;
     let percentageOfAddedWWOOFersRegisteringGlobalMembership = 5;
     let globalMembershipPrice = 78;
-    let moreVisitsToCountriesBecauseOfGlobalMultiplicator = 3;
+    let moreVisitsToCountriesBecauseOfGlobalMultiplicator = 3;*/
+    console.log(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal,percentageOfAddedWWOOFersRegisteringGlobalMembership,globalMembershipPrice,moreVisitsToCountriesBecauseOfGlobalMultiplicator)
 
-    let countries = ['CA','CL','CZ','DE','DK','ES','FR','GR','IE','IT','NL','NO','PT','RO','SE','GB','US','TG','TR','WI'];
+    let countries = ['CA','CL','CZ','DE','DK','ES','FR','GR','IT','NL','NO','PT','RO','SE','GB','US','TG','TR','WI'];
 
     membershipData = membershipData.filter(el => new Date(el.startAt)>= dateFrom && new Date(el.startAt)<=dateTo);
 
@@ -225,5 +227,6 @@ function compute(){
     output.independetsData = {moreThan1Country:wiMoreThen1Country.length,numberOfCountriesArray:numberOfCountriesArray}
     output.multipleCountryMemberships = {moreThenOneCountryMembershipSummary:moreThenOneCountryMembershipSummary,countriesCombinationsSummary:countriesCombinationsSummary};
 
-    console.log(output);    
+    console.log(output);   
+    return output; 
 }
