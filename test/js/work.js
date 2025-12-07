@@ -133,7 +133,7 @@ async function work(){
         let tM = data.wwoofersByCountry.map(function (el){
             return '<tr><td>'+el.country+'</td><td>'+Math.round(el.totalWWOOFers)+'</td><td>'+el.percentZero+'%</td><td>'+el.totalIncome+' EUR</td><td>'+Math.round(el.globalMembershipTotal)+' EUR</td><td>'+el.globalMembershipLocalMemberships+' EUR</td><td>'+el.globalMembershipShareOfGlobalMemberships+' EUR</td><td>'+el.globalMembershipsAddedVisitsCount+'</td><td>'+Math.round(el.globalMembershipsAddedVisitsSum)+' EUR</td></tr>';
         })
-        $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').append(tM.join(''));
+        $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').html(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleNationalOrganizationsResults');
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
