@@ -126,7 +126,7 @@ var membershipDataG = null;
 async function work(){
     console.log('work')
     document.getElementById('compute').addEventListener('click', () => {
-        let data = compute(new Date($('#dateFrom').attr('value')),new Date($('#dateTo').attr('value')),parseInt($('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').attr('value')),parseInt($('#percentageOfAddedWWOOFersRegisteringGlobalMembership').attr('value')),parseInt($('#globalMembershipPrice').attr('value')),parseInt($('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').attr('value')))
+        let data = compute(new Date($('#dateFrom').val()),new Date($('#dateTo').val()),parseInt($('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').val()),parseInt($('#percentageOfAddedWWOOFersRegisteringGlobalMembership').val()),parseInt($('#globalMembershipPrice').val()),parseInt($('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').val()))
         $('#referenceData').html('Total memberships: '+ data.totalWWOOFers)
         $('#globalMembershipData').html('Global memberships: '+ Math.round(data.globalMembershipData.globalMembershipCount)+'<br />Total income: '+Math.round(data.globalMembershipData.globalMembershipTotal)+' EUR<br /><br />Surplus/deficit: '+Math.round(data.globalMembershipData.globalMembershipRest)+' EUR')
 
