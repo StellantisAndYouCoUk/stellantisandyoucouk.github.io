@@ -128,10 +128,10 @@ async function work(){
     document.getElementById('compute').addEventListener('click', () => {
         let data = compute(new Date($('#dateFrom').attr('value')),new Date($('#dateTo').attr('value')),parseInt($('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').attr('value')),parseInt($('#percentageOfAddedWWOOFersRegisteringGlobalMembership').attr('value')),parseInt($('#globalMembershipPrice').attr('value')),parseInt($('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').attr('value')))
         $('#referenceData').html('Total memberships: '+ data.totalWWOOFers)
-        $('#globalMembershipData').html('Global memberships: '+ data.globalMembershipData.globalMembershipCount+'<br />Total income: '+data.globalMembershipData.globalMembershipTotal+'<br /><br />Surplus/deficit: '+data.globalMembershipData.globalMembershipRest)
+        $('#globalMembershipData').html('Global memberships: '+ Math.round(data.globalMembershipData.globalMembershipCount)+'<br />Total income: '+Math.round(data.globalMembershipData.globalMembershipTotal)+' EUR<br /><br />Surplus/deficit: '+Math.round(data.globalMembershipData.globalMembershipRest)+' EUR')
 
         let tM = data.wwoofersByCountry.map(function (el){
-            return '<tr><td>'+el.country+'</td><td>'+el.totalWWOOFers+'</td><td>'+el.totalIncome+' EUR</td><td>'+el.percentZero+'%</td></tr>';
+            return '<tr><td>'+el.country+'</td><td>'+Math.round(el.totalWWOOFers)+'</td><td>'+el.totalIncome+' EUR</td><td>'+el.percentZero+'%</td></tr>';
         })
         $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').append(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleNationalOrganizationsResults');
