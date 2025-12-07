@@ -114,7 +114,8 @@ function dateToAutoline(dateobj){
 }
 
 async function work(){
-    let membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/hxd12ZYRiuXDXw2G4/records/output?signature=T36Mp3A1gcHmyNrba1uF');
+    let membershipDataStr = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/hxd12ZYRiuXDXw2G4/records/output?signature=T36Mp3A1gcHmyNrba1uF');
+    let membershipData = JSON.parse(membershipDataStr);
 
     let dateFrom = new Date("2025-01-01");
     let dateTo = new Date("2025-07-01");
