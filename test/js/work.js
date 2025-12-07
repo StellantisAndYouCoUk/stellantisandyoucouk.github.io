@@ -126,8 +126,6 @@ var membershipDataG = null;
 async function work(){
     console.log('work')
     document.getElementById('compute').addEventListener('click', () => {
-        console.log('click')
-        console.log($('#dateFrom').attr('value'));
         let data = compute(new Date(('#dateFrom').attr('value')),new Date(('#dateTo').attr('value')),parseInt(('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').attr('value')),parseInt(('#percentageOfAddedWWOOFersRegisteringGlobalMembership').attr('value')),parseInt(('#globalMembershipPrice').attr('value')),parseInt(('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').attr('value')))
     });
     membershipDataG = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
