@@ -121,7 +121,7 @@ function incomeFromMemberships(mA){
     );
 }
 
-var membershipData = null;
+var membershipDataG = null;
 
 async function work(){
     console.log('work')
@@ -130,7 +130,7 @@ async function work(){
         console.log($('#dateFrom').attr('value'));
         let data = compute(new Date(('#dateFrom').attr('value')),new Date(('#dateTo').attr('value')),parseInt(('#percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal').attr('value')),parseInt(('#percentageOfAddedWWOOFersRegisteringGlobalMembership').attr('value')),parseInt(('#globalMembershipPrice').attr('value')),parseInt(('#moreVisitsToCountriesBecauseOfGlobalMultiplicator').attr('value')))
     });
-    membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
+    membershipDataG = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
 }
 
 function compute(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal,percentageOfAddedWWOOFersRegisteringGlobalMembership,globalMembershipPrice,moreVisitsToCountriesBecauseOfGlobalMultiplicator){
@@ -144,7 +144,7 @@ function compute(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembersh
 
     let countries = ['CA','CL','CZ','DE','DK','ES','FR','GR','IT','NL','NO','PT','RO','SE','GB','US','TG','TR','WI'];
 
-    membershipData = membershipData.filter(el => new Date(el.startAt)>= dateFrom && new Date(el.startAt)<=dateTo);
+    let membershipData = membershipDataG.filter(el => new Date(el.startAt)>= dateFrom && new Date(el.startAt)<=dateTo);
 
     let output = {'dateFrom':dateFrom, 'dateTo':dateTo, totalWWOOFers:membershipData.length};
 
