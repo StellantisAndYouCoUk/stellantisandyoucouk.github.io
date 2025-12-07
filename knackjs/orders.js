@@ -1621,13 +1621,19 @@ function triggerEssorRefresh(){
           // console.log(`street2Input: ${street2Input.val().trim()}`)
           // console.log(`cityInput: ${cityInput.val().trim()}`)
           // console.log(`stateInput: ${stateInput.val().trim()}`)
+			
+if (
+    selectedOption === 'Services Required' ||
+    selectedOption === 'Cancel Delivery' ||
+    selectedOption === 'Cancel Fitments' ||
+    selectedOption === 'Cancel Delivery & Fitments' ||
+    selectedOption === undefined
+) {
+    console.log("Skipping validation.");
+    postcodeInput.removeClass('input-error'); // optional cleanup
+    return true;
+}
 
-
-          if (selectedOption === 'Services Required' || selectedOption === undefined) {
-            console.log("Skipping validation.");
-            postcodeInput.removeClass('input-error'); // optional cleanup
-            return true;
-          }
 
 
 
@@ -1919,4 +1925,24 @@ $(document).on('knack-form-submit.view_5651', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/4rfqrnc8eodf38k2zk2tubdgyng7nev6",{"recordid":data.id},"FLEET ORDER REQUEST SENT FOR APPROVAL");
 });
 
+
+// Voicemail display/play code for sales VR
+
+$(document).on('knack-view-render.view_5902', function (event, view, data) {
+  $('div[class*="field_9177"]>div[class="kn-detail-body"]>span').hide();
+  var sound      = document.createElement('audio');
+  sound.id       = 'audio-player';
+  sound.controls = 'controls';
+  sound.src      = $('div[class*="field_9177"]>div[class="kn-detail-body"]>span').text();
+  document.querySelector('div[class*="field_9177"]').appendChild(sound);
+})
+ 
+$(document).on('knack-view-render.view_5908', function (event, view, data) {
+  $('div[class*="field_9177"]>div[class="kn-detail-body"]>span').hide();
+  var sound      = document.createElement('audio');
+  sound.id       = 'audio-player';
+  sound.controls = 'controls';
+  sound.src      = $('div[class*="field_9177"]>div[class="kn-detail-body"]>span').text();
+  document.querySelector('div[class*="field_9177"]').appendChild(sound);
+})
  
