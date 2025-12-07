@@ -121,9 +121,16 @@ function incomeFromMemberships(mA){
     );
 }
 
-async function work(){
-    let membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
+var membershipData = null;
 
+async function work(){
+    document.getElementById('compute').addEventListener('click', () => {
+        console.log($('#dateFrom').attr('value'));
+    });
+    membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
+}
+
+function compute(){
     let dateFrom = new Date("2025-01-01");
     let dateTo = new Date("2025-07-01");
     let percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal = 15;
@@ -216,5 +223,5 @@ async function work(){
     output.independetsData = {moreThan1Country:wiMoreThen1Country.length,numberOfCountriesArray:numberOfCountriesArray}
     output.multipleCountryMemberships = {moreThenOneCountryMembershipSummary:moreThenOneCountryMembershipSummary,countriesCombinationsSummary:countriesCombinationsSummary};
 
-    console.log(output);
+    console.log(output);    
 }
