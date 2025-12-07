@@ -147,17 +147,17 @@ async function work(){
     let helpMapByUserId = new Map(membershipData.map(el => [el.userId, el]));
     let moreThenOneCountryMembershipUsers = [];
 
-    await Promise.map(membershipData, async(element)=>{
+    membershipData.map(async(element)=>{
         let hM1 = helpMapByUserId.get(element.userId);
         if (hM1 && hM1.domainId!==element.domainId){
             let aT = moreThenOneCountryMembershipUsers.find(el => el.userId === element.userId);
             if (!aT) moreThenOneCountryMembershipUsers.push({userId:element.userId})
         }
-    }, {concurrency: 7});
+    });
 
     let moreThenOneCountryMembershipSummary = [];
     let countriesCombinationsSummary = [];
-    await Promise.map(moreThenOneCountryMembershipUsers, async(element)=>{
+    moreThenOneCountryMembershipUsers.map(async(element)=>{
         let mFUM = new Map(membershipData.filter(el => el.userId === element.userId).map(el => [el.domainId,el]));
         let mTR = moreThenOneCountryMembershipSummary.find(el => el.countriesCount === mFUM.size);
         if (mTR){
@@ -172,7 +172,7 @@ async function work(){
         } else {
             countriesCombinationsSummary.push({countries:tmpC,wwoofers:1})
         }
-    }, {concurrency: 7});
+    });
 
     let wwoofersByCountry = [];
     let totalWWOOFersCount = membershipData.length;
