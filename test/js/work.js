@@ -113,6 +113,14 @@ function dateToAutoline(dateobj){
     return dateobj.getFullYear()+"-"+pad(dateobj.getMonth()+1)+"-"+pad(dateobj.getDate());
 }
 
+function incomeFromMemberships(mA){
+    let conversions = {'USD':0.68,'CAD':0.94,'GBP':1.17,'TRY':0.029,'EUR':1}
+    return mA.reduce(
+        (accumulator, currentValue) => accumulator + (currentValue.currency?parseInt(currentValue.total)*conversions[currentValue.currency]:0),
+        0,
+    );
+}
+
 async function work(){
     let membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
 
