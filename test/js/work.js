@@ -116,12 +116,12 @@ function dateToAutoline(dateobj){
 async function work(){
     let membershipData = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/hxd12ZYRiuXDXw2G4/records/output?signature=T36Mp3A1gcHmyNrba1uF');
 
-    let dateFrom = new Date(input.dateFrom);
-    let dateTo = new Date(input.dateTo);
-    let percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal = input.percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal;
-    let percentageOfAddedWWOOFersRegisteringGlobalMembership = input.percentageOfAddedWWOOFersRegisteringGlobalMembership;
-    let globalMembershipPrice = input.globalMembershipPrice;
-    let moreVisitsToCountriesBecauseOfGlobalMultiplicator = input.moreVisitsToCountriesBecauseOfGlobalMultiplicator;
+    let dateFrom = new Date("2025-01-01");
+    let dateTo = new Date("2025-07-01");
+    let percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal = 15;
+    let percentageOfAddedWWOOFersRegisteringGlobalMembership = 5;
+    let globalMembershipPrice = 78;
+    let moreVisitsToCountriesBecauseOfGlobalMultiplicator = 3;
 
     let countries = ['CA','CL','CZ','DE','DK','ES','FR','GR','IE','IT','NL','NO','PT','RO','SE','GB','US','TG','TR','WI'];
 
