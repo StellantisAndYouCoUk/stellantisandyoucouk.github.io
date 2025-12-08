@@ -114,10 +114,10 @@ checkAuth();
 
 var token = readCookie('bookingToken');
 var loggedInUser = getLoggedInUser();
-if (!loggedInUser.email){
+/*if (!loggedInUser.email){
     eraseCookie('bookingToken');
     checkAuth();
-}
+}*/
 
 $( document ).ready(function() {
     work();
@@ -125,6 +125,7 @@ $( document ).ready(function() {
 
 function getLoggedInUser(){
     let d = readCookie('bookingUser');
+    console.log(d)
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
