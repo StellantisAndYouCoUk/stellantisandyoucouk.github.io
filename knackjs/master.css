@@ -5197,3 +5197,13 @@ p.speech-bubble-outbound-sales:before {
 #view_8097 .kn-detail-label {
     background-color: transparent;
 }
+
+/* Hide 'showing 1 of 1' message on home page */
+
+#view_5928 .kn-entries-summary {
+  display:none;
+}
+
+#view_8591 .kn-entries-summary {
+  display:none;
+}
