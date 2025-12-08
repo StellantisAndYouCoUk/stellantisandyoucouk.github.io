@@ -151,6 +151,7 @@ function login(username,password){
 function work(){
     //Login page
     $("a[id='loginButton']").bind("click", function() {
+        console.log('login Button click')
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
         if (loginReq.success){
             createCookie('bookingToken',loginReq.token,1);
