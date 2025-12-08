@@ -136,7 +136,7 @@ async function work(){
         $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').html(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleNationalOrganizationsResults');
         if (datatablesSimple) {
-            new simpleDatatables.DataTable(datatablesSimple);
+            new simpleDatatables.DataTable(datatablesSimple,{"paging": false});
         }
     });
     membershipDataG = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
