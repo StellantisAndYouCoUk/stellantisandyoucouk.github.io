@@ -5200,5 +5200,8 @@ p.speech-bubble-outbound-sales:before {
 
 /* Change grouped by colour in home page table */
 #view_5928 .kn-table .kn-table-group { 
-background-color: #ffffff;
+background-color: #ffffff !important;
+}
+#view_8591 .kn-table .kn-table-group { 
+background-color: #ffffff !important;
 }
