@@ -167,8 +167,8 @@ function work(){
 
     //Logout
     $("a[id='logoutButton']").bind("click", function() {
-        let req = paaPostRequest({'action':'logout','token':paaToken});
-        eraseCookie('paaToken');
+        eraseCookie('bookingToken');
+        eraseCookie('bookingUser');
         window.location = './login.html';
     });
 
