@@ -38,7 +38,8 @@ function callPostHttpRequest(url, headers,payloadObject){
         type: 'POST',
         contentType: 'application/json',
         data: dataToSend,
-        async: false
+        async: false,
+        headers:headers
       };
       console.log(requestObj);
       var rData = $.ajax(requestObj).responseText;
@@ -143,8 +144,7 @@ var flowCode = null;
 var globalPageData = null;
 
 function login(username,password){
-    let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',null,{"email":username,"password":password,"remember":false,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
-    console.log(r);
+    let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',{'x-knack-application-id':'591eae59e0d2123f23235769','x-knack-rest-api-key':'renderer'},{"email":username,"password":password,"remember":false,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
     return r;
 }
 
@@ -153,11 +153,12 @@ function work(){
     $("a[id='loginButton']").bind("click", function() {
         console.log('login Button click')
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
-        if (loginReq.success){
-            createCookie('bookingToken',loginReq.token,1);
+        if (loginReq.session && loggedInUser.session.user){
+            createCookie('bookingToken',loggedInUser.session.user.token,1);
+            createCookie('bookingUser',loggedInUser.session.user.values,1);
             window.location = './index.html';
         } else {
-            $('div[class="card-header"]').append('Wrong credentials')
+            $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message)
         }
         return false;
     });
