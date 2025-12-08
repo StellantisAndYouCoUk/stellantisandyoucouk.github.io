@@ -153,10 +153,12 @@ function work(){
     $("a[id='loginButton']").bind("click", function() {
         console.log('login Button click')
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
-        if (loginReq.session && loggedInUser.session.user){
-            createCookie('bookingToken',loggedInUser.session.user.token,1);
-            createCookie('bookingUser',loggedInUser.session.user.values,1);
+        console.log(loginReq);
+        if (loginReq.session && loginReq.session.user){
+            createCookie('bookingToken',loginReq.session.user.token,1);
+            createCookie('bookingUser',loginReq.session.user.values,1);
             window.location = './index.html';
+            loggedInUser = loginReq.session.user.values;
         } else {
             $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message)
         }
@@ -170,18 +172,7 @@ function work(){
         window.location = './login.html';
     });
 
-    if (!loggedInUser.isAutolineOpen){
-        if ($("#autolineClosed").length===0){
-            $('nav[class="sb-topnav navbar navbar-expand navbar-dark bg-dark"]').append('<div id="autolineClosed" class="navbar-brand ps-3">Autoline Closed</div>');
-        }
-    }
-
-    if (!globalPageData.appLoaded){
-        console.log('appNotLoaded',globalPageData.appLoaded)
-        loadAppData();
-    }
-
-    $('#userName').text(loggedInUser.displayName)
+    $('#userName').text(loggedInUser.field_2.full)
     let qV = getUrlVars();
     if (page.includes('index.html')){
         let sumDate = qV['date'];
