@@ -126,7 +126,7 @@ $( document ).ready(function() {
 
 function getLoggedInUser(){
     let d = readCookie('bookingUser');
-    console.log(d)
+    console.log(bookingUser,d)
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
