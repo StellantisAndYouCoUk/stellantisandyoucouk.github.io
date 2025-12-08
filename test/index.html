@@ -30,12 +30,14 @@
                                         Input parameters
                                     </div>
                                     <div class="card-body">
+                                        Reference data perod - this sets the historical period, which will be used for reference data. The oldest data available now are from 2024-01-01<br />
                                         Date from: <input id="dateFrom" value="2025-01-01"/>
-                                        Date to: <input id="dateTo" value="2025-07-01"/>
-                                        percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal: <input id="percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal" value="15" />
-                                        percentageOfAddedWWOOFersRegisteringGlobalMembership <input id="percentageOfAddedWWOOFersRegisteringGlobalMembership" value="5" />
-                                        globalMembershipPrice <input id="globalMembershipPrice" value="78" />
-                                        moreVisitsToCountriesBecauseOfGlobalMultiplicator <input id="moreVisitsToCountriesBecauseOfGlobalMultiplicator" value="3" />
+                                        Date to: <input id="dateTo" value="2025-07-01"/><br />
+                                        This defines the parameters of global membership<br />
+                                        Global Membership Price <input id="globalMembershipPrice" value="78" /><br />
+                                        Percentage Of WWOOFers Registering Global Membership Instead Of Local: <input id="percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal" value="15" /> Some of members will choose GM instead of the national ones, this is the percentage of those wwoofers<br />
+                                        Percentage Of Added WWOOFers Registering Global Membership <input id="percentageOfAddedWWOOFersRegisteringGlobalMembership" value="5" />We believe the global membership will bring new WWOOFers, so this is the percentage of people coming new to WWOOF<br />
+                                        More Visits To Countries Because Of Global Membership Multiplicator <input id="moreVisitsToCountriesBecauseOfGlobalMultiplicator" value="3" />Currently only fraction of WWOOFers have more then one membership (For numbers refere to lower table) and it is smaller then users from Independents who go to more countries (numbers on lower table), this multiplicator defines how much more will be WWOOFers going to more countries with Global Membership
                                         <button id="compute">Compute</button>
                                     </div>
                                 </div>
