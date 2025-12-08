@@ -126,7 +126,7 @@ $( document ).ready(function() {
 
 function getLoggedInUser(){
     let d = readCookie('bookingUser');
-    console.log(bookingUser,d)
+    console.log('bookingUser',d)
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
@@ -136,12 +136,6 @@ function dateToGB(dateobj){
 function dateToAutoline(dateobj){
     return dateobj.getFullYear()+"-"+pad(dateobj.getMonth()+1)+"-"+pad(dateobj.getDate());
 }
-
-var table = null;
-var jsonData = null;
-var flowCode = null;
-
-var globalPageData = null;
 
 function login(username,password){
     let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',{'x-knack-application-id':'591eae59e0d2123f23235769','x-knack-rest-api-key':'renderer'},{"email":username,"password":password,"remember":false,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
