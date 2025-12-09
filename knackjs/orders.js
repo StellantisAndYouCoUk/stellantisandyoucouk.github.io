@@ -1945,4 +1945,50 @@ $(document).on('knack-view-render.view_5908', function (event, view, data) {
   sound.src      = $('div[class*="field_9177"]>div[class="kn-detail-body"]>span').text();
   document.querySelector('div[class*="field_9177"]').appendChild(sound);
 })
- 
+
+
+/* Refresh with data - auto refresh function for sales outstanding messages */
+
+  var refreshList = [];
+
+  function refreshWithData(viewID, notifTitle, notifText, field, data = null){
+    if (Knack.views["view_"+viewID]){
+      if (data===null){
+        if (refreshList.find(el => el === viewID)){
+          console.log('already registered');
+          return;
+        }
+        refreshList.push(viewID);
+        data = {'value':Knack.views["view_"+viewID].model.data.models[0].attributes[field]};
+      } else {
+        if (data.value<Knack.views["view_"+viewID].model.data.models[0].attributes[field]){
+          console.log('change up');
+        }
+      }
+      data.value = Knack.views["view_"+viewID].model.data.models[0].attributes[field];
+    }
+    if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
+    setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
+   }
+
+ function viewFetchWithData(viewID, notifTitle, notifText, field, data = null){
+    Knack.views["view_"+viewID].model.fetch();
+    setTimeout(function () { refreshWithData(viewID, notifTitle, notifText, field, data); }, 500);
+   }
+
+// New Deal Files
+$(document).on('knack-scene-render.scene_917', function(event, scene) {
+  refreshWithData('5907', 'Title', 'Text', 'field_9223');
+});
+
+// Manager View
+$(document).on('knack-scene-render.scene_1115', function(event, scene) {
+  refreshWithData('5931', 'Title', 'Text', 'field_9223');
+});
+
+// Order Tracking
+$(document).on('knack-scene-render.scene_856', function(event, scene) {
+  refreshWithData('5932', 'Title', 'Text', 'field_9223');
+});
+
+
