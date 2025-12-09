@@ -145,7 +145,7 @@ async function work(){
         $('table[id="datatablesSimpleIndependentsData"]>tbody').html(iM.join(''));
         const datatablesSimple1 = document.getElementById('datatablesSimpleIndependentsData');
         if (datatablesSimple1) {
-            new simpleDatatables.DataTable(datatablesSimple1);
+            new simpleDatatables.DataTable(datatablesSimple1,{"paging": false});
         }
 
         let mM = data.multipleCountryMemberships.moreThenOneCountryMembershipSummary.map(function (el){
@@ -154,7 +154,7 @@ async function work(){
         $('table[id="datatablesSimpleMultipleData"]>tbody').html(mM.join(''));
         const datatablesSimple2 = document.getElementById('datatablesSimpleMultipleData');
         if (datatablesSimple2) {
-            new simpleDatatables.DataTable(datatablesSimple2);
+            new simpleDatatables.DataTable(datatablesSimple2,{"paging": false});
         }
         
     });
