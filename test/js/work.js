@@ -136,7 +136,7 @@ async function work(){
         $('table[id="datatablesSimpleNationalOrganizationsResults"]>tbody').html(tM.join(''));
         const datatablesSimple = document.getElementById('datatablesSimpleNationalOrganizationsResults');
         if (datatablesSimple) {
-            new simpleDatatables.DataTable(datatablesSimple,{"paging": false});
+            new simpleDatatables.DataTable(datatablesSimple,{searching: false,"paging": false});
         }
 
         let iM = data.independetsData.numberOfCountriesArray.sort((a,b)=>(a.number<b.number?-1:1)).map(function (el){
@@ -145,7 +145,7 @@ async function work(){
         $('table[id="datatablesSimpleIndependentsData"]>tbody').html(iM.join(''));
         const datatablesSimple1 = document.getElementById('datatablesSimpleIndependentsData');
         if (datatablesSimple1) {
-            new simpleDatatables.DataTable(datatablesSimple1,{"paging": false});
+            new simpleDatatables.DataTable(datatablesSimple1,{searching: false,"paging": false});
         }
 
         let mM = data.multipleCountryMemberships.moreThenOneCountryMembershipSummary.map(function (el){
@@ -154,7 +154,7 @@ async function work(){
         $('table[id="datatablesSimpleMultipleData"]>tbody').html(mM.join(''));
         const datatablesSimple2 = document.getElementById('datatablesSimpleMultipleData');
         if (datatablesSimple2) {
-            new simpleDatatables.DataTable(datatablesSimple2,{"paging": false});
+            new simpleDatatables.DataTable(datatablesSimple2,{searching: false,"paging": false});
         }
         
     });
