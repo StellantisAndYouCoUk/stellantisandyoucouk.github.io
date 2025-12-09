@@ -138,6 +138,25 @@ async function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple,{"paging": false});
         }
+
+        let iM = data.independetsData.numberOfCountriesArray.map(function (el){
+            return '<tr><td>'+el.number+'</td><td>'+el.wwoofers+'</td></tr>';
+        })
+        $('table[id="datatablesSimpleIndependentsData"]>tbody').html(iM.join(''));
+        const datatablesSimple1 = document.getElementById('datatablesSimpleIndependentsData');
+        if (datatablesSimple1) {
+            new simpleDatatables.DataTable(datatablesSimple1);
+        }
+
+        let mM = data.multipleCountryMemberships.moreThenOneCountryMembershipSummary.map(function (el){
+            return '<tr><td>'+el.countriesCount+'</td><td>'+el.wwoofers+'</td></tr>';
+        })
+        $('table[id="datatablesSimpleMultipleData"]>tbody').html(mM.join(''));
+        const datatablesSimple2 = document.getElementById('datatablesSimpleMultipleData');
+        if (datatablesSimple2) {
+            new simpleDatatables.DataTable(datatablesSimple2);
+        }
+        
     });
     membershipDataG = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/CIUACuDTfgPapuJLB/records/membershipData?signature=1M7MudE4lpMBY5g0gms6R');
 }
