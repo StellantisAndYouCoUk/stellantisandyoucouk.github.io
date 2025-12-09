@@ -6831,3 +6831,13 @@ background: #ddd;
 #view_5690 .kn-detail-label,
 #view_5737 .kn-detail-label {background-color: transparent;}
 
+
+/* Hide 'showing 1-1 of one' message on sales message views */
+
+#view_5932 .kn-entries-summary,
+#view_5931 .kn-entries-summary,
+#view_5907 .kn-entries-summary {
+  display:none;
+}
+
+
