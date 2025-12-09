@@ -6167,7 +6167,7 @@ window.addEventListener('error', function(event){
 
 // Deal Files Page
 $(document).on('knack-scene-render.scene_960', function(event, scene) {
-  refreshWithData('8061', 'field_11282');
+  refreshWithData('8061', 'Title', 'Text', 'field_11282');
 });
 
 
