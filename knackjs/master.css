@@ -5200,10 +5200,14 @@ p.speech-bubble-outbound-sales:before {
 
 /* Hide 'showing 1 of 1' message on home page */
 
-#view_5928 .kn-entries-summary {
-  display:none;
-}
-
+#view_5928 .kn-entries-summary,
+#view_8061 .kn-entries-summary,
+#view_8060 .kn-entries-summary,
+#view_8601 .kn-entries-summary,
+#view_8602 .kn-entries-summary,
+#view_8603 .kn-entries-summary,
 #view_8591 .kn-entries-summary {
   display:none;
 }
+
+
