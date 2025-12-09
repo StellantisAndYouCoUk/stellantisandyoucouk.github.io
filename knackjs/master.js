@@ -6165,10 +6165,28 @@ window.addEventListener('error', function(event){
     setTimeout(function () { refreshWithData(viewID, notifTitle, notifText, field, data); }, 500);
    }
 
-// Deal Files Page
+// Used Deal Files
 $(document).on('knack-scene-render.scene_960', function(event, scene) {
   refreshWithData('8061', 'Title', 'Text', 'field_11282');
 });
 
+// Used Stock Management
+$(document).on('knack-scene-render.scene_370', function(event, scene) {
+  refreshWithData('8060', 'Title', 'Text', 'field_11282');
+});
 
+// Used Manager View
+$(document).on('knack-scene-render.scene_1354', function(event, scene) {
+  refreshWithData('8601', 'Title', 'Text', 'field_11282');
+});
+
+// Awaiting Action
+$(document).on('knack-scene-render.scene_882', function(event, scene) {
+  refreshWithData('8602', 'Title', 'Text', 'field_11282');
+});
+
+// Part Exchange Appraisals (V2)
+$(document).on('knack-scene-render.scene_2413', function(event, scene) {
+  refreshWithData('8603', 'Title', 'Text', 'field_11282');
+});
 
