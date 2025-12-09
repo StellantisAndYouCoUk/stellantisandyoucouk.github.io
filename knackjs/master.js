@@ -6140,7 +6140,7 @@ window.addEventListener('error', function(event){
 
   var refreshList = [];
 
-  function refreshWithData(viewID, field, data = null){
+  function refreshWithData(viewID, notifTitle, notifText, field, data = null){
     if (Knack.views["view_"+viewID]){
       if (data===null){
         if (refreshList.find(el => el === viewID)){
@@ -6158,6 +6158,11 @@ window.addEventListener('error', function(event){
     }
     if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
     setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
+   }
+
+ function viewFetchWithData(viewID, notifTitle, notifText, field, data = null){
+    Knack.views["view_"+viewID].model.fetch();
+    setTimeout(function () { refreshWithData(viewID, notifTitle, notifText, field, data); }, 500);
    }
 
 // Deal Files Page
