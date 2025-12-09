@@ -139,7 +139,7 @@ async function work(){
             new simpleDatatables.DataTable(datatablesSimple,{"paging": false});
         }
 
-        let iM = data.independetsData.numberOfCountriesArray.map(function (el){
+        let iM = data.independetsData.numberOfCountriesArray.sort((a,b)=>(a.number<b.number?-1:1)).map(function (el){
             return '<tr><td>'+el.number+'</td><td>'+el.wwoofers+'</td></tr>';
         })
         $('table[id="datatablesSimpleIndependentsData"]>tbody').html(iM.join(''));
