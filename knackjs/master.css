@@ -719,6 +719,8 @@ body {
 #view_7509 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7588 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_8064 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_8592 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_8064 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_8022 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7769 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7772 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
@@ -5200,10 +5202,14 @@ p.speech-bubble-outbound-sales:before {
 
 /* Hide 'showing 1 of 1' message on home page */
 
-#view_5928 .kn-entries-summary {
-  display:none;
-}
-
+#view_5928 .kn-entries-summary,
+#view_8061 .kn-entries-summary,
+#view_8600 .kn-entries-summary,
+#view_8601 .kn-entries-summary,
+#view_8602 .kn-entries-summary,
+#view_8603 .kn-entries-summary,
 #view_8591 .kn-entries-summary {
   display:none;
 }
+
+

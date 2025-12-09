@@ -1455,6 +1455,31 @@ body {
   	font-weight: bold;
 }
 
+/* New Sales Messages Filter Buttons */
+
+#view_5906 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_5906 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_5930 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_5930 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
 
 /******** DEAL FILES FOR ADMIN TO PLACE ORDER ON ADMIN PAGE *********/
 
@@ -6830,4 +6855,14 @@ background: #ddd;
 #view_5688 .kn-detail-label,
 #view_5690 .kn-detail-label,
 #view_5737 .kn-detail-label {background-color: transparent;}
+
+
+/* Hide 'showing 1-1 of one' message on sales message views */
+
+#view_5932 .kn-entries-summary,
+#view_5931 .kn-entries-summary,
+#view_5907 .kn-entries-summary {
+  display:none;
+}
+
 

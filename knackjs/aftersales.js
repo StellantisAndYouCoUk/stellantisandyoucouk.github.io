@@ -4713,9 +4713,40 @@ $(document).on('knack-view-render.view_4863', function (event, view, data) {
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
 
+
+
 $(document).on('knack-scene-render.scene_1480', function(event, scene) {
  recursiveSceneRefresh('1480',['view_4863','view_4911'],10000)
 });
+
+
+$(document).on('knack-view-render.view_5101', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings3901 = {
+    spiritLine : false,
+    imageOverlay: null,
+    imageOverlayEffect : false,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : true,
+    actionAfterPhoto : 'readable', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Is the barcode clear?',
+    uploadMethod : 'make', //knack, make, field
+    uploadWebhook : 'https://hook.eu1.make.celonis.com/rrij4j21spnb6prfwlqk14lh6nau77pw',
+    resizeImageMaxHeight : 2000,
+    resizeImageMaxWidth : 2000,
+    app_id : '6040dd9a301633001bca5b4e',
+    leavePhotoAppOpen : true
+  }
+  createPhotoButton(appSettings3901,'3901');
+
+  //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
+});
+
+$(document).on('knack-scene-render.scene_1583', function(event, scene) {
+ recursiveSceneRefresh('1583',['view_5101'],10000)
+});
+
 
 
 // Service To sales -GET HPI Metrics upon clicking search icon

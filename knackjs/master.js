@@ -6135,3 +6135,58 @@ window.addEventListener('error', function(event){
     sendErrorToIntegromat({message:'None'},'Unhandled exception',{message:event.message, filename:event.filename,lineno:event.lineno,colno:event.colno, error:event.error})
   }
 });
+
+/* Refresh with data - auto refresh function for sales outstanding messages */
+
+  var refreshList = [];
+
+  function refreshWithData(viewID, notifTitle, notifText, field, data = null){
+    if (Knack.views["view_"+viewID]){
+      if (data===null){
+        if (refreshList.find(el => el === viewID)){
+          console.log('already registered');
+          return;
+        }
+        refreshList.push(viewID);
+        data = {'value':Knack.views["view_"+viewID].model.data.models[0].attributes[field]};
+      } else {
+        if (data.value<Knack.views["view_"+viewID].model.data.models[0].attributes[field]){
+          console.log('change up');
+        }
+      }
+      data.value = Knack.views["view_"+viewID].model.data.models[0].attributes[field];
+    }
+    if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
+    setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
+   }
+
+ function viewFetchWithData(viewID, notifTitle, notifText, field, data = null){
+    Knack.views["view_"+viewID].model.fetch();
+    setTimeout(function () { refreshWithData(viewID, notifTitle, notifText, field, data); }, 500);
+   }
+
+// Used Deal Files
+$(document).on('knack-scene-render.scene_960', function(event, scene) {
+  refreshWithData('8061', 'Title', 'Text', 'field_11282');
+});
+
+// Used Stock Management
+$(document).on('knack-scene-render.scene_370', function(event, scene) {
+  refreshWithData('8600', 'Title', 'Text', 'field_11282');
+});
+
+// Used Manager View
+$(document).on('knack-scene-render.scene_1354', function(event, scene) {
+  refreshWithData('8601', 'Title', 'Text', 'field_11282');
+});
+
+// Awaiting Action
+$(document).on('knack-scene-render.scene_882', function(event, scene) {
+  refreshWithData('8602', 'Title', 'Text', 'field_11282');
+});
+
+// Part Exchange Appraisals (V2)
+$(document).on('knack-scene-render.scene_2413', function(event, scene) {
+  refreshWithData('8603', 'Title', 'Text', 'field_11282');
+});
+
