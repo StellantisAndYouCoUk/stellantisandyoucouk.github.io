@@ -6172,7 +6172,7 @@ $(document).on('knack-scene-render.scene_960', function(event, scene) {
 
 // Used Stock Management
 $(document).on('knack-scene-render.scene_370', function(event, scene) {
-  refreshWithData('8060', 'Title', 'Text', 'field_11282');
+  refreshWithData('8600', 'Title', 'Text', 'field_11282');
 });
 
 // Used Manager View
