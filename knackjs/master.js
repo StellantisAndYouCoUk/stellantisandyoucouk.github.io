@@ -6135,3 +6135,35 @@ window.addEventListener('error', function(event){
     sendErrorToIntegromat({message:'None'},'Unhandled exception',{message:event.message, filename:event.filename,lineno:event.lineno,colno:event.colno, error:event.error})
   }
 });
+
+/* Refresh with data - auto refresh function for sales outstanding messages */
+
+  var refreshList = [];
+
+  function refreshWithData(viewID, field, data = null){
+    if (Knack.views["view_"+viewID]){
+      if (data===null){
+        if (refreshList.find(el => el === viewID)){
+          console.log('already registered');
+          return;
+        }
+        refreshList.push(viewID);
+        data = {'value':Knack.views["view_"+viewID].model.data.models[0].attributes[field]};
+      } else {
+        if (data.value<Knack.views["view_"+viewID].model.data.models[0].attributes[field]){
+          console.log('change up');
+        }
+      }
+      data.value = Knack.views["view_"+viewID].model.data.models[0].attributes[field];
+    }
+    if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
+    setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
+   }
+
+// Deal Files Page
+$(document).on('knack-scene-render.scene_960', function(event, scene) {
+  refreshWithData('8016', 'field_11282');
+});
+
+
+
