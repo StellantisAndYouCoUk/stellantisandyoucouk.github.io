@@ -265,7 +265,7 @@ $(document).on('knack-view-render.view_8593', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   let dealerCode = $('div[class="field_9410"]').text().trim();
   console.log('dealerCode',dealerCode);
-  $('div[class="field_9410"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales?token='+encodeURIComponent(token) + '#after-sales-vehicle-lookup/all-jobs/virtual-reception-summary/'+dealerCode+'/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  $('div[class="field_9410"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#after-sales-vehicle-lookup/all-jobs/virtual-reception-summary/'+dealerCode+'/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 
