@@ -226,6 +226,7 @@ function compute(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembersh
     let globalMembershipCount = totalWWOOFersCount*(percentageOfAddedWWOOFersRegisteringGlobalMembership+percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal)/100;
     let globalMembershipTotal = globalMembershipCount*globalMembershipPrice;
     let globalMembershipRest = globalMembershipTotal;
+    let wwoofIncomeTotal = 0;
     for (let i = 0;i<countries.length;i++){
         let mC = membershipData.filter(el => el.domainId === countries[i]);
         let mC0 = mC.filter(el => el.bookingsCount === 0);
@@ -247,8 +248,11 @@ function compute(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembersh
         globalMembershipRest -= (cR.globalMembershipsAddedVisitsSum?cR.globalMembershipsAddedVisitsSum:0)
 
         cR.globalMembershipTotal = cR.globalMembershipLocalMemberships + cR.globalMembershipShareOfGlobalMemberships + cR.globalMembershipsAddedVisitsSum;
-
+        if (cR.globalMembershipTotal) wwoofIncomeTotal += cR.globalMembershipTotal;
         wwoofersByCountry.push(cR)
+    }
+    for (let i =0;i<wwoofersByCountry.length;i++){
+        wwoofersByCountry[i].surplusDistribuiton = globalMembershipRest * wwoofersByCountry[i].globalMembershipTotal/wwoofIncomeTotal
     }
     output.wwoofersByCountry = wwoofersByCountry;
     output.globalMembershipData = {globalMembershipCount:globalMembershipCount,globalMembershipTotal:globalMembershipTotal,globalMembershipRest:globalMembershipRest};
