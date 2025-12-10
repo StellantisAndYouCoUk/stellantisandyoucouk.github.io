@@ -114,6 +114,7 @@
                                         GM ShareOfGlobal Income - this is part of the Global Membership income, which will be distrubuted based on visit requests for host in given country<i>(cR.totalIncome/cR.totalWWOOFers)*(cR.totalWWOOFers-cR.zeroRequestWWOOFers)*((percentageOfWWOOFersRegisteringGlobalMembershipInsteadOfLocal+percentageOfAddedWWOOFersRegisteringGlobalMembership)/100)</i><br />
                                         GM AddedMultipleVisits - this is the number of wwoofers who will come to the country from GM based on the Multiplikator<i>moreVisitsToCountriesBecauseOfGlobalMultiplicator*countriesCombinationsSummary.filter(el => el.countries.includes(countries[i])).map(el=> el.wwoofers).reduce((partialSum, a) => partialSum + a, 0)</i><br />
                                         GM AddedMultipleVisits Income - the income to national organization from those visits based on the price of the national membership<i>(cR.totalIncome/cR.totalWWOOFers)*cR.globalMembershipsAddedVisitsCount</i>
+                                        GM Surplus Distr - distribution of the surplus after all national memberships were paid
                                     </div>
                                 </div>
                             </div>
