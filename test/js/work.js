@@ -252,7 +252,7 @@ function compute(dateFrom, dateTo, percentageOfWWOOFersRegisteringGlobalMembersh
         wwoofersByCountry.push(cR)
     }
     for (let i =0;i<wwoofersByCountry.length;i++){
-        wwoofersByCountry[i].surplusDistribuiton = globalMembershipRest * wwoofersByCountry[i].globalMembershipTotal/wwoofIncomeTotal
+        wwoofersByCountry[i].surplusDistribuiton = Math.round(globalMembershipRest * wwoofersByCountry[i].globalMembershipTotal/wwoofIncomeTotal)
     }
     output.wwoofersByCountry = wwoofersByCountry;
     output.globalMembershipData = {globalMembershipCount:globalMembershipCount,globalMembershipTotal:globalMembershipTotal,globalMembershipRest:globalMembershipRest};
