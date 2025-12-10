@@ -260,6 +260,13 @@ $(document).on('knack-view-render.any', function(event, view, data) {
 });
 
 //MASTER/SLAVE CONNECT - the scene have one view of Account details, where is only email field without header, the source of IFRAME is the public address of slave page
+$(document).on('knack-view-render.view_8593', function(event, view, data) {
+  console.log('knack-view-render.view_8593')
+  var token = Knack.getUserAttributes().values["field_6440"];
+  let dealerCode = $('div[class="field_9410"]').text().trim();
+  console.log('dealerCode',dealerCode);
+  $('div[class="field_9410"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales?token='+encodeURIComponent(token) + '#after-sales-vehicle-lookup/all-jobs/virtual-reception-summary/'+dealerCode+'/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
 
 
 // Head Office Retail and Motability Order Reporting
