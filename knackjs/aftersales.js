@@ -4720,7 +4720,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 });
 
 
-$(document).on('knack-view-render.view_5101', function (event, view, data) {
+$(document).on('knack-view-render.view_5124', function (event, view, data) {
   embedPhotoApp();
   let appSettings3901 = {
     spiritLine : false,
@@ -4743,8 +4743,8 @@ $(document).on('knack-view-render.view_5101', function (event, view, data) {
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
 
-$(document).on('knack-scene-render.scene_1583', function(event, scene) {
- recursiveSceneRefresh('1583',['view_5101'],10000)
+$(document).on('knack-scene-render.scene_1593', function(event, scene) {
+ recursiveSceneRefresh('1593',['view_5124'],10000)
 });
 
 
