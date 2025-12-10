@@ -4276,14 +4276,14 @@ $(document).on('knack-form-submit.view_5511', function(event, view, data) {
 
 
 $(document).on('knack-scene-render.scene_1599', function(event, scene) {
-  recursiveSceneRefresh('1599',['view_5199'],10000)
+  recursiveSceneRefresh('1599',['view_5199'],30000)
 });
 
 // Refresh the table on Physical Stock Audit Page        
 
 
 $(document).on('knack-scene-render.scene_1601', function(event, scene) {
-  recursiveSceneRefresh('1601',['view_5478'],10000)
+  recursiveSceneRefresh('1601',['view_5478'],30000)
 });
 
 //****************** Refresh Location and Video Page Upon Form Submission ****************//
