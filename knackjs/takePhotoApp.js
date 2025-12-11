@@ -395,7 +395,7 @@ if (OperatingSystem.Android()) {
     let deviceId = '';
     let countOfBackCameras = 0;
 
-
+	
 
 	  
     devices.forEach(function(device) {
@@ -403,6 +403,8 @@ if (OperatingSystem.Android()) {
           countOfBackCameras += 1;
           deviceId = device.deviceId;
       }
+		console.log("show cameras")
+		console.log(device.label)
     });
 
     if (countOfBackCameras<=1){
