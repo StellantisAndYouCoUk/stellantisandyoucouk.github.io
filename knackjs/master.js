@@ -469,6 +469,11 @@ $(document).on('knack-view-render.view_6234', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#bulk-cronos-orders-to-tag-in-customer-first/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+$(document).on('knack-view-render.view_8606', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#bulk-fca-linkentry-orders-to-tag/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 /*$(document).on('knack-view-render.view_6288', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-vehicle-administration/fleet-master-doc/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
