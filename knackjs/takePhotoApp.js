@@ -394,6 +394,15 @@ if (OperatingSystem.Android()) {
   .then(function(devices) {
     let deviceId = '';
     let countOfBackCameras = 0;
+
+	console.log('=== All Cameras ===');
+    devices.forEach(function(device, index) {
+      if (device.kind === 'videoinput') {
+        console.log('Camera ' + index + ': ' + device.label + ' | ID: ' + device.deviceId);
+      }
+    })	;
+
+	  
     devices.forEach(function(device) {
       if (device.label.toLowerCase().includes('back')){
           countOfBackCameras += 1;
