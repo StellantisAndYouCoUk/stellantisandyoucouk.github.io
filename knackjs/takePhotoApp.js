@@ -416,6 +416,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
+  console.log("not android")
   openCamera({video: {facingMode: {ideal: "environment"}}},appleConstraints,appSettings.torch);
 }
 
