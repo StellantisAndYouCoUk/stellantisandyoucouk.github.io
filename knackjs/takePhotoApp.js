@@ -399,7 +399,7 @@ if (OperatingSystem.Android()) {
 
 	  
     devices.forEach(function(device) {
-      if (device.label.toLowerCase().includes('back')){
+      if (device.label.toLowerCase().includes('back') || device.label.toLowerCase().includes('rear')){
           countOfBackCameras += 1;
           deviceId = device.deviceId;
       }
