@@ -2078,7 +2078,7 @@ $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_9236', //earliest time ceva can deliver
-          views:['5941','5936']
+          views:['5941']
       }
     ]
     sceneRefresh(refreshData);
