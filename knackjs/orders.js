@@ -2097,6 +2097,35 @@ function refreshView(viewID, reload = false, clearLoading = false){
     }
 }
 
+function formatDateGB(date){
+  return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+}
+function formatDateGBShort(date){
+  return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear().toString().substr(2,2);
+}
+function formatDateGBShortNotYear(date){
+  return date.getDate()+'/'+(date.getMonth()+1);
+}
+
+function fillLoading(viewID){
+  $('div[class*="view_'+viewID+'"] div[class*="field_"]>div[class="kn-detail-body"]').each(function(){
+    if ($(this).text().trim()===''){
+      $(this).html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading...')
+    }
+  });
+}
+
+function stopLoading(viewID){
+  $('div[class*="view_'+viewID+'"] div[class*="field_"]>div[class="kn-detail-body"]').each(function(){
+    if ($(this).text().trim().includes('Loading...')){
+      $(this).html('');
+    }
+  });
+}
+
+var currentRefreshScene = [];
+//Reloads views from viewsArray in scene with sceneId in selected interval
+
 //refresh view once ceva earliest date confirmed
 $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     let refreshData = [
