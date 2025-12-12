@@ -1991,4 +1991,96 @@ $(document).on('knack-scene-render.scene_856', function(event, scene) {
   refreshWithData('5932', 'Title', 'Text', 'field_9223');
 });
 
+//scene refresh from aftersales 
+function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
+    console.log('sceneRefresh');
+    try {
+      if (!startTime){
+        startTime = new Date();
+        stats = {startTime:startTime, log:[]}
+        console.log('startTime', startTime);
+      } else {
+        console.log('elapsed',new Date() - startTime);
+      }
+      let recheck = false;
+      for (one of refreshData){
+          console.log(one);
+          console.log('main field val',Knack.views['view_'+one.views[0]].model.attributes[one.mainField])
+          if (Knack.views['view_'+one.views[0]].model.attributes[one.mainField]===''){
+              let mainReloaded = false; 
+              for (oneView of one.views){
+                  mainReloaded = refreshView(oneView, mainReloaded);
+              }
+              console.log('main field val2',Knack.views['view_'+one.views[0]].model.attributes[one.mainField])
+              if (Knack.views['view_'+one.views[0]].model.attributes[one.mainField]===''){
+                  recheck = true;
+                  if (runCounter===1){
+                    console.log('fillLoading');
+                    for (oneView of one.views){
+                      fillLoading(oneView);
+                    }
+                  }
+              } else {
+                if (one.runAfter && !one.runAfterDone){
+                  setTimeout(one.runAfter,100);
+                  one.runAfterDone = true;
+                }
+              }
+          } else {
+            if (one.runAfter && !one.runAfterDone){
+              setTimeout(one.runAfter,100);
+              one.runAfterDone = true;
+            }
+            
+            let statsLogFound = stats.log.find(function(el){return el.one === one.name});
+            if (!statsLogFound) {
+              stats.log.push({one:one.name,finishTime:new Date(),duration : (new Date() - stats.startTime)/1000});
+            }
+          }
+      }
+      if (recheck && (new Date() - startTime)<120000){
+          console.log('needs recheck')
+          setTimeout(function(){
+              sceneRefresh(refreshData, startTime, runCounter + 1, stats);
+          }, (runCounter<3?1500:2500));
+      } else if ((new Date() - startTime)>120000){
+        console.log('ending refresh without all done');
+        for (one of refreshData){
+          if (!one.runAfterDone){
+            for (oneView of one.views){
+              refreshView(oneView, true, true);
+            }
+          }
+        }
+      } else {
+        if (runCounter!==1){
+          console.log('everything checked, reload views just for sure');
+          stats.finishTime = new Date();
+          stats.duration = (stats.finishTime - stats.startTime)/1000;
+          console.log('stats', stats);
+          //saveStats(stats);
+          for (one of refreshData){
+            if (!one.runAfterDone){
+              for (oneView of one.views){
+                refreshView(oneView, true, true);
+              }
+            }
+          }
+        }
+      }
+    } catch (e){
+      console.log('sceneRefresh fail', refreshData, e)
+    }
+}
 
+//refresh view once ceva earliest date confirmed
+$(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_9236', //earliest time ceva can deliver
+          views:['5941','5936']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+  
