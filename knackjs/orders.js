@@ -2072,13 +2072,37 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
       console.log('sceneRefresh fail', refreshData, e)
     }
 }
+//This function refreshes view acording viewId, what is just view number!
+//Can be called from scene render, view render
+function refreshView(viewID, reload = false, clearLoading = false){
+    try {
+      if (Knack.views['view_'+viewID]===undefined) return false;
+      var currModel = JSON.stringify(Knack.views['view_'+viewID].model.attributes);
+      const a = {}
+      a.success = function () {
+        if ((currModel !== JSON.stringify(Knack.views['view_'+viewID].model.attributes)) || reload){
+          setTimeout(function(){
+            Knack.views['view_'+viewID].render();
+            if (clearLoading) {stopLoading(oneView);} //else {fillLoading(viewID);}
+          }, 50);
+          return true;
+        } else {
+          return false;
+        }
+      };
+      //reload data from database
+      Knack.views['view_'+viewID].model.fetch(a);
+    } catch (e){
+      console.log('error refreshing view', viewID, e)
+    }
+}
 
 //refresh view once ceva earliest date confirmed
 $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_9236', //earliest time ceva can deliver
-          views:['5941']
+          views:['5941','5936']
       }
     ]
     sceneRefresh(refreshData);
