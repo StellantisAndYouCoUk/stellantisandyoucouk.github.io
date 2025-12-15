@@ -2139,20 +2139,23 @@ $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
 
 
 //Trigger Vin/Record ID to be sent on requesting delivery For FLEET 
-	$(document).on('knack-view-render.view_4645', function(event, view) {
-	 if ($('div[class="kn-view kn-table view_4645"]')){
-  let rows = $('div[class="kn-view kn-table view_4645"] table tr');
-  for (i = 2; i < rows.length; i++) {
-    let currentRow = rows[i];
-    const createClickHandler = function(row) {
-      return function() {
-        var cell = row.id;
-        let vin = row.querySelector('.col-7').innerText;
-        console.log('rowId',cell, 'vin',vin);
-        callPostHttpRequest("https://hook.eu1.make.celonis.com/dt28t8rlg61u3n3s62d8wwqxe22rb9ue", {"recordId":cell, "VIN": vin},"Fleet - CEVA Earliest Delivery Date (individual)");
-      };
-    };
-    currentRow.children[39].onclick = createClickHandler(currentRow);
-  }
-}
+$(document).on('knack-view-render.view_4645', function(event, view) {
+    let container = $('div.kn-view.kn-table.view_4645');
+    if (container.length) {
+        let rows = container.find('table tr');
+        for (let i = 2; i < rows.length; i++) {
+            let currentRow = rows[i];
+            const createClickHandler = function(row) {
+                return function() {
+                    var cell = row.id;
+                    let vin = row.querySelector('.col-7').innerText;
+                    console.log('rowId', cell, 'vin', vin);
+                    callPostHttpRequest("https://hook.eu1.make.celonis.com/dt28t8rlg61u3n3s62d8wwqxe22rb9ue", {"recordId": cell, "VIN": vin}, "Fleet - CEVA Earliest Delivery Date (individual)");
+                };
+            };
+            // Clear any existing handler before assigning new one
+            currentRow.children[39].onclick = null;
+            currentRow.children[39].onclick = createClickHandler(currentRow);
+        }
+    }
 });
