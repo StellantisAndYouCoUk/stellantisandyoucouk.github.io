@@ -2142,7 +2142,7 @@ $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
 	$(document).on('knack-view-render.view_4645', function(event, view) {
 	 if ($('div[class="kn-view kn-table view_4645"]')){
   let rows = $('div[class="kn-view kn-table view_4645"] table tr');
-  for (i = 1; i < rows.length; i++) {
+  for (i = 2; i < rows.length; i++) {
     let currentRow = rows[i];
     const createClickHandler = function(row) {
       return function() {
