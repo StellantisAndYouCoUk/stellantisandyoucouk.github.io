@@ -2137,6 +2137,16 @@ $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     sceneRefresh(refreshData);
   });
 
+$(document).on('knack-record-update.view_5942', function(event, view, data) {
+
+setTimeout(function () { location.hash = location.hash + "#"; }, 12000);
+
+alert("Please wait while we calculate the Earliest Delivery Time. Click 'OK' & this page will refresh in a few moments...");
+
+Knack.showSpinner();
+
+});
+
 
 //refresh view once ceva earliest date confirmed (individual)
 $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
@@ -2148,3 +2158,5 @@ $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
   });
+
+
