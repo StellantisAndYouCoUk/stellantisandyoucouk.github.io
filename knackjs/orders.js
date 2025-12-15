@@ -2147,7 +2147,7 @@ $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     const createClickHandler = function(row) {
       return function() {
         var cell = row.id;
-        let vin = row.querySelector('.col-6').innerText;
+        let vin = row.querySelector('.col-7').innerText;
         console.log('rowId',cell, 'vin',vin);
         callPostHttpRequest("https://hook.eu1.make.celonis.com/dt28t8rlg61u3n3s62d8wwqxe22rb9ue", {"recordId":cell, "VIN": vin},"Fleet - CEVA Earliest Delivery Date (individual)");
       };
