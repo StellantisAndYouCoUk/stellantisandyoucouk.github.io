@@ -2162,4 +2162,14 @@ $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
     sceneRefresh(refreshData);
   });
 
-
+//earliest delivery date on single vehicles. 
+$(document).on('knack-form-submit.view_5942', function(event, view, data) { 
+	setTimeout(function(){ 
+    	Knack.showSpinner();
+    }, 0); 
+	commandURL = "https://hook.eu1.make.celonis.com/dt28t8rlg61u3n3s62d8wwqxe22rb9ue?recordid=" + data.id ;
+	$.get(commandURL, function(data, status){
+      Knack.hideSpinner();
+      $(".kn-message.success").html("<b>" + data + "</b>");
+    });
+});
