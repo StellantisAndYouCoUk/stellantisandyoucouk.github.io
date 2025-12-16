@@ -2126,7 +2126,7 @@ function stopLoading(viewID){
 var currentRefreshScene = [];
 //Reloads views from viewsArray in scene with sceneId in selected interval
 
-/*refresh view once ceva earliest date confirmed (bulk)
+//refresh view once ceva earliest date confirmed (bulk)
 $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     let refreshData = [
       {
@@ -2137,6 +2137,8 @@ $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     sceneRefresh(refreshData);
   });
 
+
+/*
 $(document).on('knack-record-update.view_5942', function(event, view, data) {
 
 setTimeout(function () { location.hash = location.hash + "#"; }, 12000);
@@ -2147,6 +2149,7 @@ Knack.showSpinner();
 
 });
 */
+
 
 //refresh view once ceva earliest date confirmed (individual)
 $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
