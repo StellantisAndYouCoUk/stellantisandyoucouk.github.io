@@ -2151,7 +2151,7 @@ Knack.showSpinner();
 */
 
 
-//refresh view once ceva earliest date confirmed (individual)
+/*refresh view once ceva earliest date confirmed (individual)
 $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
     let refreshData = [
       {
@@ -2161,7 +2161,7 @@ $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
   });
-
+*/
 //earliest delivery date on single vehicles. 
 $(document).on('knack-form-submit.view_5942', function(event, view, data) { 
 	setTimeout(function(){ 
