@@ -2126,7 +2126,7 @@ function stopLoading(viewID){
 var currentRefreshScene = [];
 //Reloads views from viewsArray in scene with sceneId in selected interval
 
-//refresh view once ceva earliest date confirmed (bulk)
+/*refresh view once ceva earliest date confirmed (bulk)
 $(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
     let refreshData = [
       {
@@ -2146,7 +2146,7 @@ alert("Please wait while we calculate the Earliest Delivery Time. Click 'OK' & t
 Knack.showSpinner();
 
 });
-
+*/
 
 //refresh view once ceva earliest date confirmed (individual)
 $(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
