@@ -4149,7 +4149,7 @@ color: #FFFFFF;
 }
 
 /* Motability Pro Forma Invoice */
-#kn-input-field_9224 > div > div.kn-asset-current > div > div > a.kn-view-asset {
+#kn-input-field_9224 > a {
   font-weight: bold;
   text-decoration: underline;
   text-decoration-color: #388cf5;
