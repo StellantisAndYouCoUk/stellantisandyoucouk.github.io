@@ -648,7 +648,7 @@ function fillDataToKnack(message){
   $('input[name="'+message.pdfAssetField+'"]').removeClass('input-error');
   $('div[id="kn-input-'+message.pdfAssetField+'"] div[class="kn-asset-current"]').html(message.fileName);
   $('#'+message.pdfAssetField+'_upload').hide();
-  $('div[id="kn-input-'+message.pdfAssetField+'"] .kn-file-upload').html('File uploaded successfully.');
+  $('div[id="kn-input-'+message.pdfAssetField+'"] div[class="kn-file-upload"]').html('File uploaded successfully.');
 }
 
 //END OF SCAN APP CODE
