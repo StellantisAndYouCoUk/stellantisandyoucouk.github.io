@@ -1991,4 +1991,185 @@ $(document).on('knack-scene-render.scene_856', function(event, scene) {
   refreshWithData('5932', 'Title', 'Text', 'field_9223');
 });
 
+//scene refresh from aftersales 
+function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
+    console.log('sceneRefresh');
+    try {
+      if (!startTime){
+        startTime = new Date();
+        stats = {startTime:startTime, log:[]}
+        console.log('startTime', startTime);
+      } else {
+        console.log('elapsed',new Date() - startTime);
+      }
+      let recheck = false;
+      for (one of refreshData){
+          console.log(one);
+          console.log('main field val',Knack.views['view_'+one.views[0]].model.attributes[one.mainField])
+          if (Knack.views['view_'+one.views[0]].model.attributes[one.mainField]===''){
+              let mainReloaded = false; 
+              for (oneView of one.views){
+                  mainReloaded = refreshView(oneView, mainReloaded);
+              }
+              console.log('main field val2',Knack.views['view_'+one.views[0]].model.attributes[one.mainField])
+              if (Knack.views['view_'+one.views[0]].model.attributes[one.mainField]===''){
+                  recheck = true;
+                  if (runCounter===1){
+                    console.log('fillLoading');
+                    for (oneView of one.views){
+                      fillLoading(oneView);
+                    }
+                  }
+              } else {
+                if (one.runAfter && !one.runAfterDone){
+                  setTimeout(one.runAfter,100);
+                  one.runAfterDone = true;
+                }
+              }
+          } else {
+            if (one.runAfter && !one.runAfterDone){
+              setTimeout(one.runAfter,100);
+              one.runAfterDone = true;
+            }
+            
+            let statsLogFound = stats.log.find(function(el){return el.one === one.name});
+            if (!statsLogFound) {
+              stats.log.push({one:one.name,finishTime:new Date(),duration : (new Date() - stats.startTime)/1000});
+            }
+          }
+      }
+      if (recheck && (new Date() - startTime)<120000){
+          console.log('needs recheck')
+          setTimeout(function(){
+              sceneRefresh(refreshData, startTime, runCounter + 1, stats);
+          }, (runCounter<3?1500:2500));
+      } else if ((new Date() - startTime)>120000){
+        console.log('ending refresh without all done');
+        for (one of refreshData){
+          if (!one.runAfterDone){
+            for (oneView of one.views){
+              refreshView(oneView, true, true);
+            }
+          }
+        }
+      } else {
+        if (runCounter!==1){
+          console.log('everything checked, reload views just for sure');
+          stats.finishTime = new Date();
+          stats.duration = (stats.finishTime - stats.startTime)/1000;
+          console.log('stats', stats);
+          //saveStats(stats);
+          for (one of refreshData){
+            if (!one.runAfterDone){
+              for (oneView of one.views){
+                refreshView(oneView, true, true);
+              }
+            }
+          }
+        }
+      }
+    } catch (e){
+      console.log('sceneRefresh fail', refreshData, e)
+    }
+}
+//This function refreshes view acording viewId, what is just view number!
+//Can be called from scene render, view render
+function refreshView(viewID, reload = false, clearLoading = false){
+    try {
+      if (Knack.views['view_'+viewID]===undefined) return false;
+      var currModel = JSON.stringify(Knack.views['view_'+viewID].model.attributes);
+      const a = {}
+      a.success = function () {
+        if ((currModel !== JSON.stringify(Knack.views['view_'+viewID].model.attributes)) || reload){
+          setTimeout(function(){
+            Knack.views['view_'+viewID].render();
+            if (clearLoading) {stopLoading(oneView);} //else {fillLoading(viewID);}
+          }, 50);
+          return true;
+        } else {
+          return false;
+        }
+      };
+      //reload data from database
+      Knack.views['view_'+viewID].model.fetch(a);
+    } catch (e){
+      console.log('error refreshing view', viewID, e)
+    }
+}
 
+function formatDateGB(date){
+  return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+}
+function formatDateGBShort(date){
+  return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear().toString().substr(2,2);
+}
+function formatDateGBShortNotYear(date){
+  return date.getDate()+'/'+(date.getMonth()+1);
+}
+
+function fillLoading(viewID){
+  $('div[class*="view_'+viewID+'"] div[class*="field_"]>div[class="kn-detail-body"]').each(function(){
+    if ($(this).text().trim()===''){
+      $(this).html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading...')
+    }
+  });
+}
+
+function stopLoading(viewID){
+  $('div[class*="view_'+viewID+'"] div[class*="field_"]>div[class="kn-detail-body"]').each(function(){
+    if ($(this).text().trim().includes('Loading...')){
+      $(this).html('');
+    }
+  });
+}
+
+var currentRefreshScene = [];
+//Reloads views from viewsArray in scene with sceneId in selected interval
+
+//refresh view once ceva earliest date confirmed (bulk)
+$(document).on("knack-scene-render.scene_1716", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_9236', //earliest time ceva can deliver
+          views:['5941','5936']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+
+
+/*
+$(document).on('knack-record-update.view_5942', function(event, view, data) {
+
+setTimeout(function () { location.hash = location.hash + "#"; }, 12000);
+
+alert("Please wait while we calculate the Earliest Delivery Time. Click 'OK' & this page will refresh in a few moments...");
+
+Knack.showSpinner();
+
+});
+*/
+
+
+/*refresh view once ceva earliest date confirmed (individual)
+$(document).on("knack-scene-render.scene_1374", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_9240', //earliest time ceva can deliver
+          views:['4789','4924','5942']
+      }
+    ]
+    sceneRefresh(refreshData);
+  });
+*/
+//earliest delivery date on single vehicles. 
+$(document).on('knack-form-submit.view_5942', function(event, view, data) { 
+	setTimeout(function(){ 
+    	Knack.showSpinner();
+    }, 0); 
+	commandURL = "https://hook.eu1.make.celonis.com/dt28t8rlg61u3n3s62d8wwqxe22rb9ue?recordid=" + data.id ;
+	$.get(commandURL, function(data, status){
+      Knack.hideSpinner();
+      $(".kn-message.success").html("<b>" + data + "</b>");
+    });
+});

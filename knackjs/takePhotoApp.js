@@ -394,6 +394,10 @@ if (OperatingSystem.Android()) {
   .then(function(devices) {
     let deviceId = '';
     let countOfBackCameras = 0;
+
+	
+
+	  
     devices.forEach(function(device) {
       if (device.label.toLowerCase().includes('back')){
           countOfBackCameras += 1;
@@ -412,6 +416,7 @@ if (OperatingSystem.Android()) {
     alert(err.name + ": " + err.message);
   });
 } else {
+  console.log("not android")
   openCamera({video: {facingMode: {ideal: "environment"}}},appleConstraints,appSettings.torch);
 }
 
@@ -640,7 +645,7 @@ var takePhotoImageHeight = null;
       }, 'image/jpeg', 1);
     } else /*if (OperatingSystem.Android()) */{
       imageCapture.takePhoto().then(function(blob) {
-        //console.log('Photo taken:', blob);
+        console.log('Photo taken:', blob);
         //so I use the blob to the shown image but also for the imageBeforeResize, which when is loaded updates the shown image with smaller image
         //theoretically the blob can be given only to the imageBeforeResize, and it should then update them shown image but this approach shows the image sooner ...
         img.classList.remove('hidden');
