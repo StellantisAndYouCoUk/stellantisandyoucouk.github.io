@@ -212,6 +212,7 @@ function work(){
     let qV = getUrlVars();
     if (page.includes('index.html')){
         if (!serviceBookingProcess.registrationNumber){
+            $('h1[id="registrationNumberShow"]').text("Search vehicle")
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
