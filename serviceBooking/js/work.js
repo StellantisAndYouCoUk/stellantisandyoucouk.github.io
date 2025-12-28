@@ -152,7 +152,7 @@ function findDealerships(postcode){
 
 }
 
-var serviceBookingProcess = {};
+var serviceBookingProcess = null;
 var supportData = null;
 
 function work(){
@@ -176,7 +176,7 @@ function work(){
         serviceBookingProcess.registrationNumber = r.data.registrationNumber;
         serviceBookingProcess.vehicle = r.data.vehicle;
         serviceBookingProcess.customer = r.data.customer;
-        sessionStorage.setItem('serviceBookingProcess',serviceBookingProcess);
+        sessionStorage.setItem('serviceBookingProcess',JSON.parse(serviceBookingProcess));
         work();
         return false;
     });
@@ -198,11 +198,14 @@ function work(){
             sessionStorage.setItem('supportData',JSON.stringify(supportData));
         }
     }
-    if (!serviceBookingProcess) serviceBookingProcess = sessionStorage.getItem('serviceBookingProcess');
+    if (!serviceBookingProcess){
+        let serviceBookingProcessS = sessionStorage.getItem('serviceBookingProcess')
+        try { serviceBookingProcess = JSON.parse(serviceBookingProcessS)} catch (ex){};
+    }
     console.log('serviceBookingProcess',serviceBookingProcess)
     let qV = getUrlVars();
     if (page.includes('index.html')){
-        if (!serviceBookingProcess.registrationNumber){
+        if (!serviceBookingProcess || !serviceBookingProcess.registrationNumber){
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
