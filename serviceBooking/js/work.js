@@ -149,6 +149,7 @@ function work(){
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
         console.log(JSON.stringify(loginReq));
         if (loginReq.session && loginReq.session.user){
+            console.log('SAVE COOKIE')
             createCookie('bookingToken',loginReq.session.user.token,1);
             createCookie('bookingUser',JSON.stringify(loginReq.session.user.values),1);
             window.location = './index.html';
