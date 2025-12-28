@@ -172,7 +172,7 @@ function work(){
     let qV = getUrlVars();
     if (page.includes('index.html')){
         if (!serviceBookingProcess.registrationNumber){
-            $('id="mainInfo"').html = 'Enter registration number: <input name="registrationNumber"></input><button name="searchReg"></button>'
+            $('div[id="step1"]').show();
         }
     }
 }
