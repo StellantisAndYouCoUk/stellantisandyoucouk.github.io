@@ -162,7 +162,6 @@ function work(){
     //Logout
     $("a[id='logoutButton']").bind("click", function() {
         eraseCookie('bookingToken');
-        eraseCookie('bookingUser');
         window.location = './login.html';
     });
 
