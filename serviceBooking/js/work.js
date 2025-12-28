@@ -156,8 +156,6 @@ function work(){
             loggedInUser = loginReq.session.user.values;
         } else {
             $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message);
-            eraseCookie('bookingToken');
-            eraseCookie('bookingUser');
         }
         return false;
     });
