@@ -150,6 +150,7 @@ function login(username,password){
 }
 
 var serviceBookingProcess = {};
+var supportData = null;
 
 function work(){
     let page = window.location.href;
@@ -183,7 +184,11 @@ function work(){
         window.location = './login.html';
     });
 
-    $('#userName').text(loggedInUser.values.field_2.full)
+    $('#userName').text(loggedInUser.values.field_2.full);
+    if (!supportData){
+        supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
+        console.log(supportData);
+    }
     let qV = getUrlVars();
     if (page.includes('index.html')){
         if (!serviceBookingProcess.registrationNumber){
