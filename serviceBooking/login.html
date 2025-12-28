@@ -13,8 +13,8 @@
         <script type="text/javascript" src="js/jsonc.min.js"></script>
         <script>
             console.log("Some code");
-            $('script[id="work"]').src = 'js/work.js?_t='+(new Date()).getTime();
-            console.log($('script[id="work"]').src)
+            $('script[id="work"]').attr('src') = 'js/work.js?_t='+(new Date()).getTime();
+            console.log($('script[id="work"]').attr('src'))
         </script>
         <script type="text/javascript" src="js/work.js" id="work"></script>
     </head>
