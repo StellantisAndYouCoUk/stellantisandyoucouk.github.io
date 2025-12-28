@@ -220,24 +220,23 @@ function work(){
             $('div[id="step2"]').show(); 
             $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />');
             let vehicleAge = null;
-            if (serviceBookingProcess.vehicle.DateRegistered!==''){
-                vehicleAge = ((new Date() - new Date(serviceBookingProcess.vehicle.DateRegistered))/1000 / 60 / 60 / 24 / 365).toFixed(1);
+            if (serviceBookingProcess.motData.firstUsedDate!==''){
+                vehicleAge = ((new Date() - new Date(serviceBookingProcess.motData.firstUsedDate))/1000 / 60 / 60 / 24 / 365).toFixed(1);
             }
-            let fuelType = '';
-            if (serviceBookingProcess.vehicle.FuelType!==''){
-                switch (serviceBookingProcess.vehicle.FuelType){
-                    case 'D': fuelType = "Diesel"; break;
-                    case 'P': fuelType = "Petrol"; break;
-                    default: fuelType = serviceBookingProcess.vehicle.FuelType;
-                }
-            }
-            $('div[id="vehicleDescription').html('<b>' + vehicleAge + '</b> Year Old <b>'+fuelType+'</b> {{ifempty(switch(45.data.data[].Franchise; "P"; "Peugeot"; "C"; "Citroen"; "V"; "Vauxhall"); 289.data.make)}} {{replace(toString(45.data.data[].BriefDescription); "{object}"; 289.data.model)}} in {{289.data.primaryColour}}, registered on <b>{{formatDate(parseDate(86.firstUseDate; "YYYY-MM-DD"); "DD/MM/YYYY")}}.</b> {{if(58.field_66 > 0; "Customer reported " + 58.field_66 + " miles."; if(283.newCurrentMileage.currentMileage; "System estimates " + 283.newCurrentMileage.currentMileage + " miles."; emptystring))}}');
-            console.log(serviceBookingProcess.vehicle.AftersalesBranch)
+            $('div[id="vehicleDescription').html('<b>' + vehicleAge + '</b> Year Old <b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b> System estimates + 283.newCurrentMileage.currentMileage + miles.');
+            console.log(serviceBookingProcess.vehicle.AftersalesBranch);
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
         }
     }
 }
+
+function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+  }
 
 function arrayBufferToBase64( buffer ) {
     var binary = '';
