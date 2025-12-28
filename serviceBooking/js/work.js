@@ -105,7 +105,7 @@ function dateTimeToGBNoYear(dateobj){
 function checkAuth(){
     //if (window.location.href.includes('file:/')) return;
     if (window.location.href.includes('login.html')) return;
-    var token = readCookie('bookingToken');
+    token = readCookie('bookingToken');
     if (!token){
         window.location = './login.html';
     }
@@ -113,6 +113,7 @@ function checkAuth(){
 
 checkAuth();
 
+var token = null;
 var loggedInUser = getLoggedInUser();
 /*if (!loggedInUser.email){
     eraseCookie('bookingToken');
@@ -171,8 +172,22 @@ function work(){
     $('#userName').text(loggedInUser.values.field_2.full)
     let qV = getUrlVars();
     if (page.includes('index.html')){
+        $("a[name='searchReg']").bind("click", function() {
+            let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[name="registrationNumber"]').val()})
+            serviceBookingProcess.registrationNumber = $('input[name="registrationNumber"]').val();
+            serviceBookingProcess.vehicle = r.vehicle;
+            serviceBookingProcess.customer = r.customer;
+            work();
+            return false;
+        });
+
         if (!serviceBookingProcess.registrationNumber){
             $('div[id="step1"]').show();
+            $('div[id="step2"]').hide();
+        } else if (serviceBookingProcess.registrationNumber){
+            $('div[id="step1"]').hide();
+            $('div[id="step2"]').show(); 
+            $('[id="registrationNumberShow"]').html(serviceBookingProcess.registrationNumber);           
         }
     }
 }
