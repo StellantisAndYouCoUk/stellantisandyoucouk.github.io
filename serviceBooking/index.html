@@ -13,10 +13,10 @@
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="js/jsonc.min.js"></script>
         <script>
-            console.log("Some code");
-            $('script[id="work"]').src = 'js/work.js?_t='+(new Date()).getTime();
+            var workS = document.createElement('script');
+            workS.setAttribute('src','js/work.js?_t='+(new Date()).getTime());
+            document.head.appendChild(workS);
         </script>
-        <script type="text/javascript" src="js/work.js" id="work"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
