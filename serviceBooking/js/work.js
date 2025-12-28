@@ -176,7 +176,7 @@ function work(){
         serviceBookingProcess.registrationNumber = r.data.registrationNumber;
         serviceBookingProcess.vehicle = r.data.vehicle;
         serviceBookingProcess.customer = r.data.customer;
-        sessionStorage.setItem('serviceBookingProcess',JSON.parse(serviceBookingProcess));
+        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
         return false;
     });
