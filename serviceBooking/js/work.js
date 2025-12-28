@@ -194,7 +194,7 @@ function work(){
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show(); 
-            $('[id="registrationNumberShow"]').html(serviceBookingProcess.registrationNumber);           
+            $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Address002+'<br />')         
         }
     }
 }
