@@ -109,12 +109,18 @@ function checkAuth(){
     if (!token){
         window.location = './login.html';
     }
+    loggedInUser = getLoggedInUser();
+    if (!loggedInUser){
+        window.location = './login.html';
+    }
 }
+
+var token = null;
+var loggedInUser = null;
 
 checkAuth();
 
-var token = null;
-var loggedInUser = getLoggedInUser();
+
 /*if (!loggedInUser.email){
     eraseCookie('bookingToken');
     checkAuth();
@@ -128,7 +134,7 @@ function getLoggedInUser(){
     let d = readCookie('bookingToken');
     let u = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getUser?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{token:d})
     console.log('bookingSession',JSON.stringify(u.data))
-    return u.data.session.user;
+    return (u.data && u.data.session && u.data.session.user);
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
