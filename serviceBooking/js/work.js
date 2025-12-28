@@ -148,6 +148,10 @@ function login(username,password){
     return r;
 }
 
+function findDealerships(postcode){
+    
+}
+
 var serviceBookingProcess = {};
 var supportData = null;
 
@@ -198,9 +202,10 @@ function work(){
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show(); 
             $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />');
+            //$('div[id="vehicleDetails').html('<b>{{if(toString(86.firstUseDate) = emptystring; emptystring; formatNumber((now - parseDate(86.firstUseDate; "YYYY-MM-DD")) / 1000 / 60 / 60 / 24 / 365; 1; ".") + "</b> Year Old <b>")}}{{289.data.fuelType}}</b> {{ifempty(switch(45.data.data[].Franchise; "P"; "Peugeot"; "C"; "Citroen"; "V"; "Vauxhall"); 289.data.make)}} {{replace(toString(45.data.data[].BriefDescription); "{object}"; 289.data.model)}} in {{289.data.primaryColour}}, registered on <b>{{formatDate(parseDate(86.firstUseDate; "YYYY-MM-DD"); "DD/MM/YYYY")}}.</b> {{if(58.field_66 > 0; "Customer reported " + 58.field_66 + " miles."; if(283.newCurrentMileage.currentMileage; "System estimates " + 283.newCurrentMileage.currentMileage + " miles."; emptystring))}}');
             console.log(serviceBookingProcess.vehicle.AftersalesBranch)
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
-            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit</b>'+lastDealership.field_8:''));
+            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+'<br />':'')+'<a class="btn btn-primary" onclick="return findDealerships('+serviceBookingProcess.customer.Postcode+')">Find dealership close to customer</a>');
         }
     }
 }
