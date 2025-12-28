@@ -149,7 +149,6 @@ function work(){
     $("a[id='loginButton']").bind("click", function() {
         console.log('login Button click')
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
-        console.log(JSON.stringify(loginReq));
         if (loginReq.session && loginReq.session.user){
             createCookie('bookingToken',loginReq.session.user.token,1);
             callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{data:loginReq})
