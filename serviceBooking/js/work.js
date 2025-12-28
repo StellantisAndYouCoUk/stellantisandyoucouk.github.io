@@ -150,7 +150,7 @@ function work(){
         console.log(JSON.stringify(loginReq));
         if (loginReq.session && loginReq.session.user){
             createCookie('bookingToken',loginReq.session.user.token,1);
-            callPostHttpRequest('https://davidmale--shared-server-1.apify.actor',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{data:loginReq})
+            callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{data:loginReq})
             window.location = './index.html';
             loggedInUser = loginReq.session.user.values;
         } else {
