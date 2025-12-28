@@ -12,7 +12,11 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="js/jsonc.min.js"></script>
-        <script type="text/javascript" src="js/work.js?_t=3"></script>
+        <script>
+            console.log("Some code");
+            $('script[id="work"]').src = 'js/work.js?_t='+(new Date()).getTime();
+        </script>
+        <script type="text/javascript" src="js/work.js" id="work"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
