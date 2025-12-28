@@ -127,7 +127,8 @@ $( document ).ready(function() {
 function getLoggedInUser(){
     let d = readCookie('bookingToken');
     let u = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getUser?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{token:d})
-    console.log('bookingUser',JSON.stringify(u))
+    console.log('bookingSession',JSON.stringify(u.data))
+    return u.data.session.user;
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
@@ -153,7 +154,7 @@ function work(){
             createCookie('bookingToken',loginReq.session.user.token,1);
             callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{data:loginReq})
             window.location = './index.html';
-            loggedInUser = loginReq.session.user.values;
+            loggedInUser = loginReq.session.user;
         } else {
             $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message);
         }
@@ -166,7 +167,7 @@ function work(){
         window.location = './login.html';
     });
 
-    $('#userName').text(loggedInUser.field_2.full)
+    $('#userName').text(loggedInUser.values.field_2.full)
     let qV = getUrlVars();
     if (page.includes('index.html')){
         let sumDate = qV['date'];
