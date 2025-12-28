@@ -197,7 +197,9 @@ function work(){
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show(); 
-            $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />')         
+            $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />');
+            let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.AftersalesBranch))
+            $('div[id="serviceDealership').html('<b>Last Dealer Visit</b>'+lastDealership.field_8);
         }
     }
 }
