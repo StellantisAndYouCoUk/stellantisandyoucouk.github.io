@@ -65,3 +65,45 @@ var submitUserLoginForm = function() {
     $('input[type="submit"]').click();
 };
 
+
+
+
+
+
+/* Auto refresh code for table (refresh with data) */
+
+
+var refreshList = [];
+
+  function refreshWithData(viewID, notifTitle, notifText, field, data = null){
+    if (Knack.views["view_"+viewID]){
+      if (data===null){
+        if (refreshList.find(el => el === viewID)){
+          console.log('already registered');
+          return;
+        }
+        refreshList.push(viewID);
+        data = {'value':Knack.views["view_"+viewID].model.data.models[0].attributes[field]};
+      } else {
+        if (data.value<Knack.views["view_"+viewID].model.data.models[0].attributes[field]){
+          console.log('change up');
+        }
+      }
+      data.value = Knack.views["view_"+viewID].model.data.models[0].attributes[field];
+    }
+    if ((new Date()).getHours()<7 || (new Date()).getHours()>20) return;
+    setTimeout(function () { if($("#view_"+viewID).is(":visible")==true){viewFetchWithData(viewID, notifTitle, notifText, field, data);} }, 60000);
+   }
+
+ function viewFetchWithData(viewID, notifTitle, notifText, field, data = null){
+    Knack.views["view_"+viewID].model.fetch();
+    setTimeout(function () { refreshWithData(viewID, notifTitle, notifText, field, data); }, 500);
+   }
+
+// Starter View Page (excel spreadsheet field)
+$(document).on('knack-scene-render.scene_2397', function(event, scene) {
+  refreshWithData('7626', 'Title', 'Text', 'field_10381');
+});
+
+
+
