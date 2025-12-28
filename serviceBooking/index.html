@@ -63,89 +63,22 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Service booking</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div id="dashboardQueuedRuns" class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="runs.html?queued">View Runs</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div id="dashboardActiveRuns" class="card-body"></div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="runs.html?running">View Runs</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div id="dashboardSuccessfullRuns" class="card-body"></div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="runs.html?succeded">View Runs</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div id="dashboardFailedRunsToday" class="card-body">Failed runs</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="runs.html?failed">View Runs</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                        <div class="row" id="step1">
                             <div class="col-xl-6">
-                                <div class="card mb-4">
+                                <div class="card mb-4" >
                                     <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Flow runs summary <b id="sumDate"></b> - <a href="?date=today">today</a> - <a href="?date=yesterday">yesterday</a>
+                                        Search by registration number
                                     </div>
                                     <div class="card-body">
-                                        <table id="datatablesSimpleFlowRunsSummary">
-                                            <thead>
-                                                <tr>
-                                                    <th>Flow Name</th>
-                                                    <th>Status</th>
-                                                    <th>Count</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Flow Name</th>
-                                                    <th>Status</th>
-                                                    <th>Count</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                
-                                            </tbody>
-                                        </table>
+                                        Registration number: <input name="registrationNumber"></input><button name="searchReg"></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Machine usage
-                                    </div>
-                                    <div class="card-body">
-
-                                    </div>
-                                </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </main>

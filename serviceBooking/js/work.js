@@ -143,6 +143,8 @@ function login(username,password){
     return r;
 }
 
+var serviceBookingProcess = {};
+
 function work(){
     let page = window.location.href;
     //Login page
@@ -169,7 +171,9 @@ function work(){
     $('#userName').text(loggedInUser.values.field_2.full)
     let qV = getUrlVars();
     if (page.includes('index.html')){
-        
+        if (!serviceBookingProcess.registrationNumber){
+            $('id="mainInfo"').html = 'Enter registration number: <input name="registrationNumber"></input><button name="searchReg"></button>'
+        }
     }
 }
 
