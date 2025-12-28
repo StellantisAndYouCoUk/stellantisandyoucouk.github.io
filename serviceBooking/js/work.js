@@ -120,7 +120,6 @@ var loggedInUser = null;
 
 checkAuth();
 
-
 /*if (!loggedInUser.email){
     eraseCookie('bookingToken');
     checkAuth();
