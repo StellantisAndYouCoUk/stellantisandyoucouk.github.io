@@ -189,8 +189,12 @@ function work(){
 
     $('#userName').text(loggedInUser.values.field_2.full);
     if (!supportData){
-        supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
-        console.log(supportData);
+        supportData = sessionStorage.getItem('supportData');
+        if (!supportData){
+            supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
+            console.log(supportData);
+            sessionStorage.setItem('supportData',supportData);
+        }
     }
     if (!serviceBookingProcess) serviceBookingProcess = sessionStorage.getItem('serviceBookingProcess');
     console.log('serviceBookingProcess',serviceBookingProcess)
