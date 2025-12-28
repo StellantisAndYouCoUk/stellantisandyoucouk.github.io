@@ -179,9 +179,7 @@ function work(){
 
     $("a[id='searchRegistration']").bind("click", function() {
         let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val()})
-        serviceBookingProcess.registrationNumber = r.data.registrationNumber;
-        serviceBookingProcess.vehicle = r.data.vehicle;
-        serviceBookingProcess.customer = r.data.customer;
+        Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
         return false;
