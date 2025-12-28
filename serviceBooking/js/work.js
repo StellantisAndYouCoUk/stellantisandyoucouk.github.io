@@ -152,6 +152,12 @@ function findDealerships(postcode){
 
 }
 
+function newVehicle(){
+    serviceBookingProcess = {};
+    sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+    work();
+}
+
 var serviceBookingProcess = {};
 var supportData = null;
 
