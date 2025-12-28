@@ -169,7 +169,7 @@ function work(){
     });
 
     $("a[id='searchRegistration']").bind("click", function() {
-        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val()})
+        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val()})
         serviceBookingProcess.registrationNumber = $('input[id="registrationNumber"]').val();
         serviceBookingProcess.vehicle = r.vehicle;
         serviceBookingProcess.customer = r.customer;
