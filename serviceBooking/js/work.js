@@ -214,7 +214,19 @@ function work(){
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show(); 
             $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />');
-            //$('div[id="vehicleDetails').html('<b>{{if(toString(86.firstUseDate) = emptystring; emptystring; formatNumber((now - parseDate(86.firstUseDate; "YYYY-MM-DD")) / 1000 / 60 / 60 / 24 / 365; 1; ".") + "</b> Year Old <b>")}}{{289.data.fuelType}}</b> {{ifempty(switch(45.data.data[].Franchise; "P"; "Peugeot"; "C"; "Citroen"; "V"; "Vauxhall"); 289.data.make)}} {{replace(toString(45.data.data[].BriefDescription); "{object}"; 289.data.model)}} in {{289.data.primaryColour}}, registered on <b>{{formatDate(parseDate(86.firstUseDate; "YYYY-MM-DD"); "DD/MM/YYYY")}}.</b> {{if(58.field_66 > 0; "Customer reported " + 58.field_66 + " miles."; if(283.newCurrentMileage.currentMileage; "System estimates " + 283.newCurrentMileage.currentMileage + " miles."; emptystring))}}');
+            let vehicleAge = null;
+            if (serviceBookingProcess.vehicle.DateRegistered!==''){
+                vehicleAge = ((new Date() - new Date(serviceBookingProcess.vehicle.DateRegistered))/1000 / 60 / 60 / 24 / 365).toFixed(1);
+            }
+            let fuelType = '';
+            if (serviceBookingProcess.vehicle.FuelType!==''){
+                switch (serviceBookingProcess.vehicle.FuelType){
+                    case 'D': fuelType = "Diesel"; break;
+                    case 'P': fuelType = "Petrol"; break;
+                    default: fuelType = serviceBookingProcess.vehicle.FuelType;
+                }
+            }
+            $('div[id="vehicleDetails').html('<b>' + vehicleAge + '</b> Year Old <b>'+fuelType+'</b> {{ifempty(switch(45.data.data[].Franchise; "P"; "Peugeot"; "C"; "Citroen"; "V"; "Vauxhall"); 289.data.make)}} {{replace(toString(45.data.data[].BriefDescription); "{object}"; 289.data.model)}} in {{289.data.primaryColour}}, registered on <b>{{formatDate(parseDate(86.firstUseDate; "YYYY-MM-DD"); "DD/MM/YYYY")}}.</b> {{if(58.field_66 > 0; "Customer reported " + 58.field_66 + " miles."; if(283.newCurrentMileage.currentMileage; "System estimates " + 283.newCurrentMileage.currentMileage + " miles."; emptystring))}}');
             console.log(serviceBookingProcess.vehicle.AftersalesBranch)
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+'<br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
