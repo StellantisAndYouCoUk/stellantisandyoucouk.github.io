@@ -126,7 +126,7 @@ $( document ).ready(function() {
 
 function getLoggedInUser(){
     let d = readCookie('bookingUser');
-    console.log('bookingUser',d)
+    console.log('bookingUser',JSON.stringify(d))
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
@@ -147,10 +147,10 @@ function work(){
     $("a[id='loginButton']").bind("click", function() {
         console.log('login Button click')
         let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
-        console.log(loginReq);
+        console.log(JSON.stringify(loginReq));
         if (loginReq.session && loginReq.session.user){
             createCookie('bookingToken',loginReq.session.user.token,1);
-            createCookie('bookingUser',loginReq.session.user.values,1);
+            createCookie('bookingUser',JSON.stringify(loginReq.session.user.values),1);
             window.location = './index.html';
             loggedInUser = loginReq.session.user.values;
         } else {
