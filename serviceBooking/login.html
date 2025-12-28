@@ -13,9 +13,9 @@
         <script type="text/javascript" src="js/jsonc.min.js"></script>
         <script type="text/javascript" src="js/work.js" id="work"></script>
         <script>
-            console.log("Some code");
-            document.querySelector('script[id="work"]').src = 'js/work.js?_t='+(new Date()).getTime();
-            console.log($('script[id="work"]').attr('src'))
+            var workS = document.createElement('script');
+            workS.setAttribute('src','js/work.js?_t='+(new Date()).getTime());
+            document.head.appendChild(workS);
         </script>
     </head>
     <body class="bg-primary">
