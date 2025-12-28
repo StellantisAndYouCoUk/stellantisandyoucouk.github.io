@@ -125,8 +125,9 @@ $( document ).ready(function() {
 });
 
 function getLoggedInUser(){
-    let d = readCookie('bookingUser');
-    console.log('bookingUser',JSON.stringify(d))
+    let d = readCookie('bookingToken');
+    let u = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getUser',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{token:d})
+    console.log('bookingUser',JSON.stringify(u))
 }
 
 function pad(n) {return n < 10 ? "0"+n : n;}
