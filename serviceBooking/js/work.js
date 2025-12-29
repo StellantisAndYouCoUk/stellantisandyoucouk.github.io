@@ -355,11 +355,11 @@ function generateBookingSummary(){
             if (autolineRTSCodes){
                 let aCode = autolineRTSCodes.find(el => el.RTSCode === serviceBookingProcess.bookingData.orderedCodes[i]);
                 if (aCode){
-                    let lT = labourSummary.find(el => el.LabourGroup === aCode.LabourGroup);
+                    let lT = labourSummary.find(el => el.LabourGroup === aCode.LoadGroup);
                     if (lT){
                         lT.Time += parseFloat(aCode.AllowedUnits001);
                     } else {
-                        labourSummary.push({LabourGroup:aCode.LabourGroup,Time:parseFloat(aCode.AllowedUnits001)})
+                        labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
                     }
                 }
             }
@@ -367,7 +367,7 @@ function generateBookingSummary(){
         if (labourSummary.length>0){
             html += '<br />Labour:';
             for (let i = 0;i<labourSummary.length;i++){
-                html += '<br /><b>Group: '+labourSummary[i].LabourGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'</b>';
+                html += '<br /><b>Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'</b>';
             }
         }
     }
