@@ -291,11 +291,15 @@ function work(){
                     } else {
                         addCodeToBooking($(this).attr('data-code'));
                         if ($("input[name='serviceScheduleCode']:checked").length!==1){
+                            let uncheckCodes = [];
                             for (let i = 0;i<$("input[name='serviceScheduleCode']:checked").length;i++){
                                 if ($("input[name='serviceScheduleCode']:checked").eq(i).attr('data-code')!==$(this).attr('data-code')){
                                     removeCodeFromBooking($("input[name='serviceScheduleCode']:checked").eq(i).attr('data-code'));
-                                    $("input[name='serviceScheduleCode']:checked").eq(i).attr('checked',false);
+                                    uncheckCodes.push($("input[name='serviceScheduleCode']:checked").eq(i).attr('data-code'))
                                 }
+                            }
+                            for (let i =0;i<uncheckCodes.length;i++){
+                                $("input[data-code='"+uncheckCodes[i]+"']").attr('checked',false);
                             }
                         }
                     }
