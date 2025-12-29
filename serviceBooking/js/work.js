@@ -281,7 +281,7 @@ function work(){
                 generateBookingSummary();
                 $("input[name='otherCode']").bind("click", function() {
                     console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
-                    addCodeToBooking($(this).attr('data-code'));
+                    if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
                     generateBookingSummary();
                 });
             }
