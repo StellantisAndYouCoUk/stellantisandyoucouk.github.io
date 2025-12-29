@@ -285,7 +285,7 @@ function work(){
                     generateBookingSummary();
                 });
                 $("input[name='serviceScheduleCode']").bind("click", function() {
-                    console.log('serviceScheduleCode',$(this).attr('data-code'),$(this).is(':checked'));
+                    console.log('serviceScheduleCode',$(this).attr('data-code'),$(this).is(':checked'),$("input[name='serviceScheduleCode']:checked"));
                     //if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
                     //generateBookingSummary();
                 });
