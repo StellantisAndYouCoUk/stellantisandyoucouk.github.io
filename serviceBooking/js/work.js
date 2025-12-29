@@ -262,11 +262,13 @@ function work(){
                         } else {
                             serviceBookingProcess.bookingData = {
                                 knackDealerId : lastDealership.id,
+                                dealerName : lastDealership.field_8,
                                 konnectDealerId : lastDealership.konnectData.ID,
                                 konnectFranchiseId : kF.ID,
                                 konnectModelName : mF,
                                 konnectFuelTypeId : fT.ID,
-                                yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
+                                yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
+                                bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
                             };
                             console.log(serviceBookingProcess.bookingData);
                         }
@@ -275,10 +277,16 @@ function work(){
             }
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
-                generatePricingHTML()
+                generatePricingHTML();
+                generateBookingSummary();
             }
         }
     }
+}
+
+function generateBookingSummary(){
+    let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' '+serviceBookingProcess.bookingData.mileage;
+    $('div[id="bookingSummary"]').html(html);
 }
 
 function generatePricingHTML(){
