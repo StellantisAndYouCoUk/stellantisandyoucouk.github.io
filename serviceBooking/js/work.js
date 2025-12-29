@@ -278,10 +278,14 @@ function work(){
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
+                if (serviceBookingProcess.bookingData.orderedCodes.length>0){
+                    refreshAutolineRTSCodes();
+                } else {
+                    setTimeout(() => {
+                        refreshAutolineRTSCodes()
+                    }, 5000);
+                }
                 generateBookingSummary();
-                setTimeout(() => {
-                    refreshAutolineRTSCodes()
-                }, 5000);
                 $("input[name='otherCode']").bind("click", function() {
                     console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
                     if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
