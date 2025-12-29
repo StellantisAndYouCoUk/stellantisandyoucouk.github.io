@@ -115,6 +115,9 @@ function checkAuth(){
     }
 }
 
+var serviceBookingProcess = {};
+var supportData = null;
+
 var token = null;
 var loggedInUser = null;
 
@@ -157,9 +160,6 @@ function newVehicle(){
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     work();
 }
-
-var serviceBookingProcess = {};
-var supportData = null;
 
 function work(){
     let page = window.location.href;
