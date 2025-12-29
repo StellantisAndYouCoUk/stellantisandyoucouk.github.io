@@ -161,6 +161,7 @@ function bookVisit(dealershipId){
     let mileage = $('input[id="currentMileage"]').val();
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
+        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
     } else {
         console.log('bookingVisit not all data');
@@ -231,7 +232,7 @@ function work(){
             $('h1[id="registrationNumberShow"]').text("Search vehicle")
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
-        } else if (serviceBookingProcess.registrationNumber){
+        } else if (serviceBookingProcess.registrationNumber && !serviceBookingProcess.pricing){
             $('h1[id="registrationNumberShow"]').text(serviceBookingProcess.registrationNumber)
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
@@ -271,6 +272,8 @@ function work(){
                     }
                 }
             }
+        } else if (serviceBookingProcess.pricing){
+            
         }
     }
 }
