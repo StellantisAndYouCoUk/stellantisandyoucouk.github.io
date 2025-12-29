@@ -279,7 +279,7 @@ function work(){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
                 $("input[name='otherCode']").bind("click", function() {
-                    console.log('fff',$(this));
+                    console.log('otherCode',$(this).attr('data-code'));
                 });
                 generateBookingSummary();
             }
@@ -305,7 +305,7 @@ function generatePricingHTML(){
 function generateTableFromData(data, isServiceSchedule = false){
     let html = '<table class="table table-condensed" width="100%"><tbody>';
     for (let i = 0;i<data.length;i++){
-        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" class="ng-pristine ng-untouched ng-valid ng-empty"></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
+        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
     }
     html += '</tbody></table>';
     return html;
