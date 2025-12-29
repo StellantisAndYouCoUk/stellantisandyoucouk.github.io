@@ -286,6 +286,19 @@ function work(){
                 });
                 $("input[name='serviceScheduleCode']").bind("click", function() {
                     console.log('serviceScheduleCode',$(this).attr('data-code'),$(this).is(':checked'),$("input[name='serviceScheduleCode']:checked"));
+                    if (!$(this).is(':checked')){
+                        removeCodeFromBooking($(this).attr('data-code'));
+                    } else {
+                        addCodeToBooking($(this).attr('data-code'));
+                        if ($("input[name='serviceScheduleCode']:checked").length!==1){
+                            for (let i = 0;i<$("input[name='serviceScheduleCode']:checked").length;i++){
+                                if ($("input[name='serviceScheduleCode']:checked").eq(i).attr('data-code')!==$(this).attr('data-code')){
+                                    removeCodeFromBooking($("input[name='serviceScheduleCode']:checked").eq(i).attr('data-code'));
+                                    $("input[name='serviceScheduleCode']:checked").eq(i).attr('checked',false);
+                                }
+                            }
+                        }
+                    }
                     //if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
                     //generateBookingSummary();
                 });
