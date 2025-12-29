@@ -162,7 +162,7 @@ function bookVisit(dealershipId){
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
         let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:serviceBookingProcess.bookingData.konnectDealerId,franchiseId:serviceBookingProcess.bookingData.konnectFranchiseId,fuelTypeId:serviceBookingProcess.bookingData.konnectFuelTypeId,modelName:serviceBookingProcess.bookingData.konnectModelName,yearOfManufacture:serviceBookingProcess.bookingData.yearOfManufacture,mileage:mileage})
         console.log('pricing',r)
-        sessionStorage.bookingData.pricing = r;
+        serviceBookingProcess.bookingData.pricing = r;
         work();
     } else {
         console.log('bookingVisit not all data');
