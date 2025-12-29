@@ -160,7 +160,7 @@ function bookVisit(dealershipId){
     console.log('bookVisit');
     let mileage = $('input[id="currentMileage"]').val();
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
-        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:serviceBookingProcess.bookingData.konnectDealerId,franchiseId:serviceBookingProcess.bookingData.konnectFranchiseId,fuelTypeId:serviceBookingProcess.bookingData.konnectFuelTypeId,modelName:serviceBookingProcess.bookingData.modelName,yearOfManufacture:serviceBookingProcess.bookingData.yearOfManufacture,mileage:mileage})
+        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:serviceBookingProcess.bookingData.konnectDealerId,franchiseId:serviceBookingProcess.bookingData.konnectFranchiseId,fuelTypeId:serviceBookingProcess.bookingData.konnectFuelTypeId,modelName:serviceBookingProcess.bookingData.konnectModelName,yearOfManufacture:serviceBookingProcess.bookingData.yearOfManufacture,mileage:mileage})
         console.log('pricing',r)
         sessionStorage.bookingData.pricing = r;
         work();
