@@ -253,15 +253,18 @@ function work(){
             if (lastDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==lastDealership.id)){
                 let kF = lastDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
                 if (!kF){
-                    $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make)
+                    $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make);
+                    $('div[id="bookingProblems"]').show();
                 } else {
                     let mF = kF.modelNames.find(el => el.toLowerCase() === serviceBookingProcess.motData.model.toLowerCase())
                     if (!mF){
                         $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
+                        $('div[id="bookingProblems"]').show();
                     } else {
                         let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.fuelType.toLowerCase());
                         if (!fT){
                             $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
+                            $('div[id="bookingProblems"]').show();
                         } else {
                             serviceBookingProcess.bookingData = {
                                 knackDealerId : lastDealership.id,
