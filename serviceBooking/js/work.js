@@ -178,10 +178,11 @@ function work(){
     });
 
     $("a[id='searchRegistration']").bind("click", function() {
+        console.log('Search registration CLICK')
         let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val()})
+        console.log(r);
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
-        console.log('Search registration CLICK')
         work();
         return false;
     });
