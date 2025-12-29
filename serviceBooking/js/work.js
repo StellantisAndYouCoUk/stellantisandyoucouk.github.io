@@ -344,19 +344,27 @@ function removeCodeFromBooking(code){
 function generateBookingSummary(){
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
     if (serviceBookingProcess.bookingData.orderedCodes){
-        let labourTime = 0;
+        let labourSummary = [];
         html += '<br />'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             html += serviceBookingProcess.bookingData.orderedCodes[i]+'<br />'
             if (autolineRTSCodes){
                 let aCode = autolineRTSCodes.find(el => el.RTSCode === serviceBookingProcess.bookingData.orderedCodes[i]);
                 if (aCode){
-                    labourTime += parseFloat(aCode.AllowedUnits001);
+                    let lT = labourSummary.find(el => el.LabourGroup === aCode.LabourGroup);
+                    if (lT){
+                        lT.Time += parseFloat(aCode.AllowedUnits001);
+                    } else {
+                        labourSummary.push({LabourGroup:aCode.LabourGroup,Time:parseFloat(aCode.AllowedUnits001)})
+                    }
                 }
             }
         }
-        if (labourTime>0){
-            html += '<br /><b>Labour Time: '+labourTime.toFixed(1)+'</b>';
+        if (labourSummary.length>0){
+            html += '<br />Labour:';
+            for (let i = 0;i<labourSummary.length;i++){
+                html += '<br /><b>Group: '+labourSummary[i].LabourGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'</b>';
+            }
         }
     }
     $('div[id="bookingSummary"]').html(html);
