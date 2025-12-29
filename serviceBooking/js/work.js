@@ -241,7 +241,20 @@ function work(){
                     if (!mF){
                         $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
                     } else {
-                        
+                        let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.fuelType.toLowerCase());
+                        if (!fT){
+                            $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
+                        } else {
+                            serviceBookingProcess.bookingData = {
+                                knackDealerId : lastDealership.id,
+                                konnectDealerId : lastDealership.konnectData.ID,
+                                konnectFranchiseId : kF.ID,
+                                konnectModelName : mF,
+                                konnectFuelTypeId : fT.ID,
+                                yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
+                            };
+                            console.log(serviceBookingProcess.bookingData);
+                        }
                     }
                 }
             }
