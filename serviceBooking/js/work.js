@@ -284,6 +284,8 @@ function work(){
 function generatePricingHTML(){
     $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true));
     $('div[id="pricingGeneral"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.GeneralItemPrices,false));
+    $('div[id="pricingMOT"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.MOTItemPrices,false));
+    $('div[id="pricingDutyOfCare"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DutyOfCareItemPrices,false));
 }
 
 function generateTableFromData(data, isServiceSchedule = false){
