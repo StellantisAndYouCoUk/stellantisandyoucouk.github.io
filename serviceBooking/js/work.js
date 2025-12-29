@@ -231,11 +231,13 @@ function work(){
             $('h1[id="registrationNumberShow"]').text("Search vehicle")
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
+            $('div[id="step3"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').text(serviceBookingProcess.registrationNumber)
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
-            $('div[id="step2"]').show(); 
+            $('div[id="step2"]').show();
+            $('div[id="step3"]').hide();
             $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />');
             let vehicleAge = null;
             if (serviceBookingProcess.motData.firstUsedDate!==''){
@@ -272,8 +274,6 @@ function work(){
                 }
             }
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
-                $('div[id="step1"]').hide();
-                $('div[id="step2"]').show();
                 $('div[id="step3"]').show(); 
             }
         }
