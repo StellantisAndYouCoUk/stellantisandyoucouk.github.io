@@ -280,10 +280,19 @@ function work(){
                 generatePricingHTML();
                 $("input[name='otherCode']").bind("click", function() {
                     console.log('otherCode',$(this).attr('data-code'));
+                    addCodeToBooking($(this).attr('data-code'))
                 });
                 generateBookingSummary();
             }
         }
+    }
+}
+
+function addCodeToBooking(code){
+    if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
+    let cT = serviceBookingProcess.bookingData.orderedCodes.find(el => el === code);
+    if (!cT){
+        serviceBookingProcess.bookingData.orderedCodes.push(code);
     }
 }
 
