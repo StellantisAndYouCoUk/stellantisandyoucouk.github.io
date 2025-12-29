@@ -272,7 +272,7 @@ function work(){
                     }
                 }
             }
-            if (serviceBookingProcess.pricing){
+            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step1"]').hide();
                 $('div[id="step2"]').show(); 
                 $('div[id="step3"]').show(); 
