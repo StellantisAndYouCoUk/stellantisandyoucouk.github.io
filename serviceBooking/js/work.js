@@ -232,7 +232,7 @@ function work(){
             $('h1[id="registrationNumberShow"]').text("Search vehicle")
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
-        } else if (serviceBookingProcess.registrationNumber && !serviceBookingProcess.pricing){
+        } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').text(serviceBookingProcess.registrationNumber)
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
@@ -272,10 +272,17 @@ function work(){
                     }
                 }
             }
-        } else if (serviceBookingProcess.pricing){
-
+            if (serviceBookingProcess.pricing){
+                $('div[id="step1"]').hide();
+                $('div[id="step2"]').show(); 
+                $('div[id="step3"]').show(); 
+            }
         }
     }
+}
+
+function generatePricingHTML(){
+
 }
 
 function toTitleCase(str) {
