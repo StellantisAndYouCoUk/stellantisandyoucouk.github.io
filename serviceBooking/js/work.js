@@ -261,7 +261,7 @@ function work(){
                         $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
                         $('div[id="bookingProblems"]').show();
                     } else {
-                        let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.fuelType.toLowerCase());
+                        let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
                         if (!fT){
                             $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
                             $('div[id="bookingProblems"]').show();
