@@ -207,7 +207,7 @@ function work(){
     }
     if (!serviceBookingProcess.registrationNumber){
         let serviceBookingProcessS = sessionStorage.getItem('serviceBookingProcess')
-        console.log('serviceBookingProcess1',serviceBookingProcess)
+        console.log('serviceBookingProcess1',serviceBookingProcess,serviceBookingProcessS)
         try { serviceBookingProcess = JSON.parse(serviceBookingProcessS)} catch (ex){};
     }
     console.log('serviceBookingProcess',serviceBookingProcess)
