@@ -299,8 +299,7 @@ function work(){
                             }
                         }
                     }
-                    //if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
-                    //generateBookingSummary();
+                    generateBookingSummary();
                 });
             }
         }
