@@ -278,11 +278,12 @@ function work(){
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
-                $("input[name='otherCode']").bind("click", function() {
-                    console.log('otherCode',$(this).attr('data-code'),$(this).val());
-                    addCodeToBooking($(this).attr('data-code'))
-                });
                 generateBookingSummary();
+                $("input[name='otherCode']").bind("click", function() {
+                    console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
+                    addCodeToBooking($(this).attr('data-code'));
+                    generateBookingSummary();
+                });
             }
         }
     }
