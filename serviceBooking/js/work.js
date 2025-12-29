@@ -163,6 +163,9 @@ function bookVisit(dealershipId){
         serviceBookingProcess.bookingData.mileage = mileage;
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        setTimeout(() => {
+            refreshAutolineRTSCodes()
+        }, 5000);
         work();
     } else {
         console.log('bookingVisit not all data');
@@ -278,13 +281,7 @@ function work(){
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
-                if (serviceBookingProcess.bookingData.orderedCodes.length>0){
-                    refreshAutolineRTSCodes();
-                } else {
-                    setTimeout(() => {
-                        refreshAutolineRTSCodes()
-                    }, 5000);
-                }
+                if (serviceBookingProcess.bookingData.orderedCodes.length>0) refreshAutolineRTSCodes();
                 generateBookingSummary();
                 $("input[name='otherCode']").bind("click", function() {
                     console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
