@@ -152,7 +152,7 @@ function login(username,password){
 }
 
 function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, modelName, yearOfManufacture, mileage){
-    let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',{'x-knack-application-id':'591eae59e0d2123f23235769','x-knack-rest-api-key':'renderer'},{"email":username,"password":password,"remember":false,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
+    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:konnectDealerId,franchiseId:konnectFranchiseId,fuelTypeId:konnectFuelTypeId,modelName:modelName,yearOfManufacture:yearOfManufacture,mileage:mileage})
     return r;
 }
 
@@ -160,9 +160,7 @@ function bookVisit(dealershipId){
     console.log('bookVisit');
     let mileage = $('input[id="currentMileage"]').val();
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
-        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:serviceBookingProcess.bookingData.konnectDealerId,franchiseId:serviceBookingProcess.bookingData.konnectFranchiseId,fuelTypeId:serviceBookingProcess.bookingData.konnectFuelTypeId,modelName:serviceBookingProcess.bookingData.konnectModelName,yearOfManufacture:serviceBookingProcess.bookingData.yearOfManufacture,mileage:mileage})
-        console.log('pricing',r)
-        serviceBookingProcess.bookingData.pricing = r;
+        serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
         work();
     } else {
         console.log('bookingVisit not all data');
