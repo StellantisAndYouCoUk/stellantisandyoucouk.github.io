@@ -286,6 +286,9 @@ function generatePricingHTML(){
     $('div[id="pricingGeneral"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.GeneralItemPrices,false));
     $('div[id="pricingMOT"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.MOTItemPrices,false));
     $('div[id="pricingDutyOfCare"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DutyOfCareItemPrices,false));
+    $('div[id="pricingRecommended"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.RecommendedItemPrices,false));
+    $('div[id="pricingPromotions"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.Promotions,false));
+    $('div[id="pricingDropType"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DropTypes,false));
 }
 
 function generateTableFromData(data, isServiceSchedule = false){
