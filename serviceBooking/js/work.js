@@ -232,7 +232,19 @@ function work(){
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
-
+            if (lastDealership){
+                let kF = lastDealership.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
+                if (!kF){
+                    $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make)
+                } else {
+                    let mF = kF.modelNames.find(el => el.toLowerCase() === serviceBookingProcess.motData.model.toLowerCase())
+                    if (!mF){
+                        $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
+                    } else {
+                        
+                    }
+                }
+            }
         }
     }
 }
