@@ -355,7 +355,7 @@ function generateBookingSummary(){
             if (autolineRTSCodes){
                 let aCode = autolineRTSCodes.find(el => el.RTSCode === serviceBookingProcess.bookingData.orderedCodes[i]);
                 if (aCode){
-                    let lT = labourSummary.find(el => el.LabourGroup === aCode.LoadGroup);
+                    let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
                     if (lT){
                         lT.Time += parseFloat(aCode.AllowedUnits001);
                     } else {
