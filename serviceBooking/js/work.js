@@ -151,8 +151,22 @@ function login(username,password){
     return r;
 }
 
-function findDealerships(postcode){
+function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, modelName, yearOfManufacture, mileage){
+    let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',{'x-knack-application-id':'591eae59e0d2123f23235769','x-knack-rest-api-key':'renderer'},{"email":username,"password":password,"remember":false,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
+    return r;
+}
 
+function bookVisit(dealershipId){
+    let mileage = $('input[id="currentMileage"]').val();
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
+        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:serviceBookingProcess.bookingData.konnectDealerId,franchiseId:serviceBookingProcess.bookingData.konnectFranchiseId,fuelTypeId:serviceBookingProcess.bookingData.konnectFuelTypeId,modelName:serviceBookingProcess.bookingData.modelName,yearOfManufacture:serviceBookingProcess.bookingData.yearOfManufacture,mileage:mileage})
+        console.log('pricing',r)
+        sessionStorage.bookingData.pricing = r;
+        work();
+    } else {
+        console.log('bookingVisit not all data');
+        return null;
+    }
 }
 
 function newVehicle(){
