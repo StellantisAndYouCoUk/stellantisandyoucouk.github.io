@@ -279,7 +279,7 @@ function work(){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
                 $("input[name='otherCode']").bind("click", function() {
-                    console.log('otherCode',$(this).attr('data-code'));
+                    console.log('otherCode',$(this).attr('data-code'),$(this).val());
                     addCodeToBooking($(this).attr('data-code'))
                 });
                 generateBookingSummary();
@@ -295,6 +295,12 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodes.push(code);
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     }
+}
+
+function removeCodeFromBooking(code){
+    if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
+    serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
+    sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
 }
 
 function generateBookingSummary(){
