@@ -300,7 +300,7 @@ function work(){
                             }
                             for (let i =0;i<uncheckCodes.length;i++){
                                 console.log(uncheckCodes[i]);
-                                $("input[data-code='"+uncheckCodes[i]+"']").attr('checked',false);
+                                $("input[data-code='"+uncheckCodes[i]+"']").prop('checked',false);
                             }
                         }
                     }
