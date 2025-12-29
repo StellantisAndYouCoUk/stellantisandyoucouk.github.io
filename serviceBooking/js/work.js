@@ -293,11 +293,17 @@ function addCodeToBooking(code){
     let cT = serviceBookingProcess.bookingData.orderedCodes.find(el => el === code);
     if (!cT){
         serviceBookingProcess.bookingData.orderedCodes.push(code);
+        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     }
 }
 
 function generateBookingSummary(){
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
+    if (serviceBookingProcess.bookingData.orderedCodes){
+        for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
+            html += serviceBookingProcess.bookingData.orderedCodes[i]+'<br />'
+        }
+    }
     $('div[id="bookingSummary"]').html(html);
 }
 
