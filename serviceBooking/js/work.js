@@ -160,6 +160,7 @@ function bookVisit(dealershipId){
     console.log('bookVisit');
     let mileage = $('input[id="currentMileage"]').val();
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
+        serviceBookingProcess.bookingData.mileage = mileage;
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
