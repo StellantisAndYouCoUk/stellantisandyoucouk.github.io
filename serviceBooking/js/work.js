@@ -307,6 +307,7 @@ function removeCodeFromBooking(code){
 function generateBookingSummary(){
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
     if (serviceBookingProcess.bookingData.orderedCodes){
+        html += '<br />'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             html += serviceBookingProcess.bookingData.orderedCodes[i]+'<br />'
         }
