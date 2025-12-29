@@ -161,9 +161,7 @@ function bookVisit(dealershipId){
     let mileage = $('input[id="currentMileage"]').val();
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
-        console.log('aaa',serviceBookingProcess.bookingData.pricing)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
-        console.log(JSON.stringify(serviceBookingProcess))
         work();
     } else {
         console.log('bookingVisit not all data');
@@ -197,8 +195,6 @@ function work(){
         console.log('Search registration CLICK')
         if ($('input[id="registrationNumber"]').val()==='') return false;
         let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val()})
-        console.log(r.data);
-        console.log(serviceBookingProcess);
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
