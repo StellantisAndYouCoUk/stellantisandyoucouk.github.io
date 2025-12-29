@@ -279,9 +279,13 @@ function work(){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
                 generateBookingSummary();
+                setTimeout(() => {
+                    refreshAutolineRTSCodes()
+                }, 5000);
                 $("input[name='otherCode']").bind("click", function() {
                     console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
                     if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
+                    refreshAutolineRTSCodes()
                     generateBookingSummary();
                 });
                 $("input[name='serviceScheduleCode']").bind("click", function() {
@@ -304,10 +308,21 @@ function work(){
                             }
                         }
                     }
+                    refreshAutolineRTSCodes()
                     generateBookingSummary();
                 });
             }
         }
+    }
+}
+
+var autolineRTSCodes = null;
+var autolineRTSCodesExpires = null;
+function refreshAutolineRTSCodes(hardRefresh = false){
+    if (hardRefresh || !autolineRTSCodes || autolineRTSCodesExpires<new Date()){
+        autolineRTSCodes = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getAutolineRTSCodes?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
+        autolineRTSCodesExpires = new Date();
+        autolineRTSCodesExpires.setMinutes(autolineRTSCodesExpires.getMinutes()+5);
     }
 }
 
@@ -329,9 +344,19 @@ function removeCodeFromBooking(code){
 function generateBookingSummary(){
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
     if (serviceBookingProcess.bookingData.orderedCodes){
+        let labourTime = 0;
         html += '<br />'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             html += serviceBookingProcess.bookingData.orderedCodes[i]+'<br />'
+            if (autolineRTSCodes){
+                let aCode = autolineRTSCodes.find(el => el.RTSCode === serviceBookingProcess.bookingData.orderedCodes[i]);
+                if (aCode){
+                    labourTime += parseFloat(aCode.AllowedUnits001);
+                }
+            }
+        }
+        if (labourTime>0){
+            html += '<br /><b>Labour Time: '+labourTime.toFixed(1)+'</b>';
         }
     }
     $('div[id="bookingSummary"]').html(html);
