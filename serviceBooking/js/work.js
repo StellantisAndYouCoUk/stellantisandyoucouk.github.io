@@ -163,6 +163,7 @@ function bookVisit(dealershipId){
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
         console.log('aaa',serviceBookingProcess.bookingData.pricing)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        console.log(JSON.stringify(serviceBookingProcess))
         work();
     } else {
         console.log('bookingVisit not all data');
