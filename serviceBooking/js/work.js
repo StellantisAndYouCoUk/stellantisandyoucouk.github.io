@@ -181,6 +181,7 @@ function work(){
         let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val()})
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        console.log('Search registration CLICK')
         work();
         return false;
     });
@@ -225,7 +226,9 @@ function work(){
             }
             $('div[id="vehicleDescription').html('<b>' + vehicleAge + '</b> Year Old <b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b> System estimates + 283.newCurrentMileage.currentMileage + miles.<br /><br />'+serviceBookingProcess.vehicle.ChassisNumber);
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
+
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
+
         }
     }
 }
