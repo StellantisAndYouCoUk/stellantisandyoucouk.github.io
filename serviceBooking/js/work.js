@@ -349,15 +349,14 @@ function removeCodeFromBooking(code){
 }
 
 function findAvailabilityDaysForBooking(){
-    if (serviceBookingProcess.bookingData.labourSummary){
-        let av = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary});
-        console.log(av);
-    }
+    if (!serviceBookingProcess.bookingData.labourSummary) return null;
+    return callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary});
 }
 
 function generateBookingSummary(){
     console.log('generateBookingSummary')
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
+    $('div[id="bookingSummary"]').html(html);
     if (serviceBookingProcess.bookingData.orderedCodes){
         let labourSummary = [];
         html += '<br />'
@@ -376,14 +375,21 @@ function generateBookingSummary(){
             }
         }
         if (labourSummary.length>0){
-            html += '<br />Labour:';
+            html += '<br /><b>Labour:</b>';
             for (let i = 0;i<labourSummary.length;i++){
-                html += '<br /><b>Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'</b>';
+                html += '<br />Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'';
             }
             serviceBookingProcess.bookingData.labourSummary = labourSummary;
         } else {serviceBookingProcess.bookingData.labourSummary=null}
     }
-    findAvailabilityDaysForBooking();
+    $('div[id="bookingSummary"]').html(html);
+    let aV = findAvailabilityDaysForBooking();
+    if (aV && aV.availability.length>0){
+        html += '<br /><b>Workshop availability</b>';
+        for (let i = 0;i<aV.availability.length;i++){
+            html += '<br />'+dateToGB(new Date(aV.availability[i].date));
+        }
+    }
     $('div[id="bookingSummary"]').html(html);
 }
 
