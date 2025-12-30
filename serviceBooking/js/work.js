@@ -176,11 +176,13 @@ function bookVisit(dealershipId){
 function searchRegistration(registrationNumber){
     let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber})
     if (r.data){
+        $('div[id="searchRegistrationMessage"]').hide();
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
     } else {
         $('div[id="searchRegistrationMessage"]').text(r.message);
+        $('div[id="searchRegistrationMessage"]').show();
     }
 }
 
