@@ -184,6 +184,7 @@ function searchRegistration(registrationNumber){
         $('div[id="searchRegistrationMessage"]').text(r.message);
         $('div[id="searchRegistrationMessage"]').show();
     }
+    $("a[id='searchRegistration']").prop("disabled", false);
 }
 
 function newVehicle(){
@@ -214,6 +215,7 @@ function work(){
     });
 
     $("a[id='searchRegistration']").bind("click", function() {
+        $("a[id='searchRegistration']").prop("disabled", true)
         console.log('Search registration CLICK')
         if ($('input[id="registrationNumber"]').val()==='') return false;
         searchRegistration($('input[id="registrationNumber"]').val().toUpperCase())
