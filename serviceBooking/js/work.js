@@ -146,8 +146,8 @@ function dateToAutoline(dateobj){
     return dateobj.getFullYear()+"-"+pad(dateobj.getMonth()+1)+"-"+pad(dateobj.getDate());
 }
 
-function login(username,password){
-    let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',{'x-knack-application-id':'591eae59e0d2123f23235769','x-knack-rest-api-key':'renderer'},{"email":username,"password":password,"remember":false,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
+function login(username,password,code = null ){
+    let r = callPostHttpRequest('https://custom-renderer-write.rd.knack.com/v1/session/',{'x-knack-application-id':'591eae59e0d2123f23235769','x-knack-rest-api-key':'renderer'},{"email":username,"password":password,"remember":false,"totpCode":code,"view_key":"view_1101","url":"https://www.stellantisandyou.co.uk/digital#home/"})
     return r;
 }
 
@@ -183,14 +183,19 @@ function work(){
     let page = window.location.href;
     //Login page
     $("a[id='loginButton']").bind("click", function() {
-        let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val())
+        let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val(),$('[id="inputCode"]').val());
         if (loginReq.session && loginReq.session.user){
             createCookie('bookingToken',loginReq.session.user.token,1);
             callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{data:loginReq})
             window.location = './index.html';
             loggedInUser = loginReq.session.user;
         } else {
-            $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message);
+            if (loginReq.errors[0].errorCode==='validate_login_totp_required'){
+                $('div[class="card-header"]').append('You need 2FA Code');
+                $('div[id="2FACode"]').show();
+            } else {
+                $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message);
+            }
         }
         return false;
     });
