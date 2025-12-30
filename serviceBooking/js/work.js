@@ -386,6 +386,7 @@ function generateBookingSummary(){
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
         html += '<br /><b>Workshop availability</b>';
+        aV.availability = aV.availability.sort((a,b)=>(a>b?-1:1))
         for (let i = 0;i<aV.availability.length;i++){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
         }
