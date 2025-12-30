@@ -385,7 +385,7 @@ function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
-        html += '<br /><b>Workshop availability</b>';
+        html += '<br /><br /><b>Workshop availability</b>';
         aV.availability = aV.availability.sort((a,b)=>(new Date(a.date)>new Date(b.date)?-1:1))
         for (let i = 0;i<aV.availability.length;i++){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
