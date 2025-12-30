@@ -166,6 +166,9 @@ function bookVisit(dealershipId){
         setTimeout(() => {
             refreshAutolineRTSCodes()
         }, 5000);
+        setTimeout(() => {
+            refreshAvailabilityData(serviceBookingProcess.bookingData.dealer.field_2442);
+        }, 100);
         work();
     } else {
         console.log('bookingVisit not all data');
@@ -267,6 +270,7 @@ function work(){
                             $('div[id="bookingProblems"]').show();
                         } else {
                             serviceBookingProcess.bookingData = {
+                                dealer : lastDealership,
                                 knackDealerId : lastDealership.id,
                                 dealerName : lastDealership.field_8,
                                 konnectDealerId : lastDealership.konnectData.ID,
@@ -343,6 +347,21 @@ function removeCodeFromBooking(code){
     if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+}
+
+var availabilityData = [];
+function refreshAvailabilityData(companyCode, hardRefresh = false){
+    let availabilityDataCompany = availabilityData.find(el => el.companyCode === companyCode);
+    if (hardRefresh || !availabilityDataCompany || availabilityDataCompany.expiresAt<new Date()){
+        let availabilityDataCompanyN = {companyCode :companyCode, availability: callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailability?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:companyCode})};
+        availabilityDataCompanyN.expiresAt = new Date();
+        availabilityDataCompanyN.expiresAt.setMinutes(availabilityDataCompanyN.expiresAt.getMinutes()+5);
+        if (availabilityDataCompany){
+            Object.assign(availabilityDataCompany,availabilityDataCompanyN);
+        } else {
+            availabilityData.push(availabilityDataCompanyN);
+        }
+    }
 }
 
 function generateBookingSummary(){
