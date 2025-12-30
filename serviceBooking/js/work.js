@@ -132,7 +132,12 @@ $( document ).ready(function() {
     $("a[id='searchRegistration']").bind("click", function() {
         $("a[id='searchRegistration']").prop("disabled", true)
         console.log('Search registration CLICK')
-        if ($('input[id="registrationNumber"]').val()==='') return false;
+        if ($('input[id="registrationNumber"]').val()===''){
+            $('div[id="searchRegistrationMessage"]').text('Enter Registration Number');
+            $('div[id="searchRegistrationMessage"]').show();
+            $("a[id='searchRegistration']").prop("disabled", false);
+            return false;
+        }
         searchRegistration($('input[id="registrationNumber"]').val().toUpperCase())
         return false;
     });
