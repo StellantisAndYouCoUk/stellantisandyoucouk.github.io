@@ -173,6 +173,17 @@ function bookVisit(dealershipId){
     }
 }
 
+function searchRegistration(registrationNumber){
+    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber})
+    if (r.data){
+        Object.assign(serviceBookingProcess, r.data)
+        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        work();
+    } else {
+        $('div[id="searchRegistrationMessage"]').text(r.message);
+    }
+}
+
 function newVehicle(){
     serviceBookingProcess = {};
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
@@ -203,10 +214,7 @@ function work(){
     $("a[id='searchRegistration']").bind("click", function() {
         console.log('Search registration CLICK')
         if ($('input[id="registrationNumber"]').val()==='') return false;
-        let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:$('input[id="registrationNumber"]').val().toUpperCase()})
-        Object.assign(serviceBookingProcess, r.data)
-        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
-        work();
+        searchRegistration($('input[id="registrationNumber"]').val().toUpperCase())
         return false;
     });
 
