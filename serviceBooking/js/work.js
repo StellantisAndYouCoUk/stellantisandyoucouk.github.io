@@ -220,9 +220,11 @@ function work(){
         if (supportDataS) try { supportData = JSON.parse(supportDataS); } catch (ex){}
         console.log('supportData storage',supportData);
         if (!supportData){
-            supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
-            console.log(supportData);
-            sessionStorage.setItem('supportData',JSON.stringify(supportData));
+            setTimeout(() => {
+                supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
+                console.log(supportData);
+                sessionStorage.setItem('supportData',JSON.stringify(supportData));
+            }, 100);
         }
     }
     if (!serviceBookingProcess.registrationNumber){
