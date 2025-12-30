@@ -288,6 +288,7 @@ function work(){
                 }
             }
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
+                refreshAvailabilityData(serviceBookingProcess.bookingData.dealer.field_2442)
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
                 if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0) refreshAutolineRTSCodes();
