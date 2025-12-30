@@ -356,6 +356,7 @@ function findAvailabilityDaysForBooking(){
 }
 
 function generateBookingSummary(){
+    console.log('generateBookingSummary')
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
     if (serviceBookingProcess.bookingData.orderedCodes){
         let labourSummary = [];
