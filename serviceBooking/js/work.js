@@ -317,7 +317,7 @@ function work(){
                 $("input[name='otherCode']").bind("click", function() {
                     console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
                     if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
-                    refreshAutolineRTSCodes()
+                    refreshAutolineRTSCodes(false,$(this).attr('data-code'))
                     generateBookingSummary();
                 });
                 $("input[name='serviceScheduleCode']").bind("click", function() {
@@ -340,7 +340,7 @@ function work(){
                             }
                         }
                     }
-                    refreshAutolineRTSCodes()
+                    refreshAutolineRTSCodes(false,$(this).attr('data-code'))
                     generateBookingSummary();
                 });
             }
@@ -350,8 +350,8 @@ function work(){
 
 var autolineRTSCodes = null;
 var autolineRTSCodesExpires = null;
-function refreshAutolineRTSCodes(hardRefresh = false){
-    if (hardRefresh || !autolineRTSCodes || autolineRTSCodesExpires<new Date()){
+function refreshAutolineRTSCodes(hardRefresh = false, rtsCodeToCheck = null){
+    if (hardRefresh || !autolineRTSCodes || autolineRTSCodesExpires<new Date() || (rtsCodeToCheck!==null && autolineRTSCodes.find(el => el.RTSCode === rtsCodeToCheck)===undefined)){
         autolineRTSCodes = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getAutolineRTSCodes?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
         autolineRTSCodesExpires = new Date();
         autolineRTSCodesExpires.setMinutes(autolineRTSCodesExpires.getMinutes()+5);
