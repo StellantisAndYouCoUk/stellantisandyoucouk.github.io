@@ -4904,16 +4904,59 @@ $(document).on('knack-record-create.view_5068', function(event, view, data) {
 $(document).on('knack-scene-render.scene_1574', function(event, scene) {	
 	$('th[class="field_978"]').hide();
   $('td[class*="field_978"]').hide();
-	   $('th[class="field_1537"]').hide();
-    $('td[class*="field_1537"]').hide();
-    $('th[class="field_1532"]').hide();
-    $('td[class*="field_1532"]').hide();
+	   $('th[class="field_4100"]').hide();
+    $('td[class*="field_4100"]').hide();
+    $('th[class="field_4099"]').hide();
+    $('td[class*="field_4099"]').hide();
     $('th[class="field_2298"]').hide();
   //Tooltip table 5091
-  tooltipsTable('1574','5091','field_1532','field_2586');
-	tooltipsTable('1574','5091','field_1537','field_2213');  
+  tooltipsTable('1574','5091','field_4099','field_2586');
+	tooltipsTable('1574','5091','field_4100','field_2213');  
 	tooltipsTable('1574','5091','field_2298','field_2272');
 
   recursiveSceneRefresh('1574',['view_5091'],300000);
 	console.log('Recursivecallscene_1574');
 });
+
+//custom menus for workshop controller by Techncians
+var view_5091_refreshDateTime = new Date();
+//hover for labour details on workshop table
+$(document).on('knack-view-render.view_5091', function (event, view, data) {
+
+let defineButtons = [{linkText:'All',"filters":[]}];
+	
+console.log("renderSYSearchButtons('5091',defineButtons);")
+  renderSYSearchButtons('5091',defineButtons);
+ 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    addFilters.onclick = function(){
+      console.log('onclick 2')
+      removeFilterFields(['field_1121','field_2411']);
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+        console.log('onclick 3')
+        removeFilterFields(['field_1121','field_2411']);
+      }
+    }
+  }
+    $('th[class="field_4100"]').hide();
+    $('td[class*="field_4100"]').hide();
+    $('th[class="field_4099"]').hide();
+    $('td[class*="field_4099"]').hide();
+    $('th[class="field_2298"]').hide();
+    $('td[class*="field_2298"]').hide();
+    $('th[class="field_978"]').hide();
+    $('td[class*="field_978"]').hide();
+
+    $('div[id="view_5091"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
+      console.log('something clicked',(new Date()-view_5091_refreshDateTime));
+      if ((new Date()-view_5091_refreshDateTime)>30*60*1000){
+        view_5091_refreshDateTime = new Date()
+        console.log('doRefresh');
+        document.location.reload();
+      }
+    });
+});
+
