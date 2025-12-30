@@ -363,6 +363,11 @@ function refreshAvailabilityData(companyCode, hardRefresh = false){
         } else {
             availabilityData.push(availabilityDataCompanyN);
         }
+        if (!availabilityDataCompanyN.availability.checkedAt){
+            setTimeout(() => {
+                refreshAvailabilityData(serviceBookingProcess.bookingData.dealer.field_2442);
+            }, 5000);
+        }
     }
 }
 
