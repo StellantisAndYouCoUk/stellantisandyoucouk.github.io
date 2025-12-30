@@ -187,6 +187,9 @@ function login(username,password,code = null ){
 
 function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, modelName, yearOfManufacture, mileage){
     let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'getServicePricing',dealerId:konnectDealerId,franchiseId:konnectFranchiseId,fuelTypeId:konnectFuelTypeId,modelName:modelName,yearOfManufacture:yearOfManufacture,mileage:mileage})
+    if (!r.success){
+        checkAuth();
+    }
     return r;
 }
 
