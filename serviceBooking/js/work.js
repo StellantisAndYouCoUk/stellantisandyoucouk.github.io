@@ -208,10 +208,11 @@ function work(){
     //Logout
     $("a[id='logoutButton']").bind("click", function() {
         eraseCookie('bookingToken');
+        loggedInUser = null;
         window.location = './login.html';
     });
 
-    $('#userName').text(loggedInUser.values.field_2.full);
+    if (loggedInUser) $('#userName').text(loggedInUser.values.field_2.full);
     if (!supportData){
         let supportDataS = sessionStorage.getItem('supportData');
         if (supportDataS) try { supportData = JSON.parse(supportDataS); } catch (ex){}
