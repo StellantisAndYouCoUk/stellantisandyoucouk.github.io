@@ -4904,14 +4904,14 @@ $(document).on('knack-record-create.view_5068', function(event, view, data) {
 $(document).on('knack-scene-render.scene_1574', function(event, scene) {	
 	$('th[class="field_978"]').hide();
   $('td[class*="field_978"]').hide();
-	   $('th[class="field_1537"]').hide();
-    $('td[class*="field_1537"]').hide();
-    $('th[class="field_1532"]').hide();
-    $('td[class*="field_1532"]').hide();
+	   $('th[class="field_4100"]').hide();
+    $('td[class*="field_4100"]').hide();
+    $('th[class="field_4099"]').hide();
+    $('td[class*="field_4099"]').hide();
     $('th[class="field_2298"]').hide();
   //Tooltip table 5091
-  tooltipsTable('1574','5091','field_1532','field_2586');
-	tooltipsTable('1574','5091','field_1537','field_2213');  
+  tooltipsTable('1574','5091','field_4099','field_2586');
+	tooltipsTable('1574','5091','field_4100','field_2213');  
 	tooltipsTable('1574','5091','field_2298','field_2272');
 
   recursiveSceneRefresh('1574',['view_5091'],300000);
@@ -4941,10 +4941,10 @@ console.log("renderSYSearchButtons('5091',defineButtons);")
       }
     }
   }
-    $('th[class="field_1537"]').hide();
-    $('td[class*="field_1537"]').hide();
-    $('th[class="field_1532"]').hide();
-    $('td[class*="field_1532"]').hide();
+    $('th[class="field_4100"]').hide();
+    $('td[class*="field_4100"]').hide();
+    $('th[class="field_4099"]').hide();
+    $('td[class*="field_4099"]').hide();
     $('th[class="field_2298"]').hide();
     $('td[class*="field_2298"]').hide();
     $('th[class="field_978"]').hide();
@@ -4959,3 +4959,4 @@ console.log("renderSYSearchButtons('5091',defineButtons);")
       }
     });
 });
+
