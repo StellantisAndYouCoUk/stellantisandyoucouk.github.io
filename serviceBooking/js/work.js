@@ -366,6 +366,13 @@ function refreshAvailabilityData(companyCode, hardRefresh = false){
     }
 }
 
+function findAvailabilityDaysForBooking(){
+    if (serviceBookingProcess.bookingData.labourSummary){
+        let av = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:companyCode,labourArray:labourSummary});
+        console.log(av);
+    }
+}
+
 function generateBookingSummary(){
     let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
     if (serviceBookingProcess.bookingData.orderedCodes){
@@ -390,8 +397,10 @@ function generateBookingSummary(){
             for (let i = 0;i<labourSummary.length;i++){
                 html += '<br /><b>Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'</b>';
             }
-        }
+            serviceBookingProcess.bookingData.labourSummary = labourSummary;
+        } else {serviceBookingProcess.bookingData.labourSummary=null}
     }
+    findAvailabilityDaysForBooking();
     $('div[id="bookingSummary"]').html(html);
 }
 
