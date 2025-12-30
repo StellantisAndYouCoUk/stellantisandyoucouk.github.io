@@ -129,6 +129,40 @@ checkAuth();
 }*/
 
 $( document ).ready(function() {
+    $("a[id='searchRegistration']").bind("click", function() {
+        $("a[id='searchRegistration']").prop("disabled", true)
+        console.log('Search registration CLICK')
+        if ($('input[id="registrationNumber"]').val()==='') return false;
+        searchRegistration($('input[id="registrationNumber"]').val().toUpperCase())
+        return false;
+    });
+
+       //Login page
+    $("a[id='loginButton']").bind("click", function() {
+        let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val(),$('[id="inputCode"]').val());
+        if (loginReq.session && loginReq.session.user){
+            createCookie('bookingToken',loginReq.session.user.token,1);
+            callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{data:loginReq})
+            window.location = './index.html';
+            loggedInUser = loginReq.session.user;
+        } else {
+            if (loginReq.errors[0].errorCode==='validate_login_totp_required'){
+                $('div[class="card-header"]').append('You need 2FA Code');
+                $('div[id="2FACode"]').show();
+            } else {
+                $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message);
+            }
+        }
+        return false;
+    });
+
+    //Logout
+    $("a[id='logoutButton']").bind("click", function() {
+        eraseCookie('bookingToken');
+        loggedInUser = null;
+        window.location = './login.html';
+    });
+
     work();
 });
 
@@ -195,39 +229,6 @@ function newVehicle(){
 
 function work(){
     let page = window.location.href;
-    //Login page
-    $("a[id='loginButton']").bind("click", function() {
-        let loginReq = login($('[id="inputEmail"]').val(),$('[id="inputPassword"]').val(),$('[id="inputCode"]').val());
-        if (loginReq.session && loginReq.session.user){
-            createCookie('bookingToken',loginReq.session.user.token,1);
-            callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/addSession?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{data:loginReq})
-            window.location = './index.html';
-            loggedInUser = loginReq.session.user;
-        } else {
-            if (loginReq.errors[0].errorCode==='validate_login_totp_required'){
-                $('div[class="card-header"]').append('You need 2FA Code');
-                $('div[id="2FACode"]').show();
-            } else {
-                $('div[class="card-header"]').append('Login problem - ' + loginReq.errors[0].message);
-            }
-        }
-        return false;
-    });
-
-    $("a[id='searchRegistration']").bind("click", function() {
-        $("a[id='searchRegistration']").prop("disabled", true)
-        console.log('Search registration CLICK')
-        if ($('input[id="registrationNumber"]').val()==='') return false;
-        searchRegistration($('input[id="registrationNumber"]').val().toUpperCase())
-        return false;
-    });
-
-    //Logout
-    $("a[id='logoutButton']").bind("click", function() {
-        eraseCookie('bookingToken');
-        loggedInUser = null;
-        window.location = './login.html';
-    });
 
     if (loggedInUser) $('#userName').text(loggedInUser.values.field_2.full);
     if (!supportData){
