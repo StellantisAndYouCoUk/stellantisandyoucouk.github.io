@@ -123,11 +123,6 @@ var loggedInUser = null;
 
 checkAuth();
 
-/*if (!loggedInUser.email){
-    eraseCookie('bookingToken');
-    checkAuth();
-}*/
-
 $( document ).ready(function() {
     $("a[id='searchRegistration']").bind("click", function() {
         $("a[id='searchRegistration']").prop("disabled", true)
@@ -200,7 +195,13 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function bookVisit(dealershipId){
     console.log('bookVisit');
+    $('div[id="bookingProblems"]').hide();
     let mileage = $('input[id="currentMileage"]').val();
+    if (mileage==='' || mileage==='0'){
+        $('div[id="bookingProblems"]').html('Mileage needs to be there.');
+        $('div[id="bookingProblems"]').show();
+        return null;
+    }
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
         serviceBookingProcess.bookingData.mileage = mileage;
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
@@ -210,7 +211,8 @@ function bookVisit(dealershipId){
         }, 5000);
         work();
     } else {
-        console.log('bookingVisit not all data');
+        $('div[id="bookingProblems"]').html('Not all data for pricing there.');
+        $('div[id="bookingProblems"]').show();
         return null;
     }
 }
