@@ -373,7 +373,7 @@ function refreshAvailabilityData(companyCode, hardRefresh = false){
 
 function findAvailabilityDaysForBooking(){
     if (serviceBookingProcess.bookingData.labourSummary){
-        let av = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:companyCode,labourArray:labourSummary});
+        let av = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:labourSummary});
         console.log(av);
     }
 }
