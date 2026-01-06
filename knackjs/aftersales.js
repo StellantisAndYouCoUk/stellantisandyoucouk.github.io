@@ -3379,11 +3379,11 @@ console.log("renderSYSearchButtons('3307',defineButtons);")
   if (addFilters){
     addFilters.onclick = function(){
       console.log('onclick 2')
-      removeFilterFields(['field_1121','field_2411']);
+      removeFilterFields(['field_1121','field_2411','field_1724']);
       let addFilters2 = document.querySelector('a[id="add-filter-link"]');
       addFilters2.onclick = function(){
         console.log('onclick 3')
-        removeFilterFields(['field_1121','field_2411']);
+        removeFilterFields(['field_1121','field_2411','field_1724']);
       }
     }
   }
