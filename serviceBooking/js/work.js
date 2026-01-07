@@ -394,7 +394,7 @@ function checkBookingDataForDealership(lastDealership){
                                 yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
                                 bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
                             };
-                            console.log(serviceBookingProcess.bookingData);
+                            sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
                         }
                     }
                 }
