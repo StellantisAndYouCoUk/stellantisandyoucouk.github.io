@@ -371,8 +371,9 @@ function work(){
 function getVehicleDescription(){
     let out = '';
     let vehicleAge = null;
-    if (serviceBookingProcess.motData.firstUsedDate!==''){
-        vehicleAge = ((new Date() - new Date(serviceBookingProcess.motData.firstUsedDate))/1000 / 60 / 60 / 24 / 365).toFixed(1);
+    if ((serviceBookingProcess.motData.firstUsedDate && serviceBookingProcess.motData.firstUsedDate!=='')|| (serviceBookingProcess.motData.manufactureDate && serviceBookingProcess.motData.manufactureDate!=='')){
+        let firstDateToUse = ((serviceBookingProcess.motData.firstUsedDate && serviceBookingProcess.motData.firstUsedDate!=='')?serviceBookingProcess.motData.firstUsedDate:serviceBookingProcess.motData.manufactureDate);
+        vehicleAge = ((new Date() - new Date(firstDateToUse))/1000 / 60 / 60 / 24 / 365).toFixed(1);
     }
     out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b>';
     if (serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
