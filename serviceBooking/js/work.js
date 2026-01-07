@@ -415,10 +415,10 @@ function getServiceHistory(){
 
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceVisitDetails){
         serviceBookingProcess.secondaryDetails.serviceVisitDetails = serviceBookingProcess.secondaryDetails.serviceVisitDetails.sort((a,b)=>(new Date(a.DateOfService)>new Date(b.DateOfService)?-1:1));
-        out = '<table id="serviceVisitsTable" style="border: 1px solid black; border-collapse: collapse;"><tbody><tr><th  style="border: 1px solid black; border-collapse: collapse;">Date</th><th  style="border: 1px solid black; border-collapse: collapse;">Miles</th><th style="border: 1px solid black; border-collapse: collapse;">Work type</th></tr>';
+        out = '<table id="serviceVisitsTable"><tbody><tr><th>Date</th><th>Miles</th><th>Work type</th></tr>';
         for (let i =0;i<serviceBookingProcess.secondaryDetails.serviceVisitDetails.length;i++){
             let sV = serviceBookingProcess.secondaryDetails.serviceVisitDetails[i];
-            out += '<tr id="'+sV.InvoiceNumber+'"><td  style="border: 1px solid black; border-collapse: collapse;">'+dateToGB(new Date(sV.DateOfService))+'</td><td style="border: 1px solid black; border-collapse: collapse;">'+sV.Mileage+'</td><td  style="border: 1px solid black; border-collapse: collapse;">'+sV.ServiceText+'</td></tr>'
+            out += '<tr id="'+sV.InvoiceNumber+'"><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
         }
         out += '</tbody></table>';
     }
