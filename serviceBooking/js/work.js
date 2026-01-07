@@ -381,16 +381,22 @@ function getVehicleDescription(){
     }
     if (serviceBookingProcess.dvlaData){
         let motExpiryDate = new Date(serviceBookingProcess.dvlaData.motExpiryDate);
-        let daysOfMotLeft = ((new Date() - new Date(serviceBookingProcess.dvlaData.motExpiryDate))/1000 / 60 / 60 / 24).toFixed(0);
-        out = out + "<br /><br /><b>"+daysOfMotLeft+'</b> Days MOT left - Expires:'+dateToGB(motExpiryDate);
+        let daysOfMotLeft = ((new Date(serviceBookingProcess.dvlaData.motExpiryDate) - new Date())/1000 / 60 / 60 / 24).toFixed(0);
+        out = out + "<br /><br /><b>"+daysOfMotLeft+'</b> Days MOT left - Expires: '+dateToGB(motExpiryDate);
         let taxExpiryDate = new Date(serviceBookingProcess.dvlaData.taxDueDate);
-        let daysOfTaxLeft = ((new Date() - new Date(serviceBookingProcess.dvlaData.taxDueDate))/1000 / 60 / 60 / 24).toFixed(0);
-        out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires:'+dateToGB(taxExpiryDate);
+        let daysOfTaxLeft = ((new Date(serviceBookingProcess.dvlaData.taxDueDate) - new Date())/1000 / 60 / 60 / 24).toFixed(0);
+        out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires: '+dateToGB(taxExpiryDate);
     }   
+    
+}
+
+function getServiceSuggestions(){
+    let out = '';
+
     if (serviceBookingProcess.motData && serviceBookingProcess.motData.motTests){
         let lastMotRecord = serviceBookingProcess.motData.motTests[0];
         if (lastMotRecord.defects && lastMotRecord.defects.length>0){
-             out = out + "<br />";
+             out = out + "<b>MOT advisories</b><br />";
             for (let  i =0;i<lastMotRecord.defects.length;i++){
                 out = out + "<br />"+lastMotRecord.defects[i].text+' - '+lastMotRecord.defects[i].type
             }
@@ -399,7 +405,6 @@ function getVehicleDescription(){
         }
     }
     return out;
-
 }
 
 function getCustomerDetails(){
