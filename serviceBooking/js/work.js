@@ -377,10 +377,10 @@ function getVehicleDescription(){
         vehicleAge = ((new Date() - new Date(firstDateToUse))/1000 / 60 / 60 / 24 / 365).toFixed(1);
     }
     out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(firstDateToUse))+'.</b>';
-    if (serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
         let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
         if (mileageEst.currentMileage!==0){
-            out += 'System estimates '+mileageEst.currentMileage+' miles.'
+            out += ' System estimates '+mileageEst.currentMileage+' miles.'
         }
     }
     if (serviceBookingProcess.vehicle.ChassisNumber!=='') out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
@@ -393,7 +393,7 @@ function getVehicleDescription(){
     }
     if (serviceBookingProcess.dvlaData && serviceBookingProcess.motData){
         let motExpiryDate = (serviceBookingProcess.dvlaData.motExpiryDate?new Date(serviceBookingProcess.dvlaData.motExpiryDate):new Date(serviceBookingProcess.motData.motTestDueDate));
-        let daysOfMotLeft = ((new Date(serviceBookingProcess.dvlaData.motExpiryDate) - new Date())/1000 / 60 / 60 / 24).toFixed(0);
+        let daysOfMotLeft = ((new Date(motExpiryDate) - new Date())/1000 / 60 / 60 / 24).toFixed(0);
         out = out + "<br /><br /><b>"+daysOfMotLeft+'</b> Days MOT left - Expires: '+dateToGB(motExpiryDate);
         let taxExpiryDate = new Date(serviceBookingProcess.dvlaData.taxDueDate);
         let daysOfTaxLeft = ((new Date(serviceBookingProcess.dvlaData.taxDueDate) - new Date())/1000 / 60 / 60 / 24).toFixed(0);
@@ -401,7 +401,7 @@ function getVehicleDescription(){
 
         if (serviceBookingProcess.vehicle){
             let autolineMOTDate = new Date(serviceBookingProcess.vehicle.MOTDueDate);
-            if (autolineMOTDate.getFullYear()!==motExpiryDate.getFullYear() || autolineMOTDate.getMonth()!==motExpiryDate.getMonth() || autolineMOTDate.getDate()!==motExpiryDate.getDate()){
+            if (dateToGB(autolineMOTDate)!==dateToGB(motExpiryDate)){
                 out = out + "<br /><br />The Autoline MOT date of "+dateToGB(autolineMOTDate)+" does not match DVLA MOT date of "+dateToGB(motExpiryDate)+"";
             }
         }
