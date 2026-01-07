@@ -555,18 +555,25 @@ function findDealerships(){
     if (postcode && postcode!==''){
         let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:postcode});
         serviceBookingProcess.dealershipsToPostcode = {postcode:postcode,dealerships:closestD};
-        console.log('closestD',closestD);
+        showClosestDealerships(postcode);
+    } else {
+        $('[id="otherDealerships"]').hide();
+    }
+} 
+
+function showClosestDealerships(postcode){
+    if (serviceBookingProcess.dealershipsToPostcode && serviceBookingProcess.dealershipsToPostcode.postcode === postcode){
         let out = '<table>';
-        for (let i = 0;i<closestD.length;i++){
-            out += '<tr><td>'+closestD[i].name+'</td><td>'+closestD[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return bookVisit(\''+closestD[i].companyCode+'\')">Book service</a></td></tr>'
+        for (let i = 0;i<serviceBookingProcess.dealershipsToPostcode.closestD.length;i++){
+            out += '<tr><td>'+serviceBookingProcess.dealershipsToPostcode.closestD[i].name+'</td><td>'+serviceBookingProcess.dealershipsToPostcode.closestD[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return bookVisit(\''+serviceBookingProcess.dealershipsToPostcode.closestD[i].companyCode+'\')">Book service</a></td></tr>'
         }
         out += '</table>';
         $('[id="otherDealerships"]').html(out);
         $('[id="otherDealerships"]').show();
     } else {
         $('[id="otherDealerships"]').hide();
-    }
-} 
+    }   
+}
 
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
