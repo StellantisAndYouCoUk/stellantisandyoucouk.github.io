@@ -265,12 +265,14 @@ function work(){
     let qV = getUrlVars();
     if (page.includes('index.html')){
         if (!serviceBookingProcess.registrationNumber){
-            $('h1[id="registrationNumberShow"]').text("Search vehicle")
+            $('h1[id="registrationNumberShow"]').text("Search vehicle");
+            $('h1[id="registrationNumberShow"]>span').attr('style','');
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
             $('div[id="step3"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').text(serviceBookingProcess.registrationNumber)
+            $('h1[id="registrationNumberShow"]>span').attr('style','background: yellow;')
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
@@ -363,7 +365,7 @@ function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         return '<b>Customer was not found in Autoline'
     }
-    let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?' '+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?' '+serviceBookingProcess.customer.Address004:'')+'<br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<br />':'');
+    let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?'<br />'+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?'<br />'+serviceBookingProcess.customer.Address004:'')+'<br />'+serviceBookingProcess.customer.Postcode+'<br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<br />':'');
 
     if (serviceBookingProcess.secondaryData && serviceBookingProcess.secondaryData.gdprDataMarketing){
         out = '<br /><span class=""> SMS: <b>GDPR Sales:</b><span style="font-size:12px;">❌</span> Post: <span style="font-size:12px;">❌</span> Email: <span style="font-size:12px;">❌</span> Phone: <span style="font-size:12px;">❌</span></span>'
