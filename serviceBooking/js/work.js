@@ -207,6 +207,12 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function bookVisit(dealershipId){
     console.log('bookVisit');
+    if (dealershipId.length===2){
+        let dC = supportData.dealerList.find(el => el.field_2442 === dealershipId);
+        if (dC){
+            dealershipId = dC.id;
+        }
+    }
     $('div[id="bookingProblems"]').hide();
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
