@@ -387,6 +387,17 @@ function getVehicleDescription(){
         let daysOfTaxLeft = ((new Date() - new Date(serviceBookingProcess.dvlaData.taxDueDate))/1000 / 60 / 60 / 24).toFixed(0);
         out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires:'+dateToGB(taxExpiryDate);
     }   
+    if (serviceBookingProcess.motData && serviceBookingProcess.motData.motTests){
+        let lastMotRecord = serviceBookingProcess.motData.motTests[0];
+        if (lastMotRecord.defects && lastMotRecord.defects.length>0){
+             out = out + "<br />";
+            for (let  i =0;i<lastMotRecord.defects.length;i++){
+                out = out + "<br />"+lastMotRecord.defects[i].text+' - '+lastMotRecord.defects[i].type
+            }
+        } else {
+            out = out + "<br /><br />NO MOT advisories were found";
+        }
+    }
     return out;
 
 }
