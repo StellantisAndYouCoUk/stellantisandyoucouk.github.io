@@ -222,13 +222,13 @@ function searchRegistration(registrationNumber){
     if (!r.success){
         checkAuth();
     }
-    if (r.data){
+    if (r.data && (r.data.dvlaData || r.data.vehicle)){
         $('div[id="searchRegistrationMessage"]').hide();
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
     } else {
-        $('div[id="searchRegistrationMessage"]').text(r.message);
+        $('div[id="searchRegistrationMessage"]').text('Vehicle was not found in Autoline and not found in DVLA register');
         $('div[id="searchRegistrationMessage"]').show();
     }
     $("a[id='searchRegistration']").prop("disabled", false);
