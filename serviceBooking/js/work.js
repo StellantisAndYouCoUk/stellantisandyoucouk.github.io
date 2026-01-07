@@ -225,8 +225,11 @@ function bookVisit(dealershipId){
         checkBookingDataForDealership(newDealership);
     }
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
+        console.log('get Pricing')
         serviceBookingProcess.bookingData.mileage = mileage;
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
+
+        console.log(serviceBookingProcess.bookingData.pricing)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         setTimeout(() => {
             refreshAutolineRTSCodes()
