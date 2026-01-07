@@ -227,7 +227,7 @@ function searchRegistration(registrationNumber){
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         setTimeout(() => {
-            getSecondaryDetails(registrationNumber,(r.data.customer?r.data.customer.CustomerNumber:null),(r.data.vehicle?r.data.vehicle.VehicleNumber:null))
+            getSecondaryDetails(registrationNumber,(r.data.customer?r.data.customer.CustomerNumber:null),(r.data.vehicle?r.data.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
         }, 100);
         work();
     } else {
@@ -237,8 +237,8 @@ function searchRegistration(registrationNumber){
     $("a[id='searchRegistration']").prop("disabled", false);
 }
 
-function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumber=null){
-    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber});
+function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumber=null,make=null,VIN=null){
+    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN});
     if (r.success && r.data){
         console.log('getSecondaryDetails success')
         serviceBookingProcess.secondaryDetails = r.data;
