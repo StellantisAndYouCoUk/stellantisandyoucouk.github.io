@@ -226,10 +226,10 @@ function searchRegistration(registrationNumber){
         $('div[id="searchRegistrationMessage"]').hide();
         Object.assign(serviceBookingProcess, r.data)
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        work();
         setTimeout(() => {
             getSecondaryDetails(registrationNumber,(r.data.customer?r.data.customer.CustomerNumber:null),(r.data.vehicle?r.data.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
         }, 100);
-        work();
     } else {
         $('div[id="searchRegistrationMessage"]').text('Vehicle was not found in Autoline and not found in DVLA register');
         $('div[id="searchRegistrationMessage"]').show();
