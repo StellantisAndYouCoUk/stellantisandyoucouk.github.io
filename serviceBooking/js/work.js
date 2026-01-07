@@ -412,7 +412,7 @@ function getVehicleDescription(){
     out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(firstDateToUse))+'.</b>';
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
         let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
-        if (mileageEst.currentMileage!==0){
+        if (mileageEst.currentMileage && mileageEst.currentMileage!==0){
             out += '<br />System estimates '+mileageEst.currentMileage+' miles.';
             $('input[id="currentMileage"]').attr('value',mileageEst.currentMileage)
         }
