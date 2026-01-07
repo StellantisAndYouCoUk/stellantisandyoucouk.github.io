@@ -374,7 +374,11 @@ function getVehicleDescription(){
     if (serviceBookingProcess.motData.firstUsedDate!==''){
         vehicleAge = ((new Date() - new Date(serviceBookingProcess.motData.firstUsedDate))/1000 / 60 / 60 / 24 / 365).toFixed(1);
     }
-    out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b> System estimates + 283.newCurrentMileage.currentMileage + miles.<br /><br />'+serviceBookingProcess.vehicle.ChassisNumber;
+    out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b>';
+    if (serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
+        out += 'System estimates '+currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData)+' miles.<br />'
+    }
+    out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
 
     if (!serviceBookingProcess.dvlaData){
         out = out + "<br /><br /><p style=\"color:red;\">Please confirm the registration number has not been transferred to a Private Number Plate or Error in DVLA API service</p>";
@@ -415,6 +419,44 @@ function getServiceHistory(){
     }
 
     return out;
+}
+
+function currentMileageUpdated(userMileage=null, serviceVisits, motData){
+    try {
+        let currentDate = new Date();
+        if (userMileage){
+            return {'current':userMileage,'basedon':'User input'}
+        }
+        let serviceVisitsAndMot = serviceVisits.filter(el => el.ServiceText!=='No Show').map(function(el){ return {date:new Date(el.DateOfService),mileage:parseInt(el.Mileage),desc:el.ServiceText}});
+        if (motData.motTests){
+            serviceVisitsAndMot.push(...motData.motTests.filter(el => el.testResult === 'PASSED').map(function(el){ return {date:new Date(el.completedDate),mileage:parseInt(el.odometerValue),desc:"UK.GOV MOT Data"}}))
+        }
+        serviceVisitsAndMot = serviceVisitsAndMot.sort((a,b)=>(new Date(b.date)-new Date(a.date)));
+        let motDataOnly = serviceVisitsAndMot.filter(el => el.desc==='UK.GOV MOT Data' && el.mileage!==0);
+        if (motDataOnly.length>1){
+            let mileageOne = motDataOnly[1].mileage;
+            let dateOne = motDataOnly[1].date;
+            let mileageTwo = motDataOnly[0].mileage;
+            let dateTwo = motDataOnly[0].date;
+            return {currentMileage:Math.round(parseInt(mileageOne) + (dateOne-dateTwo===0?100:((currentDate-dateOne)/ 1000 / 60 / 60 / 24)*((mileageOne-mileageTwo)/((dateOne-dateTwo)/ 1000 / 60 / 60 / 24)))),basedOn:'Last two MOT data.',data:serviceVisitsAndMot};
+        }
+        if (serviceVisitsAndMot.length===0) return {currentMileage:null,basedOn:'Not enough data to assess current mileage.',data:serviceVisitsAndMot}
+        let serviceVisitsAndMotFiltered = serviceVisitsAndMot.filter((el,index,all)=> (index===0 || !(all[index-1].mileage<=el.mileage)))
+        if (serviceVisitsAndMotFiltered.length===1) return {currentMileage:null,basedOn:'Not enough data to assess current mileage.',data:serviceVisitsAndMot,serviceVisitsAndMotFiltered:serviceVisitsAndMotFiltered}
+        let mileageOne = serviceVisitsAndMotFiltered[1].mileage;
+        let dateOne = serviceVisitsAndMotFiltered[1].date;
+        let mileageTwo = serviceVisitsAndMotFiltered[0].mileage;
+        let dateTwo = serviceVisitsAndMotFiltered[0].date;
+        let basedOn = (serviceVisitsAndMotFiltered[0].desc==='UK.GOV MOT Data' || serviceVisitsAndMotFiltered[1].desc==='UK.GOV MOT Data'?'Last MOT and last service visit.':'Last two service visits.')
+        let currentMileageV = Math.round(parseInt(mileageOne) + (dateOne-dateTwo===0?100:((currentDate-dateOne)/ 1000 / 60 / 60 / 24)*((mileageOne-mileageTwo)/((dateOne-dateTwo)/ 1000 / 60 / 60 / 24))));
+        if (currentMileageV>3*parseInt(mileageTwo)){
+            currentMileageV = parseInt(mileageTwo);
+            basedOn = 'Milleage of last service visit or MOT, not updated to date.'
+        }
+        return {currentMileage:currentMileageV,basedOn:basedOn,data:serviceVisitsAndMot,serviceVisitsAndMotFiltered:serviceVisitsAndMotFiltered};
+    } catch (ex){
+        return {'current':0,'basedon':'Bad data in input'+ex.toString()} 
+    }
 }
 
 function getServiceSuggestions(){
