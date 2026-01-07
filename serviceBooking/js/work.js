@@ -379,7 +379,7 @@ function getVehicleDescription(){
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
         let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
         if (mileageEst.currentMileage!==0){
-            out += ' System estimates '+mileageEst.currentMileage+' miles.';
+            out += '<br />System estimates '+mileageEst.currentMileage+' miles.';
             $('input[id="currentMileage"]').attr('value',mileageEst.currentMileage)
         }
     }
@@ -480,7 +480,7 @@ function getServiceSuggestions(){
     }
 
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.vhc){
-        out += "<br /><br /><b>VHC Summary</b><br />" + serviceBookingProcess.secondaryDetails.vhc.field_241;
+        out += (out!==''?'<br /><br />':'') + "<b>VHC Summary</b><br />" + serviceBookingProcess.secondaryDetails.vhc.field_241;
     }
     return out;
 }
