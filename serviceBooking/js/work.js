@@ -250,6 +250,7 @@ function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumb
 function newVehicle(){
     serviceBookingProcess = {};
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+    $('div[id="bookingProblems"]').text('');
     work();
 }
 
