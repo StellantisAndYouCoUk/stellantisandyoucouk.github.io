@@ -323,7 +323,9 @@ function work(){
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
-            checkBookingDataForDealership(lastDealership);
+            if (!serviceBookingProcess.bookingData){
+                checkBookingDataForDealership(lastDealership);
+            }
             showClosestDealerships($('[id="postcodeForD"]').val());
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
