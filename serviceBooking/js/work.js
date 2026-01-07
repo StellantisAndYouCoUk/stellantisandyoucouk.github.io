@@ -276,11 +276,7 @@ function work(){
             $('div[id="step2"]').show();
             $('div[id="step3"]').hide();
             $('div[id="customerDetails').html(getCustomerDetails());
-            let vehicleAge = null;
-            if (serviceBookingProcess.motData.firstUsedDate!==''){
-                vehicleAge = ((new Date() - new Date(serviceBookingProcess.motData.firstUsedDate))/1000 / 60 / 60 / 24 / 365).toFixed(1);
-            }
-            $('div[id="vehicleDescription').html('<b>' + vehicleAge + '</b> Year Old <b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b> System estimates + 283.newCurrentMileage.currentMileage + miles.<br /><br />'+serviceBookingProcess.vehicle.ChassisNumber);
+            $('div[id="vehicleDescription').html(getVehicleDescription());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
@@ -355,11 +351,24 @@ function work(){
     }
 }
 
+function getVehicleDescription(){
+    let vehicleAge = null;
+    if (serviceBookingProcess.motData.firstUsedDate!==''){
+        vehicleAge = ((new Date() - new Date(serviceBookingProcess.motData.firstUsedDate))/1000 / 60 / 60 / 24 / 365).toFixed(1);
+    }
+    return (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b> System estimates + 283.newCurrentMileage.currentMileage + miles.<br /><br />'+serviceBookingProcess.vehicle.ChassisNumber;
+}
+
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         return '<b>Customer was not found in Autoline'
     }
-    return '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?' '+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?' '+serviceBookingProcess.customer.Address004:'')+'<br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<br />':'')
+    let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?' '+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?' '+serviceBookingProcess.customer.Address004:'')+'<br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<br />':'');
+
+    if (serviceBookingProcess.secondaryData && serviceBookingProcess.secondaryData.gdprDataMarketing){
+        out = '<br /><span class=""> SMS: <b>GDPR Sales:</b><span style="font-size:12px;">❌</span> Post: <span style="font-size:12px;">❌</span> Email: <span style="font-size:12px;">❌</span> Phone: <span style="font-size:12px;">❌</span></span>'
+    }
+    return out;
 }
 
 var autolineRTSCodes = null;
