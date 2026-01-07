@@ -2850,15 +2850,3 @@ div#view_4746 {
   	font-weight: bold;
   	box-shadow:         3px 3px #ccc;
 }
-
-/* Horizontal layout for radio buttons */
-#kn-input-field_723
-  .kn-radio {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-  .option.radio {
-   padding-right: 35px;
-  }
-
