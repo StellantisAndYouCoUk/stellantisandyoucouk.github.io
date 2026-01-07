@@ -385,7 +385,8 @@ function getVehicleDescription(){
         out = out + "<br /><br /><b>"+daysOfMotLeft+'</b> Days MOT left - Expires:'+dateToGB(motExpiryDate);
         let taxExpiryDate = new Date(serviceBookingProcess.dvlaData.taxDueDate);
         let daysOfTaxLeft = ((new Date() - new Date(serviceBookingProcess.dvlaData.taxDueDate))/1000 / 60 / 60 / 24).toFixed(0);
-    }   out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires:'+dateToGB(taxExpiryDate);
+        out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires:'+dateToGB(taxExpiryDate);
+    }   
     return out;
 
 }
