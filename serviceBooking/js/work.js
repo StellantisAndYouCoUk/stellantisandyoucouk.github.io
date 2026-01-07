@@ -373,7 +373,7 @@ function checkBookingDataForDealership(lastDealership){
                     $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make);
                     $('div[id="bookingProblems"]').show();
                 } else {
-                    let mF = kF.modelNames.find(el => el.toLowerCase() === serviceBookingProcess.motData.model.toLowerCase())
+                    let mF = kF.modelNames.find(el => serviceBookingProcess.motData.model.toLowerCase().includes(el.toLowerCase()))
                     if (!mF){
                         $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
                         $('div[id="bookingProblems"]').show();
