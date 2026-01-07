@@ -554,6 +554,7 @@ function findDealerships(){
     let postcode = $('[id="postcodeForD"]').val();
     if (postcode && postcode!==''){
         let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:postcode});
+        serviceBookingProcess.dealershipsToPostcode = {postcode:postcode,dealerships:closestD};
         console.log('closestD',closestD);
         let out = '<table>';
         for (let i = 0;i<closestD.length;i++){
