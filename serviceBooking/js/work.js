@@ -484,12 +484,12 @@ function getCustomerDetails(){
 
     if (serviceBookingProcess.secondaryDetails){
         if (serviceBookingProcess.secondaryDetails.gdprDataMarketing && serviceBookingProcess.secondaryDetails.gdprDataMarketing.length>0 && (serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption !== "U" && serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption !== "U")){
-            out += '<br /><b>GDPR Sales:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[3].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[4].ChannelOption)
+            out += '<br /><b>GDPR Sales:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[2].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[3].ChannelOption)
         } else {
             out += '<br /><b style="color:red;">GDPR Sales: NO AGREEMENT</b>';
         }
         if (serviceBookingProcess.secondaryDetails.gdprDataService && serviceBookingProcess.secondaryDetails.gdprDataService.length>0 && (serviceBookingProcess.secondaryDetails.gdprDataService[0].ChannelOption !== "U" && serviceBookingProcess.secondaryDetails.gdprDataService[1].ChannelOption !== "U")){
-            out += '<br /><b>GDPR Service:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[3].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[4].ChannelOption)
+            out += '<br /><b>GDPR Service:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[2].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[3].ChannelOption)
         } else {
             out += '<br /><b style="color:red;">GDPR Service: NO AGREEMENT</b>';
         }
