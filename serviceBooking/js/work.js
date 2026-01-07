@@ -279,13 +279,11 @@ function work(){
     if (page.includes('index.html')){
         if (!serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').text("Search vehicle");
-            $('h1[id="registrationNumberShow"]>span').attr('style','');
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
             $('div[id="step3"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
-            $('h1[id="registrationNumberShow"]').text(serviceBookingProcess.registrationNumber)
-            $('h1[id="registrationNumberShow"]>span').attr('style','background: yellow;')
+            $('h1[id="registrationNumberShow"]').html('<span style="background: yellow;">'+serviceBookingProcess.registrationNumber+'</span>')
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
@@ -380,7 +378,8 @@ function getVehicleDescription(){
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
         let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
         if (mileageEst.currentMileage!==0){
-            out += ' System estimates '+mileageEst.currentMileage+' miles.'
+            out += ' System estimates '+mileageEst.currentMileage+' miles.';
+            $('input[id="currentMileage"]').attr('value',mileageEst.currentMileage)
         }
     }
     if (serviceBookingProcess.vehicle.ChassisNumber!=='') out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
