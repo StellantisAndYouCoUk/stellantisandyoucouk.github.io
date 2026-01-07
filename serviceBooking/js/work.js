@@ -422,6 +422,12 @@ function getServiceHistory(){
             out += '<tr id="'+sV.InvoiceNumber+'"><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
         }
         out += '</tbody></table>';
+    } else {
+        if (serviceBookingProcess.secondaryDetails){
+            out = '';
+        } else {
+            out = 'Getting service history from Autoline ...'
+        }
     }
 
     return out;
