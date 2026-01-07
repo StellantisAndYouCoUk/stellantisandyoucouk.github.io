@@ -550,7 +550,7 @@ function getServiceSuggestions(){
         }
     }
 
-    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.vhc){
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.vhc && serviceBookingProcess.secondaryDetails.vhc.field_241){
         out += (out!==''?'<br /><br />':'') + "<b>VHC Summary</b><br />" + serviceBookingProcess.secondaryDetails.vhc.field_241;
     }
     return out;
