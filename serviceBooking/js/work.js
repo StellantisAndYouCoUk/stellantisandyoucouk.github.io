@@ -374,13 +374,13 @@ function getVehicleDescription(){
     out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b> System estimates + 283.newCurrentMileage.currentMileage + miles.<br /><br />'+serviceBookingProcess.vehicle.ChassisNumber;
 
     if (!serviceBookingProcess.dvlaData){
-        out = out + "<p style=\"color:red;\">Please confirm the registration number has not been transferred to a Private Number Plate or Error in DVLA API service</p>";
+        out = out + "<br /><br /><p style=\"color:red;\">Please confirm the registration number has not been transferred to a Private Number Plate or Error in DVLA API service</p>";
     } else {
         let dateOfCurrentUserBought = new Date(serviceBookingProcess.dvlaData.dateOfLastV5CIssued);
-        out = out + "The current owner bought this " + (dateOfCurrentUserBought.getFullYear().toString() === serviceBookingProcess.dvlaData.monthOfFirstRegistration.substring(0,4) & pad(dateOfCurrentUserBought.getMonth()+1) === serviceBookingProcess.dvlaData.monthOfFirstRegistration.substring(5,7)?"NEW":"USED") + " vehicle <b>" + (new Date() - dateOfCurrentUserBought)/(1000*60*60*24*365).toFixed(1) + "</b> years ago" //+ if(parseDate(82.data.dateOfLastV5CIssued; "YYYY-MM-DD") > 84.dateOne | parseDate(82.data.dateOfLastV5CIssued; "YYYY-MM-DD") > 84.dateTwo; ". We cannot assess mileage because of owner change."; if((84.dateOne - 84.dateTwo) > 0; " and travels around <b>" + formatNumber((84.mileageOne - 84.mileageTwo) / ((84.dateOne - 84.dateTwo) / 1000 / 60 / 60 / 24); 0) + "</b> miles a day and <b>" + formatNumber((365 * (84.mileageOne - 84.mileageTwo) / ((84.dateOne - 84.dateTwo) / 1000 / 60 / 60 / 24)); 0; emptystring; emptystring) + "</b> miles a year. (" + 84.basedOn + ")"; ".")))}}
+        out = out + "<br /><br />The current owner bought this " + (dateOfCurrentUserBought.getFullYear().toString() === serviceBookingProcess.dvlaData.monthOfFirstRegistration.substring(0,4) & pad(dateOfCurrentUserBought.getMonth()+1) === serviceBookingProcess.dvlaData.monthOfFirstRegistration.substring(5,7)?"NEW":"USED") + " vehicle <b>" + ((new Date() - dateOfCurrentUserBought)/(1000*60*60*24*365)).toFixed(1) + "</b> years ago" //+ if(parseDate(82.data.dateOfLastV5CIssued; "YYYY-MM-DD") > 84.dateOne | parseDate(82.data.dateOfLastV5CIssued; "YYYY-MM-DD") > 84.dateTwo; ". We cannot assess mileage because of owner change."; if((84.dateOne - 84.dateTwo) > 0; " and travels around <b>" + formatNumber((84.mileageOne - 84.mileageTwo) / ((84.dateOne - 84.dateTwo) / 1000 / 60 / 60 / 24); 0) + "</b> miles a day and <b>" + formatNumber((365 * (84.mileageOne - 84.mileageTwo) / ((84.dateOne - 84.dateTwo) / 1000 / 60 / 60 / 24)); 0; emptystring; emptystring) + "</b> miles a year. (" + 84.basedOn + ")"; ".")))}}
     }
     return out;
-    
+
 }
 
 function getCustomerDetails(){
