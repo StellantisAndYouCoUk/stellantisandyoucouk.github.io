@@ -291,6 +291,7 @@ function work(){
             $('div[id="step3"]').hide();
             $('div[id="customerDetails').html(getCustomerDetails());
             $('div[id="vehicleDescription').html(getVehicleDescription());
+            $('div[id="serviceSuggestions').html(getServiceSuggestions());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
