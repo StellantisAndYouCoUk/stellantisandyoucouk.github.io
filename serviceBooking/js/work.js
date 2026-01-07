@@ -478,6 +478,10 @@ function getServiceSuggestions(){
             out = out + "<br /><br />NO MOT advisories were found";
         }
     }
+
+    if (serviceBookingProcess.secondaryDetails.vhc){
+        out += serviceBookingProcess.secondaryDetails.vhc.field_241;
+    }
     return out;
 }
 
