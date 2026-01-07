@@ -284,7 +284,7 @@ function work(){
             $('div[id="step2"]').hide();
             $('div[id="step3"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
-            $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;"> '+serviceBookingProcess.registrationNumber+' </span>')
+            $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;">&nbsp;&nbsp;&nbsp;'+serviceBookingProcess.registrationNumber+'&nbsp;&nbsp;&nbsp;</span>')
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
@@ -470,7 +470,7 @@ function getServiceSuggestions(){
     if (serviceBookingProcess.motData && serviceBookingProcess.motData.motTests){
         let lastMotRecord = serviceBookingProcess.motData.motTests[0];
         if (lastMotRecord.defects && lastMotRecord.defects.length>0){
-             out = out + "<b>MOT advisories</b><br />";
+             out = out + "<b>MOT advisories</b>";
             for (let  i =0;i<lastMotRecord.defects.length;i++){
                 out = out + "<br />"+lastMotRecord.defects[i].text+' - '+lastMotRecord.defects[i].type
             }
