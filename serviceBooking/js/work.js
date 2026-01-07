@@ -475,7 +475,7 @@ function getServiceSuggestions(){
                 out = out + "<br />"+lastMotRecord.defects[i].text+' - '+lastMotRecord.defects[i].type
             }
         } else {
-            out = out + "<br /><br />NO MOT advisories were found";
+            out = out + "NO MOT advisories were found";
         }
     }
 
