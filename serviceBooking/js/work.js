@@ -566,8 +566,8 @@ function findDealerships(){
 function showClosestDealerships(postcode){
     if (serviceBookingProcess.dealershipsToPostcode && serviceBookingProcess.dealershipsToPostcode.postcode === postcode){
         let out = '<table>';
-        for (let i = 0;i<serviceBookingProcess.dealershipsToPostcode.closestD.length;i++){
-            out += '<tr><td>'+serviceBookingProcess.dealershipsToPostcode.closestD[i].name+'</td><td>'+serviceBookingProcess.dealershipsToPostcode.closestD[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return bookVisit(\''+serviceBookingProcess.dealershipsToPostcode.closestD[i].companyCode+'\')">Book service</a></td></tr>'
+        for (let i = 0;i<serviceBookingProcess.dealershipsToPostcode.dealerships.length;i++){
+            out += '<tr><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].name+'</td><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return bookVisit(\''+serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode+'\')">Book service</a></td></tr>'
         }
         out += '</table>';
         $('[id="otherDealerships"]').html(out);
