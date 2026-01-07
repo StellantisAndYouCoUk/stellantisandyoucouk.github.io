@@ -449,6 +449,9 @@ function getServiceHistory(){
         if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.length>9){
             out += '<button id="showHideMoreServiceVisits">Show more</button>';
         }
+        setTimeout(() => {
+            document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
+        }, 1000);
     } else {
         if (serviceBookingProcess.secondaryDetails){
             out = '';
