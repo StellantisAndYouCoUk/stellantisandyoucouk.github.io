@@ -380,10 +380,10 @@ function getVehicleDescription(){
     if (serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
         let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
         if (mileageEst.currentMileage!==0){
-            out += 'System estimates '+mileageEst.currentMileage+' miles.<br />'
+            out += 'System estimates '+mileageEst.currentMileage+' miles.'
         }
     }
-    out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
+    if (serviceBookingProcess.vehicle.ChassisNumber!=='') out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
 
     if (!serviceBookingProcess.dvlaData){
         out = out + "<br /><br /><p style=\"color:red;\">Please confirm the registration number has not been transferred to a Private Number Plate or Error in DVLA API service</p>";
