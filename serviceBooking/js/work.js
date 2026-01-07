@@ -550,8 +550,12 @@ function getServiceSuggestions(){
         }
     }
 
-    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.vhc && serviceBookingProcess.secondaryDetails.vhc.field_241){
-        out += (out!==''?'<br /><br />':'') + "<b>VHC Summary</b><br />" + serviceBookingProcess.secondaryDetails.vhc.field_241;
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.vhc){
+        if (serviceBookingProcess.secondaryDetails.vhc.field_302){
+            out += (out!==''?'<br /><br />':'') + serviceBookingProcess.secondaryDetails.vhc.field_302
+        } else {
+            out += (out!==''?'<br /><br />':'') + "<b>VHC Summary</b><br />" + serviceBookingProcess.secondaryDetails.vhc.field_241;
+        }
     }
     return out;
 }
