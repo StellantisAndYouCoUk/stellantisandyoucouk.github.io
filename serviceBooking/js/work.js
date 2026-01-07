@@ -293,6 +293,7 @@ function work(){
             $('div[id="customerDetails').html(getCustomerDetails());
             $('div[id="vehicleDescription').html(getVehicleDescription());
             $('div[id="serviceSuggestions').html(getServiceSuggestions());
+            $('div[id="serviceHistory').html(getServiceHistory());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
@@ -390,6 +391,22 @@ function getVehicleDescription(){
         out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires: '+dateToGB(taxExpiryDate);
     }   
     
+    return out;
+}
+
+function getServiceHistory(){
+    let out = '';
+
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceVisitDetails){
+        serviceBookingProcess.secondaryDetails.serviceVisitDetails = serviceBookingProcess.secondaryDetails.serviceVisitDetails.sort((a,b)=>(new Date(a.DateOfService)>new Date(b.DateOfService)?-1:1));
+        out = '<table id="serviceVisitsTable"><tbody><tr><th>Date</th><th>Miles</th><th>Work type</th></tr>';
+        for (let i =0;i<serviceBookingProcess.secondaryDetails.serviceVisitDetails.length;i++){
+            let sV = serviceBookingProcess.secondaryDetails.serviceVisitDetails[i];
+            out += '<tr id="'+sV.InvoiceNumber+'"><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
+        }
+        out += '</tbody></table>';
+    }
+
     return out;
 }
 
