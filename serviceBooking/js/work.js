@@ -687,7 +687,7 @@ async function generateBookingSummary(){
 }
 
 function generatePricingHTML(){
-    $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true));
+    if (serviceBookingProcess.bookingData.pricing.ServiceSchedule) $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true));
     $('div[id="pricingGeneral"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.GeneralItemPrices,false));
     $('div[id="pricingMOT"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.MOTItemPrices,false));
     $('div[id="pricingDutyOfCare"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DutyOfCareItemPrices,false));
@@ -697,6 +697,7 @@ function generatePricingHTML(){
 }
 
 function generateTableFromData(data, isServiceSchedule = false){
+    if (!data || !data.length) return '';
     let html = '<table class="table table-condensed" width="100%"><tbody>';
     for (let i = 0;i<data.length;i++){
         html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el === data[i].Code)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
