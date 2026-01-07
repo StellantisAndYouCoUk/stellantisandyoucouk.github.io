@@ -389,6 +389,13 @@ function getVehicleDescription(){
         let taxExpiryDate = new Date(serviceBookingProcess.dvlaData.taxDueDate);
         let daysOfTaxLeft = ((new Date(serviceBookingProcess.dvlaData.taxDueDate) - new Date())/1000 / 60 / 60 / 24).toFixed(0);
         out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires: '+dateToGB(taxExpiryDate);
+
+        if (serviceBookingProcess.vehicle){
+            let autolineMOTDate = new Date(serviceBookingProcess.vehicle.MOTDueDate);
+            if (autolineMOTDate.getFullYear()!==motExpiryDate.getFullYear() || autolineMOTDate.getMonth()!==motExpiryDate.getMonth() || autolineMOTDate.getDate()!==motExpiryDate.getDate()){
+                out = out + "<br /><br />The Autoline MOT date of "+dateToGB(autolineMOTDate)+" does not match DVLA MOT date of "+dateToGB(motExpiryDate)+"";
+            }
+        }
     }   
     
     return out;
