@@ -241,7 +241,8 @@ function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumb
     let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber});
     if (r.success && r.data){
         console.log('getSecondaryDetails success')
-        serviceBookingProcess.secondaryDetails = r.data;;
+        serviceBookingProcess.secondaryDetails = r.data;
+        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
     }
 }
