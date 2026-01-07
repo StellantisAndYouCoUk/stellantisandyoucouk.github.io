@@ -321,6 +321,7 @@ function work(){
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
             checkBookingDataForDealership(lastDealership);
+            showClosestDealerships($('[id="postcodeForD"]').val());
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
@@ -555,6 +556,7 @@ function findDealerships(){
     if (postcode && postcode!==''){
         let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:postcode});
         serviceBookingProcess.dealershipsToPostcode = {postcode:postcode,dealerships:closestD};
+        sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         showClosestDealerships(postcode);
     } else {
         $('[id="otherDealerships"]').hide();
