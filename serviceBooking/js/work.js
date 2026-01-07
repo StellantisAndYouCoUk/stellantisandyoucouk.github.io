@@ -309,7 +309,7 @@ function work(){
             $('div[id="vehicleDetailsServiceBox"]').html(getVehicleDetailsServiceBox());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
-            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a><input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input>');
+            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input>');
             if (lastDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==lastDealership.id)){
                 let kF = lastDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
                 if (!kF){
@@ -537,7 +537,9 @@ function getServiceSuggestions(){
 }
 
 function findDealerships(){
-    let postcode = $('[id="postcodeForD"]').attr('value');
+    console.log('findD')
+    let postcode = $('[id="postcodeForD"]').val();
+    console.log('post',postcode)
     if (postcode && postcode!==''){
         let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:postcode});
         console.log('closestD',closestD)
