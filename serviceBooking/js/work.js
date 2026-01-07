@@ -536,6 +536,14 @@ function getServiceSuggestions(){
     return out;
 }
 
+function findDealerships(){
+    let postcode = $('[id="postcodeForD"]').attr('value');
+    if (postcode && postcode!==''){
+        let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:postcode});
+        console.log('closestD',closestD)
+    }
+}
+
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         return '<b>Customer was not found in Autoline'
