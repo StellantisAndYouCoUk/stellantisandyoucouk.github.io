@@ -309,7 +309,7 @@ function work(){
             $('div[id="vehicleDetailsServiceBox"]').html(getVehicleDetailsServiceBox());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
-            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a><input id="postcodeForD" size="7"></input>');
+            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a><input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input>');
             if (lastDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==lastDealership.id)){
                 let kF = lastDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
                 if (!kF){
@@ -550,9 +550,6 @@ function getCustomerDetails(){
     }
     let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?'<br />'+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?'<br />'+serviceBookingProcess.customer.Address004:'')+'<br />'+serviceBookingProcess.customer.Postcode+'<br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<br />':'');
 
-    if (serviceBookingProcess.customer.Postcode!==''){
-        $('[id="postcodeForD"]').attr('value',serviceBookingProcess.customer.Postcode);
-    }
     if (serviceBookingProcess.secondaryDetails){
         if (serviceBookingProcess.secondaryDetails.gdprDataMarketing && serviceBookingProcess.secondaryDetails.gdprDataMarketing.length>0 && (serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption !== "U" && serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption !== "U")){
             out += '<br /><b>GDPR Sales:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[2].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[3].ChannelOption)
