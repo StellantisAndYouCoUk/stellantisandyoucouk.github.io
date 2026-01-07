@@ -220,6 +220,10 @@ function bookVisit(dealershipId){
         $('div[id="bookingProblems"]').show();
         return null;
     }
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId){
+        let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
+        checkBookingDataForDealership(newDealership);
+    }
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
         serviceBookingProcess.bookingData.mileage = mileage;
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
@@ -316,38 +320,7 @@ function work(){
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
-            if (lastDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==lastDealership.id)){
-                let kF = lastDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
-                if (!kF){
-                    $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make);
-                    $('div[id="bookingProblems"]').show();
-                } else {
-                    let mF = kF.modelNames.find(el => el.toLowerCase() === serviceBookingProcess.motData.model.toLowerCase())
-                    if (!mF){
-                        $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
-                        $('div[id="bookingProblems"]').show();
-                    } else {
-                        let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
-                        if (!fT){
-                            $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
-                            $('div[id="bookingProblems"]').show();
-                        } else {
-                            serviceBookingProcess.bookingData = {
-                                dealer : lastDealership,
-                                knackDealerId : lastDealership.id,
-                                dealerName : lastDealership.field_8,
-                                konnectDealerId : lastDealership.konnectData.ID,
-                                konnectFranchiseId : kF.ID,
-                                konnectModelName : mF,
-                                konnectFuelTypeId : fT.ID,
-                                yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
-                                bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
-                            };
-                            console.log(serviceBookingProcess.bookingData);
-                        }
-                    }
-                }
-            }
+            checkBookingDataForDealership(lastDealership);
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
@@ -385,6 +358,41 @@ function work(){
             }
         }
     }
+}
+
+function checkBookingDataForDealership(lastDealership){
+    if (lastDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==lastDealership.id)){
+                let kF = lastDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
+                if (!kF){
+                    $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make);
+                    $('div[id="bookingProblems"]').show();
+                } else {
+                    let mF = kF.modelNames.find(el => el.toLowerCase() === serviceBookingProcess.motData.model.toLowerCase())
+                    if (!mF){
+                        $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
+                        $('div[id="bookingProblems"]').show();
+                    } else {
+                        let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
+                        if (!fT){
+                            $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
+                            $('div[id="bookingProblems"]').show();
+                        } else {
+                            serviceBookingProcess.bookingData = {
+                                dealer : lastDealership,
+                                knackDealerId : lastDealership.id,
+                                dealerName : lastDealership.field_8,
+                                konnectDealerId : lastDealership.konnectData.ID,
+                                konnectFranchiseId : kF.ID,
+                                konnectModelName : mF,
+                                konnectFuelTypeId : fT.ID,
+                                yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
+                                bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
+                            };
+                            console.log(serviceBookingProcess.bookingData);
+                        }
+                    }
+                }
+            }
 }
 
 function getVehicleDescription(){
