@@ -275,7 +275,7 @@ function work(){
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
             $('div[id="step3"]').hide();
-            $('div[id="customerDetails').html('<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+'<br />');
+            $('div[id="customerDetails').html(getCustomerDetails());
             let vehicleAge = null;
             if (serviceBookingProcess.motData.firstUsedDate!==''){
                 vehicleAge = ((new Date() - new Date(serviceBookingProcess.motData.firstUsedDate))/1000 / 60 / 60 / 24 / 365).toFixed(1);
@@ -353,6 +353,13 @@ function work(){
             }
         }
     }
+}
+
+function getCustomerDetails(){
+    if (!serviceBookingProcess.customer){
+        return '<b>Customer was not found in Autoline'
+    }
+    return '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Postcode+' '+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?' '+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?' '+serviceBookingProcess.customer.Address004:'')+'<br />'
 }
 
 var autolineRTSCodes = null;
