@@ -494,7 +494,6 @@ function getCustomerDetails(){
             out += '<br /><b style="color:red;">GDPR Service: NO AGREEMENT</b>';
         }
     }
-
     return out;
 }
 
