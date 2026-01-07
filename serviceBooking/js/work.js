@@ -294,6 +294,7 @@ function work(){
             $('div[id="serviceSuggestions"]').html(getServiceSuggestions());
             $('div[id="serviceHistory"]').html(getServiceHistory());
             $('div[id="recalls"]').html(getRecalls());
+            $('div[id="vehicleDetailsServiceBox"]').html(getVehicleDetailsServiceBox());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
@@ -411,6 +412,16 @@ function getVehicleDescription(){
     return out;
 }
 
+function getVehicleDetailsServiceBox(){
+    let out = '';
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable!==''){
+        out += serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable;
+        $('id="vehicleDetailsServiceBoxCard"').show();
+    } else {
+        $('id="vehicleDetailsServiceBoxCard"').hide();
+    }
+}
+
 function getServiceHistory(){
     let out = '';
 
@@ -441,7 +452,6 @@ function getRecalls(){
         } else {
             out += '<b>Outstanding Manufacturer Updates</b><br />' + serviceBookingProcess.secondaryDetails.recalls.recall.textTableOnlyNeedsCheck
         }
-        out += '<br />'+serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable;
     } else {
         out += 'Getting recalls from manufacturer website ...'
     }
