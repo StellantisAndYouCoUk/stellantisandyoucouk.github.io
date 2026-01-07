@@ -377,7 +377,10 @@ function getVehicleDescription(){
     }
     out = (vehicleAge?'<b>' + vehicleAge + '</b> Year Old ':'') + '<b>'+serviceBookingProcess.motData.fuelType+'</b> '+toTitleCase(serviceBookingProcess.motData.make) + ' '+(serviceBookingProcess.vehicle.BriefDescription!==''?serviceBookingProcess.vehicle.BriefDescription:serviceBookingProcess.motData.model)+' in '+serviceBookingProcess.motData.primaryColour+', registered on <b>'+dateToGB(new Date(serviceBookingProcess.motData.firstUsedDate))+'.</b>';
     if (serviceBookingProcess.secondaryDetails.serviceVisitDetails && serviceBookingProcess.motData){
-        out += 'System estimates '+currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData)+' miles.<br />'
+        let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
+        if (mileageEst.currentMileage!==0){
+            out += 'System estimates '+mileageEst.currentMileage+' miles.<br />'
+        }
     }
     out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
 
@@ -456,7 +459,7 @@ function currentMileageUpdated(userMileage=null, serviceVisits, motData){
         }
         return {currentMileage:currentMileageV,basedOn:basedOn,data:serviceVisitsAndMot,serviceVisitsAndMotFiltered:serviceVisitsAndMotFiltered};
     } catch (ex){
-        return {'current':0,'basedon':'Bad data in input'+ex.toString()} 
+        return {currentMileage:0,'basedon':'Bad data in input'+ex.toString()} 
     }
 }
 
