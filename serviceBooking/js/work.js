@@ -390,6 +390,7 @@ function getVehicleDescription(){
         out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires: '+dateToGB(taxExpiryDate);
     }   
     
+    return out;
 }
 
 function getServiceSuggestions(){
@@ -419,12 +420,12 @@ function getCustomerDetails(){
         if (serviceBookingProcess.secondaryDetails.gdprDataMarketing && (serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption !== "U" && serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption !== "U")){
             out += '<br /><b>GDPR Sales:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[3].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataMarketing[4].ChannelOption)
         } else {
-            out += '<br /><b><p style=""color:red;"">GDPR Sales: NO AGREEMENT</p></b>';
+            out += '<br /><b style="color:red;">GDPR Sales: NO AGREEMENT</b>';
         }
         if (serviceBookingProcess.secondaryDetails.gdprDataService && (serviceBookingProcess.secondaryDetails.gdprDataService[0].ChannelOption !== "U" && serviceBookingProcess.secondaryDetails.gdprDataService[1].ChannelOption !== "U")){
             out += '<br /><b>GDPR Service:</b> SMS: ' + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[0].ChannelOption)+ " Post: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[1].ChannelOption)+ " Email: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[3].ChannelOption)+ " Phone: " + getGDPRHTMLforOne(serviceBookingProcess.secondaryDetails.gdprDataService[4].ChannelOption)
         } else {
-            out += '<br /><b><p style=""color:red;"">GDPR Service: NO AGREEMENT</p></b>';
+            out += '<br /><b style="color:red;">GDPR Service: NO AGREEMENT</b>';
         }
     }
 
