@@ -289,10 +289,11 @@ function work(){
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
             $('div[id="step3"]').hide();
-            $('div[id="customerDetails').html(getCustomerDetails());
-            $('div[id="vehicleDescription').html(getVehicleDescription());
-            $('div[id="serviceSuggestions').html(getServiceSuggestions());
-            $('div[id="serviceHistory').html(getServiceHistory());
+            $('div[id="customerDetails"]').html(getCustomerDetails());
+            $('div[id="vehicleDescription"]').html(getVehicleDescription());
+            $('div[id="serviceSuggestions"]').html(getServiceSuggestions());
+            $('div[id="serviceHistory"]').html(getServiceHistory());
+            $('div[id="recalls"]').html(getRecalls());
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships(\''+serviceBookingProcess.customer.Postcode+'\')">Find dealership close to customer</a>');
@@ -423,6 +424,21 @@ function getServiceHistory(){
         out += '</tbody></table>';
     }
 
+    return out;
+}
+
+function getRecalls(){
+    let out = '';
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall){
+        if (!serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
+            out += '<b>No Outstanding Manufacturer Updates</b>'
+        } else {
+            out += '<b>Outstanding Manufacturer Updates</b><br />' + serviceBookingProcess.secondaryDetails.recalls.recall.textTableOnlyNeedsCheck
+        }
+        out += '<br />'+serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable;
+    } else {
+        out += 'Getting recalls from manufacturer website ...'
+    }
     return out;
 }
 
