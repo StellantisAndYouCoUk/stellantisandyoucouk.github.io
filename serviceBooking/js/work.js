@@ -284,7 +284,7 @@ function work(){
             $('div[id="step2"]').hide();
             $('div[id="step3"]').hide();
         } else if (serviceBookingProcess.registrationNumber){
-            $('h1[id="registrationNumberShow"]').html('<span style="background: yellow;">'+serviceBookingProcess.registrationNumber+'</span>')
+            $('h1[id="registrationNumberShow"]').html('<span style="background: yellow;"> '+serviceBookingProcess.registrationNumber+' </span>')
             $('h1[id="registrationNumberShow"]').show();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
