@@ -470,7 +470,7 @@ function getServiceHistory(){
             out += '<button id="showHideMoreServiceVisits">Show more</button>';
         }
         setTimeout(() => {
-            document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
+            if (document.getElementById("showHideMoreServiceVisits")) document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
         }, 1000);
     } else {
         if (serviceBookingProcess.secondaryDetails){
