@@ -428,10 +428,11 @@ function getVehicleDetailsServiceBox(){
     let out = '';
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable!==''){
         out += serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable;
-        $('id="vehicleDetailsServiceBoxCard"').show();
+        $('[id="vehicleDetailsServiceBoxCard"]').show();
     } else {
-        $('id="vehicleDetailsServiceBoxCard"').hide();
+        $('[id="vehicleDetailsServiceBoxCard"]').hide();
     }
+    return out;
 }
 
 function getServiceHistory(){
