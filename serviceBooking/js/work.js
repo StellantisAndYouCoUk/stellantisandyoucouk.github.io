@@ -166,6 +166,18 @@ $( document ).ready(function() {
     work();
 });
 
+function showHideMoreServiceVisits(){
+    let newV = (document.querySelector('.more').style.display==="none"?"":"none");
+    document.querySelectorAll('.more').forEach(function(el) {
+       el.style.display = newV;
+    });
+    if (newV==='none'){
+      document.getElementById("showHideMoreServiceVisits").innerText = "Show more";
+    } else {
+      document.getElementById("showHideMoreServiceVisits").innerText = "Hide more";
+    }
+}
+
 function getLoggedInUser(){
     let d = readCookie('bookingToken');
     let u = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getUser?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{'Authorization':'Bearer apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3'},{token:d})
@@ -430,9 +442,12 @@ function getServiceHistory(){
         out = '<table id="serviceVisitsTable"><tbody><tr><th>Date</th><th>Miles</th><th>Work type</th></tr>';
         for (let i =0;i<serviceBookingProcess.secondaryDetails.serviceVisitDetails.length;i++){
             let sV = serviceBookingProcess.secondaryDetails.serviceVisitDetails[i];
-            out += '<tr id="'+sV.InvoiceNumber+'"><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
+            out += '<tr id="'+sV.InvoiceNumber+'"'+(i>9?' class="more" style="display: none;"':'')+'><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
         }
         out += '</tbody></table>';
+        if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.length>9){
+            out += '<button id="showHideMoreServiceVisits">Show more</button>';
+        }
     } else {
         if (serviceBookingProcess.secondaryDetails){
             out = '';
