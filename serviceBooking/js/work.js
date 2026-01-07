@@ -379,6 +379,13 @@ function getVehicleDescription(){
         let dateOfCurrentUserBought = new Date(serviceBookingProcess.dvlaData.dateOfLastV5CIssued);
         out = out + "<br /><br />The current owner bought this " + (dateOfCurrentUserBought.getFullYear().toString() === serviceBookingProcess.dvlaData.monthOfFirstRegistration.substring(0,4) & pad(dateOfCurrentUserBought.getMonth()+1) === serviceBookingProcess.dvlaData.monthOfFirstRegistration.substring(5,7)?"NEW":"USED") + " vehicle <b>" + ((new Date() - dateOfCurrentUserBought)/(1000*60*60*24*365)).toFixed(1) + "</b> years ago" //+ if(parseDate(82.data.dateOfLastV5CIssued; "YYYY-MM-DD") > 84.dateOne | parseDate(82.data.dateOfLastV5CIssued; "YYYY-MM-DD") > 84.dateTwo; ". We cannot assess mileage because of owner change."; if((84.dateOne - 84.dateTwo) > 0; " and travels around <b>" + formatNumber((84.mileageOne - 84.mileageTwo) / ((84.dateOne - 84.dateTwo) / 1000 / 60 / 60 / 24); 0) + "</b> miles a day and <b>" + formatNumber((365 * (84.mileageOne - 84.mileageTwo) / ((84.dateOne - 84.dateTwo) / 1000 / 60 / 60 / 24)); 0; emptystring; emptystring) + "</b> miles a year. (" + 84.basedOn + ")"; ".")))}}
     }
+    if (serviceBookingProcess.dvlaData){
+        let motExpiryDate = new Date(serviceBookingProcess.dvlaData.motExpiryDate);
+        let daysOfMotLeft = ((new Date() - new Date(serviceBookingProcess.dvlaData.motExpiryDate))/1000 / 60 / 60 / 24).toFixed(0);
+        out = out + "<br /><br /><b>"+daysOfMotLeft+'</b> Days MOT left - Expires:'+dateToGB(motExpiryDate);
+        let taxExpiryDate = new Date(serviceBookingProcess.dvlaData.taxDueDate);
+        let daysOfTaxLeft = ((new Date() - new Date(serviceBookingProcess.dvlaData.taxDueDate))/1000 / 60 / 60 / 24).toFixed(0);
+    }   out = out + "<br /><b>"+daysOfTaxLeft+'</b> Days Tax left - Expires:'+dateToGB(taxExpiryDate);
     return out;
 
 }
