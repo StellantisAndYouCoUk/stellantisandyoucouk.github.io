@@ -4730,13 +4730,13 @@ $(document).on('knack-view-render.view_5155', function (event, view, data) {
     allowLandscape : true,
     allowPortrait : true,
     actionAfterPhoto : 'readable', // none, readable, compare,
-    actionAfterPhotoReadableText : 'Is the barcode clear?',
+    actionAfterPhotoReadableText : 'Is the box number clear?',
     uploadMethod : 'make', //knack, make, field
     uploadWebhook : 'https://hook.eu1.make.celonis.com/rrij4j21spnb6prfwlqk14lh6nau77pw',
     resizeImageMaxHeight : 2000,
     resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
-    leavePhotoAppOpen : true
+    leavePhotoAppOpen : false
   }
   createPhotoButton(appSettings4092,'4092');
 
