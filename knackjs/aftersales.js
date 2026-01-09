@@ -4747,6 +4747,34 @@ $(document).on('knack-view-render.view_5179', function (event, view, data) {
 //  recursiveSceneRefresh('1593',['view_5155'],10000)
 // });
 
+$(document).on('knack-view-render.view_5181', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings4092 = {
+    spiritLine : false,
+    imageOverlay: null,
+    imageOverlayEffect : false,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : true,
+    actionAfterPhoto : 'readable', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Is the box number clear?',
+    uploadMethod : 'make', //knack, make, field
+    uploadWebhook : 'https://hook.eu1.make.celonis.com/rrij4j21spnb6prfwlqk14lh6nau77pw',
+    resizeImageMaxHeight : 2000,
+    resizeImageMaxWidth : 2000,
+    app_id : '6040dd9a301633001bca5b4e',
+    leavePhotoAppOpen : true
+  }
+  createPhotoButton(appSettings4092,'4092');
+
+  //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
+});
+
+// $(document).on('knack-scene-render.scene_1593', function(event, scene) {
+//  recursiveSceneRefresh('1593',['view_5155'],10000)
+// });
+
+
 
 
 // Service To sales -GET HPI Metrics upon clicking search icon
