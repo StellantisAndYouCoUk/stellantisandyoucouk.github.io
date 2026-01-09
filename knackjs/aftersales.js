@@ -4720,7 +4720,7 @@ $(document).on('knack-scene-render.scene_1480', function(event, scene) {
 });
 
 
-$(document).on('knack-view-render.view_5155', function (event, view, data) {
+$(document).on('knack-view-render.view_5179', function (event, view, data) {
   embedPhotoApp();
   let appSettings4092 = {
     spiritLine : false,
