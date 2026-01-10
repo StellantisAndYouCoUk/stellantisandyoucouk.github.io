@@ -714,6 +714,7 @@ function formatAvailability(availability){
     for (let i = 1;i<=lastDateOfMonth.getDate();i++){
         dayToUse.setDate(1); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
+        console.log(dayToUse, isDateAvailable);
         html += '<td '+(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"')+'>'+i+'</td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
