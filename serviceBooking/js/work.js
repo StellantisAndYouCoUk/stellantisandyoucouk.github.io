@@ -712,7 +712,7 @@ function formatAvailability(availability){
         html += '<td>lm</td>';
     }
     for (let i = 1;i<=lastDateOfMonth.getDate();i++){
-        dayToUse.setDate(1); 
+        dayToUse.setDate(i); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
         console.log(dayToUse, isDateAvailable);
         html += '<td '+(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"')+'>'+i+'</td>';
