@@ -687,9 +687,9 @@ async function generateBookingSummary(){
     if (aV && aV.availability.length>0){
         html += '<br /><br /><b>Workshop availability</b>';
         html += formatAvailability(aV.availability);
+        html += formatAvailability(aV.availability,1);
         html += '<br />CheckedAt: '+aV.checkedAt+'<br /><br />';
         aV.availability = aV.availability.sort((a,b)=>(new Date(a.date)>new Date(b.date)?1:-1))
-
         for (let i = 0;i<aV.availability.length;i++){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
         }
@@ -697,10 +697,11 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
 }
 
-function formatAvailability(availability){
+function formatAvailability(availability, plusMonth = 0){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
+    dayToUse.setMonth(dayToUse.getMonth()+plusMonth);
     let html = '<table class="table-condensed table-bordered table-striped"><thead><tr><th colspan="7"><span class="btn-group"><a class="btn"><i class="icon-chevron-left"></i></a><a class="btn active">'+monthNames[dayToUse.getMonth()]+' '+dayToUse.getFullYear()+'</a><a class="btn"><i class="icon-chevron-right"></i></a></span></th></tr><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody><tr>';
     let firstDateOfMonth = new Date();
     firstDateOfMonth.setDate(1);
