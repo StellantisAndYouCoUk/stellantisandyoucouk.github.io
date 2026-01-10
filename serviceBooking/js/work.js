@@ -718,7 +718,7 @@ function formatAvailability(availability, plusMonth = 0){
         dayToUse.setDate(i); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
         console.log(dayToUse, isDateAvailable);
-        html += '<td '+(dayToUse<=new Date()?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+i+'</td>';
+        html += '<td '+(dayToUse<=new Date()?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'(dayToUse<=new Date() && isDateAvailable?'<a onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')>':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
