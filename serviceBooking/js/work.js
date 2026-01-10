@@ -655,7 +655,7 @@ async function generateBookingSummary(){
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
             console.log(justCode,serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]);
-            let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el.Code === justCode));
+            let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
             console.log(justCode, pricingDetailsForCode)
             html += '<tr><td>'+serviceBookingProcess.bookingData.justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td>'+pricingDetailsForCode.Price+'</td><td></td></tr>';
             if (autolineRTSCodes){
