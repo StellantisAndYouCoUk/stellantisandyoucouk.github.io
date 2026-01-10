@@ -688,7 +688,7 @@ async function generateBookingSummary(){
         html += '<br /><br /><b>Workshop availability</b>';
         html += formatAvailability(aV.availability);
         html += formatAvailability(aV.availability,1);
-        html += '<br />CheckedAt: '+aV.checkedAt+'<br /><br />';
+        html += '<br />Checked at: '+dateTimeToGB(new Date(aV.checkedAt))+'<br /><br />';
         aV.availability = aV.availability.sort((a,b)=>(new Date(a.date)>new Date(b.date)?1:-1))
         for (let i = 0;i<aV.availability.length;i++){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
