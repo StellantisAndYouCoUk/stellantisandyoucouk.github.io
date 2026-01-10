@@ -651,11 +651,13 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
     if (serviceBookingProcess.bookingData.orderedCodes){
         let labourSummary = [];
-        html += '<br />'
+        html += '<br /><b>Booked Items</b><table><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
-            html += serviceBookingProcess.bookingData.orderedCodes[i]+'<br />'
+            let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
+            let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el.Code === justCode));
+            html += '<tr><td>'+serviceBookingProcess.bookingData.justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td>'+pricingDetailsForCode.Price+'</td><td></td></tr>';
             if (autolineRTSCodes){
-                let aCode = autolineRTSCodes.find(el => el.RTSCode === serviceBookingProcess.bookingData.orderedCodes[i]);
+                let aCode = autolineRTSCodes.find(el => el.RTSCode === justCode);
                 if (aCode){
                     let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
                     if (lT){
@@ -666,6 +668,7 @@ async function generateBookingSummary(){
                 }
             }
         }
+        html += '</table>';
         if (labourSummary.length>0){
             html += '<br /><b>Labour:</b>';
             for (let i = 0;i<labourSummary.length;i++){
@@ -687,20 +690,20 @@ async function generateBookingSummary(){
 }
 
 function generatePricingHTML(){
-    if (serviceBookingProcess.bookingData.pricing.ServiceSchedule) $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true));
-    $('div[id="pricingGeneral"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.GeneralItemPrices,false));
-    $('div[id="pricingMOT"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.MOTItemPrices,false));
-    $('div[id="pricingDutyOfCare"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DutyOfCareItemPrices,false));
-    $('div[id="pricingRecommended"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.RecommendedItemPrices,false));
-    $('div[id="pricingPromotions"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.Promotions,false));
-    $('div[id="pricingDropType"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DropTypes,false));
+    if (serviceBookingProcess.bookingData.pricing.ServiceSchedule) $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true,'ServiceIntervals'));
+    $('div[id="pricingGeneral"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.GeneralItemPrices,false,'GeneralItemPrices'));
+    $('div[id="pricingMOT"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.MOTItemPrices,false,'MOTItemPrices'));
+    $('div[id="pricingDutyOfCare"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DutyOfCareItemPrices,false,'DutyOfCareItemPrices'));
+    $('div[id="pricingRecommended"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.RecommendedItemPrices,false,'RecommendedItemPrices'));
+    $('div[id="pricingPromotions"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.Promotions,false,'Promotions'));
+    $('div[id="pricingDropType"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DropTypes,false,'DropTypes'));
 }
 
-function generateTableFromData(data, isServiceSchedule = false){
+function generateTableFromData(data, isServiceSchedule = false, pricingPath = ''){
     if (!data || !data.length) return '';
     let html = '<table class="table table-condensed" width="100%"><tbody>';
     for (let i = 0;i<data.length;i++){
-        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el === data[i].Code)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
+        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+(isServiceSchedule?'serviceSchedule_':'')+pricingPath+'#'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el === data[i].Code)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
     }
     html += '</tbody></table>';
     return html;
