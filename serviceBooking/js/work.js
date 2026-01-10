@@ -709,8 +709,8 @@ function formatAvailability(availability, plusMonth = 0){
     let lastDateOfMonth = new Date(dayToUse.getTime());
     lastDateOfMonth.setMonth(lastDateOfMonth.getMonth());
     lastDateOfMonth.setDate(0);
+    if (dayOfFirstDate===0) dayOfFirstDate = 7;
     let dayOfWeek = dayOfFirstDate;
-    if (dayOfWeek===0) dayOfWeek = 7;
     for (let i = 1;i<dayOfFirstDate;i++){
         html += '<td></td>';
     }
