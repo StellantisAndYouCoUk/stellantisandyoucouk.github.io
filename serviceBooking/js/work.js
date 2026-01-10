@@ -647,7 +647,7 @@ function findAvailabilityDaysForBooking(){
 
 async function generateBookingSummary(){
     console.log('generateBookingSummary')
-    let html = serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles';
+    let html = '<b>' + serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles</b>';
     $('div[id="bookingSummary"]').html(html);
     if (serviceBookingProcess.bookingData.orderedCodes){
         let labourSummary = [];
