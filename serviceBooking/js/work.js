@@ -675,10 +675,11 @@ async function generateBookingSummary(){
                     }
                 }
             }
-        }
+            serviceBookingProcess.bookingData.labourSummary = labourSummary;
+        }  
         html += '</table>';
         html += '<b>Total price: £' + total+'</b><br />'
-    }
+    } else {serviceBookingProcess.bookingData.labourSummary=null}
     $('div[id="bookingSummary"]').html(html);
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
@@ -696,8 +697,7 @@ async function generateBookingSummary(){
         for (let i = 0;i<labourSummary.length;i++){
             html += '<br />Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'';
         }
-        serviceBookingProcess.bookingData.labourSummary = labourSummary;
-    } else {serviceBookingProcess.bookingData.labourSummary=null}
+    }
     $('div[id="bookingSummary"]').html(html);
 }
 
