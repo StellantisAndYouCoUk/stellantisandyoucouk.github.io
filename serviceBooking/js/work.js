@@ -651,13 +651,13 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
     if (serviceBookingProcess.bookingData.orderedCodes){
         let labourSummary = [];
-        html += '<br /><b>Booked Items</b><table><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
+        html += '<br /><br /><b>Booked Items</b><table><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
             console.log(justCode,serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]);
             let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
             console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+serviceBookingProcess.bookingData.justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td>'+pricingDetailsForCode.Price+'</td><td></td></tr>';
+            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: right;">'+pricingDetailsForCode.Price+'</td><td style="text-align: center;">1</td><td></td></tr>';
             if (autolineRTSCodes){
                 let aCode = autolineRTSCodes.find(el => el.RTSCode === justCode);
                 if (aCode){
