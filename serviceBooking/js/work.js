@@ -658,7 +658,7 @@ async function generateBookingSummary(){
             console.log(justCode,serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]);
             let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
             console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: right;">1</td><td style="text-align: center;">'+pricingDetailsForCode.PriceDisplay+'</td><td></td></tr>';
+            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td></td></tr>';
             total += pricingDetailsForCode.Price
             if (autolineRTSCodes){
                 let aCode = autolineRTSCodes.find(el => el.RTSCode === justCode);
@@ -673,7 +673,7 @@ async function generateBookingSummary(){
             }
         }
         html += '</table>';
-        html += '<b>Total price: £' + total+'</b>'
+        html += '<b>Total price: £' + total+'</b><br />'
         if (labourSummary.length>0){
             html += '<br /><b>Labour:</b>';
             for (let i = 0;i<labourSummary.length;i++){
@@ -708,7 +708,7 @@ function generateTableFromData(data, isServiceSchedule = false, pricingPath = ''
     if (!data || !data.length) return '';
     let html = '<table class="table table-condensed" width="100%"><tbody>';
     for (let i = 0;i<data.length;i++){
-        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+(isServiceSchedule?'serviceSchedule_':'')+pricingPath+'#'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el === data[i].Code)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
+        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+(isServiceSchedule?'serviceSchedule_':'')+pricingPath+'#'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes(data[i].Code))?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
     }
     html += '</tbody></table>';
     return html;
