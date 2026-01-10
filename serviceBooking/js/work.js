@@ -649,8 +649,8 @@ async function generateBookingSummary(){
     console.log('generateBookingSummary')
     let html = '<b>' + serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles</b>';
     $('div[id="bookingSummary"]').html(html);
+    let labourSummary = [];
     if (serviceBookingProcess.bookingData.orderedCodes){
-        let labourSummary = [];
         let total = 0;
         html += '<br /><br /><b>Booked Items</b><table width=100%><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
@@ -674,13 +674,6 @@ async function generateBookingSummary(){
         }
         html += '</table>';
         html += '<b>Total price: £' + total+'</b><br />'
-        if (labourSummary.length>0){
-            html += '<br /><b>Labour:</b>';
-            for (let i = 0;i<labourSummary.length;i++){
-                html += '<br />Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'';
-            }
-            serviceBookingProcess.bookingData.labourSummary = labourSummary;
-        } else {serviceBookingProcess.bookingData.labourSummary=null}
     }
     $('div[id="bookingSummary"]').html(html);
     let aV = findAvailabilityDaysForBooking();
@@ -694,6 +687,13 @@ async function generateBookingSummary(){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
         }*/
     }
+    if (labourSummary.length>0){
+        html += '<br /><b>Labour:</b>';
+        for (let i = 0;i<labourSummary.length;i++){
+            html += '<br />Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'';
+        }
+        serviceBookingProcess.bookingData.labourSummary = labourSummary;
+    } else {serviceBookingProcess.bookingData.labourSummary=null}
     $('div[id="bookingSummary"]').html(html);
 }
 
