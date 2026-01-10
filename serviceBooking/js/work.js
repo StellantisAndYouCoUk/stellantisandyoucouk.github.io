@@ -706,7 +706,7 @@ function formatAvailability(availability, plusMonth = 0){
     let firstDateOfMonth = new Date(dayToUse.getTime());
     firstDateOfMonth.setDate(1);
     let dayOfFirstDate = firstDateOfMonth.getDay();
-    let lastDateOfMonth = new Date();
+    let lastDateOfMonth = new Date(dayToUse.getTime());
     lastDateOfMonth.setMonth(lastDateOfMonth.getMonth());
     lastDateOfMonth.setDate(0);
     let dayOfWeek = dayOfFirstDate;
