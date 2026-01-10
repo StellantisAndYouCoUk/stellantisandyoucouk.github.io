@@ -686,12 +686,12 @@ async function generateBookingSummary(){
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
         html += '<br /><br /><b>Workshop availability</b>';
+        html += formatAvailability(aV.availability);
+        html += '<br /><br />';
         aV.availability = aV.availability.sort((a,b)=>(new Date(a.date)>new Date(b.date)?1:-1))
         for (let i = 0;i<aV.availability.length;i++){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
         }
-        html += '<br /><br />';
-        html += formatAvailability(aV.availability);
     }
     $('div[id="bookingSummary"]').html(html);
 }
