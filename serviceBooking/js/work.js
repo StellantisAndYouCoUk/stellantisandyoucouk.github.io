@@ -692,12 +692,13 @@ async function generateBookingSummary(){
             html += '<br />'+dateToGB(new Date(aV.availability[i].date));
         }
     }
+    /*
     if (labourSummary.length>0){
         html += '<br /><b>Labour:</b>';
         for (let i = 0;i<labourSummary.length;i++){
             html += '<br />Group: '+labourSummary[i].LoadGroup+', Time: '+labourSummary[i].Time.toFixed(1)+'';
         }
-    }
+    }*/
     $('div[id="bookingSummary"]').html(html);
 }
 
