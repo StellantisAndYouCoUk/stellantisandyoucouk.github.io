@@ -709,7 +709,7 @@ function formatAvailability(availability){
     lastDateOfMonth.setDate(0);
     let dayOfWeek = dayOfFirstDate;
     for (let i = 1;i<dayOfFirstDate;i++){
-        html += '<td>lm</td>';
+        html += '<td></td>';
     }
     for (let i = 1;i<=lastDateOfMonth.getDate();i++){
         dayToUse.setDate(i); 
@@ -723,7 +723,7 @@ function formatAvailability(availability){
         }
     }
     for (let i = dayOfWeek;i<=7;i++){
-        html += '<td>lm</td>';
+        html += '<td></td>';
     }
     html += '</tr></table>';
     return html;
