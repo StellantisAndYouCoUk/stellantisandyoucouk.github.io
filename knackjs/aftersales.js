@@ -4736,7 +4736,7 @@ $(document).on('knack-view-render.view_5179', function (event, view, data) {
     resizeImageMaxHeight : 2000,
     resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
-    leavePhotoAppOpen : false
+    leavePhotoAppOpen : true
   }
   createPhotoButton(appSettings4092,'4092');
 
@@ -4759,7 +4759,7 @@ $(document).on('knack-view-render.view_5181', function (event, view, data) {
     actionAfterPhoto : 'readable', // none, readable, compare,
     actionAfterPhotoReadableText : 'Is the box number clear?',
     uploadMethod : 'make', //knack, make, field
-    uploadWebhook : 'https://hook.eu1.make.celonis.com/rrij4j21spnb6prfwlqk14lh6nau77pw',
+    uploadWebhook : 'https://hook.eu1.make.celonis.com/6senncjpnwkisxbvyue7xma7hvdn6w6p',
     resizeImageMaxHeight : 2000,
     resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
