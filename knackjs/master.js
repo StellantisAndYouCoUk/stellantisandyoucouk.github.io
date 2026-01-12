@@ -6211,7 +6211,9 @@ $(document).on('knack-scene-render.scene_2413', function(event, scene) {
 });
 
 // Home Page
-$(document).on('knack-scene-render.scene_2413', function(event, scene) {
-  refreshWithData('8591', 'Title', 'Text', 'field_10610');
+$(document).on('knack-scene-render.scene_435', function(event, scene) {
+  refreshWithData('8591', 'Title', 'Text', 'field_11381');
+  refreshWithData('8591', 'Title', 'Text', 'field_11283');
+  refreshWithData('8591', 'Title', 'Text', 'field_11282');
 });
 
