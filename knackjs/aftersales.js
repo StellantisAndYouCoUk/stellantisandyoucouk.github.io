@@ -4763,7 +4763,7 @@ $(document).on('knack-view-render.view_5181', function (event, view, data) {
     resizeImageMaxHeight : 2000,
     resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
-    leavePhotoAppOpen : true
+    leavePhotoAppOpen : false
   }
   createPhotoButton(appSettings4123,'4123');
 
