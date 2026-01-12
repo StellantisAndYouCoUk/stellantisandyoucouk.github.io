@@ -6210,3 +6210,8 @@ $(document).on('knack-scene-render.scene_2413', function(event, scene) {
   refreshWithData('8603', 'Title', 'Text', 'field_11282');
 });
 
+// Home Page
+$(document).on('knack-scene-render.scene_2413', function(event, scene) {
+  refreshWithData('8591', 'Title', 'Text', 'field_10610');
+});
+
