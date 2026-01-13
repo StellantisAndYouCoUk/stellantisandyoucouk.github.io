@@ -4743,9 +4743,9 @@ $(document).on('knack-view-render.view_5179', function (event, view, data) {
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
 
-$(document).on('knack-scene-render.scene_1613', function(event, scene) {
- recursiveSceneRefresh('1613',['view_5179'],10000)
-});
+// $(document).on('knack-scene-render.scene_1613', function(event, scene) {
+//  recursiveSceneRefresh('1613',['view_5179'],10000)
+// });
 
 $(document).on('knack-view-render.view_5181', function (event, view, data) {
   embedPhotoApp();
@@ -4770,9 +4770,9 @@ $(document).on('knack-view-render.view_5181', function (event, view, data) {
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
 
-$(document).on('knack-scene-render.scene_1627', function(event, scene) {
- recursiveSceneRefresh('1627',['view_5181'],10000)
-});
+// $(document).on('knack-scene-render.scene_1627', function(event, scene) {
+//  recursiveSceneRefresh('1627',['view_5181'],10000)
+// });
 
 
 
