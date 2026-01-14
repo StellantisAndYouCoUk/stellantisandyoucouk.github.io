@@ -430,7 +430,7 @@ function getVehicleDescription(){
     }
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.autotraderData && serviceBookingProcess.secondaryDetails.autotraderData.vehicle && serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG){
         out += '<br />Gross Weight: '+serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG+' Kg';
-        out += (serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG >= 3500?(serviceBookingProcess.secondaryDetails.autotraderData.vehicle.bodyType.includes("Window")?"<span style=\"color:red\"><b><i>CLASS 5</b></i></span>":"<span style=\"color:red\"><b><i>CLASS 7</b></i></span>"):"<span style=\"color:red\"><b><i>CLASS 4</b></i></span>");
+        out += ' ' + (serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG >= 3500?(serviceBookingProcess.secondaryDetails.autotraderData.vehicle.bodyType.includes("Window")?"<span style=\"color:red\"><b><i>CLASS 5</b></i></span>":"<span style=\"color:red\"><b><i>CLASS 7</b></i></span>"):"<span style=\"color:red\"><b><i>CLASS 4</b></i></span>");
     }
 
     if (!serviceBookingProcess.dvlaData){
@@ -613,7 +613,7 @@ function getCustomerDetails(){
         return '<b>Customer was not found in Autoline'
     }
     let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />'+serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?'<br />'+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?'<br />'+serviceBookingProcess.customer.Address004:'')+'<br />'+serviceBookingProcess.customer.Postcode+'<br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<br />':'');
-    out += '<br />'+(serviceBookingProcess.customer.TypeOfBusiness==="PRI"?'Private Customer':(serviceBookingProcess.customer.TypeOfBusiness==="BUS"?'Business Customer':(serviceBookingProcess.customer.TypeOfBusiness!==''?"Type of business: "+serviceBookingProcess.customer.TypeOfBusiness:"Type of business: Empty")));
+    out += '<br /><b>'+(serviceBookingProcess.customer.TypeOfBusiness==="PRI"?'Private Customer':(serviceBookingProcess.customer.TypeOfBusiness==="BUS"?'Business Customer':(serviceBookingProcess.customer.TypeOfBusiness!==''?"Type of business: "+serviceBookingProcess.customer.TypeOfBusiness:"Type of business: Empty")))+'</b>';
 
     if (serviceBookingProcess.secondaryDetails){
         if (serviceBookingProcess.secondaryDetails.gdprDataMarketing && serviceBookingProcess.secondaryDetails.gdprDataMarketing.length>0 && (serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption !== "U" && serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption !== "U")){
@@ -743,7 +743,7 @@ function formatAvailability(availability, plusMonth = 0){
         dayToUse.setDate(i); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
         console.log(dayToUse, isDateAvailable);
-        html += '<td '+(dayToUse<=new Date()?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        html += '<td '+(dayToUse<=new Date() || new Date(availability.maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
