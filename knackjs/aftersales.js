@@ -4736,20 +4736,20 @@ $(document).on('knack-view-render.view_5179', function (event, view, data) {
     resizeImageMaxHeight : 2000,
     resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
-    leavePhotoAppOpen : false
+    leavePhotoAppOpen : true
   }
   createPhotoButton(appSettings4092,'4092');
 
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
 
-// $(document).on('knack-scene-render.scene_1593', function(event, scene) {
-//  recursiveSceneRefresh('1593',['view_5155'],10000)
+// $(document).on('knack-scene-render.scene_1613', function(event, scene) {
+//  recursiveSceneRefresh('1613',['view_5179'],10000)
 // });
 
 $(document).on('knack-view-render.view_5181', function (event, view, data) {
   embedPhotoApp();
-  let appSettings4092 = {
+  let appSettings4123 = {
     spiritLine : false,
     imageOverlay: null,
     imageOverlayEffect : false,
@@ -4759,19 +4759,19 @@ $(document).on('knack-view-render.view_5181', function (event, view, data) {
     actionAfterPhoto : 'readable', // none, readable, compare,
     actionAfterPhotoReadableText : 'Is the box number clear?',
     uploadMethod : 'make', //knack, make, field
-    uploadWebhook : 'https://hook.eu1.make.celonis.com/rrij4j21spnb6prfwlqk14lh6nau77pw',
+    uploadWebhook : 'https://hook.eu1.make.celonis.com/6senncjpnwkisxbvyue7xma7hvdn6w6p',
     resizeImageMaxHeight : 2000,
     resizeImageMaxWidth : 2000,
     app_id : '6040dd9a301633001bca5b4e',
-    leavePhotoAppOpen : true
+    leavePhotoAppOpen : false
   }
-  createPhotoButton(appSettings4092,'4092');
+  createPhotoButton(appSettings4123,'4123');
 
   //createOfflineFormSubmit('3841','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href))
 });
 
-// $(document).on('knack-scene-render.scene_1593', function(event, scene) {
-//  recursiveSceneRefresh('1593',['view_5155'],10000)
+// $(document).on('knack-scene-render.scene_1627', function(event, scene) {
+//  recursiveSceneRefresh('1627',['view_5181'],10000)
 // });
 
 
