@@ -423,12 +423,12 @@ function getVehicleDescription(){
     }
     if (serviceBookingProcess.vehicle.ChassisNumber!==''){
         out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
-    } else if (serviceBookingProcess.autotraderData && serviceBookingProcess.autotraderData.vehicle && serviceBookingProcess.autotraderData.vehicle.vin){
-        out += '<br />'+serviceBookingProcess.autotraderData.vehicle.vin;
+    } else if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.autotraderData && serviceBookingProcess.secondaryDetails.autotraderData.vehicle && serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin){
+        out += '<br />'+serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin;
     }
-    if (serviceBookingProcess.autotraderData && serviceBookingProcess.autotraderData.vehicle && serviceBookingProcess.autotraderData.vehicle.grossVehicleWeightKG){
-        out += '<br />Gross Weight: '+serviceBookingProcess.autotraderData.vehicle.grossVehicleWeightKG+' Kg';
-        out += (serviceBookingProcess.autotraderData.vehicle.grossVehicleWeightKG >= 3500?(serviceBookingProcess.autotraderData.vehicle.bodyType.includes("Window")?"<p style=\"color:red\"><b><i>CLASS 5</b></i></p>":"<p style=\"color:red\"><b><i>CLASS 7</b></i></p>"):"<p style=\"color:red\"><b><i>CLASS 4</b></i></p>");
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.autotraderData && serviceBookingProcess.secondaryDetails.autotraderData.vehicle && serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG){
+        out += '<br />Gross Weight: '+serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG+' Kg';
+        out += (serviceBookingProcess.secondaryDetails.autotraderData.vehicle.grossVehicleWeightKG >= 3500?(serviceBookingProcess.secondaryDetails.autotraderData.vehicle.bodyType.includes("Window")?"<p style=\"color:red\"><b><i>CLASS 5</b></i></p>":"<p style=\"color:red\"><b><i>CLASS 7</b></i></p>"):"<p style=\"color:red\"><b><i>CLASS 4</b></i></p>");
     }
 
     if (!serviceBookingProcess.dvlaData){
