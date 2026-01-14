@@ -324,6 +324,8 @@ function work(){
             $('div[id="serviceHistory"]').html(getServiceHistory());
             $('div[id="recalls"]').html(getRecalls());
             $('div[id="vehicleDetailsServiceBox"]').html(getVehicleDetailsServiceBox());
+            $('div[id="servicePlans"]').html(getServicePlans());
+            
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
 
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
@@ -463,6 +465,14 @@ function getVehicleDetailsServiceBox(){
         $('[id="vehicleDetailsServiceBoxCard"]').show();
     } else {
         $('[id="vehicleDetailsServiceBoxCard"]').hide();
+    }
+    return out;
+}
+
+function getServicePlans(){
+    let out = '';
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable!==''){
+        out += serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable;
     }
     return out;
 }
