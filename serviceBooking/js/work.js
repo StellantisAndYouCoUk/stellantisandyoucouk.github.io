@@ -421,7 +421,15 @@ function getVehicleDescription(){
             $('input[id="currentMileage"]').attr('value',mileageEst.currentMileage)
         }
     }
-    if (serviceBookingProcess.vehicle.ChassisNumber!=='') out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
+    if (serviceBookingProcess.vehicle.ChassisNumber!==''){
+        out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
+    } else if (serviceBookingProcess.autotraderData && serviceBookingProcess.autotraderData.vehicle && serviceBookingProcess.autotraderData.vehicle.vin){
+        out += '<br />'+serviceBookingProcess.autotraderData.vehicle.vin;
+    }
+    if (serviceBookingProcess.autotraderData && serviceBookingProcess.autotraderData.vehicle && serviceBookingProcess.autotraderData.vehicle.grossVehicleWeightKG){
+        out += '<br />Gross Weight: '+serviceBookingProcess.autotraderData.vehicle.grossVehicleWeightKG+' Kg';
+        out += (serviceBookingProcess.autotraderData.vehicle.grossVehicleWeightKG >= 3500?(serviceBookingProcess.autotraderData.vehicle.bodyType.includes("Window")?"<p style=\"color:red\"><b><i>CLASS 5</b></i></p>":"<p style=\"color:red\"><b><i>CLASS 7</b></i></p>"):"<p style=\"color:red\"><b><i>CLASS 4</b></i></p>");
+    }
 
     if (!serviceBookingProcess.dvlaData){
         out = out + "<br /><br /><p style=\"color:red;\">Please confirm the registration number has not been transferred to a Private Number Plate or Error in DVLA API service</p>";
