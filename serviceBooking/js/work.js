@@ -742,7 +742,7 @@ function formatAvailability(availability, plusMonth = 0){
     for (let i = 1;i<=lastDateOfMonth.getDate();i++){
         dayToUse.setDate(i); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
-        console.log(dayToUse, isDateAvailable);
+        console.log(dayToUse, isDateAvailable,availability.maxCheckedDate);
         html += '<td '+(dayToUse<=new Date() || new Date(availability.maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
