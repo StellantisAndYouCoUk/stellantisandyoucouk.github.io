@@ -703,9 +703,9 @@ async function generateBookingSummary(){
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
         html += '<br /><br /><b>Workshop availability</b>';
-        html += formatAvailability(aV.availability);
-        html += formatAvailability(aV.availability,1);
-        html += formatAvailability(aV.availability,2);
+        html += formatAvailability(aV.availability,0,aV.maxCheckedDate);
+        html += formatAvailability(aV.availability,1,aV.maxCheckedDate);
+        html += formatAvailability(aV.availability,2,aV.maxCheckedDate);
         html += '<br />Checked at: '+dateTimeToGB(new Date(aV.checkedAt));
         aV.availability = aV.availability.sort((a,b)=>(new Date(a.date)>new Date(b.date)?1:-1))
         /*for (let i = 0;i<aV.availability.length;i++){
@@ -722,7 +722,7 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
 }
 
-function formatAvailability(availability, plusMonth = 0){
+function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
@@ -742,8 +742,8 @@ function formatAvailability(availability, plusMonth = 0){
     for (let i = 1;i<=lastDateOfMonth.getDate();i++){
         dayToUse.setDate(i); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
-        console.log(dayToUse, isDateAvailable,availability.maxCheckedDate);
-        html += '<td '+(dayToUse<=new Date() || new Date(availability.maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        console.log(dayToUse, isDateAvailable,maxCheckedDate);
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
