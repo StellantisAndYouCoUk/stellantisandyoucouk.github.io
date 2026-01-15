@@ -486,13 +486,11 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
   $('div[id*="tooltip"]').each(function(){
     $(this).attr("style","background: white; position: fixed; display:none;");
   });
-  $('div[id="view_'+viewId+'"]').on("mouseleave", function (e) {
+  $('div[id="serviceHistory"]').on("mouseleave", function (e) {
     //console.log('HIDE AFTER LEAVE')
     $('div[id="tooltip_'+shownTooltipId+'"]').hide();
   });
 
-  //console.log('table',$('table[id="serviceVisitsTable"]'));
-  //$('table[id="serviceVisitsTable"]').on("mousemove", function (e) {
   $('div[id="serviceHistory"]').on("mousemove", function (e) {
       //console.log('on move');
       let partOfTable = document.elementFromPoint(e.pageX, e.pageY - document.documentElement.scrollTop);
@@ -507,9 +505,6 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
       }
       if (trUnderMouse && trUnderMouse.id){
         $('div[id="tooltip_'+trUnderMouse.id+'"]').show();
-        //$('div[id="tooltip_'+trUnderMouse.id+'"]').offset({ left: e.pageX+10, top: e.pageY });
-        //const body = document.querySelector("body");
-        //body.offsetWidth
         let tooltipLeft = document.getElementById('serviceVisitsTable').getBoundingClientRect().left-250;
         let tooltipTop = document.documentElement.scrollTop + 50;
         if (tooltipLeft<50) tooltipLeft = 50;
