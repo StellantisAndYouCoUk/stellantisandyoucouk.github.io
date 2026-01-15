@@ -546,8 +546,8 @@ function getServiceHistory(){
         if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.length>9){
             out += '<button id="showHideMoreServiceVisits">Show more</button>';
         }
-        if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.serviceVisitsDetailsLines){
-            out += serviceBookingProcess.secondaryDetails.serviceVisitDetails.serviceVisitsDetailsLines;
+        if (serviceBookingProcess.secondaryDetails.serviceVisitsDetailsLines){
+            out += serviceBookingProcess.secondaryDetails.serviceVisitsDetailsLines;
             serviceVisitsTooltips();
         }
         setTimeout(() => {
