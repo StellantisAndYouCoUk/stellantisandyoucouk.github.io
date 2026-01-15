@@ -510,10 +510,10 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
         let tooltipTop = document.documentElement.scrollTop + 50;
         if (tooltipLeft<50) tooltipLeft = 50;
         if (tooltipPlace==='rightBottomOnMouse'){
-          tooltipLeft = e.pageX - $('div[id="tooltip_'+trUnderMouse.id+'"]').width();
+          tooltipLeft = e.pageX - $('div[id="tooltip_'+trUnderMouse.id+'"]').width() - 20;
           console.log('tooltipLeft',tooltipLeft);
           if (tooltipLeft<10) tooltipLeft = 10;
-          tooltipTop = e.pageY - $('div[id="tooltip_'+trUnderMouse.id+'"]').height();
+          tooltipTop = e.pageY - $('div[id="tooltip_'+trUnderMouse.id+'"]').height() - 20;
           console.log('tooltipTop',tooltipTop);
           if (tooltipTop<document.documentElement.scrollTop + 10) tooltipTop = document.documentElement.scrollTop + 10;
         }
