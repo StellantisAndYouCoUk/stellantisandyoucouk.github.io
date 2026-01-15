@@ -737,7 +737,7 @@ async function generateBookingSummary(){
             console.log(justCode,serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]);
             let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
             console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td></td></tr>';
+            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeItem(item);"></i></td></tr>';
             total += pricingDetailsForCode.Price
             if (autolineRTSCodes){
                 let aCode = autolineRTSCodes.find(el => el.RTSCode === justCode);
