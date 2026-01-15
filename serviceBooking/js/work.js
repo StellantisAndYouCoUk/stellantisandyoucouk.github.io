@@ -484,7 +484,7 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
   console.log('serviceVisitsTooltips',tooltipPlace);
   if (serviceTooltipsActive) return;
   $('div[id*="tooltip"]').each(function(){
-    $(this).attr("style","background: white; position: fixed; display:none;");
+    $(this).attr("style","background:white;position:fixed;display:none;");
   });
   $('div[id="serviceHistory"]').on("mouseleave", function (e) {
     //console.log('HIDE AFTER LEAVE')
@@ -504,6 +504,7 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
       }
       if (trUnderMouse && trUnderMouse.id){
         $('div[id="tooltip_'+trUnderMouse.id+'"]').show();
+        $('div[id="tooltip_'+trUnderMouse.id+'"]').attr("style","background:white;");
         let tooltipLeft = document.getElementById('serviceVisitsTable').getBoundingClientRect().left-250;
         let tooltipTop = document.documentElement.scrollTop + 50;
         if (tooltipLeft<50) tooltipLeft = 50;
