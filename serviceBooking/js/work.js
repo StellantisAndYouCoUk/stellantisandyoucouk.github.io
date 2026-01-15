@@ -479,10 +479,10 @@ function getServicePlans(){
 
 
 let shownTooltipId = null;
-let seriviceTooltipsActive = false;
+let serviceTooltipsActive = false;
 function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
   console.log('serviceVisitsTooltips',tooltipPlace);
-  if (seriviceTooltipsActive) return;
+  if (serviceTooltipsActive) return;
   $('div[id*="tooltip"]').each(function(){
     $(this).attr("style","background: white; position: fixed; display:none;");
   });
@@ -529,6 +529,7 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
         shownTooltipId = trUnderMouse.id;
       }
   });
+  serviceTooltipsActive = true;
 }
 
 
