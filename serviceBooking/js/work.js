@@ -477,6 +477,61 @@ function getServicePlans(){
     return out;
 }
 
+
+let shownTooltipId = null;
+let seriviceTooltipsActive = false;
+function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
+  console.log('serviceVisitsTooltips',tooltipPlace);
+  if (seriviceTooltipsActive) return;
+  $('div[id*="tooltip"]').each(function(){
+    $(this).attr("style","background: white; position: fixed; display:none;");
+  });
+  $('div[id="view_'+viewId+'"]').on("mouseleave", function (e) {
+    //console.log('HIDE AFTER LEAVE')
+    $('div[id="tooltip_'+shownTooltipId+'"]').hide();
+  });
+
+  //console.log('table',$('table[id="serviceVisitsTable"]'));
+  //$('table[id="serviceVisitsTable"]').on("mousemove", function (e) {
+  $('div[id="serviceHistory"]').on("mousemove", function (e) {
+      //console.log('on move');
+      let partOfTable = document.elementFromPoint(e.pageX, e.pageY - document.documentElement.scrollTop);
+      let trUnderMouse = null;
+      if (partOfTable){
+        if (partOfTable.nodeName==='TD'){
+          trUnderMouse = partOfTable.parentElement;
+        }
+        if (partOfTable.nodeName==='TR'){
+          trUnderMouse = partOfTable;
+        }
+      }
+      if (trUnderMouse && trUnderMouse.id){
+        $('div[id="tooltip_'+trUnderMouse.id+'"]').show();
+        //$('div[id="tooltip_'+trUnderMouse.id+'"]').offset({ left: e.pageX+10, top: e.pageY });
+        //const body = document.querySelector("body");
+        //body.offsetWidth
+        let tooltipLeft = document.getElementById('serviceVisitsTable').getBoundingClientRect().left-250;
+        let tooltipTop = document.documentElement.scrollTop + 50;
+        if (tooltipLeft<50) tooltipLeft = 50;
+        if (tooltipPlace==='rightBottomOnMouse'){
+          tooltipLeft = e.pageX - $('div[id="tooltip_'+trUnderMouse.id+'"]').width();
+          console.log('tooltipLeft',tooltipLeft);
+          if (tooltipLeft<10) tooltipLeft = 10;
+          tooltipTop = e.pageY - $('div[id="tooltip_'+trUnderMouse.id+'"]').height();
+          console.log('tooltipTop',tooltipTop);
+          if (tooltipTop<document.documentElement.scrollTop + 10) tooltipTop = document.documentElement.scrollTop + 10;
+        }
+        //console.log('tooltipWidth',$('div[id="tooltip_'+trUnderMouse.id+'"]').width());
+        $('div[id="tooltip_'+trUnderMouse.id+'"]').offset({ left: tooltipLeft, top: tooltipTop});
+        if (shownTooltipId !== trUnderMouse.id && shownTooltipId !== null){
+            $('div[id="tooltip_'+shownTooltipId+'"]').hide();
+        }
+        shownTooltipId = trUnderMouse.id;
+      }
+  });
+}
+
+
 function getServiceHistory(){
     let out = '';
 
@@ -490,6 +545,10 @@ function getServiceHistory(){
         out += '</tbody></table>';
         if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.length>9){
             out += '<button id="showHideMoreServiceVisits">Show more</button>';
+        }
+        if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.serviceVisitsDetailsLines){
+            out += serviceBookingProcess.secondaryDetails.serviceVisitDetails.serviceVisitsDetailsLines;
+            serviceVisitsTooltips();
         }
         setTimeout(() => {
             if (document.getElementById("showHideMoreServiceVisits")) document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
