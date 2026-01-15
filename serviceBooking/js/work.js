@@ -544,10 +544,10 @@ function getServiceHistory(){
         }
         if (serviceBookingProcess.secondaryDetails.serviceVisitsDetailsLines){
             out += serviceBookingProcess.secondaryDetails.serviceVisitsDetailsLines;
-            serviceVisitsTooltips();
         }
         setTimeout(() => {
             if (document.getElementById("showHideMoreServiceVisits")) document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
+            serviceVisitsTooltips();
         }, 1000);
     } else {
         if (serviceBookingProcess.secondaryDetails){
