@@ -485,6 +485,7 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
   if (serviceTooltipsActive) return;
   $('div[id*="tooltip"]').each(function(){
     $(this).attr("style","display:none;");
+    $(this).attr("class","tooltipDiv");
   });
   $('div[id="serviceHistory"]').on("mouseleave", function (e) {
     //console.log('HIDE AFTER LEAVE')
