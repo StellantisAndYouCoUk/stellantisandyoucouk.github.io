@@ -492,7 +492,6 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
   });
 
   $('div[id="serviceHistory"]').on("mousemove", function (e) {
-      //console.log('on move');
       let partOfTable = document.elementFromPoint(e.pageX, e.pageY - document.documentElement.scrollTop);
       let trUnderMouse = null;
       if (partOfTable){
