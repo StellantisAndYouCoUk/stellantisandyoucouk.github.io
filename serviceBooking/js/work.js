@@ -731,7 +731,7 @@ async function generateBookingSummary(){
     let labourSummary = [];
     if (serviceBookingProcess.bookingData.orderedCodes){
         let total = 0;
-        html += '<br /><br /><b>Booked Items</b><table width=100%><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
+        html += '<br /><br /><b>Booked Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
             console.log(justCode,serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]);
