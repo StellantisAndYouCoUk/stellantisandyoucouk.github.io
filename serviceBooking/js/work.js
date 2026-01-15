@@ -312,6 +312,13 @@ function work(){
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
             $('div[id="step3"]').hide();
+            $('div[id="customerDetails"]').html('');
+            $('div[id="vehicleDescription"]').html('');
+            $('div[id="serviceSuggestions"]').html('');
+            $('div[id="serviceHistory"]').html('');
+            $('div[id="recalls"]').html('');
+            $('div[id="vehicleDetailsServiceBox"]').html('');
+            $('div[id="servicePlans"]').html('');
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;">&nbsp;&nbsp;&nbsp;'+serviceBookingProcess.registrationNumber+'&nbsp;&nbsp;&nbsp;</span>')
             $('h1[id="registrationNumberShow"]').show();
@@ -752,7 +759,7 @@ async function generateBookingSummary(){
             }
             serviceBookingProcess.bookingData.labourSummary = labourSummary;
         }  
-        html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" ng-model="discountPercent" ng-click="applyDiscount(0)" class="ng-pristine ng-valid ng-not-empty ng-touched" value="0"><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" ng-value="5" ng-model="discountPercent" ng-click="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" ng-value="10" ng-model="discountPercent" ng-click="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" ng-style="totalDiscount &gt; 0 &amp;&amp; {\'color\':\'red\'}" class="ng-binding"><span ng-show="totalDiscount &gt; 0" class="ng-hide">-</span>£0.00</td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
+        html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" ng-style="totalDiscount &gt; 0 &amp;&amp; {\'color\':\'red\'}" class="ng-binding"><span ng-show="totalDiscount &gt; 0" class="ng-hide">-</span>£0.00</td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
         html += '</table>';
         html += '<b>Total price: £' + total+'</b><br />'
     } else {serviceBookingProcess.bookingData.labourSummary=null}
