@@ -518,6 +518,7 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
         }
       }
       if (trUnderMouse && trUnderMouse.id){
+        if (!$('div[id="tooltip_'+trUnderMouse.id+'"]')) return;
         $('div[id="tooltip_'+trUnderMouse.id+'"]').show();
         $('div[id="tooltip_'+trUnderMouse.id+'"]').attr("style","background:white;");
         let tooltipLeft = document.getElementById('serviceVisitsTable').getBoundingClientRect().left-250;
