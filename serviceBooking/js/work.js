@@ -525,7 +525,7 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
         if (tooltipLeft<50) tooltipLeft = 50;
         if (tooltipPlace==='rightBottomOnMouse'){
           tooltipLeft = e.pageX - $('div[id="tooltip_'+trUnderMouse.id+'"]').width() - 20;
-          console.log('tooltipLeft',tooltipLeft);
+          console.log('tooltipLeft',tooltipLeft,e.pageX,$('div[id="tooltip_'+trUnderMouse.id+'"]').width());
           if (tooltipLeft<10) tooltipLeft = 10;
           tooltipTop = e.pageY - $('div[id="tooltip_'+trUnderMouse.id+'"]').height() - 20;
           console.log('tooltipTop',tooltipTop);
