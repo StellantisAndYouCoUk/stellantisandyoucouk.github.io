@@ -779,19 +779,19 @@ async function generateBookingSummary(){
         }  
         html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" ng-style="totalDiscount &gt; 0 &amp;&amp; {\'color\':\'red\'}" class="ng-binding"><span ng-show="totalDiscount &gt; 0" class="ng-hide">-</span>£0.00</td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
         html += '</table>';
-        html += '<b>Total price: £' + total+'</b>'
+        html += '<b>Total price: £' + total+'</b><br />'
     } else {serviceBookingProcess.bookingData.labourSummary=null}
     $('div[id="bookingSummary"]').html(html);
     if (serviceBookingProcess.bookingData.confirmAvailability){
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
-            html += '<br />Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)
+            html += '<br /><b>Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</b>'
         } else {
-            html += '<br />Date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'<span style=\"color:red;\">NOT AVAILABLE</span>')
+            html += '<br /><b>Date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'<span style=\"color:red;\">NOT AVAILABLE</span>')+'</b>'
         }
     }
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
-        html += '<br /><br /><b>Workshop availability</b>';
+        html += '<br /><b>Workshop availability</b>';
         html += formatAvailability(aV.availability,0,aV.maxCheckedDate);
         html += formatAvailability(aV.availability,1,aV.maxCheckedDate);
         html += formatAvailability(aV.availability,2,aV.maxCheckedDate);
