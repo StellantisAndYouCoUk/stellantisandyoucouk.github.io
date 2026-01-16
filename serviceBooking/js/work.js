@@ -786,7 +786,7 @@ async function generateBookingSummary(){
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
             html += '<br /><b>Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</b>'
         } else {
-            html += '<br /><b>Date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'<span style=\"color:red;\">NOT AVAILABLE</span>')+'</b>'
+            html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'NOT AVAILABLE')+'</b></span>'
         }
     }
     let aV = findAvailabilityDaysForBooking();
