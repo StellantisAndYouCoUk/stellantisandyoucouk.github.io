@@ -571,7 +571,7 @@ function getServiceHistory(){
         setTimeout(() => {
             if (document.getElementById("showHideMoreServiceVisits")) document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
             serviceVisitsTooltips();
-        }, 1000);
+        }, 500);
     } else {
         if (serviceBookingProcess.secondaryDetails){
             out = '';
