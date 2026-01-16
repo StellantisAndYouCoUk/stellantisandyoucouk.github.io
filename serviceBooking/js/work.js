@@ -206,10 +206,12 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 }
 
 function checkBookDate(date){
-    serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking'};
+    serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
     let r = confirmAvailabilityForDate(date);
-    serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checked',data:r};
-    console.log('checkBookDate',r)
+    serviceBookingProcess.bookingData.confirmAvailability.status = 'checked';
+    serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = r.dateAvailable;
+    console.log('checkBookDate',r);
+    generateBookingSummary();
 }
 
 function bookVisit(dealershipId){
@@ -777,9 +779,16 @@ async function generateBookingSummary(){
         }  
         html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" ng-style="totalDiscount &gt; 0 &amp;&amp; {\'color\':\'red\'}" class="ng-binding"><span ng-show="totalDiscount &gt; 0" class="ng-hide">-</span>£0.00</td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
         html += '</table>';
-        html += '<b>Total price: £' + total+'</b><br />'
+        html += '<b>Total price: £' + total+'</b>'
     } else {serviceBookingProcess.bookingData.labourSummary=null}
     $('div[id="bookingSummary"]').html(html);
+    if (serviceBookingProcess.bookingData.confirmAvailability){
+        if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
+            html += '<br />Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)
+        } else {
+            html += '<br />Date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'<span style=\"color:red;\">NOT AVAILABLE</span>')
+        }
+    }
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
         html += '<br /><br /><b>Workshop availability</b>';
