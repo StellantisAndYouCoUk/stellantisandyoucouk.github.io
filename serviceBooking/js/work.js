@@ -495,9 +495,9 @@ function getServicePlans(){
 let shownTooltipId = null;
 let serviceTooltipsActive = false;
 function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
-  console.log('serviceVisitsTooltips',tooltipPlace);
+  console.log('serviceVisitsTooltips',tooltipPlace, $('div[id*="tooltip_"]'));
   if (serviceTooltipsActive) return;
-  $('div[id*="tooltip"]').each(function(){
+  $('div[id*="tooltip_"]').each(function(){
     $(this).attr("style","display:none;");
     $(this).attr("class","tooltipDiv");
   });
