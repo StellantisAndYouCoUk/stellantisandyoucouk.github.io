@@ -720,7 +720,7 @@ function getGDPRHTMLforOne(chanellOption){
 
 var autolineRTSCodes = null;
 var autolineRTSCodesExpires = null;
-function refreshAutolineRTSCodes(hardRefresh = false, rtsCodeToCheck = null){
+async function refreshAutolineRTSCodes(hardRefresh = false, rtsCodeToCheck = null){
     if (hardRefresh || !autolineRTSCodes || autolineRTSCodesExpires<new Date() || (rtsCodeToCheck!==null && autolineRTSCodes.find(el => el.RTSCode === rtsCodeToCheck)===undefined)){
         autolineRTSCodes = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getAutolineRTSCodes?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
         autolineRTSCodesExpires = new Date();
