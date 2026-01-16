@@ -49,6 +49,33 @@ function callPostHttpRequest(url, headers,payloadObject){
     }
 }
 
+function callPostHttpRequestAsync(url, headers,payloadObject, callback){
+    try{
+      let commandURL = url ;
+      let dataToSend = JSON.stringify(payloadObject) ;
+      let requestObj = {
+        url: commandURL,
+        type: 'POST',
+        contentType: 'application/json',
+        data: dataToSend,
+        headers:headers
+      };
+      console.log(requestObj);
+      $.ajax(requestObj).done(function(data) {
+            let dataJ = JSON.parse(data)
+            try {
+                callback(dataJ);
+                //(new Function('return '+callback)(data))(dataJ);
+            } catch (ex){
+                console.log('callbackFailed',ex)
+            }
+        });;
+      return true;
+    } catch(exception) {
+      console.log(exception);
+    }
+}
+
 async function callPostHttpRequestWithCompress(url, headers,payloadObject){
     try{
       let commandURL = url ;
@@ -274,7 +301,11 @@ function searchRegistration(registrationNumber){
 }
 
 async function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumber=null,make=null,VIN=null){
-    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN});
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN},getSecondaryDetailsCallback);
+}
+
+async function getSecondaryDetailsCallback(r){
+    console.log('getSecondaryDetailsCallback',r)
     if (r.success && r.data){
         console.log('getSecondaryDetails success')
         serviceBookingProcess.secondaryDetails = r.data;
