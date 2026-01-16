@@ -206,7 +206,10 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 }
 
 function checkBookDate(date){
-
+    serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking'};
+    let r = confirmAvailabilityForDate(date);
+    serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checked',data:r};
+    console.log('checkBookDate',r)
 }
 
 function bookVisit(dealershipId){
@@ -732,6 +735,11 @@ function removeCodeFromBooking(code){
     if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+}
+
+function confirmAvailabilityForDate(dateToCheck){
+    if (!serviceBookingProcess.bookingData.labourSummary) return null;
+    return callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/confirmWorkshopAvailabilityForLabourDate?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary,dateToCheck:dateToCheck});
 }
 
 function findAvailabilityDaysForBooking(){
