@@ -503,11 +503,11 @@ let shownTooltipId = null;
 let serviceTooltipsActive = false;
 function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
   console.log('serviceVisitsTooltips',tooltipPlace, $('div[id*="tooltip_"]'));
-  if (serviceTooltipsActive) return;
   $('div[id*="tooltip_"]').each(function(){
     $(this).attr("style","display:none;");
     $(this).attr("class","tooltipDiv");
   });
+  if (serviceTooltipsActive) return;
   $('div[id="serviceHistory"]').on("mouseleave", function (e) {
     //console.log('HIDE AFTER LEAVE')
     $('div[id="tooltip_'+shownTooltipId+'"]').hide();
@@ -567,10 +567,12 @@ function getServiceHistory(){
         }
         if (serviceBookingProcess.secondaryDetails.serviceVisitsDetailsLines){
             out += serviceBookingProcess.secondaryDetails.serviceVisitsDetailsLines;
+            setTimeout(() => {
+                serviceVisitsTooltips();
+            }, 500);
         }
         setTimeout(() => {
             if (document.getElementById("showHideMoreServiceVisits")) document.getElementById("showHideMoreServiceVisits").onclick = showHideMoreServiceVisits;
-            serviceVisitsTooltips();
         }, 500);
     } else {
         if (serviceBookingProcess.secondaryDetails){
