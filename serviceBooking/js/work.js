@@ -552,7 +552,7 @@ function getServiceHistory(){
         out = '<table id="serviceVisitsTable"><tbody><tr><th>Date</th><th>Miles</th><th>Work type</th></tr>';
         for (let i =0;i<serviceBookingProcess.secondaryDetails.serviceVisitDetails.length;i++){
             let sV = serviceBookingProcess.secondaryDetails.serviceVisitDetails[i];
-            out += '<tr id="'+parseNum(sV.InvoiceNumber)+'"'+(i>9?' class="more" style="display: none;"':'')+'><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
+            out += '<tr id="'+parseInt(sV.InvoiceNumber)+'"'+(i>9?' class="more" style="display: none;"':'')+'><td>'+dateToGB(new Date(sV.DateOfService))+'</td><td>'+sV.Mileage+'</td><td>'+sV.ServiceText+'</td></tr>'
         }
         out += '</tbody></table>';
         if (serviceBookingProcess.secondaryDetails.serviceVisitDetails.length>9){
