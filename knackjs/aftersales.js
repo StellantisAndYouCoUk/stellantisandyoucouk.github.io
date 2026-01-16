@@ -4991,7 +4991,7 @@ console.log("renderSYSearchButtons('5091',defineButtons);")
 	
 //Restrict Available Times for workshop planned date
 
-var view_names = ["view_2942"]; ///add view numbers as necessary
+var view_names = ["view_2942","view_2686","view_2892","view_2351"]; ///add view numbers as necessary
 
 view_names.forEach(bindToUpdate1);
 
