@@ -4988,3 +4988,24 @@ console.log("renderSYSearchButtons('5091',defineButtons);")
     });
 });
 
+	
+//Restrict Available Times for workshop planned date
+
+var view_names = ["view_2942","view_2686","view_2892","view_2351"]; ///add view numbers as necessary
+
+view_names.forEach(bindToUpdate1);
+
+function bindToUpdate1(selector_view_name){
+$(document).on('knack-view-render.' + selector_view_name, function(event, view, data) {
+
+$(document).ready(function(){
+$('.ui-timepicker-input').timepicker({
+minTime: '08:00:00',     //  8:00 AM,  Change as necessary
+maxTime: '18:30:00',        //  7:00 PM,  Change as necessary
+step: '15'		// Dropdown Interval every 15 mins
+
+});
+});
+});
+
+}
