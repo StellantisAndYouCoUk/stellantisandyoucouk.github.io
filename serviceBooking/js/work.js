@@ -233,13 +233,14 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function checkBookDate(date){
     serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
-    setTimeout(() => {
-        let r = confirmAvailabilityForDate(date);
-        serviceBookingProcess.bookingData.confirmAvailability.status = 'checked';
-        serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = r.dateAvailable;
-        console.log('checkBookDate',r);
-        generateBookingSummary();
-    }, 100);
+    confirmAvailabilityForDate(date,checkBookDateCallback);
+    generateBookingSummary();
+}
+
+function checkBookDateCallback(data){
+    serviceBookingProcess.bookingData.confirmAvailability.status = 'checked';
+    serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = data.dateAvailable;
+    generateBookingSummary();
 }
 
 function bookVisit(dealershipId){
@@ -329,19 +330,17 @@ function work(){
         if (supportDataS) try { supportData = JSON.parse(supportDataS); } catch (ex){}
         console.log('supportData storage',supportData);
         if (!supportData){
-            setTimeout(() => {
-                supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
-                console.log(supportData);
-                sessionStorage.setItem('supportData',JSON.stringify(supportData));
-            }, 100);
+            supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
+            //console.log(supportData);
+            sessionStorage.setItem('supportData',JSON.stringify(supportData));
         }
     }
     if (!serviceBookingProcess.registrationNumber){
         let serviceBookingProcessS = sessionStorage.getItem('serviceBookingProcess')
-        console.log('serviceBookingProcess1',serviceBookingProcess,serviceBookingProcessS)
+        //console.log('serviceBookingProcess1',serviceBookingProcess,serviceBookingProcessS)
         if (serviceBookingProcessS) try { serviceBookingProcess = JSON.parse(serviceBookingProcessS)} catch (ex){};
     }
-    console.log('serviceBookingProcess',serviceBookingProcess)
+    //console.log('serviceBookingProcess',serviceBookingProcess)
     let qV = getUrlVars();
     if (page.includes('index.html')){
         if (!serviceBookingProcess.registrationNumber){
@@ -750,14 +749,18 @@ function getGDPRHTMLforOne(chanellOption){
 
 var autolineRTSCodes = null;
 var autolineRTSCodesExpires = null;
-async function refreshAutolineRTSCodes(hardRefresh = false, rtsCodeToCheck = null){
+function refreshAutolineRTSCodes(hardRefresh = false, rtsCodeToCheck = null){
     let onlyRTSCode = (rtsCodeToCheck && rtsCodeToCheck.includes('#')?rtsCodeToCheck.split('#')[1]:rtsCodeToCheck)
     if (hardRefresh || !autolineRTSCodes || autolineRTSCodesExpires<new Date() || (rtsCodeToCheck!==null && autolineRTSCodes.find(el => el.RTSCode === onlyRTSCode)===undefined)){
         console.log(rtsCodeToCheck,onlyRTSCode,(rtsCodeToCheck!==null && autolineRTSCodes.find(el => el.RTSCode === onlyRTSCode)===undefined))
-        autolineRTSCodes = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getAutolineRTSCodes?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
-        autolineRTSCodesExpires = new Date();
-        autolineRTSCodesExpires.setMinutes(autolineRTSCodesExpires.getMinutes()+15);
+        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getAutolineRTSCodes?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token},refreshAutolineRTSCodesCallback);
     }
+}
+
+function refreshAutolineRTSCodesCallback(data){
+    autolineRTSCodes = data;
+    autolineRTSCodesExpires = new Date();
+    autolineRTSCodesExpires.setMinutes(autolineRTSCodesExpires.getMinutes()+15);
 }
 
 function addCodeToBooking(code){
@@ -765,6 +768,7 @@ function addCodeToBooking(code){
     let cT = serviceBookingProcess.bookingData.orderedCodes.find(el => el === code);
     if (!cT){
         serviceBookingProcess.bookingData.orderedCodes.push(code);
+        serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     }
 }
@@ -772,12 +776,13 @@ function addCodeToBooking(code){
 function removeCodeFromBooking(code){
     if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
+    serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
 }
 
-function confirmAvailabilityForDate(dateToCheck){
+function confirmAvailabilityForDate(dateToCheck, callback){
     if (!serviceBookingProcess.bookingData.labourSummary) return null;
-    return callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/confirmWorkshopAvailabilityForLabourDate?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary,dateToCheck:dateToCheck});
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/confirmWorkshopAvailabilityForLabourDate?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary,dateToCheck:dateToCheck},callback);
 }
 
 function findAvailabilityDaysForBooking(){
@@ -825,6 +830,7 @@ async function generateBookingSummary(){
             html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'NOT AVAILABLE')+'</b></span>'
         }
     }
+
     let aV = findAvailabilityDaysForBooking();
     if (aV && aV.availability.length>0){
         html += '<br /><b>Workshop availability</b>';
