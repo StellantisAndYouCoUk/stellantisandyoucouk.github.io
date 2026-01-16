@@ -481,6 +481,13 @@ function getServicePlans(){
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable!==''){
         out += serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable;
     }
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.emac && serviceBookingProcess.secondaryDetails.emac.Response){
+        if (!serviceBookingProcess.secondaryDetails.emac.Response.AgreementsFound){
+            out += '<br /><br /><b>EMAC</b> Service Plan was not found';
+        } else {
+            out += '<br /><br /><b>EMAC</b> FOUND - work';
+        }
+    }
     return out;
 }
 
