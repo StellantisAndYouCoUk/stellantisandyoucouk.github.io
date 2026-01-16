@@ -62,9 +62,8 @@ function callPostHttpRequestAsync(url, headers,payloadObject, callback){
       };
       console.log(requestObj);
       $.ajax(requestObj).done(function(data) {
-            let dataJ = JSON.parse(data)
             try {
-                callback(dataJ);
+                callback(data);
                 //(new Function('return '+callback)(data))(dataJ);
             } catch (ex){
                 console.log('callbackFailed',ex)
