@@ -207,11 +207,13 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function checkBookDate(date){
     serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
-    let r = confirmAvailabilityForDate(date);
-    serviceBookingProcess.bookingData.confirmAvailability.status = 'checked';
-    serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = r.dateAvailable;
-    console.log('checkBookDate',r);
-    generateBookingSummary();
+    setTimeout(() => {
+        let r = confirmAvailabilityForDate(date);
+        serviceBookingProcess.bookingData.confirmAvailability.status = 'checked';
+        serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = r.dateAvailable;
+        console.log('checkBookDate',r);
+        generateBookingSummary();
+    }, 100);
 }
 
 function bookVisit(dealershipId){
