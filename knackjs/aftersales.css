@@ -2849,3 +2849,11 @@ div#view_4746 {
   	font-weight: bold;
   	box-shadow:         3px 3px #ccc;
 }
+
+
+
+/* Change submit button for link to policy approval page from job card */
+
+#scene_762 #view_5183.kn-action-button {
+  background-color: #f0f0f0;
+}
