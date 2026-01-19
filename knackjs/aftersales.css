@@ -2854,6 +2854,6 @@ div#view_4746 {
 
 /* Change submit button for link to policy approval page from job card */
 
-#view_5183.kn-button {
+#view_5183..kn-button.is-primary {
   background-color: #FFA100 !important;
 }
