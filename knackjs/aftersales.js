@@ -5002,7 +5002,7 @@ $(document).ready(function(){
 $('.ui-timepicker-input').timepicker({
 minTime: '08:00:00',     //  8:00 AM,  Change as necessary
 maxTime: '18:30:00',        //  7:00 PM,  Change as necessary
-step: '15'		// Dropdown Interval every 15 mins
+step: '30'		// Dropdown Interval every 15 mins
 
 });
 });
