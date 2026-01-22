@@ -5052,12 +5052,13 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
 });
 
 //workshop planned date time make it mandatory on Allocated jobs by techs
+
 $(document).on('knack-view-render.view_5091', function(event, view, data) { 
 
     $("#view_5091 a.kn-button.is-primary.save").on("click", function(e) { 
 
-        const dateInput = $('#view_5091_celleditor-field_3429'); 
-        const timeInput = $('#view_5091_celleditor-field_3429-time'); 
+        const dateInput = $('input[name="date"]'); 
+        const timeInput = $('input[name="time"]'); 
 
         // ---------------------------
         // 1) DATE IS BLANK → ERROR
@@ -5089,4 +5090,5 @@ $(document).on('knack-view-render.view_5091', function(event, view, data) {
 
     }); 
 });
+
 
