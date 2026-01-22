@@ -5013,8 +5013,6 @@ step: '30'		// Dropdown Interval every 15 mins
 
 
 //Workshop planned date time, make it mandatory for when allocating techncians
-
-
 $(document).on('knack-view-render.view_2942', function(event, view, data) { 
 
     $("#view_2942 button.kn-button.is-primary").on("click", function() { 
@@ -5052,3 +5050,43 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
 
     }); 
 });
+
+//workshop planned date time make it mandatory on Allocated jobs by techs
+$(document).on('knack-view-render.view_5091', function(event, view, data) { 
+
+    $("#view_5091 a.kn-button.is-primary.save").on("click", function(e) { 
+
+        const dateInput = $('#view_5091_celleditor-field_3429'); 
+        const timeInput = $('#view_5091_celleditor-field_3429-time'); 
+
+        // ---------------------------
+        // 1) DATE IS BLANK → ERROR
+        // ---------------------------
+        if (!dateInput.val().trim()) { 
+            e.preventDefault(); 
+            alert('Please Populate a Date'); 
+            dateInput.addClass('input-error'); 
+            dateInput.focus(); 
+            return false; 
+        } else { 
+            dateInput.removeClass('input-error'); 
+        };
+
+        // ---------------------------
+        // 2) TIME IS BLANK OR 00:00 → ERROR
+        // ---------------------------
+        const timeValue = timeInput.val().trim();
+
+        if (!timeValue || timeValue === "00:00") {
+            e.preventDefault(); 
+            alert('Please Populate a Valid Time'); 
+            timeInput.addClass('input-error'); 
+            timeInput.focus(); 
+            return false; 
+        } else { 
+            timeInput.removeClass('input-error'); 
+        };
+
+    }); 
+});
+
