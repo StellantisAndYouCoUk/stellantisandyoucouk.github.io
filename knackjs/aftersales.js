@@ -5057,8 +5057,8 @@ $(document).on('knack-view-render.view_5091', function(event, view, data) {
 
     $("#view_5091 a.kn-button.is-primary.save").on("click", function(e) { 
 
-        const dateInput = $('input[name="date"]'); 
-        const timeInput = $('input[name="time"]'); 
+        const dateInput = $('#view_5091_celleditor-field_3429, input[name="date"]'); 
+        const timeInput = $('#view_5091_celleditor-field_3429-time, input[name="time"]'); 
 
         // ---------------------------
         // 1) DATE IS BLANK → ERROR
@@ -5090,5 +5090,6 @@ $(document).on('knack-view-render.view_5091', function(event, view, data) {
 
     }); 
 });
+
 
 
