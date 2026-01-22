@@ -5012,6 +5012,9 @@ step: '30'		// Dropdown Interval every 15 mins
 
 
 
+/*
+//Workshop planned date time, make it mandatory for when allocating techncians
+
 $(document).on('knack-view-render.view_5234', function(event, view, data) {  
 
     $("#view_5234 button.kn-button.is-primary").on("click", function() {   
@@ -5049,3 +5052,4 @@ $(document).on('knack-view-render.view_5234', function(event, view, data) {
         }; 
     });  
 }); 
+*/
