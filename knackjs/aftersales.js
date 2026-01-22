@@ -5012,44 +5012,43 @@ step: '30'		// Dropdown Interval every 15 mins
 
 
 
-/*
 //Workshop planned date time, make it mandatory for when allocating techncians
 
-$(document).on('knack-view-render.view_5234', function(event, view, data) {  
 
-    $("#view_5234 button.kn-button.is-primary").on("click", function() {   
+$(document).on('knack-view-render.view_5234', function(event, view, data) { 
 
-        const dateInput = $('#date');  
-        const timeInput = $('#time');  
-        // --------------------------- 
-        // 1) DATE IS BLANK → ERROR 
-        // --------------------------- 
+    $("#view_5234 button.kn-button.is-primary").on("click", function() { 
 
-        if (!dateInput.val().trim()) {  
-            event.preventDefault();  
-            alert('Please Populate a Date');  
-            dateInput.addClass('input-error');  
-            dateInput.focus();  
-            return false;  
-        } else {  
+        const dateInput = $('#view_5234-field_3429'); 
+        const timeInput = $('#view_5234-field_3429-time'); 
 
-            dateInput.removeClass('input-error');  
+        // ---------------------------
+        // 1) DATE IS BLANK → ERROR
+        // ---------------------------
+        if (!dateInput.val().trim()) { 
+            event.preventDefault(); // Stop form submission 
+            alert('Please Populate a Date'); // Show an alert 
+            dateInput.addClass('input-error'); // Add error styling 
+            dateInput.focus(); // Focus on the empty field 
+            return false; // Explicitly stop submission 
+        } else { 
+            dateInput.removeClass('input-error'); 
+        };
 
-        }; 
-        // --------------------------- 
-        // 2) TIME IS BLANK OR 00:00 → ERROR 
-        // --------------------------- 
-        const timeValue = timeInput.val().trim(); 
-        if (!timeValue || timeValue === "00:00") { 
-            event.preventDefault();  
-            alert('Please Populate a Valid Time');  
-            timeInput.addClass('input-error');  
-            timeInput.focus();  
-            return false;  
-        } else {  
+        // ---------------------------
+        // 2) TIME IS BLANK OR 00:00 → ERROR
+        // ---------------------------
+        const timeValue = timeInput.val().trim();
 
-            timeInput.removeClass('input-error');  
-        }; 
-    });  
-}); 
-*/
+        if (!timeValue || timeValue === "00:00") {
+            event.preventDefault(); // Stop form submission 
+            alert('Please Populate a Valid Time'); // Show an alert 
+            timeInput.addClass('input-error'); // Add error styling 
+            timeInput.focus(); // Focus on the empty field 
+            return false; // Explicitly stop submission 
+        } else { 
+            timeInput.removeClass('input-error'); 
+        };
+
+    }); 
+});
