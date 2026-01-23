@@ -147,7 +147,8 @@ var supportData = null;
 var token = null;
 var loggedInUser = null;
 
-window.onerror = function(event,srouce,lineno,colno,error){
+window.onerror = function(event,source,lineno,colno,error){
+    console.error(event,source,lineno,colno,error)
     $('nav').append('<span style=\"color:red;\">Unexpected error occured - try to reload the page to update to newest version</span>');
 }
 
