@@ -437,6 +437,8 @@ function checkBookingDataForDealership(lastDealership){
                             $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
                             $('div[id="bookingProblems"]').show();
                         } else {
+                            let savedCodes = null;
+                            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = Object.assign({},serviceBookingProcess.bookingData.orderedCodes);
                             serviceBookingProcess.bookingData = {
                                 dealer : lastDealership,
                                 knackDealerId : lastDealership.id,
@@ -448,6 +450,7 @@ function checkBookingDataForDealership(lastDealership){
                                 yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
                                 bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
                             };
+                            if (savedCodes) serviceBookingProcess.bookingData.orderedCodes = savedCodes;
                             sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
                         }
                     }
