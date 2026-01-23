@@ -941,7 +941,8 @@ function generateTableFromData(data, isServiceSchedule = false, pricingPath = ''
     if (!data || !data.length) return '';
     let html = '<table class="table table-sm" width="100%"><tbody>';
     for (let i = 0;i<data.length;i++){
-        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+(isServiceSchedule?'serviceSchedule_'+data[i].Age+'_':'')+pricingPath+'#'+data[i].Code+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes(data[i].Code))?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
+        let dataCode = (isServiceSchedule?'serviceSchedule_'+data[i].Age+'_':'')+pricingPath+'#'+data[i].Code;
+        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':'')+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+dataCode+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el === dataCode)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
     }
     html += '</tbody></table>';
     return html;
