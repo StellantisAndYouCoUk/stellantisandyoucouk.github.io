@@ -442,7 +442,7 @@ function checkBookingDataForDealership(checkDealership){
                             serviceBookingProcess.bookingData = null;
                         } else {
                             let savedCodes = null;
-                            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = Object.assign({},serviceBookingProcess.bookingData.orderedCodes);
+                            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
                             serviceBookingProcess.bookingData = {
                                 dealer : checkDealership,
                                 knackDealerId : checkDealership.id,
