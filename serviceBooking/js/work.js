@@ -796,6 +796,7 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodes.push(code);
         serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        serviceBookingProcess.bookingData.confirmAvailability = null;
     }
 }
 
