@@ -777,15 +777,16 @@ var autolineRTSCodes = null;
 var autolineRTSCodesExpires = null;
 function refreshAutolineRTSCodes(hardRefresh = false, rtsCodeToCheck = null){
     let onlyRTSCode = (rtsCodeToCheck && rtsCodeToCheck.includes('#')?rtsCodeToCheck.split('#')[1]:rtsCodeToCheck)
-    if (hardRefresh || !autolineRTSCodes || autolineRTSCodesExpires<new Date() || (rtsCodeToCheck!==null && autolineRTSCodes.find(el => el.RTSCode === onlyRTSCode)===undefined)){
+    if (hardRefresh || !supportData.autolineRTSCodes || supportData.autolineRTSCodesExpires<new Date() || (rtsCodeToCheck!==null && supportData.autolineRTSCodes.find(el => el.RTSCode === onlyRTSCode)===undefined)){
         callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getAutolineRTSCodes?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token},refreshAutolineRTSCodesCallback);
     }
 }
 
 function refreshAutolineRTSCodesCallback(data){
-    autolineRTSCodes = data;
-    autolineRTSCodesExpires = new Date();
-    autolineRTSCodesExpires.setMinutes(autolineRTSCodesExpires.getMinutes()+15);
+    supportData.autolineRTSCodes = data;
+    supportData.autolineRTSCodesExpires = new Date();
+    supportData.autolineRTSCodesExpires.setMinutes(supportData.autolineRTSCodesExpires.getMinutes()+15);
+    sessionStorage.setItem('supportData',JSON.stringify(supportData));
 }
 
 function addCodeToBooking(code){
@@ -835,8 +836,8 @@ async function generateBookingSummary(){
             console.log(justCode, pricingDetailsForCode)
             html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeItem(item);"></i></td></tr>';
             total += pricingDetailsForCode.Price
-            if (autolineRTSCodes){
-                let aCode = autolineRTSCodes.find(el => el.RTSCode === justCode);
+            if (supportData.autolineRTSCodes){
+                let aCode = supportData.autolineRTSCodes.find(el => el.RTSCode === justCode);
                 if (aCode){
                     let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
                     if (lT){
