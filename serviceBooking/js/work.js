@@ -273,12 +273,11 @@ function bookVisit(dealershipId){
         setTimeout(() => {
             refreshAutolineRTSCodes()
         }, 5000);
-        work();
     } else {
         /*$('div[id="bookingProblems"]').html('Not all data for pricing there.');
         $('div[id="bookingProblems"]').show();*/
-        return null;
     }
+    work();
 }
 
 function searchRegistration(registrationNumber){
