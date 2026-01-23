@@ -415,6 +415,8 @@ function work(){
                     refreshAutolineRTSCodes(false,$(this).attr('data-code'))
                     generateBookingSummary();
                 });
+            } else {
+                $('div[id="step3"]').hide(); 
             }
         }
     }
