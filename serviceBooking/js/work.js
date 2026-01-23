@@ -302,7 +302,7 @@ function searchRegistration(registrationNumber){
 
 async function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumber=null,make=null,VIN=null){
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN},getSecondaryDetailsCallback);
-    $('#infoPanel').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading data from more sources ...');
+    $('#infoPanel').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading data from more sources ...&nbsp; &nbsp; &nbsp; ');
 }
 
 async function getSecondaryDetailsCallback(r){
@@ -314,7 +314,7 @@ async function getSecondaryDetailsCallback(r){
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
     } else {
-        $('#infoPanel').html('<span style="color:red;">Loading of secondary data failed ...</span>');
+        $('#infoPanel').html('<span style="color:red;">Loading of secondary data failed ...&nbsp; &nbsp; &nbsp; </span>');
     }
 }
 
