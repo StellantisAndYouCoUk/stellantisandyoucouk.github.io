@@ -800,6 +800,11 @@ function addCodeToBooking(code){
     }
 }
 
+function removeCodeFromBookingWBS(code){
+    removeCodeFromBooking(code);
+    generateBookingSummary();
+}
+
 function removeCodeFromBooking(code){
     console.log('removeCodeFromBooking',code)
     if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
@@ -837,7 +842,7 @@ async function generateBookingSummary(){
             console.log(justCode,serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]);
             let pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_')?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
             console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBooking(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
+            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
             total += pricingDetailsForCode.Price
             if (supportData.autolineRTSCodes){
                 let aCode = supportData.autolineRTSCodes.find(el => el.RTSCode === justCode);
