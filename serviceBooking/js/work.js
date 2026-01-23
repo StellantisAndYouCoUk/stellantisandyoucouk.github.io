@@ -801,6 +801,7 @@ function addCodeToBooking(code){
 }
 
 function removeCodeFromBooking(code){
+    console.log('removeCodeFromBooking',code)
     if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
