@@ -252,6 +252,7 @@ function bookVisit(dealershipId){
         }
     }
     $('div[id="bookingProblems"]').hide();
+    window.scrollTo(0, 0);
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Mileage needs to be entered.</span>');
