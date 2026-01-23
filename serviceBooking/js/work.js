@@ -275,8 +275,8 @@ function bookVisit(dealershipId){
         }, 5000);
         work();
     } else {
-        $('div[id="bookingProblems"]').html('Not all data for pricing there.');
-        $('div[id="bookingProblems"]').show();
+        /*$('div[id="bookingProblems"]').html('Not all data for pricing there.');
+        $('div[id="bookingProblems"]').show();*/
         return null;
     }
 }
@@ -427,19 +427,19 @@ function checkBookingDataForDealership(checkDealership){
     if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
                 if (!kF){
-                    $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make);
+                    $('div[id="bookingProblems"]').text('Brand can not be serviced in selected dealership, car brand: '+serviceBookingProcess.motData.make);
                     $('div[id="bookingProblems"]').show();
                     serviceBookingProcess.bookingData = null;
                 } else {
                     let mF = kF.modelNames.find(el => serviceBookingProcess.motData.model.toLowerCase().includes(el.toLowerCase()))
                     if (!mF){
-                        $('div[id="bookingProblems"]').text('Model not found in last dealership franchise, car model: '+serviceBookingProcess.motData.model)
+                        $('div[id="bookingProblems"]').text('Model not found in pricing data for dealership, car model: '+serviceBookingProcess.motData.model)
                         $('div[id="bookingProblems"]').show();
                         serviceBookingProcess.bookingData = null;
                     } else {
                         let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
                         if (!fT){
-                            $('div[id="bookingProblems"]').text('Fuel type not found in last dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
+                            $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for dealership, car fuel type: '+serviceBookingProcess.motData.fuelType)
                             $('div[id="bookingProblems"]').show();
                             serviceBookingProcess.bookingData = null;
                         } else {
