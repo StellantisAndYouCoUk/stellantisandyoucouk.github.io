@@ -802,7 +802,7 @@ function addCodeToBooking(code){
 
 function removeCodeFromBookingWBS(code){
     removeCodeFromBooking(code);
-    generateBookingSummary();
+    work();
 }
 
 function removeCodeFromBooking(code){
