@@ -715,7 +715,7 @@ function showClosestDealerships(postcode){
         let out = '<table>';
         let usedDealers = 0;
         for (let i = 0;i<serviceBookingProcess.dealershipsToPostcode.dealerships.length;i++){
-            if (serviceBookingProcess.dealershipsToPostcode.dealerships[i].id === serviceBookingProcess.lastDealership.id) continue;
+            if (serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode === serviceBookingProcess.lastDealership.field_2442) continue;
             out += '<tr><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].name+'</td><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return bookVisit(\''+serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode+'\')">Book service</a></td></tr>'
             usedDealers += 1;
             if (usedDealers>=3) break;
