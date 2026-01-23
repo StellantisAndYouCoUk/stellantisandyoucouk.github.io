@@ -259,7 +259,7 @@ function bookVisit(dealershipId){
         $('div[id="bookingProblems"]').show();
         return null;
     }
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId){
+    if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
         let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
         checkBookingDataForDealership(newDealership);
     }
