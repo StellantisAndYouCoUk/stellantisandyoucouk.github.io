@@ -4001,6 +4001,7 @@ function getWorkshopAvailability(status = null,useCustomerAddress=false,customAd
         let closestD = callPostHttpRequest('https://davidmale--server.apify.actor/dealersNearAddress?token=apify_api_RZdYZJQn0qv7TjdZEYQ5vkZ3XmQxch0BU7p2',{Address:addressToUse});
         console.log('closestD',closestD)
         closestD = JSON.parse(closestD);
+        closestD = closestD.slice(0,3);
         if (!status){
           status = {addressData:{closestD:closestD},addressToUse:addressToUse}
         } else {
