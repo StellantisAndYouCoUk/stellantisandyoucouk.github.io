@@ -5002,10 +5002,54 @@ $(document).ready(function(){
 $('.ui-timepicker-input').timepicker({
 minTime: '08:00:00',     //  8:00 AM,  Change as necessary
 maxTime: '18:30:00',        //  7:00 PM,  Change as necessary
-step: '15'		// Dropdown Interval every 15 mins
+step: '30'		// Dropdown Interval every 15 mins
 
 });
 });
 });
 
 }
+
+
+
+//Workshop planned date time, make it mandatory for when allocating techncians
+$(document).on('knack-view-render.view_2942', function(event, view, data) { 
+
+    $("#view_2942 button.kn-button.is-primary").on("click", function() { 
+
+        const dateInput = $('#view_2942-field_3429'); 
+        const timeInput = $('#view_2942-field_3429-time'); 
+
+        // ---------------------------
+        // 1) DATE IS BLANK → ERROR
+        // ---------------------------
+        if (!dateInput.val().trim()) { 
+            event.preventDefault(); // Stop form submission 
+            alert('Please Populate a Date'); // Show an alert 
+            dateInput.addClass('input-error'); // Add error styling 
+            dateInput.focus(); // Focus on the empty field 
+            return false; // Explicitly stop submission 
+        } else { 
+            dateInput.removeClass('input-error'); 
+        };
+
+        // ---------------------------
+        // 2) TIME IS BLANK OR 00:00 → ERROR
+        // ---------------------------
+        const timeValue = timeInput.val().trim();
+
+        if (!timeValue || timeValue === "00:00") {
+            event.preventDefault(); // Stop form submission 
+            alert('Please Populate a Valid Time'); // Show an alert 
+            timeInput.addClass('input-error'); // Add error styling 
+            timeInput.focus(); // Focus on the empty field 
+            return false; // Explicitly stop submission 
+        } else { 
+            timeInput.removeClass('input-error'); 
+        };
+
+    }); 
+});
+
+
+
