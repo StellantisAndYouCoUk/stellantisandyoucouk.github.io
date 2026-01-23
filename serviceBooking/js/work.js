@@ -254,7 +254,7 @@ function bookVisit(dealershipId){
     $('div[id="bookingProblems"]').hide();
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
-        $('div[id="bookingProblems"]').html('Mileage needs to be there.');
+        $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Mileage needs to be entered.</span>');
         $('div[id="bookingProblems"]').show();
         return null;
     }
@@ -302,15 +302,19 @@ function searchRegistration(registrationNumber){
 
 async function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumber=null,make=null,VIN=null){
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN},getSecondaryDetailsCallback);
+    $('#infoPanel').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading data from more sources ...');
 }
 
 async function getSecondaryDetailsCallback(r){
     console.log('getSecondaryDetailsCallback',r)
     if (r.success && r.data){
         console.log('getSecondaryDetails success')
+        $('#infoPanel').html('');
         serviceBookingProcess.secondaryDetails = r.data;
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         work();
+    } else {
+        $('#infoPanel').html('<span style="color:red;">Loading of secondary data failed ...</span>');
     }
 }
 
