@@ -420,9 +420,10 @@ function work(){
     }
 }
 
-function checkBookingDataForDealership(lastDealership){
-    if (lastDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==lastDealership.id)){
-                let kF = lastDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
+function checkBookingDataForDealership(checkDealership){
+    console.log('checkBookingDataForDealership',checkDealership.field_8)
+    if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
+                let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
                 if (!kF){
                     $('div[id="bookingProblems"]').text('Franchise not found in last dealership, car franchise: '+serviceBookingProcess.motData.make);
                     $('div[id="bookingProblems"]').show();
@@ -440,10 +441,10 @@ function checkBookingDataForDealership(lastDealership){
                             let savedCodes = null;
                             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = Object.assign({},serviceBookingProcess.bookingData.orderedCodes);
                             serviceBookingProcess.bookingData = {
-                                dealer : lastDealership,
-                                knackDealerId : lastDealership.id,
-                                dealerName : lastDealership.field_8,
-                                konnectDealerId : lastDealership.konnectData.ID,
+                                dealer : checkDealership,
+                                knackDealerId : checkDealership.id,
+                                dealerName : checkDealership.field_8,
+                                konnectDealerId : checkDealership.konnectData.ID,
                                 konnectFranchiseId : kF.ID,
                                 konnectModelName : mF,
                                 konnectFuelTypeId : fT.ID,
