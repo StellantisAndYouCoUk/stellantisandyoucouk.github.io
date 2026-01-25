@@ -164,7 +164,7 @@ $( document ).ready(function() {
             $("a[id='searchRegistration']").prop("disabled", false);
             return false;
         }
-        searchRegistration($('input[id="registrationNumber"]').val().toUpperCase())
+        searchRegistration($('input[id="registrationNumber"]').val().toUpperCase().replaceAll(' ','').replaceAll('\t',''))
         return false;
     });
 
