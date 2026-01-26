@@ -342,6 +342,7 @@ function work(){
         if (!supportData){
             supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
             //console.log(supportData);
+            if (!supportData.success) supportData = null;
             sessionStorage.setItem('supportData',JSON.stringify(supportData));
         }
     }
