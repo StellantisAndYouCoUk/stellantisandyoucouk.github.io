@@ -452,7 +452,7 @@ function checkBookingDataForDealership(checkDealership){
                     } else {
                         let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
                         if (!fT){
-                            fT = supportData.konnectFuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().includes(el.Name.toLowerCase()));
+                            fT = supportData.konnectFuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().startsWith(el.Name.toLowerCase()));
                         }
                         if (!fT){
                             $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
