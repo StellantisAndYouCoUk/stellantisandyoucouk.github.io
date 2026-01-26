@@ -333,7 +333,6 @@ function newVehicle(){
 
 function work(){
     let page = window.location.href;
-
     if (loggedInUser) $('#userName').text(loggedInUser.values.field_2.full);
     if (!supportData){
         let supportDataS = sessionStorage.getItem('supportData');
