@@ -4859,6 +4859,10 @@ img.user-icon:hover {
   display: none;
 }
 
+#view_8794 .kn-entries-summary{
+  display: none;
+}
+
 .user-button {
   background-color: #ebebeb;
   border:0;
