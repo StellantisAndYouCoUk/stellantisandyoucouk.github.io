@@ -1003,7 +1003,7 @@ function generatePricingHTML(){
         $('div[id="pricingRecalls"]').html(generateRecallsPricing());
         $('div[id="recallsPricingTab"]').show();
     } else {
-        $('div[id="recallsPricingTab"]').html('');
+        $('div[id="pricingRecalls"]').html('');
         $('div[id="recallsPricingTab"]').hide();
     }
 }
