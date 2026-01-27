@@ -325,12 +325,15 @@ async function getSecondaryDetailsCallback(r){
 }
 
 async function processRecalls(){
+    console.log('processRecalls')
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
         let recallNeedsCheckDetails = [];
         for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records.length;i++){
             if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
+            console.log('goto check')
             let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'addRTSCode',RTSCode:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code})
             let recallName = 'Recall '+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code;
+            console.log(r)
             if (r.success){
                 let recallOne = r.data.find(el => el.RTSCode === 'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code);
                 recallName = recallOne.Description;
