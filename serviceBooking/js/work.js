@@ -317,9 +317,27 @@ async function getSecondaryDetailsCallback(r){
         $('#infoPanel').html('');
         serviceBookingProcess.secondaryDetails = r.data;
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+        processRecalls();
         work();
     } else {
         $('#infoPanel').html('<span style="color:red;">Loading of secondary data failed ...&nbsp; &nbsp; &nbsp; </span>');
+    }
+}
+
+async function processRecalls(){
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
+        let recallNeedsCheckDetails = [];
+        for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records.length;i++){
+            if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
+            let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'addRTSCode',RTSCode:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code})
+            let recallName = 'Recall '+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code;
+            if (r.success){
+                let recallOne = r.data.find(el => el.RTSCode === 'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code);
+                recallName = recallOne.Description;
+            }
+            recallNeedsCheckDetails.push({Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:recallName,PriceDisplay:'£0.00'})
+        }
+        serviceBookingProcess.secondaryDetails.recalls.recallNeedsCheckDetails = recallNeedsCheckDetails;
     }
 }
 
@@ -981,13 +999,8 @@ function generatePricingHTML(){
 
 function generateRecallsPricing(){
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
-        let rPricing = [];
-        for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records.length;i++){
-            if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
-            rPricing.push({IsPreselected:true,Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:'Recall',PriceDisplay:'£0.00'})
-        }
-        if (rPricing.length>0){
-            return generateTableFromData(rPricing,false,'Recalls')
+        if (serviceBookingProcess.secondaryDetails.recalls.recallNeedsCheckDetails){
+            return generateTableFromData(serviceBookingProcess.secondaryDetails.recalls.recallNeedsCheckDetails,false,'Recalls')
         }
     }
     return '';
