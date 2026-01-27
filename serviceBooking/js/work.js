@@ -342,7 +342,7 @@ async function processRecalls(){
                 let recallOne = r.data.find(el => el.RTSCode === 'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code);
                 recallName = recallOne.Description;
             }
-            recallNeedsCheckDetails.push({Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:recallName,PriceDisplay:'£0.00'})
+            recallNeedsCheckDetails.push({Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:recallName,PriceDisplay:'£0.00',Price:0})
         }
         serviceBookingProcess.secondaryDetails.recalls.recallNeedsCheckDetails = recallNeedsCheckDetails;
     }
