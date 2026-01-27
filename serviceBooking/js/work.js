@@ -1001,6 +1001,7 @@ function generatePricingHTML(){
     $('div[id="pricingDropType"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DropTypes,false,'DropTypes'));
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
         $('div[id="pricingRecalls"]').html(generateRecallsPricing());
+        $('div[id="recallsPricingTab"]').show();
     } else {
         $('div[id="recallsPricingTab"]').html('');
         $('div[id="recallsPricingTab"]').hide();
