@@ -471,6 +471,9 @@ function checkBookingDataForDealership(checkDealership){
                 } else {
                     let mF = kF.modelNames.find(el => serviceBookingProcess.motData.model.toLowerCase().includes(el.toLowerCase()))
                     if (!mF){
+                        mF = kF.modelNames.find(el => el.toLowerCase().includes(serviceBookingProcess.motData.model.toLowerCase()))
+                    }
+                    if (!mF){
                         $('div[id="bookingProblems"]').text('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model)
                         $('div[id="bookingProblems"]').show();
                         serviceBookingProcess.bookingData = null;
