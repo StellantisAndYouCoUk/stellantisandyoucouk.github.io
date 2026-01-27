@@ -960,7 +960,9 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
 }
 
 function generatePricingHTML(){
-    if (serviceBookingProcess.bookingData.pricing.ServiceSchedule) $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true,'ServiceIntervals'));
+    if (serviceBookingProcess.bookingData.pricing.ServiceSchedule){
+        $('div[id="pricingServiceSchedule"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals,true,'ServiceIntervals'));
+    } else {$('div[id="pricingServiceSchedule"]').html('');}
     $('div[id="pricingGeneral"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.GeneralItemPrices,false,'GeneralItemPrices'));
     $('div[id="pricingMOT"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.MOTItemPrices,false,'MOTItemPrices'));
     $('div[id="pricingDutyOfCare"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DutyOfCareItemPrices,false,'DutyOfCareItemPrices'));
