@@ -648,11 +648,15 @@ function getServiceHistory(){
 
 function getRecalls(){
     let out = '';
-    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall){
-        if (!serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
-            out += '<b>No Outstanding Manufacturer Updates</b>'
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls){
+        if (serviceBookingProcess.secondaryDetails.recalls.recall){
+            if (!serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
+                out += '<b>No Outstanding Manufacturer Updates</b>'
+            } else {
+                out += '<b>Outstanding Manufacturer Updates</b><br />' + serviceBookingProcess.secondaryDetails.recalls.recall.textTableOnlyNeedsCheck
+            }
         } else {
-            out += '<b>Outstanding Manufacturer Updates</b><br />' + serviceBookingProcess.secondaryDetails.recalls.recall.textTableOnlyNeedsCheck
+            out += '<b>Problem getting the recalls from Manufacturer site</b> - '+serviceBookingProcess.secondaryDetails.recalls.error
         }
     } else {
         out += 'Getting recalls from manufacturer website ...'
