@@ -930,7 +930,7 @@ async function generateBookingSummary(){
     }
 
     let aV = findAvailabilityDaysForBooking();
-    if (aV && aV.availability.length>0){
+    if (aV && aV.availability && aV.availability.length>0){
         html += '<br /><b>Workshop availability</b>';
         html += formatAvailability(aV.availability,0,aV.maxCheckedDate);
         html += formatAvailability(aV.availability,1,aV.maxCheckedDate);
