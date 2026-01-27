@@ -855,9 +855,9 @@ async function generateBookingSummary(){
     let html = '<b>' + serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles</b>';
     $('div[id="bookingSummary"]').html(html);
     let labourSummary = [];
+    let total = 0;
+    html += '<br /><br /><b>Booked Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
     if (serviceBookingProcess.bookingData.orderedCodes){
-        let total = 0;
-        html += '<br /><br /><b>Booked Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
         let excludedCodes = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
@@ -889,10 +889,12 @@ async function generateBookingSummary(){
                 removeCodeFromBooking(excludedCodes[i]);
             }
         }
-        html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"'+(!serviceBookingProcess.bookingData.discountPercent || serviceBookingProcess.bookingData.discountPercent===0?' checked=true':'')+'><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"'+(serviceBookingProcess.bookingData.discountPercent===5?' checked=true':'')+'><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"'+(serviceBookingProcess.bookingData.discountPercent===10?' checked=true':'')+'><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" class="ng-binding"><span id="totalDiscount">'+(serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?'<span style="color:red;">-£'+(total*(serviceBookingProcess.bookingData.discountPercent/100)).toFixed(2)+'</span>':'-£0.00')+'</span></td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
-        html += '</table>';
-        html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
     } else {serviceBookingProcess.bookingData.labourSummary=null}
+
+    html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"'+(!serviceBookingProcess.bookingData.discountPercent || serviceBookingProcess.bookingData.discountPercent===0?' checked=true':'')+'><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"'+(serviceBookingProcess.bookingData.discountPercent===5?' checked=true':'')+'><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"'+(serviceBookingProcess.bookingData.discountPercent===10?' checked=true':'')+'><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" class="ng-binding"><span id="totalDiscount">'+(serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?'<span style="color:red;">-£'+(total*(serviceBookingProcess.bookingData.discountPercent/100)).toFixed(2)+'</span>':'-£0.00')+'</span></td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
+    html += '</table>';
+    html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
+    
     $('div[id="bookingSummary"]').html(html);
     if (serviceBookingProcess.bookingData.confirmAvailability){
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
