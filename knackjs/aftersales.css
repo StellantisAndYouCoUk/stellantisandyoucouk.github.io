@@ -2125,6 +2125,35 @@ p.speech-bubble-outbound:before {
   text-decoration : none;
 }
 
+p.speech-bubble-outbound-parts {
+  position: relative;
+  left: 20%;
+  background: #005F80;
+  border-radius: .4em;
+  width:70%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:white;
+  padding:1%;
+  margin:1px !important;
+  text-decoration : none;
+} 
+
+p.speech-bubble-outbound-parts:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid #005F80;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #005F80;
+  border-bottom: 10px solid transparent;
+  right: -19px;
+  top: 6px;
+  text-decoration : none;
+}
+
 p.speech-bubble-inbound {
   position: relative;
   background: #00aabb;
