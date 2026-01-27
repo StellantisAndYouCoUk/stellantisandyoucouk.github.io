@@ -971,6 +971,26 @@ function generatePricingHTML(){
     $('div[id="pricingRecommended"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.RecommendedItemPrices,false,'RecommendedItemPrices'));
     $('div[id="pricingPromotions"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.Promotions,false,'Promotions'));
     $('div[id="pricingDropType"]').html(generateTableFromData(serviceBookingProcess.bookingData.pricing.DropTypes,false,'DropTypes'));
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
+        $('div[id="pricingRecalls"]').html(generateRecallsPricing());
+    } else {
+        $('div[id="recallsPricingTab"]').html('');
+        $('div[id="recallsPricingTab"]').hide();
+    }
+}
+
+function generateRecallsPricing(){
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
+        let rPricing = [];
+        for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records;i++){
+            if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
+            rPricing.push({IsPreselected:true,Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:'Recall',PriceDisplay:'£0.00'})
+        }
+        if (rPricing.length>0){
+            return generateTableFromData(rPricing,false,'Recalls')
+        }
+    }
+    return '';
 }
 
 function generateTableFromData(data, isServiceSchedule = false, pricingPath = ''){
