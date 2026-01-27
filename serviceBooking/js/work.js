@@ -639,7 +639,7 @@ function getServiceHistory(){
         if (serviceBookingProcess.secondaryDetails){
             out = '';
         } else {
-            out = 'Getting service history from Autoline ...'
+            out = '<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Getting service history from Autoline ...'
         }
     }
 
@@ -659,7 +659,7 @@ function getRecalls(){
             out += '<b>Problem getting the recalls from Manufacturer site</b> - '+serviceBookingProcess.secondaryDetails.recalls.error
         }
     } else {
-        out += 'Getting recalls from manufacturer website ...'
+        out += '<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Getting recalls from manufacturer website ...'
     }
     return out;
 }
