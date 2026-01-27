@@ -982,7 +982,7 @@ function generatePricingHTML(){
 function generateRecallsPricing(){
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.needsCheck){
         let rPricing = [];
-        for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records;i++){
+        for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records.length;i++){
             if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
             rPricing.push({IsPreselected:true,Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:'Recall',PriceDisplay:'£0.00'})
         }
