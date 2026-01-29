@@ -958,6 +958,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
+    console.log('dayToUse',dayToUse)
     dayToUse.setMonth(dayToUse.getMonth()+plusMonth);
     let html = '<table class="table-condensed table-bordered table-striped"><thead><tr><th colspan="7"><span class="btn-group"><a class="btn"><i class="icon-chevron-left"></i></a><a class="btn active">'+monthNames[dayToUse.getMonth()]+' '+dayToUse.getFullYear()+'</a><a class="btn"><i class="icon-chevron-right"></i></a></span></th></tr><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody><tr>';
     let firstDateOfMonth = new Date(dayToUse.getTime());
