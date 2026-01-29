@@ -965,8 +965,8 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
     firstDateOfMonth.setDate(1);
     let dayOfFirstDate = firstDateOfMonth.getDay();
     let lastDateOfMonth = new Date(dayToUse.getTime());
-    lastDateOfMonth.setMonth(lastDateOfMonth.getMonth()+1);
     lastDateOfMonth.setDate(0);
+    lastDateOfMonth.setMonth(lastDateOfMonth.getMonth()+1);
     console.log('lastDateOfMonth',lastDateOfMonth)
     if (dayOfFirstDate===0) dayOfFirstDate = 7;
     let dayOfWeek = dayOfFirstDate;
