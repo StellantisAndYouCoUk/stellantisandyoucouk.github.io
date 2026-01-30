@@ -851,6 +851,7 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.confirmAvailability = null;
         generateLabourSummary();
         serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
+        generateBookingSummary();
     }
 }
 
@@ -867,6 +868,7 @@ function removeCodeFromBooking(code){
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     generateLabourSummary();
     serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
+    generateBookingSummary();
 }
 
 function confirmAvailabilityForDate(dateToCheck, callback){
