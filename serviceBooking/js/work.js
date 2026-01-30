@@ -237,6 +237,7 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 }
 
 function checkBookDate(date){
+    window.scrollTo(0, 0);
     serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
     confirmAvailabilityForDate(date,checkBookDateCallback);
     generateBookingSummary();
@@ -848,6 +849,7 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
+        serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
     }
 }
 
@@ -862,11 +864,11 @@ function removeCodeFromBooking(code){
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+    serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
 }
 
 function confirmAvailabilityForDate(dateToCheck, callback){
     if (!serviceBookingProcess.bookingData.labourSummary) return null;
-    window.scrollTo(0, 0);
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/confirmWorkshopAvailabilityForLabourDate?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary,dateToCheck:dateToCheck},callback);
 }
 
@@ -934,8 +936,8 @@ async function generateBookingSummary(){
         }
     }
 
-    let aV = findAvailabilityDaysForBooking();
-    if (aV && aV.availability && aV.availability.length>0){
+    //let aV = findAvailabilityDaysForBooking();
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.length>0){
         html += '<br /><b>Workshop availability</b>';
         html += formatAvailability(aV.availability,0,aV.maxCheckedDate);
         html += formatAvailability(aV.availability,1,aV.maxCheckedDate);
