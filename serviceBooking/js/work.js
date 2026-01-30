@@ -279,8 +279,8 @@ function bookVisit(dealershipId){
         }
 
         console.log(serviceBookingProcess.bookingData.pricing)
-        
-        serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
+
+        findAvailabilityDaysForBooking();
 
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         setTimeout(() => {
@@ -870,7 +870,7 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
-        serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
+        findAvailabilityDaysForBooking();
         generateBookingSummary();
     }
 }
@@ -886,7 +886,7 @@ function removeCodeFromBooking(code){
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
-    serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
+    findAvailabilityDaysForBooking();
     generateBookingSummary();
 }
 
@@ -898,7 +898,12 @@ function confirmAvailabilityForDate(dateToCheck, callback){
 function findAvailabilityDaysForBooking(){
     generateLabourSummary();
     if (!serviceBookingProcess.bookingData.labourSummary) return null;
-    return callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary});
+    return callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary},findAvailabilityDaysForBookingCallback);
+}
+
+function findAvailabilityDaysForBookingCallback(data){
+    serviceBookingProcess.bookingData.availability = data;
+    generateBookingSummary();
 }
 
 function applyDiscount(percent){
