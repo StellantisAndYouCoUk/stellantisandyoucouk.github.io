@@ -912,6 +912,7 @@ function applyDiscount(percent){
 }
 
 function generateLabourSummary(){
+    if (!serviceBookingProcess.bookingData || !serviceBookingProcess.bookingData.orderedCodes) return;
     let labourSummary = [];
     for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
         let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
