@@ -887,7 +887,7 @@ async function generateBookingSummary(){
     let labourSummary = [];
     let total = 0;
     html += '<br /><br /><b>Booked Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
-    if (serviceBookingProcess.bookingData.orderedCodes){
+    if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0){
         let excludedCodes = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
@@ -912,8 +912,8 @@ async function generateBookingSummary(){
                     }
                 }
             }
-            serviceBookingProcess.bookingData.labourSummary = labourSummary;
         }  
+        serviceBookingProcess.bookingData.labourSummary = labourSummary;
         if (excludedCodes.length>0){
             for (let i = 0;i<excludedCodes.length;i++){
                 removeCodeFromBooking(excludedCodes[i]);
