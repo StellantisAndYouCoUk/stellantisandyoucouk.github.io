@@ -953,7 +953,7 @@ async function generateBookingSummary(){
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate);
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate);
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate);
-        html += '<br />Checked at: '+dateTimeToGB(new Date(aV.checkedAt));
+        html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
     }
     /*
     if (labourSummary.length>0){
