@@ -279,6 +279,9 @@ function bookVisit(dealershipId){
         }
 
         console.log(serviceBookingProcess.bookingData.pricing)
+        
+        serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
+
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         setTimeout(() => {
             refreshAutolineRTSCodes()
@@ -287,6 +290,7 @@ function bookVisit(dealershipId){
         /*$('div[id="bookingProblems"]').html('Not all data for pricing there.');
         $('div[id="bookingProblems"]').show();*/
     }
+
     work();
 }
 
@@ -866,7 +870,6 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
-        generateLabourSummary();
         serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
         generateBookingSummary();
     }
@@ -883,7 +886,6 @@ function removeCodeFromBooking(code){
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
-    generateLabourSummary();
     serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
     generateBookingSummary();
 }
@@ -894,6 +896,7 @@ function confirmAvailabilityForDate(dateToCheck, callback){
 }
 
 function findAvailabilityDaysForBooking(){
+    generateLabourSummary();
     if (!serviceBookingProcess.bookingData.labourSummary) return null;
     return callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary});
 }
