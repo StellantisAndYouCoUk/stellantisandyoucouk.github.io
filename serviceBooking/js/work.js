@@ -975,7 +975,7 @@ async function generateBookingSummary(){
 
     //let aV = findAvailabilityDaysForBooking();
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
-        html += '<br /><b>Workshop availability</b>';
+        html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate);
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate);
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate);
