@@ -469,9 +469,11 @@ function checkBookingDataForDealership(checkDealership){
                     $('div[id="bookingProblems"]').show();
                     serviceBookingProcess.bookingData = null;
                 } else {
-                    let mF = kF.modelNames.find(el => serviceBookingProcess.motData.model.toLowerCase().includes(el.toLowerCase()))
+                    let motDataModel = serviceBookingProcess.motData.model;
+                    motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4')
+                    let mF = kF.modelNames.find(el => motDataModel.toLowerCase().includes(el.toLowerCase()))
                     if (!mF){
-                        mF = kF.modelNames.find(el => el.toLowerCase().includes(serviceBookingProcess.motData.model.toLowerCase()))
+                        mF = kF.modelNames.find(el => el.toLowerCase().includes(motDataModel.toLowerCase()))
                     }
                     if (!mF){
                         $('div[id="bookingProblems"]').text('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model)
