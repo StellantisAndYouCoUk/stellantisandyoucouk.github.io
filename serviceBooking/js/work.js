@@ -948,16 +948,12 @@ async function generateBookingSummary(){
     }
 
     //let aV = findAvailabilityDaysForBooking();
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.length>0){
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
         html += '<br /><b>Workshop availability</b>';
-        html += formatAvailability(aV.availability,0,aV.maxCheckedDate);
-        html += formatAvailability(aV.availability,1,aV.maxCheckedDate);
-        html += formatAvailability(aV.availability,2,aV.maxCheckedDate);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate);
         html += '<br />Checked at: '+dateTimeToGB(new Date(aV.checkedAt));
-        aV.availability = aV.availability.sort((a,b)=>(new Date(a.date)>new Date(b.date)?1:-1))
-        /*for (let i = 0;i<aV.availability.length;i++){
-            html += '<br />'+dateToGB(new Date(aV.availability[i].date));
-        }*/
     }
     /*
     if (labourSummary.length>0){
