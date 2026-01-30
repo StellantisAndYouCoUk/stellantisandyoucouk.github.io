@@ -290,7 +290,7 @@ function bookVisit(dealershipId){
         /*$('div[id="bookingProblems"]').html('Not all data for pricing there.');
         $('div[id="bookingProblems"]').show();*/
     }
-
+    generateBookingSummary();
     work();
 }
 
