@@ -849,6 +849,7 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
+        generateLabourSummary();
         serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
     }
 }
@@ -864,6 +865,7 @@ function removeCodeFromBooking(code){
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+    generateLabourSummary();
     serviceBookingProcess.bookingData.availability = findAvailabilityDaysForBooking();
 }
 
@@ -882,11 +884,30 @@ function applyDiscount(percent){
     generateBookingSummary();
 }
 
+function generateLabourSummary(){
+    let labourSummary = [];
+    for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
+        let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
+        if (supportData.autolineRTSCodes){
+            let aCode = supportData.autolineRTSCodes.find(el => el.RTSCode === justCode);
+            if (aCode){
+                let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
+                if (lT){
+                    lT.Time += parseFloat(aCode.AllowedUnits001);
+                } else {
+                    labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
+                }
+            }
+        }
+    }  
+    if (labourSummary.length===0) labourSummary = null;
+    serviceBookingProcess.bookingData.labourSummary = labourSummary;
+}
+
 async function generateBookingSummary(){
     console.log('generateBookingSummary')
     let html = '<b>' + serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles</b>';
     $('div[id="bookingSummary"]').html(html);
-    let labourSummary = [];
     let total = 0;
     html += '<br /><br /><b>Booked Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
     if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0){
@@ -903,25 +924,13 @@ async function generateBookingSummary(){
             //console.log(justCode, pricingDetailsForCode)
             html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
             total += pricingDetailsForCode.Price
-            if (supportData.autolineRTSCodes){
-                let aCode = supportData.autolineRTSCodes.find(el => el.RTSCode === justCode);
-                if (aCode){
-                    let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
-                    if (lT){
-                        lT.Time += parseFloat(aCode.AllowedUnits001);
-                    } else {
-                        labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
-                    }
-                }
-            }
         }  
-        serviceBookingProcess.bookingData.labourSummary = labourSummary;
         if (excludedCodes.length>0){
             for (let i = 0;i<excludedCodes.length;i++){
                 removeCodeFromBooking(excludedCodes[i]);
             }
         }
-    } else {serviceBookingProcess.bookingData.labourSummary=null}
+    }
 
     html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"'+(!serviceBookingProcess.bookingData.discountPercent || serviceBookingProcess.bookingData.discountPercent===0?' checked=true':'')+'><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"'+(serviceBookingProcess.bookingData.discountPercent===5?' checked=true':'')+'><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"'+(serviceBookingProcess.bookingData.discountPercent===10?' checked=true':'')+'><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" class="ng-binding"><span id="totalDiscount">'+(serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?'<span style="color:red;">-£'+(total*(serviceBookingProcess.bookingData.discountPercent/100)).toFixed(2)+'</span>':'-£0.00')+'</span></td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
     html += '</table>';
