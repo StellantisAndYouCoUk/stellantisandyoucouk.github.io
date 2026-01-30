@@ -335,18 +335,35 @@ async function processRecalls(){
         let recallNeedsCheckDetails = [];
         for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records.length;i++){
             if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
+            let RTSCodePrefix = getRTSCodePrefix(serviceBookingProcess.motData.make);
             console.log('goto check')
-            let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'addRTSCode',RTSCode:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code})
+            let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'addRTSCode',RTSCode:RTSCodePrefix+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code})
             let recallName = 'Recall '+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code;
             console.log(r)
             if (r.success){
-                let recallOne = r.data.find(el => el.RTSCode === 'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code);
+                let recallOne = r.data.find(el => el.RTSCode === RTSCodePrefix+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code);
+                if (!recallOne){
+                    console.log('RECALL NOT FOUND in RTS CODES');
+                    continue;
+                }
                 recallName = recallOne.Description;
             }
-            recallNeedsCheckDetails.push({Code:'P'+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:recallName,PriceDisplay:'£0.00',Price:0})
+            recallNeedsCheckDetails.push({Code:RTSCodePrefix+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code,Name:recallName,PriceDisplay:'£0.00',Price:0})
         }
         serviceBookingProcess.secondaryDetails.recalls.recallNeedsCheckDetails = recallNeedsCheckDetails;
     }
+}
+
+function getRTSCodePrefix(make){
+    switch (make.toLowerCase()){
+        case 'peugeot':
+            return 'P';
+        case 'citroen':
+            return 'C';
+        case 'DS':
+            return 'D';
+    }
+    return '';
 }
 
 function newVehicle(){
