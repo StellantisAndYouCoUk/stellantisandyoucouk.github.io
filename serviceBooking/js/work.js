@@ -921,6 +921,7 @@ function generateLabourSummary(){
         if (supportData.autolineRTSCodes){
             let aCode = supportData.autolineRTSCodes.find(el => el.RTSCode === justCode);
             if (aCode){
+                if (aCode.LoadGroup==='N' || aCode.LoadGroup==='H') continue;
                 let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
                 if (lT){
                     lT.Time += parseFloat(aCode.AllowedUnits001);
