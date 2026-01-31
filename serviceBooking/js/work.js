@@ -483,6 +483,7 @@ function work(){
 }
 
 function checkBookingDataForDealership(checkDealership){
+    if (!checkDealership) return;
     console.log('checkBookingDataForDealership',checkDealership.field_8)
     if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
