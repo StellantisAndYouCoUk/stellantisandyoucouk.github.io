@@ -798,7 +798,7 @@ function showClosestDealerships(postcode){
         let out = '<table>';
         let usedDealers = 0;
         for (let i = 0;i<serviceBookingProcess.dealershipsToPostcode.dealerships.length;i++){
-            if (serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode === serviceBookingProcess.lastDealership.field_2442) continue;
+            if (serviceBookingProcess.lastDealership && serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode === serviceBookingProcess.lastDealership.field_2442) continue;
             if (serviceBookingProcess.motData){
                 let dC = supportData.dealerList.find(el => el.field_2442 === serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode);
                 if (dC){
