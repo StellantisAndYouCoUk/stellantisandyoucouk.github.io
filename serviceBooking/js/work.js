@@ -374,7 +374,7 @@ function newVehicle(){
     serviceBookingProcess = {};
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     $('div[id="bookingProblems"]').text('');
-    $('input[id="currentMileage"]').attr('value','');
+    $('input[id="currentMileage"]').val('');
     work();
 }
 
