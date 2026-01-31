@@ -493,18 +493,18 @@ function checkBookingDataForDealership(checkDealership){
                 } else {
                     let motDataModel = serviceBookingProcess.motData.model;
                     motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4')
-                    let mF = kF.modelNames.find(el => motDataModel.toLowerCase().includes(el.toLowerCase()))
+                    let mF = kF.models.find(el => motDataModel.toLowerCase().includes(el.modelName.toLowerCase()))
                     if (!mF){
-                        mF = kF.modelNames.find(el => el.toLowerCase().includes(motDataModel.toLowerCase()))
+                        mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
                     }
                     if (!mF){
                         $('div[id="bookingProblems"]').text('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model)
                         $('div[id="bookingProblems"]').show();
                         serviceBookingProcess.bookingData = null;
                     } else {
-                        let fT = supportData.konnectFuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
+                        let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
                         if (!fT){
-                            fT = supportData.konnectFuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().startsWith(el.Name.toLowerCase()));
+                            fT = mF.fuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().startsWith(el.Name.toLowerCase()));
                         }
                         if (!fT){
                             $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
@@ -519,7 +519,8 @@ function checkBookingDataForDealership(checkDealership){
                                 dealerName : checkDealership.field_8,
                                 konnectDealerId : checkDealership.konnectData.ID,
                                 konnectFranchiseId : kF.ID,
-                                konnectModelName : mF,
+                                konnectModelName : mF.modelName,
+                                konnectModel : mF,
                                 konnectFuelTypeId : fT.ID,
                                 yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
                                 bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
