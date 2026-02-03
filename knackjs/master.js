@@ -5555,6 +5555,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
               const dataParsed = JSON.parse(event.data);
               console.log("DataParsed", JSON.stringify(dataParsed));
 
+                    // ✅ CHECK IF IT'S A MESSAGE EVENT
+              if (dataParsed.event !== "message") {
+                console.log(`Ignoring event type: ${dataParsed.event}`);
+                return; // Skip non-message events (like "open")
+              }
+
               const messageParsed = JSON.parse(dataParsed.message);
               console.log("MessageParsed ", JSON.stringify(messageParsed));
 
