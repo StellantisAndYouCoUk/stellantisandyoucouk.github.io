@@ -433,6 +433,7 @@ function work(){
             $('div[id="recalls"]').html(getRecalls());
             $('div[id="vehicleDetailsServiceBox"]').html(getVehicleDetailsServiceBox());
             $('div[id="servicePlans"]').html(getServicePlans());
+            $('div[id="serviceSchedule"]').html(getServiceSchedule());
             
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
             serviceBookingProcess.lastDealership = lastDealership;
@@ -608,6 +609,25 @@ function getServicePlans(){
             let nextServiceDue = (serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].NextServiceDue?"<b>Next Service due on " + dateToGB(new Date(serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].NextServiceDue.DueDate)) + " - " + serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].NextServiceDue.ServiceName + ":</b><br /><i>" + serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].NextServiceDue.ServiceItems.join("<br />") + "</i>":'');
             let addonsText = serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].Addons.map(function(el){ return (el.Status==="Outstanding"?/*&& indexOf(toString(145.AddonsText); 142.AddonName) = -1;*/el.AddonsText+" + "+el.AddonName:'')}).join(' ');
             out += '<br /><br />'+(serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].AgreementStatus !== "Live Agreement"?"<b><span style=\"color:red;\">Agreement status: " + serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].AgreementStatus + "</span></b><br />":"") + "<b>EMAC</b> Service Plan was found with a balance of <b>£" + serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].AccountBalanceGross + "</b> (Top up of <b>£" + serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].TopUpRequired + "</b>  required) with the last Direct Debit coming out on <b>" + dateToGB(new Date(serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].PaymentPlan.FinalDDDate)) + "</b>.<br />The last contracted service is due on the <b>" + dateToGB(new Date(serviceBookingProcess.secondaryDetails.emac.Response.Agreements[0].LastServiceDate)) + "</b><br />" + (addonsText===''?"The customer did not purchase any add on’s":"The customer purchased an " + addonsText + " add on") + (nextServiceDue!==''?"<br />" + nextServiceDue:'')
+        }
+    }
+    return out;
+}
+
+function getServiceSchedule(){
+    let out = '';
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceSchedule){
+        if (serviceBookingProcess.secondaryDetails.serviceSchedule.status==='running'){
+            try {
+                let resp = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/92LYeArXvHUmEtZZR/records/'+serviceBookingProcess.vehicle.ChassisNumber+'_SS.json');
+                if (resp.success){
+                    serviceBookingProcess.secondaryDetails.serviceSchedule.status = 'done';
+                    serviceBookingProcess.secondaryDetails.serviceSchedule.data = resp;
+                }
+            } catch (ex){}
+        };
+        if (serviceBookingProcess.secondaryDetails.serviceSchedule.status==='done'){
+            out = serviceBookingProcess.secondaryDetails.serviceSchedule.data.serviceScheduleTable;
         }
     }
     return out;
