@@ -639,6 +639,7 @@ function getServiceSchedule(){
 function fillServiceScheduleHTML(){
     $('div[id="serviceSchedule"]').html(getServiceSchedule());
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceSchedule && serviceBookingProcess.secondaryDetails.serviceSchedule.status==='running'){
+        console.log('ss retry')
         setTimeout(() => {
             fillServiceScheduleHTML();
         }, 10000);
