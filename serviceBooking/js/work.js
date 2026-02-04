@@ -625,6 +625,7 @@ function getServiceSchedule(){
                     serviceBookingProcess.secondaryDetails.serviceSchedule.data = resp;
                 }
             } catch (ex){
+                console.log('not there',ex)
                 out = 'Getting service schedule ...'
             }
         };
