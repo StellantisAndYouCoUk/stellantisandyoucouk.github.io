@@ -433,7 +433,7 @@ function work(){
             $('div[id="recalls"]').html(getRecalls());
             $('div[id="vehicleDetailsServiceBox"]').html(getVehicleDetailsServiceBox());
             $('div[id="servicePlans"]').html(getServicePlans());
-            $('div[id="serviceSchedule"]').html(getServiceSchedule());
+            fillServiceScheduleHTML();
             
             let lastDealership = supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch))
             serviceBookingProcess.lastDealership = lastDealership;
@@ -633,6 +633,15 @@ function getServiceSchedule(){
         }
     }
     return out;
+}
+
+function fillServiceScheduleHTML(){
+    $('div[id="serviceSchedule"]').html(getServiceSchedule());
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceSchedule && serviceBookingProcess.secondaryDetails.serviceSchedule.status==='running'){
+        setTimeout(() => {
+            fillServiceScheduleHTML();
+        }, 10000);
+    }
 }
 
 
