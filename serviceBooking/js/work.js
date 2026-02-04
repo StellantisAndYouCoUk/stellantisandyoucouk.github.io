@@ -624,7 +624,9 @@ function getServiceSchedule(){
                     serviceBookingProcess.secondaryDetails.serviceSchedule.status = 'done';
                     serviceBookingProcess.secondaryDetails.serviceSchedule.data = resp;
                 }
-            } catch (ex){}
+            } catch (ex){
+                out = 'Getting service schedule ...'
+            }
         };
         if (serviceBookingProcess.secondaryDetails.serviceSchedule.status==='done'){
             out = serviceBookingProcess.secondaryDetails.serviceSchedule.data.serviceScheduleTable;
