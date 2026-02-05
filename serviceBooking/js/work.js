@@ -1030,14 +1030,14 @@ async function generateBookingSummary(){
             html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
         } else {
             html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'NOT AVAILABLE')+'</b></span>'
-            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability){
-                let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)));
-                console.log('BBBB',aVForDate)
-                if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
-                    html += '<br />Meet and greet availability<br />';
-                    for (let i = 0;i<aVForDate.meetAndGreet.availability.length;i++){
-                        html += aVForDate.meetAndGreet.availability[i].Resource + ' - ' + formatTimesInAvailability(aVForDate.meetAndGreet.availability[i])+'<br />';
-                    }
+        }
+        if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability){
+            let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)));
+            console.log('BBBB',aVForDate)
+            if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
+                html += '<br />Meet and greet availability<br />';
+                for (let i = 0;i<aVForDate.meetAndGreet.availability.length;i++){
+                    html += aVForDate.meetAndGreet.availability[i].Resource + ' - ' + formatTimesInAvailability(aVForDate.meetAndGreet.availability[i])+'<br />';
                 }
             }
         }
