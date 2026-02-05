@@ -1031,8 +1031,7 @@ async function generateBookingSummary(){
         } else {
             html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'NOT AVAILABLE')+'</b></span>'
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability){
-                console.log('AAAA')
-                let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === serviceBookingProcess.bookingData.confirmAvailability.date);
+                let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)));
                 console.log('BBBB',aVForDate)
                 if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
                     html += '<br />Meet and greet availability<br />';
