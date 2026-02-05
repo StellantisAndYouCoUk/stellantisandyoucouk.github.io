@@ -504,7 +504,7 @@ function checkBookingDataForDealership(checkDealership){
                         mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
                     }
                     if (!mF){
-                        $('div[id="bookingProblems"]').text('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model)
+                        $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />'+getPricingModelsForDB(kF))
                         $('div[id="bookingProblems"]').show();
                         serviceBookingProcess.bookingData = null;
                     } else {
@@ -539,10 +539,20 @@ function checkBookingDataForDealership(checkDealership){
             }
 }
 
+function getPricingModelsForDB(checkDealershipBrand){
+    let out = '<select name="pricingModel"><option value="" selected="selected">(Select a Model)</option>';
+    for (let  i =0;i<checkDealershipBrand.models.length;i++){
+        out +='<option value="'+checkDealershipBrand.models[i].ID+'">'+checkDealershipBrand.models[i].Name+'</option>'
+    }
+    out += '</select>'
+    return out;
+}
+
+
 function getPricingBrandsForD(checkDealership){
-    let out = '<select name="pricingBrand"><option value="" class="" selected="selected">(Select a Brand)</option>';
+    let out = '<select name="pricingBrand"><option value="" selected="selected">(Select a Brand)</option>';
     for (let  i =0;i<checkDealership.konnectData.franchises.length;i++){
-        out +='<option value="'+checkDealership.konnectData.franchises[i].ID+'" class="" selected="selected">'+checkDealership.konnectData.franchises[i].Name+'</option>'
+        out +='<option value="'+checkDealership.konnectData.franchises[i].ID+'">'+checkDealership.konnectData.franchises[i].Name+'</option>'
     }
     out += '</select>'
     return out;
