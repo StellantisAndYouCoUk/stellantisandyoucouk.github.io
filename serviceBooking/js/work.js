@@ -1066,9 +1066,13 @@ function formatTimesInAvailability(avDataRaw){
     let keys = Object.keys(avDataRaw);
     keys = keys.filter(el => el.includes('Available'));
     for (let i =0;i<keys.length;i++){
-        out += (out!==''?',':'') + (parseInt(keys[i].replace('Available',''))-1)/4
+        out += (out!==''?',':'') + numberToHours((parseInt(keys[i].replace('Available',''))-1)/4)
     }
     return out;
+}
+
+function numberToHours(num){
+    return Math.floor(num)+':'+pad(60*(num-Math.floor(num)))
 }
 
 function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
