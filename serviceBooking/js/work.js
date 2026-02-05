@@ -647,6 +647,8 @@ function getServiceSchedule(){
                 if (resp.success){
                     serviceBookingProcess.secondaryDetails.serviceSchedule.status = 'done';
                     serviceBookingProcess.secondaryDetails.serviceSchedule.data = resp;
+                } else {
+                    out = '<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Getting service schedule from manufacturer website ...'
                 }
             } catch (ex){
                 console.log('not there',ex)
