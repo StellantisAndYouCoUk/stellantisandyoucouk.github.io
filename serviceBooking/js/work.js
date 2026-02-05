@@ -420,6 +420,9 @@ function work(){
             $('div[id="recalls"]').html('');
             $('div[id="vehicleDetailsServiceBox"]').html('');
             $('div[id="servicePlans"]').html('');
+            if (serviceBookingProcess.registrationNumber){
+                $('div[id="searchRegistrationMessage"]').text('Registration number not found in DVLA data');
+            }
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;">&nbsp;&nbsp;&nbsp;'+serviceBookingProcess.registrationNumber+'&nbsp;&nbsp;&nbsp;</span>')
             $('h1[id="registrationNumberShow"]').show();
