@@ -619,7 +619,8 @@ function getServiceSchedule(){
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceSchedule){
         if (serviceBookingProcess.secondaryDetails.serviceSchedule.status==='running'){
             try {
-                let resp = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/92LYeArXvHUmEtZZR/records/'+serviceBookingProcess.vehicle.ChassisNumber+'_SS.json');
+                let vinToCheck = serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin;
+                let resp = callGetHttpRequest('https://api.apify.com/v2/key-value-stores/92LYeArXvHUmEtZZR/records/'+vinToCheck+'_SS.json');
                 if (resp.success){
                     serviceBookingProcess.secondaryDetails.serviceSchedule.status = 'done';
                     serviceBookingProcess.secondaryDetails.serviceSchedule.data = resp;
