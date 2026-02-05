@@ -551,7 +551,7 @@ function getVehicleDescription(){
             $('input[id="currentMileage"]').val(mileageEst.currentMileage)
         }
     }
-    if (serviceBookingProcess.vehicle.ChassisNumber!==''){
+    if (serviceBookingProcess.vehicle && serviceBookingProcess.vehicle.ChassisNumber!==''){
         out += '<br />'+serviceBookingProcess.vehicle.ChassisNumber;
     } else if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.autotraderData && serviceBookingProcess.secondaryDetails.autotraderData.vehicle && serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin){
         out += '<br />'+serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin;
