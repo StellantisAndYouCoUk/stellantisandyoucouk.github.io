@@ -408,7 +408,7 @@ function work(){
     //console.log('serviceBookingProcess',serviceBookingProcess)
     let qV = getUrlVars();
     if (page.includes('index.html')){
-        if (!serviceBookingProcess.registrationNumber){
+        if (!serviceBookingProcess.registrationNumber || !serviceBookingProcess.dvlaData){
             $('h1[id="registrationNumberShow"]').text("Search vehicle");
             $('div[id="step1"]').show();
             $('div[id="step2"]').hide();
