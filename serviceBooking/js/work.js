@@ -627,7 +627,7 @@ function getServiceSchedule(){
                 }
             } catch (ex){
                 console.log('not there',ex)
-                out = 'Getting service schedule ...'
+                out = '<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Getting service schedule from manufacturer website ...'
             }
         };
         if (serviceBookingProcess.secondaryDetails.serviceSchedule.status==='done'){
