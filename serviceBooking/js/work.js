@@ -1030,6 +1030,15 @@ async function generateBookingSummary(){
             html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
         } else {
             html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'NOT AVAILABLE')+'</b></span>'
+            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability){
+                let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === serviceBookingProcess.bookingData.confirmAvailability.date);
+                if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
+                    html += '<br />Meet and greet availability<br />';
+                    for (let i = 0;i<aVForDate.meetAndGreet.availability.length;i++){
+                        html += aVForDate.meetAndGreet.availability[i].Resource + ' - ' + formatTimesInAvailability(aVForDate.meetAndGreet.availability[i])+'<br />';
+                    }
+                }
+            }
         }
     }
 
@@ -1049,6 +1058,16 @@ async function generateBookingSummary(){
         }
     }*/
     $('div[id="bookingSummary"]').html(html);
+}
+
+function formatTimesInAvailability(avDataRaw){
+    let out = '';
+    let keys = Object.keys(avDataRaw);
+    keys = keys.filter(el => el.includes('Available'));
+    for (let i =0;i<keys.length;i++){
+        out += (out!==''?',':'') + (parseInt(keys[i].replace('Available',''))-1)/4
+    }
+    return out;
 }
 
 function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
