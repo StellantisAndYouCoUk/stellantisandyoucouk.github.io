@@ -5561,7 +5561,7 @@ font-size:12px;
     font-size: 14px;
 }
 
-#view_3907 > section > div > div:nth-child(5) > div:nth-child(1) > div > div.kn-detail.field_9277{
+#view_3907 > section > div > div.kn-details-group.column-1.columns > div > div > div.kn-detail.field_9277 > div.kn-detail-label{
     color: #008000;
     font-size: 14px;
 }
