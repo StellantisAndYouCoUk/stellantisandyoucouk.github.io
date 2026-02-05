@@ -489,7 +489,7 @@ function checkBookingDataForDealership(checkDealership){
     if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
                 if (!kF){
-                    $('div[id="bookingProblems"]').text('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make);
+                    $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />'+getPricingBrandsForD(checkDealership));
                     $('div[id="bookingProblems"]').show();
                     serviceBookingProcess.bookingData = null;
                 } else {
@@ -533,6 +533,15 @@ function checkBookingDataForDealership(checkDealership){
                     }
                 }
             }
+}
+
+function getPricingBrandsForD(checkDealership){
+    let out = '<select name="pricingBrand"><option value="" class="" selected="selected">(Select a Brand)</option>';
+    for (let  i =0;i<checkDealership.konnectData.franchises.length;i++){
+        out +='<option value="'+checkDealership.konnectData.franchises[i].ID+'" class="" selected="selected">'+checkDealership.konnectData.franchises[i].Name+'</option>'
+    }
+    out += '</select>'
+    return out;
 }
 
 function getVehicleDescription(){
