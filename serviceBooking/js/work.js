@@ -258,7 +258,6 @@ function chooseDealership(dealershipId){
         }
     }
     $('div[id="bookingProblems"]').hide();
-    window.scrollTo(0, 0);
     if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
         let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
         checkPricingDataForDealership(newDealership);
@@ -278,6 +277,21 @@ function bookVisit(){
     }
     if (!(serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.dealer)){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Dealer needs to be choosen.</span>');
+        $('div[id="bookingProblems"]').show();
+        return null;
+    }
+    if ($('select[name="pricingBrand"]').val()===''){
+        $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Brand needs to be selected.</span>');
+        $('div[id="bookingProblems"]').show();
+        return null;
+    }
+    if ($('select[name="pricingModel"]').val()===''){
+        $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Model needs to be selected.</span>');
+        $('div[id="bookingProblems"]').show();
+        return null;
+    }
+    if ($('select[name="pricingFuel"]').val()===''){
+        $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Fuel needs to be selected.</span>');
         $('div[id="bookingProblems"]').show();
         return null;
     }
