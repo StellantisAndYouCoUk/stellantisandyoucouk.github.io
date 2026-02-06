@@ -262,8 +262,6 @@ function chooseDealership(dealershipId){
     if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
         let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
         checkPricingDataForDealership(newDealership);
-        $('div[id="bookingDealership"]').text(newDealership.field_8);
-        $('div[id="bookingDealership"]').show();
     }
 }
 
@@ -565,6 +563,8 @@ function checkPricingDataForDealership(checkDealership){
     console.log(selectedPricingHTML)
     $('div[id="bookingPricing"]').html(selectedPricingHTML);
     $('div[id="bookingPricing"]').show();
+    $('div[id="bookingDealership"]').text(checkDealership.field_8);
+    $('div[id="bookingDealership"]').show();
 }
 
 function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
