@@ -267,7 +267,7 @@ function bookVisit(dealershipId){
     }
     if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
         let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
-        checkBookingDataForDealership(newDealership);
+        checkPricingDataForDealership(newDealership);
     }
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
         console.log('get Pricing')
@@ -443,7 +443,7 @@ function work(){
             serviceBookingProcess.lastDealership = lastDealership;
             $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Book service</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
             if (!serviceBookingProcess.bookingData){
-                checkBookingDataForDealership(lastDealership);
+                checkPricingDataForDealership(lastDealership);
             }
             showClosestDealerships($('[id="postcodeForD"]').val());
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
@@ -487,36 +487,41 @@ function work(){
     }
 }
 
-function checkBookingDataForDealership(checkDealership){
+function checkPricingDataForDealership(checkDealership){
     if (!checkDealership) return;
-    console.log('checkBookingDataForDealership',checkDealership.field_8)
+    console.log('checkPricingDataForDealership',checkDealership.field_8)
+    let selectedPricingHTML = '';
     if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
-                if (!kF){
-                    $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />'+getPricingBrandsForD(checkDealership));
+        if (!kF){
+            selectedPricingHTML += getPricingBrandsForD(checkDealership);
+            $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />'+getPricingBrandsForD(checkDealership));
+            $('div[id="bookingProblems"]').show();
+            serviceBookingProcess.bookingData = null;
+        } else {
+            selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
+            let motDataModel = serviceBookingProcess.motData.model;
+            motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4')
+            let mF = kF.models.find(el => motDataModel.toLowerCase().includes(el.modelName.toLowerCase()))
+            if (!mF){
+                mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
+            }
+            if (!mF){
+                $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />'+getPricingModelsForDB(kF))
+                $('div[id="bookingProblems"]').show();
+                selectedPricingHTML += getPricingModelsForDB(kF);
+                serviceBookingProcess.bookingData = null;
+            } else {
+                selectedPricingHTML += getPricingModelsForDB(kF,mF.ID);
+                let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
+                if (!fT){
+                    fT = mF.fuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().startsWith(el.Name.toLowerCase()));
+                }
+                if (!fT){
+                    $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
                     $('div[id="bookingProblems"]').show();
                     serviceBookingProcess.bookingData = null;
                 } else {
-                    let motDataModel = serviceBookingProcess.motData.model;
-                    motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4')
-                    let mF = kF.models.find(el => motDataModel.toLowerCase().includes(el.modelName.toLowerCase()))
-                    if (!mF){
-                        mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
-                    }
-                    if (!mF){
-                        $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />'+getPricingModelsForDB(kF))
-                        $('div[id="bookingProblems"]').show();
-                        serviceBookingProcess.bookingData = null;
-                    } else {
-                        let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
-                        if (!fT){
-                            fT = mF.fuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().startsWith(el.Name.toLowerCase()));
-                        }
-                        if (!fT){
-                            $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
-                            $('div[id="bookingProblems"]').show();
-                            serviceBookingProcess.bookingData = null;
-                        } else {
                             let savedCodes = null;
                             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
                             serviceBookingProcess.bookingData = {
@@ -537,22 +542,23 @@ function checkBookingDataForDealership(checkDealership){
                     }
                 }
             }
+    $('div[id="bookingPricing"]').html(selectedPricingHTML);
 }
 
-function getPricingModelsForDB(checkDealershipBrand){
-    let out = '<select name="pricingModel"><option value="" selected="selected">(Select a Model)</option>';
+function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
+    let out = '<select name="pricingModel"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Model)</option>';
     for (let  i =0;i<checkDealershipBrand.models.length;i++){
-        out +='<option value="'+checkDealershipBrand.models[i].ID+'">'+checkDealershipBrand.models[i].Name+'</option>'
+        out +='<option value="'+checkDealershipBrand.models[i].ID+'"'+(selectedId===checkDealershipBrand.models[i].ID?' selected="selected"':'')+'>'+checkDealershipBrand.models[i].Name+'</option>'
     }
     out += '</select>'
     return out;
 }
 
 
-function getPricingBrandsForD(checkDealership){
-    let out = '<select name="pricingBrand"><option value="" selected="selected">(Select a Brand)</option>';
+function getPricingBrandsForD(checkDealership, selectedId=null){
+    let out = '<select name="pricingBrand"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Brand)</option>';
     for (let  i =0;i<checkDealership.konnectData.franchises.length;i++){
-        out +='<option value="'+checkDealership.konnectData.franchises[i].ID+'">'+checkDealership.konnectData.franchises[i].Name+'</option>'
+        out +='<option value="'+checkDealership.konnectData.franchises[i].ID+'"'+(selectedId===checkDealership.konnectData.franchises[i].ID?' selected="selected"':'')+'>'+checkDealership.konnectData.franchises[i].Name+'</option>'
     }
     out += '</select>'
     return out;
