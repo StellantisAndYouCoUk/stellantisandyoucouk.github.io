@@ -1157,7 +1157,7 @@ function numberToHours(num){
     return Math.floor(num)+':'+pad(60*(num-Math.floor(num)))
 }
 
-function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
+function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
@@ -1182,7 +1182,12 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
         dayToUse.setDate(i); 
         let isDateAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)));
         //console.log(dayToUse, isDateAvailable,maxCheckedDate);
-        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?'style="background-color: green;"':'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        let isCourtesyCarAvailableOrNotNeeded = true;
+        if (courtesyVehiclesA){
+            let aTCV = courtesyVehiclesA.availableDates.find(el => el === dateToAutoline(dayToUse));
+            if (!aTCV) isCourtesyCarAvailableOrNotNeeded = false;
+        }
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?'style="background-color: green;"':'style="background-color: yellow;"'):'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
