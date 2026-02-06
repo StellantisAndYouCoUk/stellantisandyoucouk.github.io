@@ -1110,7 +1110,7 @@ async function generateBookingSummary(){
         }
         if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability){
             let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)));
-            console.log('BBBB',aVForDate)
+            //console.log('BBBB',aVForDate)
             if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
                 html += '<br />Meet and greet availability<br />';
                 for (let i = 0;i<aVForDate.meetAndGreet.availability.length;i++){
