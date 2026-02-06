@@ -268,7 +268,6 @@ function bookVisit(){
     console.log('bookVisit');
     let dealershipId = serviceBookingProcess.bookingData.knackDealerId
     $('div[id="bookingProblems"]').hide();
-    window.scrollTo(0, 0);
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Mileage needs to be entered.</span>');
@@ -295,7 +294,8 @@ function bookVisit(){
         $('div[id="bookingProblems"]').show();
         return null;
     }
-
+    window.scrollTo(0, 0);
+    
     serviceBookingProcess.bookingData.konnectFranchiseId = $('select[name="pricingBrand"]').val();
     serviceBookingProcess.bookingData.konnectModelName = $('select[name="pricingModel"]').val();
     //                    konnectModel : mF,
