@@ -249,6 +249,24 @@ function checkBookDateCallback(data){
     generateBookingSummary();
 }
 
+function chooseDealership(dealershipId){
+    console.log('chooseDealership');
+    if (dealershipId.length===2){
+        let dC = supportData.dealerList.find(el => el.field_2442 === dealershipId);
+        if (dC){
+            dealershipId = dC.id;
+        }
+    }
+    $('div[id="bookingProblems"]').hide();
+    window.scrollTo(0, 0);
+    if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
+        let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
+        checkPricingDataForDealership(newDealership);
+        $('div[id="bookingDealership"]').text(newDealership.field_8);
+        $('div[id="bookingDealership"]').show();
+    }
+}
+
 function bookVisit(dealershipId){
     console.log('bookVisit');
     if (dealershipId.length===2){
@@ -441,7 +459,7 @@ function work(){
             
             let lastDealership = (serviceBookingProcess.vehicle?supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch)):null);
             serviceBookingProcess.lastDealership = lastDealership;
-            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return bookVisit(\''+lastDealership.id+'\')">Choose</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
+            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return chooseDealership(\''+lastDealership.id+'\')">Choose</a><br /><br />':'')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
             if (!serviceBookingProcess.bookingData){
                 checkPricingDataForDealership(lastDealership);
             }
@@ -884,7 +902,7 @@ function showClosestDealerships(postcode){
                     if (!kF) continue;
                 }
             }
-            out += '<tr><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].name+'</td><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return bookVisit(\''+serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode+'\')">Choose</a></td></tr>'
+            out += '<tr><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].name+'</td><td>'+serviceBookingProcess.dealershipsToPostcode.dealerships[i].duration.toFixed(0)+' mins</td><td><a class="btn btn-primary" onclick="return chooseDealership(\''+serviceBookingProcess.dealershipsToPostcode.dealerships[i].companyCode+'\')">Choose</a></td></tr>'
             usedDealers += 1;
             if (usedDealers>=3) break;
         }
