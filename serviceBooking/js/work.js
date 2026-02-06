@@ -520,31 +520,42 @@ function checkPricingDataForDealership(checkDealership){
                 if (!fT){
                     $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
                     $('div[id="bookingProblems"]').show();
+                    selectedPricingHTML += getPricingFuelsForModel(mF);
                     serviceBookingProcess.bookingData = null;
                 } else {
-                            let savedCodes = null;
-                            if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
-                            serviceBookingProcess.bookingData = {
-                                dealer : checkDealership,
-                                knackDealerId : checkDealership.id,
-                                dealerName : checkDealership.field_8,
-                                konnectDealerId : checkDealership.konnectData.ID,
-                                konnectFranchiseId : kF.ID,
-                                konnectModelName : mF.modelName,
-                                konnectModel : mF,
-                                konnectFuelTypeId : fT.ID,
-                                yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
-                                bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
-                            };
-                            if (savedCodes) serviceBookingProcess.bookingData.orderedCodes = savedCodes;
-                            sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
-                        }
-                    }
+                    selectedPricingHTML += getPricingFuelsForModel(mF,fT.ID);
+                    let savedCodes = null;
+                    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
+                    serviceBookingProcess.bookingData = {
+                        dealer : checkDealership,
+                        knackDealerId : checkDealership.id,
+                        dealerName : checkDealership.field_8,
+                        konnectDealerId : checkDealership.konnectData.ID,
+                        konnectFranchiseId : kF.ID,
+                        konnectModelName : mF.modelName,
+                        konnectModel : mF,
+                        konnectFuelTypeId : fT.ID,
+                        yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
+                        bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
+                    };
+                    if (savedCodes) serviceBookingProcess.bookingData.orderedCodes = savedCodes;
+                    sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
                 }
             }
-            console.log(selectedPricingHTML)
+        }
+    }
+    console.log(selectedPricingHTML)
     $('div[id="bookingPricing"]').html(selectedPricingHTML);
     $('div[id="bookingPricing"]').show();
+}
+
+function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
+    let out = '<select name="pricingFuel"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Fuel)</option>';
+    for (let  i =0;i<checkDealershipBrandModel.fuelTypes.length;i++){
+        out +='<option value="'+checkDealershipBrandModel.fuelTypes[i].ID+'"'+(selectedId===checkDealershipBrandModel.fuelTypes[i].ID?' selected="selected"':'')+'>'+checkDealershipBrandModel.fuelTypes[i].Name+'</option>'
+    }
+    out += '</select>'
+    return out;
 }
 
 function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
