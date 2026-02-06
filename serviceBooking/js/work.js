@@ -1159,7 +1159,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate){
     dayToUse.setDate(1);
     dayToUse.setMonth(dayToUse.getMonth()+plusMonth);
     //console.log('dayToUse',dayToUse)
-    let html = '<table class="table-condensed table-bordered table-striped"><thead><tr><th colspan="7"><span class="btn-group"><a class="btn"><i class="bi bi-icon-chevron-left"></i></a><a class="btn active">'+monthNames[dayToUse.getMonth()]+' '+dayToUse.getFullYear()+'</a><a class="btn"><i class="icon-chevron-right"></i></a></span></th></tr><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody><tr>';
+    let html = '<table class="table-condensed table-bordered table-striped"><thead><tr><th colspan="7"><span class="btn-group"><a class="btn"><i class="icon-chevron-left"></i></a><a class="btn active">'+monthNames[dayToUse.getMonth()]+' '+dayToUse.getFullYear()+'</a><a class="btn"><i class="icon-chevron-right"></i></a></span></th></tr><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody><tr>';
     let firstDateOfMonth = new Date(dayToUse.getTime());
     firstDateOfMonth.setDate(1);
     let dayOfFirstDate = firstDateOfMonth.getDay();
