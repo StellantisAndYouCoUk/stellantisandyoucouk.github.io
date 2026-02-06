@@ -542,7 +542,9 @@ function checkPricingDataForDealership(checkDealership){
                     }
                 }
             }
+            console.log(selectedPricingHTML)
     $('div[id="bookingPricing"]').html(selectedPricingHTML);
+    $('div[id="bookingPricing"]').show();
 }
 
 function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
