@@ -1119,7 +1119,7 @@ async function generateBookingSummary(){
             }
         }
         if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
-            let availableCV = supportData.courtesyVehicles.filter(el => el.field_1183.includes(serviceBookingProcess.bookingData.dealer.id) && el.field_2472 === "Courtesy Car Free");
+            let availableCV = supportData.courtesyVehicles.filter(el => el.field_1183.includes(serviceBookingProcess.bookingData.dealer.field_9410) && el.field_2472 === "Courtesy Car Free");
             console.log('availableCV',availableCV);
             html += '<br />Available courtesy vehicles: '+ availableCV.length;
         }
