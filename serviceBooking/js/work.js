@@ -1124,8 +1124,8 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
         html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate);
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
     }
     /*
@@ -1153,6 +1153,7 @@ function numberToHours(num){
 }
 
 function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null){
+    console.log(courtesyVehiclesA)
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
