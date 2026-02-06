@@ -301,7 +301,7 @@ function bookVisit(){
     //                    konnectModel : mF,
     serviceBookingProcess.bookingData.konnectFuelTypeId = $('select[name="pricingFuel"]').val();
     //yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
-    serviceBookingProcess.bookingData.bookingVehicleDescription = toTitleCase(serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID === $('select[name="pricingBrand"]').val()).Name)+' '+$('select[name="pricingModel"]').val()+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
+    serviceBookingProcess.bookingData.bookingVehicleDescription = toTitleCase(serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val()).Name)+' '+$('select[name="pricingModel"]').val()+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
 
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
