@@ -592,8 +592,19 @@ function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
     return out;
 }
 
+function pricingModelChange(){
+    console.log('pricingModelChange',$('select[name="pricingModel"]').val());
+    $('select[name="pricingFuel"]').empty();
+    $('select[name="pricingFuel"]').append('<option value="" selected="selected">(Select a Fuel)</option>');
+    let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
+    let mS = frS.models.find(el => el.modelName === $('select[name="pricingModel"]').val());
+    for (let i =0;i<mS.fuelTypes.length;i++){
+        $('select[name="pricingFuel"]').append('<option value="'+mS.fuelTypes[i].ID+'">'+mS.fuelTypes[i].Name+'</option>');
+    }
+}
+
 function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
-    let out = '<select name="pricingModel"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Model)</option>';
+    let out = '<select name="pricingModel" onchange="pricingModelChange()"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Model)</option>';
     for (let  i =0;i<checkDealershipBrand.models.length;i++){
         out +='<option value="'+checkDealershipBrand.models[i].modelName+'"'+(selectedId===checkDealershipBrand.models[i].modelName?' selected="selected"':'')+'>'+checkDealershipBrand.models[i].modelName+'</option>'
     }
