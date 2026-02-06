@@ -512,7 +512,7 @@ function checkPricingDataForDealership(checkDealership){
                 selectedPricingHTML += getPricingModelsForDB(kF);
                 serviceBookingProcess.bookingData = null;
             } else {
-                selectedPricingHTML += getPricingModelsForDB(kF,mF.ID);
+                selectedPricingHTML += getPricingModelsForDB(kF,mF.modelName);
                 let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
                 if (!fT){
                     fT = mF.fuelTypes.find(el => serviceBookingProcess.motData.fuelType.toLowerCase().startsWith(el.Name.toLowerCase()));
