@@ -550,7 +550,7 @@ function checkPricingDataForDealership(checkDealership){
 function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
     let out = '<select name="pricingModel"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Model)</option>';
     for (let  i =0;i<checkDealershipBrand.models.length;i++){
-        out +='<option value="'+checkDealershipBrand.models[i].ID+'"'+(selectedId===checkDealershipBrand.models[i].ID?' selected="selected"':'')+'>'+checkDealershipBrand.models[i].Name+'</option>'
+        out +='<option value="'+checkDealershipBrand.models[i].modelName+'"'+(selectedId===checkDealershipBrand.models[i].modelName?' selected="selected"':'')+'>'+checkDealershipBrand.models[i].modelName+'</option>'
     }
     out += '</select>'
     return out;
