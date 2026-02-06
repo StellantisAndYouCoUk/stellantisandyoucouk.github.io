@@ -505,7 +505,7 @@ function checkPricingDataForDealership(checkDealership){
     if (!checkDealership) return;
     console.log('checkPricingDataForDealership',checkDealership.field_8)
     let selectedPricingHTML = '';
-    if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
+    //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
         if (!kF){
             selectedPricingHTML += getPricingBrandsForD(checkDealership);
@@ -557,7 +557,7 @@ function checkPricingDataForDealership(checkDealership){
                 }
             }
         }
-    }
+    //}
     console.log(selectedPricingHTML)
     $('div[id="bookingPricing"]').html(selectedPricingHTML);
     $('div[id="bookingPricing"]').show();
