@@ -601,9 +601,12 @@ function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
     return out;
 }
 
+function pricingBrandChange(){
+    console.log('pricingBrandChange',$('select[name="pricingBrand"]').val());
+}
 
 function getPricingBrandsForD(checkDealership, selectedId=null){
-    let out = '<select name="pricingBrand"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Brand)</option>';
+    let out = '<select name="pricingBrand" onchange="pricingBrandChange()"><option value=""'+(!selectedId?' selected="selected"':'')+'>(Select a Brand)</option>';
     for (let  i =0;i<checkDealership.konnectData.franchises.length;i++){
         out +='<option value="'+checkDealership.konnectData.franchises[i].ID+'"'+(selectedId===checkDealership.konnectData.franchises[i].ID?' selected="selected"':'')+'>'+checkDealership.konnectData.franchises[i].Name+'</option>'
     }
