@@ -1143,7 +1143,7 @@ async function generateBookingSummary(){
 }
 
 function formatMeetAndGreetAvailability(meetAndGreet){
-    let aA = aVForDate.meetAndGreet.availability.map(function(el){
+    let aA = meetAndGreet.availability.map(function(el){
         return formatTimesInAvailability(el).split(',');
     }).flat();
     const uA = [...new Set(aA)];
