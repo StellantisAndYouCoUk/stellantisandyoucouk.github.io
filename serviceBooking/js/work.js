@@ -1146,7 +1146,8 @@ function formatMeetAndGreetAvailability(meetAndGreet){
     let aA = meetAndGreet.availability.map(function(el){
         return formatTimesInAvailability(el).split(',');
     }).flat();
-    const uA = [...new Set(aA)];
+    console.log(aA);
+    let uA = [...new Set(aA)];
     uA = uA.sort((a,b)=> (a>b?-1:1));
     let out = '<table><tr>';
     for (let i = 0;i<uA.length;i++){
