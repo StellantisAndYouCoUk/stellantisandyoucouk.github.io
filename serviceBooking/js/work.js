@@ -1143,8 +1143,11 @@ async function generateBookingSummary(){
 }
 
 function formatMeetAndGreetAvailability(meetAndGreet){
+    let aB = [];
     let aA = meetAndGreet.availability.map(function(el){
-        return formatTimesInAvailability(el).split(',');
+        let t = formatTimesInAvailability(el);
+        aB.push({name:el.Resource,av:t});
+        return t.split(',');
     }).flat();
     console.log(aA);
     let uA = [...new Set(aA)];
@@ -1152,7 +1155,8 @@ function formatMeetAndGreetAvailability(meetAndGreet){
     let out = '<table><tr>';
     for (let i = 0;i<uA.length;i++){
         if (i!==0 && i/10===Math.floor(i/10)) out += '</tr><tr>'
-        out += '<td>'+uA[i]+'</td>';
+        let rT = aB.filter(el => el.av.includes(uA[i]));
+        out += '<td>'+uA[i]+':'+rT.length+'</td>';
     }
     out += '</tr></table>'
     return out;
