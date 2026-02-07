@@ -1041,6 +1041,7 @@ function findAvailabilityDaysForBooking(){
 
 function findAvailabilityDaysForBookingCallback(data){
     serviceBookingProcess.bookingData.availability = data;
+    calendareMonthSelected = null;
     generateBookingSummary();
 }
 
@@ -1129,6 +1130,7 @@ async function generateBookingSummary(){
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
+        if (calendareMonthSelected) calendarChangeMonthTo(calendareMonthSelected)
     }
     /*
     if (labourSummary.length>0){
@@ -1154,15 +1156,19 @@ function numberToHours(num){
     return Math.floor(num)+':'+pad(60*(num-Math.floor(num)))
 }
 
+var calendareMonthSelected = null;
 function calendarChangeMonthTo(month){
     let maxPlusMonth = 2;
     for (let i = 0;i<=maxPlusMonth;i++){
         if (i===month){
-            $('table[id="month'+i+']').show();
+            console.log('show',i)
+            $('table[id="month'+i+'"]').show();
         } else {
-            $('table[id="month'+i+']').hide();
+            console.log('hide',i)
+            $('table[id="month'+i+'"]').hide();
         }
     }
+    calendareMonthSelected = month;
 }
 
 function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null){
