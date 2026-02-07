@@ -1116,6 +1116,7 @@ async function generateBookingSummary(){
             //console.log('BBBB',aVForDate)
             if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
                 html += '<br />Meet and greet availability<br />';
+                html += formatMeetAndGreetAvailability(aVForDate.meetAndGreet);
                 for (let i = 0;i<aVForDate.meetAndGreet.availability.length;i++){
                     html += aVForDate.meetAndGreet.availability[i].Resource + ' - ' + formatTimesInAvailability(aVForDate.meetAndGreet.availability[i])+'<br />';
                 }
@@ -1139,6 +1140,21 @@ async function generateBookingSummary(){
         }
     }*/
     $('div[id="bookingSummary"]').html(html);
+}
+
+function formatMeetAndGreetAvailability(meetAndGreet){
+    let aA = aVForDate.meetAndGreet.availability.map(function(el){
+        return formatTimesInAvailability(el).split(',');
+    }).flat();
+    const uA = [...new Set(aA)];
+    uA = uA.sort((a,b)=> (a>b?-1:1));
+    let out = '<table><tr>';
+    for (let i = 0;i<uA.length;i++){
+        out += '<td>'+uA[i]+'</td>';
+        if (i/10===Math.ceil(i/10)) out += '</tr><tr>'
+    }
+    out += '</tr></table>'
+    return out;
 }
 
 function formatTimesInAvailability(avDataRaw){
