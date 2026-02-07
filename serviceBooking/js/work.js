@@ -1154,6 +1154,17 @@ function numberToHours(num){
     return Math.floor(num)+':'+pad(60*(num-Math.floor(num)))
 }
 
+function calendarChangeMonthTo(month){
+    let maxPlusMonth = 2;
+    for (let i = 0;i<=maxPlusMonth;i++){
+        if (i===month){
+            $('table[id="month'+i+']').show();
+        } else {
+            $('table[id="month'+i+']').hide();
+        }
+    }
+}
+
 function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null){
     console.log(courtesyVehiclesA)
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
