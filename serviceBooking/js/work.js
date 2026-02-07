@@ -399,8 +399,10 @@ function getRTSCodePrefix(make){
             return 'P';
         case 'citroen':
             return 'C';
-        case 'DS':
+        case 'ds':
             return 'D';
+        case 'vauxhall':
+            return 'V';
     }
     return '';
 }
