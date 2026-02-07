@@ -1148,11 +1148,11 @@ function formatMeetAndGreetAvailability(meetAndGreet){
     }).flat();
     console.log(aA);
     let uA = [...new Set(aA)];
-    uA = uA.sort((a,b)=> (a>b?-1:1));
+    uA = uA.sort((a,b)=> (new Date('1970-01-01 '+a)>new Date('1970-01-01 '+b)?-1:1));
     let out = '<table><tr>';
     for (let i = 0;i<uA.length;i++){
         out += '<td>'+uA[i]+'</td>';
-        if (i/10===Math.ceil(i/10)) out += '</tr><tr>'
+        if (i!==0 && i/10===Math.floor(i/10)) out += '</tr><tr>'
     }
     out += '</tr></table>'
     return out;
