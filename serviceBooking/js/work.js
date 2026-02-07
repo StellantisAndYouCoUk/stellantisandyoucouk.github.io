@@ -1130,7 +1130,6 @@ async function generateBookingSummary(){
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
-        if (calendareMonthSelected) calendarChangeMonthTo(calendareMonthSelected)
     }
     /*
     if (labourSummary.length>0){
@@ -1161,10 +1160,8 @@ function calendarChangeMonthTo(month){
     let maxPlusMonth = 2;
     for (let i = 0;i<=maxPlusMonth;i++){
         if (i===month){
-            console.log('show',i)
             $('table[id="month'+i+'"]').show();
         } else {
-            console.log('hide',i)
             $('table[id="month'+i+'"]').hide();
         }
     }
@@ -1179,7 +1176,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
     dayToUse.setDate(1);
     dayToUse.setMonth(dayToUse.getMonth()+plusMonth);
     //console.log('dayToUse',dayToUse)
-    let html = '<table '+(plusMonth!==0?'style="display: none;" ':'')+'id="month'+plusMonth+'" class="table-condensed table-bordered table-striped"><thead><tr><th colspan="7"><span class="btn-group">'+(plusMonth!==0?'<a class="btn" onclick="calendarChangeMonthTo('+(plusMonth-1)+')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg></a>':'')+monthNames[dayToUse.getMonth()]+' '+dayToUse.getFullYear()+(plusMonth!==2?'<a class="btn" onclick="calendarChangeMonthTo('+(plusMonth+1)+')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path></svg></a>':'')+'</span></th></tr><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody><tr>';
+    let html = '<table '+((calendareMonthSelected && plusMonth!==calendareMonthSelected) || (!calendareMonthSelected && plusMonth!==0)?'style="display: none;" ':'')+'id="month'+plusMonth+'" class="table-condensed table-bordered table-striped"><thead><tr><th colspan="7"><span class="btn-group">'+(plusMonth!==0?'<a class="btn" onclick="calendarChangeMonthTo('+(plusMonth-1)+')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/></svg></a>':'')+monthNames[dayToUse.getMonth()]+' '+dayToUse.getFullYear()+(plusMonth!==2?'<a class="btn" onclick="calendarChangeMonthTo('+(plusMonth+1)+')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"></path></svg></a>':'')+'</span></th></tr><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody><tr>';
     let firstDateOfMonth = new Date(dayToUse.getTime());
     firstDateOfMonth.setDate(1);
     let dayOfFirstDate = firstDateOfMonth.getDay();
