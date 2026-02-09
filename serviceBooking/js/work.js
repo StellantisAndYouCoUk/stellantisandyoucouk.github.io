@@ -523,7 +523,11 @@ function work(){
 }
 
 function checkPricingDataForDealership(checkDealership){
-    if (!checkDealership) return;
+    if (!checkDealership){
+        $('div[id="bookingPricing"]').html('');
+        $('div[id="bookingDealership"]').text('');
+        return;
+    }
     console.log('checkPricingDataForDealership',checkDealership.field_8)
     if (!serviceBookingProcess.bookingData) serviceBookingProcess.bookingData = {}
 
@@ -1084,7 +1088,7 @@ async function generateBookingSummary(){
             try {
                 pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
             } catch (ex){
-                
+
             }
             if (!pricingDetailsForCode){
                 //We should inform the user
