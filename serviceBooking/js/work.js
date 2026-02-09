@@ -525,6 +525,21 @@ function work(){
 function checkPricingDataForDealership(checkDealership){
     if (!checkDealership) return;
     console.log('checkPricingDataForDealership',checkDealership.field_8)
+    if (serviceBookingProcess.bookingData){
+        serviceBookingProcess.bookingData.dealer = checkDealership;
+        serviceBookingProcess.bookingData.knackDealerId = checkDealership.id;
+        serviceBookingProcess.bookingData.dealerName = checkDealership.field_8;
+        serviceBookingProcess.bookingData.konnectDealerId = checkDealership.konnectData.ID;
+        serviceBookingProcess.bookingData.yearOfManufacture = (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear();
+    } else {
+        serviceBookingProcess.bookingData = {
+            dealer : checkDealership,
+            knackDealerId : checkDealership.id,
+            dealerName : checkDealership.field_8,
+            konnectDealerId : checkDealership.konnectData.ID,
+            yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
+        }
+    }
     let selectedPricingHTML = '';
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
@@ -562,15 +577,10 @@ function checkPricingDataForDealership(checkDealership){
                     let savedCodes = null;
                     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
                     serviceBookingProcess.bookingData = {
-                        dealer : checkDealership,
-                        knackDealerId : checkDealership.id,
-                        dealerName : checkDealership.field_8,
-                        konnectDealerId : checkDealership.konnectData.ID,
                         konnectFranchiseId : kF.ID,
                         konnectModelName : mF.modelName,
                         konnectModel : mF,
                         konnectFuelTypeId : fT.ID,
-                        yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),
                         bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
                     };
                     if (savedCodes) serviceBookingProcess.bookingData.orderedCodes = savedCodes;
