@@ -655,7 +655,7 @@ function getVehicleDescription(){
         let mileageEst = currentMileageUpdated(null,serviceBookingProcess.secondaryDetails.serviceVisitDetails,serviceBookingProcess.motData);
         if (mileageEst.currentMileage && mileageEst.currentMileage!==0){
             out += '<br />System estimates '+mileageEst.currentMileage+' miles.';
-            $('input[id="currentMileage"]').val(mileageEst.currentMileage)
+            if ($('input[id="currentMileage"]').val()==='') $('input[id="currentMileage"]').val(mileageEst.currentMileage)
         }
     }
     if (serviceBookingProcess.vehicle && serviceBookingProcess.vehicle.ChassisNumber!==''){
