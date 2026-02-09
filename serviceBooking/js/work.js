@@ -525,21 +525,14 @@ function work(){
 function checkPricingDataForDealership(checkDealership){
     if (!checkDealership) return;
     console.log('checkPricingDataForDealership',checkDealership.field_8)
-    if (serviceBookingProcess.bookingData){
-        serviceBookingProcess.bookingData.dealer = checkDealership;
-        serviceBookingProcess.bookingData.knackDealerId = checkDealership.id;
-        serviceBookingProcess.bookingData.dealerName = checkDealership.field_8;
-        serviceBookingProcess.bookingData.konnectDealerId = checkDealership.konnectData.ID;
-        serviceBookingProcess.bookingData.yearOfManufacture = (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear();
-    } else {
-        serviceBookingProcess.bookingData = {
-            dealer : checkDealership,
-            knackDealerId : checkDealership.id,
-            dealerName : checkDealership.field_8,
-            konnectDealerId : checkDealership.konnectData.ID,
-            yearOfManufacture : (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
-        }
-    }
+    if (!serviceBookingProcess.bookingData) serviceBookingProcess.bookingData = {}
+
+    serviceBookingProcess.bookingData.dealer = checkDealership;
+    serviceBookingProcess.bookingData.knackDealerId = checkDealership.id;
+    serviceBookingProcess.bookingData.dealerName = checkDealership.field_8;
+    serviceBookingProcess.bookingData.konnectDealerId = checkDealership.konnectData.ID;
+    serviceBookingProcess.bookingData.yearOfManufacture = (new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear();
+
     let selectedPricingHTML = '';
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
