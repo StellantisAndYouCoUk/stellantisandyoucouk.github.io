@@ -573,13 +573,11 @@ function checkPricingDataForDealership(checkDealership){
                     selectedPricingHTML += getPricingFuelsForModel(mF,fT.ID);
                     let savedCodes = null;
                     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
-                    serviceBookingProcess.bookingData = {
-                        konnectFranchiseId : kF.ID,
-                        konnectModelName : mF.modelName,
-                        konnectModel : mF,
-                        konnectFuelTypeId : fT.ID,
-                        bookingVehicleDescription: toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
-                    };
+                    serviceBookingProcess.bookingData.konnectFranchiseId = kF.ID;
+                    serviceBookingProcess.bookingData.konnectModelName = mF.modelName;
+                    serviceBookingProcess.bookingData.konnectModel = mF;
+                    serviceBookingProcess.bookingData.konnectFuelTypeId = fT.ID;
+                    serviceBookingProcess.bookingData.bookingVehicleDescription = toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear();
                     if (savedCodes) serviceBookingProcess.bookingData.orderedCodes = savedCodes;
                     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
                 }
