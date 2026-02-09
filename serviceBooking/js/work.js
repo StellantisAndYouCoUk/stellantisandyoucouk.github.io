@@ -266,7 +266,6 @@ function chooseDealership(dealershipId){
 
 function bookVisit(){
     console.log('bookVisit');
-    let dealershipId = serviceBookingProcess.bookingData.knackDealerId
     $('div[id="bookingProblems"]').hide();
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
@@ -304,7 +303,7 @@ function bookVisit(){
     serviceBookingProcess.bookingData.bookingVehicleDescription = toTitleCase(serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val()).Name)+' '+$('select[name="pricingModel"]').val()+' '+$('select[name="pricingFuel"]').find('option:selected').text()+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear()
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
 
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId === dealershipId){
+    if (serviceBookingProcess.bookingData){
         console.log('get Pricing')
         serviceBookingProcess.bookingData.mileage = mileage;
         serviceBookingProcess.bookingData.pricing = getPricing(serviceBookingProcess.bookingData.konnectDealerId,serviceBookingProcess.bookingData.konnectFranchiseId,serviceBookingProcess.bookingData.konnectFuelTypeId,serviceBookingProcess.bookingData.konnectModelName,serviceBookingProcess.bookingData.yearOfManufacture,mileage);
