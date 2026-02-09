@@ -547,7 +547,6 @@ function checkPricingDataForDealership(checkDealership){
             selectedPricingHTML += getPricingBrandsForD(checkDealership);
             $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />'+getPricingBrandsForD(checkDealership));
             $('div[id="bookingProblems"]').show();
-            serviceBookingProcess.bookingData = null;
         } else {
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
             let motDataModel = serviceBookingProcess.motData.model;
@@ -560,7 +559,6 @@ function checkPricingDataForDealership(checkDealership){
                 $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />'+getPricingModelsForDB(kF))
                 $('div[id="bookingProblems"]').show();
                 selectedPricingHTML += getPricingModelsForDB(kF);
-                serviceBookingProcess.bookingData = null;
             } else {
                 selectedPricingHTML += getPricingModelsForDB(kF,mF.modelName);
                 let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
@@ -571,7 +569,6 @@ function checkPricingDataForDealership(checkDealership){
                     $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
                     $('div[id="bookingProblems"]').show();
                     selectedPricingHTML += getPricingFuelsForModel(mF);
-                    serviceBookingProcess.bookingData = null;
                 } else {
                     selectedPricingHTML += getPricingFuelsForModel(mF,fT.ID);
                     let savedCodes = null;
