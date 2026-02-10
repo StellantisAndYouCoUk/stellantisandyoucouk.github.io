@@ -531,7 +531,7 @@ function checkPricingDataForDealership(checkDealership){
         let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
         if (!kF){
             selectedPricingHTML += getPricingBrandsForD(checkDealership);
-            $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />'+getPricingBrandsForD(checkDealership));
+            $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />');
             $('div[id="bookingProblems"]').show();
         } else {
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
@@ -542,7 +542,7 @@ function checkPricingDataForDealership(checkDealership){
                 mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
             }
             if (!mF){
-                $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />'+getPricingModelsForDB(kF))
+                $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />')
                 $('div[id="bookingProblems"]').show();
                 selectedPricingHTML += getPricingModelsForDB(kF);
             } else {
