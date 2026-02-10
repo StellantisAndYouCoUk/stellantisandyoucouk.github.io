@@ -463,6 +463,7 @@ function work(){
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;">&nbsp;&nbsp;&nbsp;'+serviceBookingProcess.registrationNumber+'&nbsp;&nbsp;&nbsp;</span>')
             $('h1[id="registrationNumberShow"]').show();
+            $('[id="otherDealerships"]').hide();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
             $('div[id="step3"]').hide();
@@ -926,10 +927,8 @@ function findDealerships(){
         serviceBookingProcess.dealershipsToPostcode = {postcode:postcode,dealerships:closestD};
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         showClosestDealerships(postcode);
-    } else {
-        $('[id="otherDealerships"]').hide();
-    }
-} 
+    } 
+}
 
 function showClosestDealerships(postcode){
     if (serviceBookingProcess.dealershipsToPostcode && serviceBookingProcess.dealershipsToPostcode.postcode === postcode){
