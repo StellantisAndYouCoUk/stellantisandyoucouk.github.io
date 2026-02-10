@@ -41,7 +41,7 @@ function callPostHttpRequest(url, headers,payloadObject){
         async: false,
         headers:headers
       };
-      console.log(requestObj);
+      //console.log(requestObj);
       var rData = $.ajax(requestObj).responseText;
       return JSON.parse(rData);
     } catch(exception) {
@@ -60,7 +60,7 @@ function callPostHttpRequestAsync(url, headers,payloadObject, callback){
         data: dataToSend,
         headers:headers
       };
-      console.log(requestObj);
+      //console.log(requestObj);
       $.ajax(requestObj).done(function(data) {
             try {
                 callback(data);
@@ -85,7 +85,7 @@ async function callPostHttpRequestWithCompress(url, headers,payloadObject){
         const compressedResponse = await new Response(compressedReadableStream);
         const blob = await compressedResponse.blob();
         const buffer = await blob.arrayBuffer();
-        console.log(buffer);
+        //console.log(buffer);
       let requestObj = {
         url: commandURL,
         type: 'POST',
@@ -96,7 +96,7 @@ async function callPostHttpRequestWithCompress(url, headers,payloadObject){
             'Content-Encoding': 'gzip',
         }
       };
-      console.log(requestObj);
+      //console.log(requestObj);
       var rData = $.ajax(requestObj).responseText;
       return JSON.parse(rData);
     } catch(exception) {
@@ -112,7 +112,7 @@ function callGetHttpRequest(url, headers){
         type: 'GET',
         async: false
       };
-      console.log(requestObj);
+      //console.log(requestObj);
       var rData = $.ajax(requestObj).responseText;
       return JSON.parse(rData);
     } catch(exception) {
@@ -157,7 +157,6 @@ checkAuth();
 $( document ).ready(function() {
     $("a[id='searchRegistration']").bind("click", function() {
         $("a[id='searchRegistration']").prop("disabled", true)
-        console.log('Search registration CLICK')
         if ($('input[id="registrationNumber"]').val()===''){
             $('div[id="searchRegistrationMessage"]').text('Enter Registration Number');
             $('div[id="searchRegistrationMessage"]').show();
@@ -312,8 +311,6 @@ function bookVisit(){
             serviceBookingProcess.bookingData.pricing.Recalls = serviceBookingProcess.secondaryDetails.recalls.recallNeedsCheckDetails;
         }
 
-        console.log(serviceBookingProcess.bookingData.pricing)
-
         findAvailabilityDaysForBooking();
 
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
@@ -354,9 +351,7 @@ async function getSecondaryDetails(registrationNumber, customerNumber=null,vehic
 }
 
 async function getSecondaryDetailsCallback(r){
-    console.log('getSecondaryDetailsCallback',r)
     if (r.success && r.data){
-        console.log('getSecondaryDetails success')
         $('#infoPanel').html('');
         serviceBookingProcess.secondaryDetails = r.data;
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
@@ -374,10 +369,8 @@ async function processRecalls(){
         for (let i = 0;i<serviceBookingProcess.secondaryDetails.recalls.recall.records.length;i++){
             if (!serviceBookingProcess.secondaryDetails.recalls.recall.records[i].needsCheck) continue;
             let RTSCodePrefix = getRTSCodePrefix(serviceBookingProcess.motData.make);
-            console.log('goto check')
             let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/servicePricing?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,function:'addRTSCode',RTSCode:RTSCodePrefix+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code})
             let recallName = 'Recall '+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code;
-            console.log(r)
             if (r.success){
                 let recallOne = r.data.find(el => el.RTSCode === RTSCodePrefix+serviceBookingProcess.secondaryDetails.recalls.recall.records[i].code);
                 if (!recallOne){
@@ -425,7 +418,6 @@ function work(){
                 if (!supportData.success) supportData = null;
             } catch (ex){}
         }
-        console.log('supportData storage',supportData);
         if (!supportData){
             supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token});
             //console.log(supportData);
@@ -463,7 +455,6 @@ function work(){
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;">&nbsp;&nbsp;&nbsp;'+serviceBookingProcess.registrationNumber+'&nbsp;&nbsp;&nbsp;</span>')
             $('h1[id="registrationNumberShow"]').show();
-            $('[id="otherDealerships"]').hide();
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
             $('div[id="step3"]').hide();
@@ -488,13 +479,11 @@ function work(){
                 if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0) refreshAutolineRTSCodes();
                 generateBookingSummary();
                 $("input[name='otherCode']").bind("click", function() {
-                    console.log('otherCode',$(this).attr('data-code'),$(this).is(':checked'));
                     if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
                     refreshAutolineRTSCodes(false,$(this).attr('data-code'))
                     generateBookingSummary();
                 });
                 $("input[name='serviceScheduleCode']").bind("click", function() {
-                    console.log('serviceScheduleCode',$(this).attr('data-code'),$(this).is(':checked'),$("input[name='serviceScheduleCode']:checked"));
                     if (!$(this).is(':checked')){
                         removeCodeFromBooking($(this).attr('data-code'));
                     } else {
@@ -508,7 +497,6 @@ function work(){
                                 }
                             }
                             for (let i =0;i<uncheckCodes.length;i++){
-                                console.log(uncheckCodes[i]);
                                 $("input[data-code='"+uncheckCodes[i]+"']").prop('checked',false);
                             }
                         }
@@ -598,7 +586,6 @@ function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
 }
 
 function pricingModelChange(){
-    console.log('pricingModelChange',$('select[name="pricingModel"]').val());
     $('select[name="pricingFuel"]').empty();
     $('select[name="pricingFuel"]').append('<option value="" selected="selected">(Select a Fuel)</option>');
     let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
@@ -618,7 +605,6 @@ function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
 }
 
 function pricingBrandChange(){
-    console.log('pricingBrandChange',$('select[name="pricingBrand"]').val());
     $('select[name="pricingModel"]').empty()
     let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
     $('select[name="pricingModel"]').append('<option value="" selected="selected">(Select a Model)</option>');
@@ -745,7 +731,6 @@ function getServiceSchedule(){
 function fillServiceScheduleHTML(){
     $('div[id="serviceSchedule"]').html(getServiceSchedule());
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.serviceSchedule && serviceBookingProcess.secondaryDetails.serviceSchedule.status==='running'){
-        console.log('ss retry')
         setTimeout(() => {
             fillServiceScheduleHTML();
         }, 10000);
@@ -756,7 +741,7 @@ function fillServiceScheduleHTML(){
 let shownTooltipId = null;
 let serviceTooltipsActive = false;
 function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
-  console.log('serviceVisitsTooltips',tooltipPlace, $('div[id*="tooltip_"]'));
+  //console.log('serviceVisitsTooltips',tooltipPlace, $('div[id*="tooltip_"]'));
   $('div[id*="tooltip_"]').each(function(){
     $(this).attr("style","display:none;");
     $(this).attr("class","tooltipDiv");
@@ -787,10 +772,10 @@ function serviceVisitsTooltips(tooltipPlace = 'rightBottomOnMouse'){
         if (tooltipLeft<50) tooltipLeft = 50;
         if (tooltipPlace==='rightBottomOnMouse'){
           tooltipLeft = e.pageX - $('div[id="tooltip_'+trUnderMouse.id+'"]').width() - 20;
-          console.log('tooltipLeft',tooltipLeft,e.pageX,$('div[id="tooltip_'+trUnderMouse.id+'"]').width());
+          //console.log('tooltipLeft',tooltipLeft,e.pageX,$('div[id="tooltip_'+trUnderMouse.id+'"]').width());
           if (tooltipLeft<10) tooltipLeft = 10;
           tooltipTop = e.pageY - $('div[id="tooltip_'+trUnderMouse.id+'"]').height() - 20;
-          console.log('tooltipTop',tooltipTop);
+          //console.log('tooltipTop',tooltipTop);
           if (tooltipTop<document.documentElement.scrollTop + 10) tooltipTop = document.documentElement.scrollTop + 10;
         }
         //console.log('tooltipWidth',$('div[id="tooltip_'+trUnderMouse.id+'"]').width());
@@ -1066,7 +1051,11 @@ function generateLabourSummary(){
                 } else {
                     labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
                 }
+            } else {
+                console.log('CODE NOT FOUND IN RTS CODES')
             }
+        } else {
+            console.log('supportData.autolineRTSCodes not there')
         }
     }  
     if (labourSummary.length===0) labourSummary = null;
@@ -1154,7 +1143,6 @@ function formatMeetAndGreetAvailability(meetAndGreet){
         aB.push({name:el.Resource,av:t});
         return t.split(',');
     }).flat();
-    console.log(aA);
     let uA = [...new Set(aA)];
     uA = uA.sort((a,b)=> (new Date('1970-01-01 '+a)<new Date('1970-01-01 '+b)?-1:1));
     let out = '<table><tr>';
@@ -1195,7 +1183,6 @@ function calendarChangeMonthTo(month){
 }
 
 function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null){
-    console.log(courtesyVehiclesA)
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
