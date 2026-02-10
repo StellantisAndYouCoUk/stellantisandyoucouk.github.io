@@ -1019,9 +1019,17 @@ function confirmAvailabilityForDate(dateToCheck, callback){
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/confirmWorkshopAvailabilityForLabourDate?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary,dateToCheck:dateToCheck},callback);
 }
 
-function findAvailabilityDaysForBooking(){
+function findAvailabilityDaysForBooking(retry = 0){
+    console.log('findAvailabilityDaysForBooking',retry)
     generateLabourSummary();
-    if (!serviceBookingProcess.bookingData.labourSummary) return null;
+    if (!serviceBookingProcess.bookingData.labourSummary){
+        if (retry<5){
+            setTimeout(() => {
+                findAvailabilityDaysForBooking(retry+1)
+            }, 2000);
+        }
+        return null;
+    }
     return callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary},findAvailabilityDaysForBookingCallback);
 }
 
@@ -1052,7 +1060,7 @@ function generateLabourSummary(){
                     labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
                 }
             } else {
-                console.log('CODE NOT FOUND IN RTS CODES')
+                console.log('CODE NOT FOUND IN RTS CODES');
             }
         } else {
             console.log('supportData.autolineRTSCodes not there')
