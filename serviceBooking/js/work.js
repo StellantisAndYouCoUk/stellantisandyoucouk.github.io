@@ -477,7 +477,7 @@ function work(){
             
             let lastDealership = (serviceBookingProcess.vehicle?supportData.dealerList.find(el => el.field_4998.includes(serviceBookingProcess.vehicle.AftersalesBranch)):null);
             serviceBookingProcess.lastDealership = lastDealership;
-            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return chooseDealership(\''+lastDealership.id+'\')">Choose</a><br /><br />':'No last dealership found')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
+            $('div[id="serviceDealership').html((lastDealership?'<b>Last Dealer Visit: </b>'+lastDealership.field_8+' <a class="btn btn-primary" onclick="return chooseDealership(\''+lastDealership.id+'\')">Choose</a><br /><br />':'No last dealership found<br />')+'<a class="btn btn-secondary" onclick="return findDealerships()">Find dealerships close to postcode</a> <input id="postcodeForD" size="7" value="'+(serviceBookingProcess.customer?serviceBookingProcess.customer.Postcode:'')+'"></input><div id="otherDealerships" style="display: none;"></div>');
             if (!lastDealership && $('[id="postcodeForD"]').val()!=='') findDealerships();
             if (!serviceBookingProcess.bookingData) checkPricingDataForDealership(lastDealership);
             showClosestDealerships($('[id="postcodeForD"]').val());
