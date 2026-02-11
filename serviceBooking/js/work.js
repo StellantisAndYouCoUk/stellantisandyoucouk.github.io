@@ -1022,7 +1022,7 @@ function confirmAvailabilityForDate(dateToCheck, callback){
 }
 
 function logData(data){
-    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/bookingLog?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{dateTime:new Date(), user: loggedInUser && loggedInUser.values && loggedInUser.values.email.email,data:data},empty);
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/bookingLog?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{dateTime:new Date(), user: loggedInUser && loggedInUser.values && loggedInUser.values.email.email,data:data, action:data.action},empty);
 }
 
 function empty(anything){}
