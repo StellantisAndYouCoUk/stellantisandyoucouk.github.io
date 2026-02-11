@@ -240,6 +240,7 @@ function checkBookDate(date){
     serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
     confirmAvailabilityForDate(date,checkBookDateCallback);
     generateBookingSummary();
+    logData({action:'checkBookDate',data:serviceBookingProcess});
 }
 
 function checkBookDateCallback(data){
@@ -343,6 +344,7 @@ function searchRegistration(registrationNumber){
         $('div[id="searchRegistrationMessage"]').show();
     }
     $("a[id='searchRegistration']").prop("disabled", false);
+    logData({action:'searchReg',registrationNumber:registrationNumber});
 }
 
 async function getSecondaryDetails(registrationNumber, customerNumber=null,vehicleNumber=null,make=null,VIN=null){
@@ -1018,6 +1020,12 @@ function confirmAvailabilityForDate(dateToCheck, callback){
     if (!serviceBookingProcess.bookingData.labourSummary) return null;
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/confirmWorkshopAvailabilityForLabourDate?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:serviceBookingProcess.bookingData.labourSummary,dateToCheck:dateToCheck},callback);
 }
+
+function logData(data){
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/bookingLog?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{dateTime:new Date(), user: loggedInUser && loggedInUser.values && loggedInUser.values.email.email,data:data},empty);
+}
+
+function empty(anything){}
 
 function findAvailabilityDaysForBooking(retry = 0){
     console.log('findAvailabilityDaysForBooking',retry)
