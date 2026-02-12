@@ -935,6 +935,7 @@ function showClosestDealerships(postcode){
             if (usedDealers>=3) break;
         }
         out += '</table>';
+        if (usedDealers===0) out = 'No dealership found servicing this brand.'
         $('[id="otherDealerships"]').html(out);
         $('[id="otherDealerships"]').show();
     } else {
