@@ -2173,3 +2173,9 @@ $(document).on('knack-form-submit.view_5942', function(event, view, data) {
       $(".kn-message.success").html("<b>" + data + "</b>");
     });
 });
+
+
+
+$(document).on("knack-scene-render.scene_1699", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
