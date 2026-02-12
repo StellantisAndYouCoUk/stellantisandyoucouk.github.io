@@ -129,7 +129,6 @@ function dateTimeToGBNoYear(dateobj){
 }
 
 function checkAuth(){
-    if (window.location.href.includes('file:/')) return;
     if (window.location.href.includes('login.html')) return;
     token = readCookie('bookingToken');
     if (!token){
