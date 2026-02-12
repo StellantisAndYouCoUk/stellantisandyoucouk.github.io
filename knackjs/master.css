@@ -443,6 +443,14 @@ body {
   font-weight: bold;
 }
 
+/****** Autoline Security Request Filters *******/
+
+#view_7059 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a{
+  background-color: #FFA100;
+  color: #ffffff;
+  font-weight: bold;
+}
+
 /*Used Stock Management VHC Auth/Awaiting Auth filters to change colour */
 
 
