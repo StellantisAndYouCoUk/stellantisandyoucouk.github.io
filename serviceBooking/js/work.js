@@ -680,7 +680,7 @@ function getVehicleDescription(){
 function getVehicleDetailsServiceBox(){
     let out = '';
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable!==''){
-        out += serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable;
+        out += (serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable?serviceBookingProcess.secondaryDetails.recalls.recall.vehicleSummaryTable:'');
         $('[id="vehicleDetailsServiceBoxCard"]').show();
     } else {
         $('[id="vehicleDetailsServiceBoxCard"]').hide();
@@ -691,7 +691,7 @@ function getVehicleDetailsServiceBox(){
 function getServicePlans(){
     let out = '';
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.recalls && serviceBookingProcess.secondaryDetails.recalls.recall && serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable!==''){
-        out += serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable;
+        out += (serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable?serviceBookingProcess.secondaryDetails.recalls.recall.servicePlansSummaryTable:'');
     }
     if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.emac && serviceBookingProcess.secondaryDetails.emac.Response){
         if (!serviceBookingProcess.secondaryDetails.emac.Response.AgreementsFound){
