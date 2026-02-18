@@ -6461,7 +6461,8 @@ $(document).on('knack-scene-render.scene_2775', function(event, scene) {
   setTimeout(function() {
     
     
-    const userId = window.location.href.split('/');
+    let userId = window.location.href.split('/');
+	userId = userId[userId.length - 2]
 
     const iframeSrc = $('iframe[title="Sales Advisor Dashboard"]').attr('src');
     const token = iframeSrc.split('/embed/dashboard/')[1].split('#')[0];
