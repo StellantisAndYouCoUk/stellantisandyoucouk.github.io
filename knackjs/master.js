@@ -6434,3 +6434,29 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   refreshWithData('8591', 'Title', 'Text', 'field_11282');
 });
 
+// Sales Advisor Dashboard
+$(document).on('knack-scene-render.scene_2778', function(event, scene) {
+	console.log("scene_2778 run before set time out ")
+ setTimeout(function() {
+    
+    const user = Knack.getUserAttributes();
+    const userId = user.id;
+
+    const iframeSrc = $('iframe[title="Sales Advisor Dashboard"]').attr('src');
+    const token = iframeSrc.split('/embed/dashboard/')[1].split('#')[0];
+    const newUrl = `https://dashboard.stellantisandyou.co.uk/embed/dashboard/${token}?id=${userId}#bordered=true&titled=true`;
+
+    $('iframe[title="Sales Advisor Dashboard"]').attr('src', newUrl);
+
+    console.log('userId:', userId);
+    console.log('newUrl:', newUrl);
+
+  }, 1000);
+	console.log("scene_2778 run after set time out ")
+})
+
+
+
+
+
+
