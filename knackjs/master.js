@@ -6456,7 +6456,25 @@ $(document).on('knack-scene-render.scene_2778', function(event, scene) {
 })
 
 
+$(document).on('knack-scene-render.scene_2775', function(event, scene) {
+	console.log("scene_2775 run before set time out ")
+  setTimeout(function() {
+    
+    
+    const userId = window.location.href.split('/');
 
+    const iframeSrc = $('iframe[title="Sales Advisor Dashboard"]').attr('src');
+    const token = iframeSrc.split('/embed/dashboard/')[1].split('#')[0];
+    const newUrl = `https://dashboard.stellantisandyou.co.uk/embed/dashboard/${token}?id=${userId}#bordered=true&titled=true`;
+
+    $('iframe[title="Sales Advisor Dashboard"]').attr('src', newUrl);
+
+    console.log('userId:', userId);
+    console.log('newUrl:', newUrl);
+
+  }, 1000);
+	console.log("scene_2775 run after set time out ")
+})
 
 
 
