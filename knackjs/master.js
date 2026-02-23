@@ -1952,12 +1952,12 @@ $(document).on('knack-view-render.view_7771', function(event, view, data) {
 
 $(document).on('knack-view-render.view_7055', function(event, view, data) {
   console.log('view7055');
-  Knack.fn.hideExpand("view_7771");
+  Knack.fn.hideExpand("view_7055");
 });
 
 $(document).on('knack-view-render.view_8899', function(event, view, data) {
   console.log('view8899');
-  Knack.fn.hideExpand("view_7771");
+  Knack.fn.hideExpand("view_8899");
 });
 
 //END OF HIDE AND EXPAND CODE
