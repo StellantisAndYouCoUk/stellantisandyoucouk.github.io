@@ -1415,6 +1415,11 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
   	font-weight: bold;
 }
 
+#view_871 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(5) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
 /* Aftersales Pre Visit - Customer Incident Form - Messages Table */
 
 #view_1388 th span {
