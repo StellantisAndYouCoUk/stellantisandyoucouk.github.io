@@ -5096,3 +5096,19 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
   console.log('addFilters',addFilters)
  
   }); 
+
+
+   //Quality Check custom filters
+ $(document).on('knack-view-render.view_3068', function (event, view, data) {
+  let defineButtons = [
+  {linkText:'All Wips for QC',filters:[]},
+	{linkText:'To Be Done',filters:[{"field_name":"(DEV)Quality Checks","field":"field_1420","value":"","operator":"is blank"}]},
+		{linkText:'Completed',filters:[{"field_name":"(DEV)Quality Checks","field":"field_1420","value":"","operator":"is not blank"}]}
+  ]
+  renderSYSearchButtons('3068',defineButtons);
+
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  
+ 
+  }); 
