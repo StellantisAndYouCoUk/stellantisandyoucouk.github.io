@@ -5086,8 +5086,9 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
  //Connected Dealer "satisfaction check" Detractors (follow up)
  $(document).on('knack-view-render.view_2372', function (event, view, data) {
   let defineButtons = [
+	  {linkText:'All',filters:[]},
 	{linkText:'To Do',filters:[{"field_name":"Date/Time Process Action Added","field":"field_1093","value":"","operator":"is blank"}]},
-		{linkText:'Done',filters:[{"field_name":"Date/Time Process Action Added","field":"field_1093","value":true,"operator":"is not blank"}]}
+		{linkText:'Done',filters:[{"field_name":"Date/Time Process Action Added","field":"field_1093","value":"","operator":"is not blank"}]}
   ]
   renderSYSearchButtons('2372',defineButtons);
 
