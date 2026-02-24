@@ -5052,5 +5052,19 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
     }); 
 });
 
+//triage custom filters 
+ $(document).on('knack-view-render.view_4697', function (event, view, data) {
+  let defineButtons = [
+ 
+ {linkText:'All',filters:[]},
+  {linkText:'Fleet',filters:[{"field_name":"Autoline - customer type of bussiness","field":"field_278","value": "Fle","operator":"contains"}]},
+ 
+  ]
+  renderSYSearchButtons('4697',defineButtons);
+
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+ 
+  }); 
 
 
