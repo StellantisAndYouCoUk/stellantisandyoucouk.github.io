@@ -5067,4 +5067,18 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
  
   }); 
 
+ //Pre visit digital customer incident forms custom filters
+ $(document).on('knack-view-render.view_871', function (event, view, data) {
+  let defineButtons = [
+ 
+ {linkText:'Completed',filters:[{"field_name":"Date/Time Completed","field":"field_1093","operator":"is+not+blank","value":""}]},
+  {linkText:'Incomplete',filters:[{"field_name":"Date/Time Completed","field":"field_1093","operator":"is+blank","value":""}]},
+  {linkText:'Photos/Videos',filters:[{"field_name":"Photo/Video Of Fault","field":"field_1105","operator":"is+not+blank","value":""}]},
+  {linkText:'Breakdown Reports',filters:[{"field_name":"Breakdown Report","field":"field_1526","operator":"is+not+blank","value":""}]}
+  ]
+  renderSYSearchButtons('871',defineButtons);
 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+ 
+  }); 
