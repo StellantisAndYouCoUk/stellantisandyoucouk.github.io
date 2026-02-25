@@ -5227,7 +5227,6 @@ console.log("renderSYSearchButtons('5272',defineButtons);")
   let defineButtons = [
   {linkText:'All',filters:[]},
 	{linkText:'Todays Reminders',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is today"}]},
-	{linkText:'Done',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is not blank"}]},
 	{linkText:'All Reminders',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is not blank"}]},
 	{linkText:'Reminders Elapsed',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is before today"}]},		
 	{linkText:'Auto-reminders',filters:[{"field_name":"Date/Time Diary Reminders (Auto)","field":"field_1699","value":"","operator":"is not blank"}]},
