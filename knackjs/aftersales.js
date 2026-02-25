@@ -5223,38 +5223,3 @@ console.log("renderSYSearchButtons('5272',defineButtons);")
 });
 
 
- //Wip Reporting Custom Filters
- $(document).on('knack-view-render.view_5274', function (event, view, data) {
-  let defineButtons = [
-  {linkText:'All',filters:[]},
-	{linkText:'Today's Reminders',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is today"}]},
-	{linkText:'Done',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is not blank"}]},
-	{linkText:'All Reminders',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is not blank"}]},
-	{linkText:'Reminders Elapsed',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is before today"}]},		
-	{linkText:'Auto-reminders',filters:[{"field_name":"Date/Time Diary Reminders (Auto)","field":"field_1699","value":"","operator":"is not blank"}]},
-	{linkText:'Loan Car',filters:[{"field_name":"Courtesy Car Required? V2","field":"field_1137","value":true,"operator":"is"}]},	
-	{linkText:'Sublet',filters:[{"field_name":"Sublet","field":"field_1318","value":true,"operator":"is"}]},	
-	{linkText:'Internal',filters:[{"field_name":"Account Type","field":"field_786","value":"Internal","operator":"is"}]},
-	{linkText:'Warranty',filters:[{"field_name":"Account Type","field":"field_786","value":"Warranty","operator":"is"}]},
-	{linkText:'Retail',filters:[{"field_name":"Account Type","field":"field_786","value":"Retail","operator":"is"}]},
-	{linkText:'No Bon',filters:[{"field_name":"Back Order Status","field":"field_1472","value":"Power Supply Order NO BON","operator":"is"}]},
-	{linkText:'No Power supply order',filters:[{"field_name":"Back Order Status","field":"field_1472","value":"NO Power Supply Order","operator":"is"}]},	
-	{linkText:'With Bon',filters:[{"field_name":"Back Order Status","field":"field_1472","value":"Power Supply Order With BON","operator":"is"}]},
-	{linkText:'High Priority',filters:[{"field_name":"Blue Light","field":"field_984","value":true,"operator":"is"}]},
-	{linkText:'Parts not avail',filters:[{"field_name":"Parts on status V,I,C,S","field":"field_985","value": "","operator":"is not blank"}]},
-	{linkText:'Ready to Invoice',filters:[{"field_name":"Date/Time parts/labour complete (ready to invoice)","field":"field_1718","value":"","operator":"is not blank"}]},
-	{linkText:'Parts Available, Labour Incomplete',filters:[{"field_name":"date Parts ave, Labour incomplete","field":"field_1791","value":"","operator":"is not blank"}]},
-	{linkText:'Awaiting Authority',filters:[{"field_name":"Awaiting Authority","field":"field_2015","value":"","operator":"is not blank"}]},
-	{linkText:"Due in Past","filters":[{"field":"field_431","value":"","operator":"is before today"}]},
-	{linkText:"No Due Date","filters":[{"field":"field_431","value":"","operator":"is blank"}]},
-	{linkText:"Due in After Today","filters":[{"field":"field_431","value":"","operator":"is after today"}]},
-	{linkText:"Not Checked in","filters":[{"field":"field_763","value":"","operator":"is blank"}]},
-	{linkText:"Not Clocked","filters":[{"field":"field_787","value":"","operator":"is blank"}]}
-  ]
-  renderSYSearchButtons('5274',defineButtons);
-
-  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
-  console.log('addFilters',addFilters)
-  
- 
-  }); 
