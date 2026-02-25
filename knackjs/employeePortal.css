@@ -41,6 +41,9 @@
   	font-weight: bold;
 }
 
+/* Detail Label Transparent Backgrounds */
+
+#view_8125 .kn-detail-label {background-color: transparent;}
 
 
 
