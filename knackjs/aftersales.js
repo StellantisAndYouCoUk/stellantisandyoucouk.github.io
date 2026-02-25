@@ -5116,7 +5116,6 @@ $(document).on('knack-view-render.view_2942', function(event, view, data) {
    //Conversations customer filters
  $(document).on('knack-view-render.view_1169', function (event, view, data) {
   let defineButtons = [
-{linkText:'All',filters:[]},
 	{linkText:'Requires Action',filters:[{"field_name":"Message Status","field":"field_1520","value":"Complete","operator":"is not"}]},
 		{linkText:'Complete',filters:[{"field_name":"Message Status","field":"field_1520","value":"Complete","operator":"is"}]}
   ]
