@@ -6492,5 +6492,8 @@ $(document).on('knack-scene-render.scene_2775', function(event, scene) {
 	console.log("scene_2775 run after set time out ")
 })
 
-
+//  ---------Hide back link-------------
+$(document).on('knack-scene-render.scene_2775', function(event, scene) {
+    $('.kn-back-link').hide();
+});
 
