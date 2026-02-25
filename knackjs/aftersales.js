@@ -5223,7 +5223,7 @@ console.log("renderSYSearchButtons('5272',defineButtons);")
 });
 
  //Wip Reporting Custom Filters
- $(document).on('knack-view-render.view_5274', function (event, view, data) {
+ $(document).on('knack-view-render.view_596', function (event, view, data) {
   let defineButtons = [
   {linkText:'All',filters:[]},
 	{linkText:'Todays Reminders',filters:[{"field_name":"Date/Time of diary reminder (manual)","field":"field_1591","value":"","operator":"is today"}]},
@@ -5249,7 +5249,7 @@ console.log("renderSYSearchButtons('5272',defineButtons);")
 	{linkText:"Not Checked in","filters":[{"field":"field_763","value":"","operator":"is blank"}]},
 	{linkText:"Not Clocked","filters":[{"field":"field_787","value":"","operator":"is blank"}]}
   ]
-  renderSYSearchButtons('5274',defineButtons);
+  renderSYSearchButtons('596',defineButtons);
 
   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
   console.log('addFilters',addFilters)
