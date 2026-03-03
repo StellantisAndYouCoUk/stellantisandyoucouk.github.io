@@ -292,6 +292,19 @@ $(document).on('knack-view-render.view_8566', function(event, view, data) {
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#ceva-vehicles-api-interactions" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+	//Fleet Order Requests Builder
+	
+$(document).on('knack-view-render.view_8944', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-order-request/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+//Fleet Order Requests Approvals and Management
+	
+$(document).on('knack-view-render.view_8945', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-order-request-approvals-and-management/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
 
 	//Deliver Broker Management
 	
