@@ -6882,3 +6882,16 @@ background: #ddd;
 }
 
 
+/* View widths for Sales messages summary */
+@media screen and (min-width: 768px) {
+    .view-column:has(#view_6226) {
+          max-width: 20%; 
+     }
+     .view-column:has(#view_6222) {
+           max-width: 60%
+      }
+	.view-column:has(#view_6227) {
+          max-width: 20%; 
+     }
+}
+
