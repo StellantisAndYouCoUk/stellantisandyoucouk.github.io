@@ -6884,7 +6884,7 @@ background: #ddd;
 
 /* View widths for Sales messages summary */
 
-#view_6226 .group-layout-wrapper .view-column{
+#view_6226{
     max-width: 20% !important;
 }
 
