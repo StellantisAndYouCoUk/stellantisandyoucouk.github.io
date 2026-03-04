@@ -643,14 +643,20 @@ $(document).on('knack-view-render.view_8530', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#repair-order-lead-time?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
-// New Sales Virtual Reception
+// New Sales Messages
 $(document).on('knack-view-render.view_7930', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-messages" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+// New Sales Messages - Cross Department View
+$(document).on('knack-view-render.view_7930', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#view-of-new-sales-conversations" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Fleet Admin to do list
-$(document).on('knack-view-render.view_7753', function(event, view, data) {
+$(document).on('knack-view-render.view_8974', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + ' #admin-view-to-do-lists" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
