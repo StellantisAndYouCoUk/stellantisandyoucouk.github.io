@@ -2926,3 +2926,19 @@ div#view_4746 {
     letter-spacing: .09em;
 }
 
+/* View widths for Aftersales messages summary */
+@media screen and (min-width: 768px) {
+    .view-column:has(#view_5302) {
+          max-width: 20%; 
+     }
+     .view-column:has(#view_5261) {
+           max-width: 60%
+      }
+	.view-column:has(#view_5303) {
+          max-width: 20%; 
+     }
+}
+
+
+
+
