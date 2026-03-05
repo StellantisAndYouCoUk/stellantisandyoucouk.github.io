@@ -2386,9 +2386,9 @@ $(document).on('knack-view-render.view_3168', function (event, view, data) {
   tooltipsTable('1017','3168','field_1532','field_2586');
 	tooltipsTable('1017','3168','field_1537','field_2213');
 	tooltipsTable('1017','3168','field_2298','field_2272');
-	tooltipsTable('1017','3168','field_4089','field_3781');
-		$('th[class="field_4089"]').hide();
-  $('td[class*="field_4089"]').hide();
+//	tooltipsTable('1017','3168','field_4089','field_3781');
+	//	$('th[class="field_4089"]').hide();
+  //$('td[class*="field_4089"]').hide();
 	  $('th[class="field_2240"]').hide();
     $('td[class*="field_2240"]').hide();
     $('th[class="field_1537"]').hide();
