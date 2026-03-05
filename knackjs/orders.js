@@ -2194,7 +2194,7 @@ $(document).on('knack-form-submit.view_6243', function(event, view, data) {
   const commandURL = "https://hook.eu1.make.celonis.com/ckpglqn7s5ig2dplgakeofe93pxxa1mk?recordid=" + data.id ;
   $.get(commandURL, function(data, status){
     Knack.hideSpinner();
-    $(".kn-message.success").html("<b>" + data + "</b>");
+    $("#view_6243 .kn-message.success").html("<b>" + data + "</b>");
   });
 });
 
