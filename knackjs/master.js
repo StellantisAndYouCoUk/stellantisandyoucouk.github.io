@@ -655,6 +655,12 @@ $(document).on('knack-view-render.view_8974', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#view-of-new-sales-conversations" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+// Demo Log
+$(document).on('knack-view-render.view_8979', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#demo-log" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Fleet Admin to do list
 $(document).on('knack-view-render.view_7753', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
