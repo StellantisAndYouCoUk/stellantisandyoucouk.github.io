@@ -2189,7 +2189,7 @@ $(document).on("knack-scene-render.scene_1699", function(event, scene) {
 
 // Code to wait following Form Submission while Licence Is Being Checked in Make - Sales Advisor
 
-$(document).on('knack-form-submit.view_4356', function(event, view, data) { 
+$(document).on('knack-form-submit.view_6243', function(event, view, data) { 
   setTimeout(function(){ Knack.showSpinner(); }, 0); 
   const commandURL = "https://hook.eu1.make.celonis.com/ckpglqn7s5ig2dplgakeofe93pxxa1mk?recordid=" + data.id ;
   $.get(commandURL, function(data, status){
