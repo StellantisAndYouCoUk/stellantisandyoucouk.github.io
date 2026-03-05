@@ -2198,7 +2198,7 @@ $(document).on('knack-form-submit.view_6243', function(event, view, data) {
   });
 });
 
-$(document).on('knack-form-submit.view_2940', function(event, view, data) {
+$(document).on('knack-form-submit.view_6243', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/ckpglqn7s5ig2dplgakeofe93pxxa1mk", {"Record ID":data.id)
 });
 
