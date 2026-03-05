@@ -2602,6 +2602,10 @@ $(document).on('knack-view-render.view_2686', function (event, view, data) {
  	tooltipsTable('753','2686','field_1537','field_2213');
 	tooltipsTable('753','2686','field_2298','field_2272');
 	tooltipsTable('753','2686','field_1532','field_2586');
+	tooltipsTable('753','2686','field_4089','field_3781');
+		$('th[class="field_4089"]').hide();
+  $('td[class*="field_4089"]').hide();
+	
 	$('th[class="field_2240"]').hide();
   $('td[class*="field_2240"]').hide();
   $('th[class="field_1537"]').hide();
