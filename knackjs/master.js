@@ -1723,6 +1723,11 @@ $(document).on('knack-scene-render.scene_1736', function(event, scene) {
   $(".kn-crumbtrail").hide();
  });
 
+$(document).on('knack-scene-render.scene_2775', function (event, view, data) {
+	$('[class="kn-container"]').hide();
+	$('[class="kn-info kn-container"]').hide();
+});
+
 // ----------  hide blank Enquiry Max table on New Vehicle P/X appraisal    ----------
 
 //$(document).on('knack-view-render.view_3254', function (event, view, data) {
