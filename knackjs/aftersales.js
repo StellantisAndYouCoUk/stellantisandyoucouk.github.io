@@ -5320,7 +5320,7 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
     let refreshData = [
       {
           mainField : 'field_4195', //Date/Time Updated Add/Amend/Delete lines
-          views:['5326']
+          views:['5326','5031','5032']
       }
     ]
     sceneRefresh(refreshData);
