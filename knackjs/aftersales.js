@@ -2974,6 +2974,41 @@ $(document).on('knack-view-render.view_3592', function (event, view, data) {
   createOfflineFormSubmit('3592','6040dd9a301633001bca5b4e',null,getRecordIdFromHref(location.href));
 });
 
+//self check in inspection page
+$(document).on('knack-view-render.view_5322', function (event, view, data) {
+  embedPhotoApp();
+  let appSettings2718 = {
+    spiritLine : false,
+    imageOverlay: 'https://stellantisandyoucouk.github.io/imagesStore/car-background-v2.png',
+    imageOverlayEffect : true,
+    imageOverlayOpacity : null,
+    allowLandscape : true,
+    allowPortrait : false,
+    actionAfterPhoto : 'compare', // none, readable, compare,
+    actionAfterPhotoReadableText : 'Does the photo match the template?',
+    uploadMethod : 'field', //knack, make, field
+    uploadField : 'field_2718',
+    resizeImageMaxHeight : 1000,
+    resizeImageMaxWidth : 1000,
+    app_id : '6040dd9a301633001bca5b4e'
+  }
+  createPhotoButton(appSettings2718,'2718');
+  let appSettings1914 = {uploadMethod : 'field', uploadField : 'field_1914',app_id : '6040dd9a301633001bca5b4e',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings1914,'1914');
+  let appSettings2477 = {uploadMethod : 'field', uploadField : 'field_2477', app_id : '6040dd9a301633001bca5b4e',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings2477,'2477');
+  let appSettings2478 = {uploadMethod : 'field', uploadField : 'field_2478', app_id : '6040dd9a301633001bca5b4e',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings2478,'2478');
+  let appSettings2479 = {uploadMethod : 'field', uploadField : 'field_2479', app_id : '6040dd9a301633001bca5b4e',actionAfterPhoto : 'none'}
+  createPhotoButton(appSettings2479,'2479');
+
+  makeFileUploadOffline('field_2332');
+  
+  createOfflineFormSubmit('3566','6040dd9a301633001bca5b4e',motabReturnsImageUpload,getRecordIdFromHref(location.href));
+});
+
+
+
 function makeFileUploadOffline(field){
   $('div[id="kn-input-'+field+'"] div[class="kn-file-upload"]').hide();
   $('<input type="file" fieldName="'+field+'" id="'+field+'_offlinefile" class="input is-file">').insertBefore($('div[id="kn-input-'+field+'"]>div[class="control"]'));
