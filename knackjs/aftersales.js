@@ -2411,6 +2411,11 @@ $(document).on('knack-form-submit.view_2361', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/a1ixxw9k9su6uv7ikvlwslklhg2mmkcw", {"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_978_raw, "Nom_wip":data.field_558_raw},"trigger aftersales - wip management notes to update + is vehicle on site");
 });
 
+//trigger aftersales - wip management notes to update from Allocating technician
+$(document).on('knack-form-submit.view_2942', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/a1ixxw9k9su6uv7ikvlwslklhg2mmkcw", {"Record ID":data.id, "Manager's Notes":data.field_1015_raw, "userName": Knack.getUserAttributes().name, "NOM_WIP_REG":data.field_978_raw, "Nom_wip":data.field_558_raw},"trigger aftersales - wip management notes to update + is vehicle on site");
+});
+
 //Wip reporting "on-site" page hover for operator details 
 $(document).on('knack-view-render.view_1512', function (event, view, data) {
   tooltipsTable('509','1512','field_2240','field_2220');
