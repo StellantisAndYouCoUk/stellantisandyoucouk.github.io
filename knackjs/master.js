@@ -5472,12 +5472,12 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 //   }
 // });
 
-
 let webSocket = null;
 let reconnectDelay = 5000;
+let isConnecting = false;
 
 $(document).on("knack-view-render.any", function (event, scene) {
-  // Skip if already connected or connecting
+  if (isConnecting) return;
   if (webSocket !== null && webSocket.readyState <= 1) {
     return;
   }
@@ -5490,12 +5490,13 @@ $(document).on("knack-view-render.any", function (event, scene) {
     connectToNtfy();
 
     function connectToNtfy() {
-      // Close existing connection before opening new one
       if (webSocket !== null) {
         webSocket.onclose = null;
         webSocket.close();
         webSocket = null;
       }
+
+      isConnecting = true;
 
       let subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
       webSocket = new WebSocket(subscribeURL);
@@ -5581,13 +5582,12 @@ $(document).on("knack-view-render.any", function (event, scene) {
         }
       }
 
-      // WebSocket connection opened
       webSocket.onopen = () => {
         console.log('Connected to ntfy via WebSocket');
-        reconnectDelay = 5000; // Reset on successful connection
+        reconnectDelay = 5000;
+        isConnecting = false;
       };
 
-      // Handle incoming messages from WebSocket
       webSocket.onmessage = (event) => {
         function showNotificationBackground(title, icon = '', body) {
           var notification = new Notification(title, {
@@ -5663,15 +5663,15 @@ $(document).on("knack-view-render.any", function (event, scene) {
         }
       };
 
-      // Handle WebSocket errors
       webSocket.onerror = (error) => {
         console.error("WebSocket error:", error);
+        isConnecting = false;
       };
 
-      // Handle WebSocket connection close — exponential backoff
       webSocket.onclose = (event) => {
         console.log("WebSocket closed:", event.code, event.reason);
         webSocket = null;
+        isConnecting = false;
 
         setTimeout(() => {
           console.log(`Reconnecting to ntfy in ${reconnectDelay}ms...`);
@@ -5682,7 +5682,6 @@ $(document).on("knack-view-render.any", function (event, scene) {
     }
   }
 });
-
 
 
 
