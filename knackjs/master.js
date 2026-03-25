@@ -5473,206 +5473,212 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 // });
 
 
-
 let webSocket = null;
+let reconnectDelay = 5000;
 
 $(document).on("knack-view-render.any", function (event, scene) {
-  // Initialize the WebSocket only if it's not already set
+  // Skip if already connected or connecting
+  if (webSocket !== null && webSocket.readyState <= 1) {
+    return;
+  }
 
-  if (webSocket === null) {
-    const userAttributes = Knack.getUserAttributes();
+  const userAttributes = Knack.getUserAttributes();
 
-    if (userAttributes !== "No user found") {
-      const userValue = userAttributes.id;
-      console.log(`User Value: ${userValue}`);
-      connectToNtfy();
-      
-      function connectToNtfy() {
-        // Change from /sse to /ws and from https to wss
-        let subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
-        webSocket = new WebSocket(subscribeURL);
+  if (userAttributes !== "No user found") {
+    const userValue = userAttributes.id;
+    console.log(`User Value: ${userValue}`);
+    connectToNtfy();
 
-        function showNotification(data, message, timer) {
-          parsedData = data;
-          notificationId = parsedData.id;
+    function connectToNtfy() {
+      // Close existing connection before opening new one
+      if (webSocket !== null) {
+        webSocket.onclose = null;
+        webSocket.close();
+        webSocket = null;
+      }
 
-          let InAppPopUp = false;
+      let subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
+      webSocket = new WebSocket(subscribeURL);
 
-          if (typeof message.InAppPopUp === "boolean") {
-            InAppPopUp = message.InAppPopUp;
+      function showNotification(data, message, timer) {
+        parsedData = data;
+        notificationId = parsedData.id;
+
+        let InAppPopUp = false;
+
+        if (typeof message.InAppPopUp === "boolean") {
+          InAppPopUp = message.InAppPopUp;
+        }
+
+        if (true) {
+          if (InAppPopUp) {
+            let confirmButtonAriaLabel = "Click To Open";
+            let ShowCloseButton = true;
+            let AllowEscapeKey = true;
+            let AllowOutsideClick = true;
+
+            if (message.ClickButtonTitle) {
+              confirmButtonAriaLabel = message.ClickButtonTitle;
+            }
+
+            if (message.ShowCloseButton === false) {
+              ShowCloseButton = message.ShowCloseButton;
+            }
+
+            if (message.AllowOutsideClick === false) {
+              AllowOutsideClick = message.AllowOutsideClick;
+            }
+
+            if (message.AllowEscapeKey === false) {
+              AllowEscapeKey = message.AllowEscapeKey;
+            }
+
+            Swal.fire({
+              title: `<strong>${message.Title}</strong>`,
+              html: `
+                ${message.Attach && data.attachment.url
+                  ? `<img src='${data.attachment.url}' style="max-width: 100%; height: auto; border-radius: 25px;">`
+                  : ""
+                }
+                <div class="notification-message">${message.Message || ""}</div>
+              `,
+              showCloseButton: ShowCloseButton,
+              allowEscapeKey: AllowEscapeKey,
+              focusConfirm: false,
+              timer: timer,
+              showCancelButton: false,
+              allowOutsideClick: AllowOutsideClick,
+              cancelButtonText: "Close",
+              cancelButtonColor: "#FF0000",
+              showConfirmButton: !!message.Click,
+              confirmButtonText: `
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front">
+              ${message.Click
+                ? `<i class="fa fa-external-link-alt"></i> ${confirmButtonAriaLabel}`
+                : ""}
+                </span>`,
+              confirmButtonAriaLabel: confirmButtonAriaLabel,
+              preConfirm: () => {
+                if (message.Click) {
+                  window.open(message.Click, "_blank");
+                }
+              },
+              didOpen: () => {
+                const popup = document.querySelector('.swal2-popup');
+                if (popup) {
+                  popup.classList.add('swal2-show');
+                }
+
+                const confirmButton = Swal.getConfirmButton();
+                if (confirmButton) confirmButton.id = "popup-confirm-button";
+              },
+            });
+          }
+        } else {
+          console.log("Missing Notification");
+        }
+      }
+
+      // WebSocket connection opened
+      webSocket.onopen = () => {
+        console.log('Connected to ntfy via WebSocket');
+        reconnectDelay = 5000; // Reset on successful connection
+      };
+
+      // Handle incoming messages from WebSocket
+      webSocket.onmessage = (event) => {
+        function showNotificationBackground(title, icon = '', body) {
+          var notification = new Notification(title, {
+            icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+            body: body.Message,
+            requireInteraction: true,
+            badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+          });
+
+          if (body.Click) {
+            notification.onclick = function () {
+              window.open(body.Click, '_blank');
+              console.log("Notification clicked.");
+            };
+          } else {
+            console.log("No click action provided.");
           }
 
-          if (true) {
-            if (InAppPopUp) {
-              let confirmButtonAriaLabel = "Click To Open";
-              let ShowCloseButton = true;
-              let AllowEscapeKey = true;
-              let AllowOutsideClick = true;
-
-              if (message.ClickButtonTitle) {
-                confirmButtonAriaLabel = message.ClickButtonTitle;
-              }
-
-              if (message.ShowCloseButton === false) {
-                ShowCloseButton = message.ShowCloseButton;
-              }
-
-              if (message.AllowOutsideClick === false) {
-                AllowOutsideClick = message.AllowOutsideClick;
-              }
-
-              if (message.AllowEscapeKey === false) {
-                AllowEscapeKey = message.AllowEscapeKey;
-              }
-
-              Swal.fire({
-                title: `<strong>${message.Title}</strong>`,
-                html: `
-                  ${message.Attach && data.attachment.url
-                    ? `<img src='${data.attachment.url}' style="max-width: 100%; height: auto; border-radius: 25px;">`
-                    : ""
-                  }
-                  <div class="notification-message">${message.Message || ""}</div>
-                `,
-                showCloseButton: ShowCloseButton,
-                allowEscapeKey: AllowEscapeKey,
-                focusConfirm: false,
-                timer: timer,
-                showCancelButton: false,
-                allowOutsideClick: AllowOutsideClick,
-                cancelButtonText: "Close",
-                cancelButtonColor: "#FF0000",
-                showConfirmButton: !!message.Click,
-                confirmButtonText: `
-                  <span class="shadow"></span>
-                  <span class="edge"></span>
-                  <span class="front">
-                ${message.Click
-                  ? `<i class="fa fa-external-link-alt"></i> ${confirmButtonAriaLabel}`
-                  : ""}
-                  </span>`,
-                confirmButtonAriaLabel: confirmButtonAriaLabel,
-                preConfirm: () => {
-                  if (message.Click) {
-                    window.open(message.Click, "_blank");
-                  }
-                },
-                didOpen: () => {
-                  const popup = document.querySelector('.swal2-popup');
-                  if (popup) {
-                    popup.classList.add('swal2-show');
-                  }
-
-                  const confirmButton = Swal.getConfirmButton();
-                  if (confirmButton) confirmButton.id = "popup-confirm-button";
-                },
-              });
-            }
-          } else {
-            console.log("Missing Notification");
+          notification.onclose = function () {
+            console.log("Background Notification closed.");
           }
         }
 
-        // WebSocket connection opened
-        webSocket.onopen = () => {
-          console.log('Connected to ntfy via WebSocket');
-        };
+        try {
+          function delay(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds));
+          }
 
-        // Handle incoming messages from WebSocket
-        webSocket.onmessage = (event) => {
-          function showNotificationBackground(title, icon = '', body) {
-            var notification = new Notification(title, {
-              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body.Message,
-              requireInteraction: true,
-              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
-            });
+          let notificationId;
 
-            if (body.Click) {
-              notification.onclick = function () {
-                window.open(body.Click, '_blank');
-                console.log("Notification clicked.");
-              };
+          async function runSync() {
+            let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650;
+            console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
+            await delay(delayRandomNumber);
+            console.log("This message appears after the delay");
+
+            const dataParsed = JSON.parse(event.data);
+            console.log("DataParsed", JSON.stringify(dataParsed));
+
+            if (dataParsed.event !== "message") {
+              console.log(`Ignoring event type: ${dataParsed.event}`);
+              return;
+            }
+
+            const messageParsed = JSON.parse(dataParsed.message);
+            console.log("MessageParsed ", JSON.stringify(messageParsed));
+
+            let uniqueNumberNotification = dataParsed.id;
+            console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
+
+            if (localStorage.getItem('notificationRandomNumber') !== uniqueNumberNotification) {
+              localStorage.setItem('notificationRandomNumber', uniqueNumberNotification);
+
+              showNotification(dataParsed, messageParsed, 0);
+
+              let DesktopNotification = false;
+
+              if (typeof messageParsed.DesktopNotification === "boolean") {
+                DesktopNotification = messageParsed.DesktopNotification;
+              }
+
+              if (DesktopNotification) {
+                showNotificationBackground(messageParsed.Title, "", messageParsed);
+              }
             } else {
-              console.log("No click action provided.");
-            }
-
-            notification.onclose = function () {
-              console.log("Background Notification closed.");
+              showNotification(dataParsed, messageParsed, 3000);
             }
           }
 
-          try {
-            function delay(milliseconds) {
-              return new Promise(resolve => setTimeout(resolve, milliseconds));
-            }
+          runSync();
+        } catch (error) {
+          console.error("Failed to process message:", error);
+        }
+      };
 
-            let notificationId;
+      // Handle WebSocket errors
+      webSocket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+      };
 
-            async function runSync() {
-              let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650;
-              console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
-              await delay(delayRandomNumber);
-              console.log("This message appears after the delay");
+      // Handle WebSocket connection close — exponential backoff
+      webSocket.onclose = (event) => {
+        console.log("WebSocket closed:", event.code, event.reason);
+        webSocket = null;
 
-              // Parse the WebSocket message data
-              const dataParsed = JSON.parse(event.data);
-              console.log("DataParsed", JSON.stringify(dataParsed));
-
-                    // ✅ CHECK IF IT'S A MESSAGE EVENT
-              if (dataParsed.event !== "message") {
-                console.log(`Ignoring event type: ${dataParsed.event}`);
-                return; // Skip non-message events (like "open")
-              }
-
-              const messageParsed = JSON.parse(dataParsed.message);
-              console.log("MessageParsed ", JSON.stringify(messageParsed));
-
-              let uniqueNumberNotification = dataParsed.id;
-              console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
-
-              if (localStorage.getItem('notificationRandomNumber') !== uniqueNumberNotification) {
-                localStorage.setItem('notificationRandomNumber', uniqueNumberNotification);
-
-                showNotification(dataParsed, messageParsed, 0);
-
-                let DesktopNotification = false;
-
-                if (typeof messageParsed.DesktopNotification === "boolean") {
-                  DesktopNotification = messageParsed.DesktopNotification;
-                }
-
-                if (DesktopNotification) {
-                  showNotificationBackground(messageParsed.Title, "", messageParsed);
-                }
-              } else {
-                showNotification(dataParsed, messageParsed, 3000);
-              }
-            }
-
-            runSync();
-          } catch (error) {
-            console.error("Failed to process message:", error);
-          }
-        };
-
-        // Handle WebSocket errors
-        webSocket.onerror = (error) => {
-          console.error("WebSocket error:", error);
-        };
-
-        // Handle WebSocket connection close
-        webSocket.onclose = (event) => {
-          console.log("WebSocket closed:", event.code, event.reason);
-          webSocket = null; // Reset the webSocket variable
-
-          // Attempt to reconnect after 5 seconds
-          setTimeout(() => {
-            console.log('Reconnecting to ntfy...');
-            connectToNtfy();
-          }, 5000);
-        };
-      }
+        setTimeout(() => {
+          console.log(`Reconnecting to ntfy in ${reconnectDelay}ms...`);
+          reconnectDelay = Math.min(reconnectDelay * 2, 60000);
+          connectToNtfy();
+        }, reconnectDelay + Math.random() * 3000);
+      };
     }
   }
 });
