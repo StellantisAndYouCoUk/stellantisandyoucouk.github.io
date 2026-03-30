@@ -210,3 +210,12 @@ function setupExpandableGridViewGroups(view) {
 $(document).on('knack-scene-render.scene_2503', function(event, scene) {
   recursiveSceneRefresh('2503',['view_8125'],3600000)
 });
+
+
+// ----------  Scroll to View TEST  ----------
+
+function scrollToView(viewId) {
+    $('html, body').animate({
+        scrollTop: $("#" + viewId).offset().top
+    }, 500);
+}
