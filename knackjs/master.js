@@ -596,6 +596,12 @@ $(document).on('knack-view-render.view_8902', function(event, view, data) {
  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#view-of-aftersales-messages/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//View of all Aftersales Message Categories (Developers)
+$(document).on('knack-view-render.view_9042', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+ $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#categories-of-latest-inbound-messages/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Overdue Debts
 $(document).on('knack-view-render.view_7578', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
