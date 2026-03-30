@@ -214,8 +214,13 @@ $(document).on('knack-scene-render.scene_2503', function(event, scene) {
 
 // ----------  Scroll to View TEST  ----------
 
-function scrollToView(viewId) {
+window.scrollToView = function(viewKey) {
+
+  const $target = $(`#${viewKey}`);
+  if ($target.length) {
     $('html, body').animate({
-        scrollTop: $("#" + viewId).offset().top
+      scrollTop: $target.offset().top - 50
     }, 500);
+  }
+
 }
