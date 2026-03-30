@@ -7,6 +7,8 @@
 #view_7933 .kn-detail-label {background-color: transparent;}
 #view_8091 .kn-detail-label {background-color: transparent;}
 #view_8139 .kn-detail-label {background-color: transparent;}
+#view_8125 .kn-detail-label {background-color: transparent;}
+#view_8145 .kn-detail-label {background-color: transparent;}
 
 /*Change Grid Filter Button Colour To Orange
 
@@ -42,9 +44,7 @@
   	font-weight: bold;
 }
 
-/* Detail Label Transparent Backgrounds */
 
-#view_8125 .kn-detail-label {background-color: transparent;}
 
 
 
