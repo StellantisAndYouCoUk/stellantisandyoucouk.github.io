@@ -5329,33 +5329,34 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
 
 $(document).on('knack-view-render.view_5033', function(event, view, data) {
   
-  // Use a delegated listener to catch the change on the connection field
-  $(document).on('change', 'select[name="field_3937"]', function() {
+  // This targets the specific container Knack builds for field_3937
+  // and listens for any change inside it.
+  $('#view_5033-field_3937').on('change', function() {
     var recordId = $(this).val();
     
-    // Troubleshooting: This should appear in your browser console (F12)
-    console.log("Connection changed! Selected ID:", recordId);
+    // If the ID is an array (common in Knack connections), take the first one
+    if (Array.isArray(recordId)) {
+        recordId = recordId[0];
+    }
 
     if (recordId) {
+      console.log("Found Record ID:", recordId); // Check your F12 console for this!
       Knack.showSpinner();
       
-      $.get({
+      $.ajax({
         url: 'https://api.knack.com/v1/objects/object_154/records/' + recordId,
+        type: 'GET',
         headers: {
           'X-Knack-Application-Id': Knack.app_id,
           'X-Knack-REST-API-Key': 'knack'
         },
         success: function(record) {
-          // Update the target text field with the source description
+          // Put the description into the target field
           $('#view_5033-field_3828').val(record.field_3947);
-          
-          // Trigger a change so Knack knows the field is no longer empty
-          $('#view_5033-field_3828').trigger('change');
-          
           Knack.hideSpinner();
         },
-        error: function(err) {
-          console.error("Fetch failed. Check Object/Field permissions.", err);
+        error: function() {
+          console.error("API Fetch Failed");
           Knack.hideSpinner();
         }
       });
