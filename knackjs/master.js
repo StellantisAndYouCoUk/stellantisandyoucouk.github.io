@@ -808,9 +808,10 @@ function employeePortalConnectViewConnectViewFunction(selector_view){
   });
 }
 
-var hrAppConnectView = [{view:'view_8013',url:'#home'}]; 
+var hrAppConnectView = [{view:'view_8013',url:'#home'},{view:'view_9052',url:'#manager-view-of-starter-status'}]; 
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 hrAppConnectView.forEach(hrAppConnectViewConnectViewFunction);
+
 
 function hrAppConnectViewConnectViewFunction(selector_view){
   //console.log('create employeePortalConnectViewConnectViewFunction',selector_view)
