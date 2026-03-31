@@ -5329,18 +5329,16 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
 
 $(document).on('knack-view-render.view_5033', function(event, view, data) {
   
-  // This targets the specific container Knack builds for field_3937
-  // and listens for any change inside it.
-  $('#view_5033-field_3937').on('change', function() {
+  // Using the ID you found in the HTML (3949)
+  $('#view_5033-field_3949').on('change', function() {
     var recordId = $(this).val();
     
-    // If the ID is an array (common in Knack connections), take the first one
+    // If it's a connection, Knack sometimes returns an array
     if (Array.isArray(recordId)) {
         recordId = recordId[0];
     }
 
     if (recordId) {
-      console.log("Found Record ID:", recordId); // Check your F12 console for this!
       Knack.showSpinner();
       
       $.ajax({
@@ -5351,12 +5349,16 @@ $(document).on('knack-view-render.view_5033', function(event, view, data) {
           'X-Knack-REST-API-Key': 'knack'
         },
         success: function(record) {
-          // Put the description into the target field
+          // Injects the default description (field_3947) into the target (field_3828)
           $('#view_5033-field_3828').val(record.field_3947);
+          
+          // Tell Knack the value has changed
+          $('#view_5033-field_3828').trigger('change');
+          
           Knack.hideSpinner();
         },
         error: function() {
-          console.error("API Fetch Failed");
+          console.error("API Fetch Failed. Ensure user has access to Object 154.");
           Knack.hideSpinner();
         }
       });
