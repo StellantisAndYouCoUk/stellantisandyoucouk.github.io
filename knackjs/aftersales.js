@@ -5325,3 +5325,39 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
 });
+
+$(document).on('knack-view-render.view_5033', function(event, view, data) {
+  
+  // 1. Listen for changes on the 'Labour Code' connection dropdown
+  $('#view_5033-field_3937').on('change', function() {
+    var recordId = $(this).val(); // This is the unique ID of the selected Labour Code
+    
+    // If a code is selected, fetch its details
+    if (recordId) {
+      // Show a small loader so the user knows something is happening
+      Knack.showSpinner();
+      
+      $.ajax({
+        url: 'https://api.knack.com/v1/objects/object_154/records/' + recordId,
+        type: 'GET',
+        headers: {
+            'X-Knack-Application-Id': Knack.app_id,
+            'X-Knack-REST-API-Key': 'knack'
+        },
+        success: function(record) {
+          // 2. Take the value from the 'Source Field' and put it in the 'Target Field'
+          // We use .val() so the user can still click in and edit it manually
+          $('#view_5033-field_3828').val(record.field_3947);
+          Knack.hideSpinner();
+        },
+        error: function() {
+          console.log('Error fetching Labour Code description');
+          Knack.hideSpinner();
+        }
+      });
+    } else {
+      // Optional: Clear the target field if the Labour Code is deselected
+      $('#view_5033-field_3828').val('');
+    }
+  });
+});
