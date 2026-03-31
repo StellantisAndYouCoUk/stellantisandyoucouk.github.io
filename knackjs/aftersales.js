@@ -5326,32 +5326,36 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
     sceneRefresh(refreshData);
 });
 
-$(document).on('knack-view-render.view_5033', function(event, view, data) {
-  console.log("View 5033 Rendered");
 
-  // Try selecting by name attribute for better reliability
-  $('select[name="field_3937"]').on('change', function() {
+$(document).on('knack-view-render.view_5033', function(event, view, data) {
+  
+  // Use a delegated listener to catch the change on the connection field
+  $(document).on('change', 'select[name="field_3937"]', function() {
     var recordId = $(this).val();
-    console.log("Labour Code Selected. ID:", recordId);
     
+    // Troubleshooting: This should appear in your browser console (F12)
+    console.log("Connection changed! Selected ID:", recordId);
+
     if (recordId) {
       Knack.showSpinner();
       
-      $.ajax({
+      $.get({
         url: 'https://api.knack.com/v1/objects/object_154/records/' + recordId,
-        type: 'GET',
         headers: {
-            'X-Knack-Application-Id': Knack.app_id,
-            'X-Knack-REST-API-Key': 'knack' 
+          'X-Knack-Application-Id': Knack.app_id,
+          'X-Knack-REST-API-Key': 'knack'
         },
         success: function(record) {
-          console.log("Data fetched successfully:", record);
-          // Inject the value
+          // Update the target text field with the source description
           $('#view_5033-field_3828').val(record.field_3947);
+          
+          // Trigger a change so Knack knows the field is no longer empty
+          $('#view_5033-field_3828').trigger('change');
+          
           Knack.hideSpinner();
         },
         error: function(err) {
-          console.error("API Error:", err);
+          console.error("Fetch failed. Check Object/Field permissions.", err);
           Knack.hideSpinner();
         }
       });
