@@ -5365,3 +5365,40 @@ $(document).on('knack-view-render.view_5033', function(event, view, data) {
     }
   });
 });
+
+$(document).on('knack-view-render.view_5033', function(event, view, data) {
+  
+  $('#view_5033-field_3949').on('change', function() {
+    var recordId = $(this).val();
+    if (Array.isArray(recordId)) { recordId = recordId[0]; }
+
+    if (recordId) {
+      Knack.showSpinner();
+      
+      $.ajax({
+        url: 'https://api.knack.com/v1/objects/object_154/records/' + recordId,
+        type: 'GET',
+        headers: {
+          'X-Knack-Application-Id': Knack.app_id,
+          'X-Knack-REST-API-Key': 'knack'
+        },
+        success: function(record) {
+          console.log("SUCCESS! Knack returned this data:", record);
+          
+          // Try to set the field. If field_3947 is empty in the database, 
+          // we try to find it by name.
+          var description = record.field_3947 || "Description Field is Empty in Database";
+          
+          $('#view_5033-field_3828').val(description);
+          $('#view_5033-field_3828').trigger('change');
+          
+          Knack.hideSpinner();
+        },
+        error: function(err) {
+          console.error("API Error:", err);
+          Knack.hideSpinner();
+        }
+      });
+    }
+  });
+});
