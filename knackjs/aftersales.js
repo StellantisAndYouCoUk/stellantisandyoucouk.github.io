@@ -5327,14 +5327,14 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
 });
 
 $(document).on('knack-view-render.view_5033', function(event, view, data) {
-  
-  // 1. Listen for changes on the 'Labour Code' connection dropdown
-  $('#view_5033-field_3937').on('change', function() {
-    var recordId = $(this).val(); // This is the unique ID of the selected Labour Code
+  console.log("View 5033 Rendered");
+
+  // Try selecting by name attribute for better reliability
+  $('select[name="field_3937"]').on('change', function() {
+    var recordId = $(this).val();
+    console.log("Labour Code Selected. ID:", recordId);
     
-    // If a code is selected, fetch its details
     if (recordId) {
-      // Show a small loader so the user knows something is happening
       Knack.showSpinner();
       
       $.ajax({
@@ -5342,22 +5342,19 @@ $(document).on('knack-view-render.view_5033', function(event, view, data) {
         type: 'GET',
         headers: {
             'X-Knack-Application-Id': Knack.app_id,
-            'X-Knack-REST-API-Key': 'knack'
+            'X-Knack-REST-API-Key': 'knack' 
         },
         success: function(record) {
-          // 2. Take the value from the 'Source Field' and put it in the 'Target Field'
-          // We use .val() so the user can still click in and edit it manually
+          console.log("Data fetched successfully:", record);
+          // Inject the value
           $('#view_5033-field_3828').val(record.field_3947);
           Knack.hideSpinner();
         },
-        error: function() {
-          console.log('Error fetching Labour Code description');
+        error: function(err) {
+          console.error("API Error:", err);
           Knack.hideSpinner();
         }
       });
-    } else {
-      // Optional: Clear the target field if the Labour Code is deselected
-      $('#view_5033-field_3828').val('');
     }
   });
 });
