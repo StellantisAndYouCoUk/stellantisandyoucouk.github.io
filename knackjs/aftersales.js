@@ -5329,15 +5329,16 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
 
 $(document).on('knack-view-render.view_5033', function(event, view, data) {
   
-  // Using the ID you found in the HTML (3949)
-  $('#view_5033-field_3949').on('change', function() {
+  // 1. Listen for changes on the Labour Code connection field (field_3949)
+  $(document).off('change', '#view_5033-field_3949').on('change', '#view_5033-field_3949', function() {
     var recordId = $(this).val();
     
-    // If it's a connection, Knack sometimes returns an array
+    // Handle cases where Knack returns the ID inside an array
     if (Array.isArray(recordId)) {
         recordId = recordId[0];
     }
 
+    // Only proceed if a record is actually selected
     if (recordId) {
       Knack.showSpinner();
       
@@ -5346,59 +5347,38 @@ $(document).on('knack-view-render.view_5033', function(event, view, data) {
         type: 'GET',
         headers: {
           'X-Knack-Application-Id': Knack.app_id,
-          'X-Knack-REST-API-Key': 'knack'
+          'X-Knack-REST-API-Key': 'knack' // Uses the session of the logged-in user
         },
         success: function(record) {
-          // Injects the default description (field_3947) into the target (field_3828)
-          $('#view_5033-field_3828').val(record.field_3947);
-          
-          // Tell Knack the value has changed
-          $('#view_5033-field_3828').trigger('change');
-          
-          Knack.hideSpinner();
-        },
-        error: function() {
-          console.error("API Fetch Failed. Ensure user has access to Object 154.");
-          Knack.hideSpinner();
-        }
-      });
-    }
-  });
-});
+          // 2. Extract the description. Handle strings or complex objects (like Equations/Connections)
+          var rawDesc = record.field_3947;
+          var cleanDesc = "";
 
-$(document).on('knack-view-render.view_5033', function(event, view, data) {
-  
-  $('#view_5033-field_3949').on('change', function() {
-    var recordId = $(this).val();
-    if (Array.isArray(recordId)) { recordId = recordId[0]; }
+          if (typeof rawDesc === 'string') {
+            cleanDesc = rawDesc;
+          } else if (typeof rawDesc === 'object' && rawDesc !== null) {
+            cleanDesc = rawDesc.identifier || rawDesc.value || "";
+          } else {
+            cleanDesc = rawDesc || "";
+          }
 
-    if (recordId) {
-      Knack.showSpinner();
-      
-      $.ajax({
-        url: 'https://api.knack.com/v1/objects/object_154/records/' + recordId,
-        type: 'GET',
-        headers: {
-          'X-Knack-Application-Id': Knack.app_id,
-          'X-Knack-REST-API-Key': 'knack'
-        },
-        success: function(record) {
-          console.log("SUCCESS! Knack returned this data:", record);
+          // 3. Inject into the editable Input Field (field_3828)
+          // We use .val() so the text is inserted but remains editable by the user
+          $('#view_5033-field_3828').val(cleanDesc);
           
-          // Try to set the field. If field_3947 is empty in the database, 
-          // we try to find it by name.
-          var description = record.field_3947 || "Description Field is Empty in Database";
-          
-          $('#view_5033-field_3828').val(description);
-          $('#view_5033-field_3828').trigger('change');
+          // Trigger events so Knack's internal validation knows the field isn't empty
+          $('#view_5033-field_3828').trigger('input').trigger('change');
           
           Knack.hideSpinner();
         },
         error: function(err) {
-          console.error("API Error:", err);
+          console.error("Error fetching from Object 154. Check permissions.", err);
           Knack.hideSpinner();
         }
       });
+    } else {
+      // Optional: Clear the input field if the selection is removed
+      $('#view_5033-field_3828').val('');
     }
   });
 });
