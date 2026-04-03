@@ -204,3 +204,23 @@ function setupExpandableGridViewGroups(view) {
     }
   });
 }
+
+// ----------  refresh Sales Performance table every 60 minutes but not the page itself  ----------
+
+$(document).on('knack-scene-render.scene_2503', function(event, scene) {
+  recursiveSceneRefresh('2503',['view_8125'],3600000)
+});
+
+
+// ----------  Scroll to View TEST  ----------
+
+window.scrollToView = function(viewKey) {
+
+  const $target = $(`#${viewKey}`);
+  if ($target.length) {
+    $('html, body').animate({
+      scrollTop: $target.offset().top - 50
+    }, 500);
+  }
+
+}

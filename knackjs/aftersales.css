@@ -1415,6 +1415,11 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
   	font-weight: bold;
 }
 
+#view_871 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(5) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
 /* Aftersales Pre Visit - Customer Incident Form - Messages Table */
 
 #view_1388 th span {
@@ -1522,7 +1527,8 @@ content: url(https://stellantisandyoucouk.github.io/imagesStore/DVLALogo.png);
 }
 
 #view_1169 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
-#view_1169 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+#view_1169 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#view_1169 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
 	background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
@@ -2341,6 +2347,7 @@ div.tooltipDiv {
 
 
 /****** All jobs in one table (workshop/CA view) *******/
+#view_5272 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_3307 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_2722 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_2686 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
@@ -2351,6 +2358,7 @@ div.tooltipDiv {
   font-weight: bold;
 }
 
+#view_5272 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
 #view_3307 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
 #view_2722 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
 #view_2686 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li.is-active > a,
@@ -2904,3 +2912,33 @@ div#view_4746 {
     font-weight: 500;
     letter-spacing: .09em;
 }
+
+
+/* Change courtesy submimssion button */
+
+#view_5267 > form > .kn-submit > .kn-button{
+    background-color: #ff0000 !important;
+    border-color: #2ab27b !important;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+	font-size: 0.95em;
+    font-weight: 500;
+    letter-spacing: .09em;
+}
+
+/* View widths for Aftersales messages summary */
+@media screen and (min-width: 768px) {
+    .view-column:has(#view_5302) {
+          max-width: 20%; 
+     }
+     .view-column:has(#view_5306) {
+           max-width: 60%
+      }
+	.view-column:has(#view_5303) {
+          max-width: 20%; 
+     }
+}
+
+
+
+

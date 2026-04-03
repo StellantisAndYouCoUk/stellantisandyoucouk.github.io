@@ -292,6 +292,19 @@ $(document).on('knack-view-render.view_8566', function(event, view, data) {
   $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#ceva-vehicles-api-interactions" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+	//Fleet Order Requests Builder
+	
+$(document).on('knack-view-render.view_8944', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-order-request/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+//Fleet Order Requests Approvals and Management
+	
+$(document).on('knack-view-render.view_8945', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#fleet-order-request-approvals-and-management/" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
 
 	//Deliver Broker Management
 	
@@ -577,6 +590,18 @@ $(document).on('knack-view-render.view_7517', function(event, view, data) {
  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#service-sales-prospect/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
+//View of all Aftersales Messages
+$(document).on('knack-view-render.view_8902', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+ $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#view-of-aftersales-messages/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+//View of all Aftersales Message Categories (Developers)
+$(document).on('knack-view-render.view_9042', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+ $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#categories-of-latest-inbound-messages/?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
 //Overdue Debts
 $(document).on('knack-view-render.view_7578', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
@@ -624,10 +649,22 @@ $(document).on('knack-view-render.view_8530', function(event, view, data) {
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/aftersales#repair-order-lead-time?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
-// New Sales Virtual Reception
+// New Sales Messages
 $(document).on('knack-view-render.view_7930', function(event, view, data) {
   var token = Knack.getUserAttributes().values["field_6440"];
   $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#new-sales-messages" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+// New Sales Messages - Cross Department View
+$(document).on('knack-view-render.view_8974', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#view-of-new-sales-conversations" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+});
+
+// Demo Log
+$(document).on('knack-view-render.view_8979', function(event, view, data) {
+  var token = Knack.getUserAttributes().values["field_6440"];
+  $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/digital-orders?token='+encodeURIComponent(token) + '#demo-log" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
 });
 
 //Fleet Admin to do list
@@ -745,7 +782,7 @@ function aftersalesConnectViewFunction(selector_view){
   });
 }
 
-var employeePortalConnectView = [{view:'view_7787',url:'#dashboard'}]; 
+var employeePortalConnectView = [{view:'view_7787',url:'#aftersales-dashboard'}]; 
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 employeePortalConnectView.forEach(employeePortalConnectViewConnectViewFunction);
 
@@ -758,9 +795,23 @@ function employeePortalConnectViewConnectViewFunction(selector_view){
   });
 }
 
-var hrAppConnectView = [{view:'view_8013',url:'#home'}]; 
+var employeePortalConnectView = [{view:'view_8994',url:'#sales-dashboard'}]; 
+//to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
+employeePortalConnectView.forEach(employeePortalConnectViewConnectViewFunction);
+
+function employeePortalConnectViewConnectViewFunction(selector_view){
+  //console.log('create employeePortalConnectViewConnectViewFunction',selector_view)
+  $(document).on("knack-view-render." + selector_view.view, function(event, scene, data) {
+    console.log('employeePortalConnectViewConnectViewFunction',selector_view)
+    var token = Knack.getUserAttributes().values["field_6440"];
+    $('div[class*="field_3"]').html('<iframe src="https://www.stellantisandyou.co.uk/employee-portal'+selector_view.url+'?token='+encodeURIComponent(token) + '" allow="camera" frameborder="0" width="100%" id="knack-iframe"></iframe>');
+  });
+}
+
+var hrAppConnectView = [{view:'view_8013',url:'#home'},{view:'view_9052',url:'#manager-view-of-starter-status'}]; 
 //to sync a page REPLACE "(VALUE)"              "{view:'view_(MASTER VIEW NUMBER HERE)',url:'#(AFTERSALES URL GOES HERE)/'},"
 hrAppConnectView.forEach(hrAppConnectViewConnectViewFunction);
+
 
 function hrAppConnectViewConnectViewFunction(selector_view){
   //console.log('create employeePortalConnectViewConnectViewFunction',selector_view)
@@ -1692,6 +1743,16 @@ $(document).on('knack-scene-render.scene_1736', function(event, scene) {
   $(".kn-crumbtrail").hide();
  });
 
+$(document).on('knack-scene-render.scene_2775', function (event, view, data) {
+	$('[class="kn-container"]').hide();
+	$('[class="kn-info kn-container"]').hide();
+});
+
+$(document).on('knack-scene-render.scene_2824', function (event, view, data) {
+	$('[class="kn-container"]').hide();
+	$('[class="kn-info kn-container"]').hide();
+});
+
 // ----------  hide blank Enquiry Max table on New Vehicle P/X appraisal    ----------
 
 //$(document).on('knack-view-render.view_3254', function (event, view, data) {
@@ -1950,8 +2011,17 @@ $(document).on('knack-view-render.view_7771', function(event, view, data) {
   Knack.fn.hideExpand("view_7771");
 });
 
-//END OF HIDE AND EXPAND CODE
+$(document).on('knack-view-render.view_7055', function(event, view, data) {
+  console.log('view7055');
+  Knack.fn.hideExpand("view_7055");
+});
 
+$(document).on('knack-view-render.view_8899', function(event, view, data) {
+  console.log('view8899');
+  Knack.fn.hideExpand("view_8899");
+});
+
+//END OF HIDE AND EXPAND CODE
 
 
 
@@ -5414,211 +5484,216 @@ $(document).on('knack-form-submit.view_7544', function(event, view, data) {
 //   }
 // });
 
-
-
 let webSocket = null;
+let reconnectDelay = 5000;
+let isConnecting = false;
 
 $(document).on("knack-view-render.any", function (event, scene) {
-  // Initialize the WebSocket only if it's not already set
+  if (isConnecting) return;
+  if (webSocket !== null && webSocket.readyState <= 1) {
+    return;
+  }
 
-  if (webSocket === null) {
-    const userAttributes = Knack.getUserAttributes();
+  const userAttributes = Knack.getUserAttributes();
 
-    if (userAttributes !== "No user found") {
-      const userValue = userAttributes.id;
-      console.log(`User Value: ${userValue}`);
-      connectToNtfy();
-      
-      function connectToNtfy() {
-        // Change from /sse to /ws and from https to wss
-        let subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
-        webSocket = new WebSocket(subscribeURL);
+  if (userAttributes !== "No user found") {
+    const userValue = userAttributes.id;
+    console.log(`User Value: ${userValue}`);
+    connectToNtfy();
 
-        function showNotification(data, message, timer) {
-          parsedData = data;
-          notificationId = parsedData.id;
+    function connectToNtfy() {
+      if (webSocket !== null) {
+        webSocket.onclose = null;
+        webSocket.close();
+        webSocket = null;
+      }
 
-          let InAppPopUp = false;
+      isConnecting = true;
 
-          if (typeof message.InAppPopUp === "boolean") {
-            InAppPopUp = message.InAppPopUp;
+      let subscribeURL = `wss://ntfy.stellantisandyou.co.uk/DMRzyZwTVWz46Fy86blfD1G1TAL-${userValue}/ws`;
+      webSocket = new WebSocket(subscribeURL);
+
+      function showNotification(data, message, timer) {
+        parsedData = data;
+        notificationId = parsedData.id;
+
+        let InAppPopUp = false;
+
+        if (typeof message.InAppPopUp === "boolean") {
+          InAppPopUp = message.InAppPopUp;
+        }
+
+        if (true) {
+          if (InAppPopUp) {
+            let confirmButtonAriaLabel = "Click To Open";
+            let ShowCloseButton = true;
+            let AllowEscapeKey = true;
+            let AllowOutsideClick = true;
+
+            if (message.ClickButtonTitle) {
+              confirmButtonAriaLabel = message.ClickButtonTitle;
+            }
+
+            if (message.ShowCloseButton === false) {
+              ShowCloseButton = message.ShowCloseButton;
+            }
+
+            if (message.AllowOutsideClick === false) {
+              AllowOutsideClick = message.AllowOutsideClick;
+            }
+
+            if (message.AllowEscapeKey === false) {
+              AllowEscapeKey = message.AllowEscapeKey;
+            }
+
+            Swal.fire({
+              title: `<strong>${message.Title}</strong>`,
+              html: `
+                ${message.Attach && data.attachment.url
+                  ? `<img src='${data.attachment.url}' style="max-width: 100%; height: auto; border-radius: 25px;">`
+                  : ""
+                }
+                <div class="notification-message">${message.Message || ""}</div>
+              `,
+              showCloseButton: ShowCloseButton,
+              allowEscapeKey: AllowEscapeKey,
+              focusConfirm: false,
+              timer: timer,
+              showCancelButton: false,
+              allowOutsideClick: AllowOutsideClick,
+              cancelButtonText: "Close",
+              cancelButtonColor: "#FF0000",
+              showConfirmButton: !!message.Click,
+              confirmButtonText: `
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front">
+              ${message.Click
+                ? `<i class="fa fa-external-link-alt"></i> ${confirmButtonAriaLabel}`
+                : ""}
+                </span>`,
+              confirmButtonAriaLabel: confirmButtonAriaLabel,
+              preConfirm: () => {
+                if (message.Click) {
+                  window.open(message.Click, "_blank");
+                }
+              },
+              didOpen: () => {
+                const popup = document.querySelector('.swal2-popup');
+                if (popup) {
+                  popup.classList.add('swal2-show');
+                }
+
+                const confirmButton = Swal.getConfirmButton();
+                if (confirmButton) confirmButton.id = "popup-confirm-button";
+              },
+            });
+          }
+        } else {
+          console.log("Missing Notification");
+        }
+      }
+
+      webSocket.onopen = () => {
+        console.log('Connected to ntfy via WebSocket');
+        reconnectDelay = 5000;
+        isConnecting = false;
+      };
+
+      webSocket.onmessage = (event) => {
+        function showNotificationBackground(title, icon = '', body) {
+          var notification = new Notification(title, {
+            icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
+            body: body.Message,
+            requireInteraction: true,
+            badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
+          });
+
+          if (body.Click) {
+            notification.onclick = function () {
+              window.open(body.Click, '_blank');
+              console.log("Notification clicked.");
+            };
+          } else {
+            console.log("No click action provided.");
           }
 
-          if (true) {
-            if (InAppPopUp) {
-              let confirmButtonAriaLabel = "Click To Open";
-              let ShowCloseButton = true;
-              let AllowEscapeKey = true;
-              let AllowOutsideClick = true;
-
-              if (message.ClickButtonTitle) {
-                confirmButtonAriaLabel = message.ClickButtonTitle;
-              }
-
-              if (message.ShowCloseButton === false) {
-                ShowCloseButton = message.ShowCloseButton;
-              }
-
-              if (message.AllowOutsideClick === false) {
-                AllowOutsideClick = message.AllowOutsideClick;
-              }
-
-              if (message.AllowEscapeKey === false) {
-                AllowEscapeKey = message.AllowEscapeKey;
-              }
-
-              Swal.fire({
-                title: `<strong>${message.Title}</strong>`,
-                html: `
-                  ${message.Attach && data.attachment.url
-                    ? `<img src='${data.attachment.url}' style="max-width: 100%; height: auto; border-radius: 25px;">`
-                    : ""
-                  }
-                  <div class="notification-message">${message.Message || ""}</div>
-                `,
-                showCloseButton: ShowCloseButton,
-                allowEscapeKey: AllowEscapeKey,
-                focusConfirm: false,
-                timer: timer,
-                showCancelButton: false,
-                allowOutsideClick: AllowOutsideClick,
-                cancelButtonText: "Close",
-                cancelButtonColor: "#FF0000",
-                showConfirmButton: !!message.Click,
-                confirmButtonText: `
-                  <span class="shadow"></span>
-                  <span class="edge"></span>
-                  <span class="front">
-                ${message.Click
-                  ? `<i class="fa fa-external-link-alt"></i> ${confirmButtonAriaLabel}`
-                  : ""}
-                  </span>`,
-                confirmButtonAriaLabel: confirmButtonAriaLabel,
-                preConfirm: () => {
-                  if (message.Click) {
-                    window.open(message.Click, "_blank");
-                  }
-                },
-                didOpen: () => {
-                  const popup = document.querySelector('.swal2-popup');
-                  if (popup) {
-                    popup.classList.add('swal2-show');
-                  }
-
-                  const confirmButton = Swal.getConfirmButton();
-                  if (confirmButton) confirmButton.id = "popup-confirm-button";
-                },
-              });
-            }
-          } else {
-            console.log("Missing Notification");
+          notification.onclose = function () {
+            console.log("Background Notification closed.");
           }
         }
 
-        // WebSocket connection opened
-        webSocket.onopen = () => {
-          console.log('Connected to ntfy via WebSocket');
-        };
+        try {
+          function delay(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds));
+          }
 
-        // Handle incoming messages from WebSocket
-        webSocket.onmessage = (event) => {
-          function showNotificationBackground(title, icon = '', body) {
-            var notification = new Notification(title, {
-              icon: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg',
-              body: body.Message,
-              requireInteraction: true,
-              badge: 'https://stellantisandyoucouk.github.io/imagesStore/bell-ringing.svg'
-            });
+          let notificationId;
 
-            if (body.Click) {
-              notification.onclick = function () {
-                window.open(body.Click, '_blank');
-                console.log("Notification clicked.");
-              };
+          async function runSync() {
+            let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650;
+            console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
+            await delay(delayRandomNumber);
+            console.log("This message appears after the delay");
+
+            const dataParsed = JSON.parse(event.data);
+            console.log("DataParsed", JSON.stringify(dataParsed));
+
+            if (dataParsed.event !== "message") {
+              console.log(`Ignoring event type: ${dataParsed.event}`);
+              return;
+            }
+
+            const messageParsed = JSON.parse(dataParsed.message);
+            console.log("MessageParsed ", JSON.stringify(messageParsed));
+
+            let uniqueNumberNotification = dataParsed.id;
+            console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
+
+            if (localStorage.getItem('notificationRandomNumber') !== uniqueNumberNotification) {
+              localStorage.setItem('notificationRandomNumber', uniqueNumberNotification);
+
+              showNotification(dataParsed, messageParsed, 0);
+
+              let DesktopNotification = false;
+
+              if (typeof messageParsed.DesktopNotification === "boolean") {
+                DesktopNotification = messageParsed.DesktopNotification;
+              }
+
+              if (DesktopNotification) {
+                showNotificationBackground(messageParsed.Title, "", messageParsed);
+              }
             } else {
-              console.log("No click action provided.");
-            }
-
-            notification.onclose = function () {
-              console.log("Background Notification closed.");
+              showNotification(dataParsed, messageParsed, 3000);
             }
           }
 
-          try {
-            function delay(milliseconds) {
-              return new Promise(resolve => setTimeout(resolve, milliseconds));
-            }
+          runSync();
+        } catch (error) {
+          console.error("Failed to process message:", error);
+        }
+      };
 
-            let notificationId;
+      webSocket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+        isConnecting = false;
+      };
 
-            async function runSync() {
-              let delayRandomNumber = Math.floor(Math.random() * 10000) + 1650;
-              console.log(`Delaying for ${delayRandomNumber} milliseconds...`);
-              await delay(delayRandomNumber);
-              console.log("This message appears after the delay");
+      webSocket.onclose = (event) => {
+        console.log("WebSocket closed:", event.code, event.reason);
+        webSocket = null;
+        isConnecting = false;
 
-              // Parse the WebSocket message data
-              const dataParsed = JSON.parse(event.data);
-              console.log("DataParsed", JSON.stringify(dataParsed));
-
-                    // ✅ CHECK IF IT'S A MESSAGE EVENT
-              if (dataParsed.event !== "message") {
-                console.log(`Ignoring event type: ${dataParsed.event}`);
-                return; // Skip non-message events (like "open")
-              }
-
-              const messageParsed = JSON.parse(dataParsed.message);
-              console.log("MessageParsed ", JSON.stringify(messageParsed));
-
-              let uniqueNumberNotification = dataParsed.id;
-              console.log("unique Number Notification Created before if statements: " + uniqueNumberNotification);
-
-              if (localStorage.getItem('notificationRandomNumber') !== uniqueNumberNotification) {
-                localStorage.setItem('notificationRandomNumber', uniqueNumberNotification);
-
-                showNotification(dataParsed, messageParsed, 0);
-
-                let DesktopNotification = false;
-
-                if (typeof messageParsed.DesktopNotification === "boolean") {
-                  DesktopNotification = messageParsed.DesktopNotification;
-                }
-
-                if (DesktopNotification) {
-                  showNotificationBackground(messageParsed.Title, "", messageParsed);
-                }
-              } else {
-                showNotification(dataParsed, messageParsed, 3000);
-              }
-            }
-
-            runSync();
-          } catch (error) {
-            console.error("Failed to process message:", error);
-          }
-        };
-
-        // Handle WebSocket errors
-        webSocket.onerror = (error) => {
-          console.error("WebSocket error:", error);
-        };
-
-        // Handle WebSocket connection close
-        webSocket.onclose = (event) => {
-          console.log("WebSocket closed:", event.code, event.reason);
-          webSocket = null; // Reset the webSocket variable
-
-          // Attempt to reconnect after 5 seconds
-          setTimeout(() => {
-            console.log('Reconnecting to ntfy...');
-            connectToNtfy();
-          }, 5000);
-        };
-      }
+        setTimeout(() => {
+          console.log(`Reconnecting to ntfy in ${reconnectDelay}ms...`);
+          reconnectDelay = Math.min(reconnectDelay * 2, 60000);
+          connectToNtfy();
+        }, reconnectDelay + Math.random() * 3000);
+      };
     }
   }
 });
-
 
 
 
@@ -6477,5 +6552,8 @@ $(document).on('knack-scene-render.scene_2775', function(event, scene) {
 	console.log("scene_2775 run after set time out ")
 })
 
-
+//  ---------Hide back link-------------
+$(document).on('knack-scene-render.scene_2775', function(event, scene) {
+    $('.kn-back-link').hide();
+});
 

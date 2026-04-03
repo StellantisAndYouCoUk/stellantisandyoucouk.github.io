@@ -981,6 +981,11 @@ $(document).on('knack-view-render.view_5664', function(event, view, data) {
   Knack.fn.hideExpand("view_5664");
 });
 
+$(document).on('knack-view-render.view_6213', function(event, view, data) {
+  console.log('view6213');
+  Knack.fn.hideExpand("view_6213");
+});
+
 // END OF HIDE AND EXPAND CODE
 
 
@@ -2175,7 +2180,26 @@ $(document).on('knack-form-submit.view_5942', function(event, view, data) {
 });
 
 
-
+//Modal pop-up
 $(document).on("knack-scene-render.scene_1699", function(event, scene) {
   $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
 });
+
+
+
+// Code to wait following Form Submission while Licence Is Being Checked in Make - Sales Advisor
+
+$(document).on('knack-form-submit.view_6243', function(event, view, data) { 
+  setTimeout(function(){ Knack.showSpinner(); }, 0); 
+  const commandURL = "https://hook.eu1.make.celonis.com/ckpglqn7s5ig2dplgakeofe93pxxa1mk?recordid=" + data.id ;
+  $.get(commandURL, function(data, status){
+    Knack.hideSpinner();
+    $("#view_6243 .kn-message.success").html("<b>" + data + "</b>");
+  });
+});
+
+$(document).on('knack-form-submit.view_6243', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/ckpglqn7s5ig2dplgakeofe93pxxa1mk", {"recordid":data.id},"Licence Check Submitted");
+});
+
+
