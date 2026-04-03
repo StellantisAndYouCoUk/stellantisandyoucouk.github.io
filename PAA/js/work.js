@@ -410,7 +410,7 @@ function work(){
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: {
-                    url: 'https://davidmale--pa-server.apify.actor/paaXHR?aaa=bbb&token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',
+                    url: 'https://davidmale--pa-server.apify.actor/paaXHR?action=getLogRuns&token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',
                     type: 'POST'
                 },
                 columns: [
