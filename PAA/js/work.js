@@ -177,15 +177,19 @@ var flowCode = null;
 
 var globalPageData = null;
 
+var reloadWork = false;
+var windowFocused = true;
 window.onfocus = function() {
-    console.log('Focused');
+    windowFocused = true;
+    if (reloadWork) work();
 };
 
 window.onblur = function() {
-    console.log('Not focused');
+    windowFocused = false;
 };
 
 function work(){
+    reloadWork = false;
     console.log('globalPageData1',globalPageData);
     if (!globalPageData){
         try {
@@ -260,7 +264,8 @@ function work(){
         }
         let isSomethingActiveD = req.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
-            work();
+            reloadWork = true;
+            if (windowFocused) work();
         }, (isSomethingActiveD?30000:60000));
 
     }
@@ -406,7 +411,8 @@ function work(){
 
         let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
-            work();
+            reloadWork = true;
+            if (windowFocused) work();
         }, (isSomethingActive?15000:45000));
 
         if ($('#reloadButton').length===0){
@@ -452,7 +458,8 @@ function work(){
         }
         
         setTimeout(() => {
-            work();
+            reloadWork = true;
+            if (windowFocused) work();
         }, 15000);
     }
 
