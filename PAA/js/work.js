@@ -416,20 +416,20 @@ function work(){
                 columns: [
                 { data: 'flowName',title: 'Flow Name'},
                 { data: 'flowInput.liveOrPreprod',title: 'Live'},
-                //{ data: 'Machine',title: 'Machine'},
+                { data: 'machine.name',title: 'Machine'},
                 { data: 'runMode',title: 'Mode'},
                 { data: 'status',title: 'State', "render": function(data, type) { return (data?data:'queued');}},
                 { data: 'priority',title: 'Pri'},
                 { data: 'createdDateTime',title: 'Requested',name:'Requested', "render": function(data, type) { return type === 'sort' ? dateTimeToGB(new Date(data)) : dateTimeToGBNoYear(new Date(data));}},
-                { data: 'startedDateTime',title: 'Started', "render": function(data, type) { return type === 'sort' ? dateTimeToGB(new Date(data)) : dateTimeToGBNoYear(new Date(data));}},
+                { data: 'startedDateTime',title: 'Started', "render": function(data, type) { return type === 'sort' ? (data?dateTimeToGB(new Date(data)):'') : dateTimeToGBNoYear(new Date(data));}},
                 //{ data: 'Duration',title: 'Duration'},
                 //{ data: 'Details',title:'Details' },
                 //{ data: 'In PA',title: 'In PA'}
-                ],/*
+                ],
                 order: {
                     name: 'Requested',
                     dir: 'desc'
-                },*/
+                },
                 pageLength: 25,
                 scroller: true,
                 search: getSearchFromUrl(),
