@@ -422,9 +422,9 @@ function work(){
                 { data: 'priority',title: 'Pri'},
                 { data: 'createdDateTime',title: 'Requested',name:'Requested', "render": function(data, type) { return type === 'sort' ? dateTimeToGB(new Date(data)) : dateTimeToGBNoYear(new Date(data));}},
                 { data: 'startedDateTime',title: 'Started', "render": function(data, type) { return type === 'sort' ? (data?dateTimeToGB(new Date(data)):'') : dateTimeToGBNoYear(new Date(data));}},
-                //{ data: 'Duration',title: 'Duration'},
-                //{ data: 'Details',title:'Details' },
-                //{ data: 'In PA',title: 'In PA'}
+                //{ data: 'queueId',title: 'Duration'},
+                { data: 'queueId',title:'Details', "render": function(data, type) { return "<a href=\"#\" onclick=\"showModal('runDetails','runDetailsBody','queueDetailsText-"+data+"');return false;\">Details</a>"}},
+                { data: 'hrefDetails',title: 'In PA', "render": function(data, type) { return (data?'<a target="_blank" href="'+data+'">Open</a>':'')}},
                 ],
                 order: {
                     name: 'Requested',
