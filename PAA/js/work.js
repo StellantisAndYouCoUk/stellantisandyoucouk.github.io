@@ -442,6 +442,11 @@ function work(){
         } else {
             refereshRunsTable();
         }
+        
+        let isSomethingActive = globalPageData.runs.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
+        setTimeout(() => {
+            work();
+        }, (isSomethingActive?15000:45000));
     }
 
     if (page.includes('uicoll.html')){
