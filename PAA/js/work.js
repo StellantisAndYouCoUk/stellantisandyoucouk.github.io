@@ -446,7 +446,10 @@ function work(){
                 },
                 pageLength: 25,
                 scroller: true,
-                search: getSearchFromUrl(),
+                search: {
+                    search : getSearchFromUrl(),
+                    return : true
+                },
                 processing: true,
                 serverSide: true
             });
