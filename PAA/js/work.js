@@ -414,7 +414,7 @@ function work(){
                     type: 'POST'
                 },
                 columns: [
-                { data: 'Flow Name',title: 'Flow Name'},
+                { data: 'flowName',name: 'flowName',title: 'Flow Name'},
                 { data: 'LiveOrPreprod',title: 'Live'},
                 { data: 'Machine',title: 'Machine'},
                 { data: 'Mode',title: 'Mode'},
