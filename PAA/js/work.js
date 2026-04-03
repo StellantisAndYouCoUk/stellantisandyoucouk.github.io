@@ -409,9 +409,10 @@ function work(){
     if (page.includes('logs.html')){
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
-                ajax: function (data, callback, settings) {
-                    callback({data:getRunsDataForTableLogs()});
-                  },
+                ajax: {
+                    url: 'https://davidmale--pa-server.apify.actor/paaXHR?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',
+                    type: 'POST'
+                },
                 columns: [
                 { data: 'Flow Name',title: 'Flow Name'},
                 { data: 'LiveOrPreprod',title: 'Live'},
@@ -432,6 +433,8 @@ function work(){
                 pageLength: 25,
                 scroller: true,
                 search: getSearchFromUrl(),
+                processing: true,
+                serverSide: true
             });
 
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
