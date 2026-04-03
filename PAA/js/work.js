@@ -418,7 +418,7 @@ function work(){
                 { data: 'flowInput',title: 'Live', "render": function(data, type) { return (data?data.liveOrPreprod+'<div id="addData" style="display: none;">'+JSON.stringify(data)+'</div>':'');}},
                 { data: 'machine',title: 'Machine', "render": function(data, type) { return (data?data.name:'')}},
                 { data: 'runMode',title: 'Mode'},
-                { data: 'status',title: 'State', "render": function(data, type) { return (data?data:'queued');}},
+                { data: 'status',title: 'State', "render": function(data, type, row, meta) { console.log(row); return (data?data:'queued');}},
                 { data: 'priority',title: 'Pri'},
                 { data: 'createdDateTime',title: 'Requested',name:'Requested', "render": function(data, type) { return type === 'sort' ? dateTimeToGB(new Date(data)) : dateTimeToGBNoYear(new Date(data));}},
                 { data: 'startedDateTime',title: 'Started', "render": function(data, type) { return type === 'sort' ? (data?dateTimeToGB(new Date(data)):'') : (data?dateTimeToGBNoYear(new Date(data)):'');}},
