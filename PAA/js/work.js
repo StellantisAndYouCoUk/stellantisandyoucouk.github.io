@@ -177,6 +177,14 @@ var flowCode = null;
 
 var globalPageData = null;
 
+window.onfocus = function() {
+    console.log('Focused');
+};
+
+window.onblur = function() {
+    console.log('Not focused');
+};
+
 function work(){
     console.log('globalPageData1',globalPageData);
     if (!globalPageData){
