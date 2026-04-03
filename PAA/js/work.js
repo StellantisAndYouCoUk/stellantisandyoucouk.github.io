@@ -414,22 +414,22 @@ function work(){
                     type: 'POST'
                 },
                 columns: [
-                { data: 'flowName',name: 'flowName',title: 'Flow Name'},
-                { data: 'LiveOrPreprod',title: 'Live'},
-                { data: 'Machine',title: 'Machine'},
-                { data: 'Mode',title: 'Mode'},
-                { data: 'State',title: 'State'},
-                { data: 'Priority',title: 'Pri'},
-                { data: 'Requested',title: 'Requested',name:'Requested', "render": function(data, type) { return type === 'sort' ? data : dateTimeToGBNoYear(new Date(data));}},
-                { data: 'Started',title: 'Started'},
-                { data: 'Duration',title: 'Duration'},
-                { data: 'Details',title:'Details' },
-                { data: 'In PA',title: 'In PA'}
-                ],
+                { data: 'flowName',title: 'Flow Name'},
+                //{ data: 'LiveOrPreprod',title: 'Live'},
+                //{ data: 'Machine',title: 'Machine'},
+                { data: 'runMode',title: 'Mode'},
+                { data: 'status',title: 'State'},
+                { data: 'priority',title: 'Pri'},
+                //{ data: 'Requested',title: 'Requested',name:'Requested', "render": function(data, type) { return type === 'sort' ? data : dateTimeToGBNoYear(new Date(data));}},
+                { data: 'startedDateTime',title: 'Started'},
+                //{ data: 'Duration',title: 'Duration'},
+                //{ data: 'Details',title:'Details' },
+                //{ data: 'In PA',title: 'In PA'}
+                ],/*
                 order: {
                     name: 'Requested',
                     dir: 'desc'
-                },
+                },*/
                 pageLength: 25,
                 scroller: true,
                 search: getSearchFromUrl(),
