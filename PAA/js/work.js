@@ -416,7 +416,7 @@ function work(){
                 columns: [
                 { data: 'flowName',title: 'Flow Name'},
                 { data: 'flowInput',title: 'Live', "render": function(data, type) { return (data?data.liveOrPreprod+'<div id="addData" style="display: none;">'+data+'</div>':'');}},
-                { data: 'machine.name',title: 'Machine'},
+                { data: 'machine',title: 'Machine', "render": function(data, type) { return (data?data.name:'')}},
                 { data: 'runMode',title: 'Mode'},
                 { data: 'status',title: 'State', "render": function(data, type) { return (data?data:'queued');}},
                 { data: 'priority',title: 'Pri'},
