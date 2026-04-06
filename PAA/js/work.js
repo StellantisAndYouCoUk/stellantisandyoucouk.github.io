@@ -250,8 +250,7 @@ function work(){
         sumDateEnd.setHours(23,59,59,59);
         let dD = paaPostRequest({action:'getSummaryData',createdDateTimeFrom:sumDateStart,createdDateTimeTo:sumDateEnd});
         console.log('dD',dD);
-        //let t0 = req.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
-        let t0 = req.filter(el => (dD.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed'));
+        let t0 = dD.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed'));
         $('#dashboardActiveRuns').html((t0.length===0?'All done':sumFieldInArrayOfObjects(t0,'count') + ' running now'));
         let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
