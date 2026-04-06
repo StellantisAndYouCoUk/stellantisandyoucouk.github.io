@@ -239,7 +239,7 @@ function work(){
     if (page.includes('index.html')){
         let sumDate = qV['date'];
         console.log('sumDate',sumDate);
-        
+
         //let req = getServerData('runs', work); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
         let sumDateStart = new Date();
         sumDateStart.setHours(0,0,0,0);
@@ -615,7 +615,7 @@ function enableAttendedRuns(enable){
 function loadAppData(){
     console.log('loadData')
     getServerData('machines');
-    getServerData('runs');
+    //getServerData('runs');
     globalPageData.appLoaded = true;
 }
 
