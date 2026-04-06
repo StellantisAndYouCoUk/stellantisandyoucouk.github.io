@@ -250,8 +250,9 @@ function work(){
         sumDateEnd.setHours(23,59,59,59);
         let dD = paaPostRequest({action:'getSummaryData',createdDateTimeFrom:sumDateStart,createdDateTimeTo:sumDateEnd});
         console.log('dD',dD);
-        let t0 = req.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
-        $('#dashboardActiveRuns').html((t0.length===0?'All done':t0.length + ' running now'));
+        //let t0 = req.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
+        let t0 = req.filter(el => (dD.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed'));
+        $('#dashboardActiveRuns').html((t0.length===0?'All done':sumFieldInArrayOfObjects(t0,'count') + ' running now'));
         let t1 = req.filter(el => el.status==='succeded' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardSuccessfullRuns').html(t1.length + ' successfull runs today');
         let t2 = req.filter(el => el.status==='failed' && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
@@ -265,7 +266,7 @@ function work(){
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
         }
-        let isSomethingActiveD = req.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
+        let isSomethingActiveD = dD.find(el => el.status!=='succeded' && el.status !=='failed' && el.status !=='canceled');
         setTimeout(() => {
             reloadWork = true;
             if (windowFocused) work();
@@ -854,10 +855,16 @@ function getFlowRunsSummary(data,groupFields){
 function getFlowRunsSummaryNew(d){
     let o = '';// '<table><thead><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr></thead><tbody>';
     for (let i =0;i<d.length;i++){
-        o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i]['COUNT(*)']+'</td></tr>'
+        o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i].count+'</td></tr>'
     }
     //o += '</tbody></table>';
     return o;
+}
+
+function sumFieldInArrayOfObjects(array, field){
+    return array.reduce(function(prev, cur) {
+        return prev + cur[field];
+    }, 0);
 }
 
 function getArraySummary(data,groupFields){
