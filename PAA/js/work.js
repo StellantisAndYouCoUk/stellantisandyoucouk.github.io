@@ -378,7 +378,7 @@ function work(){
         $('#runMachine').html('<option selected>Not set</option><option>'+machines.map(el => el.name).join('</option><option>')+'</option>')
     }
 
-    if (page.includes('runsOld.html')){
+    if (page.includes('logs.html')){
         if (!table){
             table = new DataTable('#datatablesSimpleRuns',{
                 ajax: function (data, callback, settings) {
