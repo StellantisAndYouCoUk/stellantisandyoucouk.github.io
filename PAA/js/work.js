@@ -440,6 +440,7 @@ function work(){
                 { data: 'queueId',title:'Details', "render": function(data, type, row) { return "<a href=\"#\" onclick=\"showModal('runDetails','runDetailsBody','queueDetailsText-"+data+"');return false;\">Details</a>"+(row.outputs?'<br /><a href="#" onclick="showModal(\'runDetails\',\'runDetailsBody\',\'runOutputsText-'+row.runId+'\');return false;">Output</a>':'')+formatRunDetails(row,getServerData('machines',null,{},300));}},
                 { data: 'hrefDetails',title: 'In PA', "render": function(data, type) { return (data?'<a target="_blank" href="'+data+'">Open</a>':'')}},
                 ],
+                rowId:'queueId',
                 order: {
                     name: 'Requested',
                     dir: 'desc'
