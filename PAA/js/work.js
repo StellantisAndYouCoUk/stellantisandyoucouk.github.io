@@ -259,7 +259,8 @@ function work(){
         let t4 = req.filter(el => (el.status==='queued') && new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live'));
         $('#dashboardQueuedRuns').html((t4.length===0?'Nothing queued':t4.length + ' queued now'));
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').html('');
-        $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
+        //$('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
+        $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummaryNew(dD));
         const datatablesSimple = document.getElementById('datatablesSimpleFlowRunsSummary');
         if (datatablesSimple) {
             new simpleDatatables.DataTable(datatablesSimple);
@@ -845,6 +846,15 @@ function getFlowRunsSummary(data,groupFields){
     let o = '';// '<table><thead><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr></thead><tbody>';
     for (let i =0;i<d.length;i++){
         o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i].count+'</td></tr>'
+    }
+    //o += '</tbody></table>';
+    return o;
+}
+
+function getFlowRunsSummaryNew(d){
+    let o = '';// '<table><thead><tr><th>Flow Name</th><th>Status</th><th>Count</th></tr></thead><tbody>';
+    for (let i =0;i<d.length;i++){
+        o += '<tr><td>'+d[i].flowName+'</td><td>'+d[i].status+'</td><td>'+d[i]['COUNT(*)']+'</td></tr>'
     }
     //o += '</tbody></table>';
     return o;
