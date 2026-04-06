@@ -239,7 +239,7 @@ function work(){
     if (page.includes('index.html')){
         let sumDate = qV['date'];
         console.log('sumDate',sumDate);
-        let req = getServerData('runs', work); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
+        //let req = getServerData('runs', work); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
         let sumDateStart = new Date();
         sumDateStart.setHours(0,0,0,0);
         if (sumDate==='yesterday'){
