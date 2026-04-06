@@ -237,6 +237,8 @@ function work(){
     $('#userName').text(loggedInUser.displayName)
     let qV = getUrlVars();
     if (page.includes('index.html')){
+        let dD = paaPostRequest({action:'getDashboardData'});
+        console.log('dD',dD);
         let sumDate = qV['date'];
         console.log('sumDate',sumDate);
         let req = getServerData('runs', work); // paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':500,'filters':[]});
