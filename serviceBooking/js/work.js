@@ -1133,7 +1133,7 @@ async function generateBookingSummary(){
             }
             if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
                 html += '<br />Available cars<br />';
-                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ '('+el.vehicleBranch+') - '+el.description).join('<br />')
+                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ '('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
         }
     }
