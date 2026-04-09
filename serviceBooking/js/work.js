@@ -1131,6 +1131,10 @@ async function generateBookingSummary(){
                     html += aVForDate.meetAndGreet.availability[i].Resource + ' - ' + formatTimesInAvailability(aVForDate.meetAndGreet.availability[i])+'<br />';
                 }*/
             }
+            if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
+                html += '<br />Available cars<br />';
+                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ '('+el.vehicleBranch+') - '+el.description).join('<br />')
+            }
         }
     }
 
@@ -1150,6 +1154,19 @@ async function generateBookingSummary(){
         }
     }*/
     $('div[id="bookingSummary"]').html(html);
+}
+
+function getCourtesyCarsForDate(date){
+    if (!(serviceBookingProcess && serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.courtesyVehicles)) return '';
+    let cars = [];
+    for (let i =0;i<serviceBookingProcess.bookingData.availability.courtesyVehicles.vehicles.length;i++){
+        let vT = serviceBookingProcess.bookingData.availability.courtesyVehicles.vehicles[i];
+        let aV = vT.availability.find(el => el.date === dateToAutoline(date));
+        if (aV){
+            cars.push({regNumber:vT.RegistrationNumber, description : vT.Description, vehicleBranch : vT.VehicleBranch})
+        }
+    }
+    return cars;
 }
 
 function formatMeetAndGreetAvailability(meetAndGreet){
