@@ -439,6 +439,7 @@ function work(){
     if (page.includes('index.html')){
         if (qV.regNumber && (!serviceBookingProcess || !serviceBookingProcess.registrationNumber || serviceBookingProcess.registrationNumber.toLowerCase() !== qV.regNumber.toLowerCase())){
             searchRegistration(qV.regNumber);
+            window.history.pushState('index.html', 'Service Booking', '/index.html');
             return;
         }
         if (!serviceBookingProcess.registrationNumber || !serviceBookingProcess.dvlaData){
