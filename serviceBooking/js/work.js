@@ -400,12 +400,12 @@ function getRTSCodePrefix(make){
     return '';
 }
 
-function newVehicle(){
+function newVehicle(doWork = true){
     serviceBookingProcess = {};
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     $('div[id="bookingProblems"]').text('');
     $('input[id="currentMileage"]').val('');
-    work();
+    if (doWork) work();
 }
 
 function work(){
@@ -438,6 +438,7 @@ function work(){
     let qV = getUrlVars();
     if (page.includes('index.html')){
         if (qV.regNumber && (!serviceBookingProcess || !serviceBookingProcess.registrationNumber || serviceBookingProcess.registrationNumber.toLowerCase() !== qV.regNumber.toLowerCase())){
+            newVehicle(false);
             searchRegistration(qV.regNumber);
             window.history.pushState('index.html', 'Service Booking', '/index.html');
             return;
