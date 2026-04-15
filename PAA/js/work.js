@@ -464,10 +464,12 @@ function work(){
             refereshRunsTable();
         }
         
-        setTimeout(() => {
-            reloadWork = true;
-            if (windowFocused) work();
-        }, 15000);
+        if ($('input[id="dt-search-0"]').val()===''){
+            setTimeout(() => {
+                reloadWork = true;
+                if (windowFocused) work();
+            }, 15000);
+        }
     }
 
     if (page.includes('uicoll.html')){
