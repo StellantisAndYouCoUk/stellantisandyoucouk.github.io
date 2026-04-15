@@ -470,6 +470,8 @@ function work(){
                 reloadWork = true;
                 if (windowFocused) work();
             }, 15000);
+        } else {
+            reloadWork = false;
         }
     }
 
