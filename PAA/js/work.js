@@ -557,6 +557,7 @@ function work(){
 }
 
 function recheckIfReloadNeeded(){
+    console.log('recheckIfReloadNeeded')
     if (windowFocused && $('input[id="dt-search-0"]').val()==='' && ($('button[aria-current="page"]').text()==='1' || $('button[aria-current="page"]').text()==='')){
         work();
     } else {
