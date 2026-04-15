@@ -471,7 +471,7 @@ function work(){
                 console.log('do reload');
                 work();
             } else {
-                console.log('NOT do reload','#'+$('input[id="dt-search-0"]').val()+'#','$'+$('button[aria-current="page"]').text()+'$');
+                console.log('NOT do reload',windowFocused,'#'+$('input[id="dt-search-0"]').val()+'#','$'+$('button[aria-current="page"]').text()+'$');
                 recheckIfReloadNeeded();
             }
         }, 15000);
