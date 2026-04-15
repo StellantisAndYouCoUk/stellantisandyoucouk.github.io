@@ -464,16 +464,18 @@ function work(){
             refereshRunsTable();
         }
         
-        if ($('input[id="dt-search-0"]').val()==='' && ($('button[aria-current="page"]').text()==='1' || $('button[aria-current="page"]').text()==='')){
-            console.log('schedule reload');
-            setTimeout(() => {
-                reloadWork = true;
-                if (windowFocused) work();
-            }, 15000);
-        } else {
-            console.log('NOT schedule reload','#'+$('input[id="dt-search-0"]').val()+'#','$'+$('button[aria-current="page"]').text()+'$');
-            reloadWork = false;
-        }
+                
+        setTimeout(() => {
+            reloadWork = true;
+            if (windowFocused && $('input[id="dt-search-0"]').val()==='' && ($('button[aria-current="page"]').text()==='1' || $('button[aria-current="page"]').text()==='')){
+                console.log('do reload');
+                work();
+            } else {
+                console.log('NOT do reload','#'+$('input[id="dt-search-0"]').val()+'#','$'+$('button[aria-current="page"]').text()+'$');
+                recheckIfReloadNeeded();
+            }
+        }, 15000);
+
     }
 
     if (page.includes('uicoll.html')){
@@ -551,6 +553,16 @@ function work(){
             $('#add-button').hide();
             refreshIntegrations(qV['flow'])
         });
+    }
+}
+
+function recheckIfReloadNeeded(){
+    if (windowFocused && $('input[id="dt-search-0"]').val()==='' && ($('button[aria-current="page"]').text()==='1' || $('button[aria-current="page"]').text()==='')){
+        work();
+    } else {
+        setTimeout(() => {
+            recheckIfReloadNeeded();
+        }, 15000);
     }
 }
 
