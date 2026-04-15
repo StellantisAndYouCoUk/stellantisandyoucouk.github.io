@@ -464,7 +464,7 @@ function work(){
             refereshRunsTable();
         }
         
-        if ($('input[id="dt-search-0"]').val()===''){
+        if ($('input[id="dt-search-0"]').val()==='' && $('button[aria-current="page"]').text()==='1'){
             setTimeout(() => {
                 reloadWork = true;
                 if (windowFocused) work();
