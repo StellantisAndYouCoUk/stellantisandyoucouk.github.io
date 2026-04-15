@@ -471,6 +471,7 @@ function work(){
                 if (windowFocused) work();
             }, 15000);
         } else {
+            console.log('NOT schedule reload',$('input[id="dt-search-0"]').val(),$('button[aria-current="page"]').text());
             reloadWork = false;
         }
     }
