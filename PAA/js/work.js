@@ -464,14 +464,14 @@ function work(){
             refereshRunsTable();
         }
         
-        if ($('input[id="dt-search-0"]').val()==='' && $('button[aria-current="page"]').text()==='1'){
+        if ($('input[id="dt-search-0"]').val()==='' && ($('button[aria-current="page"]').text()==='1' || $('button[aria-current="page"]').text()==='')){
             console.log('schedule reload');
             setTimeout(() => {
                 reloadWork = true;
                 if (windowFocused) work();
             }, 15000);
         } else {
-            console.log('NOT schedule reload',$('input[id="dt-search-0"]').val(),$('button[aria-current="page"]').text());
+            console.log('NOT schedule reload','#'+$('input[id="dt-search-0"]').val()+'#','$'+$('button[aria-current="page"]').text()+'$');
             reloadWork = false;
         }
     }
