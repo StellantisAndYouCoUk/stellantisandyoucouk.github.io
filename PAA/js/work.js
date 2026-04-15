@@ -465,6 +465,7 @@ function work(){
         }
         
         if ($('input[id="dt-search-0"]').val()==='' && $('button[aria-current="page"]').text()==='1'){
+            console.log('schedule reload');
             setTimeout(() => {
                 reloadWork = true;
                 if (windowFocused) work();
