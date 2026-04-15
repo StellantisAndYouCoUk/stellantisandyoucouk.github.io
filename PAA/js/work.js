@@ -181,7 +181,7 @@ var reloadWork = false;
 var windowFocused = true;
 window.onfocus = function() {
     windowFocused = true;
-    if (reloadWork) work();
+    if (reloadWork && $('input[id="dt-search-0"]').val()==='' && ($('button[aria-current="page"]').text()==='1' || $('button[aria-current="page"]').text()==='')) work();
 };
 
 window.onblur = function() {
