@@ -6578,13 +6578,15 @@ $(document).on("knack-scene-render.scene_2857", function(event, scene, data) {
 function refreshScene24(){
   let refreshData = [
     {
-      name : 'Autoline - Owner',
+      name : 'H&S Checklist loaded',
       mainField : 'field_11891', //Date checklist created
       views:['9118','9100']
     }
   ]
   sceneRefresh(refreshData);
 }
+
+// Scene refresh data - copied from Aftersales app to refresh data in multiple views when it appears. The mainfield MUST be present in the first view of the array when this function is called
 
 function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
     console.log('sceneRefresh');
