@@ -6565,3 +6565,26 @@ $(document).on('knack-scene-render.scene_2775', function(event, scene) {
 $(document).on('knack-view-render.view_9036', function (event, view, data) {
   $('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').html('<a target="_blank" href="https://stellantisandyoucouk.github.io/serviceBooking/index.html?regNumber='+$('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').text()+'">'+$('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').text()+'</a>')
 });
+
+
+// Refresh table code for Health and Safety Audit Page
+
+$(document).on("knack-scene-render.scene_2857", function(event, scene, data) {
+  setTimeout(function(){
+    refreshScene24();
+  }, 100);
+});
+
+function refreshScene24(){
+  let refreshData = [
+    {
+      name : 'Autoline - Owner',
+      mainField : 'field_11891', //Date checklist created
+      views:['9100']
+    }
+  ]
+  sceneRefresh(refreshData);
+}
+
+
+
