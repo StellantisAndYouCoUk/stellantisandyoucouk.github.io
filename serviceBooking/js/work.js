@@ -540,7 +540,7 @@ function checkPricingDataForDealership(checkDealership){
             selectedPricingHTML += getPricingBrandsForD(checkDealership);
             $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />');
             $('div[id="bookingProblems"]').show();
-            reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make)
+            reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make, serviceBookingProcess.bookingData.dealer.field_8,serviceBookingProcess.motData.make,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
         } else {
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
             let motDataModel = serviceBookingProcess.motData.model;
@@ -553,7 +553,7 @@ function checkPricingDataForDealership(checkDealership){
                 $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />')
                 $('div[id="bookingProblems"]').show();
                 selectedPricingHTML += getPricingModelsForDB(kF);
-                reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model)
+                reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model, serviceBookingProcess.bookingData.dealer.field_8,serviceBookingProcess.motData.make,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
             } else {
                 selectedPricingHTML += getPricingModelsForDB(kF,mF.modelName);
                 let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
@@ -564,7 +564,7 @@ function checkPricingDataForDealership(checkDealership){
                     $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
                     $('div[id="bookingProblems"]').show();
                     selectedPricingHTML += getPricingFuelsForModel(mF);
-                    reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
+                    reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType, serviceBookingProcess.bookingData.dealer.field_8,serviceBookingProcess.motData.make,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
                 } else {
                     selectedPricingHTML += getPricingFuelsForModel(mF,fT.ID);
                     let savedCodes = null;
@@ -586,8 +586,8 @@ function checkPricingDataForDealership(checkDealership){
     $('div[id="bookingDealership"]').show();
 }
 
-function reportPricingMissingToMake(regNumber, message){
-    callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/8mydaissemjd8qzsmq681aztmnutp847',null,{registrationNumber:regNumber,message:message},null)
+function reportPricingMissingToMake(regNumber, message, dealer, make, model, regYear, fuelType){
+    callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/8mydaissemjd8qzsmq681aztmnutp847',null,{registrationNumber:regNumber,message:message, dealer:dealer,make:make,model:model,regYear:regYear,fuelType:fuelType},null)
 }
 
 function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
