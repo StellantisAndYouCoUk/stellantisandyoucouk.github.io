@@ -6509,6 +6509,11 @@ $(document).on('knack-scene-render.scene_435', function(event, scene) {
   refreshWithData('8591', 'Title', 'Text', 'field_11282');
 });
 
+// H&S Audit
+$(document).on('knack-scene-render.scene_2857', function(event, scene) {
+  refreshWithData('9100', 'Title', 'Text', 'field_11878');
+});
+
 // Sales Advisor Dashboard
 $(document).on('knack-scene-render.scene_2778', function(event, scene) {
 	console.log("scene_2778 run before set time out ")
@@ -6560,3 +6565,110 @@ $(document).on('knack-scene-render.scene_2775', function(event, scene) {
 $(document).on('knack-view-render.view_9036', function (event, view, data) {
   $('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').html('<a target="_blank" href="https://stellantisandyoucouk.github.io/serviceBooking/index.html?regNumber='+$('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').text()+'">'+$('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').text()+'</a>')
 });
+
+
+// Refresh table code for Health and Safety Audit Page
+
+$(document).on("knack-scene-render.scene_2857", function(event, scene, data) {
+  setTimeout(function(){
+    refreshScene24();
+  }, 100);
+});
+
+function refreshScene24(){
+  let refreshData = [
+    {
+      name : 'H&S Checklist loaded',
+      mainField : 'field_11891', //Date checklist created
+      views:['9118','9100']
+    }
+  ]
+  sceneRefresh(refreshData);
+}
+
+// Scene refresh data - copied from Aftersales app to refresh data in multiple views when it appears. The mainfield MUST be present in the first view of the array when this function is called
+
+function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
+    console.log('sceneRefresh');
+    try {
+      if (!startTime){
+        startTime = new Date();
+        stats = {startTime:startTime, log:[]}
+        console.log('startTime', startTime);
+      } else {
+        console.log('elapsed',new Date() - startTime);
+      }
+      let recheck = false;
+      for (one of refreshData){
+          console.log(one);
+          console.log('main field val',Knack.views['view_'+one.views[0]].model.attributes[one.mainField])
+          if (Knack.views['view_'+one.views[0]].model.attributes[one.mainField]===''){
+              let mainReloaded = false; 
+              for (oneView of one.views){
+                  mainReloaded = refreshView(oneView, mainReloaded);
+              }
+              console.log('main field val2',Knack.views['view_'+one.views[0]].model.attributes[one.mainField])
+              if (Knack.views['view_'+one.views[0]].model.attributes[one.mainField]===''){
+                  recheck = true;
+                  if (runCounter===1){
+                    console.log('fillLoading');
+                    for (oneView of one.views){
+                      fillLoading(oneView);
+                    }
+                  }
+              } else {
+                if (one.runAfter && !one.runAfterDone){
+                  setTimeout(one.runAfter,100);
+                  one.runAfterDone = true;
+                }
+              }
+          } else {
+            if (one.runAfter && !one.runAfterDone){
+              setTimeout(one.runAfter,100);
+              one.runAfterDone = true;
+            }
+            
+            let statsLogFound = stats.log.find(function(el){return el.one === one.name});
+            if (!statsLogFound) {
+              stats.log.push({one:one.name,finishTime:new Date(),duration : (new Date() - stats.startTime)/1000});
+            }
+          }
+      }
+      if (recheck && (new Date() - startTime)<120000){
+          console.log('needs recheck')
+          setTimeout(function(){
+              sceneRefresh(refreshData, startTime, runCounter + 1, stats);
+          }, (runCounter<3?1500:2500));
+      } else if ((new Date() - startTime)>120000){
+        console.log('ending refresh without all done');
+        for (one of refreshData){
+          if (!one.runAfterDone){
+            for (oneView of one.views){
+              refreshView(oneView, true, true);
+            }
+          }
+        }
+      } else {
+        if (runCounter!==1){
+          console.log('everything checked, reload views just for sure');
+          stats.finishTime = new Date();
+          stats.duration = (stats.finishTime - stats.startTime)/1000;
+          console.log('stats', stats);
+          //saveStats(stats);
+          for (one of refreshData){
+            if (!one.runAfterDone){
+              for (oneView of one.views){
+                refreshView(oneView, true, true);
+              }
+            }
+          }
+        }
+      }
+    } catch (e){
+      console.log('sceneRefresh fail', refreshData, e)
+    }
+}
+
+
+
+
