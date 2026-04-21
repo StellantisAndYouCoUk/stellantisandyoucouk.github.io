@@ -4147,9 +4147,6 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
     }
   }
   if (status && status.lastVisitData && status.lastVisitData!=='' && !lastVisitedInClosest){
-    setTimeout(() => {
-      checkPricingData(status.lastVisitData.mapLastDealerVisit);
-    }, 100);
     let avail = status.availabilityData.find(el => el.companyCode === status.lastVisitData.mapLastDealerVisit);
     if (avail) htmlTable += '<tr><td>'+shorthenDealerName(status.lastVisitData.lastDealerVisit.replace('Stellantis &You',''))+'<br /><b>Last<br />Vist</b></td><td></td><td>'+formatDateWA(avail.work.find(el=>el.work==='MOT').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Recall').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Large service').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Diag').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='C&D').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Wait').availability)+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Lift').availability,'No serv')+'</td><td>'+formatDateWA(avail.work.find(el=>el.work==='Takata').availability,'No serv')+'</td>'+(isVehicleNewerThen3Years?'<td>'+formatDateWA(avail.work.find(el=>el.work==='Triage').availability,'No serv')+'</td>':'')+'</tr>';
   }
@@ -4160,19 +4157,6 @@ function availabilityHTML(status,useCustomerAddress,customAddress){
   htmlTable += '<div class="kn-details-link"><div class="kn-detail-body" style="padding: 0.375em 0;"><span><a onclick="return getCustomAddressForTravelDistance();" data-kn-id="76bbbce4-a39f-40d7-9a8b-752e695f4b8d" class="knViewLink kn-link kn-link-page knViewLink--page knViewLink--filled knViewLink--size-medium knViewLink--uppercase knViewLink--raised" data-vue-component="viewLink"><span class="knViewLink__icon knViewLink__icon--isLeft icon is-left"><i class="fa fa-map-marker"></i></span> <span class="knViewLink__label"><span class="">Update Address for W/shop Lead Time</span></span> <!----></a></span></div></div>';
   console.log('htmlTable',htmlTable);
   $('div[id="view_3923"]>div').html(htmlTable);
-}
-
-var lastRegChecked = '';
-var dealerPricingData = null;
-function checkPricingData(dealerCompanyCode){
-  let reg = $('div[id="view_344"] div[class*="field_31"]').text().trim();
-  if (lastRegChecked===reg) return;
-  lastRegChecked = reg;
-  console.log(dealerCompanyCode,reg);
-  if (!dealerPricingData){
-    let supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{});
-    console.log(supportData);
-  }
 }
 
 function vehicleRegDate(vehDescription){
