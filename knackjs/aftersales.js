@@ -4170,7 +4170,7 @@ function checkPricingData(dealerCompanyCode){
   lastRegChecked = reg;
   console.log(dealerCompanyCode,reg);
   if (!dealerPricingData){
-    let supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null);
+    let supportData = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getSupportData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',{});
     console.log(supportData);
   }
 }
