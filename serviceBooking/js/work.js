@@ -543,6 +543,7 @@ function checkPricingDataForDealership(checkDealership){
             $('div[id="bookingProblems"]').show();
             reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make, serviceBookingProcess.bookingData.dealer.field_8,serviceBookingProcess.motData.make,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
         } else {
+            console.log(kF);
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
             let motDataModel = serviceBookingProcess.motData.model;
             motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4')
@@ -625,6 +626,7 @@ function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
 
 function pricingBrandChange(){
     serviceBookingProcess.bookingData.konnectFranchiseId = $('select[name="pricingBrand"]').val();
+    console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
     checkPricingDataForDealership(serviceBookingProcess.bookingData.dealer);
     return;
     $('select[name="pricingModel"]').empty()
