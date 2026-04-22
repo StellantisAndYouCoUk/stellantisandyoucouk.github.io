@@ -424,7 +424,7 @@ const showDropdown = (event) => {
     if (dropdownMenu) {
       dropdownMenu.classList.add("show");
     }
-  }, 500);
+  }, 100);
 };
 
 function work(){
