@@ -541,7 +541,7 @@ function checkPricingDataForDealership(checkDealership){
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
         console.log(checkDealership.konnectData.franchises);
-        let kF = checkDealership.konnectData.franchises.find(el => el.ID.toString() === serviceBookingProcess.bookingData.konnectFranchiseId.toString())
+        let kF = (serviceBookingProcess.bookingData.konnectFranchiseId?checkDealership.konnectData.franchises.find(el => el.ID.toString() === serviceBookingProcess.bookingData.konnectFranchiseId.toString()):null);
         console.log(kF);
         if (!kF) kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===makeToUse.toLowerCase());
         if (!kF){
