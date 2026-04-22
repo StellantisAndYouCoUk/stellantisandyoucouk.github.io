@@ -625,6 +625,7 @@ function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
 }
 
 function pricingBrandChange(){
+    console.log('pricingBrandChange')
     serviceBookingProcess.bookingData.konnectFranchiseId = $('select[name="pricingBrand"]').val();
     console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
     checkPricingDataForDealership(serviceBookingProcess.bookingData.dealer);
