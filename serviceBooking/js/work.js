@@ -408,6 +408,29 @@ function newVehicle(doWork = true){
     if (doWork) work();
 }
 
+const street = document.querySelector("#street");
+let timeout;
+ 
+const stopNormal = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  event.target.nextElementSibling.classList.remove("show");
+};
+ 
+const showDropdown = (event) => {
+  clearTimeout(timeout);
+ 
+  timeout = setTimeout(() => {
+    const dropdownMenu = event.target.nextElementSibling;
+    if (dropdownMenu) {
+      dropdownMenu.classList.add("show");
+    }
+  }, 500);
+};
+ 
+street.addEventListener("input", showDropdown);
+street.addEventListener("click", stopNormal);
+
 function work(){
     let page = window.location.href;
     if (loggedInUser) $('#userName').text(loggedInUser.values.field_2.full);
