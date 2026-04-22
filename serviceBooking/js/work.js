@@ -408,7 +408,6 @@ function newVehicle(doWork = true){
     if (doWork) work();
 }
 
-const street = document.querySelector("#street");
 let timeout;
  
 const stopNormal = (event) => {
@@ -427,9 +426,6 @@ const showDropdown = (event) => {
     }
   }, 500);
 };
- 
-street.addEventListener("input", showDropdown);
-street.addEventListener("click", stopNormal);
 
 function work(){
     let page = window.location.href;
@@ -1002,7 +998,10 @@ function showClosestDealerships(postcode){
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         setTimeout(() => {
-            $('#createCustomerForm').load('customerForm.html?_d='+(new Date()).getTime())
+            $('#createCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
+            const street = document.querySelector("#street");
+            street.addEventListener("input", showDropdown);
+            street.addEventListener("click", stopNormal);
         }, 500);
         return '<b>Customer was not found in Autoline</b><br /><div id="createCustomerForm"></div>';
     }
