@@ -600,6 +600,7 @@ function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
 }
 
 function pricingModelChange(){
+    console.log('pricingModelChange')
     $('select[name="pricingFuel"]').empty();
     $('select[name="pricingFuel"]').append('<option value="" selected="selected">(Select a Fuel)</option>');
     let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
