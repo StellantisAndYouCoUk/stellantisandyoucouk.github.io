@@ -536,7 +536,8 @@ function checkPricingDataForDealership(checkDealership){
     let selectedPricingHTML = '';
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
-        let kF = checkDealership.konnectData.franchises.find(el => el.ID === serviceBookingProcess.bookingData.konnectFranchiseId)
+        console.log(checkDealership.konnectData.franchises);
+        let kF = checkDealership.konnectData.franchises.find(el => el.ID.toString() === serviceBookingProcess.bookingData.konnectFranchiseId.toString())
         console.log(kF);
         if (!kF) kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
         if (!kF){
