@@ -548,7 +548,7 @@ function checkPricingDataForDealership(checkDealership){
             console.log(kF);
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
             let motDataModel = serviceBookingProcess.motData.model;
-            motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4')
+            motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4').replace('DS 7','DS7')
             let mF = kF.models.find(el => motDataModel.toLowerCase().includes(el.modelName.toLowerCase()))
             if (!mF){
                 mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
