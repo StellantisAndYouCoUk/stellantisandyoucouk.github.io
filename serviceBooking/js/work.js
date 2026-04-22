@@ -535,7 +535,8 @@ function checkPricingDataForDealership(checkDealership){
 
     let selectedPricingHTML = '';
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
-        let kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
+        let kF = checkDealership.konnectData.franchises.find(el => el.ID === serviceBookingProcess.bookingData.konnectFranchiseId)
+        if (!kF) kF = checkDealership.konnectData.franchises.find(el => el.Name.toLowerCase()===serviceBookingProcess.motData.make.toLowerCase());
         if (!kF){
             selectedPricingHTML += getPricingBrandsForD(checkDealership);
             $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+serviceBookingProcess.motData.make+'<br />');
@@ -600,7 +601,10 @@ function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
 }
 
 function pricingModelChange(){
-    checkPricingDataForDealership(serviceBookingProcess.lastDealership);
+    serviceBookingProcess.bookingData.konnectModelName = $('select[name="pricingModel"]').val();
+    if ($('select[name="pricingFuel"]').length===0){
+
+    }
     $('select[name="pricingFuel"]').empty();
     $('select[name="pricingFuel"]').append('<option value="" selected="selected">(Select a Fuel)</option>');
     let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
@@ -620,6 +624,9 @@ function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
 }
 
 function pricingBrandChange(){
+    serviceBookingProcess.bookingData.konnectFranchiseId = $('select[name="pricingBrand"]').val();
+    checkPricingDataForDealership(serviceBookingProcess.bookingData.dealer);
+    return;
     $('select[name="pricingModel"]').empty()
     let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
     $('select[name="pricingModel"]').append('<option value="" selected="selected">(Select a Model)</option>');
