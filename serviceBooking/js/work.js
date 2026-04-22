@@ -607,6 +607,7 @@ function pricingModelChange(){
     for (let i =0;i<mS.fuelTypes.length;i++){
         $('select[name="pricingFuel"]').append('<option value="'+mS.fuelTypes[i].ID+'">'+mS.fuelTypes[i].Name+'</option>');
     }
+    $('select[name="pricingFuel"]').show();
 }
 
 function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
