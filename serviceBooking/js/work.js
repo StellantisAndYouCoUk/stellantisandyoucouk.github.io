@@ -999,9 +999,11 @@ function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         setTimeout(() => {
             $('#createCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
-            const street = document.querySelector("#street");
-            street.addEventListener("input", showDropdown);
-            street.addEventListener("click", stopNormal);
+            setTimeout(() => {
+                const street = document.querySelector("#street");
+                street.addEventListener("input", showDropdown);
+                street.addEventListener("click", stopNormal);
+            }, 1000);
         }, 500);
         return '<b>Customer was not found in Autoline</b><br /><div id="createCustomerForm"></div>';
     }
