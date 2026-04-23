@@ -660,17 +660,7 @@ function getPricingModelsForDB(checkDealershipBrand, selectedId=null){
 function pricingBrandChange(){
     console.log('pricingBrandChange')
     serviceBookingProcess.bookingData.konnectFranchiseId = $('select[name="pricingBrand"]').val();
-    console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
     checkPricingDataForDealership(serviceBookingProcess.bookingData.dealer);
-    return;
-    $('select[name="pricingModel"]').empty()
-    let frS = serviceBookingProcess.bookingData.dealer.konnectData.franchises.find(el => el.ID.toString() === $('select[name="pricingBrand"]').val());
-    $('select[name="pricingModel"]').append('<option value="" selected="selected">(Select a Model)</option>');
-    for (let i =0;i<frS.models.length;i++){
-        $('select[name="pricingModel"]').append('<option value="'+frS.models[i].modelName+'">'+frS.models[i].modelName+'</option>');
-    }
-    $('select[name="pricingFuel"]').empty();
-    $('select[name="pricingFuel"]').append('<option value="" selected="selected">(Select a Fuel)</option>');
 }
 
 function getPricingBrandsForD(checkDealership, selectedId=null){
