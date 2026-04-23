@@ -577,7 +577,8 @@ function checkPricingDataForDealership(checkDealership){
         } else {
             console.log(kF);
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
-            let mF = kF.models.find(el => modelToUse.toLowerCase().includes(el.modelName.toLowerCase()))
+            let mF = (serviceBookingProcess.bookingData.konnectModelName?kF.models.find(el => el.modelName.toLowerCase() === serviceBookingProcess.bookingData.konnectModelName.toLowerCase()):null);
+            if (!mF) mF = kF.models.find(el => modelToUse.toLowerCase().includes(el.modelName.toLowerCase()))
             if (!mF){
                 mF = kF.models.find(el => el.modelName.toLowerCase().includes(modelToUse.toLowerCase()))
             }
