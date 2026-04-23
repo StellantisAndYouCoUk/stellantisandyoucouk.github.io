@@ -633,6 +633,9 @@ function getPricingFuelsForModel(checkDealershipBrandModel, selectedId=null){
 
 function pricingModelChange(){
     serviceBookingProcess.bookingData.konnectModelName = $('select[name="pricingModel"]').val();
+    console.log(serviceBookingProcess.bookingData.konnectModelName);
+    checkPricingDataForDealership(serviceBookingProcess.bookingData.dealer);
+    return;
     if ($('select[name="pricingFuel"]').length===0){
 
     }
