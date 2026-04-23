@@ -554,9 +554,15 @@ function checkPricingDataForDealership(checkDealership){
 
     let selectedPricingHTML = '';
     let makeToUse = serviceBookingProcess.motData.make;
+    let modelToUse = serviceBookingProcess.motData.model;
     if (serviceBookingProcess.motData.model.includes('DS')){
         makeToUse = 'DS';
     }
+    if (serviceBookingProcess.motData.model.includes('PROFESSIONAL')){
+        modelToUse = serviceBookingProcess.motData.model.replace('PROFESSIONAL','');
+    }
+    modelToUse = modelToUse.replace('DS 3','DS3').replace('DS 4','DS4').replace('DS 7','DS7')
+    
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
         console.log(checkDealership.konnectData.franchises);
@@ -567,21 +573,19 @@ function checkPricingDataForDealership(checkDealership){
             selectedPricingHTML += getPricingBrandsForD(checkDealership);
             $('div[id="bookingProblems"]').html('Brand can not be serviced in '+checkDealership.field_8+', car brand: '+makeToUse+'<br />');
             $('div[id="bookingProblems"]').show();
-            reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Brand can not be serviced in '+checkDealership.field_8+', car brand: '+makeToUse, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
+            reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Brand can not be serviced in '+checkDealership.field_8+', car brand: '+makeToUse, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,modelToUse,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
         } else {
             console.log(kF);
             selectedPricingHTML += getPricingBrandsForD(checkDealership, kF.ID);
-            let motDataModel = serviceBookingProcess.motData.model;
-            motDataModel = motDataModel.replace('DS 3','DS3').replace('DS 4','DS4').replace('DS 7','DS7')
-            let mF = kF.models.find(el => motDataModel.toLowerCase().includes(el.modelName.toLowerCase()))
+            let mF = kF.models.find(el => modelToUse.toLowerCase().includes(el.modelName.toLowerCase()))
             if (!mF){
-                mF = kF.models.find(el => el.modelName.toLowerCase().includes(motDataModel.toLowerCase()))
+                mF = kF.models.find(el => el.modelName.toLowerCase().includes(modelToUse.toLowerCase()))
             }
             if (!mF){
-                $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model+'<br />')
+                $('div[id="bookingProblems"]').html('Model not found in pricing data for '+checkDealership.field_8+', car model: '+modelToUse+'<br />')
                 $('div[id="bookingProblems"]').show();
                 selectedPricingHTML += getPricingModelsForDB(kF);
-                reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Model not found in pricing data for '+checkDealership.field_8+', car model: '+serviceBookingProcess.motData.model, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
+                reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Model not found in pricing data for '+checkDealership.field_8+', car model: '+modelToUse, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,modelToUse,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
             } else {
                 selectedPricingHTML += getPricingModelsForDB(kF,mF.modelName);
                 let fT = mF.fuelTypes.find(el => el.Name.toLowerCase().startsWith(serviceBookingProcess.motData.fuelType.toLowerCase()));
@@ -592,7 +596,7 @@ function checkPricingDataForDealership(checkDealership){
                     $('div[id="bookingProblems"]').text('Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType)
                     $('div[id="bookingProblems"]').show();
                     selectedPricingHTML += getPricingFuelsForModel(mF);
-                    reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,serviceBookingProcess.motData.model,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
+                    reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+serviceBookingProcess.motData.fuelType, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,modelToUse,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),serviceBookingProcess.motData.fuelType)
                 } else {
                     selectedPricingHTML += getPricingFuelsForModel(mF,fT.ID);
                     let savedCodes = null;
