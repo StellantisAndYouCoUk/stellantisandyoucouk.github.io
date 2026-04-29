@@ -561,7 +561,7 @@ function work(){
             if (globalPageData.flowIntegrationEdit===-1){
 
             } else {
-                delete globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit];
+                globalPageData.flowData.integrations.splice(globalPageData.flowIntegrationEdit,1);
             }
             let respU = paaPostRequest({'action':'uploadIntegrationsForFlow','token':paaToken,'flowName':globalPageData.flowData.name,'integrations':globalPageData.flowData.integrations});
             console.log(respU);
