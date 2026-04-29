@@ -6562,10 +6562,6 @@ $(document).on('knack-scene-render.scene_2775', function(event, scene) {
     $('.kn-back-link').hide();
 });
 
-$(document).on('knack-view-render.view_9036', function (event, view, data) {
-  $('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').html('<a target="_blank" href="https://stellantisandyoucouk.github.io/serviceBooking/index.html?regNumber='+$('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').text()+'">'+$('div[class*="field_11692"]>div[class="kn-detail-body"]>span>span').text()+'</a>')
-});
-
 
 // Refresh table code for Health and Safety Audit Page
 

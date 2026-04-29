@@ -4178,6 +4178,10 @@ function shorthenDealerName(name){
   return nameA.join(' ');
 }
 
+$(document).on('knack-view-render.view_5372', function (event, view, data) {
+  $('div[class*="field_4209"]>div[class="kn-detail-body"]>span>span').html('<a target="_blank" href="https://stellantisandyoucouk.github.io/serviceBooking/index.html?regNumber='+$('div[class*="field_4209"]>div[class="kn-detail-body"]>span>span').text()+'">'+$('div[class*="field_4209"]>div[class="kn-detail-body"]>span>span').text()+'</a>')
+});
+
 $(document).on('knack-view-render.view_4008', function(event, view, records) {
   $('[id="view_4008"]').hide();
 });
