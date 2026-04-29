@@ -553,6 +553,22 @@ function work(){
             $('#add-button').hide();
             refreshIntegrations(qV['flow'])
         });
+        document.getElementById('delete-button').addEventListener('click', () => {
+            if (globalPageData.flowIntegrationEdit===null || globalPageData.flowIntegrationEdit===undefined){
+                alert('problem');
+                return;
+            }
+            if (globalPageData.flowIntegrationEdit===-1){
+
+            } else {
+                delete globalPageData.flowData.integrations[globalPageData.flowIntegrationEdit];
+            }
+            let respU = paaPostRequest({'action':'uploadIntegrationsForFlow','token':paaToken,'flowName':globalPageData.flowData.name,'integrations':globalPageData.flowData.integrations});
+            console.log(respU);
+            globalPageData.flowIntegrationEdit = null;
+            document.getElementById('editor-container').style.display = 'none';
+            $('#add-button').show();
+        });
     }
 }
 
