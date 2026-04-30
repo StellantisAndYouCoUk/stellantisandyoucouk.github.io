@@ -564,7 +564,7 @@ function checkPricingDataForDealership(checkDealership){
     modelToUse = modelToUse.replace('DS 3','DS3').replace('DS 4','DS4').replace('DS 7','DS7')
 
     let fuelTypeToUse = serviceBookingProcess.motData.fuelType;
-    if (fuelTypeToUse==='Hybrid Electric (Clean)') fuelTypeToUse = 'Hybrid';
+    if (fuelTypeToUse==='Hybrid Electric (Clean)') fuelTypeToUse = 'Petrol/Hybrid';
     
     //if (checkDealership && (!serviceBookingProcess.bookingData || serviceBookingProcess.bookingData.knackDealerId!==checkDealership.id)){
         console.log(serviceBookingProcess.bookingData.konnectFranchiseId);
