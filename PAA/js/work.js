@@ -1226,3 +1226,36 @@ function formatRunDetails(run, machines){
     
     return d;
 }
+
+
+
+function addSearchInfoIcon() {
+    if ($('#searchInfoIcon').length > 0) return;
+
+    const helpText = `
+        <div style="text-align: left;">
+            • No auto wildcards — use <code>%</code> (e.g. <code>runn%</code>)<br>
+            • Searches <b>status</b> and <b>flow name</b> by default<br>
+            • For input/output: <code>input:%FT73OHU%</code> or <code>output:%FT73OHU%</code><br>
+            • Spaces = AND, e.g. <code>Deposit-v3 failed</code>
+        </div>
+    `;
+
+    const iconHtml = `
+        <span id="searchInfoIcon"
+              tabindex="0"
+              style="margin-left: 8px; cursor: pointer; color: #2f80ed;"
+              data-bs-toggle="popover"
+              data-bs-trigger="hover focus"
+              data-bs-placement="right"
+              data-bs-html="true"
+              data-bs-title="How to search"
+              data-bs-content="${helpText.replace(/"/g, '&quot;')}">
+            <i class="fas fa-info-circle"></i>
+        </span>
+    `;
+
+    $('div[class="dt-search"]').append(iconHtml);
+    new bootstrap.Popover(document.getElementById('searchInfoIcon'));
+}
+
