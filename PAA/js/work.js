@@ -408,6 +408,7 @@ function work(){
 
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
             $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
+            addSearchInfoIcon();
         } else {
             refereshRunsTable();
         }
@@ -460,6 +461,7 @@ function work(){
 
             $('div[class="dt-search"]').detach().appendTo('div[class="dt-layout-cell dt-layout-start"]');
             $('div[class="dt-length"]').detach().appendTo('div[class="dt-layout-cell dt-layout-end"]');
+            addSearchInfoIcon();
         } else {
             refereshRunsTable();
         }
