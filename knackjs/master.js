@@ -6670,27 +6670,3 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
     }
 }
 
-//Refresh Recall status for Used Stock
-});$(document).on('knack-scene-render.scene_2882', function(event, scene) {
- 
-  refreshScene2882();
-});
-
- function refreshScene2882(){
-  let refreshData = [
-    {
-        name : 'Recall status and Details',
-        mainField : 'field_11952', 
-        views:['9187']   
-    }
-  ]
-  sceneRefresh(refreshData,null,1,null,false);
-}
-
- $(document).on('knack-record-update.view_9187', function(event, view, data) {
- 
-    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
- 
-    Knack.showSpinner();
-   
-  });
