@@ -6686,3 +6686,11 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
   ]
   sceneRefresh(refreshData,null,1,null,false);
 }
+
+ $(document).on('knack-record-update.view_9187', function(event, view, data) {
+ 
+    setTimeout(function () { location.hash = location.hash + "#"; }, 1000);
+ 
+    Knack.showSpinner();
+   
+  });
