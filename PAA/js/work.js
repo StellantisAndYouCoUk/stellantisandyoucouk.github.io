@@ -1168,8 +1168,8 @@ function resurrectRun(queueId){
         alert('Problem resurrecting run:' + reply.error); 
     }
     setTimeout(() => {
-        refreshServerData('runs',{},true,refereshRunsTable);
-    }, 2500);
+        refereshRunsTable();
+    }, 1500);
 }
 
 function cancelRun(queueId){
