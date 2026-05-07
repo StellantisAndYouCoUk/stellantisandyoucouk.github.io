@@ -6587,6 +6587,13 @@ function refreshScene24(){
   sceneRefresh(refreshData);
 }
 
+// Refresh Recall Status for used stock
+$(document).on('knack-scene-render.scene_2882', function(event, scene) {
+	console.log('refresh Recall status')
+Knack.showSpinner();
+  refreshWithData('9187', 'Title', 'Text', 'field_11952');
+});
+
 // Scene refresh data - copied from Aftersales app to refresh data in multiple views when it appears. The mainfield MUST be present in the first view of the array when this function is called
 
 function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
