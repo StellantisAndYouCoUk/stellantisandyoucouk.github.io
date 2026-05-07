@@ -6671,3 +6671,21 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
     }
 }
 
+
+$(document).on('knack-scene-render.scene_2882', function(event, scene) {
+  //fillLoading('9187')
+  	 console.log('scene2882 rendered')
+  refreshScene2882();
+});
+
+ function refreshScene2882(){
+	 console.log('function refreshScene2882 running')
+  let refreshData = [
+    {
+        name : 'Recall',
+        mainField : 'field_11952', 
+        views:['9187']   
+    }
+  ]
+  sceneRefresh(refreshData,null,1,null,false);
+}
