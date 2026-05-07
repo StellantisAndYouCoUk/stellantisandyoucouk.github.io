@@ -6670,21 +6670,3 @@ function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = nul
     }
 }
 
-
-  //Refresh Recall status for Used Stock
-});$(document).on('knack-scene-render.scene_2882', function(event, scene) {
-	console.log('Scene 2882 loaded')
- fillLoading('9187')
-  refreshScene2882();
-});
-
- function refreshScene2882(){
-  let refreshData = [
-    {
-        name : 'Recall status and Details',
-        mainField : 'field_11952', 
-        views:['9187']   
-    }
-  ]
-  sceneRefresh(refreshData,null,1,null,false);
-}
