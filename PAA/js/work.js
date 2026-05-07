@@ -1230,7 +1230,7 @@ function formatRunDetails(run, machines){
             d += '<br /><br /><a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode<br />';
             d += '<br /><br /><a href="#" onclick="reRun(\''+run.runId+'\'); return false;">Rerun Live</a><br />';
             let rD = runsData.find(el => el.runId === run.runId);
-            if (!rI) runsData.push(run);
+            if (!rD) runsData.push(run);
         }
     }
     if (run.status==='succeded'){
