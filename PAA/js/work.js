@@ -1197,6 +1197,25 @@ function reRunInPreprod(runId){
     return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
 }
 
+
+function reRun(runId){
+    console.log('reRunInLive',runId);
+    $('button[aria-label="Close"]').click();
+    let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
+    let run = req.find(el => el.runId === runId);
+    console.log(run);
+    let newInput = run.flowInput;
+    newInput.liveOrPreprod = 'live';
+    let runData = {
+        priority : run.priority,
+        flowName : run.flowName,
+        flowInput : newInput,
+        runMode : 'unattended',
+        noRetry : true
+    }
+    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
+}
+
 function formatRunDetails(run, machines){
     let d = '<div id="queueDetailsText-'+run.queueId+'" style="display: none">Input:<br />'+JSON.stringify(run.flowInput,null,2)+'<br />';
     if (run.status==='failed'){
@@ -1208,6 +1227,7 @@ function formatRunDetails(run, machines){
     if (run.runId){
         if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
             d += '<br /><br /><a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode<br />';
+            d += '<br /><br /><a href="#" onclick="reRun(\''+run.runId+'\'); return false;">Rerun Live</a><br />';
         }
     }
     if (run.status==='succeded'){
