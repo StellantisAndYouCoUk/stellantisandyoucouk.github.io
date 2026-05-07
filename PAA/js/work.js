@@ -1160,7 +1160,9 @@ function showModal(modalName,what, fromWhere){
 }
 
 function resurrectRun(queueId){
-    paaPostRequest({'action':'resurrectRun','token':paaToken,'queueId':queueId});
+    let reply = paaPostRequest({'action':'resurrectRun','token':paaToken,'queueId':queueId});
+    console.log(reply);
+    alert('The run will be resurrected.'); 
     setTimeout(() => {
         refreshServerData('runs',{},true,refereshRunsTable);
     }, 2500);
@@ -1205,7 +1207,7 @@ function formatRunDetails(run, machines){
         }
     }
     if (run.status==='succeded'){
-        d += '<a href="#" onclick="resurrectRun(\''+run.queueId+'\'); alert(\'The run will be resurrected.\'); return false;">Resurrect - it will run this successful run again !</a>';
+        d += '<a href="#" onclick="resurrectRun(\''+run.queueId+'\'); return false;">Resurrect - it will run this successful run again !</a>';
     }
     if (run.retryHistory){
         d += 'Retry count: '+run.retryCount+'<br />';
