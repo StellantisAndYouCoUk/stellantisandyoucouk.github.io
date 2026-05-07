@@ -1231,6 +1231,7 @@ function formatRunDetails(run, machines){
             d += '<br /><br /><a href="#" onclick="reRun(\''+run.runId+'\'); return false;">Rerun Live</a><br />';
             let rD = runsData.find(el => el.runId === run.runId);
             if (!rD) runsData.push(run);
+            
         }
     }
     if (run.status==='succeded'){
