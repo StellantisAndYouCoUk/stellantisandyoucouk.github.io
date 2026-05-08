@@ -251,14 +251,14 @@ function work(){
         sumDateEnd.setHours(23,59,59,59);
         let dD = paaPostRequest({action:'getSummaryData',createdDateTimeFrom:sumDateStart,createdDateTimeTo:sumDateEnd});
         let dDQ = paaPostRequest({action:'getSummaryDataQueued',createdDateTimeFrom:sumDateStart,createdDateTimeTo:sumDateEnd});
-        let t0 = dD.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed'));
+        let t0 = dDQ.filter(el => (el.status==='queuedOnServer' || el.status==='running' || el.status==='startedNotConfirmed'));
         $('#dashboardActiveRuns').html((t0.length===0?'All done':sumFieldInArrayOfObjects(t0,'count') + ' running now'));
         let t1 = dD.filter(el => el.status==='succeded');
         $('#dashboardSuccessfullRuns').html(sumFieldInArrayOfObjects(t1,'count') + ' successfull runs today');
         let t2 = dD.filter(el => el.status==='failed');
         $('#dashboardFailedRunsToday').html(sumFieldInArrayOfObjects(t2,'count') + ' failed runs today');
-        //let t4 = dD.filter(el => (el.status==='queued'));
-        $('#dashboardQueuedRuns').html((dDQ.length===0?'Nothing queued':sumFieldInArrayOfObjects(dDQ,'count') + ' queued now'));
+        let t4 = dDQ.filter(el => (el.status==='queued'));
+        $('#dashboardQueuedRuns').html((t4.length===0?'Nothing queued':sumFieldInArrayOfObjects(t4,'count') + ' queued now'));
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').html('');
         //$('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummary(req.filter(el => new Date(el.createdDateTime)>sumDateStart && new Date(el.createdDateTime)<sumDateEnd && (el.flowInput && el.flowInput.liveOrPreprod==='live')),['flowName','status']));
         $('table[id="datatablesSimpleFlowRunsSummary"]>tbody').append(getFlowRunsSummaryNew(dD));
