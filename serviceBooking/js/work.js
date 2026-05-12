@@ -1002,6 +1002,7 @@ function createCustomerSubmit(event) {
   console.log(data);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
+  $('#createCustomerForm').html('Customer was sent for creation.')
 }
 
 function getCustomerDetails(){
