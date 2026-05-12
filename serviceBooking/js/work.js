@@ -1002,6 +1002,7 @@ function createCustomerSubmit(event) {
   const data = new FormData(event.target);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
+  callPostHttpRequest('https://hook.eu1.make.celonis.com/x6g8nyrn9ofakoisotwvg6x199osjjom',null,formJSON);
   $('#createCustomerForm').html('Customer was sent for creation.')
 }
 
