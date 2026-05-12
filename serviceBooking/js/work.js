@@ -997,6 +997,7 @@ function showClosestDealerships(postcode){
 }
 
 function createCustomerSubmit(event) {
+  $(this).find(":submit").attr('disabled', 'disabled');
   event.preventDefault();
   const data = new FormData(event.target);
   console.log(data);
