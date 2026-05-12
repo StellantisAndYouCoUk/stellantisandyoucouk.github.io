@@ -1000,7 +1000,6 @@ function createCustomerSubmit(event) {
   $(this).find(":submit").attr('disabled', 'disabled');
   event.preventDefault();
   const data = new FormData(event.target);
-  console.log(data);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
   $('#createCustomerForm').html('Customer was sent for creation.')
