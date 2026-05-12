@@ -999,6 +999,7 @@ function showClosestDealerships(postcode){
 function createCustomerSubmit(event) {
   event.preventDefault();
   const data = new FormData(event.target);
+  console.log(data);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
 }
