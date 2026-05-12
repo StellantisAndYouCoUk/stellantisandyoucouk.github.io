@@ -1017,10 +1017,10 @@ function getCustomerDetails(){
             setTimeout(() => {
                 const form = document.querySelector("form[id=\"createCustomer\"]");
                 form.addEventListener("submit", createCustomerSubmit);
-
+/*
                 const street = document.querySelector("#street");
                 street.addEventListener("input", showDropdown);
-                street.addEventListener("click", stopNormal);
+                street.addEventListener("click", stopNormal);*/
             }, 1000);
         }, 500);
         return '<b>Customer was not found in Autoline</b><br /><div id="createCustomerForm"></div>';
