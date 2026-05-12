@@ -1007,7 +1007,7 @@ function createCustomerSubmit(event) {
 }
 
 function createCustomerSubmited(){
-    console.log('submited');
+    console.log('submited ');
 }
 
 function getCustomerDetails(){
