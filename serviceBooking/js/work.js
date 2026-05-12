@@ -996,11 +996,21 @@ function showClosestDealerships(postcode){
     }   
 }
 
+function createCustomerSubmit(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  const formJSON = Object.fromEntries(data.entries());
+  console.log(formJSON);
+}
+
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         setTimeout(() => {
             $('#createCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
             setTimeout(() => {
+                const form = document.querySelector("form[id=\"createCustomer\"]");
+                form.addEventListener("submit", createCustomerSubmit);
+
                 const street = document.querySelector("#street");
                 street.addEventListener("input", showDropdown);
                 street.addEventListener("click", stopNormal);
