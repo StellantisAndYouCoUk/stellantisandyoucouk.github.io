@@ -5329,3 +5329,15 @@ $(document).on("knack-scene-render.scene_1553", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
 });
+
+
+//refresh add/amend/delete lines on jobcard check in
+$(document).on("knack-scene-render.scene_1692", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_4195', //Date/Time Updated Add/Amend/Delete lines
+          views:['5399','5401','5402']
+      }
+    ]
+    sceneRefresh(refreshData);
+});
