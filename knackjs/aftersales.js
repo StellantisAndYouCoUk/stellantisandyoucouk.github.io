@@ -5341,3 +5341,9 @@ $(document).on("knack-scene-render.scene_1692", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
 });
+
+// ADD, AMEND and DELETE LINES ON A WIP FROM Job Card
+$(document).on('knack-record-create.view_5403', function(event, view, data) { 
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+  Knack.showSpinner(); 
+});
