@@ -1996,10 +1996,7 @@ $(document).on('knack-scene-render.scene_856', function(event, scene) {
   refreshWithData('5932', 'Title', 'Text', 'field_9223');
 });
 
-// Licence Check Form
-$(document).on('knack-scene-render.scene_1865', function(event, scene) {
-  refreshWithData('6320', 'Title', 'Text', 'field_9326');
-});
+
 
 //scene refresh from aftersales 
 function sceneRefresh(refreshData, startTime = null, runCounter = 1, stats = null){
