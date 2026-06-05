@@ -5250,3 +5250,33 @@ p.speech-bubble-outbound-sales:before {
   display:none;
 }
 
+
+
+/* CSS For PDF Viewing Panel */
+
+.split-container {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+}
+
+.pdf-pane {
+  flex: 1;
+  position: relative;
+}
+
+.pdf-pane iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#view_6 {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+#view_8 {
+  display: none !important;
+}
