@@ -6709,7 +6709,6 @@ $(document).on('knack-view-render.view_9222', function(event, view, data) {
   // If split container exists, wrap form. Set PDF pane and iframe from CSS with PDF link
   if (!$('.split-container').length) {
     $('#view_9162').wrap('<div class="split-container"></div>');
-	$('#view_9161').wrap('<div class="split-container"></div>');
     const pdfPane = $('<div class="pdf-pane"></div>');
     const iframe = $('<iframe>', {
       // Set link and remove page navigation from PDF viewer
@@ -6721,7 +6720,7 @@ $(document).on('knack-view-render.view_9222', function(event, view, data) {
     pdfPane.append(iframe);
 
     // Put pdfPane before form
-    $('#view_9161').before(pdfPane);
+    $('#view_9162').before(pdfPane);
   }
   else {
     $('.pdf-pane iframe').attr('src', pdfLink);
