@@ -6689,3 +6689,41 @@ $(document).on('knack-scene-render.scene_2882', function(event, scene) {
   ]
   sceneRefresh(refreshData,null,1,null,false);
 }
+
+
+
+// PDF Split Pane View Code
+
+$(document).on('knack-view-render.view_9222', function(event, view, data) {
+
+  // Define PDF link from field and log to console - link field required in details view
+  let pdfLink = $('#view_9222 .field_12025 a').attr('href');
+  console.log('PDF LINK:', pdfLink);
+
+  // Remove the entire column containing view_8 - avoids blank space
+  $('#view_9222').closest('.view-column').remove();
+
+  // Continue if link exists
+  if (!pdfLink) return;
+
+  // If split container exists, wrap form. Set PDF pane and iframe from CSS with PDF link
+  if (!$('.split-container').length) {
+    $('#view_9162').wrap('<div class="split-container"></div>');
+    const pdfPane = $('<div class="pdf-pane"></div>');
+    const iframe = $('<iframe>', {
+      // Set link and remove page navigation from PDF viewer
+      src: pdfLink + '#navpanes=0',
+      frameborder: 0
+    });
+
+    // Put PDF inside iframe
+    pdfPane.append(iframe);
+
+    // Put pdfPane before form
+    $('#view_9162').before(pdfPane);
+  }
+  else {
+    $('.pdf-pane iframe').attr('src', pdfLink);
+  }
+});
+
