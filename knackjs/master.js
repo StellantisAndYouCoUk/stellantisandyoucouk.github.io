@@ -6708,19 +6708,30 @@ $(document).on('knack-view-render.view_9222', function(event, view, data) {
 
   // If split container exists, wrap form. Set PDF pane and iframe from CSS with PDF link
   if (!$('.split-container').length) {
-    $('#view_9162').wrap('<div class="split-container"></div>');
+    // Create containers
+    const splitContainer = $('<div class="split-container"></div>');
     const pdfPane = $('<div class="pdf-pane"></div>');
+    const rightPane = $('<div class="right-pane"></div>');
+
+    // Create iframe
     const iframe = $('<iframe>', {
-      // Set link and remove page navigation from PDF viewer
       src: pdfLink + '#navpanes=0',
       frameborder: 0
     });
 
-    // Put PDF inside iframe
     pdfPane.append(iframe);
 
-    // Put pdfPane before form
-    $('#view_9162').before(pdfPane);
+    // Moving the views into right pane
+    $('#view_9161').appendTo(rightPane); // details
+    $('#view_9162').appendTo(rightPane); // form
+
+    // Build layout
+    splitContainer.append(pdfPane);
+    splitContainer.append(rightPane);
+
+    // Append to split container
+    $('.kn-scene').append(splitContainer);
+
   }
   else {
     $('.pdf-pane iframe').attr('src', pdfLink);
