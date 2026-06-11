@@ -5342,6 +5342,12 @@ $(document).on("knack-scene-render.scene_1692", function(event, scene, data) {
     sceneRefresh(refreshData);
 });
 
+// ADD, AMEND and DELETE LINES ON A WIP FROM Job Card
+$(document).on('knack-record-create.view_5403', function(event, view, data) { 
+  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
+  Knack.showSpinner(); 
+});
+
 //refresh add/amend/delete lines on Parts jobcard
 $(document).on("knack-scene-render.scene_1700", function(event, scene, data) {
     let refreshData = [
@@ -5351,10 +5357,4 @@ $(document).on("knack-scene-render.scene_1700", function(event, scene, data) {
       }
     ]
     sceneRefresh(refreshData);
-});
-
-// ADD, AMEND and DELETE LINES ON A WIP FROM Job Card
-$(document).on('knack-record-create.view_5403', function(event, view, data) { 
-  setTimeout(function () { location.hash = location.hash + "#"; }, 500);
-  Knack.showSpinner(); 
 });
