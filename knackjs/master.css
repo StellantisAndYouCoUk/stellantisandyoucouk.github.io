@@ -346,7 +346,10 @@ body {
 /* Filter menu for pivot table & pie chart - invoice reporting */
 
 #kn-report-view_9231-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a, 
-#kn-report-view_9252-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+#kn-report-view_9231-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#kn-report-view_9252-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a,
+#kn-report-view_9252-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a,
+#kn-report-view_9252-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a{
 	background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
