@@ -343,6 +343,15 @@ body {
   box-shadow: 3px 3px 3px 3px #ccc;
 }
 
+/* Filter menu for pivot table & pie chart - invoice reporting */
+
+#kn-report-view_9231-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a, 
+#kn-report-view_9252-1 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(1) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
 /* Front 3/4 Photo Button for Retail Appraisal */
 
 #view_3908 > section > div > div > div > div > div > div > span > a,
