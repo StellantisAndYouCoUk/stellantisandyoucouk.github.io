@@ -6770,6 +6770,7 @@ $(document).on('knack-view-render.view_9224', function(event, view, data) {
 
     // Move your views into right pane
     $('#view_9164').appendTo(rightPane); // details
+	$('#view_9260').appendTo(rightPane); // menu
     $('#view_9165').appendTo(rightPane); // form
 
     // Build layout
@@ -6818,7 +6819,6 @@ $(document).on('knack-view-render.view_9225', function(event, view, data) {
 
     // Move your views into right pane
     $('#view_9229').appendTo(rightPane); // details
-    $('#view_9260').appendTo(rightPane); // menu
     $('#view_9226').appendTo(rightPane); // form
 
     // Build layout
