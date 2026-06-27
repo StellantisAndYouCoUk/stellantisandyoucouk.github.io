@@ -5347,3 +5347,14 @@ $(document).on('knack-record-create.view_5403', function(event, view, data) {
   setTimeout(function () { location.hash = location.hash + "#"; }, 500);
   Knack.showSpinner(); 
 });
+
+//refresh add/amend/delete lines on Parts jobcard
+$(document).on("knack-scene-render.scene_1700", function(event, scene, data) {
+    let refreshData = [
+      {
+          mainField : 'field_4195', //Date/Time Updated Add/Amend/Delete lines
+          views:['5430','5433']
+      }
+    ]
+    sceneRefresh(refreshData);
+});
