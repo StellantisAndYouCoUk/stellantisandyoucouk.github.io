@@ -2517,7 +2517,7 @@ if (document.exitFullscreen) {
   }
 
 function IsInHomeScreen(){
-  if (OperatingSystem.iOS()){
+  if (isAppleMobile()){
     if (window.navigator.standalone){
       return true;
     } else {
@@ -2532,6 +2532,15 @@ function IsInHomeScreen(){
     }
   }
   return null;
+}
+
+function isAppleMobile() {
+    const ua = navigator.userAgent.toLowerCase();
+    // Check for iOS (iPhone, iPad, iPod)
+    const isIOS = /iphone|ipad|ipod/.test(ua);
+    // Apple Silicon Macs (Macs with touch screens) sometimes report differently
+    const isMacTouch = (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    return isIOS || isMacTouch;
 }
 
 $(document).on('knack-scene-render.scene_435', function(event, scene) {
