@@ -5307,7 +5307,7 @@ p.speech-bubble-outbound-sales:before {
   display: none !important;
 }
 
-/* Submit button on duplicate forms */
+/* Submit button on duplicate forms for Invoice Validation process */
 #view_9287 > form > .kn-submit > .kn-button,
 #view_9288 > form > .kn-submit > .kn-button{
     background-color: #2ab27b !important;
