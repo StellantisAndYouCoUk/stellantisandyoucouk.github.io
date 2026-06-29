@@ -5308,8 +5308,7 @@ p.speech-bubble-outbound-sales:before {
 }
 
 /* Submit button on duplicate forms for Invoice Validation process */
-#view_9287 > form > .kn-submit > .kn-button,
-#view_9288 > form > .kn-submit > .kn-button{
+#view_9287 > form > .kn-submit > .kn-button{
     background-color: #2ab27b !important;
     color: #ffffff !important;
     border-color: #005F80 !important;
@@ -5319,3 +5318,15 @@ p.speech-bubble-outbound-sales:before {
     font-weight: 500;
     letter-spacing: .09em;
 }
+
+#view_9288 > form > .kn-submit > .kn-button{
+    background-color: #ff3636 !important;
+    color: #ffffff !important;
+    border-color: #005F80 !important;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+	font-size: 0.95em;
+    font-weight: 500;
+    letter-spacing: .09em;
+}
+
