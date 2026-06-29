@@ -5308,7 +5308,8 @@ p.speech-bubble-outbound-sales:before {
 }
 
 /* Submit button on duplicate forms */
-#view_9287 > form > .kn-submit > .kn-button{
+#view_9287 > form > .kn-submit > .kn-button,
+#view_9288 > form > .kn-submit > .kn-button{
     background-color: #2ab27b !important;
     color: #ffffff !important;
     border-color: #005F80 !important;
