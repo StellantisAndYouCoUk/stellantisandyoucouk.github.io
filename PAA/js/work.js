@@ -211,7 +211,7 @@ function work(){
             createCookie('paaToken',loginReq.token,1);
             window.location = './index.html';
         } else {
-            $('div[class="card-header"]').append('Wrong credentials')
+            $('div[class="card-header"]').append(loginReq,loginReq.error)
         }
         return false;
     });
