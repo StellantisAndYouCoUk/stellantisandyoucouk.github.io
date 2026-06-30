@@ -6921,6 +6921,8 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
 
     // Move your views into right pane
     $('#view_9286').appendTo(rightPane); // details
+	$('#view_9287').appendTo(rightPane); // form
+	$('#view_9288').appendTo(rightPane); // form
 
     // Build layout
     splitContainer.append(pdfPane);
