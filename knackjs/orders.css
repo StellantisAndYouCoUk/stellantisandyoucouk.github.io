@@ -6872,7 +6872,8 @@ background: #ddd;
 #view_6312 .kn-detail-label,
 #view_5690 .kn-detail-label,
 #view_5737 .kn-detail-label,
-#view_6284 .kn-detail-label {background-color: transparent;}
+#view_6284 .kn-detail-label,
+#view_6349 .kn-detail-label {background-color: transparent;}
 
 
 /* Hide 'showing 1-1 of one' message on sales message views */
