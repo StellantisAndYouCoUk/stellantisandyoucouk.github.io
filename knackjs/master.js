@@ -6957,4 +6957,12 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
 
 
 
+// CODE Required to set a Modal Pop Up to Max Width
+
+//Supplier Search View
+$(document).on("knack-scene-render.scene_2908", function(event, scene) {
+  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
+});
+
+
 
