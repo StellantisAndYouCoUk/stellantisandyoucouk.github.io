@@ -5330,3 +5330,16 @@ p.speech-bubble-outbound-sales:before {
     letter-spacing: .09em;
 }
 
+
+/* Force 2 columns for search input of supplier search function */
+
+#view_9258 form {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#view_9258 .kn-submit {
+    grid-column: 1 / -1;
+}
+
