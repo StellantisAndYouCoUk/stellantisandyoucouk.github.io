@@ -6966,4 +6966,28 @@ $(document).on("knack-scene-render.scene_2908", function(event, scene) {
 
 
 
+$(document).on('knack-view-render.any', function(event, view, data) {
+
+  // Target all image upload inputs in forms
+	console.log("Image code is running")
+
+  $('input[type="file"][accept*="image"]').each(function() {
+
+    var current = $(this).attr('accept') || 'image/*';
+
+    // Add android/allowCamera if not already present
+
+    if (current.indexOf('android/allowCamera') === -1) {
+
+      $(this).attr('accept', current + ',android/allowCamera');
+
+    }
+
+  });
+
+});
+
+
+
+
 
