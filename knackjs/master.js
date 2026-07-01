@@ -6969,7 +6969,6 @@ $(document).on("knack-scene-render.scene_2908", function(event, scene) {
 $(document).on('knack-view-render.any', function(event, view, data) {
 
   // Target all image upload inputs in forms
-	console.log("Image code is running")
 
   $('input[type="file"][accept*="image"]').each(function() {
 
