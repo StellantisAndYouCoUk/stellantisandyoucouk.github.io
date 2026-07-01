@@ -5358,3 +5358,25 @@ $(document).on("knack-scene-render.scene_1700", function(event, scene, data) {
     ]
     sceneRefresh(refreshData);
 });
+
+
+$(document).on('knack-view-render.any', function(event, view, data) {
+
+  // Target all image upload inputs in forms
+
+  $('input[type="file"][accept*="image"]').each(function() {
+
+    var current = $(this).attr('accept') || 'image/*';
+
+    // Add android/allowCamera if not already present
+
+    if (current.indexOf('android/allowCamera') === -1) {
+
+      $(this).attr('accept', current + ',android/allowCamera');
+
+    }
+
+  });
+
+});
+
