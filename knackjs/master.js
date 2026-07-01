@@ -6875,7 +6875,8 @@ $(document).on('knack-view-render.view_9271', function(event, view, data) {
       src: "https://www.stellantisandyou.co.uk/digital#supplier-search/",
       frameborder: 0,
       width: "100%",
-      height: "100%"
+      height: "1200px",
+	  border: "none"
     });
 
     pdfPane.append(iframe);
