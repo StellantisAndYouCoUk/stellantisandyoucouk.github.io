@@ -6916,8 +6916,8 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
   let pdfLink = $('#view_9273 .field_12025 a').attr('href');
   console.log('PDF LINK:', pdfLink);
 
-	  let pdfLink2 = $('#view_9305 .field_12124 a').attr('href');
-  console.log('PDF LINK:', pdfLink2);
+  let pdfLink2 = $('#view_9305 .field_12124 a').attr('href');
+  console.log('PDF LINK 2:', pdfLink2);
 
   // Remove the entire column containing view_8 - avoids blank space
   $('#view_9273').closest('.view-column').remove();
