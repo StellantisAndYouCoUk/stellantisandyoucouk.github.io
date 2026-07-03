@@ -6916,11 +6916,15 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
   let pdfLink = $('#view_9273 .field_12025 a').attr('href');
   console.log('PDF LINK:', pdfLink);
 
+	  let pdfLink2 = $('#view_9305 .field_12124 a').attr('href');
+  console.log('PDF LINK:', pdfLink2);
+
   // Remove the entire column containing view_8 - avoids blank space
   $('#view_9273').closest('.view-column').remove();
 
   // Continue if link exists
   if (!pdfLink) return;
+  if (!pdfLink2) return;
 
   // If split container exists, wrap form. Set PDF pane and iframe from CSS with PDF link
   if (!$('.split-container').length) {
@@ -6935,12 +6939,16 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
       frameborder: 0
     });
 
+	      // Create iframe 2
+    const iframe2 = $('<iframe>', {
+      src: pdfLink2 + '#navpanes=0',
+      frameborder: 0
+    });
+
     pdfPane.append(iframe);
 
     // Move your views into right pane
-    $('#view_9286').appendTo(rightPane); // details
-	$('#view_9287').appendTo(rightPane); // form
-	$('#view_9288').appendTo(rightPane); // form
+    iframe2.appendTo(rightPane); // duplicate
 
     // Build layout
     splitContainer.append(pdfPane);
@@ -6956,13 +6964,6 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
 });
 
 
-
-// CODE Required to set a Modal Pop Up to Max Width
-
-//Supplier Search View
-$(document).on("knack-scene-render.scene_2908", function(event, scene) {
-  $(this).find('.kn-modal').addClass('Modal_for_' + Knack.router.current_scene_key)
-});
 
 
 
