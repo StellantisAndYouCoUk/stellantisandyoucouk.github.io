@@ -6920,7 +6920,7 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
   console.log('PDF LINK 2:', pdfLink2);
 
   // Remove the entire column containing view - avoids blank space
-  $('#view_9273').closest('.view-column').remove();
+ // $('#view_9273').closest('.view-column').remove();
 
   // Continue if link exists
   if (!pdfLink) return;
@@ -6942,8 +6942,7 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
 	      // Create iframe 2
     const iframe2 = $('<iframe>', {
       src: pdfLink2 + '#navpanes=0',
-      frameborder: 0,
-	  width: "100%"
+      frameborder: 0
     });
 
     pdfPane.append(iframe);
