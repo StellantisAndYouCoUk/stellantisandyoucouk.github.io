@@ -5281,6 +5281,16 @@ p.speech-bubble-outbound-sales:before {
   position: relative;
 }
 
+.pdf-pane-right {
+  flex: 1;
+  position: relative;
+}
+
+.pdf-pane-right iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 .pdf-pane iframe {
   width: 100%;
   height: 100%;
