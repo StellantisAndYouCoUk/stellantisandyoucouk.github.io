@@ -6931,7 +6931,7 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
     // Create containers
     const splitContainer = $('<div class="split-container"></div>');
     const pdfPane = $('<div class="pdf-pane"></div>');
-    const rightPane = $('<div class="right-pane"></div>');
+    const rightPane = $('<div class="pdf-pane-right"></div>');
 
     // Create iframe
     const iframe = $('<iframe>', {
