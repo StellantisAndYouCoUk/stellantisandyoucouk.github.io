@@ -6943,7 +6943,9 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
     const iframe2 = $('<iframe>', {
       src: pdfLink2 + '#navpanes=0',
       frameborder: 0,
-	  width: "100%"
+      width: "100%",
+	  height: "100%",
+	  border: "none"
     });
 
     pdfPane.append(iframe);
