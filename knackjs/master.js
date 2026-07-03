@@ -6919,8 +6919,9 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
   let pdfLink2 = $('#view_9305 .field_12124 a').attr('href');
   console.log('PDF LINK 2:', pdfLink2);
 
-  // Remove the entire column containing view_8 - avoids blank space
+  // Remove the entire column containing view - avoids blank space
   $('#view_9273').closest('.view-column').remove();
+  $('#view_9305').closest('.view-column').remove();
 
   // Continue if link exists
   if (!pdfLink) return;
@@ -6946,9 +6947,10 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
     });
 
     pdfPane.append(iframe);
+	rightPane.append(iframe2);
 
     // Move your views into right pane
-    iframe2.appendTo(rightPane); // duplicate
+    //iframe2.appendTo(rightPane); // duplicate
 
     // Build layout
     splitContainer.append(pdfPane);
