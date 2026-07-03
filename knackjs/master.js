@@ -6942,14 +6942,13 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
 	      // Create iframe 2
     const iframe2 = $('<iframe>', {
       src: pdfLink2 + '#navpanes=0',
-      frameborder: 0
+      frameborder: 0,
+	  width: "100%"
     });
 
     pdfPane.append(iframe);
 	rightPane.append(iframe2);
 
-    // Move your views into right pane
-    //iframe2.appendTo(rightPane); // duplicate
 
     // Build layout
     splitContainer.append(pdfPane);
