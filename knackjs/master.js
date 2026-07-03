@@ -6921,7 +6921,6 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
 
   // Remove the entire column containing view - avoids blank space
   $('#view_9273').closest('.view-column').remove();
-  $('#view_9305').closest('.view-column').remove();
 
   // Continue if link exists
   if (!pdfLink) return;
