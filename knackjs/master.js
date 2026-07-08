@@ -6885,7 +6885,8 @@ $(document).on('knack-view-render.view_9301', function(event, view, data) {
     // Move your views into right pane
     $('#view_9302').appendTo(rightPane); // form
     $('#view_9303').appendTo(rightPane); // menu
-	  iframe2.appendTo(rightPane); // supplier search iframe
+	  //iframe2.appendTo(rightPane); // supplier search iframe
+	  $('#view_2958').appendTo(rightPane);
 
     // Build layout
     splitContainer.append(pdfPane);
