@@ -1025,9 +1025,9 @@ function editCustomer(){
         form.querySelector('input[id="email"]').value = serviceBookingProcess.customer.EMailAddress;
         form.querySelector('input[id="street"]').value = serviceBookingProcess.customer.Address001;
         form.querySelector('input[id="zip"]').value = serviceBookingProcess.customer.Postcode;
-        form.querySelector('button').innerText = 'Edit customer';
+        form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
-    }, 1000);
+    }, 100);
 }
 
 function getCustomerDetails(){
