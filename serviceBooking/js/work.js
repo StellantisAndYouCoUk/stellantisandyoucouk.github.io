@@ -1020,6 +1020,11 @@ function editCustomer(){
     $('#editCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
     setTimeout(() => {
         const form = document.querySelector("form[id=\"createCustomer\"]");
+        if (!form){
+            setTimeout(() => {
+                editCustomer();
+            }, 200);
+        }
         form.querySelector('input[id="firstName"]').value = serviceBookingProcess.customer.FirstName;
         form.querySelector('input[id="lastName"]').value = serviceBookingProcess.customer.Surname;
         form.querySelector('input[id="mobileNumber"]').value = serviceBookingProcess.customer.TelephoneNumbers001;
@@ -1030,7 +1035,7 @@ function editCustomer(){
         form.querySelector('input[id="zip"]').value = serviceBookingProcess.customer.Postcode;
         form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
-    }, 100);
+    }, 200);
 }
 
 function getCustomerDetails(){
