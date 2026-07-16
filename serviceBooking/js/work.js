@@ -1024,15 +1024,17 @@ function editCustomer(){
             setTimeout(() => {
                 editCustomer();
             }, 200);
+            return;
         }
         form.querySelector('input[id="firstName"]').value = serviceBookingProcess.customer.FirstName;
         form.querySelector('input[id="lastName"]').value = serviceBookingProcess.customer.Surname;
         form.querySelector('input[id="mobileNumber"]').value = serviceBookingProcess.customer.TelephoneNumbers001;
         form.querySelector('input[id="email"]').value = serviceBookingProcess.customer.EMailAddress;
-        form.querySelector('input[id="street"]').value = serviceBookingProcess.customer.Address001;
-        form.querySelector('input[id="street2"]').value = serviceBookingProcess.customer.Address002;
-        form.querySelector('input[id="city"]').value = serviceBookingProcess.customer.Address003;
-        form.querySelector('input[id="zip"]').value = serviceBookingProcess.customer.Postcode;
+        form.querySelector('input[id="address1"]').value = serviceBookingProcess.customer.Address001;
+        form.querySelector('input[id="address2"]').value = serviceBookingProcess.customer.Address002;
+        form.querySelector('input[id="address3"]').value = serviceBookingProcess.customer.Address003;
+        form.querySelector('input[id="address4"]').value = serviceBookingProcess.customer.Address004;
+        form.querySelector('input[id="postCode"]').value = serviceBookingProcess.customer.Postcode;
         form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
     }, 200);
