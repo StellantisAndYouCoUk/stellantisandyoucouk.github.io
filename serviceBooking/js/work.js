@@ -1026,6 +1026,7 @@ function editCustomer(){
             }, 200);
             return;
         }
+        form.querySelector('option[value="'+serviceBookingProcess.customer.Title+'"]').selected = true;
         form.querySelector('input[id="firstName"]').value = serviceBookingProcess.customer.FirstName;
         form.querySelector('input[id="lastName"]').value = serviceBookingProcess.customer.Surname;
         form.querySelector('input[id="telephoneN1"]').value = serviceBookingProcess.customer.TelephoneNumbers001;
