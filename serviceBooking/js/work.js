@@ -1015,6 +1015,7 @@ function editCustomerSubmit(event){
 }
 
 function editCustomer(){
+    serviceBookingProcess.customer.editing = true;
     $('div[id="customerDetails"]').html('Edit customer<br /><div id="editCustomerForm"></div>');
     $('#editCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
     setTimeout(() => {
@@ -1024,6 +1025,8 @@ function editCustomer(){
         form.querySelector('input[id="mobileNumber"]').value = serviceBookingProcess.customer.TelephoneNumbers001;
         form.querySelector('input[id="email"]').value = serviceBookingProcess.customer.EMailAddress;
         form.querySelector('input[id="street"]').value = serviceBookingProcess.customer.Address001;
+        form.querySelector('input[id="street2"]').value = serviceBookingProcess.customer.Address002;
+        form.querySelector('input[id="city"]').value = serviceBookingProcess.customer.Address003;
         form.querySelector('input[id="zip"]').value = serviceBookingProcess.customer.Postcode;
         form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
