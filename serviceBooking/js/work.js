@@ -1010,6 +1010,16 @@ function createCustomerSubmited(){
     console.log('submited ');
 }
 
+function editCustomer(){
+    $('div[id="customerDetails"]').html('Edit customer<br /><div id="editCustomerForm"></div>');
+    $('#editCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
+    setTimeout(() => {
+
+        //const form = document.querySelector("form[id=\"createCustomer\"]");
+        //form.addEventListener("submit", createCustomerSubmit);
+    }, 1000);
+}
+
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         setTimeout(() => {
@@ -1026,7 +1036,7 @@ function getCustomerDetails(){
         return '<b>Customer was not found in Autoline</b><br /><div id="createCustomerForm"></div>';
     }
     let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />';
-    out += '<div style="float: right; ";><button class="btn btn-primary">Edit</button>&nbsp;<button class="btn btn-primary">Change</button></div>'
+    out += '<div style="float: right; ";><button class="btn btn-primary" onclick="editCustomer(); return false;">Edit</button>&nbsp;<button class="btn btn-primary">Change</button></div>'
     out += serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?'<br />'+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?'<br />'+serviceBookingProcess.customer.Address004:'')+'<br />'+serviceBookingProcess.customer.Postcode+'<div style="float: right; " ;=""><input type="checkbox" id="postCodeChecked"> OK</div><br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><div style="float: right; " ;=""><input type="checkbox" id="emailChecked"> OK</div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<div style="float: right; " ;=""><input type="checkbox" id="phoneChecked"> OK</div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<div style="float: right; " ;=""><input type="checkbox" id="phoneChecked"> OK</div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<div style="float: right; " ;=""><input type="checkbox" id="phoneChecked"> OK</div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<div style="float: right; " ;=""><input type="checkbox" id="phoneChecked"> OK</div><br />':'');
     out += '<br /><b>'+(serviceBookingProcess.customer.TypeOfBusiness==="PRI"?'Private Customer':(serviceBookingProcess.customer.TypeOfBusiness==="BUS"?'Business Customer':(serviceBookingProcess.customer.TypeOfBusiness!==''?"Type of business: "+serviceBookingProcess.customer.TypeOfBusiness:"Type of business: Empty")))+'</b>';
 
