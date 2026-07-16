@@ -1020,6 +1020,11 @@ function editCustomer(){
     setTimeout(() => {
         const form = document.querySelector("form[id=\"createCustomer\"]");
         form.querySelector('input[id="firstName"]').value = serviceBookingProcess.customer.FirstName;
+        form.querySelector('input[id="lastName"]').value = serviceBookingProcess.customer.Surname;
+        form.querySelector('input[id="mobileNumber"]').value = serviceBookingProcess.customer.TelephoneNumbers001;
+        form.querySelector('input[id="email"]').value = serviceBookingProcess.customer.EMailAddress;
+        form.querySelector('input[id="street"]').value = serviceBookingProcess.customer.Address001;
+        form.querySelector('input[id="zip"]').value = serviceBookingProcess.customer.Postcode;
         form.querySelector('button').innerText = 'Edit customer';
         form.addEventListener("submit", editCustomerSubmit);
     }, 1000);
