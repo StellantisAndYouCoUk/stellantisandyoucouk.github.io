@@ -6989,6 +6989,19 @@ $(document).on('knack-view-render.any', function(event, view, data) {
 
 });
 
+// For refreshing supplier details by dealer - trigger Make and return webhook response once complete
 
+$(document).on('knack-form-submit.view_9309', function(event, view, data) { 
+  setTimeout(function(){ Knack.showSpinner(); }, 0); 
+  const commandURL = "https://hook.eu1.make.celonis.com/rn0q6e3hvdtc16uiuien399yn7rh9h4y?recordid=" + data.id ;
+  $.get(commandURL, function(data, status){
+    Knack.hideSpinner();
+    $("#view_9309 .kn-message.success").html("<b>" + data + "</b>");
+  });
+});
+
+$(document).on('knack-form-submit.view_9309', function(event, view, data) {
+  callPostHttpRequest("https://hook.eu1.make.celonis.com/rn0q6e3hvdtc16uiuien399yn7rh9h4y", {"recordid":data.id},"Licence Check Submitted");
+});
 
 
