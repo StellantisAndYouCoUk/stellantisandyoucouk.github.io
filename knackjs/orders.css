@@ -9,7 +9,7 @@ body {
   
 #knack-logo {
   display: none;
-}
+}4534
 
 .kn-back-link {
   visibility: hidden;
@@ -1935,6 +1935,12 @@ color: #FFFFFF;
 }
 
 #view_4534 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(2) > a {
+	background-color: #FFA100;
+  	color: #FFFFFF;
+  	font-weight: bold;
+}
+
+#view_4534 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(3) > a {
 	background-color: #FFA100;
   	color: #FFFFFF;
   	font-weight: bold;
