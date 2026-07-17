@@ -1011,7 +1011,12 @@ function createCustomerSubmited(){
 }
 
 function editCustomerSubmit(event){
-
+    $(this).find(":submit").attr('disabled', 'disabled');
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const formJSON = Object.fromEntries(data.entries());
+    console.log(formJSON);
+    $('#createCustomerForm').html('Customer was sent for update.')
 }
 
 function editCustomer(){
