@@ -2263,3 +2263,13 @@ function removeFilterFields(addedAlowedFilters){
 }
 
 
+//Support Claims Filter Menu 
+
+$(document).on('knack-view-render.view_4537', function (event, view, data) {
+
+let defineButtons = [
+{linkText:"Claim Required","filters":[{"field_name":"Date/Time Support Was Claimed","field":"field_7979","value":true,"operator":"is blank"},{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"Manager to Claim","operator":"is"}]},
+{linkText:"Claim Submitted","filters":[{"field_name":"Date/Time Support Was Claimed","field":"field_7979","value":true,"operator":"is not blank"},{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"Manager to Claim","operator":"is"}]},
+{linkText:"Not Required","filters":[{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"No Claim Required","operator":"is"}]}					 
+];
+});
