@@ -2205,3 +2205,93 @@ $(document).on('knack-form-submit.view_6243', function(event, view, data) {
 });
 
 
+// Code to create buttons for filter menu amendments
+
+var defineButtonsAll = [];
+
+function syButtonsFilter(viewId,index){
+  Knack.showSpinner();
+  let dbView = defineButtonsAll.find(el => el.viewId === viewId);
+  dbView.selectedIndex = index;
+  let dbA1 = dbView.defineButtons[index];
+  //console.log(viewId, index,dbA1,JSON.stringify(dbA1.filters));
+  Knack.views['view_'+viewId].model.setFilters('{"match":"and","rules":'+JSON.stringify(dbA1.filters)+'}');
+  Knack.views['view_'+viewId].model.fetch();
+}
+
+function renderSYSearchButtons(viewId, defineButtons){
+  let dbA1 = defineButtonsAll.find(el => el.viewId === viewId);
+  if (!dbA1){
+    dbA1 = {viewId:viewId, defineButtons: defineButtons};
+    defineButtonsAll.push(dbA1);
+  }
+  if ($('div[id="syButtons_'+viewId+'"]').length===0){
+    let buttonsDiv = '<div id="syButtons_'+viewId+'" class="js-filter-menu tabs is-toggle is-flush"><ul>';
+    buttonsDiv += dbA1.defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter(\''+viewId+'\','+index+'); return false;"><span>'+el.linkText+'</span></a></li>').join('');
+    buttonsDiv += '</ul></div>';
+    $('div[id="view_'+viewId+'"] div[class="kn-records-nav"]').prepend(buttonsDiv);
+  }
+  if (dbA1.selectedIndex){
+    $('div[id="syButtons_'+viewId+'"] li[class="is-active"]').removeClass('is-active');
+    $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').parent().addClass('is-active');
+    if (dbA1.defineButtons[dbA1.selectedIndex].filters.length>0){
+      if ($('div[id="view_'+viewId+'"] li[class*="tag kn-tag-filter"]').length===0){
+        console.log('index selected but not filtered')
+        $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').click();
+      }
+    }
+  }
+  if (dbA1.selectedIndex && dbA1.defineButtons[dbA1.selectedIndex].filters){
+    for (let i = 0;i<dbA1.defineButtons[dbA1.selectedIndex].filters.length;i++){
+      console.log(dbA1.defineButtons[dbA1.selectedIndex].filters[i].field)
+      $('li[class="tag kn-tag-filter kn-filter-'+dbA1.defineButtons[dbA1.selectedIndex].filters[i].field+'"]').hide();
+    }
+  }
+}
+
+function removeFilterFields(addedAlowedFilters){
+  setTimeout(function () { 
+    console.log('remove from filter',addedAlowedFilters)
+    for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
+      let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
+      let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
+      if (!allowFilterField){
+        $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
+      }
+    }
+  }, 200);
+}
+
+
+//Support Claims Filter Menu 
+
+// $(document).on('knack-view-render.view_4534', function (event, view, data) {
+
+// let defineButtons = [
+// {linkText:"Claim Required","filters":[{"field_name":"Date/Time Support Was Claimed","field":"field_7979","value":true,"operator":"is blank"},{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"Admin to Claim","operator":"is"}]},
+// {linkText:"Claim Submitted","filters":[{"field_name":"Date/Time Support Was Claimed","field":"field_7979","value":true,"operator":"is not blank"},{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"Admin to Claim","operator":"is"}]},
+// {linkText:"Not Required","filters":[{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"No Claim Required","operator":"is"}]}					 
+// ];
+// console.log("renderSYSearchButtons('4534',defineButtons);")
+//   renderSYSearchButtons('4534',defineButtons);
+ 
+//   let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+//   console.log('addFilters',addFilters)
+//   if (addFilters){
+//     addFilters.onclick = function(){
+//       console.log('onclick 2')
+//       let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+//       addFilters2.onclick = function(){
+//       }
+//     }
+//   }
+
+//     $('div[id="view_4534"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
+//       console.log('something clicked',(new Date()-view_4534_refreshDateTime));
+//       if ((new Date()-view_4534_refreshDateTime)>30*60*1000){
+//         view_4534_refreshDateTime = new Date()
+//         console.log('doRefresh');
+//         document.location.reload();
+//       }
+//     });	
+// });
