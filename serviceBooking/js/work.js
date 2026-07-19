@@ -1060,6 +1060,13 @@ function searchCustomerInAutoline(){
 
 function searchCustomerInAutolineCallback(data){
     console.log(data);
+    if (data){
+        let out = '';
+        for (let i = 0;i<data.length;i++){
+            out += data[i].FirstName + ' ' + data[i].Surname + ' ' + data[i].EMailAddress + ' ' + data[i].TelephoneNumbers + '<br />';
+        }
+        $('#searchResults').html(out);
+    }
 }
 
 function getCustomerDetails(){
@@ -1071,7 +1078,7 @@ function getCustomerDetails(){
                 form.addEventListener("submit", createCustomerSubmit);
             }, 1000);
         }, 500);
-        return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><br /><br /><div id="createCustomerForm"></div>';
+        return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div><br /><br /><div id="createCustomerForm"></div>';
     }
     if (serviceBookingProcess.customer.editing){
         editCustomer();
