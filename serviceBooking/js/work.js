@@ -1063,10 +1063,14 @@ function searchCustomerInAutolineCallback(data){
     if (data){
         let out = '';
         for (let i = 0;i<data.length;i++){
-            out += data[i].FirstName + ' ' + data[i].Surname + ' ' + data[i].EMailAddress + ' ' + data[i].TelephoneNumbers + '<br />';
+            out += data[i].FirstName + ' ' + data[i].Surname + ' ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')) + '<br />';
         }
         $('#searchResults').html(out);
     }
+}
+
+function getUniqueTelephoneNumbers(tels){
+    return [... new Set(tels)]
 }
 
 function getCustomerDetails(){
