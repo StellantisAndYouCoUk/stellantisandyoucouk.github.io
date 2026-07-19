@@ -1053,6 +1053,15 @@ function changeCustomer(){
     $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button>Search in Autoline</button></div>');
 }
 
+function searchCustomerInAutoline(){
+    let searchString = $('#searchString').val();
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:$('#searchString').val()},searchCustomerInAutolineCallback);
+}
+
+function searchCustomerInAutolineCallback(data){
+    console.log(data);
+}
+
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
         setTimeout(() => {
@@ -1062,7 +1071,7 @@ function getCustomerDetails(){
                 form.addEventListener("submit", createCustomerSubmit);
             }, 1000);
         }, 500);
-        return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button>Search in Autoline</button></div><div id="createCustomerForm"></div>';
+        return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><br /><br /><div id="createCustomerForm"></div>';
     }
     if (serviceBookingProcess.customer.editing){
         editCustomer();
