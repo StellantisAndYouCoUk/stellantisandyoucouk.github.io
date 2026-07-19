@@ -1070,7 +1070,7 @@ function searchCustomerInAutolineCallback(data){
 }
 
 function getUniqueTelephoneNumbers(tels){
-    return [... new Set(tels)]
+    return [... new Set(tels)].filter(el => el!=='')
 }
 
 function getCustomerDetails(){
