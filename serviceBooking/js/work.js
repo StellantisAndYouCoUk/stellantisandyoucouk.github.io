@@ -1032,7 +1032,8 @@ function editCustomerSubmit(event){
     const data = new FormData(event.target);
     const formJSON = Object.fromEntries(data.entries());
     console.log(formJSON);
-    $('#createCustomerForm').html('Customer was sent for update.')
+    formJSON.customerNumber = serviceBookingProcess.customer.CustomerNumber;
+    $('#updateCustomerForm').html('Customer was sent for update.')
 }
 
 function editCustomer(){
