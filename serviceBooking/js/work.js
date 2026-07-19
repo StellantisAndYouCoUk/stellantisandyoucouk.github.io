@@ -1035,9 +1035,9 @@ function editCustomer(){
         form.querySelector('input[id="firstName"]').value = serviceBookingProcess.customer.FirstName;
         form.querySelector('input[id="lastName"]').value = serviceBookingProcess.customer.Surname;
         form.querySelector('input[id="telephoneN1"]').value = serviceBookingProcess.customer.TelephoneNumbers001;
-        form.querySelector('input[id="telephoneN1"]').value = serviceBookingProcess.customer.TelephoneNumbers002;
-        form.querySelector('input[id="telephoneN1"]').value = serviceBookingProcess.customer.TelephoneNumbers003;
-        form.querySelector('input[id="telephoneN1"]').value = serviceBookingProcess.customer.TelephoneNumbers004;
+        form.querySelector('input[id="telephoneN2"]').value = serviceBookingProcess.customer.TelephoneNumbers002;
+        form.querySelector('input[id="telephoneN3"]').value = serviceBookingProcess.customer.TelephoneNumbers003;
+        form.querySelector('input[id="telephoneN4"]').value = serviceBookingProcess.customer.TelephoneNumbers004;
         form.querySelector('input[id="email"]').value = serviceBookingProcess.customer.EMailAddress;
         form.querySelector('input[id="address1"]').value = serviceBookingProcess.customer.Address001;
         form.querySelector('input[id="address2"]').value = serviceBookingProcess.customer.Address002;
