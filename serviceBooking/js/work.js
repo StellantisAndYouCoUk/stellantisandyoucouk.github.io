@@ -1088,7 +1088,7 @@ function getUniqueTelephoneNumbers(tels){
 
 function chooseCustomerFromAutoline(customerNumber){
     console.log(customerNumber);
-    let chC = serviceBookingProcess.customerSearch.results.find(el => el.CustomerNumber === customerNumber);
+    let chC = serviceBookingProcess.customerSearch.results.find(el => el.CustomerNumber === customerNumber.toString());
     console.log('chC',chC);
     serviceBookingProcess.customer = chC;
     $('div[id="customerDetails"]').html(getCustomerDetails());
