@@ -1063,7 +1063,7 @@ function searchCustomerInAutolineCallback(data){
     if (data){
         let out = '';
         for (let i = 0;i<data.length;i++){
-            out += data[i].FirstName + ' ' + data[i].Surname + ' ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
+            out += '<a onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
         }
         $('#searchResults').html(out);
     }
@@ -1071,6 +1071,10 @@ function searchCustomerInAutolineCallback(data){
 
 function getUniqueTelephoneNumbers(tels){
     return [... new Set(tels)].filter(el => el!=='')
+}
+
+function chooseCustomerFromAutoline(customerNumber){
+    
 }
 
 function getCustomerDetails(){
