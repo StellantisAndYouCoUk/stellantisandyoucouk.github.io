@@ -676,6 +676,17 @@ function getPricingBrandsForD(checkDealership, selectedId=null){
     return out;
 }
 
+function createVehicleInAutoline(){
+    let payload = {
+        customerNumber: serviceBookingProcess.customer.CustomerNumber,
+        registrationNumber : serviceBookingProcess.registrationNumber
+    }
+    if (serviceBookingProcess.secondaryDetails && serviceBookingProcess.secondaryDetails.autotraderData && serviceBookingProcess.secondaryDetails.autotraderData.vehicle){
+        payload.vin = serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin;
+    }
+    console.log(payload);
+}
+
 function getVehicleDescription(){
     let out = '';
     let vehicleAge = null;
@@ -683,7 +694,7 @@ function getVehicleDescription(){
     if (!serviceBookingProcess.vehicle){
         out += '<b>Vehicle was not found in Autoline</b><br /><br />'
         if (serviceBookingProcess.customer){
-            out += '<button>Create vehicle in Autoline connected to the customer</button>'
+            out += '<button onlick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
         }
     }
     if ((serviceBookingProcess.motData.firstUsedDate && serviceBookingProcess.motData.firstUsedDate!=='')|| (serviceBookingProcess.motData.manufactureDate && serviceBookingProcess.motData.manufactureDate!=='')){
