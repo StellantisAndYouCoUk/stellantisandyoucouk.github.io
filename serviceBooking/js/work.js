@@ -1069,6 +1069,7 @@ function searchCustomerInAutoline(){
 function searchCustomerInAutolineCallback(data){
     console.log(data);
     if (data){
+        serviceBookingProcess.customerSearch.results = data;
         let out = '';
         for (let i = 0;i<data.length;i++){
             out += '<a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
