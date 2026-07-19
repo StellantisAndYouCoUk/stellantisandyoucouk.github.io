@@ -1064,7 +1064,7 @@ function searchCustomerInAutolineCallback(data){
     if (data){
         let out = '';
         for (let i = 0;i<data.length;i++){
-            out += '<a onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
+            out += '<a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
         }
         $('#searchResults').html(out);
     }
