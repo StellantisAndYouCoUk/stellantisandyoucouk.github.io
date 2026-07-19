@@ -1075,7 +1075,7 @@ function getUniqueTelephoneNumbers(tels){
 }
 
 function chooseCustomerFromAutoline(customerNumber){
-
+    console.log(customerNumber);
 }
 
 function getCustomerDetails(){
