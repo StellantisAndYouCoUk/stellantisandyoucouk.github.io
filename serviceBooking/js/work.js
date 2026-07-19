@@ -1054,7 +1054,7 @@ function changeCustomer(){
 }
 
 function searchCustomerInAutoline(){
-    $('#searchResults').html('');
+    $('#searchResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
     let searchString = $('#searchString').val();
     if (searchString.length<4){
         $('#searchResults').html('Enter at least 4 characters ...');
@@ -1071,6 +1071,8 @@ function searchCustomerInAutolineCallback(data){
         }
         if (data.length === 10) out += 'More then 10 results found, refine your search ...'
         $('#searchResults').html(out);
+    } else {
+        $('#searchResults').html('No results ...');
     }
 }
 
