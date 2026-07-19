@@ -1096,6 +1096,7 @@ function chooseCustomerFromAutoline(customerNumber){
     console.log('chC',chC);
     serviceBookingProcess.customer = chC;
     $('div[id="customerDetails"]').html(getCustomerDetails());
+    $('div[id="vehicleDescription"]').html(getVehicleDescription());
 }
 
 function getCustomerDetails(){
