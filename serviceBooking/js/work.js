@@ -1054,6 +1054,7 @@ function changeCustomer(){
 }
 
 function searchCustomerInAutoline(){
+    $('#searchResults').html('');
     let searchString = $('#searchString').val();
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:$('#searchString').val()},searchCustomerInAutolineCallback);
 }
@@ -1074,7 +1075,7 @@ function getUniqueTelephoneNumbers(tels){
 }
 
 function chooseCustomerFromAutoline(customerNumber){
-    
+
 }
 
 function getCustomerDetails(){
