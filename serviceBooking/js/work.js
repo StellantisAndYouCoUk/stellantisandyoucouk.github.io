@@ -1018,6 +1018,7 @@ function createCustomerSubmit(event) {
   const data = new FormData(event.target);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
+  formJSON.requestId = crypto.randomUUID();
   callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
   $('#createCustomerForm').html('Customer was sent for creation.')
 }
@@ -1033,6 +1034,7 @@ function editCustomerSubmit(event){
     const formJSON = Object.fromEntries(data.entries());
     console.log(formJSON);
     formJSON.customerNumber = serviceBookingProcess.customer.CustomerNumber;
+    formJSON.requestId = crypto.randomUUID();
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
     $('#updateCustomerForm').html('Customer was sent for update.')
 }
