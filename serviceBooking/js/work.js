@@ -1070,6 +1070,7 @@ function searchCustomerInAutolineCallback(data){
             out += '<a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
         }
         if (data.length === 10) out += '<b>More then 10 results found, refine your search ...</b>'
+        if (data.length === 0) out = 'No results ...';
         $('#searchResults').html(out);
     } else {
         $('#searchResults').html('No results ...');
