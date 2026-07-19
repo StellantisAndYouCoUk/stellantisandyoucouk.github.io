@@ -695,6 +695,8 @@ function getVehicleDescription(){
         out += '<b>Vehicle was not found in Autoline</b><br /><br />'
         if (serviceBookingProcess.customer){
             out += '<button onlick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
+        } else {
+            out += 'To create the vehicle in Autoline choose or create customer first<br /><br />'
         }
     }
     if ((serviceBookingProcess.motData.firstUsedDate && serviceBookingProcess.motData.firstUsedDate!=='')|| (serviceBookingProcess.motData.manufactureDate && serviceBookingProcess.motData.manufactureDate!=='')){
