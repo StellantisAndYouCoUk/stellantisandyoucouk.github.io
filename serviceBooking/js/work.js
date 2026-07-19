@@ -1050,7 +1050,7 @@ function editCustomer(){
 }
 
 function changeCustomer(){
-    $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button>Search in Autoline</button></div>');
+    $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div>');
 }
 
 function searchCustomerInAutoline(){
