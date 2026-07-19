@@ -682,6 +682,9 @@ function getVehicleDescription(){
     let firstDateToUse = null;
     if (!serviceBookingProcess.vehicle){
         out += '<b>Vehicle was not found in Autoline</b><br /><br />'
+        if (serviceBookingProcess.customer){
+            out += '<button>Create vehicle in Autoline connected to the customer</button>'
+        }
     }
     if ((serviceBookingProcess.motData.firstUsedDate && serviceBookingProcess.motData.firstUsedDate!=='')|| (serviceBookingProcess.motData.manufactureDate && serviceBookingProcess.motData.manufactureDate!=='')){
         firstDateToUse = ((serviceBookingProcess.motData.firstUsedDate && serviceBookingProcess.motData.firstUsedDate!=='')?serviceBookingProcess.motData.firstUsedDate:serviceBookingProcess.motData.manufactureDate);
