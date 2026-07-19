@@ -1069,7 +1069,7 @@ function searchCustomerInAutolineCallback(data){
         for (let i = 0;i<data.length;i++){
             out += '<a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
         }
-        if (data.length === 10) out += 'More then 10 results found, refine your search ...'
+        if (data.length === 10) out += '<b>More then 10 results found, refine your search ...</b>'
         $('#searchResults').html(out);
     } else {
         $('#searchResults').html('No results ...');
