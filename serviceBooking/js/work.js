@@ -1056,6 +1056,9 @@ function changeCustomer(){
 function searchCustomerInAutoline(){
     $('#searchResults').html('');
     let searchString = $('#searchString').val();
+    if (searchString.length<4){
+        $('#searchResults').html('Enter at least 4 characters ...');
+    }
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:$('#searchString').val()},searchCustomerInAutolineCallback);
 }
 
@@ -1066,6 +1069,7 @@ function searchCustomerInAutolineCallback(data){
         for (let i = 0;i<data.length;i++){
             out += '<a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<br />';
         }
+        if (data.length === 10) out += 'More then 10 results found, refine your search ...'
         $('#searchResults').html(out);
     }
 }
