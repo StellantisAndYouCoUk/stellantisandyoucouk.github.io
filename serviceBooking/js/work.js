@@ -1013,18 +1013,21 @@ function showClosestDealerships(postcode){
 }
 
 function createCustomerSubmit(event) {
+  serviceBookingProcess.customerChange = true;
   $(this).find(":submit").attr('disabled', 'disabled');
   event.preventDefault();
   const data = new FormData(event.target);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
   formJSON.requestId = crypto.randomUUID();
+  serviceBookingProcess.customerChangeId = formJSON.requestId;
   callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
   $('#createCustomerForm').html('Customer was sent for creation.')
 }
 
 function createCustomerSubmited(){
     console.log('submited ');
+    callPostHttpRequest('https://hook.eu1.make.celonis.com/fi9i528d34jaqdeui0fn48y9chxg5wov',null,{requestId:serviceBookingProcess.customerChangeId})
 }
 
 function editCustomerSubmit(event){
@@ -1035,12 +1038,13 @@ function editCustomerSubmit(event){
     console.log(formJSON);
     formJSON.customerNumber = serviceBookingProcess.customer.CustomerNumber;
     formJSON.requestId = crypto.randomUUID();
+    serviceBookingProcess.customerChangeId = formJSON.requestId;
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
     $('#updateCustomerForm').html('Customer was sent for update.')
 }
 
 function editCustomer(){
-    serviceBookingProcess.customer.editing = true;
+    serviceBookingProcess.customerChange = true;
     $('div[id="customerDetails"]').html('Edit customer<br /><div id="editCustomerForm"></div>');
     $('#editCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
     setTimeout(() => {
