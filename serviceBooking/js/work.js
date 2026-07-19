@@ -1055,13 +1055,13 @@ function changeCustomer(){
 
 function getCustomerDetails(){
     if (!serviceBookingProcess.customer){
-        /*setTimeout(() => {
+        setTimeout(() => {
             $('#createCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
             setTimeout(() => {
                 const form = document.querySelector("form[id=\"createCustomer\"]");
                 form.addEventListener("submit", createCustomerSubmit);
             }, 1000);
-        }, 500);*/
+        }, 500);
         return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button>Search in Autoline</button></div><div id="createCustomerForm"></div>';
     }
     if (serviceBookingProcess.customer.editing){
