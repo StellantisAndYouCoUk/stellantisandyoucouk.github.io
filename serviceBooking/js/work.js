@@ -1045,7 +1045,13 @@ function checkCustomerUpdateStatusResponse(data){
         setTimeout(() => {
             checkCustomerUpdateStatus();
         }, 2000);
+    } else {
+        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,customerNumber:dataJ.customerNumber},reloadCustomerCallback);
     }
+}
+
+function reloadCustomerCallback(data){
+    console.log('reloadCustomerCallback',data)
 }
 
 function editCustomerSubmit(event){
