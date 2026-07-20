@@ -1028,7 +1028,23 @@ function createCustomerSubmit(event) {
 
 function createCustomerSubmited(){
     console.log('submited ');
-    callPostHttpRequest('https://hook.eu1.make.celonis.com/fi9i528d34jaqdeui0fn48y9chxg5wov',null,{requestId:serviceBookingProcess.customerChangeId})
+    checkCustomerUpdateStatus();
+}
+
+function checkCustomerUpdateStatus(){
+    if (serviceBookingProcess.customerChangeId){
+        callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/fi9i528d34jaqdeui0fn48y9chxg5wov',null,{requestId:serviceBookingProcess.customerChangeId},checkCustomerUpdateStatusResponse)
+    }
+}
+
+function checkCustomerUpdateStatusResponse(data){
+    console.log('checkCustomerUpdateStatusResponse',data);
+    $('div[id="customerDetails"]').html('Customer was sent to update to Autoline.<br />Current update status:'+data.status);
+    if (data.status!=='Success'){
+        setTimeout(() => {
+            checkCustomerUpdateStatus();
+        }, 2000);
+    }
 }
 
 function editCustomerSubmit(event){
@@ -1043,7 +1059,7 @@ function editCustomerSubmit(event){
     serviceBookingProcess.customerChangeId = formJSON.requestId;
     serviceBookingProcess.customerChangeData = formJSON;
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
-    $('#updateCustomerForm').html('Customer was sent for update.')
+    $('div[id="customerDetails"]').html('Customer was sent to update to Autoline.<br />You will see update progress here.');
 }
 
 function editCustomer(){
