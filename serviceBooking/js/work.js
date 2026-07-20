@@ -1119,10 +1119,10 @@ function chooseCustomerFromAutoline(customerNumber){
     let chC = serviceBookingProcess.customerSearch.results.find(el => el.CustomerNumber === customerNumber.toString());
     console.log('chC',chC);
     serviceBookingProcess.customer = chC;
-    $('div[id="customerDetails"]').html(getCustomerDetails());
-    $('div[id="vehicleDescription"]').html(getVehicleDescription());
     serviceBookingProcess.secondaryDetails.gdprDataMarketing = null;
     serviceBookingProcess.secondaryDetails.gdprDataService = null;
+    $('div[id="customerDetails"]').html(getCustomerDetails());
+    $('div[id="vehicleDescription"]').html(getVehicleDescription());
     getSecondaryDetails(serviceBookingProcess.registrationNumber,serviceBookingProcess.customer.CustomerNumber,(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
 }
 
