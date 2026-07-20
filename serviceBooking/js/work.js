@@ -1052,6 +1052,8 @@ function checkCustomerUpdateStatusResponse(data){
 
 function reloadCustomerCallback(data){
     console.log('reloadCustomerCallback',data)
+    serviceBookingProcess.customer = data[0];
+    $('div[id="customerDetails"]').html(getCustomerDetails());
 }
 
 function editCustomerSubmit(event){
