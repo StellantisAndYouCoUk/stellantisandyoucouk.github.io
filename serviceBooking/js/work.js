@@ -1021,6 +1021,7 @@ function createCustomerSubmit(event) {
   console.log(formJSON);
   formJSON.requestId = crypto.randomUUID();
   serviceBookingProcess.customerChangeId = formJSON.requestId;
+  serviceBookingProcess.customerChangeData = formJSON;
   callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
   $('#createCustomerForm').html('Customer was sent for creation.')
 }
@@ -1031,6 +1032,7 @@ function createCustomerSubmited(){
 }
 
 function editCustomerSubmit(event){
+    serviceBookingProcess.customerChange = true;
     $(this).find(":submit").attr('disabled', 'disabled');
     event.preventDefault();
     const data = new FormData(event.target);
@@ -1039,6 +1041,7 @@ function editCustomerSubmit(event){
     formJSON.customerNumber = serviceBookingProcess.customer.CustomerNumber;
     formJSON.requestId = crypto.randomUUID();
     serviceBookingProcess.customerChangeId = formJSON.requestId;
+    serviceBookingProcess.customerChangeData = formJSON;
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
     $('#updateCustomerForm').html('Customer was sent for update.')
 }
@@ -1118,6 +1121,7 @@ function chooseCustomerFromAutoline(customerNumber){
     serviceBookingProcess.customer = chC;
     $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
+    getSecondaryDetails(serviceBookingProcess.registrationNumber,serviceBookingProcess.customer,(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
 }
 
 function getCustomerDetails(){
