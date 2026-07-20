@@ -1121,7 +1121,7 @@ function chooseCustomerFromAutoline(customerNumber){
     serviceBookingProcess.customer = chC;
     $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
-    getSecondaryDetails(serviceBookingProcess.registrationNumber,serviceBookingProcess.customer,(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
+    getSecondaryDetails(serviceBookingProcess.registrationNumber,serviceBookingProcess.customer.CustomerNumber,(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
 }
 
 function getCustomerDetails(){
