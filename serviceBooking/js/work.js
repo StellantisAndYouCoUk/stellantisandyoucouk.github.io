@@ -1039,8 +1039,9 @@ function checkCustomerUpdateStatus(){
 
 function checkCustomerUpdateStatusResponse(data){
     console.log('checkCustomerUpdateStatusResponse',data);
-    $('div[id="customerDetails"]').html('Customer was sent to update to Autoline.<br />Current update status:'+data.status);
-    if (data.status!=='Success'){
+    let dataJ = JSON.parse(data);
+    $('div[id="customerDetails"]').html('Customer was sent to update to Autoline.<br />Current update status:'+dataJ.status);
+    if (dataJ.status!=='Success'){
         setTimeout(() => {
             checkCustomerUpdateStatus();
         }, 2000);
