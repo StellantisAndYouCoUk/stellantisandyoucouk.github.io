@@ -4759,7 +4759,7 @@ img.user-icon:hover {
   outline-offset: 4px;
   transition: filter 250ms;
 }
-.shadow {
+/* .shadow {
   position: absolute;
   top: 0;
   left: 0;
@@ -4770,8 +4770,8 @@ img.user-icon:hover {
   will-change: transform;
   transform: translateY(2px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-}
-.edge {
+} */
+/* .edge {
   position: absolute;
   top: 0;
   left: 0;
@@ -4785,7 +4785,7 @@ img.user-icon:hover {
     hsl(340deg 100% 32%) 92%,
     hsl(340deg 100% 16%) 100%
   );
-}
+} */
 .front {
   display: block;
   position: relative;
@@ -4793,7 +4793,7 @@ img.user-icon:hover {
   border-radius: 12px;
   font-size: 1.25rem;
   color: white;
-  background: hsl(345deg 100% 47%);
+  background: #ffa100;
   will-change: transform;
   transform: translateY(-4px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
