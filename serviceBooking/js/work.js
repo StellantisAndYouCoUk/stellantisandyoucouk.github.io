@@ -685,6 +685,11 @@ function createVehicleInAutoline(){
         payload.vin = serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin;
     }
     console.log(payload);
+    callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/181yyjeqg4jyzgfjrrnn43snk99ot61f',null,payload,checkCreateVehicleInAutoline)
+}
+
+function checkCreateVehicleInAutoline(data){
+    
 }
 
 function getVehicleDescription(){
