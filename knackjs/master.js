@@ -6963,6 +6963,8 @@ $(document).on('knack-view-render.view_9305', function(event, view, data) {
   else {
     $('.pdf-pane iframe').attr('src', pdfLink);
   }
+
+  $('.kn-back-link').appendTo('.kn-scene');
 });
 
 
