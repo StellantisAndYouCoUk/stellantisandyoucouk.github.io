@@ -6910,7 +6910,7 @@ $(document).on('knack-scene-render.scene_2908', function (event, view, data) {
 
 // PDF Split Pane View Code - confirm if duplicate 
 
-$(document).on('knack-view-render.view_9273', function(event, view, data) {
+$(document).on('knack-view-render.view_9305', function(event, view, data) {
 
   // Define PDF link from field and log to console - link field required in details view
   let pdfLink = $('#view_9273 .field_12025 a').attr('href');
