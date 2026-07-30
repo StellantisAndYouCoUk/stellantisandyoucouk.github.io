@@ -1196,9 +1196,12 @@ function reRunInPreprod(runId){
         priority : run.priority,
         flowName : run.flowName,
         flowInput : newInput,
-        preferedMachineName : $('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val(),
         runMode : $('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val(),
         noRetry : true
+    }
+    runData.preferedMachineName = $('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val();
+    if ($('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val()!=='Not selected'){
+
     }
     console.log(runData)
     return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
@@ -1234,7 +1237,7 @@ function formatRunDetails(run, machines){
     if (run.hrefDetails) d += '<a target="_blank" href="'+run.hrefDetails+'">Run details in PA</a><br />';
     if (run.runId){
         if (run.flowInput && JSON.stringify(run.flowInput).includes('liveOrPreprod')){
-            d += '<br /><br /><a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option>unattended</option></select> mode<br />';
+            d += '<br /><br /><a href="#" onclick="reRunInPreprod(\''+run.runId+'\'); return false;">Rerun in Pre-Prod on machine</a> <select id="preProdMachine_'+run.runId+'"><option>Not selected</option><option>'+machines.map(el => el.name).join('</option><option>')+'</option></select> in <select id="preProdMode_'+run.runId+'"><option>attended</option><option selected>unattended</option></select> mode<br />';
             d += '<a href="#" onclick="reRun(\''+run.runId+'\'); return false;">Rerun Live</a><br /><br />';
             let rD = runsData.find(el => el.runId === run.runId);
             if (!rD) runsData.push(run);
