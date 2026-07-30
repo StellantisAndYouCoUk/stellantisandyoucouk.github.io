@@ -1180,8 +1180,13 @@ function cancelRun(queueId){
 function reRunInPreprod(runId){
     console.log('reRunInPreprod',runId);
     $('button[aria-label="Close"]').click();
-    let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
-    let run = req.find(el => el.runId === runId);
+    let run = runsData.find(el => el.runId === runId);
+    if (!run){
+        console.log('RUN NOT FOUND in runsData')
+        let req = paaPostRequest({'action':'getRuns','token':paaToken,'sortField':'createdDateTime','sortDirection':'Desc','limit':250,'filters':[]});
+        run = req.find(el => el.runId === runId);
+    }
+
     console.log('machine',$('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val())
     console.log('mode',$('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val())
     console.log(run);
@@ -1195,7 +1200,8 @@ function reRunInPreprod(runId){
         runMode : $('div[id="runDetailsBody"] select[id="preProdMode_'+runId+'"]').val(),
         noRetry : true
     }
-    return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
+    console.log(runData)
+    //return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
 }
 
 
