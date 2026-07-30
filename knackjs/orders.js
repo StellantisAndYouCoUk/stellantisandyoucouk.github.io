@@ -2263,7 +2263,7 @@ function removeFilterFields(addedAlowedFilters){
 }
 
 
-//Support Claims Filter Menu 
+//Support Claims Filter Menu - Admin View
 
 $(document).on('knack-view-render.view_4534', function (event, view, data) {
 
@@ -2288,6 +2288,40 @@ console.log("renderSYSearchButtons('4534',defineButtons);")
 
     $('div[id="view_4534"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
       console.log('something clicked',(new Date()-view_4534_refreshDateTime));
+      if ((new Date()-view_4534_refreshDateTime)>30*60*1000){
+        view_4534_refreshDateTime = new Date()
+        console.log('doRefresh');
+        document.location.reload();
+      }
+    });	
+});
+
+
+//Support Claims Filter Menu - Manager View
+
+$(document).on('knack-view-render.view_4537', function (event, view, data) {
+
+let defineButtons = [
+{linkText:"Claim Required","filters":[{"field_name":"Date/Time Support Was Claimed","field":"field_7979","value":true,"operator":"is blank"},{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"Manager to Claim","operator":"is"}]},
+{linkText:"Claim Submitted","filters":[{"field_name":"Date/Time Support Was Claimed","field":"field_7979","value":true,"operator":"is not blank"},{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"Manager to Claim","operator":"is"}]},
+{linkText:"Not Required","filters":[{"field_name":"Type of Support Claim Selected by User (NEW)","field":"field_8198","value":"No Claim Required","operator":"is"}]}					 
+];
+console.log("renderSYSearchButtons('4537',defineButtons);")
+  renderSYSearchButtons('4537',defineButtons);
+ 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    addFilters.onclick = function(){
+      console.log('onclick 2')
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+      }
+    }
+  }
+
+    $('div[id="view_4537"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
+      console.log('something clicked',(new Date()-view_4537_refreshDateTime));
       if ((new Date()-view_4534_refreshDateTime)>30*60*1000){
         view_4534_refreshDateTime = new Date()
         console.log('doRefresh');

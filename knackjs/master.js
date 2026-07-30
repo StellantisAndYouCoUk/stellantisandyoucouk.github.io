@@ -6826,6 +6826,7 @@ $(document).on('knack-view-render.view_9225', function(event, view, data) {
     pdfPane.append(iframe);
 
     // Move your views into right pane
+    $('#view_9335').appendTo(rightPane); // menu
     $('#view_9229').appendTo(rightPane); // details
     $('#view_9226').appendTo(rightPane); // form
 
@@ -6910,7 +6911,7 @@ $(document).on('knack-scene-render.scene_2908', function (event, view, data) {
 
 // PDF Split Pane View Code - confirm if duplicate 
 
-$(document).on('knack-view-render.view_9273', function(event, view, data) {
+$(document).on('knack-view-render.view_9273 knack-view-render.view_9305', function(event, view, data) {
 
   // Define PDF link from field and log to console - link field required in details view
   let pdfLink = $('#view_9273 .field_12025 a').attr('href');
@@ -6923,8 +6924,7 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
  // $('#view_9273').closest('.view-column').remove();
 
   // Continue if link exists
-  if (!pdfLink) return;
-  if (!pdfLink2) return;
+  if (!pdfLink || !pdfLink2) return;
 
   // If split container exists, wrap form. Set PDF pane and iframe from CSS with PDF link
   if (!$('.split-container').length) {
@@ -6963,6 +6963,8 @@ $(document).on('knack-view-render.view_9273', function(event, view, data) {
   else {
     $('.pdf-pane iframe').attr('src', pdfLink);
   }
+
+  $('.kn-back-link').appendTo('.kn-scene');
 });
 
 
