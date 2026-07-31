@@ -6871,13 +6871,12 @@ $(document).on('knack-view-render.view_9301', function(event, view, data) {
       frameborder: 0
     });
 
-
-
     pdfPane.append(iframe);
 
     // Move your views into right pane
+	$('#view_9303').appendTo(rightPane); // menu
     $('#view_9302').appendTo(rightPane); // form
-    $('#view_9303').appendTo(rightPane); // menu
+	$('#view_9338').appendTo(rightPane); // menu
 
     // Build layout
     splitContainer.append(pdfPane);
