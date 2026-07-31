@@ -6871,14 +6871,6 @@ $(document).on('knack-view-render.view_9301', function(event, view, data) {
       frameborder: 0
     });
 
-	// Create iframe 2
-    const iframe2 = $('<iframe>', {
-      src: "https://www.stellantisandyou.co.uk/digital#supplier-search/",
-      frameborder: 0,
-      width: "100%",
-	  height: "100%",
-	  border: "none"
-    });
 
 
     pdfPane.append(iframe);
@@ -6886,7 +6878,6 @@ $(document).on('knack-view-render.view_9301', function(event, view, data) {
     // Move your views into right pane
     $('#view_9302').appendTo(rightPane); // form
     $('#view_9303').appendTo(rightPane); // menu
-	iframe2.appendTo(rightPane); // supplier search iframe
 
     // Build layout
     splitContainer.append(pdfPane);
