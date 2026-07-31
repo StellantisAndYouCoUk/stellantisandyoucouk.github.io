@@ -5356,7 +5356,7 @@ p.speech-bubble-outbound-sales:before {
 
 /* Resize and move to the right */
 .kn-modal.side-panel-modal {
-    width: 50%;
+    width: 40%;
     max-width: 800px;
     position: fixed !important;
     top: 0 !important;
