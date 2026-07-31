@@ -5365,6 +5365,7 @@ p.speech-bubble-outbound-sales:before {
     height: 80vh;
     margin: 1 !important;
     transform: none !important;
+    overflow-y: auto !important;
 } 
 
 /* Make backdrop invisible and enable interation (to copy text) */
