@@ -7013,3 +7013,12 @@ $(document).on('knack-scene-render.scene_2900', function() {
         $('.kn-modal').addClass('side-panel-modal');
     }, 100);
 });
+
+// Search Suppliers By Site 
+
+$(document).on('knack-scene-render.scene_2911', function() {
+    setTimeout(function() {
+        $('.kn-modal-bg').addClass('side-panel-backdrop');
+        $('.kn-modal').addClass('side-panel-modal');
+    }, 100);
+});
