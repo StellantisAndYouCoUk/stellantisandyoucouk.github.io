@@ -7006,4 +7006,12 @@ $(document).on('knack-form-submit.view_9309', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/rn0q6e3hvdtc16uiuien399yn7rh9h4y", {"recordid":data.id},"Licence Check Submitted");
 });
 
+// Invoice processing - modal side panel on right side, transparent backdrop + copy & paste enabled
+
+$(document).on('knack-scene-render.scene_2908', function() {
+    setTimeout(function() {
+        $('.kn-modal-bg').addClass('side-panel-backdrop');
+        $('.kn-modal').addClass('side-panel-modal');
+    }, 100);
+});
 
