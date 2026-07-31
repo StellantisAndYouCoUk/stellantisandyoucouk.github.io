@@ -7006,3 +7006,11 @@ $(document).on('knack-scene-render.scene_2908', function() {
     }, 100);
 });
 
+// Dealership Details 
+
+$(document).on('knack-scene-render.scene_2900', function() {
+    setTimeout(function() {
+        $('.kn-modal-bg').addClass('side-panel-backdrop');
+        $('.kn-modal').addClass('side-panel-modal');
+    }, 100);
+});
