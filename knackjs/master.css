@@ -5363,7 +5363,7 @@ p.speech-bubble-outbound-sales:before {
     right: 0 !important;
     left: auto !important;
     height: 80vh;
-    margin: 0 !important;
+    margin: 1 !important;
     transform: none !important;
 } 
 
