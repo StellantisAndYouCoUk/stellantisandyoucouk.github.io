@@ -5330,7 +5330,8 @@ console.log("renderSYSearchButtons('5272',defineButtons);")
 	{linkText:"No Due Date","filters":[{"field":"field_431","value":"","operator":"is blank"}]},
 	{linkText:"Due in After Today","filters":[{"field":"field_431","value":"","operator":"is after today"}]},
 	{linkText:"Not Checked in","filters":[{"field":"field_763","value":"","operator":"is blank"}]},
-	{linkText:"Not Clocked","filters":[{"field":"field_787","value":"","operator":"is blank"}]}
+	{linkText:"Not Clocked","filters":[{"field":"field_787","value":"","operator":"is blank"}]},
+	{linkText:'No Show',filters:[{"field":"field_431","operator":"is before today","field_name":"Date Vehicle Due In"},{"field":"field_1726","operator":"is blank","field_name":"Date/Time checked in FROM AUTOLINE(Static)"}]}
   ]
   renderSYSearchButtons('596',defineButtons);
 
