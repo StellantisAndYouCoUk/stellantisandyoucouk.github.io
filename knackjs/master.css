@@ -3841,7 +3841,8 @@ display: none;
   font-weight: bold;
 }	
 
-#view_8995 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+#view_8995 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_8995 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button{
   font-size: 1.05em;
   font: "Calibri", sans-serif;
   text-align: center;
