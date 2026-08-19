@@ -3928,7 +3928,8 @@ display: none;
 #view_5684 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_5684 > div.control > a.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5684 > div.control > a.kn-link.kn-link-5.kn-link-page.kn-button,
-#view_5684 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button {
+#view_5684 > div.control > a.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5684 > div.control > a.kn-link.kn-link-7.kn-link-page.kn-button{
   padding: 8px 2px !important;
   font-size: 1.17em;
   font: "Calibri", sans-serif;
@@ -3946,7 +3947,8 @@ display: none;
 #view_5684 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_5684 > div.control > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5684 > div.control > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
-#view_5684 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button {
+#view_5684 > div.control > a:hover.kn-link.kn-link-6.kn-link-page.kn-button,
+#view_5684 > div.control > a:hover.kn-link.kn-link-7.kn-link-page.kn-button{
   padding: 8px 2px !important;
   font-size: 1.17em;
   font: "Calibri", sans-serif;
