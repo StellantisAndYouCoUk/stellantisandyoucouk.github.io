@@ -224,3 +224,34 @@ window.scrollToView = function(viewKey) {
   }
 
 }
+
+
+// Code to wait for P&L's to be bulk updated
+
+/*$(document).on('knack-form-submit.view_4099', function(event, view, data) { 
+
+
+	setTimeout(function(){ 
+
+    	Knack.showSpinner();
+
+    }, 0); 
+
+  
+
+	commandURL = "https://hook.eu1.make.celonis.com/gptw91yi3uu6cpt8rogp4rrpsacdgjzb?recordid=" + data.id ;
+
+
+ 	$.get(commandURL, function(data, status){
+
+
+      Knack.hideSpinner();
+
+      $(".kn-message.success").html("<b>" + data + "</b>");
+
+
+    });
+
+}); */
+
+
