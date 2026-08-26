@@ -1477,7 +1477,13 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
             let aTCV = courtesyVehiclesA.availableDates.find(el => el === dateToAutoline(dayToUse));
             if (!aTCV) isCourtesyCarAvailableOrNotNeeded = false;
         }
-        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?'style="background-color: green;"':'style="background-color: yellow;"'):'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        let isWaitAvailable = false;
+        try {
+            isWaitAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)) && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)).wait.availability.length>0);
+        } catch (ex){
+            console.log('get isWaitAvailable error',ex)
+        }
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="background-color: #90EE90;"':'style="background-color: green;"'):'style="background-color: yellow;"'):'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
