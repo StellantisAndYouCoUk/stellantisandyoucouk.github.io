@@ -1495,7 +1495,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
         } catch (ex){
             console.log('get isWaitAvailable error',ex)
         }
-        html += '<td style="text-align: center" '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="background-color: #90EE90;"':'style="background-color: green;"'):'style="background-color: orange;"'):'style="background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
