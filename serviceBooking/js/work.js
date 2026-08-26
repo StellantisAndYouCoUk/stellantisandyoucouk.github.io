@@ -1144,7 +1144,7 @@ function searchCustomerInAutolineCallback(data){
         serviceBookingProcess.customerSearch.results = data;
         let out = '';
         for (let i = 0;i<data.length;i++){
-            out += '<span data-bs-html="true" data-toggle="tooltip" data-placement="bottom" title="<b>'+data[i].FirstName + ' ' + data[i].Surname + '</b><br />' + data[i].EMailAddress + '" id="'+data[i].CustomerNumber+'"><a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<span><br />';
+            out += '<span data-bs-html="true" data-toggle="tooltip" data-placement="bottom" title="Date Last Edited:'+dateToGB(new Date(data[i].DateLastEdited))+(data[i].BranchCode001 && data[i].BranchCode001!=='' && supportData.dealerList.find(el => el.field_4998.includes(data[i].BranchCode001)?'<br />Dealer: '+supportData.dealerList.find(el => el.field_4998.includes(data[i].BranchCode001)).field_8:'')+'" id="'+data[i].CustomerNumber+'"><a href="#" onclick="chooseCustomerFromAutoline('+data[i].CustomerNumber+')">'+data[i].FirstName + ' ' + data[i].Surname + '</a> ' + data[i].EMailAddress + ' ' + getUniqueTelephoneNumbers(data[i].TelephoneNumbers.split(' ')).join(',') + '<span><br />';
         }
         if (data.length === 10) out += '<b>More then 10 results found, refine your search ...</b>'
         if (data.length === 0) out = 'No results ...';
