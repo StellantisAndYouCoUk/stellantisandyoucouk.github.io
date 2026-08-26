@@ -155,15 +155,13 @@ checkAuth();
 
 $( document ).ready(function() {
     $("a[id='searchRegistration']").bind("click", function() {
-        $("a[id='searchRegistration']").prop("disabled", true)
-        if ($('input[id="registrationNumber"]').val()===''){
-            $('div[id="searchRegistrationMessage"]').text('Enter Registration Number');
-            $('div[id="searchRegistrationMessage"]').show();
-            $("a[id='searchRegistration']").prop("disabled", false);
-            return false;
-        }
-        searchRegistration($('input[id="registrationNumber"]').val().toUpperCase().replaceAll(' ','').replaceAll('\t',''))
-        return false;
+       return searchRegistrationButton()
+    });
+    $("a[id='searchRegistration']").bind("keypress", function(e) {
+        const code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13) { //Enter keycode                        
+           return searchRegistrationButton()
+        } 
     });
 
        //Login page
@@ -194,6 +192,18 @@ $( document ).ready(function() {
 
     work();
 });
+
+function searchRegistrationButton(){
+    $("a[id='searchRegistration']").prop("disabled", true)
+    if ($('input[id="registrationNumber"]').val()===''){
+        $('div[id="searchRegistrationMessage"]').text('Enter Registration Number');
+        $('div[id="searchRegistrationMessage"]').show();
+        $("a[id='searchRegistration']").prop("disabled", false);
+        return false;
+    }
+    searchRegistration($('input[id="registrationNumber"]').val().toUpperCase().replaceAll(' ','').replaceAll('\t',''))
+    return false;
+}
 
 function showHideMoreServiceVisits(){
     let newV = (document.querySelector('.more').style.display==="none"?"":"none");
