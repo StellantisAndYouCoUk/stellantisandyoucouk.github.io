@@ -248,4 +248,11 @@ $(document).on('knack-form-submit.view_8222', function(event, view, data) {
 });
 
 
+//code to refresh scene on form submit - re-calc Sales advisor monthly figures
+$(document).on('knack-form-submit.view_8206', function(event, view, data) {
 
+    setTimeout(function () {
+        location.reload();
+    }, 15000);
+
+});
