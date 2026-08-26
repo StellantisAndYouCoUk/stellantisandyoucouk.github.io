@@ -159,6 +159,7 @@ $( document ).ready(function() {
     });
     $("a[id='searchRegistration']").bind("keypress", function(e) {
         const code = (e.keyCode ? e.keyCode : e.which);
+        console.log(code);
         if (code == 13) { //Enter keycode                        
            return searchRegistrationButton()
         } 
