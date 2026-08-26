@@ -224,3 +224,28 @@ window.scrollToView = function(viewKey) {
   }
 
 }
+
+
+// Code to wait for P&L's to be bulk updated
+$(document).on('knack-form-submit.view_8222', function(event, view, data) {
+
+    setTimeout(function() {
+        Knack.showSpinner();
+    }, 0);
+
+    var commandURL =
+        "https://hook.eu1.make.celonis.com/7p4n26ggl92lcl7cgab1c88wo2crvel4" +
+        "?recordid=" + encodeURIComponent(data.id) +
+        "&source=" + encodeURIComponent("Manager Confirm Payplan - https://builder.rd.knack.com/salesjourney/stellantis-and-you-digital-employee-portal/pages/scene_2529/views/view_8222/form");
+
+    $.get(commandURL, function(data, status) {
+
+        Knack.hideSpinner();
+
+        $(".kn-message.success").html("<b>" + data + "</b>");
+
+    });
+});
+
+
+

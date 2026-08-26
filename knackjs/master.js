@@ -6871,22 +6871,12 @@ $(document).on('knack-view-render.view_9301', function(event, view, data) {
       frameborder: 0
     });
 
-	// Create iframe 2
-    const iframe2 = $('<iframe>', {
-      src: "https://www.stellantisandyou.co.uk/digital#supplier-search/",
-      frameborder: 0,
-      width: "100%",
-	  height: "100%",
-	  border: "none"
-    });
-
-
     pdfPane.append(iframe);
 
     // Move your views into right pane
+	$('#view_9303').appendTo(rightPane); // menu
+	$('#view_9338').appendTo(rightPane); // menu
     $('#view_9302').appendTo(rightPane); // form
-    $('#view_9303').appendTo(rightPane); // menu
-	iframe2.appendTo(rightPane); // supplier search iframe
 
     // Build layout
     splitContainer.append(pdfPane);
@@ -7006,4 +6996,29 @@ $(document).on('knack-form-submit.view_9309', function(event, view, data) {
   callPostHttpRequest("https://hook.eu1.make.celonis.com/rn0q6e3hvdtc16uiuien399yn7rh9h4y", {"recordid":data.id},"Licence Check Submitted");
 });
 
+// Invoice processing - modal side panel on right side, transparent backdrop + copy & paste enabled
 
+$(document).on('knack-scene-render.scene_2908', function() {
+    setTimeout(function() {
+        $('.kn-modal-bg').addClass('side-panel-backdrop');
+        $('.kn-modal').addClass('side-panel-modal');
+    }, 100);
+});
+
+// Dealership Details 
+
+$(document).on('knack-scene-render.scene_2900', function() {
+    setTimeout(function() {
+        $('.kn-modal-bg').addClass('side-panel-backdrop');
+        $('.kn-modal').addClass('side-panel-modal');
+    }, 100);
+});
+
+// Search Suppliers By Site 
+
+$(document).on('knack-scene-render.scene_2911', function() {
+    setTimeout(function() {
+        $('.kn-modal-bg').addClass('side-panel-backdrop');
+        $('.kn-modal').addClass('side-panel-modal');
+    }, 100);
+});
