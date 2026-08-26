@@ -1149,6 +1149,7 @@ function searchCustomerInAutolineCallback(data){
         if (data.length === 10) out += '<b>More then 10 results found, refine your search ...</b>'
         if (data.length === 0) out = 'No results ...';
         $('#searchResults').html(out);
+        $('[data-toggle="tooltip"]').tooltip()
     } else {
         $('#searchResults').html('No results ...');
     }
