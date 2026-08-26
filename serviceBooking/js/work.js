@@ -1389,6 +1389,7 @@ async function generateBookingSummary(){
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
+        html += '<br /><span style="text-align: center; background-color: #90EE90;">&nbsp;</span> Wait appointment available'
     }
     /*
     if (labourSummary.length>0){
