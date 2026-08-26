@@ -157,17 +157,10 @@ $( document ).ready(function() {
     $("a[id='searchRegistration']").bind("click", function() {
        return searchRegistrationButton()
     });
-    /*$("a[id='searchRegistration']").bind("keypress",{}, function(e) {
-        const code = (e.keyCode ? e.keyCode : e.which);
-        console.log(code);
-        if (code == 13) { //Enter keycode                        
+    $("input[id='registrationNumber']").bind("keypress",function(e) {
+        if (e.keyCode == 13) {                      
            return searchRegistrationButton()
         } 
-    });*/
-    $("a[id='searchRegistration']").keyup(function(event) {
-        if (event.keyCode==13) {
-            return searchRegistrationButton();
-        }
     });
 
        //Login page
