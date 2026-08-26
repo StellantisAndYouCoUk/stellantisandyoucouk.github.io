@@ -263,8 +263,13 @@ function chooseDealership(dealershipId){
     }
 }
 
-function bookVisit(){
-    console.log('bookVisit');
+function showPricing(){
+    console.log('showPricing');
+    if (!serviceBookingProcess.secondaryDetails || !serviceBookingProcess.secondaryDetails.recalls){
+        $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Pricing can be shown ony when recalls are checked.</span>');
+        $('div[id="bookingProblems"]').show();
+        return null;
+    }
     $('div[id="bookingProblems"]').hide();
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
