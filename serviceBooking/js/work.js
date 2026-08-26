@@ -1307,6 +1307,7 @@ function generateLabourSummary(){
         }
     }  
     if (labourSummary.length===0) labourSummary = null;
+    labourSummary.push({LoadGroup:'W',Time:1})
     serviceBookingProcess.bookingData.labourSummary = labourSummary;
 }
 
