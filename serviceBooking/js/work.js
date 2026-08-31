@@ -1135,9 +1135,12 @@ function editCustomer(){
 
 function changeCustomer(){
     $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div>');
+    serviceBookingProcess.customerChangeInEdit = false;
 }
 
 function searchCustomerInAutoline(){
+    serviceBookingProcess.customerChange = true;
+    serviceBookingProcess.customerChangeInEdit = true; 
     $('#searchResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
     let searchString = $('#searchString').val();
     if (searchString.length<4){
