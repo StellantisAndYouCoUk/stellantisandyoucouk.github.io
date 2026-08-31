@@ -1042,6 +1042,10 @@ function createCustomerSubmit(event) {
   serviceBookingProcess.customerChangeId = formJSON.requestId;
   serviceBookingProcess.customerChangeData = formJSON;
   callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/si6deg4wvjyl2a8dni3ee3ytm24g3e1q',null,formJSON,createCustomerSubmited);
+  if (!serviceBookingProcess.customer){
+    $('input[id="postcodeForD"]').val($('input[id="postCode"]').val());
+    findDealerships();
+  }
   $('#createCustomerForm').html('Customer was sent for creation.')
 }
 
