@@ -1134,13 +1134,12 @@ function editCustomer(){
 }
 
 function changeCustomer(){
+    serviceBookingProcess.customerChange = true;
+    serviceBookingProcess.customerChangeInEdit = true; 
     $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div>');
-    serviceBookingProcess.customerChangeInEdit = false;
 }
 
 function searchCustomerInAutoline(){
-    serviceBookingProcess.customerChange = true;
-    serviceBookingProcess.customerChangeInEdit = true; 
     $('#searchResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
     let searchString = $('#searchString').val();
     if (searchString.length<4){
@@ -1183,7 +1182,8 @@ function chooseCustomerFromAutoline(customerNumber){
     console.log('chC',chC,chC.customerGdpr);
     serviceBookingProcess.customer = chC;
     serviceBookingProcess.customerGdpr = chC.customerGdpr;
-    if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
+    serviceBookingProcess.customerChangeInEdit = false;
+    $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
 }
 
