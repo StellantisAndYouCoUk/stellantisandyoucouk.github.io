@@ -1177,7 +1177,7 @@ function chooseCustomerFromAutoline(customerNumber){
     console.log(customerNumber);
     $('[data-toggle="tooltip"]').tooltip('hide');
     let chC = serviceBookingProcess.customerSearch.results.find(el => el.CustomerNumber === customerNumber.toString());
-    console.log('chC',chC);
+    console.log('chC',chC,chC.customerGdpr);
     serviceBookingProcess.customer = chC;
     serviceBookingProcess.customerGdpr = chC.customerGdpr;
     if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
