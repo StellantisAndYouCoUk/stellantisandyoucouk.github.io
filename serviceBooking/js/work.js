@@ -1179,10 +1179,9 @@ function chooseCustomerFromAutoline(customerNumber){
     let chC = serviceBookingProcess.customerSearch.results.find(el => el.CustomerNumber === customerNumber.toString());
     console.log('chC',chC);
     serviceBookingProcess.customer = chC;
-    serviceBookingProcess.secondaryDetails = null;
+    serviceBookingProcess.customerGdpr = null;
     if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
-    getSecondaryDetails(serviceBookingProcess.registrationNumber,serviceBookingProcess.customer.CustomerNumber,(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
 }
 
 function getCustomerDetails(){
