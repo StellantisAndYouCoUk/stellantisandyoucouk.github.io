@@ -1071,9 +1071,11 @@ function checkCustomerUpdateStatusResponse(data){
 
 function reloadCustomerCallback(data){
     console.log('reloadCustomerCallback',data)
-    serviceBookingProcess.customer = data.customer;
-    serviceBookingProcess.customerGdpr = data.customerGdpr;
-    if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
+    if (data.success){
+        serviceBookingProcess.customer = data.data.customer;
+        serviceBookingProcess.customerGdpr = data.data.customerGdpr;
+        if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
+    }
 }
 
 function editCustomerSubmit(event){
