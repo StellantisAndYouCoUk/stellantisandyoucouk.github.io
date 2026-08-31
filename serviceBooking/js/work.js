@@ -1117,6 +1117,14 @@ function editCustomer(){
         form.querySelector('input[id="address3"]').value = serviceBookingProcess.customer.Address003;
         form.querySelector('input[id="address4"]').value = serviceBookingProcess.customer.Address004;
         form.querySelector('input[id="postCode"]').value = serviceBookingProcess.customer.Postcode;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption==='A') form.querySelector('[id="gdprSMS"]').options[1].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[0].ChannelOption==='D') form.querySelector('[id="gdprSMS"]').options[2].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption==='A') form.querySelector('[id="gdprPost"]').options[1].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[1].ChannelOption==='D') form.querySelector('[id="gdprPost"]').options[2].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[2].ChannelOption==='A') form.querySelector('[id="gdprEmail"]').options[1].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[2].ChannelOption==='D') form.querySelector('[id="gdprEmail"]').options[2].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[3].ChannelOption==='A') form.querySelector('[id="gdprPhone"]').options[1].selected = true;
+        if (serviceBookingProcess.secondaryDetails.gdprDataMarketing[3].ChannelOption==='D') form.querySelector('[id="gdprPhone"]').options[2].selected = true;
         form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
     }, 200);
