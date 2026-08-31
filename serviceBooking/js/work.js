@@ -1065,15 +1065,16 @@ function checkCustomerUpdateStatusResponse(data){
             checkCustomerUpdateStatus();
         }, 2000);
     } else {
-        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:serviceBookingProcess.registrationNumber},reloadCustomerCallback)
+        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,customerNumber:dataJ.customerNumber},reloadCustomerCallback);
+        //callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:serviceBookingProcess.registrationNumber},reloadCustomerCallback)
     }
 }
 
 function reloadCustomerCallback(data){
     console.log('reloadCustomerCallback',data)
-    if (data.success){
-        serviceBookingProcess.customer = data.data.customer;
-        serviceBookingProcess.customerGdpr = data.data.customerGdpr;
+    if (data[0]){
+        serviceBookingProcess.customer = data[0];
+        serviceBookingProcess.customerGdpr = data[0].customerGdpr;
         if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
     }
 }
