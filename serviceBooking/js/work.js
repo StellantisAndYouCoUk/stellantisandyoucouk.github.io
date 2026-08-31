@@ -1065,7 +1065,7 @@ function checkCustomerUpdateStatusResponse(data){
             checkCustomerUpdateStatus();
         }, 2000);
     } else {
-        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber},reloadCustomerCallback)
+        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:serviceBookingProcess.registrationNumber},reloadCustomerCallback)
     }
 }
 
