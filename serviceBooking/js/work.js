@@ -498,7 +498,7 @@ function work(){
             $('div[id="step1"]').hide();
             $('div[id="step2"]').show();
             $('div[id="step3"]').hide();
-            $('div[id="customerDetails"]').html(getCustomerDetails());
+            if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
             $('div[id="vehicleDescription"]').html(getVehicleDescription());
             $('div[id="serviceSuggestions"]').html(getServiceSuggestions());
             $('div[id="serviceHistory"]').html(getServiceHistory());
@@ -1072,11 +1072,12 @@ function checkCustomerUpdateStatusResponse(data){
 function reloadCustomerCallback(data){
     console.log('reloadCustomerCallback',data)
     serviceBookingProcess.customer = data[0];
-    $('div[id="customerDetails"]').html(getCustomerDetails());
+    if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
 }
 
 function editCustomerSubmit(event){
     serviceBookingProcess.customerChange = true;
+    serviceBookingProcess.customerChangeInEdit = false; 
     $(this).find(":submit").attr('disabled', 'disabled');
     event.preventDefault();
     const data = new FormData(event.target);
@@ -1092,6 +1093,7 @@ function editCustomerSubmit(event){
 
 function editCustomer(){
     serviceBookingProcess.customerChange = true;
+    serviceBookingProcess.customerChangeInEdit = true; 
     $('div[id="customerDetails"]').html('Edit customer<br /><div id="editCustomerForm"></div>');
     $('#editCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
     setTimeout(() => {
@@ -1167,7 +1169,7 @@ function chooseCustomerFromAutoline(customerNumber){
     console.log('chC',chC);
     serviceBookingProcess.customer = chC;
     serviceBookingProcess.secondaryDetails = null;
-    $('div[id="customerDetails"]').html(getCustomerDetails());
+    if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
     getSecondaryDetails(serviceBookingProcess.registrationNumber,serviceBookingProcess.customer.CustomerNumber,(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.VehicleNumber:null),(serviceBookingProcess.dvlaData?serviceBookingProcess.dvlaData.make:null),(serviceBookingProcess.vehicle?serviceBookingProcess.vehicle.ChassisNumber:null))
 }
@@ -1182,10 +1184,6 @@ function getCustomerDetails(){
             }, 1000);
         }, 500);
         return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div><br /><br /><div id="createCustomerForm"></div>';
-    }
-    if (serviceBookingProcess.customer.editing){
-        editCustomer();
-        return '';
     }
     let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />';
     out += '<div style="float: right; ";><button class="btn btn-primary" onclick="editCustomer(); return false;">Edit</button>&nbsp;<button class="btn btn-primary" onclick="changeCustomer(); return false;">Change</button></div>'
