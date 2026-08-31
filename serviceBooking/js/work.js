@@ -1031,6 +1031,12 @@ function showClosestDealerships(postcode){
     }   
 }
 
+function cancelEdit(){
+    serviceBookingProcess.customerChange = false;
+    serviceBookingProcess.customerChangeInEdit = false; 
+    $('div[id="customerDetails"]').html(getCustomerDetails());
+}
+
 function createCustomerSubmit(event) {
   serviceBookingProcess.customerChange = true;
   $(this).find(":submit").attr('disabled', 'disabled');
