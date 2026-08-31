@@ -1179,7 +1179,7 @@ function chooseCustomerFromAutoline(customerNumber){
     let chC = serviceBookingProcess.customerSearch.results.find(el => el.CustomerNumber === customerNumber.toString());
     console.log('chC',chC);
     serviceBookingProcess.customer = chC;
-    serviceBookingProcess.customerGdpr = null;
+    serviceBookingProcess.customerGdpr = chC.customerGdpr;
     if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
 }
