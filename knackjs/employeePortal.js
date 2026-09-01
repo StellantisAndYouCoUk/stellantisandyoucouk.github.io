@@ -253,6 +253,6 @@ $(document).on('knack-form-submit.view_8206', function(event, view, data) {
 
     setTimeout(function () {
         location.reload();
-    }, 15000);
+    }, 25000);
 
 });
