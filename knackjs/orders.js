@@ -2329,3 +2329,13 @@ console.log("renderSYSearchButtons('4537',defineButtons);")
       }
     });	
 });
+
+
+//code to refresh scene on form submit - re-calc Sales advisor monthly figures (bottom of summary)
+$(document).on('knack-form-submit.view_6382', function(event, view, data) {
+
+    setTimeout(function () {
+        location.reload();
+    }, 15000);
+
+});
