@@ -1385,7 +1385,7 @@ async function generateBookingSummary(){
     let html = '<b>' + serviceBookingProcess.bookingData.dealerName+'<br/>'+serviceBookingProcess.bookingData.bookingVehicleDescription+' - '+serviceBookingProcess.bookingData.mileage+' miles</b>';
     $('div[id="bookingSummary"]').html(html);
     let total = 0;
-    html += '<br /><br /><b>Booked Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
+    html += '<br /><br /><b>Priced Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
     if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0){
         let excludedCodes = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
@@ -1415,7 +1415,13 @@ async function generateBookingSummary(){
     html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"'+(!serviceBookingProcess.bookingData.discountPercent || serviceBookingProcess.bookingData.discountPercent===0?' checked=true':'')+'><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"'+(serviceBookingProcess.bookingData.discountPercent===5?' checked=true':'')+'><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"'+(serviceBookingProcess.bookingData.discountPercent===10?' checked=true':'')+'><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" class="ng-binding"><span id="totalDiscount">'+(serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?'<span style="color:red;">-£'+(total*(serviceBookingProcess.bookingData.discountPercent/100)).toFixed(2)+'</span>':'-£0.00')+'</span></td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
     html += '</table>';
     html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
-    
+
+    if (serviceBookingProcess.bookingData.inAddingRTSCode){
+        html += '<form id="addRTSCode"><div>Code: <input class="input" id="RTSCode" type="text"><br />Name: <input class="input" id="Name" type="text"><br />Quantity: <input class="input" id="Quantity" type="text"><br />Price: <input class="input" id="Price" type="text"></div></form>'
+    } else {
+        html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
+    }
+
     $('div[id="bookingSummary"]').html(html);
 
     //let aV = findAvailabilityDaysForBooking();
@@ -1432,6 +1438,7 @@ async function generateBookingSummary(){
     }
 
     if (serviceBookingProcess.bookingData.confirmAvailability){
+        html += '<b>Booking details</b>';
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
             html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
         } else {
@@ -1461,6 +1468,11 @@ async function generateBookingSummary(){
         }
     }*/
     $('div[id="bookingSummary"]').html(html);
+}
+
+function showAddingRTSCode(){
+    serviceBookingProcess.bookingData.inAddingRTSCode = true;
+    generateBookingSummary();
 }
 
 function getCourtesyCarsForDate(date){
