@@ -244,7 +244,7 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 }
 
 function checkBookDate(date){
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
     serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
     confirmAvailabilityForDate(date,checkBookDateCallback);
     generateBookingSummary();
