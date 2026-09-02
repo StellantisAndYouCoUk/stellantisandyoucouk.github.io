@@ -719,6 +719,7 @@ function checkVehicleCreateStatusResponse(data){
     console.log('checkVehicleCreateStatusResponse',data);
     let dataJ = JSON.parse(data);
     serviceBookingProcess.createVehicleInAutolineStatus = dataJ.status;
+    $('div[id="vehicleDescription"]').html(getVehicleDescription());
     if (dataJ.status!=='Success'){
         setTimeout(() => {
             checkCreateVehicleStatus();
