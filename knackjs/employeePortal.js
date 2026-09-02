@@ -253,10 +253,6 @@ $(document).on('knack-form-submit.view_8206', function(event, view, data) {
 
     setTimeout(function () {
         location.reload();
-    }, 15000);
+    }, 25000);
 
-});
-//code to reload page after 10 seconds
-$(document).on('knack-form-submit.view_8206', function() {
-    setTimeout(() => window.location.reload(), 10000);
 });
