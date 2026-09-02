@@ -699,11 +699,43 @@ function createVehicleInAutoline(){
         payload.vin = serviceBookingProcess.secondaryDetails.autotraderData.vehicle.vin;
     }
     console.log(payload);
+    serviceBookingProcess.vehicleIsBeingCreatedInAutoline = true;
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/181yyjeqg4jyzgfjrrnn43snk99ot61f',null,payload,checkCreateVehicleInAutoline)
 }
 
 function checkCreateVehicleInAutoline(data){
-    
+    console.log('submited ');
+    checkCreateVehicleStatus();
+}
+
+function checkCreateVehicleStatus(){
+    if (serviceBookingProcess.registrationNumber){
+        callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/t8v4u1qkdquauc3jaypye4g4ssygye5o',null,{registrationNumber : serviceBookingProcess.registrationNumber},checkVehicleCreateStatusResponse)
+    }
+}
+
+function checkVehicleCreateStatusResponse(data){
+    console.log('checkVehicleCreateStatusResponse',data);
+    let dataJ = JSON.parse(data);
+    /*
+    $('div[id="customerDetails"]').html('Customer was sent to update/create to Autoline.<br /><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Current update status: '+dataJ.status);
+    if (dataJ.status!=='Success'){
+        setTimeout(() => {
+            checkCustomerUpdateStatus();
+        }, 2000);
+    } else {
+        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,customerNumber:dataJ.customerNumber},reloadCustomerCallback);
+        //callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:serviceBookingProcess.registrationNumber},reloadCustomerCallback)
+    }*/
+}
+
+function reloadCustomerCallback(data){
+    console.log('reloadCustomerCallback',data)
+    if (data[0]){
+        serviceBookingProcess.customer = data[0];
+        serviceBookingProcess.customerGdpr = data[0].customerGdpr;
+        if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
+    }
 }
 
 function getVehicleDescription(){
@@ -713,7 +745,7 @@ function getVehicleDescription(){
     if (!serviceBookingProcess.vehicle){
         out += '<b>Vehicle was not found in Autoline</b><br /><br />'
         if (serviceBookingProcess.customer){
-            out += '<button onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
+            out += '<button class="btn btn-primary" onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
         } else {
             out += 'To create the vehicle in Autoline choose or create customer first<br /><br />'
         }
