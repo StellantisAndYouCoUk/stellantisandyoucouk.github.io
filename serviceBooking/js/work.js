@@ -1475,6 +1475,12 @@ function showAddingRTSCode(){
     generateBookingSummary();
 }
 
+function addRTSCode(){
+    addCodeToBooking($("#RTSCode").val());
+    serviceBookingProcess.bookingData.inAddingRTSCode = false;
+    generateBookingSummary();
+}
+
 function getCourtesyCarsForDate(date){
     if (!(serviceBookingProcess && serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.courtesyVehicles)) return '';
     let cars = [];
