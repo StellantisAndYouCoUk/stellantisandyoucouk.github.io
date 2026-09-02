@@ -738,7 +738,7 @@ function getVehicleDescription(){
         out += '<b>Vehicle was not found in Autoline</b><br /><br />'
         if (serviceBookingProcess.customer){
             if (serviceBookingProcess.createVehicleInAutolineStatus){
-                out += "Vehicle was sent for creation to Autoline. Current status: " + serviceBookingProcess.createVehicleInAutolineStatus
+                out += "<b>Vehicle was sent for creation to Autoline. Current status: " + serviceBookingProcess.createVehicleInAutolineStatus+'</b><br /><br />'
             } else {
                 out += '<button id="createVehicleInAutoline" class="btn btn-primary" onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
             }
