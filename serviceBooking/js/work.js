@@ -735,12 +735,12 @@ function getVehicleDescription(){
     let vehicleAge = null;
     let firstDateToUse = null;
     if (!serviceBookingProcess.vehicle){
-        out += '<b>Vehicle was not found in Autoline</b><br /><br />'
+        out += '<b>Vehicle was not found in Autoline</b><br />'
         if (serviceBookingProcess.customer){
             if (serviceBookingProcess.createVehicleInAutolineStatus){
                 out += "<b>Vehicle was sent for creation to Autoline. Current status: " + serviceBookingProcess.createVehicleInAutolineStatus+'</b><br /><br />'
             } else {
-                out += '<button id="createVehicleInAutoline" class="btn btn-primary" onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
+                out += '<br /><button id="createVehicleInAutoline" class="btn btn-primary" onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
             }
         } else {
             out += 'To create the vehicle in Autoline choose or create customer first<br /><br />'
