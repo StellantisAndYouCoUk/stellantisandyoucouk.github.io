@@ -1417,7 +1417,7 @@ async function generateBookingSummary(){
     html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
-        html += '<b>Add non-listed item:</b><br /><form id="addRTSCode"><div>Code: <input class="input" id="RTSCode" type="text"><br />Name: <input class="input" id="Name" type="text"><br />Quantity: <input class="input" id="Quantity" type="text"><br />Price: <input class="input" id="Price" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div></form>'
+        html += '<b>Add non-listed item:</b><br /><form id="addRTSCode"><div>Code: <input class="input" id="addRTSCode" type="text"><br />Name: <input class="input" id="addName" type="text"><br />Quantity: <input class="input" id="addQuantity" type="text"><br />Price: <input class="input" id="addPrice" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div></form>'
     } else {
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
@@ -1476,7 +1476,9 @@ function showAddingRTSCode(){
 }
 
 function addRTSCode(){
-    addCodeToBooking('MANUAL#'+$("#RTSCode").val());
+    if (!serviceBookingProcess.bookingData.manualPricingLines) serviceBookingProcess.bookingData.manualPricingLines = [];
+    addCodeToBooking('MANUAL#'+$("#addRTSCode").val());
+    serviceBookingProcess.bookingData.manualPricingLines.push({code:$("#addRTSCode").val(),name:$("#addName").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val()})
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
     generateBookingSummary();
 }
