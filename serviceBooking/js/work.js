@@ -1417,7 +1417,7 @@ async function generateBookingSummary(){
     html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
-        html += '<b>Add non-listed item:</b><br /><form id="addRTSCode"><div>Code: <input class="input" id="RTSCode" type="text"><br />Name: <input class="input" id="Name" type="text"><br />Quantity: <input class="input" id="Quantity" type="text"><br />Price: <input class="input" id="Price" type="text"><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add</button></div></form>'
+        html += '<b>Add non-listed item:</b><br /><form id="addRTSCode"><div>Code: <input class="input" id="RTSCode" type="text"><br />Name: <input class="input" id="Name" type="text"><br />Quantity: <input class="input" id="Quantity" type="text"><br />Price: <input class="input" id="Price" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div></form>'
     } else {
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
