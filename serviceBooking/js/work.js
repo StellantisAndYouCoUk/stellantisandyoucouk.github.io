@@ -691,6 +691,7 @@ function getPricingBrandsForD(checkDealership, selectedId=null){
 }
 
 function createVehicleInAutoline(){
+    $('button[id="createVehicleInAutoline"]').prop("disabled", true);
     let payload = {
         customerNumber: serviceBookingProcess.customer.CustomerNumber,
         registrationNumber : serviceBookingProcess.registrationNumber
@@ -717,24 +718,13 @@ function checkCreateVehicleStatus(){
 function checkVehicleCreateStatusResponse(data){
     console.log('checkVehicleCreateStatusResponse',data);
     let dataJ = JSON.parse(data);
-    /*
-    $('div[id="customerDetails"]').html('Customer was sent to update/create to Autoline.<br /><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Current update status: '+dataJ.status);
+    serviceBookingProcess.createVehicleInAutolineStatus = dataJ.status;
     if (dataJ.status!=='Success'){
         setTimeout(() => {
-            checkCustomerUpdateStatus();
+            checkCreateVehicleStatus();
         }, 2000);
     } else {
-        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,customerNumber:dataJ.customerNumber},reloadCustomerCallback);
-        //callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsByRegBasic?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:serviceBookingProcess.registrationNumber},reloadCustomerCallback)
-    }*/
-}
-
-function reloadCustomerCallback(data){
-    console.log('reloadCustomerCallback',data)
-    if (data[0]){
-        serviceBookingProcess.customer = data[0];
-        serviceBookingProcess.customerGdpr = data[0].customerGdpr;
-        if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
+        //callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,customerNumber:dataJ.customerNumber},reloadCustomerCallback);
     }
 }
 
@@ -745,7 +735,11 @@ function getVehicleDescription(){
     if (!serviceBookingProcess.vehicle){
         out += '<b>Vehicle was not found in Autoline</b><br /><br />'
         if (serviceBookingProcess.customer){
-            out += '<button class="btn btn-primary" onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
+            if (serviceBookingProcess.createVehicleInAutolineStatus){
+                out += "Vehicle was sent for creation to Autoline. Current status: " + serviceBookingProcess.createVehicleInAutolineStatus
+            } else {
+                out += '<button id="createVehicleInAutoline" class="btn btn-primary" onclick="createVehicleInAutoline(); return false;">Create vehicle in Autoline connected to the customer</button><br /><br />'
+            }
         } else {
             out += 'To create the vehicle in Autoline choose or create customer first<br /><br />'
         }
