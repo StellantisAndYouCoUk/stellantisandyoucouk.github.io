@@ -1175,7 +1175,7 @@ function editCustomer(){
 function changeCustomer(){
     serviceBookingProcess.customerChange = true;
     serviceBookingProcess.customerChangeInEdit = true; 
-    $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div>');
+    $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button class="btn btn-primary" onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div>');
 }
 
 function searchCustomerInAutoline(){
