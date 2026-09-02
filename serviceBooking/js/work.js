@@ -1476,7 +1476,7 @@ function showAddingRTSCode(){
 }
 
 function addRTSCode(){
-    addCodeToBooking($("#RTSCode").val());
+    addCodeToBooking('MANUAL#'+$("#RTSCode").val());
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
     generateBookingSummary();
 }
