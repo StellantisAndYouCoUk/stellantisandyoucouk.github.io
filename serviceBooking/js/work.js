@@ -725,9 +725,15 @@ function checkVehicleCreateStatusResponse(data){
             checkCreateVehicleStatus();
         }, 2000);
     } else {
-        $('#infoPanel').html('Vehicle was created in Autoline.')
-        //callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,customerNumber:dataJ.customerNumber},reloadCustomerCallback);
+        $('#infoPanel').html('<b>Vehicle was created in Autoline.</b>')
+        callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getVehicleByReg?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:serviceBookingProcess.registrationNumber},reloadVehicleCallback);
     }
+}
+
+function reloadVehicleCallback(data){
+    console.log('reloadVehicleCallback')
+    serviceBookingProcess.vehicle = data.vehicle;
+    $('div[id="vehicleDescription"]').html(getVehicleDescription());
 }
 
 function getVehicleDescription(){
@@ -1411,6 +1417,20 @@ async function generateBookingSummary(){
     html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
     
     $('div[id="bookingSummary"]').html(html);
+
+    //let aV = findAvailabilityDaysForBooking();
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
+        html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
+        html += '<br /><span style="text-align: center; background-color: #90EE90;">&nbsp; &nbsp; &nbsp; &nbsp;</span> Wait appointment available';
+        if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
+            html += '<br /><span style="text-align: center; background-color: orange;">&nbsp; &nbsp; &nbsp; &nbsp;</span> No courtesy car available';
+        }
+    }
+
     if (serviceBookingProcess.bookingData.confirmAvailability){
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
             html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
@@ -1431,19 +1451,6 @@ async function generateBookingSummary(){
                 html += '<br />Available cars<br />';
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
-        }
-    }
-
-    //let aV = findAvailabilityDaysForBooking();
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
-        html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
-        html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
-        html += '<br /><span style="text-align: center; background-color: #90EE90;">&nbsp; &nbsp; &nbsp; &nbsp;</span> Wait appointment available';
-        if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
-            html += '<br /><span style="text-align: center; background-color: orange;">&nbsp; &nbsp; &nbsp; &nbsp;</span> No courtesy car available';
         }
     }
     /*
