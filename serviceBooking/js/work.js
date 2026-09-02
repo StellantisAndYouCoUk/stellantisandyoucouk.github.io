@@ -1205,8 +1205,10 @@ function getCustomerDetails(){
             setTimeout(() => {
                 const form = document.querySelector("form[id=\"createCustomer\"]");
                 form.addEventListener("submit", createCustomerSubmit);
+                $('button[id="cancelEdit"]').hide();
             }, 1000);
         }, 500);
+        serviceBookingProcess.customerChangeInEdit = true;
         return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div><br /><br /><div id="createCustomerForm"></div>';
     }
     let out = '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />';
