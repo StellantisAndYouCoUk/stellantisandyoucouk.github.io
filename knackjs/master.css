@@ -5391,23 +5391,7 @@ p.speech-bubble-outbound-sales:before {
     overflow: auto;
 }
 
-/* Force all columns to be 100px wide */
-#view_9276 table {
-    table-layout: fixed;
-}
-
-#view_9276 th,
-#view_9276 td {
-    width: 100px;
-    min-width: 100px;
-    max-width: 100px;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    vertical-align: top;
-}
-
-/* Sticky header */
+/* Sticky Header */
 #view_9276 thead th {
     position: sticky;
     top: 0;
@@ -5415,11 +5399,21 @@ p.speech-bubble-outbound-sales:before {
     z-index: 100;
 }
 
+/* Normal table columns */
+#view_9276 th,
+#view_9276 td {
+    white-space: normal;
+    vertical-align: top;
+}
+
 /* Sticky Column 1 */
 #view_9276 th:nth-child(1),
 #view_9276 td:nth-child(1) {
     position: sticky;
     left: 0;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
     background: #ddd;
     z-index: 90;
 }
@@ -5429,6 +5423,9 @@ p.speech-bubble-outbound-sales:before {
 #view_9276 td:nth-child(2) {
     position: sticky;
     left: 100px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
     background: #ddd;
     z-index: 90;
 }
@@ -5438,11 +5435,14 @@ p.speech-bubble-outbound-sales:before {
 #view_9276 td:nth-child(3) {
     position: sticky;
     left: 200px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
     background: #ddd;
     z-index: 90;
 }
 
-/* Keep sticky headers above sticky columns */
+/* Ensure sticky headers stay above sticky columns */
 #view_9276 thead th:nth-child(1),
 #view_9276 thead th:nth-child(2),
 #view_9276 thead th:nth-child(3) {
