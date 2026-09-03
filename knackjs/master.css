@@ -5401,9 +5401,10 @@ p.speech-bubble-outbound-sales:before {
     width: 100px;
     min-width: 100px;
     max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    vertical-align: top;
 }
 
 /* Sticky header */
@@ -5441,10 +5442,10 @@ p.speech-bubble-outbound-sales:before {
     z-index: 90;
 }
 
-/* Ensure sticky header remains above sticky columns */
+/* Keep sticky headers above sticky columns */
 #view_9276 thead th:nth-child(1),
 #view_9276 thead th:nth-child(2),
 #view_9276 thead th:nth-child(3) {
-    z-index: 101;
     background: #ccc;
+    z-index: 101;
 }
