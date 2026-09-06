@@ -469,7 +469,7 @@ function processOneFoundAddress(addressId){
         }
         const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
         if (dropdownMenu) {
-        dropdownMenu.classList.remove("show");
+            dropdownMenu.classList.remove("show");
         }
     }
 }
