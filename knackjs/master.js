@@ -7022,3 +7022,16 @@ $(document).on('knack-scene-render.scene_2911', function() {
         $('.kn-modal').addClass('side-panel-modal');
     }, 100);
 });
+
+// Code for scroll to view
+
+window.scrollToView = function(viewKey) {
+
+  const $target = $(`#${viewKey}`);
+  if ($target.length) {
+    $('html, body').animate({
+      scrollTop: $target.offset().top - 50
+    }, 500);
+  }
+
+}

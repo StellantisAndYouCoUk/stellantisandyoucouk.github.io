@@ -5384,3 +5384,68 @@ p.speech-bubble-outbound-sales:before {
     pointer-events: auto !important;
 }
 
+/* keep the first 3 columns locked for sales payplan data*/
+
+#view_9276 .kn-table-wrapper {
+    max-height: 750px;
+    overflow: auto;
+}
+
+/* Sticky Header */
+#view_9276 thead th {
+    position: sticky;
+    top: 0;
+    background: #f5f5f5;
+    z-index: 100;
+}
+
+/* Normal table columns */
+#view_9276 th,
+#view_9276 td {
+    white-space: normal;
+    vertical-align: top;
+}
+
+/* Sticky Column 1 */
+#view_9276 th:nth-child(1),
+#view_9276 td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    background: #ddd;
+    z-index: 90;
+}
+
+/* Sticky Column 2 */
+#view_9276 th:nth-child(2),
+#view_9276 td:nth-child(2) {
+    position: sticky;
+    left: 100px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    background: #ddd;
+    z-index: 90;
+}
+
+/* Sticky Column 3 */
+#view_9276 th:nth-child(3),
+#view_9276 td:nth-child(3) {
+    position: sticky;
+    left: 200px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    background: #ddd;
+    z-index: 90;
+}
+
+/* Ensure sticky headers stay above sticky columns */
+#view_9276 thead th:nth-child(1),
+#view_9276 thead th:nth-child(2),
+#view_9276 thead th:nth-child(3) {
+    background: #ccc;
+    z-index: 101;
+}
