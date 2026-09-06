@@ -468,12 +468,14 @@ function processOneFoundAddress(addressId){
         let cA = addressData.Text+', '+addressData.Description;
         console.log(cA)
         let cAA = cA.split(', ');
+        let postCode = cAA.pop();
         for (let i = 0;i<(cAA.length<5?cAA.length:5);i++){
             $('#address'+(i+1)).val(cAA[i]);
         }
-        for (let i = cAA.length;i<5;i++){
+        for (let i = cAA.length+1;i<5;i++){
             $('#address'+i).val('');
         }
+        $('#postCode').val(postCode);
         const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
         if (dropdownMenu) {
             dropdownMenu.classList.remove("show");
