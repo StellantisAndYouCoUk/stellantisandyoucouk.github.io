@@ -476,7 +476,12 @@ function processOneFoundAddress(addressId){
             $('#address'+i).val('');
         }
         $('#postCode').val(postCode);
-        if ($('#postcodeForD').val()==='') $('#postcodeForD').val(postCode);
+        if ($('#postcodeForD').val()===''){
+            $('#postcodeForD').val(postCode);
+            if (!serviceBookingProcess.lastDealership){
+                findDealerships();
+            }
+        }
         const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
         if (dropdownMenu) {
             dropdownMenu.classList.remove("show");
