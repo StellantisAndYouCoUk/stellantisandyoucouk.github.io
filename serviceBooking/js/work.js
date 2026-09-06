@@ -466,6 +466,7 @@ function processOneFoundAddress(addressId){
     console.log(addressData);
     if (addressData && addressData.Type === 'Address'){
         let cA = addressData.Text+', '+addressData.Description;
+        console.log(cA)
         let cAA = cA.split(', ');
         for (let i = 1;i<(cAA.length<5?cAA.length:5);i++){
             $('#address'+i).val(cAA[i]);
