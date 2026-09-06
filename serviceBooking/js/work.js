@@ -461,6 +461,17 @@ function addressSearchFCallback(data){
 function processOneFoundAddress(addressId){
     let addressData = serviceBookingProcess.addressSearchData.Items.find(el => el.Id === addressId);
     console.log(addressData);
+    if (addressData && addressData.Type === 'Address'){
+        let cA = addressData.Text+', '+addressData.Description;
+        let cAA = cA.split(', ');
+        for (let i = 1;i<(cAA.length<5?cAA.length:5);i++){
+            $('#address'+i).val(cAA[i]);
+        }
+        const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
+        if (dropdownMenu) {
+        dropdownMenu.classList.remove("show");
+        }
+    }
 }
 
 function work(){
