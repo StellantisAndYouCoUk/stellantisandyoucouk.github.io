@@ -1250,6 +1250,11 @@ function getCustomerDetails(){
                 const form = document.querySelector("form[id=\"createCustomer\"]");
                 form.addEventListener("submit", createCustomerSubmit);
                 $('button[id="cancelEdit"]').hide();
+
+                const addressSearch = document.querySelector("#addressSearch");
+                console.log(addressSearch);
+                addressSearch.addEventListener("input", showDropdown);
+                addressSearch.addEventListener("click", stopNormal);
             }, 1000);
         }, 500);
         serviceBookingProcess.customerChangeInEdit = true;
