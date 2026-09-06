@@ -445,7 +445,7 @@ function addressSearchFCallback(data){
     console.log('addressSearchFCallback',data);
     serviceBookingProcess.addressSearchData = data;
     let dropDownHTML = data.Items.map(function (el){
-        return '<li id="addressSearchLoading"><a class="dropdown-item" href="#" data="'+el.Id+'">'+el.Text+' '+el.Description+'</a></li>'
+        return '<li id="addressSearchLoading"><a class="dropdown-item" onclick="processOneFoundAddress(\''+el.Id+'\')" href="#">'+el.Text+' '+el.Description+'</a></li>'
     })
     $('#addressSearchDropdown').html(dropDownHTML)
   clearTimeout(timeout);
@@ -456,6 +456,11 @@ function addressSearchFCallback(data){
       dropdownMenu.classList.add("show");
     }
   }, 100);
+}
+
+function processOneFoundAddress(addressId){
+    let addressData = serviceBookingProcess.addressSearchData.find(el => el.Id === addressId);
+    console.log(addressData);
 }
 
 function work(){
