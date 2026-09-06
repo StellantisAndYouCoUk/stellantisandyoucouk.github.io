@@ -431,12 +431,20 @@ const stopNormal = (event) => {
   event.target.nextElementSibling.classList.remove("show");
 };
  
-const showDropdown = (event) => {
-    console.log('showDropdown')
-    $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Loading ...</a></li>');
-    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/completeAddress?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,addressInput:event.target.value});
-    serviceBookingProcess.addressSearchData = r;
-    let dropDownHTML = r.Items.map(function (el){
+const addressSearchF = (event) => {
+    console.log('addressSearchF');
+    if (event.target.value===''){
+        $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Loading ...</a></li>');
+        event.target.nextElementSibling.classList.remove("show");
+        return;
+    }
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/completeAddress?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,addressInput:event.target.value},addressSearchFCallback);
+};
+
+function addressSearchFCallback(data){
+    console.log('addressSearchFCallback',data);
+    serviceBookingProcess.addressSearchData = data;
+    let dropDownHTML = data.Items.map(function (el){
         return '<li id="addressSearchLoading"><a class="dropdown-item" href="#" data="'+el.Id+'">'+el.Text+' '+el.Description+'</a></li>'
     })
     $('#addressSearchDropdown').html(dropDownHTML)
@@ -448,7 +456,7 @@ const showDropdown = (event) => {
       dropdownMenu.classList.add("show");
     }
   }, 100);
-};
+}
 
 function work(){
     let page = window.location.href;
@@ -1187,7 +1195,7 @@ function editCustomer(){
 
         const addressSearch = document.querySelector("#addressSearch");
         console.log(addressSearch);
-        addressSearch.addEventListener("input", showDropdown);
+        addressSearch.addEventListener("input", addressSearchF);
         addressSearch.addEventListener("click", stopNormal);
     }, 200);
 }
@@ -1257,7 +1265,7 @@ function getCustomerDetails(){
 
                 const addressSearch = document.querySelector("#addressSearch");
                 console.log(addressSearch);
-                addressSearch.addEventListener("input", showDropdown);
+                addressSearch.addEventListener("input", addressSearchF);
                 addressSearch.addEventListener("click", stopNormal);
             }, 1000);
         }, 500);
