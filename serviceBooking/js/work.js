@@ -431,6 +431,8 @@ const stopNormal = (event) => {
 };
  
 const showDropdown = (event) => {
+    $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Loading ...</a></li>');
+    $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Item 1</a></li><li id="addressSearchLoading"><a class="dropdown-item" href="#">Item 2</a></li>')
   clearTimeout(timeout);
  
   timeout = setTimeout(() => {
