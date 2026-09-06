@@ -432,6 +432,7 @@ const stopNormal = (event) => {
  
 const showDropdown = (event) => {
     $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Loading ...</a></li>');
+    let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/completeAddress?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,addressInput:event.target.value});
     $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Item 1</a></li><li id="addressSearchLoading"><a class="dropdown-item" href="#">Item 2</a></li>')
   clearTimeout(timeout);
  
