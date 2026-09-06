@@ -476,6 +476,7 @@ function processOneFoundAddress(addressId){
             $('#address'+i).val('');
         }
         $('#postCode').val(postCode);
+        if ($('#postcodeForD').val()==='') $('#postcodeForD').val(postCode);
         const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
         if (dropdownMenu) {
             dropdownMenu.classList.remove("show");
