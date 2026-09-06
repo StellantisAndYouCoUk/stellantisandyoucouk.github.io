@@ -468,8 +468,8 @@ function processOneFoundAddress(addressId){
         let cA = addressData.Text+', '+addressData.Description;
         console.log(cA)
         let cAA = cA.split(', ');
-        for (let i = 1;i<(cAA.length<5?cAA.length:5);i++){
-            $('#address'+i).val(cAA[i]);
+        for (let i = 0;i<(cAA.length<5?cAA.length:5);i++){
+            $('#address'+(i+1)).val(cAA[i]);
         }
         const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
         if (dropdownMenu) {
