@@ -1182,6 +1182,7 @@ function editCustomer(){
         form.addEventListener("submit", editCustomerSubmit);
 
         const addressSearch = document.querySelector("#addressSearch");
+        console.log(addressSearch);
         addressSearch.addEventListener("input", showDropdown);
         addressSearch.addEventListener("click", stopNormal);
     }, 200);
