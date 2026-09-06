@@ -471,6 +471,9 @@ function processOneFoundAddress(addressId){
         for (let i = 0;i<(cAA.length<5?cAA.length:5);i++){
             $('#address'+(i+1)).val(cAA[i]);
         }
+        for (let i = cAA.length;i<5;i++){
+            $('#address'+i).val('');
+        }
         const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
         if (dropdownMenu) {
             dropdownMenu.classList.remove("show");
