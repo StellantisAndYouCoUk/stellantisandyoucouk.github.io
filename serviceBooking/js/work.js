@@ -459,7 +459,7 @@ function addressSearchFCallback(data){
 }
 
 function processOneFoundAddress(addressId){
-    let addressData = serviceBookingProcess.addressSearchData.find(el => el.Id === addressId);
+    let addressData = serviceBookingProcess.addressSearchData.Items.find(el => el.Id === addressId);
     console.log(addressData);
 }
 
