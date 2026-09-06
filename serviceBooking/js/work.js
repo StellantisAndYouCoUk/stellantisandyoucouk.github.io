@@ -436,7 +436,7 @@ const showDropdown = (event) => {
     $('#addressSearchDropdown').html('<li id="addressSearchLoading"><a class="dropdown-item" href="#">Loading ...</a></li>');
     let r = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/completeAddress?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,addressInput:event.target.value});
     serviceBookingProcess.addressSearchData = r;
-    let dropDownHTML = r.map(function (el){
+    let dropDownHTML = r.Items.map(function (el){
         return '<li id="addressSearchLoading"><a class="dropdown-item" href="#" data="'+el.Id+'">'+el.Text+' '+el.Description+'</a></li>'
     })
     $('#addressSearchDropdown').html(dropDownHTML)
