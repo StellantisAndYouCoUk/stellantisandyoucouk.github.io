@@ -423,6 +423,7 @@ function newVehicle(doWork = true){
 }
 
 let timeout;
+let lastAddressSearchInput;
  
 const stopNormal = (event) => {
     console.log('stopNormal')
@@ -438,11 +439,13 @@ const addressSearchF = (event) => {
         event.target.nextElementSibling.classList.remove("show");
         return;
     }
+    lastAddressSearchInput = event.target.value;
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/completeAddress?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,addressInput:event.target.value},addressSearchFCallback);
 };
 
 function addressSearchFCallback(data){
     console.log('addressSearchFCallback',data);
+    if (data.addressInput!==lastAddressSearchInput) return;
     serviceBookingProcess.addressSearchData = data;
     let dropDownHTML = data.Items.map(function (el){
         return '<li id="addressSearchLoading"><a class="dropdown-item" onclick="processOneFoundAddress(\''+el.Id+'\')" href="#">'+el.Text+' '+el.Description+'</a></li>'
