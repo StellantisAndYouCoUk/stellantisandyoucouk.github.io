@@ -1180,7 +1180,7 @@ function editCustomer(){
         form.addEventListener("submit", editCustomerSubmit);
 
         const addressSearch = document.querySelector("#addressSearch");
-        addressSearch.addEventListener("input", showDropdown);
+        addressSearch.addEventListener("keypress", showDropdown);
         addressSearch.addEventListener("click", stopNormal);
     }, 200);
 }
