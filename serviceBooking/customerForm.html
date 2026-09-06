@@ -38,8 +38,11 @@
 
 <div>
   <label><span>Customer Address</span> <span class="kn-required">*</span></label>
-  <div class="control">
-    <input class="input" id="addressSearch" type="text" placeholder="E.g. 'CR0 3RL' or '36 Factory Lane'">
+  <div class="dropdown">
+    <input class="input" id="addressSearch" type="text" placeholder="E.g. 'CR0 3RL' or '36 Factory Lane'" data-bs-toggle="dropdown">
+    <ul class="dropdown-menu" aria-labelledby="addressSearch">
+        <li><a class="dropdown-item" href="#">Loading ...</a></li>
+    </ul>
     <label>Search</label>
   </div>
   <div class="control">

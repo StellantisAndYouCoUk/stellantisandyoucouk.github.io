@@ -1175,6 +1175,10 @@ function editCustomer(){
         if (serviceBookingProcess.customerGdpr.gdprDataMarketing[3].ChannelOption==='D') form.querySelector('[id="gdprPhone"]').options[2].selected = true;
         form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
+
+        const addressSearch = document.querySelector("#addressSearch");
+        addressSearch.addEventListener("input", showDropdown);
+        addressSearch.addEventListener("click", stopNormal);
     }, 200);
 }
 
