@@ -1116,7 +1116,7 @@ function showClosestDealerships(postcode){
     }   
 }
 
-function cancelEdit(){
+function cancelEdit(event){
     serviceBookingProcess.customerChange = false;
     serviceBookingProcess.customerChangeInEdit = false; 
     $('div[id="customerDetails"]').html(getCustomerDetails());
@@ -1226,6 +1226,9 @@ function editCustomer(){
         if (serviceBookingProcess.customerGdpr.gdprDataMarketing[3].ChannelOption==='D') form.querySelector('[id="gdprPhone"]').options[2].selected = true;
         form.querySelector('button').innerText = 'Update customer';
         form.addEventListener("submit", editCustomerSubmit);
+
+        const cancelB = document.querySelector("button[id=\"cancelEdit\"]");
+        cancelB.addEventListener("click", cancelEdit);
 
         const addressSearch = document.querySelector("#addressSearch");
         console.log(addressSearch);
