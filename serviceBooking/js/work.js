@@ -451,7 +451,7 @@ function addressSearchFCallback(data){
   clearTimeout(timeout);
  
   timeout = setTimeout(() => {
-    const dropdownMenu = event.target.nextElementSibling;
+    const dropdownMenu = document.querySelector('[id="addressSearchDropdown"]');
     if (dropdownMenu) {
       dropdownMenu.classList.add("show");
     }
