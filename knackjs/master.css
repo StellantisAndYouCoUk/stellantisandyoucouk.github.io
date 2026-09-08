@@ -5449,3 +5449,10 @@ p.speech-bubble-outbound-sales:before {
     background: #ccc;
     z-index: 101;
 }
+
+
+
+/* Hide entried summary - invoice processing supplier last refreshed */
+#view_9423 .kn-entries-summary{
+  display: none;
+}
