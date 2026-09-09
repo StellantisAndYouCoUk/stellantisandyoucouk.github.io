@@ -6914,7 +6914,7 @@ $(document).on('knack-view-render.view_9273 knack-view-render.view_9305', functi
  // $('#view_9273').closest('.view-column').remove();
 
   // Continue if link exists
-  if (!pdfLink) return;
+  if (!pdfLink || !pdfLink2) return;
 
   // If split container exists, wrap form. Set PDF pane and iframe from CSS with PDF link
   if (!$('.split-container').length) {
