@@ -4053,7 +4053,8 @@ display: none;
 #view_5882 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_6235 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7519 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_7631 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+#view_7631 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9431 > div > a.kn-link.kn-link-1.kn-link-page.kn-button{
   background-color: #ffa100 !important;
   color: #ffffff;
   font-weight: bold;
@@ -4076,7 +4077,8 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5865 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5882 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_6235 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_7631 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+#view_7631 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9431 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button{
   background-color: #d18400 !important;
   color: #ffffff;
   font-weight: bold;
