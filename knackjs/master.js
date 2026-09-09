@@ -6944,9 +6944,8 @@ $(document).on('knack-view-render.view_9273 knack-view-render.view_9305', functi
 
     // Build layout
     splitContainer.append(pdfPane);
-    if(pdfLink2){
-		splitContainer.append(rightPane);
-	}
+	splitContainer.append(rightPane);
+	
     // Append to split container
     $('.kn-scene').append(splitContainer);
 
