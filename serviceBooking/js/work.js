@@ -1484,7 +1484,12 @@ async function generateBookingSummary(){
         if (serviceBookingProcess.bookingData.newRTSCode){
 
         } else {
-            html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><br /><button class="btn btn-primary" onclick="searchRTSCode(); return false;">Search</button><div id="searchRTSCodeResults"></div></div>'
+            html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><div id="searchRTSCodeResults"></div></div>';
+            setTimeout(() => {
+                $("input[id='searchRTSCode']").bind("keypress",function(e) {                   
+                    return searchRTSCode()
+                });
+            }, 200);
         }
     } else {
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
