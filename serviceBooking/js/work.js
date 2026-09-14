@@ -1486,8 +1486,10 @@ async function generateBookingSummary(){
         } else {
             html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><div id="searchRTSCodeResults"></div></div>';
             setTimeout(() => {
-                $("input[id='searchRTSCode']").bind("keyup",function(e) {                   
-                    return searchRTSCode()
+                $("input[id='searchRTSCode']").bind("keyup",function(e) {             
+                    setTimeout(() => {      
+                        return searchRTSCode()
+                    }, 100);
                 });
             }, 200);
         }
