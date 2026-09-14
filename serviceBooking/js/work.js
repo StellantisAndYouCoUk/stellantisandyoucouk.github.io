@@ -1562,7 +1562,7 @@ function searchRTSCode(){
             r = r.slice(0,9);
             r.push({description:"More RTS codes found, refine your search"})
         }
-        $("#searchRTSCodeResults").html(r.map(el => el.description + '<br />').join(''));
+        $("#searchRTSCodeResults").html(r.map(el => '<a class="dropdown-item" href="#" onclick="chooseRTSCode('+el.rtscode+'); return false;">'+el.rtscode+'</a>' + el.description.replace(el.rtscode+' - ','') + '<br />').join(''));
     }
 }
 
