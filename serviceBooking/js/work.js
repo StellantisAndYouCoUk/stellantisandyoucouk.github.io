@@ -1482,7 +1482,7 @@ async function generateBookingSummary(){
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
         if (serviceBookingProcess.bookingData.newRTSCode){
-            html += '<b>Add non-listed item:</b><br /><div>Code: <b>'+serviceBookingProcess.bookingData.newRTSCode+'</b></div><form id="addRTSCode"><div>Description: <input class="input" id="addDescription" type="text"><br />Quantity: <input class="input" id="addQuantity" type="text"><br />Price: <input class="input" id="addPrice" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div></form>';
+            html += '<b>Add non-listed item:</b><br /><div>Code: <b>'+serviceBookingProcess.bookingData.newRTSCode+'</b><br />'+supportData.rtsCode.find(el => el.rtscode===serviceBookingProcess.bookingData.newRTSCode).description+'</div><form id="addRTSCode"><div>Description: <input class="input" id="addDescription" type="text"><br />Quantity: <input class="input" id="addQuantity" type="text"><br />Price: <input class="input" id="addPrice" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div></form>';
         } else {
             html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><div id="searchRTSCodeResults"></div></div>';
             setTimeout(() => {
