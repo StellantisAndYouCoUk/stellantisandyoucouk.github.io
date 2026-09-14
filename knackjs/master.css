@@ -736,6 +736,7 @@ body {
 #view_7588 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_9223 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_9251 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_9266 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7059 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_8064 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_8592 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
@@ -3861,6 +3862,7 @@ display: none;
 #view_5653 > div.control > a.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5653 > div.control > a.kn-link.kn-link-9.kn-link-page.kn-button,
 #view_5653 > div.control > a.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_5653 > div.control > a.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_5666 > div.control > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5666 > div.control > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5666 > div.control > a.kn-link.kn-link-3.kn-link-page.kn-button,
@@ -3894,6 +3896,7 @@ display: none;
 #view_5653 > div.control > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5653 > div.control > a:hover.kn-link.kn-link-9.kn-link-page.kn-button,
 #view_5653 > div.control > a:hover.kn-link.kn-link-10.kn-link-page.kn-button,
+#view_5653 > div.control > a:hover.kn-link.kn-link-11.kn-link-page.kn-button,
 #view_5666 > div.control > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5666 > div.control > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5666 > div.control > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
@@ -4050,7 +4053,8 @@ display: none;
 #view_5882 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_6235 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7519 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_7631 > div > a.kn-link.kn-link-2.kn-link-page.kn-button {
+#view_7631 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9431 > div > a.kn-link.kn-link-1.kn-link-page.kn-button{
   background-color: #ffa100 !important;
   color: #ffffff;
   font-weight: bold;
@@ -4073,7 +4077,8 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5865 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5882 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_6235 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
-#view_7631 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button {
+#view_7631 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9431 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button{
   background-color: #d18400 !important;
   color: #ffffff;
   font-weight: bold;
@@ -4210,6 +4215,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5899 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5899 > div > a.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_5900 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5900 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7721 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7721 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5797 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
@@ -4290,7 +4296,11 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_8447 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_8478 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_9294 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
-#view_8328 > div > a.kn-link.kn-link-1.kn-link-page.kn-button {
+#view_8328 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9428 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9428 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9429 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9432 > div > a.kn-link.kn-link-1.kn-link-page.kn-button{
   background-color: #005F80;
   color: #ffffff;
   font-weight: bold;
@@ -4431,6 +4441,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5899 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_5899 > div > a:hover.kn-link.kn-link-5.kn-link-page.kn-button,
 #view_5900 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_5900 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7721 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7721 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5797 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
@@ -4509,7 +4520,11 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_8447 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_8478 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_9294 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
-#view_8328 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button {
+#view_8328 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9428 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9428 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9429 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9432 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button{
   background-color: #014157;
   color: #ffffff;
   font-weight: bold;
@@ -5367,7 +5382,7 @@ p.speech-bubble-outbound-sales:before {
     top: 0 !important;
     right: 0 !important;
     left: auto !important;
-    height: 80vh;
+    height: 90vh;
     margin: 1 !important;
     transform: none !important;
     overflow-y: auto !important;
@@ -5448,4 +5463,11 @@ p.speech-bubble-outbound-sales:before {
 #view_9276 thead th:nth-child(3) {
     background: #ccc;
     z-index: 101;
+}
+
+
+
+/* Hide entried summary - invoice processing supplier last refreshed */
+#view_9423 .kn-entries-summary{
+  display: none;
 }
