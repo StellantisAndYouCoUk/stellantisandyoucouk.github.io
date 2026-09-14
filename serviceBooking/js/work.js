@@ -1546,7 +1546,7 @@ function showAddingRTSCode(){
 function searchRTSCode(){
     console.log('$("#searchRTSCode").val()',$("#searchRTSCode").val())
     if ($("#searchRTSCode").val()!==''){
-        let r = supportData.rtsCode.filter(el => el.description.includes($("#searchRTSCode").val()!==''));
+        let r = supportData.rtsCode.filter(el => el.description.includes($("#searchRTSCode").val()));
         console.log(r);
         if (r.length>9){
             r = r.slice(0,9);
