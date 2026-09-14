@@ -1484,7 +1484,7 @@ async function generateBookingSummary(){
         if (serviceBookingProcess.bookingData.newRTSCode){
 
         } else {
-            html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="addRTSCode" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Search</button></div>'
+            html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><br /><button class="btn btn-primary" onclick="searchRTSCode(); return false;">Search</button><div id="searchRTSCodeResults"></div></div>'
         }
     } else {
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
@@ -1541,6 +1541,17 @@ async function generateBookingSummary(){
 function showAddingRTSCode(){
     serviceBookingProcess.bookingData.inAddingRTSCode = true;
     generateBookingSummary();
+}
+
+function searchRTSCode(){
+    if ($("#searchRTSCode").val()!==''){
+        let r = supportData.rtsCode.filter(el => el.description.includes($("#searchRTSCode").val()!==''));
+        if (r.length>9){
+            r = r.slice(0,9);
+            r.push({description:"More RTS codes found, refine your search"})
+        }
+        $("#searchRTSCodeResults").html(r.map(el => el.description + '<br />').join(''));
+    }
 }
 
 function addRTSCode(){
