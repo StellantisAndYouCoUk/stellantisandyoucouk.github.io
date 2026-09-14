@@ -1553,7 +1553,7 @@ function showAddingRTSCode(){
 function searchRTSCode(){
     console.log('$("#searchRTSCode").val()',$("#searchRTSCode").val())
     if ($("#searchRTSCode").val()!==''){
-        let r = supportData.rtsCode.filter(el => el.description.startsWith($("#searchRTSCode").val()));
+        let r = supportData.rtsCode.filter(el => el.description.toLowerCase().startsWith($("#searchRTSCode").val().toLowerCase()));
         if (r.length<3){
             let rA = supportData.rtsCode.filter(el => !el.description.startsWith($("#searchRTSCode").val()) && el.description.includes($("#searchRTSCode").val()));
             r.push(...rA);
