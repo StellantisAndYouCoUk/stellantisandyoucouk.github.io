@@ -1481,7 +1481,11 @@ async function generateBookingSummary(){
     html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
-        html += '<b>Add non-listed item:</b><br /><form id="addRTSCode"><div>Code: <input class="input" id="addRTSCode" type="text"><br />Name: <input class="input" id="addName" type="text"><br />Quantity: <input class="input" id="addQuantity" type="text"><br />Price: <input class="input" id="addPrice" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div></form>'
+        if (serviceBookingProcess.bookingData.newRTSCode){
+
+        } else {
+            html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="addRTSCode" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Search</button></div>'
+        }
     } else {
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
