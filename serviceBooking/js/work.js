@@ -1482,7 +1482,7 @@ async function generateBookingSummary(){
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
         if (serviceBookingProcess.bookingData.newRTSCode){
-
+            html += '<b>Add non-listed item:</b><br /><div>Code: <b>'+serviceBookingProcess.bookingData.newRTSCode+'</b></div>';
         } else {
             html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><div id="searchRTSCodeResults"></div></div>';
             setTimeout(() => {
@@ -1564,6 +1564,11 @@ function searchRTSCode(){
         }
         $("#searchRTSCodeResults").html(r.map(el => '<a href="#" onclick="chooseRTSCode('+el.rtscode+'); return false;">'+el.rtscode+'</a>' + el.description.replace(el.rtscode,'') + '<br />').join(''));
     }
+}
+
+function chooseRTSCode(code){
+    serviceBookingProcess.bookingData.newRTSCode = code;
+    generateBookingSummary();
 }
 
 function addRTSCode(){
