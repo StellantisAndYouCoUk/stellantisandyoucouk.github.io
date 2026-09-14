@@ -1560,7 +1560,7 @@ function searchRTSCode(){
         }
         if (r.length>9){
             r = r.slice(0,9);
-            r.push({code:'',description:"<span style=\"color:red;\">More RTS codes found, refine your search</span>"})
+            r.push({rtscode:'',description:"<span style=\"color:red;\">More RTS codes found, refine your search</span>"})
         }
         $("#searchRTSCodeResults").html(r.map(el => '<a href="#" onclick="chooseRTSCode('+el.rtscode+'); return false;">'+el.rtscode+'</a>' + el.description.replace(el.rtscode,'') + '<br />').join(''));
     }
