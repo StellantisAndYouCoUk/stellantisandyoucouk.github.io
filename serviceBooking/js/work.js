@@ -1443,8 +1443,9 @@ function generateLabourSummary(){
                     } else {
                         labourSummary.push({LoadGroup:mCode.skillcode,Time:parseFloat(mCode.time)})
                     }
+                } else {
+                    console.log('CODE NOT FOUND IN RTS CODES');
                 }
-                console.log('CODE NOT FOUND IN RTS CODES',mCode);
             }
         } else {
             console.log('supportData.autolineRTSCodes not there')
@@ -1464,6 +1465,7 @@ async function generateBookingSummary(){
         let excludedCodes = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
+            if (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]==='MANUAL') continue;
             let pricingDetailsForCode = null;
             try {
                 pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
