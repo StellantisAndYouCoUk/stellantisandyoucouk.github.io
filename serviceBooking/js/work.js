@@ -1551,6 +1551,9 @@ async function generateBookingSummary(){
                 html += '<br />Available cars<br />';
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
+            if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
+                html += '<input type="checkbox" id="bookWaitApointment"/>Book Wait Appointment';
+            }
         }
         if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
             html += '<br /><b>Create booking</b><br />';
