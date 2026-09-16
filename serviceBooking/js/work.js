@@ -1627,7 +1627,7 @@ function formatMeetAndGreetAvailability(meetAndGreet){
     for (let i = 0;i<uA.length;i++){
         if (i!==0 && i/10===Math.floor(i/10)) out += '</tr><tr>'
         let rT = aB.filter(el => el.av.includes(uA[i]));
-        out += '<td title="'+rT.map(el => el.name).join(',')+'">'+uA[i]+'</td>';
+        out += '<td title="'+rT.map(el => el.name).join(',')+'"><a href="" onclick="chooseMeetAndGreet(\''+uA[i]+'\')">'+uA[i]+'</a></td>';
     }
     out += '</tr></table>'
     return out;
