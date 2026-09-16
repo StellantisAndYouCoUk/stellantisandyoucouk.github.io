@@ -1576,6 +1576,7 @@ async function generateBookingSummary(){
 function waitAppintmentChange(){
     console.log($('#bookWaitApointment').is(':checked'))
     generateBookingSummary();
+    return true;
 }
 
 function numberToGBP(num){
