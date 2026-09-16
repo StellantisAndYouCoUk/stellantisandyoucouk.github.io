@@ -1640,7 +1640,7 @@ function formatMeetAndGreetAvailability(meetAndGreet){
 }
 
 function chooseMeetAndGreet(timeString){
-    serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet = timseString;
+    serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet = timeString;
     generateBookingSummary();
 }
 
