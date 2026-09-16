@@ -245,6 +245,7 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function checkBookDate(date){
     //window.scrollTo(0, 0);
+    serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = false;
     serviceBookingProcess.bookingData.confirmAvailability = {date:new Date(date),status:'checking',dateTimeChecked:new Date()};
     confirmAvailabilityForDate(date,checkBookDateCallback);
     generateBookingSummary();
@@ -1536,7 +1537,7 @@ async function generateBookingSummary(){
         } else {
             html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'available':'NOT AVAILABLE')+'</b></span>'
         }
-        if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability){
+        if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.confirmAvailability.dateAvailable){
             let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)));
             //console.log('BBBB',aVForDate)
             if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
@@ -1631,6 +1632,10 @@ function formatMeetAndGreetAvailability(meetAndGreet){
     }
     out += '</tr></table>'
     return out;
+}
+
+function chooseMeetAndGreet(timeString){
+
 }
 
 function formatTimesInAvailability(avDataRaw){
