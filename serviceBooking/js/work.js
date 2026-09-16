@@ -1551,7 +1551,13 @@ async function generateBookingSummary(){
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
         }
+        if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
+            html += '<br /><b>Create booking</b><br />';
+            html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
+            html += '<a href="#" class="button" onclick="doBookingInAutoline(); return false;">Confirm</a>';
+        }
     }
+
     /*
     if (labourSummary.length>0){
         html += '<br /><b>Labour:</b>';
@@ -1627,14 +1633,15 @@ function formatMeetAndGreetAvailability(meetAndGreet){
     for (let i = 0;i<uA.length;i++){
         if (i!==0 && i/10===Math.floor(i/10)) out += '</tr><tr>'
         let rT = aB.filter(el => el.av.includes(uA[i]));
-        out += '<td title="'+rT.map(el => el.name).join(',')+'"><a href="" onclick="chooseMeetAndGreet(\''+uA[i]+'\')">'+uA[i]+'</a></td>';
+        out += '<td title="'+rT.map(el => el.name).join(',')+'"><a href="#" onclick="chooseMeetAndGreet(\''+uA[i]+'\'); return false;">'+uA[i]+'</a></td>';
     }
     out += '</tr></table>'
     return out;
 }
 
 function chooseMeetAndGreet(timeString){
-
+    serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet = timseString;
+    generateBookingSummary();
 }
 
 function formatTimesInAvailability(avDataRaw){
