@@ -1379,6 +1379,7 @@ function removeCodeFromBooking(code){
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+    serviceBookingProcess.bookingData.confirmAvailability = null;
     findAvailabilityDaysForBooking();
     generateBookingSummary();
 }
