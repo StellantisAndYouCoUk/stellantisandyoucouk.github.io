@@ -1558,7 +1558,7 @@ async function generateBookingSummary(){
         if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
             html += '<br /><br /><b>Create booking</b><br />';
             html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
-            html += ($('#bookWaitApointment').is(':checked')?'<br />Wait appointment will be booked.':'');
+            //html += ($('#bookWaitApointment').is(':checked')?'<br />Wait appointment will be booked.':'');
             html += '<br /><a href="#" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Confirm</a>';
         }
     }
@@ -1574,6 +1574,7 @@ async function generateBookingSummary(){
 }
 
 function waitAppintmentChange(){
+    console.log($('#bookWaitApointment').is(':checked'))
     generateBookingSummary();
 }
 
