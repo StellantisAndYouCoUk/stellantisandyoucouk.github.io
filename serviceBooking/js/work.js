@@ -1467,7 +1467,7 @@ async function generateBookingSummary(){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
             if (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]==='MANUAL'){
                 let manLine = serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode);
-                html += '<tr><td>'+manLine.code+'</td><td>'+manLine.name+'</td><td style="text-align: center;">'+manLine.quantity+'</td><td style="text-align: right;">'+manLine.price+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
+                html += '<tr><td>'+manLine.code+'</td><td>'+manLine.name+'</td><td style="text-align: center;">'+manLine.quantity+'</td><td style="text-align: right;">'+numberToGBP(parseFloat(manLine.price))+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
                 total += parseFloat(manLine.price)
                 continue;
             }
@@ -1560,6 +1560,10 @@ async function generateBookingSummary(){
         }
     }*/
     $('div[id="bookingSummary"]').html(html);
+}
+
+function numberToGBP(num){
+    return'£' + num.toFixed(2)
 }
 
 function showAddingRTSCode(){
