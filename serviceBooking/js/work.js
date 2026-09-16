@@ -1552,13 +1552,13 @@ async function generateBookingSummary(){
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
-                html += '<input type="checkbox" id="bookWaitApointment" onchange="waitAppointmentChange(); return true;"/>Book Wait Appointment';
+                html += '<input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
             }
         }
         if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
             html += '<br /><br /><b>Create booking</b><br />';
             html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
-            html += ($('#bookWaitApointment').is(':checked')?'<br />Wait appointment will be booked.':'');
+            html += (serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?'<br />Wait appointment will be booked.':'');
             html += '<br /><a href="#" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Confirm</a>';
         }
     }
@@ -1574,7 +1574,7 @@ async function generateBookingSummary(){
 }
 
 function waitAppointmentChange(){
-    console.log($('#bookWaitApointment').is(':checked'))
+    serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment = $('#bookWaitApointment').is(':checked');
     generateBookingSummary();
 }
 
