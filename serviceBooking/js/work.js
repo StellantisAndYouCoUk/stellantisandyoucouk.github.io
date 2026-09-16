@@ -1574,7 +1574,7 @@ async function generateBookingSummary(){
 }
 
 function waitAppintmentChange(){
-    console.log($('#bookWaitApointment').is(':checked'))
+    //console.log($('#bookWaitApointment').is(':checked'))
     generateBookingSummary();
     return true;
 }
