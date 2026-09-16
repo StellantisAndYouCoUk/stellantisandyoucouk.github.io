@@ -1589,6 +1589,7 @@ function chooseRTSCode(code){
 }
 
 function addRTSCode(){
+    console.log($("#addRTSCode").val());
     if (!serviceBookingProcess.bookingData.manualPricingLines) serviceBookingProcess.bookingData.manualPricingLines = [];
     serviceBookingProcess.bookingData.manualPricingLines.push({code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val()})
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
