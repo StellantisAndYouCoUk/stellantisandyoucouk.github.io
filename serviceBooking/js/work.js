@@ -1434,7 +1434,8 @@ function generateLabourSummary(){
                     labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
                 }
             } else {
-                console.log('CODE NOT FOUND IN RTS CODES');
+                let mCode = supportData.rtscode.find(el => el.rtscode === justCode);
+                console.log('CODE NOT FOUND IN RTS CODES',mCode);
             }
         } else {
             console.log('supportData.autolineRTSCodes not there')
