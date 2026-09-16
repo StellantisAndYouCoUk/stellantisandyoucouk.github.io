@@ -1530,7 +1530,7 @@ async function generateBookingSummary(){
     }
 
     if (serviceBookingProcess.bookingData.confirmAvailability){
-        html += '<b>Booking details</b>';
+        html += '<br /><b>Booking details</b>';
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
             html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Checking availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
         } else {
