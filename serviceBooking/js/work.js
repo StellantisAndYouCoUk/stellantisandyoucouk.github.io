@@ -1575,8 +1575,9 @@ function chooseRTSCode(code){
 function addRTSCode(){
     if (!serviceBookingProcess.bookingData.manualPricingLines) serviceBookingProcess.bookingData.manualPricingLines = [];
     addCodeToBooking('MANUAL#'+$("#addRTSCode").val());
-    serviceBookingProcess.bookingData.manualPricingLines.push({code:$("#addRTSCode").val(),name:$("#addName").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val()})
+    serviceBookingProcess.bookingData.manualPricingLines.push({code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val()})
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
+    serviceBookingProcess.bookingData.newRTSCode = null;
     generateBookingSummary();
 }
 
