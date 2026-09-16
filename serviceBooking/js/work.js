@@ -1465,7 +1465,12 @@ async function generateBookingSummary(){
         let excludedCodes = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
             let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
-            if (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]==='MANUAL') continue;
+            if (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]==='MANUAL'){
+                let manLine = serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode);
+                html += '<tr><td>'+manLine.code+'</td><td>'+manLine.name+'</td><td style="text-align: center;">'+manLine.quantity+'</td><td style="text-align: right;">'+manLine.price+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
+                total += parseFloat(manLine.price)
+                continue;
+            }
             let pricingDetailsForCode = null;
             try {
                 pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
