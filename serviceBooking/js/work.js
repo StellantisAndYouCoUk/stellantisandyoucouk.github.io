@@ -1435,6 +1435,15 @@ function generateLabourSummary(){
                 }
             } else {
                 let mCode = supportData.rtsCode.find(el => el.rtscode === justCode);
+                if (mCode){
+                    if (mCode.skillcode==='N' || mCode.skillcode==='H') continue;
+                    let lT = labourSummary.find(el => el.LoadGroup === mCode.skillcode);
+                    if (lT){
+                        lT.Time += parseFloat(mCode.time);
+                    } else {
+                        labourSummary.push({LoadGroup:mCode.skillcode,Time:parseFloat(mCode.time)})
+                    }
+                }
                 console.log('CODE NOT FOUND IN RTS CODES',mCode);
             }
         } else {
