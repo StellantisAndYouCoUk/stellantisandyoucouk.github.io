@@ -1552,7 +1552,7 @@ async function generateBookingSummary(){
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
-                html += '<input type="checkbox" id="bookWaitApointment" onclick="waitAppintmentChange()"/>Book Wait Appointment';
+                html += '<input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange()"/>Book Wait Appointment';
             }
         }
         if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
@@ -1573,7 +1573,7 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
 }
 
-function waitAppintmentChange(){
+function waitAppointmentChange(){
     //console.log($('#bookWaitApointment').is(':checked'))
     generateBookingSummary();
     return true;
