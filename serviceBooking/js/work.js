@@ -280,6 +280,11 @@ function showPricing(){
         $('div[id="bookingProblems"]').show();
         return null;
     }
+    if (!$('#customerValidated').is(':checked')){
+        $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Confirm validation of customer details first.</span>');
+        $('div[id="bookingProblems"]').show();
+        return null;
+    }
     $('div[id="bookingProblems"]').hide();
     let mileage = $('input[id="currentMileage"]').val();
     if (mileage==='' || mileage==='0'){
