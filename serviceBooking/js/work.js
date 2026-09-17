@@ -1339,7 +1339,7 @@ function getCustomerDetails(){
 
 function customerValidatedChange(){
     if ($('#customerValidated').is(':checked')){
-        $('#customerValidation').attr('style', 'background:green;');
+        $('#customerValidation').attr('style', 'background:#90EE90;');
     } else {
         $('#customerValidation').attr('style', 'background:yellow;');
     }
