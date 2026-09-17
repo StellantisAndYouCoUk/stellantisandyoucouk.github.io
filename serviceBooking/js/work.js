@@ -1315,7 +1315,7 @@ function getCustomerDetails(){
         serviceBookingProcess.customerChangeInEdit = true;
         return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div><br /><br /><div id="createCustomerForm"></div>';
     }
-    let out = '<div id="customerValidation"><b><input type="checkbox" id="customerValidated"> I have validated customer email, telephone number and postcode.</b></div><br />';
+    let out = '<div id="customerValidation"><b><input type="checkbox" id="customerValidated" onclick="customerValidatedChange()"> I have validated customer email, telephone number and postcode.</b></div><br />';
     out += '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />';
     out += '<div style="float: right; ";><button class="btn btn-primary" onclick="editCustomer(); return false;">Edit</button>&nbsp;<button class="btn btn-primary" onclick="changeCustomer(); return false;">Change</button></div>'
     out += serviceBookingProcess.customer.Address001+'<br />'+serviceBookingProcess.customer.Address002+(serviceBookingProcess.customer.Address003!==''?'<br />'+serviceBookingProcess.customer.Address003:'')+(serviceBookingProcess.customer.Address004!==''?'<br />'+serviceBookingProcess.customer.Address004:'')+'<br />'+serviceBookingProcess.customer.Postcode+'<div style="float: right; " ;=""></div><br /><br />'+(serviceBookingProcess.customer.EMailAddress!==''?'<b>'+serviceBookingProcess.customer.EMailAddress+'</b><div style="float: right; " ;=""></div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers001!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers001+'<div style="float: right; " ;=""></div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers002!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers002+'<div style="float: right; " ;=""></div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers003!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers003+'<div style="float: right; " ;=""></div><br />':'')+(serviceBookingProcess.customer.TelephoneNumbers004!==''?'Tel: '+serviceBookingProcess.customer.TelephoneNumbers004+'<div style="float: right; " ;=""></div><br />':'');
@@ -1335,6 +1335,14 @@ function getCustomerDetails(){
     }
     
     return out;
+}
+
+function customerValidatedChange(){
+    if ($('#customerValidated').is(':checked')){
+        $('#customerValidation').attr('style', 'background:green;');
+    } else {
+        $('#customerValidation').attr('style', 'background:yellow;');
+    }
 }
 
 function getGDPRHTMLforOne(chanellOption){
