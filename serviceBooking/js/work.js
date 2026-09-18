@@ -1428,7 +1428,7 @@ function findAvailabilityDaysForBooking(retry = 0){
 }
 
 function findAvailabilityDaysForBookingCallback(data){
-    if (data.labourSummaryHash!==serviceBookingProcess.bookingData.labourSummaryHash){
+    if (data.labourArrayHash!==serviceBookingProcess.bookingData.labourSummaryHash){
         console.log('bad serviceBookingProcess.bookingData.labourSummaryHash');
         return;
     }
