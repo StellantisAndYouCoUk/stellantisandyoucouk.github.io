@@ -1429,7 +1429,7 @@ function findAvailabilityDaysForBooking(retry = 0){
 
 function findAvailabilityDaysForBookingCallback(data){
     if (data.labourArrayHash!==serviceBookingProcess.bookingData.labourSummaryHash){
-        console.log('bad serviceBookingProcess.bookingData.labourSummaryHash');
+        console.log('bad serviceBookingProcess.bookingData.labourSummaryHash',data.labourArrayHash,serviceBookingProcess.bookingData.labourSummaryHash);
         return;
     }
     serviceBookingProcess.bookingData.availability = data;
