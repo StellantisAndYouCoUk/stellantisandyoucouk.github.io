@@ -1678,6 +1678,10 @@ function chooseMeetAndGreet(timeString){
     generateBookingSummary();
 }
 
+function doBookingInAutoline(){
+    
+}
+
 function formatTimesInAvailability(avDataRaw){
     let out = '';
     let keys = Object.keys(avDataRaw);
