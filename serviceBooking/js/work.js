@@ -1380,6 +1380,7 @@ function addCodeToBooking(code){
         serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
+        serviceBookingProcess.bookingData.availability = null;
         findAvailabilityDaysForBooking();
         generateBookingSummary();
     }
@@ -1401,6 +1402,7 @@ function removeCodeFromBooking(code){
     }
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     serviceBookingProcess.bookingData.confirmAvailability = null;
+    serviceBookingProcess.bookingData.availability = null;
     findAvailabilityDaysForBooking();
     generateBookingSummary();
 }
