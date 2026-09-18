@@ -1462,6 +1462,7 @@ function generateLabourSummary(){
                 if (mCode){
                     if (mCode.skillcode==='N' || mCode.skillcode==='H') continue;
                     let pricingLine = serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode);
+                    console.log('pricingLine',pricingLine)
                     let lT = labourSummary.find(el => el.LoadGroup === mCode.skillcode);
                     if (lT){
                         lT.Time += parseFloat(mCode.time)*(pricingLine?parseInt(pricingLine.quantity):1);
