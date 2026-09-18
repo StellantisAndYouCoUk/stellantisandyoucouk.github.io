@@ -1395,6 +1395,9 @@ function removeCodeFromBooking(code){
     if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
     serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
     serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
+    if (code.includes('MANUAL') && serviceBookingProcess.bookingData.manualPricingLines){
+        serviceBookingProcess.bookingData.manualPricingLines = serviceBookingProcess.bookingData.manualPricingLines.filter(el => el!==code);
+    }
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     serviceBookingProcess.bookingData.confirmAvailability = null;
     findAvailabilityDaysForBooking();
