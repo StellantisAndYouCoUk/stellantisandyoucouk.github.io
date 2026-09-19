@@ -751,6 +751,7 @@ function getPricingBrandsForD(checkDealership, selectedId=null){
 
 function createVehicleInAutoline(){
     $('button[id="createVehicleInAutoline"]').prop("disabled", true);
+    $('button[id="createVehicleInAutoline"]').hide();
     let payload = {
         customerNumber: serviceBookingProcess.customer.CustomerNumber,
         registrationNumber : serviceBookingProcess.registrationNumber
