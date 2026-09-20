@@ -791,7 +791,7 @@ function checkVehicleCreateStatusResponse(data){
 }
 
 function reloadVehicleCallback(data){
-    console.log('reloadVehicleCallback')
+    console.log('reloadVehicleCallback',data)
     serviceBookingProcess.vehicle = data.vehicle;
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
 }

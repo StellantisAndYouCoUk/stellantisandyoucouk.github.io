@@ -1222,6 +1222,7 @@ function reRun(runId){
         runMode : 'unattended',
         noRetry : true
     }
+    runData.preferedMachineName = $('div[id="runDetailsBody"] select[id="preProdMachine_'+runId+'"]').val();
     return callPostHttpRequest('https://davidmale--pa-server.apify.actor/powerAutomateNewRequest?token=apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO',{'token':'apify_api_wg0zs1bLI2GjhkfGKaVtjweN05QvZj1iOOWO'},runData)
 }
 
