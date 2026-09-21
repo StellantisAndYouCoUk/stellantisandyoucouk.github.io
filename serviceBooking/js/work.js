@@ -1375,7 +1375,7 @@ function emailValidationCallback(data){
     if (data.data.emailValidation.result==='all_ok'){
         $('#emailValidation').html(' &nbsp; <span style="font-size:12px;">✅</span>Email address is valid');
     } else {
-        $('#emailValidation').html(' &nbsp; <span style="font-size:12px;">❌</span> <b>Please Verify Email Address');
+        $('#emailValidation').html(' &nbsp; <span style="font-size:12px;">❌</span>Verify Email Address');
     }
 }
 
