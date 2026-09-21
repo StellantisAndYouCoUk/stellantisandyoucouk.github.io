@@ -1367,6 +1367,11 @@ function getCustomerDetails(){
 
 function emailInputFocusOut(){
     console.log('emailInputFocusOut',$('#email').val());
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/emailValidation?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,email:$('#email').val()},emailValidationCallback);
+}
+
+function emailValidationCallback(data){
+    console.log('emailValidationCallback',data)
 }
 
 function customerValidatedChange(){
