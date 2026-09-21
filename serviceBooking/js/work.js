@@ -1259,6 +1259,9 @@ function editCustomer(){
         console.log(addressSearch);
         addressSearch.addEventListener("input", addressSearchF);
         addressSearch.addEventListener("click", stopNormal);
+
+        const emailInput = document.querySelector('#email');
+        emailInput.addEventListener("focusout",emailInputFocusOut);
     }, 200);
 }
 
