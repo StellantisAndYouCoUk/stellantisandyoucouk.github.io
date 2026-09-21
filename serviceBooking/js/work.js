@@ -1313,6 +1313,9 @@ function getCustomerDetails(){
                 console.log(addressSearch);
                 addressSearch.addEventListener("input", addressSearchF);
                 addressSearch.addEventListener("click", stopNormal);
+
+                $('#telephoneN3').hide();
+                $('#telephoneN4').hide();
             }, 1000);
         }, 500);
         serviceBookingProcess.customerChangeInEdit = true;
