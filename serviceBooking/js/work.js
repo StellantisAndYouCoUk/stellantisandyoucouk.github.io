@@ -1330,6 +1330,9 @@ function getCustomerDetails(){
                 addressSearch.addEventListener("input", addressSearchF);
                 addressSearch.addEventListener("click", stopNormal);
 
+                const emailInput = document.querySelector('#email');
+                emailInput.addEventListener("focusout",emailInputFocusOut);
+
                 $('#telephoneN3').hide();
                 $('#telephoneN4').hide();
             }, 1000);
@@ -1357,6 +1360,10 @@ function getCustomerDetails(){
     }
     
     return out;
+}
+
+function emailInputFocusOut(){
+    console.log('emailInputFocusOut',$('#email').val());
 }
 
 function customerValidatedChange(){
