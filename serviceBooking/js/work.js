@@ -282,7 +282,7 @@ function showPricing(){
         $('div[id="bookingProblems"]').show();
         return null;
     }
-    if (!$('#customerValidated').is(':checked')){
+    if (!$('#customerValidated').is(':checked') && !serviceBookingProcess.customerChangeId){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Confirm validation of customer details first.</span>');
         $('div[id="bookingProblems"]').show();
         return null;
@@ -1185,6 +1185,8 @@ function checkCustomerUpdateStatusResponse(data){
 function reloadCustomerCallback(data){
     console.log('reloadCustomerCallback',data)
     if (data[0]){
+        serviceBookingProcess.customerChangeId = null;
+        serviceBookingProcess.customerChangeData = null;
         serviceBookingProcess.customer = data[0];
         serviceBookingProcess.customerGdpr = data[0].customerGdpr;
         if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
