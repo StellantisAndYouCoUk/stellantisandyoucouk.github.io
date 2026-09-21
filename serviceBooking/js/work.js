@@ -1159,7 +1159,8 @@ function createCustomerSubmit(event) {
     $('input[id="postcodeForD"]').val($('input[id="postCode"]').val());
     findDealerships();
   }
-  $('#createCustomerForm').html('Customer was sent for creation.')
+  $('#createCustomerForm').html('Customer was sent for creation.');
+  serviceBookingProcess.customerChangeInEdit = false; 
 }
 
 function createCustomerSubmited(){
