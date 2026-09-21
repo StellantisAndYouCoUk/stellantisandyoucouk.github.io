@@ -1329,7 +1329,7 @@ function getCustomerDetails(){
             }, 1000);
         }, 500);
         serviceBookingProcess.customerChangeInEdit = true;
-        return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div><br /><br /><div id="createCustomerForm"></div>';
+        return '<b>Customer was not found in Autoline</b><br /><div id="changeCustomerForm">Search customer in Autoline by phone or email<br /><input class="input" id="searchString" type="text" value=""><button  onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div><br /><div id="createCustomerForm"></div>';
     }
     let out = '<div id="customerValidation" style="'+(serviceBookingProcess.customer.customerDetailsValidated?'background:#90EE90;':'background:yellow;')+'"><b><input type="checkbox" id="customerValidated" onclick="customerValidatedChange()"'+(serviceBookingProcess.customer.customerDetailsValidated?' checked':'')+'> I have validated customer email, telephone number and postcode.</b></div><br />';
     out += '<b>'+serviceBookingProcess.customer.Title+' '+serviceBookingProcess.customer.FirstName+' '+serviceBookingProcess.customer.Surname+'</b><br />';
