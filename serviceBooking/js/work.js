@@ -1135,6 +1135,14 @@ function createCustomerSubmit(event) {
   serviceBookingProcess.customerChange = true;
   $(this).find(":submit").attr('disabled', 'disabled');
   event.preventDefault();
+  let mandatoryFields = [{id:'firstName','text':'First Name'},{id:'lastName',text:'Surname'},{id:'telephoneN1',text:'First Telephone Number'},{id:'email',text:'Email'},{id:'address1',text:'Address Line'},{id:'postCode',text:'Post Code'}];
+  for (let i = 0;i<mandatoryFields.length;i++){
+    if ($('#'+mandatoryFields[i].id).val()===''){
+        $('#customerInputErrors').html(mandatoryFields[i].text+' is mandatory field.');
+        $(this).find(":submit").attr('disabled', '');
+        return;
+    }
+  }
   const data = new FormData(event.target);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
