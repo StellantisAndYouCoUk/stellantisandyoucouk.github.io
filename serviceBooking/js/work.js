@@ -1720,6 +1720,23 @@ function chooseMeetAndGreet(timeString){
 }
 
 function doBookingInAutoline(){
+    let bookingData ={
+        customerNumber : serviceBookingProcess.customer.CustomerNumber,
+        vehicleRegistrationNumber : serviceBookingProcess.registrationNumber,
+        vehicleNumber : serviceBookingProcess.vehicle.VehicleNumber,
+        vehicleMileage : serviceBookingProcess.bookingData.mileage,
+        dealerCode : serviceBookingProcess.bookingData.dealer.field_2442,
+        bookingNote : '',
+        rtsCodes : serviceBookingProcess.bookingData.orderedCodes.map(el => el.split('#')[1]),
+        manualRtsCodes : (serviceBookingProcess.bookingData.manualPricingLines?serviceBookingProcess.bookingData.manualPricingLines:null),
+        bookingDate : serviceBookingProcess.bookingData.confirmAvailability.date,
+        meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
+        bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment
+    };
+    callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
+}
+
+function doBookingAutolineCallback(){
     
 }
 
