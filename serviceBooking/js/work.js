@@ -1367,7 +1367,7 @@ function getCustomerDetails(){
 
 function emailInputFocusOut(){
     console.log('emailInputFocusOut',$('#email').val());
-    $('#emailValidation').html(' &nbsp; <img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"></img>Email validation in progress');
+    $('#emailValidation').html(' &nbsp; <img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"></img>Validation in progress');
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/emailValidation?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,email:$('#email').val()},emailValidationCallback);
 }
 
