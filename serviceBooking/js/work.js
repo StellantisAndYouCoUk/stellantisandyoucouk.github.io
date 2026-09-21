@@ -1138,8 +1138,8 @@ function createCustomerSubmit(event) {
   let mandatoryFields = [{id:'firstName','text':'First Name'},{id:'lastName',text:'Surname'},{id:'telephoneN1',text:'First Telephone Number'},{id:'email',text:'Email'},{id:'address1',text:'Address Line'},{id:'postCode',text:'Post Code'}];
   for (let i = 0;i<mandatoryFields.length;i++){
     if ($('#'+mandatoryFields[i].id).val()===''){
-        $('#customerInputErrors').html(mandatoryFields[i].text+' is mandatory field.');
-        $(this).find(":submit").attr('disabled', '');
+        $('#customerInputErrors').html('<b style="color:red;">'+mandatoryFields[i].text+' is mandatory field.</b>');
+        $(this).find(":submit").removeAttr('disabled');
         return;
     }
   }
