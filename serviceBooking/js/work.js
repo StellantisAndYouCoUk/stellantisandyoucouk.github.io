@@ -1202,7 +1202,7 @@ function editCustomerSubmit(event){
 function editCustomer(){
     serviceBookingProcess.customerChange = true;
     serviceBookingProcess.customerChangeInEdit = true; 
-    $('div[id="customerDetails"]').html('Edit customer<br /><div id="editCustomerForm"></div>');
+    $('div[id="customerDetails"]').html('<b>Edit customer</b><br /><div id="editCustomerForm"></div>');
     $('#editCustomerForm').load('customerForm.html?_d='+(new Date()).getTime());
     setTimeout(() => {
         const form = document.querySelector("form[id=\"createCustomer\"]");
