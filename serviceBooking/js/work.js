@@ -1721,7 +1721,7 @@ function chooseMeetAndGreet(timeString){
 }
 
 function doBookingInAutoline(){
-    $("#doBookingButton").prop("disabled", true)
+    $("#doBookingButton").hide();
     let bookingData ={
         customerNumber : serviceBookingProcess.customer.CustomerNumber,
         vehicleRegistrationNumber : serviceBookingProcess.registrationNumber,
