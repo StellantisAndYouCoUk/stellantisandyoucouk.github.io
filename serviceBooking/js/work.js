@@ -1569,6 +1569,7 @@ async function generateBookingSummary(){
     html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"'+(!serviceBookingProcess.bookingData.discountPercent || serviceBookingProcess.bookingData.discountPercent===0?' checked=true':'')+'><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"'+(serviceBookingProcess.bookingData.discountPercent===5?' checked=true':'')+'><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"'+(serviceBookingProcess.bookingData.discountPercent===10?' checked=true':'')+'><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" class="ng-binding"><span id="totalDiscount">'+(serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?'<span style="color:red;">-£'+(total*(serviceBookingProcess.bookingData.discountPercent/100)).toFixed(2)+'</span>':'-£0.00')+'</span></td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
     html += '</table>';
     html += '<b>Total price: £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2)+'</b><br />'
+    serviceBookingProcess.bookingData.totalPrice = (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
         if (serviceBookingProcess.bookingData.newRTSCode){
@@ -1732,7 +1733,8 @@ function doBookingInAutoline(){
         manualRtsCodes : (serviceBookingProcess.bookingData.manualPricingLines?serviceBookingProcess.bookingData.manualPricingLines:null),
         bookingDate : serviceBookingProcess.bookingData.confirmAvailability.date,
         meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
-        bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment
+        bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment,
+        totalPrice : serviceBookingProcess.bookingData.totalPrice
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
 }
