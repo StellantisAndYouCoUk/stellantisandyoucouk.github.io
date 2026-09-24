@@ -1630,10 +1630,10 @@ async function generateBookingSummary(){
                 //html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
             }
         }
-        if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
+        if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet || serviceBookingProcess.bookingData.confirmAvailability.selectedWait){
             html += '<br /><br /><b>Create booking</b><br />';
-            html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
-            html += (serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?'<br />Wait appointment will be booked.':'');
+            html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
+            html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
             html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
         }
     }
@@ -1738,7 +1738,14 @@ function formatWaitAvailability(wait){
 }
 
 function chooseMeetAndGreet(timeString){
+    serviceBookingProcess.bookingData.confirmAvailability.selectedWait = null;
     serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet = timeString;
+    generateBookingSummary();
+}
+
+function chooseWait(timeString){
+    serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet = null;
+    serviceBookingProcess.bookingData.confirmAvailability.selectedWait = timeString;
     generateBookingSummary();
 }
 
@@ -1755,6 +1762,7 @@ function doBookingInAutoline(){
         manualRtsCodes : (serviceBookingProcess.bookingData.manualPricingLines?serviceBookingProcess.bookingData.manualPricingLines:null),
         bookingDate : serviceBookingProcess.bookingData.confirmAvailability.date,
         meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
+        waitTime : serviceBookingProcess.bookingData.confirmAvailability.selectedWait,
         bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment,
         totalPrice : serviceBookingProcess.bookingData.totalPrice
     };
