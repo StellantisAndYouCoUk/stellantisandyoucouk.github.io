@@ -1721,9 +1721,9 @@ function formatWaitAvailability(wait){
     console.log(wait);
     let aB = [];
     let aA = wait.availability.map(function(el){
-        let t = formatTimesInAvailability(el);
+        let t = el.timeDuration.map(el2 => el2.start);
         aB.push({name:el.Resource,desc:el.ResourceName,av:t});
-        return t.split(',');
+        return t;
     }).flat();
     let uA = [...new Set(aA)];
     uA = uA.sort((a,b)=> (new Date('1970-01-01 '+a)<new Date('1970-01-01 '+b)?-1:1));
