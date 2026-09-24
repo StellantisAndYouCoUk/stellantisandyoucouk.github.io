@@ -1699,6 +1699,7 @@ function getCourtesyCarsForDate(date){
 }
 
 function formatMeetAndGreetAvailability(meetAndGreet){
+    console.log('formatMeetAndGreetAvailability',meetAndGreet.availability)
     let aB = [];
     let aA = meetAndGreet.availability.map(function(el){
         let t = formatTimesInAvailability(el);
