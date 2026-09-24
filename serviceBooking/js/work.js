@@ -1625,6 +1625,8 @@ async function generateBookingSummary(){
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
+                html += '<br />Wait appointment availability<br />';
+                html += formatWaitAvailability(aVForDate.wait);
                 html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
             }
         }
@@ -1697,6 +1699,27 @@ function getCourtesyCarsForDate(date){
 }
 
 function formatMeetAndGreetAvailability(meetAndGreet){
+    let aB = [];
+    let aA = meetAndGreet.availability.map(function(el){
+        let t = formatTimesInAvailability(el);
+        aB.push({name:el.Resource,av:t});
+        return t.split(',');
+    }).flat();
+    let uA = [...new Set(aA)];
+    uA = uA.sort((a,b)=> (new Date('1970-01-01 '+a)<new Date('1970-01-01 '+b)?-1:1));
+    let out = '<table><tr>';
+    for (let i = 0;i<uA.length;i++){
+        if (i!==0 && i/10===Math.floor(i/10)) out += '</tr><tr>'
+        let rT = aB.filter(el => el.av.includes(uA[i]));
+        out += '<td title="'+rT.map(el => el.name).join(',')+'"><a href="#" onclick="chooseMeetAndGreet(\''+uA[i]+'\'); return false;">'+uA[i]+'</a></td>';
+    }
+    out += '</tr></table>'
+    return out;
+}
+
+function formatWaitAvailability(wait){
+    console.log(wait);
+    return '';
     let aB = [];
     let aA = meetAndGreet.availability.map(function(el){
         let t = formatTimesInAvailability(el);
