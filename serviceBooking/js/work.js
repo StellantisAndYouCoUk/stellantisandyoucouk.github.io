@@ -1627,7 +1627,7 @@ async function generateBookingSummary(){
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
                 html += '<br />Wait appointment availability<br />';
                 html += formatWaitAvailability(aVForDate.wait);
-                html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
+                //html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
             }
         }
         if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet){
@@ -1719,11 +1719,10 @@ function formatMeetAndGreetAvailability(meetAndGreet){
 
 function formatWaitAvailability(wait){
     console.log(wait);
-    return '';
     let aB = [];
-    let aA = meetAndGreet.availability.map(function(el){
+    let aA = wait.availability.map(function(el){
         let t = formatTimesInAvailability(el);
-        aB.push({name:el.Resource,av:t});
+        aB.push({name:el.Resource,desc:el.ResourceName,av:t});
         return t.split(',');
     }).flat();
     let uA = [...new Set(aA)];
@@ -1732,7 +1731,7 @@ function formatWaitAvailability(wait){
     for (let i = 0;i<uA.length;i++){
         if (i!==0 && i/10===Math.floor(i/10)) out += '</tr><tr>'
         let rT = aB.filter(el => el.av.includes(uA[i]));
-        out += '<td title="'+rT.map(el => el.name).join(',')+'"><a href="#" onclick="chooseMeetAndGreet(\''+uA[i]+'\'); return false;">'+uA[i]+'</a></td>';
+        out += '<td title="'+rT.map(el => el.name).join(',')+'"><a href="#" onclick="chooseWait(\''+uA[i]+'\'); return false;">'+uA[i]+'</a></td>';
     }
     out += '</tr></table>'
     return out;
