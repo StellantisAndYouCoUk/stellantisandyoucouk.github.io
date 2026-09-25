@@ -1604,8 +1604,9 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('DIAG') || el.includes('INV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('DIAG') || el.includes('INV'));
         for (let i = 0;i<diagInvLines.length;i++){
-            html += '<br />Describe details for line '+diagInvLines[0]+'<br /><input type="input" id="addInfo_'+diagInvLines[0]+'"></input>';
+            html += '<br />Describe details for line '+diagInvLines[i]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'"></textarea>';
         }
+         html += '<br />';
     }
 
     $('div[id="bookingSummary"]').html(html);
