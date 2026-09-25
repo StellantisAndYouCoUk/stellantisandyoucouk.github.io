@@ -1663,7 +1663,19 @@ async function generateBookingSummary(){
 }
 
 function saveAdditionalInfoForDiagInv(){
-    console.log('saveAdditionalInfoForDiagInv()')
+    console.log('saveAdditionalInfoForDiagInv()');
+    let diagInvAdditionalData = [];
+    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
+        for (let i = 0;i<diagInvLines.length;i++){
+            diagInvAdditionalData.push({
+                code : diagInvLines[i].split('#')[1],
+                name : $('#addInfo_'+diagInvLines[i]).val(),
+                source : 'additionalInfo'
+            })
+        }
+    }
+    serviceBookingProcess.bookingData.diagInvAdditionalData = diagInvAdditionalData;
 }
 
 function waitAppointmentChange(){
@@ -1777,18 +1789,7 @@ function chooseWait(timeString){
 
 function doBookingInAutoline(){
     $("#doBookingButton").hide();
-    let diagInvAdditionalData = [];
-    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
-        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
-        for (let i = 0;i<diagInvLines.length;i++){
-            diagInvAdditionalData.push({
-                code : diagInvLines[i].split('#')[1],
-                name : $('#addInfo_'+diagInvLines[i]).val(),
-                source : 'additionalInfo'
-            })
-        }
-    }
-    let additionalDataForRTSCodes = diagInvAdditionalData;
+    let additionalDataForRTSCodes = serviceBookingProcess.bookingData.diagInvAdditionalData;
     if (serviceBookingProcess.bookingData.manualPricingLines) additionalDataForRTSCodes.push(...serviceBookingProcess.bookingData.manualPricingLines.map(function(el){el.source='manualLines'; return el;}))
     let bookingData ={
         customerNumber : serviceBookingProcess.customer.CustomerNumber,
