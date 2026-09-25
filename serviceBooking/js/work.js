@@ -1670,7 +1670,7 @@ function saveAdditionalInfoForDiagInv(){
         for (let i = 0;i<diagInvLines.length;i++){
             diagInvAdditionalData.push({
                 code : diagInvLines[i].split('#')[1],
-                name : $('#addInfo_'+diagInvLines[i]).val(),
+                name : $('textarea[id="addInfo_'+diagInvLines[i]+'"]').val(),
                 source : 'additionalInfo'
             })
         }
