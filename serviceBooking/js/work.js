@@ -1601,6 +1601,13 @@ async function generateBookingSummary(){
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
 
+    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('DIAG') || el.includes('INV'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('DIAG') || el.includes('INV'));
+        for (let i = 0;i<diagInvLines.length;i++){
+            html += '<br />Describe details for line '+diagInvLines[0]+'<br /><input type="input" id="addInfo_'+diagInvLines[0]+'"></input>';
+        }
+    }
+
     $('div[id="bookingSummary"]').html(html);
 
     //let aV = findAvailabilityDaysForBooking();
