@@ -1761,7 +1761,7 @@ function formatWaitAvailability(wait){
     console.log(wait);
     let aB = [];
     let aA = wait.availability.map(function(el){
-        let t = el.timeDuration.map(el2 => el2.start);
+        let t = el.timeDuration.filter(el2 => el2.duration>=1).map(el2 => el2.start);
         aB.push({name:el.Resource,desc:el.ResourceName,av:t});
         return t;
     }).flat();
