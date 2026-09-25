@@ -256,6 +256,7 @@ function checkBookDate(date){
 function checkBookDateCallback(data){
     serviceBookingProcess.bookingData.confirmAvailability.status = 'checked';
     serviceBookingProcess.bookingData.confirmAvailability.dateAvailable = data.dateAvailable;
+    serviceBookingProcess.bookingData.confirmAvailability.description = data.description;
     serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable = (serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.find(el => dateToGB(new Date(el.date)) === dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)) && serviceBookingProcess.bookingData.availability.availability.find(el => dateToGB(new Date(el.date)) === dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)).wait.availability.length>0);
     generateBookingSummary();
 }
