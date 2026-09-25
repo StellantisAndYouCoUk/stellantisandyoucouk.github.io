@@ -1200,8 +1200,6 @@ function reloadCustomerCallback(data){
 }
 
 function editCustomerSubmit(event){
-    serviceBookingProcess.customerChange = true;
-    serviceBookingProcess.customerChangeInEdit = false; 
     $(this).find(":submit").attr('disabled', 'disabled');
     event.preventDefault();
     let mandatoryFields = [{id:'firstName','text':'First Name'},{id:'lastName',text:'Surname'},{id:'telephoneN4',text:'Mobile Number'},{id:'email',text:'Email'},{id:'address1',text:'Address Line'},{id:'postCode',text:'Post Code'}];
@@ -1217,6 +1215,8 @@ function editCustomerSubmit(event){
         $(this).find(":submit").removeAttr('disabled');
         return;
     }
+    serviceBookingProcess.customerChange = true;
+    serviceBookingProcess.customerChangeInEdit = false; 
     const data = new FormData(event.target);
     const formJSON = Object.fromEntries(data.entries());
     console.log(formJSON);
