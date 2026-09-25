@@ -1601,8 +1601,8 @@ async function generateBookingSummary(){
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
 
-    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('DIAG') || el.includes('INV'))){
-        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('DIAG') || el.includes('INV'));
+    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
             html += '<br />Describe details for line '+diagInvLines[i].split('#')[1]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'"></textarea>';
         }
@@ -1773,6 +1773,19 @@ function chooseWait(timeString){
 
 function doBookingInAutoline(){
     $("#doBookingButton").hide();
+    let diagInvAdditionalData = [];
+    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
+        for (let i = 0;i<diagInvLines.length;i++){
+            diagInvAdditionalData.push({
+                code : el.split('#')[1],
+                name : $('#addInfo_'+diagInvLines[i]).val(),
+                source : 'additionalInfo'
+            })
+        }
+    }
+    let additionalDataForRTSCodes = diagInvAdditionalData;
+    if (serviceBookingProcess.bookingData.manualPricingLines) additionalDataForRTSCodes.push(...serviceBookingProcess.bookingData.manualPricingLines.map(function(el){el.source='manualLines'; return el;}))
     let bookingData ={
         customerNumber : serviceBookingProcess.customer.CustomerNumber,
         vehicleRegistrationNumber : serviceBookingProcess.registrationNumber,
@@ -1781,7 +1794,7 @@ function doBookingInAutoline(){
         dealerCode : serviceBookingProcess.bookingData.dealer.field_2442,
         bookingNote : '',
         rtsCodes : serviceBookingProcess.bookingData.orderedCodes.map(el => el.split('#')[1]),
-        manualRtsCodes : (serviceBookingProcess.bookingData.manualPricingLines?serviceBookingProcess.bookingData.manualPricingLines:null),
+        additionalDataForRTSCodes : additionalDataForRTSCodes,
         bookingDate : serviceBookingProcess.bookingData.confirmAvailability.date,
         meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
         waitTime : serviceBookingProcess.bookingData.confirmAvailability.selectedWait,
