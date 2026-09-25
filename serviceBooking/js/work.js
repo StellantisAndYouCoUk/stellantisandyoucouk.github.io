@@ -1604,7 +1604,8 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
-            html += '<br />Describe details for line '+diagInvLines[i].split('#')[1]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'" onfocusout="saveAdditionalInfoForDiagInv()";></textarea>';
+            let sL = serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => el.code === diagInvLines[i]);
+            html += '<br />Describe details for line '+diagInvLines[i].split('#')[1]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'" onfocusout="saveAdditionalInfoForDiagInv()";>'+(sL?sL.name:'')+'</textarea>';
         }
          html += '<br />';
     }
