@@ -1778,7 +1778,7 @@ function doBookingInAutoline(){
         let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
             diagInvAdditionalData.push({
-                code : el.split('#')[1],
+                code : diagInvLines[i].split('#')[1],
                 name : $('#addInfo_'+diagInvLines[i]).val(),
                 source : 'additionalInfo'
             })
