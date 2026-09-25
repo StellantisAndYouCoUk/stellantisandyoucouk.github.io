@@ -1604,7 +1604,7 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
-            html += '<br />Describe details for line '+diagInvLines[i].split('#')[1]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'"></textarea>';
+            html += '<br />Describe details for line '+diagInvLines[i].split('#')[1]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'" onfocusout="saveAdditionalInfoForDiagInv()";></textarea>';
         }
          html += '<br />';
     }
@@ -1660,6 +1660,10 @@ async function generateBookingSummary(){
     }
 
     $('div[id="bookingSummary"]').html(html);
+}
+
+function saveAdditionalInfoForDiagInv(){
+    console.log('saveAdditionalInfoForDiagInv()')
 }
 
 function waitAppointmentChange(){
