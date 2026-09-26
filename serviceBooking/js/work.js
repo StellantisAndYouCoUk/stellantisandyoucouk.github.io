@@ -1664,7 +1664,7 @@ async function generateBookingSummary(){
         }
     }
     if (serviceBookingProcess.bookingData.bookingSentToAutoline){
-        html += 'Booking is beaing created in Autoline<br/>';
+        html += '<br/><b>Booking is being created in Autoline<b><br/>';
         html += 'Booking details: '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
         html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
     }
@@ -1820,6 +1820,15 @@ function doBookingInAutoline(){
     serviceBookingProcess.bookingData.bookingSentToAutoline = true;
     serviceBookingProcess.bookingData.bookingSentToAutolineData = bookingData;
     generateBookingSummary();
+    $('#step3').hide();
+    $('#bookServicePricing').hide();
+    $('#bookServiceDealership').hide();
+    $('#bookingSentToAutoline').show();
+    let html = '<br/><b>Booking is being created in Autoline<b><br/>';
+    html += 'Booking details: '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
+    html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
+    $('#bookingSentToAutolineText').html(html);
+    window.scrollTo(0, 0);
 }
 
 function doBookingAutolineCallback(){
