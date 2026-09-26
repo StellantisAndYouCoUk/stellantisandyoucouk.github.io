@@ -271,6 +271,7 @@ function chooseDealership(dealershipId){
     }
     $('div[id="bookingProblems"]').hide();
     if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
+        serviceBookingProcess.bookingData.pricing = null;
         let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
         checkPricingDataForDealership(newDealership);
     }
