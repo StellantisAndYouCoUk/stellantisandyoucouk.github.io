@@ -429,6 +429,7 @@ function getRTSCodePrefix(make){
 function newVehicle(doWork = true){
     serviceBookingProcess = {};
     $('#bookServiceDealership').show();
+    $('#bookServicePricing').show();
     $('#bookingSentToAutoline').hide();
     $('#customerValidation').show();
     $('#customerDetails button').show();
