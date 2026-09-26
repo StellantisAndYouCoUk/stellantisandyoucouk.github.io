@@ -1824,6 +1824,8 @@ function doBookingInAutoline(){
     $('#bookServicePricing').hide();
     $('#bookServiceDealership').hide();
     $('#bookingSentToAutoline').show();
+    $('#customerValidation').hide();
+    $('#customerDetails button').hide();
     let html = '<br/><b>Booking is being created in Autoline<b><br/>';
     html += 'Booking details: '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + serviceBookingProcess.bookingData.totalPrice;
     html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
