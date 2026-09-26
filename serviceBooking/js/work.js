@@ -428,6 +428,11 @@ function getRTSCodePrefix(make){
 
 function newVehicle(doWork = true){
     serviceBookingProcess = {};
+    $('#bookServiceDealership').show();
+    $('#bookingSentToAutoline').hide();
+    $('#customerValidation').show());
+    $('#customerDetails button').show();
+    $('#bookingSentToAutolineText').hide();
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     $('div[id="bookingProblems"]').text('');
     $('input[id="currentMileage"]').val('');
