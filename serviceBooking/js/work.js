@@ -1614,7 +1614,7 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
 
     //let aV = findAvailabilityDaysForBooking();
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
+    if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
         html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
@@ -1626,7 +1626,7 @@ async function generateBookingSummary(){
         }
     }
 
-    if (serviceBookingProcess.bookingData.confirmAvailability){
+    if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData.confirmAvailability){
         html += '<br /><br /><b>Booking details</b>';
         if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
             html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Confirming availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
@@ -1659,6 +1659,11 @@ async function generateBookingSummary(){
             html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
             html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
         }
+    }
+    if (serviceBookingProcess.bookingData.bookingSentToAutoline){
+        html += 'Booking is beaing created in Autoline<br/>';
+        html += 'Booking details: '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
+        html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
     }
 
     $('div[id="bookingSummary"]').html(html);
@@ -1809,6 +1814,9 @@ function doBookingInAutoline(){
         totalPrice : serviceBookingProcess.bookingData.totalPrice
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
+    serviceBookingProcess.bookingData.bookingSentToAutoline = true;
+    serviceBookingProcess.bookingData.bookingSentToAutolineData = bookingData;
+    generateBookingSummary();
 }
 
 function doBookingAutolineCallback(){
