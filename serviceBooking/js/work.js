@@ -1680,11 +1680,16 @@ async function generateBookingSummary(){
                 //html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
             }
         }
-        if (serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet || serviceBookingProcess.bookingData.confirmAvailability.selectedWait){
+        if ((serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet || serviceBookingProcess.bookingData.confirmAvailability.selectedWait)){
             html += '<br /><br /><b>Create booking</b><br />';
             html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
             html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
-            html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
+            if (serviceBookingProcess.customer && serviceBookingProcess.vehicle){
+                html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
+            } else {
+                html += 'Customer and vehicle needs to be created in Autoline to create booking.'
+            }
+            
         }
     }
     if (serviceBookingProcess.bookingData.bookingSentToAutoline){
