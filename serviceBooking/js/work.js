@@ -1629,7 +1629,7 @@ async function generateBookingSummary(){
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
 
-    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
             let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].includes('#'+el.code)):null);
