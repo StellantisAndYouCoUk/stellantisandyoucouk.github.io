@@ -385,8 +385,8 @@ function secondaryDetailsGetFallback(){
     if (serviceBookingProcess.secondaryDetails) return;
     serviceBookingProcess.secondaryDetails = {recalls:{error:'Timeout while waiting for recalls get'}};
     work();
-    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN},getSecondaryDetailsCallback);
-    $('#infoPanel').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading data from more sources ...&nbsp; &nbsp; &nbsp; ');
+    //callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getDetailsSecondary?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,registrationNumber:registrationNumber,customerNumber:customerNumber,vehicleNumber:vehicleNumber,make:make,VIN:VIN},getSecondaryDetailsCallback);
+    //$('#infoPanel').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading data from more sources ...&nbsp; &nbsp; &nbsp; ');
 }
 
 async function getSecondaryDetailsCallback(r){
