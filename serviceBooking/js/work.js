@@ -377,7 +377,7 @@ async function getSecondaryDetails(registrationNumber, customerNumber=null,vehic
     $('#infoPanel').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Loading data from more sources ...&nbsp; &nbsp; &nbsp; ');
     setTimeout(() => {
         secondaryDetailsGetFallback();
-    }, 5*60*1000);
+    }, 3*60*1000);
 }
 
 function secondaryDetailsGetFallback(){
