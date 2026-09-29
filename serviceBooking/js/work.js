@@ -286,7 +286,7 @@ function showPricing(){
         $('div[id="bookingProblems"]').show();
         return null;
     }
-    if ((!$('#customerValidated').is(':checked') && !serviceBookingProcess.customerChangeId) || !serviceBookingProcess.customer){
+    if (!$('#customerValidated').is(':checked') && !serviceBookingProcess.customerChangeId && serviceBookingProcess.customer){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Confirm validation of customer details first.</span>');
         $('div[id="bookingProblems"]').show();
         return null;
