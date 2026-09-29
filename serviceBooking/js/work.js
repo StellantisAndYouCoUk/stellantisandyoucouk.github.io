@@ -1352,6 +1352,10 @@ function chooseCustomerFromAutoline(customerNumber){
     serviceBookingProcess.customerChangeInEdit = false;
     $('div[id="customerDetails"]').html(getCustomerDetails());
     $('div[id="vehicleDescription"]').html(getVehicleDescription());
+    if ($('input[id="postcodeForD"]').val()===''){
+        $('input[id="postcodeForD"]').val($('input[id="postCode"]').val());
+        findDealerships();
+    }
 }
 
 function getCustomerDetails(){
