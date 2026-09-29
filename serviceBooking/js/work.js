@@ -1925,12 +1925,14 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
             if (!aTCV) isCourtesyCarAvailableOrNotNeeded = false;
         }
         let isWaitAvailable = false;
+        let waitAvforDay = null;
         try {
             isWaitAvailable = (availability && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)) && availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)).wait.availability.length>0);
+            if (isWaitAvailable) waitAvforDay = [...new Set(availability.find(el => dateToGB(new Date(el.date)) === dateToGB(dayToUse)).wait.availability.map(el => el.timeDuration.filter(el2 => el2.duration>=1).map(el2 => el2.start)).flat(2).sort((a,b)=>(parseInt(a.split(':')[0])>parseInt(b.split(':')[0])?1:-1)))];
         } catch (ex){
             console.log('get isWaitAvailable error',ex)
         }
-        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="'+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
