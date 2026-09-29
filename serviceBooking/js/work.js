@@ -1206,6 +1206,7 @@ function reloadCustomerCallback(data){
         serviceBookingProcess.customer = data[0];
         serviceBookingProcess.customerGdpr = data[0].customerGdpr;
         if (!serviceBookingProcess.customerChangeInEdit) $('div[id="customerDetails"]').html(getCustomerDetails());
+        $('div[id="vehicleDescription"]').html(getVehicleDescription());
     }
 }
 
