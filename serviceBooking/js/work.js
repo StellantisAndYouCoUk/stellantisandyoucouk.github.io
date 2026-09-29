@@ -1687,7 +1687,7 @@ async function generateBookingSummary(){
             if (serviceBookingProcess.customer && serviceBookingProcess.vehicle){
                 html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
             } else {
-                html += 'Customer and vehicle needs to be created in Autoline to create booking.'
+                html += '<br /><b style=\"color:red;\">Customer and vehicle needs to be created in Autoline to create booking.</b>'
             }
             
         }
