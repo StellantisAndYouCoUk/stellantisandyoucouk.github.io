@@ -1359,8 +1359,8 @@ function getCustomerDetails(){
                 const emailInput = document.querySelector('#email');
                 emailInput.addEventListener("focusout",emailInputFocusOut);
 
+                $('#telephoneN2').hide();
                 $('#telephoneN3').hide();
-                $('#telephoneN4').hide();
             }, 1000);
         }, 500);
         serviceBookingProcess.customerChangeInEdit = true;
