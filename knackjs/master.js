@@ -6826,7 +6826,9 @@ $(document).on('knack-view-render.view_9225', function(event, view, data) {
     pdfPane.append(iframe);
 
     // Move your views into right pane
-    $('#view_9335').appendTo(rightPane); // menu
+	$('#view_9578').appendTo(rightPane); // link 1
+	$('#view_9579').appendTo(rightPane); // link 2
+    $('#view_9335').appendTo(rightPane); // supplier search
     $('#view_9229').appendTo(rightPane); // details
     $('#view_9226').appendTo(rightPane); // form
 
