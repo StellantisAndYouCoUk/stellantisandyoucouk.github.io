@@ -1604,7 +1604,7 @@ async function generateBookingSummary(){
                 continue;
             }*/
             //console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+oneLine.code+'</td><td>'+oneLine.name+'</td><td style="text-align: center;">'+oneLine.quantity+'</td><td style="text-align: right;">£'+oneLine.price.toFixed(2)+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
+            html += '<tr><td>'+oneLine.code+'</td><td title="'+oneLine.name+'">'+oneLine.name.substring(0,30)+'</td><td style="text-align: center;">'+oneLine.quantity+'</td><td style="text-align: right;">£'+oneLine.price.toFixed(2)+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
             total += oneLine.price*oneLine.quantity;
         }  
     }
