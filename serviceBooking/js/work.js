@@ -1618,7 +1618,7 @@ async function generateBookingSummary(){
 
     if (serviceBookingProcess.bookingData.inAddingRTSCode){
         if (serviceBookingProcess.bookingData.newRTSCode){
-            html += '<b>Add non-listed item:</b><br /><div>Code: <b>'+serviceBookingProcess.bookingData.newRTSCode+'</b><br />'+supportData.rtsCode.find(el => el.rtscode===serviceBookingProcess.bookingData.newRTSCode).description+'</div><input type="hidden" id="addRTSCode" value="'+serviceBookingProcess.bookingData.newRTSCode+'"><div>Description: <input class="input" id="addDescription" type="text"><br />Quantity: <input class="input" id="addQuantity" type="text"><br />Price: <input class="input" id="addPrice" type="text"><br /><button class="btn btn-primary" onclick="addRTSCode(); return false;">Add item</button></div>';
+            html += '<b>Add non-listed item:</b><br /><div>Code: <b>'+serviceBookingProcess.bookingData.newRTSCode+'</b><br />'+supportData.rtsCode.find(el => el.rtscode===serviceBookingProcess.bookingData.newRTSCode).description+'</div><input type="hidden" id="addRTSCode" value="'+serviceBookingProcess.bookingData.newRTSCode+'"><div>Description: <input class="input" id="addDescription" type="text"><br />Quantity: <input class="input" id="addQuantity" type="text"><br />Price: <input class="input" id="addPrice" type="text"><br /><button class="btn btn-primary" onclick="addManualLine(); return false;">Add item</button></div>';
         } else {
             html += '<b>Add non-listed item:</b><br />Search for RTS code:<br/><div>Code: <input class="input" id="searchRTSCode" type="text"><div id="searchRTSCodeResults"></div></div>';
             setTimeout(() => {
@@ -1757,13 +1757,17 @@ function chooseRTSCode(code){
     generateBookingSummary();
 }
 
-function addRTSCode(){
+function addManualLine(){
     console.log($("#addRTSCode").val());
-    if (!serviceBookingProcess.bookingData.manualPricingLines) serviceBookingProcess.bookingData.manualPricingLines = [];
-    serviceBookingProcess.bookingData.manualPricingLines.push({code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val()})
+    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [];
+    serviceBookingProcess.bookingData.orderedLines.push({code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val(),group:'MANUAL',codeWithGroup:'MANUAL#'+$("#addRTSCode").val()})
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
     serviceBookingProcess.bookingData.newRTSCode = null;
-    addCodeToBooking('MANUAL#'+$("#addRTSCode").val());
+    sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
+    serviceBookingProcess.bookingData.confirmAvailability = null;
+    serviceBookingProcess.bookingData.availability = null;
+    findAvailabilityDaysForBooking();
+    generateBookingSummary();
 }
 
 function getCourtesyCarsForDate(date){
