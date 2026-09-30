@@ -1587,7 +1587,8 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.length>0){
         let excludedLines = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedLines.length;i++){
-            let justCode = serviceBookingProcess.bookingData.orderedLines[i].code;
+            let oneLine = serviceBookingProcess.bookingData.orderedLines[i];
+            /*
             if (serviceBookingProcess.bookingData.orderedLines[i].group==='MANUAL'){
                 let manLine = serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode);
                 html += '<tr><td>'+manLine.code+'</td><td>'+manLine.name+'</td><td style="text-align: center;">'+manLine.quantity+'</td><td style="text-align: right;">'+numberToGBP(parseFloat(manLine.price))+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
@@ -1604,9 +1605,9 @@ async function generateBookingSummary(){
                 //We should inform the user
                 excludedLines.push(serviceBookingProcess.bookingData.orderedLines[i])
                 continue;
-            }
+            }*/
             //console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
+            html += '<tr><td>'+oneLine.code+'</td><td>'+oneLine.name+'</td><td style="text-align: center;">'+oneLine.quantity+'</td><td style="text-align: right;">£'+oneLine.price.toFixed(2)+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
             total += pricingDetailsForCode.Price
         }  
         if (excludedLines.length>0){
