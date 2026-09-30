@@ -1759,7 +1759,7 @@ function chooseRTSCode(code){
 function addManualLine(){
     console.log($("#addRTSCode").val());
     if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [{code:'CCVHC',quantity:1, price:0, name:'Stellantis &You Health Check', group:'PRESET',codeWithGroup:'PRESET#CCVHC'}];
-    serviceBookingProcess.bookingData.orderedLines.push({code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:parseFloat($("#addPrice").val()),group:'MANUAL',codeWithGroup:'MANUAL#'+$("#addRTSCode").val()})
+    serviceBookingProcess.bookingData.orderedLines.push({id:crypto.randomUUID(),code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:parseFloat($("#addPrice").val()),group:'MANUAL',codeWithGroup:'MANUAL#'+$("#addRTSCode").val()})
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
     serviceBookingProcess.bookingData.newRTSCode = null;
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
