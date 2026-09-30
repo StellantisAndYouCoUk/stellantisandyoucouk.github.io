@@ -1635,8 +1635,8 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
-            let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].id):null);
-            html += '<br />Describe details for line '+diagInvLines[i].code+'<br /><textarea rows=4 cols=50 id="addInfo_'+diagInvLines[i].id+'" onfocusout="saveAdditionalInfoForDiagInv()";>'+(sL?sL.name:'')+'</textarea>';
+            //let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].id):null);
+            html += '<br />Describe details for line '+diagInvLines[i].code+'<br /><textarea rows=4 cols=50 id="addInfo_'+diagInvLines[i].id+'" onfocusout="saveAdditionalInfoForDiagInv(\''+diagInvLines[i].id+'\')";>'+diagInvLines[i].name+'</textarea>';
         }
          html += '<br />';
     }
@@ -1704,9 +1704,11 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
 }
 
-function saveAdditionalInfoForDiagInv(){
+function saveAdditionalInfoForDiagInv(id){
     console.log('saveAdditionalInfoForDiagInv()');
-    let diagInvAdditionalData = [];
+    let toLine = serviceBookingProcess.bookingData.orderedLines.find(el => el.id === id);
+    toLine.name = $('textarea[id="addInfo_'+diagInvLines[i].id+'"]').val();
+    /*let diagInvAdditionalData = [];
     if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
@@ -1718,7 +1720,7 @@ function saveAdditionalInfoForDiagInv(){
             })
         }
     }
-    serviceBookingProcess.bookingData.diagInvAdditionalData = diagInvAdditionalData;
+    serviceBookingProcess.bookingData.diagInvAdditionalData = diagInvAdditionalData;*/
 }
 
 function waitAppointmentChange(){
