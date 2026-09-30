@@ -1458,13 +1458,13 @@ function addCodeToBooking(codeWithGroup){
     if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines =[];
     let cT = serviceBookingProcess.bookingData.orderedLines.find(el => el.codeWithGroup === codeWithGroup);
     if (!cT){
-        let price = 0;
+        let pricingDetailsForCode = null;
         try {
-            price = (codeWithGroup.includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === codeWithGroup.split('#')[1]):serviceBookingProcess.bookingData.pricing[codeWithGroup.split('#')[0]].find(el => el.Code === codeWithGroup.split('#')[1]));
+            pricingDetailsForCode = (codeWithGroup.includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === codeWithGroup.split('#')[1]):serviceBookingProcess.bookingData.pricing[codeWithGroup.split('#')[0]].find(el => el.Code === codeWithGroup.split('#')[1]));
         } catch (ex){
 
         }
-        serviceBookingProcess.bookingData.orderedLines.push({codeWithGroup:codeWithGroup,id:crypto.randomUUID(),code:codeWithGroup.split('#')[1],group:codeWithGroup.split('#')[0],quantity:1,price:price})
+        serviceBookingProcess.bookingData.orderedLines.push({codeWithGroup:codeWithGroup,id:crypto.randomUUID(),code:codeWithGroup.split('#')[1],group:codeWithGroup.split('#')[0],quantity:1,price:(pricingDetailsForCode?pricingDetailsForCode.Price:0), name:(pricingDetailsForCode?pricingDetailsForCode.Name:0)})
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
         serviceBookingProcess.bookingData.availability = null;
