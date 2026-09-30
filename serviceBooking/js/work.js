@@ -1635,7 +1635,7 @@ async function generateBookingSummary(){
         let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
             let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].id):null);
-            html += '<br />Describe details for line '+diagInvLines[i].code+'<br /><textarea rows=6 cols=70 id="addInfo_'+diagInvLines[i].id+'" onfocusout="saveAdditionalInfoForDiagInv()";>'+(sL?sL.name:'')+'</textarea>';
+            html += '<br />Describe details for line '+diagInvLines[i].code+'<br /><textarea rows=4 cols=50 id="addInfo_'+diagInvLines[i].id+'" onfocusout="saveAdditionalInfoForDiagInv()";>'+(sL?sL.name:'')+'</textarea>';
         }
          html += '<br />';
     }
