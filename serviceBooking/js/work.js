@@ -1836,7 +1836,8 @@ function doBookingInAutoline(){
         meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
         waitTime : serviceBookingProcess.bookingData.confirmAvailability.selectedWait,
         bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment,
-        totalPrice : serviceBookingProcess.bookingData.totalPrice
+        totalPrice : serviceBookingProcess.bookingData.totalPrice,
+        courtesyCar : serviceBookingProcess.bookingData.confirmAvailability.courtesyCar
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
     serviceBookingProcess.bookingData.bookingSentToAutoline = true;
