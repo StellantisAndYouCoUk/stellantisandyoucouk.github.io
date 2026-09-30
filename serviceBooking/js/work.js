@@ -1656,7 +1656,7 @@ async function generateBookingSummary(){
             }
             if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
                 html += '<br />Available cars<br />';
-                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => '<a href="#" onclick="chooseCourtesyCar(\''+el.VehicleMagicNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
+                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => '<a href="#" onclick="chooseCourtesyCar(\''+el.regNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
                 html += '<br />Wait appointment availability<br />';
@@ -1668,12 +1668,12 @@ async function generateBookingSummary(){
             html += '<br /><br /><b>Create booking</b><br />';
             html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
             html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Wait appointment will be booked.':'');
+            html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
             if (serviceBookingProcess.customer && serviceBookingProcess.vehicle){
                 html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
             } else {
                 html += '<br /><b style=\"color:red;\">Customer and vehicle needs to be created in Autoline to create booking.</b>'
             }
-            
         }
     }
     if (serviceBookingProcess.bookingData.bookingSentToAutoline){
@@ -1817,8 +1817,9 @@ function chooseWait(timeString){
     generateBookingSummary();
 }
 
-function chooseCourtesyCar(ccVehicleMagicNumber){
-    serviceBookingProcess.bookingData.confirmAvailability.courtesyCar = ccVehicleMagicNumber;
+function chooseCourtesyCar(ccRegistration){
+    serviceBookingProcess.bookingData.confirmAvailability.courtesyCar = ccRegistration;
+    generateBookingSummary();
 }
 
 function doBookingInAutoline(){
