@@ -1585,7 +1585,6 @@ async function generateBookingSummary(){
     let total = 0;
     html += '<br /><br /><b>Priced Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
     if (serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.length>0){
-        let excludedLines = [];
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedLines.length;i++){
             let oneLine = serviceBookingProcess.bookingData.orderedLines[i];
             /*
@@ -1608,13 +1607,8 @@ async function generateBookingSummary(){
             }*/
             //console.log(justCode, pricingDetailsForCode)
             html += '<tr><td>'+oneLine.code+'</td><td>'+oneLine.name+'</td><td style="text-align: center;">'+oneLine.quantity+'</td><td style="text-align: right;">£'+oneLine.price.toFixed(2)+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
-            total += pricingDetailsForCode.Price
+            total += oneLine.price*oneLine.quantity;
         }  
-        if (excludedLines.length>0){
-            for (let i = 0;i<excludedLines.length;i++){
-                removeCodeFromBooking(null,excludedLines[i].id);
-            }
-        }
     }
 
     html += '<tr><td>Discount</td><td colspan="2"><span ng-show="addDiscount" class=""><input type="radio" id="zeroDiscount" name="grpDiscount" style="cursor:pointer" ng-value="0" onclick="applyDiscount(0)" value="0"'+(!serviceBookingProcess.bookingData.discountPercent || serviceBookingProcess.bookingData.discountPercent===0?' checked=true':'')+'><label for="zeroDiscount" style="margin-right: 10px;cursor:pointer">None</label><input type="radio" id="fiveDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(5)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="5"'+(serviceBookingProcess.bookingData.discountPercent===5?' checked=true':'')+'><label for="fiveDiscount" style="margin-right:10px;cursor:pointer">5%</label><input type="radio" id="tenDiscount" name="grpDiscount" style="cursor:pointer" onclick="applyDiscount(10)" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="10"'+(serviceBookingProcess.bookingData.discountPercent===10?' checked=true':'')+'><label for="tenDiscount" style="margin-right:20px;cursor:pointer">10%</label></span></td><td style="text-align: right;" class="ng-binding"><span id="totalDiscount">'+(serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?'<span style="color:red;">-£'+(total*(serviceBookingProcess.bookingData.discountPercent/100)).toFixed(2)+'</span>':'-£0.00')+'</span></td><td style="min-width:20px; max-width:20px; width:20px;"></td></tr>'
