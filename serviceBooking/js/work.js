@@ -1455,7 +1455,7 @@ function refreshAutolineRTSCodesCallback(data){
 }
 
 function addCodeToBooking(codeWithGroup){
-    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines =[];
+    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [{code:'CCVHC',quantity:1, price:0, group:'PRESET',codeWithGroup:'PRESET#CCVHC'}];
     let cT = serviceBookingProcess.bookingData.orderedLines.find(el => el.codeWithGroup === codeWithGroup);
     if (!cT){
         let pricingDetailsForCode = null;
