@@ -1458,7 +1458,12 @@ function addCodeToBooking(codeWithGroup){
     if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines =[];
     let cT = serviceBookingProcess.bookingData.orderedLines.find(el => el.codeWithGroup === codeWithGroup);
     if (!cT){
-        let price = 0; //SOLVE GET PRICE
+        let price = 0;
+        try {
+            price = (codeWithGroup.includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === codeWithGroup.split('#')[1]):serviceBookingProcess.bookingData.pricing[codeWithGroup.split('#')[0]].find(el => el.Code === codeWithGroup.split('#')[1]));
+        } catch (ex){
+
+        }
         serviceBookingProcess.bookingData.orderedLines.push({codeWithGroup:codeWithGroup,id:crypto.randomUUID(),code:codeWithGroup.split('#')[1],group:codeWithGroup.split('#')[0],quantity:1,price:price})
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
