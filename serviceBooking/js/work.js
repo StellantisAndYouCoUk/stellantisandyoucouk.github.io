@@ -1707,7 +1707,7 @@ async function generateBookingSummary(){
 function saveAdditionalInfoForDiagInv(id){
     console.log('saveAdditionalInfoForDiagInv()');
     let toLine = serviceBookingProcess.bookingData.orderedLines.find(el => el.id === id);
-    toLine.name = $('textarea[id="addInfo_'+diagInvLines[i].id+'"]').val();
+    toLine.name = $('textarea[id="addInfo_'+toLine.id+'"]').val();
     /*let diagInvAdditionalData = [];
     if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
