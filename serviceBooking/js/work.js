@@ -1473,8 +1473,8 @@ function addCodeToBooking(codeWithGroup){
     }
 }
 
-function removeCodeFromBookingWBS(code){
-    removeCodeFromBooking(code);
+function removeCodeFromBookingWBS(code,id){
+    removeCodeFromBooking(code,id);
     work();
 }
 
