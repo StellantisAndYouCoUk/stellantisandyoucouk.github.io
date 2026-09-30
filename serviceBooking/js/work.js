@@ -1837,8 +1837,6 @@ function chooseWait(timeString){
 
 function doBookingInAutoline(){
     $("#doBookingButton").hide();
-    let additionalDataForRTSCodes = serviceBookingProcess.bookingData.diagInvAdditionalData;
-    if (serviceBookingProcess.bookingData.manualPricingLines) additionalDataForRTSCodes.push(...serviceBookingProcess.bookingData.manualPricingLines.map(function(el){el.source='manualLines'; return el;}))
     let bookingData ={
         customerNumber : serviceBookingProcess.customer.CustomerNumber,
         vehicleRegistrationNumber : serviceBookingProcess.registrationNumber,
@@ -1847,7 +1845,6 @@ function doBookingInAutoline(){
         dealerCode : serviceBookingProcess.bookingData.dealer.field_2442,
         bookingNote : '',
         bookingLines : serviceBookingProcess.bookingData.orderedLines,
-        additionalDataForRTSCodes : additionalDataForRTSCodes,
         bookingDate : serviceBookingProcess.bookingData.confirmAvailability.date,
         meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
         waitTime : serviceBookingProcess.bookingData.confirmAvailability.selectedWait,
