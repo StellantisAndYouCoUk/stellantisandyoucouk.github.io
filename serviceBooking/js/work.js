@@ -597,7 +597,7 @@ function work(){
             if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.pricing){
                 $('div[id="step3"]').show(); 
                 generatePricingHTML();
-                if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0) refreshAutolineRTSCodes();
+                if (serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.length>0) refreshAutolineRTSCodes();
                 generateBookingSummary();
                 $("input[name='otherCode']").bind("click", function() {
                     if ($(this).is(':checked')) addCodeToBooking($(this).attr('data-code')); else removeCodeFromBooking($(this).attr('data-code'));
@@ -698,14 +698,14 @@ function checkPricingDataForDealership(checkDealership){
                     reportPricingMissingToMake(serviceBookingProcess.registrationNumber,'Fuel type not found in pricing data for '+checkDealership.field_8+', car fuel type: '+fuelTypeToUse, serviceBookingProcess.bookingData.dealer.field_8,makeToUse,modelToUse,(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear(),fuelTypeToUse)
                 } else {
                     selectedPricingHTML += getPricingFuelsForModel(mF,fT.ID);
-                    let savedCodes = null;
-                    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes) savedCodes = serviceBookingProcess.bookingData.orderedCodes;
+                    let savedLines = null;
+                    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedLines) savedLines = serviceBookingProcess.bookingData.orderedLines;
                     serviceBookingProcess.bookingData.konnectFranchiseId = kF.ID;
                     serviceBookingProcess.bookingData.konnectModelName = mF.modelName;
                     serviceBookingProcess.bookingData.konnectModel = mF;
                     serviceBookingProcess.bookingData.konnectFuelTypeId = fT.ID;
                     serviceBookingProcess.bookingData.bookingVehicleDescription = toTitleCase(serviceBookingProcess.motData.make)+' '+serviceBookingProcess.motData.model+' '+toTitleCase(serviceBookingProcess.motData.fuelType)+' '+(new Date(serviceBookingProcess.motData.manufactureDate)).getFullYear();
-                    if (savedCodes) serviceBookingProcess.bookingData.orderedCodes = savedCodes;
+                    if (savedLines) serviceBookingProcess.bookingData.orderedLines = savedLines;
                     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
                 }
             }
@@ -1454,12 +1454,12 @@ function refreshAutolineRTSCodesCallback(data){
     sessionStorage.setItem('supportData',JSON.stringify(supportData));
 }
 
-function addCodeToBooking(code){
-    if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
-    let cT = serviceBookingProcess.bookingData.orderedCodes.find(el => el === code);
+function addCodeToBooking(codeWithGroup){
+    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines =[];
+    let cT = serviceBookingProcess.bookingData.orderedLines.find(el => el.codeWithGroup === codeWithGroup);
     if (!cT){
-        serviceBookingProcess.bookingData.orderedCodes.push(code);
-        serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
+        let price = 0; //SOLVE GET PRICE
+        serviceBookingProcess.bookingData.orderedLines.push({codeWithGroup:codeWithGroup,id:crypto.randomUUID(),code:codeWithGroup.split('#')[1],group:codeWithGroup.split('#')[0],quantity:1,price:price})
         sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
         serviceBookingProcess.bookingData.confirmAvailability = null;
         serviceBookingProcess.bookingData.availability = null;
@@ -1473,15 +1473,19 @@ function removeCodeFromBookingWBS(code){
     work();
 }
 
-function removeCodeFromBooking(code){
-    console.log('removeCodeFromBooking',code)
-    if (!serviceBookingProcess.bookingData.orderedCodes) serviceBookingProcess.bookingData.orderedCodes =[];
-    serviceBookingProcess.bookingData.orderedCodes = serviceBookingProcess.bookingData.orderedCodes.filter(el => el !== code);
-    serviceBookingProcess.bookingData.orderedCodesString = serviceBookingProcess.bookingData.orderedCodes.join('$');
-    if (code.includes('MANUAL') && serviceBookingProcess.bookingData.manualPricingLines){
+function removeCodeFromBooking(codeWithGroup = null, id = null){
+    console.log('removeCodeFromBooking',codeWithGroup)
+    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines =[];
+    if (id){
+        serviceBookingProcess.bookingData.orderedLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.id !== id);
+    }
+    if (codeWithGroup){
+        serviceBookingProcess.bookingData.orderedLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.codeWithGroup !== codeWithGroup);
+    }
+    /*if (code.includes('MANUAL') && serviceBookingProcess.bookingData.manualPricingLines){
         let justCode = code.split('#')[1];
         serviceBookingProcess.bookingData.manualPricingLines = serviceBookingProcess.bookingData.manualPricingLines.filter(el => el.code!==justCode);
-    }
+    }*/
     sessionStorage.setItem('serviceBookingProcess',JSON.stringify(serviceBookingProcess));
     serviceBookingProcess.bookingData.confirmAvailability = null;
     serviceBookingProcess.bookingData.availability = null;
@@ -1531,17 +1535,17 @@ function applyDiscount(percent){
 }
 
 function generateLabourSummary(){
-    if (!serviceBookingProcess.bookingData || !serviceBookingProcess.bookingData.orderedCodes) return;
+    if (!serviceBookingProcess.bookingData || !serviceBookingProcess.bookingData.orderedLines) return;
     let labourSummary = [];
-    for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
-        let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
+    for (let i = 0;i<serviceBookingProcess.bookingData.orderedLines.length;i++){
+        let justCode = serviceBookingProcess.bookingData.orderedLines[i].code;
         if (supportData.autolineRTSCodes){
             let aCode = supportData.autolineRTSCodes.find(el => el.RTSCode === justCode);
             if (aCode){
                 if (aCode.LoadGroup==='N' || aCode.LoadGroup==='H') continue;
                 let lT = labourSummary.find(el => el.LoadGroup === aCode.LoadGroup);
                 if (lT){
-                    lT.Time += parseFloat(aCode.AllowedUnits001);
+                    lT.Time += serviceBookingProcess.bookingData.orderedLines[i].quantity*parseFloat(aCode.AllowedUnits001);
                 } else {
                     labourSummary.push({LoadGroup:aCode.LoadGroup,Time:parseFloat(aCode.AllowedUnits001)})
                 }
@@ -1575,11 +1579,11 @@ async function generateBookingSummary(){
     $('div[id="bookingSummary"]').html(html);
     let total = 0;
     html += '<br /><br /><b>Priced Items</b><table class="table table-sm"><tr><th>Code</th><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>'
-    if (serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.length>0){
-        let excludedCodes = [];
-        for (let i = 0;i<serviceBookingProcess.bookingData.orderedCodes.length;i++){
-            let justCode = serviceBookingProcess.bookingData.orderedCodes[i].split('#')[1];
-            if (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]==='MANUAL'){
+    if (serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.length>0){
+        let excludedLines = [];
+        for (let i = 0;i<serviceBookingProcess.bookingData.orderedLines.length;i++){
+            let justCode = serviceBookingProcess.bookingData.orderedLines[i].code;
+            if (serviceBookingProcess.bookingData.orderedLines[i].group==='MANUAL'){
                 let manLine = serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode);
                 html += '<tr><td>'+manLine.code+'</td><td>'+manLine.name+'</td><td style="text-align: center;">'+manLine.quantity+'</td><td style="text-align: right;">'+numberToGBP(parseFloat(manLine.price))+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
                 total += parseFloat(manLine.quantity*manLine.price)
@@ -1587,22 +1591,22 @@ async function generateBookingSummary(){
             }
             let pricingDetailsForCode = null;
             try {
-                pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0].includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedCodes[i].split('#')[0]].find(el => el.Code === justCode));
+                pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedLines[i].group.includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedLines[i].group].find(el => el.Code === justCode));
             } catch (ex){
 
             }
             if (!pricingDetailsForCode){
                 //We should inform the user
-                excludedCodes.push(serviceBookingProcess.bookingData.orderedCodes[i])
+                excludedLines.push(serviceBookingProcess.bookingData.orderedLines[i])
                 continue;
             }
             //console.log(justCode, pricingDetailsForCode)
-            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
+            html += '<tr><td>'+justCode+'</td><td>'+pricingDetailsForCode.Name+'</td><td style="text-align: center;">1</td><td style="text-align: right;">'+pricingDetailsForCode.PriceDisplay+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
             total += pricingDetailsForCode.Price
         }  
-        if (excludedCodes.length>0){
-            for (let i = 0;i<excludedCodes.length;i++){
-                removeCodeFromBooking(excludedCodes[i]);
+        if (excludedLines.length>0){
+            for (let i = 0;i<excludedLines.length;i++){
+                removeCodeFromBooking(null,excludedLines[i].id);
             }
         }
     }
@@ -1629,11 +1633,11 @@ async function generateBookingSummary(){
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
 
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
-        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
-            let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].includes('#'+el.code)):null);
-            html += '<br />Describe details for line '+diagInvLines[i].split('#')[1]+'<br /><textarea rows=2 cols=50 id="addInfo_'+diagInvLines[i]+'" onfocusout="saveAdditionalInfoForDiagInv()";>'+(sL?sL.name:'')+'</textarea>';
+            let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].id):null);
+            html += '<br />Describe details for line '+diagInvLines[i].code+'<br /><textarea rows=6 cols=70 id="addInfo_'+diagInvLines[i].id+'" onfocusout="saveAdditionalInfoForDiagInv()";>'+(sL?sL.name:'')+'</textarea>';
         }
          html += '<br />';
     }
@@ -1643,12 +1647,12 @@ async function generateBookingSummary(){
     //let aV = findAvailabilityDaysForBooking();
     if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
         html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null));
         html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
         html += '<br /><span style="text-align: center; background-color: #90EE90;">&nbsp; &nbsp; &nbsp; &nbsp;</span> Wait appointment available';
-        if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
+        if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
             html += '<br /><span style="text-align: center; background-color: orange;">&nbsp; &nbsp; &nbsp; &nbsp;</span> No courtesy car available';
         }
     }
@@ -1670,7 +1674,7 @@ async function generateBookingSummary(){
                     html += aVForDate.meetAndGreet.availability[i].Resource + ' - ' + formatTimesInAvailability(aVForDate.meetAndGreet.availability[i])+'<br />';
                 }*/
             }
-            if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCAR'))){
+            if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
                 html += '<br />Available cars<br />';
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => el.regNumber+ ' ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
             }
@@ -1704,12 +1708,13 @@ async function generateBookingSummary(){
 function saveAdditionalInfoForDiagInv(){
     console.log('saveAdditionalInfoForDiagInv()');
     let diagInvAdditionalData = [];
-    if (serviceBookingProcess.bookingData.orderedCodes.find(el => el.includes('CCDIAG') || el.includes('CCINV'))){
-        let diagInvLines = serviceBookingProcess.bookingData.orderedCodes.filter(el => el.includes('CCDIAG') || el.includes('CCINV'));
+    if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
         for (let i = 0;i<diagInvLines.length;i++){
             diagInvAdditionalData.push({
-                code : diagInvLines[i].split('#')[1],
-                name : $('textarea[id="addInfo_'+diagInvLines[i]+'"]').val(),
+                id : diagInvLines[i].id,
+                code : diagInvLines[i].code,
+                name : $('textarea[id="addInfo_'+diagInvLines[i].id+'"]').val(),
                 source : 'additionalInfo'
             })
         }
@@ -1837,7 +1842,7 @@ function doBookingInAutoline(){
         vehicleMileage : serviceBookingProcess.bookingData.mileage,
         dealerCode : serviceBookingProcess.bookingData.dealer.field_2442,
         bookingNote : '',
-        rtsCodes : serviceBookingProcess.bookingData.orderedCodes.map(el => el.split('#')[1]),
+        bookingLines : serviceBookingProcess.bookingData.orderedLines,
         additionalDataForRTSCodes : additionalDataForRTSCodes,
         bookingDate : serviceBookingProcess.bookingData.confirmAvailability.date,
         meetAndGreetTime : serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet,
@@ -1979,7 +1984,7 @@ function generateTableFromData(data, isServiceSchedule = false, pricingPath = ''
     let html = '<table class="table table-sm" width="100%"><tbody>';
     for (let i = 0;i<data.length;i++){
         let dataCode = (isServiceSchedule?'serviceSchedule_'+data[i].Age+'_':'')+pricingPath+'#'+data[i].Code;
-        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':(pricingPath==='Recalls'?' style="background-color: red;"':''))+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+dataCode+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedCodes && serviceBookingProcess.bookingData.orderedCodes.find(el => el === dataCode)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
+        html += '<tr'+(data[i].IsPreselected?' style="background-color: yellow;"':(pricingPath==='Recalls'?' style="background-color: red;"':''))+'><td><input type="checkbox" name="'+(isServiceSchedule?'serviceScheduleCode':'otherCode')+'" data-code="'+dataCode+'" class="ng-pristine ng-untouched ng-valid ng-empty"'+(serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.find(el => el.codeWithGroup === dataCode)?' checked=true':'')+'></td>'+(isServiceSchedule?'<td class="ng-binding">Year '+data[i].Age+'</td><td class="ng-binding">'+data[i].Mileage+'</td>':'')+'<td class="ng-binding">'+data[i].Code+'</td><td class="ng-binding">'+data[i].Name+'</td><td style="text-align: right;" class="ng-binding">'+data[i].PriceDisplay+'</td></tr>'
     }
     html += '</tbody></table>';
     return html;
