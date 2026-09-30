@@ -1558,13 +1558,11 @@ function generateLabourSummary(){
                 let mCode = supportData.rtsCode.find(el => el.rtscode === justCode);
                 if (mCode){
                     if (mCode.skillcode==='N' || mCode.skillcode==='H') continue;
-                    let pricingLine = (serviceBookingProcess.bookingData.manualPricingLines?serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode):null);
-                    console.log('pricingLine',pricingLine)
                     let lT = labourSummary.find(el => el.LoadGroup === mCode.skillcode);
                     if (lT){
-                        lT.Time += parseFloat(mCode.time)*(pricingLine?parseInt(pricingLine.quantity):1);
+                        lT.Time += parseFloat(mCode.time)*parseInt(serviceBookingProcess.bookingData.orderedLines[i].quantity);
                     } else {
-                        labourSummary.push({LoadGroup:mCode.skillcode,Time:parseFloat(mCode.time)*(pricingLine?parseInt(pricingLine.quantity):1)})
+                        labourSummary.push({LoadGroup:mCode.skillcode,Time:parseFloat(mCode.time)*parseInt(serviceBookingProcess.bookingData.orderedLines[i].quantity)})
                     }
                 } else {
                     console.log('CODE NOT FOUND IN RTS CODES');
