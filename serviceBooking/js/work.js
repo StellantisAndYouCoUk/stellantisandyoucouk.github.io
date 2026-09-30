@@ -1585,25 +1585,6 @@ async function generateBookingSummary(){
     if (serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.length>0){
         for (let i = 0;i<serviceBookingProcess.bookingData.orderedLines.length;i++){
             let oneLine = serviceBookingProcess.bookingData.orderedLines[i];
-            /*
-            if (serviceBookingProcess.bookingData.orderedLines[i].group==='MANUAL'){
-                let manLine = serviceBookingProcess.bookingData.manualPricingLines.find(el => el.code === justCode);
-                html += '<tr><td>'+manLine.code+'</td><td>'+manLine.name+'</td><td style="text-align: center;">'+manLine.quantity+'</td><td style="text-align: right;">'+numberToGBP(parseFloat(manLine.price))+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(\''+serviceBookingProcess.bookingData.orderedCodes[i]+'\');"></i></td></tr>';
-                total += parseFloat(manLine.quantity*manLine.price)
-                continue;
-            }
-            let pricingDetailsForCode = null;
-            try {
-                pricingDetailsForCode = (serviceBookingProcess.bookingData.orderedLines[i].group.includes('serviceSchedule_') && serviceBookingProcess.bookingData.pricing.ServiceSchedule?serviceBookingProcess.bookingData.pricing.ServiceSchedule.ServiceIntervals.find(el => el.Code === justCode):serviceBookingProcess.bookingData.pricing[serviceBookingProcess.bookingData.orderedLines[i].group].find(el => el.Code === justCode));
-            } catch (ex){
-
-            }
-            if (!pricingDetailsForCode){
-                //We should inform the user
-                excludedLines.push(serviceBookingProcess.bookingData.orderedLines[i])
-                continue;
-            }*/
-            //console.log(justCode, pricingDetailsForCode)
             html += '<tr><td>'+oneLine.code+'</td><td title="'+oneLine.name+'">'+oneLine.name.substring(0,30)+'</td><td style="text-align: center;">'+oneLine.quantity+'</td><td style="text-align: right;">£'+oneLine.price.toFixed(2)+'</td><td><i class="fa fa-times pricing-lookup-remove-item" title="Remove" style="cursor:pointer;" onclick="removeCodeFromBookingWBS(null,\''+serviceBookingProcess.bookingData.orderedLines[i].id+'\');"></i></td></tr>';
             total += oneLine.price*oneLine.quantity;
         }  
