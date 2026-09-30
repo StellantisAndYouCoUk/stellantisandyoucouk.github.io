@@ -1455,7 +1455,7 @@ function refreshAutolineRTSCodesCallback(data){
 }
 
 function addCodeToBooking(codeWithGroup){
-    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [{code:'CCVHC',quantity:1, price:0, group:'PRESET',codeWithGroup:'PRESET#CCVHC'}];
+    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [{code:'CCVHC',quantity:1, price:0, name:'Stellantis &You Health Check', group:'PRESET',codeWithGroup:'PRESET#CCVHC'}];
     let cT = serviceBookingProcess.bookingData.orderedLines.find(el => el.codeWithGroup === codeWithGroup);
     if (!cT){
         let pricingDetailsForCode = null;
@@ -1757,7 +1757,7 @@ function chooseRTSCode(code){
 
 function addManualLine(){
     console.log($("#addRTSCode").val());
-    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [{code:'CCVHC',quantity:1, price:0, group:'PRESET',codeWithGroup:'PRESET#CCVHC'}];
+    if (!serviceBookingProcess.bookingData.orderedLines) serviceBookingProcess.bookingData.orderedLines = [{code:'CCVHC',quantity:1, price:0, name:'Stellantis &You Health Check', group:'PRESET',codeWithGroup:'PRESET#CCVHC'}];
     serviceBookingProcess.bookingData.orderedLines.push({code:$("#addRTSCode").val(),name:$("#addDescription").val(),quantity:$("#addQuantity").val(),price:$("#addPrice").val(),group:'MANUAL',codeWithGroup:'MANUAL#'+$("#addRTSCode").val()})
     serviceBookingProcess.bookingData.inAddingRTSCode = false;
     serviceBookingProcess.bookingData.newRTSCode = null;
