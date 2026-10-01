@@ -1657,6 +1657,7 @@ async function generateBookingSummary(){
             if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
                 html += '<br />Available cars<br />';
                 html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar===el.regNumber?'<b>Selected</b> ':'')+'<a href="#" onclick="chooseCourtesyCar(\''+el.regNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+el.description).join('<br />') + '<br />'
+                if (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar) html += '<a href="#" onclick="chooseCourtesyCar(null); return false;">No courtesy car</a>'
             }
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
                 html += '<br />Wait appointment availability<br />';
