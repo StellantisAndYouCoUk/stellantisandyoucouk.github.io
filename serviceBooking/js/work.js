@@ -1316,7 +1316,7 @@ function searchCustomerFirstPageInAutoline(){
     $('#searchCustomerResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
     let searchString = $('#searchCustomer').val();
     if (searchString.length<4){
-        $('#searchResults').html('Enter at least 4 characters ...');
+        $('#searchCustomerResults').html('Enter at least 4 characters ...');
         return;
     }
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:searchString},searchCustomerFirstPageInAutolineCallback);
