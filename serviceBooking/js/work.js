@@ -1319,7 +1319,7 @@ function searchCustomerFirstPageInAutoline(){
         $('#searchCustomerResults').html('Enter at least 4 characters ...');
         return;
     }
-    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:searchString},searchCustomerFirstPageInAutolineCallback);
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:searchString,withVehicles:true},searchCustomerFirstPageInAutolineCallback);
     serviceBookingProcess.customerSearchFirstPage = {
         searchString : searchString,
         results : []
