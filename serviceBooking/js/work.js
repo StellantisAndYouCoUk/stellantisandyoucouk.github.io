@@ -1314,7 +1314,7 @@ function changeCustomer(){
 
 function searchCustomerFirstPageInAutoline(){
     $('#searchCustomerResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
-    let searchString = $('#searchCustomer').val();
+    let searchString = $('#customerContact').val();
     if (searchString.length<4){
         $('#searchCustomerResults').html('Enter at least 4 characters ...');
         return;
