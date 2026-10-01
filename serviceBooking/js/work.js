@@ -632,6 +632,10 @@ function work(){
     }
 }
 
+function getBookings(){
+    
+}
+
 function checkPricingDataForDealership(checkDealership){
     if (!checkDealership){
         $('div[id="bookingPricing"]').html('');
