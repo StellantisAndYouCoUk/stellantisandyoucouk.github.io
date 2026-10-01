@@ -1170,11 +1170,11 @@ function createCustomerSubmit(event) {
         return;
     }
   }
-  if ($('#gdprEmail').val()==='' && $('#gdprSMS').val()==='' && $('#gdprPhone').val()==='' && $('#gdprPost').val()===''){
+  /*if ($('#gdprEmail').val()==='' && $('#gdprSMS').val()==='' && $('#gdprPhone').val()==='' && $('#gdprPost').val()===''){
     $('#customerInputErrors').html('<b style="color:red;">GDPR preferences is mandatory field.</b>');
     $(this).find(":submit").removeAttr('disabled');
     return;
-  }
+  }*/
   const data = new FormData(event.target);
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
@@ -1238,11 +1238,11 @@ function editCustomerSubmit(event){
             return;
         }
     }
-    if ($('#gdprEmail').val()==='' && $('#gdprSMS').val()==='' && $('#gdprPhone').val()==='' && $('#gdprPost').val()===''){
+    /*if ($('#gdprEmail').val()==='' && $('#gdprSMS').val()==='' && $('#gdprPhone').val()==='' && $('#gdprPost').val()===''){
         $('#customerInputErrors').html('<b style="color:red;">GDPR preferences is mandatory field.</b>');
         $(this).find(":submit").removeAttr('disabled');
         return;
-    }
+    }*/
     serviceBookingProcess.customerChange = true;
     serviceBookingProcess.customerChangeInEdit = false; 
     const data = new FormData(event.target);
