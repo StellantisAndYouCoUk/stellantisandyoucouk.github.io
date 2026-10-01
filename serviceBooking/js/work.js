@@ -1312,6 +1312,24 @@ function changeCustomer(){
     $('div[id="customerDetails"]').html('Change customer<br /><div id="changeCustomerForm">“Search customer in Autoline by partial phone or email<br /><input class="input" id="searchString" type="text" value=""><button class="btn btn-primary" onclick="searchCustomerInAutoline(); return false;">Search in Autoline</button></div><div id="searchResults"></div>');
 }
 
+function searchCustomerFirstPageInAutoline(){
+    $('#searchCustomerResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
+    let searchString = $('#searchCustomer').val();
+    if (searchString.length<4){
+        $('#searchResults').html('Enter at least 4 characters ...');
+        return;
+    }
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:searchString},searchCustomerFirstPageInAutolineCallback);
+    serviceBookingProcess.customerSearchFirstPage = {
+        searchString : searchString,
+        results : []
+    }
+}
+
+function searchCustomerFirstPageInAutolineCallback(data){
+    console.log(data);
+}
+
 function searchCustomerInAutoline(){
     $('#searchResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
     let searchString = $('#searchString').val();
