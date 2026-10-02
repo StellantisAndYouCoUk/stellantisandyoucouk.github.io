@@ -1339,7 +1339,7 @@ function searchCustomerFirstPageInAutolineCallback(data){
         html += '<br /><b>'+el.FirstName + ' '+el.Surname +'</b> - '+el.EMailAddress +'; '+el.TelephoneNumbers+' - '+el.Postcode;
         let vehicles = '';
         el.vehicles.map(function (veh){
-            vehicles += '<a onclick="chooseVehicleFirstPage(\''+veh.RegistrationNumber+'\'); return false;">'+veh.RegistrationNumber+'</a>'
+            vehicles += '<a class="btn btn-primary" onclick="chooseVehicleFirstPage(\''+veh.RegistrationNumber+'\'); return false;">'+veh.RegistrationNumber+'</a>, '
         })
         if (vehicles!=='') html +='<br />&nbsp; &nbsp;'+vehicles;
     })
