@@ -1328,6 +1328,11 @@ function searchCustomerFirstPageInAutoline(){
 
 function searchCustomerFirstPageInAutolineCallback(data){
     console.log(data);
+    let html = '';
+    data.map(function(el){
+        html += '<br /><b>'+el.FirstName + ' '+el.Surname +'</b> - '+el.EMailAddress +' ;'+el.TelephoneNumbers004+' - '+el.Postcode;
+    })
+    $('#searchCustomerResults').html(html);
 }
 
 function searchCustomerInAutoline(){
