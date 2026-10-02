@@ -646,7 +646,7 @@ function getBookingsCallback(data){
     let html = '';
     if (data.success){
         data.data.map(function(el){
-            html += el.field_4358 +' at '+el.field_4361+' for '+el.field_4369.toFixed(2)+' - '+el.field_4370+'<br />'
+            html += el.field_4358 +' at '+el.field_4361+' for '+parseFloat(el.field_4369).toFixed(2)+' - '+el.field_4370+'<br />'
         })
     }
     $('#listOfBookings').html(html);
