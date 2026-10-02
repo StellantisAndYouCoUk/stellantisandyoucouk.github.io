@@ -1328,9 +1328,15 @@ function searchCustomerFirstPageInAutoline(){
 
 function searchCustomerFirstPageInAutolineCallback(data){
     console.log(data);
+    serviceBookingProcess.customerSearchFirstPage.results = data;
     let html = '';
     data.map(function(el){
         html += '<br /><b>'+el.FirstName + ' '+el.Surname +'</b> - '+el.EMailAddress +' ;'+el.TelephoneNumbers004+' - '+el.Postcode;
+        let vehicles = '';
+        el.vehicles.map(function (veh){
+            vehicles += '<a onclick="chooseVehicleFirstPage(\''+veh.RegistrationNumber+'\'); return false;">'+veh.RegistrationNumber+'</a>'
+        })
+        if (vehicles!=='') html +='<br />&nbsp; &nbsp;'+vehicles;
     })
     $('#searchCustomerResults').html(html);
 }
