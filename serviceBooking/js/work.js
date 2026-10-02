@@ -206,6 +206,11 @@ function searchRegistrationButton(){
     return false;
 }
 
+function chooseVehicleFirstPage(regNumber){
+    searchRegistration(regNumber.toUpperCase())
+    return false;
+}
+
 function showHideMoreServiceVisits(){
     let newV = (document.querySelector('.more').style.display==="none"?"":"none");
     document.querySelectorAll('.more').forEach(function(el) {
