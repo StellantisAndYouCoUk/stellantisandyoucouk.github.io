@@ -644,9 +644,11 @@ function getBookings(){
 
 function getBookingsCallback(data){
     let html = '';
-    data.map(function(el){
-        html += el.field_4358 +' at '+el.field_4361+' for '+el.field_4369.toFixed(2)+' - '+el.field_4370+'<br />'
-    })
+    if (data.success){
+        data.data.map(function(el){
+            html += el.field_4358 +' at '+el.field_4361+' for '+el.field_4369.toFixed(2)+' - '+el.field_4370+'<br />'
+        })
+    }
     $('#listOfBookings').html(html);
 }
 
