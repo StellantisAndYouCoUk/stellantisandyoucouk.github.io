@@ -578,6 +578,7 @@ function work(){
                 $('div[id="searchRegistrationMessage"]').text('Registration number not found in DVLA data');
                 $('div[id="searchRegistrationMessage"]').show();
             }
+            getBookings();
         } else if (serviceBookingProcess.registrationNumber){
             $('h1[id="registrationNumberShow"]').html('<span style="background: yellow; border-radius: 25px;">&nbsp;&nbsp;&nbsp;'+serviceBookingProcess.registrationNumber+'&nbsp;&nbsp;&nbsp;</span>')
             $('h1[id="registrationNumberShow"]').show();
