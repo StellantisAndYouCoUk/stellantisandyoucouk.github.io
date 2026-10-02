@@ -1331,7 +1331,7 @@ function searchCustomerFirstPageInAutolineCallback(data){
     serviceBookingProcess.customerSearchFirstPage.results = data;
     let html = '';
     data.map(function(el){
-        html += '<br /><b>'+el.FirstName + ' '+el.Surname +'</b> - '+el.EMailAddress +' ;'+el.TelephoneNumbers004+' - '+el.Postcode;
+        html += '<br /><b>'+el.FirstName + ' '+el.Surname +'</b> - '+el.EMailAddress +' ;'+el.TelephoneNumbers+' - '+el.Postcode;
         let vehicles = '';
         el.vehicles.map(function (veh){
             vehicles += '<a onclick="chooseVehicleFirstPage(\''+veh.RegistrationNumber+'\'); return false;">'+veh.RegistrationNumber+'</a>'
