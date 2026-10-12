@@ -5478,7 +5478,9 @@ p.speech-bubble-outbound-sales:before {
 
 
 /* Remove scroll bars from pivot table */
-#view_9629 .kn-report-rendered {
+#view_9629 .kn-report-rendered,
+#view_9632 .kn-report-rendered, 
+#view_9633 .kn-report-rendered{
   overflow: visible;
 }
 
