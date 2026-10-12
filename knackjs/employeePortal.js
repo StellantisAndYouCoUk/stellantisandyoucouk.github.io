@@ -207,9 +207,9 @@ function setupExpandableGridViewGroups(view) {
 
 // ----------  refresh Sales Performance table every 60 minutes but not the page itself  ----------
 
-/*$(document).on('knack-scene-render.scene_2503', function(event, scene) {
+$(document).on('knack-scene-render.scene_2503', function(event, scene) {
   recursiveSceneRefresh('2503',['view_8125'],3600000)
-});*/
+});
 
 
 // ----------  Scroll to View TEST  ----------
@@ -226,7 +226,7 @@ window.scrollToView = function(viewKey) {
 }
 
 
-/* Code to wait for P&L's to be bulk updated
+// Code to wait for P&L's to be bulk updated
 $(document).on('knack-form-submit.view_8222', function(event, view, data) {
 
     setTimeout(function() {
@@ -255,4 +255,4 @@ $(document).on('knack-form-submit.view_8206', function(event, view, data) {
         location.reload();
     }, 25000);
 
-}); */
+});
