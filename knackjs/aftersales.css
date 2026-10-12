@@ -2939,8 +2939,3 @@ div#view_4746 {
      }
 }
 
-/* Remove scroll bars from pivot table */
-
-#view_9629 .kn-table {
-  overflow: visible;
-}
