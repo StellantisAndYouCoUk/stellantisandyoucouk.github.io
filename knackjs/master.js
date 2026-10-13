@@ -7032,3 +7032,33 @@ window.scrollToView = function(viewKey) {
   }
 
 }
+
+// Load ElevenLabs once
+if (!document.querySelector('#elevenlabs-script')) {
+  const script = document.createElement('script');
+  script.id = 'elevenlabs-script';
+  script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+// Show widget only on Device FAQ Page (scene_3023)
+$(document).on('knack-page-render.scene_3023', function() {
+
+  if (!Knack.getUserToken()) return;
+  $('elevenlabs-convai').remove();
+
+  $('body').append(`
+    <elevenlabs-convai
+      agent-id="agent_1001m3c0z658e95t72wrxnkx3fze"
+      server-location="eu-residency">
+    </elevenlabs-convai>
+  `);
+});
+
+// Remove it when leaving the page
+$(document).on('knack-page-render.any', function(event, page) {
+  if (page.key !== 'scene_3023') {
+    $('elevenlabs-convai').remove();
+  }
+});
