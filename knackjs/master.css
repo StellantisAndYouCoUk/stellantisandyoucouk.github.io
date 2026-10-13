@@ -5484,12 +5484,11 @@ p.speech-bubble-outbound-sales:before {
 
 
 /* Remove scroll bars from pivot table */
-#view_9629 .kn-table-wrapper {
-	overflow-y: hidden;
-} 
-
-#view_9629 {
-  overflow: visible;
+#view_9629 .kn-pivot-wrapper {
+    overflow: auto;
+}
+#view_9629 .kn-pivot-wrapper::-webkit-scrollbar {
+    display: none; 
 }
 
 /* Make custom filter button orange */
