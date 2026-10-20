@@ -5502,3 +5502,10 @@ p.speech-bubble-outbound-sales:before {
 #view_9252 .kn-content .tag {
     background-color: #FFA100;
 }
+
+/* Filter menu - PIN team view (invoice processing) */
+#view_9698 > div:nth-child(1) > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,{
+  background-color: #FFA100;
+  color: #ffffff;
+  font-weight: bold;
+}
