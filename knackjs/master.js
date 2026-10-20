@@ -7123,3 +7123,37 @@ function removeFilterFields(addedAlowedFilters){
     }
   }, 200);
 }
+
+
+// PIN Team View
+
+$(document).on('knack-view-render.view_9698', function (event, view, data) {
+
+let defineButtons = [
+{linkText:"Awaiting Action","filters":[{"field_name":"PIN Status","field":"field_12526","value":"Uploaded to Autoline","operator":"is"}]},
+{linkText:"On Hold","filters":[{"field_name":"PIN Status","field":"field_12526","value":"On Hold","operator":"is"}]},
+{linkText:"Completed","filters":[{"field_name":"PIN Status","field":"field_12526","value":"Completed","operator":"is"}]}				 
+];
+console.log("renderSYSearchButtons('9698',defineButtons);")
+  renderSYSearchButtons('9698',defineButtons);
+ 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    addFilters.onclick = function(){
+      console.log('onclick 2')
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+      }
+    }
+  }
+
+    $('div[id="view_9698"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
+      console.log('something clicked',(new Date()-view_9698_refreshDateTime));
+      if ((new Date()-view_9698_refreshDateTime)>30*60*1000){
+        view_9698_refreshDateTime = new Date()
+        console.log('doRefresh');
+        document.location.reload();
+      }
+    });	
+});
