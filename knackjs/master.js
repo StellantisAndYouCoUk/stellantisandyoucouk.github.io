@@ -7032,3 +7032,128 @@ window.scrollToView = function(viewKey) {
   }
 
 }
+
+// Load ElevenLabs once
+if (!document.querySelector('#elevenlabs-script')) {
+  const script = document.createElement('script');
+  script.id = 'elevenlabs-script';
+  script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+// Show widget only on Device FAQ Page (scene_3023)
+$(document).on('knack-page-render.scene_3023', function() {
+
+  if (!Knack.getUserToken()) return;
+  $('elevenlabs-convai').remove();
+
+  $('body').append(`
+    <elevenlabs-convai
+      agent-id="agent_1001m3c0z658e95t72wrxnkx3fze"
+      server-location="eu-residency">
+    </elevenlabs-convai>
+  `);
+});
+
+// Remove it when leaving the page
+$(document).on('knack-page-render.any', function(event, page) {
+  if (page.key !== 'scene_3023') {
+    $('elevenlabs-convai').remove();
+  }
+});
+
+
+
+
+
+// Code to create buttons for filter menu amendments
+
+var defineButtonsAll = [];
+
+function syButtonsFilter(viewId,index){
+  Knack.showSpinner();
+  let dbView = defineButtonsAll.find(el => el.viewId === viewId);
+  dbView.selectedIndex = index;
+  let dbA1 = dbView.defineButtons[index];
+  //console.log(viewId, index,dbA1,JSON.stringify(dbA1.filters));
+  Knack.views['view_'+viewId].model.setFilters('{"match":"and","rules":'+JSON.stringify(dbA1.filters)+'}');
+  Knack.views['view_'+viewId].model.fetch();
+}
+
+function renderSYSearchButtons(viewId, defineButtons){
+  let dbA1 = defineButtonsAll.find(el => el.viewId === viewId);
+  if (!dbA1){
+    dbA1 = {viewId:viewId, defineButtons: defineButtons};
+    defineButtonsAll.push(dbA1);
+  }
+  if ($('div[id="syButtons_'+viewId+'"]').length===0){
+    let buttonsDiv = '<div id="syButtons_'+viewId+'" class="js-filter-menu tabs is-toggle is-flush"><ul>';
+    buttonsDiv += dbA1.defineButtons.map((el,index) =>'<li><a id="syButtons_'+viewId+'_'+index+'" onclick="syButtonsFilter(\''+viewId+'\','+index+'); return false;"><span>'+el.linkText+'</span></a></li>').join('');
+    buttonsDiv += '</ul></div>';
+    $('div[id="view_'+viewId+'"] div[class="kn-records-nav"]').prepend(buttonsDiv);
+  }
+  if (dbA1.selectedIndex){
+    $('div[id="syButtons_'+viewId+'"] li[class="is-active"]').removeClass('is-active');
+    $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').parent().addClass('is-active');
+    if (dbA1.defineButtons[dbA1.selectedIndex].filters.length>0){
+      if ($('div[id="view_'+viewId+'"] li[class*="tag kn-tag-filter"]').length===0){
+        console.log('index selected but not filtered')
+        $('div[id="syButtons_'+viewId+'"] a[id="syButtons_'+viewId+'_'+dbA1.selectedIndex+'"]').click();
+      }
+    }
+  }
+  if (dbA1.selectedIndex && dbA1.defineButtons[dbA1.selectedIndex].filters){
+    for (let i = 0;i<dbA1.defineButtons[dbA1.selectedIndex].filters.length;i++){
+      console.log(dbA1.defineButtons[dbA1.selectedIndex].filters[i].field)
+      $('li[class="tag kn-tag-filter kn-filter-'+dbA1.defineButtons[dbA1.selectedIndex].filters[i].field+'"]').hide();
+    }
+  }
+}
+
+function removeFilterFields(addedAlowedFilters){
+  setTimeout(function () { 
+    console.log('remove from filter',addedAlowedFilters)
+    for (let i = 0;i<$('div[id="kn-filters-form"] select[name="field"] option').length;i++){
+      let filterField = $('div[id="kn-filters-form"] select[name="field"] option').eq(i).attr('value');
+      let allowFilterField = addedAlowedFilters.find(el => el===filterField);// || defineButtons.find(el => el.filters.find(el2 => el2.field === filterField));
+      if (!allowFilterField){
+        $('div[id="kn-filters-form"] select[name="field"] option').eq(i).hide();
+      }
+    }
+  }, 200);
+}
+
+
+// PIN Team View
+
+$(document).on('knack-view-render.view_9698', function (event, view, data) {
+
+let defineButtons = [
+{linkText:"Awaiting Action","filters":[{"field_name":"PIN Status","field":"field_12526","value":"Uploaded to Autoline","operator":"is"}]},
+{linkText:"On Hold","filters":[{"field_name":"PIN Status","field":"field_12526","value":"On Hold","operator":"is"}]},
+{linkText:"Completed","filters":[{"field_name":"PIN Status","field":"field_12526","value":"Completed","operator":"is"}]}				 
+];
+console.log("renderSYSearchButtons('9698',defineButtons);")
+  renderSYSearchButtons('9698',defineButtons);
+ 
+  let addFilters = document.querySelector('a[class="kn-add-filter kn-button is-small"]');
+  console.log('addFilters',addFilters)
+  if (addFilters){
+    addFilters.onclick = function(){
+      console.log('onclick 2')
+      let addFilters2 = document.querySelector('a[id="add-filter-link"]');
+      addFilters2.onclick = function(){
+      }
+    }
+  }
+
+    $('div[id="view_9698"] a[class*="knViewLink"]').has('i[class="fa fa-check-circle"]').on( "click", function() {
+      console.log('something clicked',(new Date()-view_9698_refreshDateTime));
+      if ((new Date()-view_9698_refreshDateTime)>30*60*1000){
+        view_9698_refreshDateTime = new Date()
+        console.log('doRefresh');
+        document.location.reload();
+      }
+    });	
+});

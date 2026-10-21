@@ -327,7 +327,15 @@ body {
 #view_7950 .kn-detail-label,
 #view_7869 .kn-detail-label,
 #view_9161 .kn-detail-label,
-#view_9164 .kn-detail-label{
+#view_9164 .kn-detail-label,
+#view_9521 .kn-detail-label,
+#view_9534 .kn-detail-label,
+#view_9511 .kn-detail-label,
+#view_9584 .kn-detail-label,
+#view_9558 .kn-detail-label,
+#view_9493 .kn-detail-label,
+#view_9559 .kn-detail-label,
+#view_9495 .kn-detail-label{
   background-color: transparent;
 }
 
@@ -734,6 +742,7 @@ body {
 #view_6857 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7509 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_7588 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
+#view_9698 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_9223 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_9251 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
 #view_9266 > div.kn-records-nav > div.js-filter-menu.tabs.is-toggle.is-flush > ul > li:nth-child(n) > a,
@@ -4200,6 +4209,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5855 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5855 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5855 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5855 > div > a.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_9089 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5856 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5856 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
@@ -4218,6 +4228,9 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5900 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7721 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7721 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9666 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9666 > div > a.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9666 > div > a.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_5797 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5815 > div > a.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5907 > div > a.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -4426,6 +4439,7 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5855 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5855 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_5855 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
+#view_5855 > div > a:hover.kn-link.kn-link-4.kn-link-page.kn-button,
 #view_9089 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5856 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_5856 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
@@ -4444,6 +4458,9 @@ n-link.kn-link-2.kn-link-page.kn-button,
 #view_5900 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
 #view_7721 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
 #view_7721 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9666 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
+#view_9666 > div > a:hover.kn-link.kn-link-2.kn-link-page.kn-button,
+#view_9666 > div > a:hover.kn-link.kn-link-3.kn-link-page.kn-button,
 #view_5797 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5815 > div > a:hover.kn-link.kn-link-8.kn-link-page.kn-button,
 #view_5907 > div > a:hover.kn-link.kn-link-1.kn-link-page.kn-button,
@@ -5471,3 +5488,19 @@ p.speech-bubble-outbound-sales:before {
 #view_9423 .kn-entries-summary{
   display: none;
 }
+
+
+/* Remove scroll bars from pivot table */
+#view_9629 .kn-pivot-wrapper {
+    overflow: auto;
+}
+#view_9629 .kn-pivot-wrapper::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Make custom filter button orange */
+
+#view_9252 .kn-content .tag {
+    background-color: #FFA100;
+}
+
