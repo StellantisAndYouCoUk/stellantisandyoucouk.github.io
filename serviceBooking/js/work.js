@@ -1705,7 +1705,7 @@ async function generateBookingSummary(){
             }
             if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
                 html += '<br />Available cars<br />';
-                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar===el.regNumber?'<b>Selected</b> ':'')+'<a href="#" onclick="chooseCourtesyCar(\''+el.regNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+(el.Transmmission?el.Transmmission+' - ':'')+el.description).join('<br />') + '<br />'
+                html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)).map(el => (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar===el.regNumber?'<b>Selected</b> ':'')+'<a href="#" onclick="chooseCourtesyCar(\''+el.regNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+(el.transmmission?el.transmmission+' - ':'')+el.description).join('<br />') + '<br />'
                 if (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar) html += '<a href="#" onclick="chooseCourtesyCar(null); return false;">No courtesy car</a>'
             }
             if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
@@ -1810,7 +1810,7 @@ function getCourtesyCarsForDate(date){
         let vT = serviceBookingProcess.bookingData.availability.courtesyVehicles.vehicles[i];
         let aV = vT.availability.find(el => el.date === dateToAutoline(date));
         if (aV){
-            cars.push({regNumber:vT.RegistrationNumber, description : vT.Description, vehicleBranch : vT.VehicleBranch})
+            cars.push({regNumber:vT.RegistrationNumber, description : vT.Description, vehicleBranch : vT.VehicleBranch, transmmission:vT.Transmmission})
         }
     }
     return cars;
