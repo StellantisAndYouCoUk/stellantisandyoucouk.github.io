@@ -1661,6 +1661,9 @@ async function generateBookingSummary(){
     } else {
         html += '<a href="#" onclick="showAddingRTSCode(); return false;">Add non-listed item</a><br />'
     }
+    if (serviceBookingProcess.bookingData.inEditingRTSCode){
+        
+    }
 
     if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
         let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
@@ -1940,7 +1943,7 @@ function calendarChangeMonthTo(month){
     calendareMonthSelected = month;
 }
 
-function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null){
+function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null, workOnLeave = null){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
@@ -1978,7 +1981,9 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
         } catch (ex){
             console.log('get isWaitAvailable error',ex)
         }
-        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        let workOnLeaveForDay = null;
+        workOnLeaveForDay = (workOnLeave?workOnLeave.dates.find(el => el.date === dateToAutoline(dayToUse)):null);
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'+(workOnLeaveForDay?' title="Work On Leave: '+(workOnLeaveForDay.data.ccH+workOnLeaveForDay.data.nonCcH).toFixed(1)+'"':'')))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
