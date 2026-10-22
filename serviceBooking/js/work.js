@@ -1982,7 +1982,12 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
             console.log('get isWaitAvailable error',ex)
         }
         let workOnLeaveForDay = null;
-        workOnLeaveForDay = (workOnLeave?workOnLeave.dates.find(el => el.date === dateToAutoline(dayToUse)):null);
+        try {
+            workOnLeaveForDay = (workOnLeave?workOnLeave.dates.find(el => el.date === dateToAutoline(dayToUse)):null);
+        } catch (ex){
+            console.log('get workonLeave error',ex)
+        }
+        
         html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'+(workOnLeaveForDay?' title="Work On Leave: '+(workOnLeaveForDay.data.ccH+workOnLeaveForDay.data.nonCcH).toFixed(1)+'"':'')))+'>'+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
