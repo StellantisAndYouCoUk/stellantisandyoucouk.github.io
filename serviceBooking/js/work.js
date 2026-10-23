@@ -1665,8 +1665,8 @@ async function generateBookingSummary(){
         
     }
 
-    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'))){
-        let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV'));
+    if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.orderedLines && serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCDIAG') || el.code.includes('CCINV') || el.code.includes('C/D'))){
+        let diagInvLines = serviceBookingProcess.bookingData.orderedLines.filter(el => el.code.includes('CCDIAG') || el.code.includes('CCINV') || el.code.includes('C/D'));
         for (let i = 0;i<diagInvLines.length;i++){
             //let sL = (serviceBookingProcess.bookingData.diagInvAdditionalData?serviceBookingProcess.bookingData.diagInvAdditionalData.find(el => diagInvLines[i].id):null);
             html += '<br />Describe details for line '+diagInvLines[i].code+'<br /><textarea rows=4 cols=50 id="addInfo_'+diagInvLines[i].id+'" onfocusout="saveAdditionalInfoForDiagInv(\''+diagInvLines[i].id+'\')";>'+diagInvLines[i].name+'</textarea>';
