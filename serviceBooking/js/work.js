@@ -1698,7 +1698,7 @@ async function generateBookingSummary(){
         }
         if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.confirmAvailability.dateAvailable){
             if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
-                html += '<a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
+                html += '<br />Colection and delivery<br /><a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
             } else {
                 let aVForDate = serviceBookingProcess.bookingData.availability.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)));
                 //console.log('BBBB',aVForDate)
