@@ -1816,6 +1816,7 @@ function getCourtesyCarsForDate(date){
             cars.push({regNumber:vT.RegistrationNumber, description : vT.Description, vehicleBranch : vT.VehicleBranch, transmmission:vT.Transmmission})
         }
     }
+    console.log('getCourtesyCarsForDate',cars)
     return cars;
 }
 
