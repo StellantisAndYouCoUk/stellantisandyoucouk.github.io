@@ -643,12 +643,13 @@ function getBookings(){
 }
 
 function getBookingsCallback(data){
-    let html = '';
+    let html = '<table><th><tr><td>Created</td><td>Registration</td><td>Dealer</td><td>WIP Number</td><td>Customer</td><td>Booking Date</td><td>Price</td><td>Status</td></tr></th><tbody>';
     if (data.success){
         data.data.map(function(el){
-            html += el.field_4358 +' at '+el.field_4361+' for '+parseFloat(el.field_4369).toFixed(2)+' - '+el.field_4370+'<br />'
+            html += '<tr><td>'+el.field_4374 +'</td><td>'+el.field_4358+'</td><td>'+el.field_4361+' - '+el.field_82+'</td><td>'+el.field_4372+'</td><td>'+el.field_4357+' - '+el.field_4385+'</td><td>'+el.field_4366+'</td><td>'+parseFloat(el.field_4369).toFixed(2)+'</td><td>'+el.field_4370+'</td><tr>';
         })
     }
+    html += '</tbody></table>'
     $('#listOfBookings').html(html);
 }
 
