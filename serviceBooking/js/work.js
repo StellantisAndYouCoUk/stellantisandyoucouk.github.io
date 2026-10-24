@@ -1736,12 +1736,6 @@ async function generateBookingSummary(){
             }
         }
     }
-    if (serviceBookingProcess.bookingData.bookingSentToAutoline){
-        html += '<br/><b>Booking is being created in Autoline<b><br/>';
-        html += 'Booking details<br /> Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Customer Number: '+ serviceBookingProcess.customer.CustomerNumber+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking:'+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+'<br />Total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
-        html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
-        html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
-    }
 
     $('div[id="bookingSummary"]').html(html);
 }
@@ -1925,7 +1919,7 @@ function doBookingInAutoline(){
     $('#customerValidation').hide();
     $('#customerDetails button').hide();
     let html = '<br/><b>Booking is being created in Autoline<b><br/>';
-    html += 'Booking details<br />'+(data.newWIPNumber?'WIPNumber: '+data.newWIPNumber+'<br />':'') +'Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking: '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+'<br />Total: £' + serviceBookingProcess.bookingData.totalPrice;
+    html += 'Booking details<br />'+(data.newWIPNumber?'WIPNumber: '+data.newWIPNumber+'<br />':'') +'Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer Number: '+ serviceBookingProcess.customer.CustomerNumber+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking: '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+'<br />Total: £' + serviceBookingProcess.bookingData.totalPrice;
     html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
     html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
     $('#bookingSentToAutolineText').html(html);
