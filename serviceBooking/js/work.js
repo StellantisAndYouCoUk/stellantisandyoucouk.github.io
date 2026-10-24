@@ -445,6 +445,7 @@ function getRTSCodePrefix(make){
 
 function newVehicle(doWork = true){
     serviceBookingProcess = {};
+    $('input[id="registrationNumber"]').val('');
     $('#bookServiceDealership').show();
     $('#bookServicePricing').show();
     $('#bookingSentToAutoline').hide();
