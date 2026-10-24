@@ -252,6 +252,8 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function priorityBookDate(date){
     console.log('priorityBookDate',date)
+    serviceBookingProcess.bookingData.confirmAvailability = {date : new Date(date),status:'checked',dateAvailable:true}
+    generateBookingSummary();
 }
 
 function checkBookDate(date){
@@ -1753,6 +1755,7 @@ async function generateBookingSummary(){
 function priorityBookingChanged(){
     console.log('priorityBookingChanged');
     serviceBookingProcess.bookingData.priorityBooking = $('select[id="priorityBooking"]').val();
+    serviceBookingProcess.bookingData.confirmAvailability = null;
     generateBookingSummary();
 }
 
