@@ -1689,6 +1689,7 @@ async function generateBookingSummary(){
         if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
             html += '<br /><span style="text-align: center; background-color: orange;">&nbsp; &nbsp; &nbsp; &nbsp;</span> No courtesy car available';
         }
+        html += '<b>Priority booking:</b><select id="priorityBooking"><option value="">No</option><option value="Return To Work">Return To Work</option><option value="Priority Recovery">Priority Recovery</option><option value="Online Service Bookings">Online Service Bookings</option><option value="1Link / Digital Innk">1Link / Digital Innk</option><option value="Customer First">Customer First</option><option value="Book My Garage">Book My Garage</option></select>'
     }
 
     if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData.confirmAvailability){
