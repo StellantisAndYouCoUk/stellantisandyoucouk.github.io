@@ -1694,6 +1694,11 @@ async function generateBookingSummary(){
             html += '<br /><span style="text-align: center; background-color: orange;">&nbsp; &nbsp; &nbsp; &nbsp;</span> No courtesy car available';
         }
         html += '<br /><b>Priority booking: </b><select id="priorityBooking" onchange="priorityBookingChanged(); return false;"><option>No</option><option value="Return To Work">Return To Work</option><option value="Priority Recovery">Priority Recovery</option><option value="Online Service Bookings">Online Service Bookings</option><option value="1Link / Digital Innk">1Link / Digital Innk</option><option value="Customer First">Customer First</option><option value="Book My Garage">Book My Garage</option></select>'
+        if (serviceBookingProcess.bookingData.priorityBooking){
+            setTimeout(() => {
+                $('select[id="priorityBooking"]').val(serviceBookingProcess.bookingData.priorityBooking)
+            }, 100);
+        }
     }
 
     if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData.confirmAvailability){
