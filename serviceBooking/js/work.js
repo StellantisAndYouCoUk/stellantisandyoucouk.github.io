@@ -1895,6 +1895,7 @@ function doBookingInAutoline(){
     $("#doBookingButton").hide();
     let bookingData ={
         customerNumber : serviceBookingProcess.customer.CustomerNumber,
+        customer : serviceBookingProcess.customer,
         vehicleRegistrationNumber : serviceBookingProcess.registrationNumber,
         vehicleNumber : serviceBookingProcess.vehicle.VehicleNumber,
         vehicleMileage : serviceBookingProcess.bookingData.mileage,
@@ -1906,7 +1907,8 @@ function doBookingInAutoline(){
         waitTime : serviceBookingProcess.bookingData.confirmAvailability.selectedWait,
         bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment,
         totalPrice : serviceBookingProcess.bookingData.totalPrice,
-        courtesyCar : serviceBookingProcess.bookingData.confirmAvailability.courtesyCar
+        courtesyCar : serviceBookingProcess.bookingData.confirmAvailability.courtesyCar,
+        isCD : serviceBookingProcess.bookingData.confirmAvailability.confirmedCD
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
     serviceBookingProcess.bookingData.bookingSentToAutoline = true;
