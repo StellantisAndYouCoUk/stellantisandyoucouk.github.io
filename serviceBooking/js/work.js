@@ -1895,6 +1895,7 @@ function chooseCourtesyCar(ccRegistration){
 
 function doBookingInAutoline(){
     $("#doBookingButton").hide();
+    let data = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getNewWIPNumber?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{companyCode:serviceBookingProcess.bookingData.dealer.field_2442})
     let bookingData ={
         customerNumber : serviceBookingProcess.customer.CustomerNumber,
         customer : serviceBookingProcess.customer,
@@ -1910,7 +1911,8 @@ function doBookingInAutoline(){
         bookWaitAppointment : serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment,
         totalPrice : serviceBookingProcess.bookingData.totalPrice,
         courtesyCar : serviceBookingProcess.bookingData.confirmAvailability.courtesyCar,
-        isCD : serviceBookingProcess.bookingData.confirmAvailability.confirmedCD
+        isCD : serviceBookingProcess.bookingData.confirmAvailability.confirmedCD,
+        provisinalWIPNumber : data.newWIPNumber
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
     serviceBookingProcess.bookingData.bookingSentToAutoline = true;
@@ -1922,7 +1924,6 @@ function doBookingInAutoline(){
     $('#bookingSentToAutoline').show();
     $('#customerValidation').hide();
     $('#customerDetails button').hide();
-    let data = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getNewWIPNumber?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{companyCode:serviceBookingProcess.bookingData.dealer.field_2442})
     let html = '<br/><b>Booking is being created in Autoline<b><br/>';
     html += 'Booking details<br />'+(data.newWIPNumber?'WIPNumber: '+data.newWIPNumber+'<br />':'') +'Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking: '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+'<br />Total: £' + serviceBookingProcess.bookingData.totalPrice;
     html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
