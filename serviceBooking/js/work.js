@@ -647,7 +647,7 @@ function getBookingsCallback(data){
     let html = '<table><thead><tr><th>Created</th><th>Registration</th><th>Dealer</th><th>WIP Number</th><th>Customer</th><th>Booking Date</th><th>Price</th><th>Status</th></tr></thead><tbody>';
     if (data.success){
         data.data.map(function(el){
-            html += '<tr><td>'+ dateTimeToGB(new Date(el.field_4374_date)).replace(' ','<br/>') +'</td><td>'+(el.field_4358===''?el.field_4386:(el.field_4358===el.field_4386 || el.field_4386==='' || el.field_4386===null?el.field_4358:el.field_4358+'('+el.field_4386+')'))+'</td><td>'+el.field_4361+'<br />'+el.field_82+'</td><td>'+el.field_4372+'</td><td>'+el.field_4357+'<br />'+el.field_4385+'</td><td>'+dateToGB(new Date(el.field_4366_date))+'</td><td>'+parseFloat(el.field_4369).toFixed(2)+'</td><td>'+el.field_4370+'</td><tr>';
+            html += '<tr><td>'+ dateTimeToGB(new Date(el.field_4374_date)).replace(' ','<br/>') +'</td><td>'+el.field_4358+'</td><td>'+el.field_4361+'<br />'+el.field_82+'</td><td>'+(el.el.field_4372===''?el.field_4386:(el.el.field_4372===el.field_4386 || el.field_4386==='' || el.field_4386===null?el.el.field_4372:el.el.field_4372+'('+el.field_4386+')'))+'</td><td>'+el.field_4357+'<br />'+el.field_4385+'</td><td>'+dateToGB(new Date(el.field_4366_date))+'</td><td>'+parseFloat(el.field_4369).toFixed(2)+'</td><td>'+el.field_4370+'</td><tr>';
         })
     }
     html += '</tbody></table>'
