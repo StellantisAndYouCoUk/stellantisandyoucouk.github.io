@@ -1825,11 +1825,9 @@ function getCourtesyCarsForDate(date){
         let vT = serviceBookingProcess.bookingData.availability.courtesyVehicles.vehicles[i];
         let aV = vT.availability.find(el => el.date === dateToAutoline(date));
         if (aV){
-            console.log('vT',vT);
             cars.push({regNumber:vT.RegistrationNumber, description : vT.Description, vehicleBranch : vT.VehicleBranch, transmission : vT.Transmission})
         }
     }
-    console.log('getCourtesyCarsForDate',cars)
     return cars;
 }
 
