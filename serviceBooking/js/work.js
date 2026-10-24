@@ -1922,10 +1922,11 @@ function doBookingInAutoline(){
     $('#bookingSentToAutoline').show();
     $('#customerValidation').hide();
     $('#customerDetails button').hide();
-        let html = '<br/><b>Booking is being created in Autoline<b><br/>';
-        html += 'Booking details<br /> Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking: '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+'<br />Total: £' + serviceBookingProcess.bookingData.totalPrice;
-        html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
-        html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
+    let data = callPostHttpRequest('https://davidmale--shared-server-1.apify.actor/getNewWIPNumber?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{companyCode:serviceBookingProcess.bookingData.dealer.field_2442})
+    let html = '<br/><b>Booking is being created in Autoline<b><br/>';
+    html += 'Booking details<br /> Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking: '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait)+'<br />Total: £' + serviceBookingProcess.bookingData.totalPrice;
+    html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
+    html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
     $('#bookingSentToAutolineText').html(html);
     $('#bookingSentToAutolineText').show();
     window.scrollTo(0, 0);
