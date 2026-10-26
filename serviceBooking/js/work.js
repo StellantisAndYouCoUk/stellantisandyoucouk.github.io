@@ -281,13 +281,37 @@ function chooseDealership(dealershipId){
         }
     }
     $('div[id="bookingProblems"]').hide();
-    if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
+    //if (!serviceBookingProcess.bookingData || (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.knackDealerId !== dealershipId)){
         let newDealership = supportData.dealerList.find(el => el.id === dealershipId);
         checkPricingDataForDealership(newDealership);
         if (serviceBookingProcess.bookingData.pricing){
             showPricing();
         }
-    }
+
+    //}
+}
+
+function getDealerCapabilities(dealer){
+    console.log(dealer.konnectData.extraDetails);
+    if (!dealer.konnectData.extraDetails) return null;
+    let html = '<div class="row"><div class="col-sm-6" style="padding-right: 0px;"><label>Sizes</label><div><span style="margin-right:5px;" title="Metres">';
+    html += 'Width:<span>'+dealer.konnectData.extraDetails.MaxWidth+'m</span></span><span style="margin-right:5px;" title="Metres">';
+    html += 'Height:<span>'+dealer.konnectData.extraDetails.MaxHeight+'m</span></span><span style="margin-right:5px;" title="Tonnes">';
+    html += 'Weight:<span>'+dealer.konnectData.extraDetails.MaxWeight+'t</span></span></div></div><div class="col-sm-6"><label>MOTs</label><div>';
+    /*html += '<span>Class 4<span title="Sublet" class="ng-binding"></span></span> <i style="margin-right:5px;" ng-class="{'fa fa-check text-success': selected.dealer.DealerPricingExtraDetail.Class4Mot, 'fa fa-times text-danger': !selected.dealer.DealerPricingExtraDetail.Class4Mot}" class="fa fa-check text-success"></i>
+                                        <span>Class 5<span title="Sublet" class="ng-binding"></span></span> <i style="margin-right:5px;" ng-class="{'fa fa-check text-success': selected.dealer.DealerPricingExtraDetail.Class5Mot, 'fa fa-times text-danger': !selected.dealer.DealerPricingExtraDetail.Class5Mot}" class="fa fa-check text-success"></i>
+                                        <span>Class 7<span title="Sublet" class="ng-binding"></span></span> <i style="margin-right:5px;" ng-class="{'fa fa-check text-success': selected.dealer.DealerPricingExtraDetail.Class7Mot, 'fa fa-times text-danger': !selected.dealer.DealerPricingExtraDetail.Class7Mot}" class="fa fa-check text-success"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label style="margin-top:10px;">Big Vans</label>
+                                    <div ng-show="selected.dealer.DealerPricingExtraDetail.BigVanMessage" class="ng-binding ng-hide"></div>
+                                    <div ng-show="!selected.dealer.DealerPricingExtraDetail.BigVanMessage">-</div>
+                                </div>
+                            </div>'*/
 }
 
 function showPricing(){
