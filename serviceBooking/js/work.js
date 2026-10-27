@@ -1764,7 +1764,6 @@ async function generateBookingSummary(){
             }
         }
         if (serviceBookingProcess.bookingData.confirmAvailability.priorityBooking){
-            html += '<br /><br /><b>Booking details</b>';
             if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
                 html += '<br />Colection and delivery<br /><a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
             } else {
