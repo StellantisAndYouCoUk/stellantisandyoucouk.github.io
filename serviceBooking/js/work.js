@@ -287,8 +287,6 @@ function chooseDealership(dealershipId){
         if (serviceBookingProcess.bookingData.pricing){
             showPricing();
         }
-    $('#dealershipCapabilitiesContent').html(getDealerCapabilities(newDealership));
-    $('#dealershipCapabilities').show();
     //}
 }
 
@@ -340,6 +338,8 @@ function showPricing(){
         $('div[id="bookingProblems"]').show();
         return null;
     }
+    $('#dealershipCapabilitiesContent').html(getDealerCapabilities(serviceBookingProcess.bookingData.dealer));
+    $('#dealershipCapabilities').show();
     if ($('select[name="pricingBrand"]').val()===''){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Brand needs to be selected.</span>');
         $('div[id="bookingProblems"]').show();
