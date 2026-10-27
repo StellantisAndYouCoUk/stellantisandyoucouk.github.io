@@ -2079,7 +2079,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
             console.log('get workonLeave error',ex)
         }
         
-        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'+(workOnLeaveForDay?' title="Work On Leave: '+(workOnLeaveForDay.data.ccH+workOnLeaveForDay.data.nonCcH).toFixed(1)+' hours"':'')))+'>'+(dayToUse>new Date() && priorityBooking && !isDateAvailable && isDealerOpen(dayToUse, availabilityAll)?'<a href="javascript:void(0);" style="color: black;" onclick="return priorityBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'+(workOnLeaveForDay?' title="Work On Leave: '+(workOnLeaveForDay.data.ccH+workOnLeaveForDay.data.nonCcH).toFixed(1)+' hours"':'')))+'>'+(dayToUse>new Date() && priorityBooking && !isDateAvailable && !isDealerClosed(dayToUse, availabilityAll)?'<a href="javascript:void(0);" style="color: black;" onclick="return priorityBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
@@ -2093,7 +2093,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
     return html;
 }
 
-function isDealerOpen(date, availabilityAll){
+function isDealerClosed(date, availabilityAll){
     if (!availabilityAll) return false;
     const fD = availabilityAll.availability.find(el => el.date === dateToAutoline(date));
     return (fD?fD.closed:false);
