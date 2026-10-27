@@ -1984,7 +1984,9 @@ function doBookingInAutoline(){
         totalPrice : serviceBookingProcess.bookingData.totalPrice,
         courtesyCar : serviceBookingProcess.bookingData.confirmAvailability.courtesyCar,
         isCD : serviceBookingProcess.bookingData.confirmAvailability.confirmedCD,
-        provisinalWIPNumber : data.newWIPNumber
+        provisinalWIPNumber : data.newWIPNumber,
+        isPriorityBooking : serviceBookingProcess.bookingData.confirmAvailability.priorityBooking,
+        priorityBookingReason : serviceBookingProcess.bookingData.priorityBooking
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
     serviceBookingProcess.bookingData.bookingSentToAutoline = true;
@@ -1998,6 +2000,7 @@ function doBookingInAutoline(){
     $('#customerDetails button').hide();
     let html = '<br/><b>Booking is being created in Autoline<b><br/>';
     html += 'Booking details<br />'+(data.newWIPNumber?'WIPNumber: '+data.newWIPNumber+'<br />':'') +'Vehicle: '+serviceBookingProcess.registrationNumber+ ' - '+serviceBookingProcess.bookingData.bookingVehicleDescription+'<br />Customer Number: '+ serviceBookingProcess.customer.CustomerNumber+'<br />Customer: '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+'<br />Dealership: '+serviceBookingProcess.bookingData.dealerName+'<br />Date of booking: '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ ' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:(serviceBookingProcess.bookingData.confirmAvailability.selectedWait?serviceBookingProcess.bookingData.confirmAvailability.selectedWait:''))+'<br />Total: £' + serviceBookingProcess.bookingData.totalPrice;
+    if (serviceBookingProcess.bookingData.confirmAvailability.priorityBooking) html +='<br />Priority booking reason: '+serviceBookingProcess.bookingData.priorityBooking;
     html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
     html += (serviceBookingProcess.bookingData.confirmAvailability.confirmedCD?'<br />Collection and Delivery was confirmed for customer.':'');
     html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
