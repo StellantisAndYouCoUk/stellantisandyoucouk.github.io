@@ -1713,9 +1713,9 @@ async function generateBookingSummary(){
     //let aV = findAvailabilityDaysForBooking();
     if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.availability.availability.length>0){
         html += '<br /><b>Workshop availability'+(serviceBookingProcess.bookingData.availability.companyCode?' '+serviceBookingProcess.bookingData.availability.companyCode:'')+'</b>';
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null),serviceBookingProcess.bookingData.availability.workOnLeave,serviceBookingProcess.bookingData.priorityBooking);
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null),serviceBookingProcess.bookingData.availability.workOnLeave,serviceBookingProcess.bookingData.priorityBooking);
-        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null),serviceBookingProcess.bookingData.availability.workOnLeave,serviceBookingProcess.bookingData.priorityBooking);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,0,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null),serviceBookingProcess.bookingData.availability.workOnLeave,serviceBookingProcess.bookingData.priorityBooking,serviceBookingProcess.bookingData.availabilityAll);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,1,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null),serviceBookingProcess.bookingData.availability.workOnLeave,serviceBookingProcess.bookingData.priorityBooking,serviceBookingProcess.bookingData.availabilityAll);
+        html += formatAvailability(serviceBookingProcess.bookingData.availability.availability,2,serviceBookingProcess.bookingData.availability.maxCheckedDate,(serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))?serviceBookingProcess.bookingData.availability.courtesyVehicles:null),serviceBookingProcess.bookingData.availability.workOnLeave,serviceBookingProcess.bookingData.priorityBooking,serviceBookingProcess.bookingData.availabilityAll);
         html += '<br />Checked at: '+dateTimeToGB(new Date(serviceBookingProcess.bookingData.availability.checkedAt));
         html += '<br /><span style="text-align: center; background-color: #90EE90;">&nbsp; &nbsp; &nbsp; &nbsp;</span> Wait appointment available';
         if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
@@ -1806,6 +1806,8 @@ function priorityBookingChanged(){
     serviceBookingProcess.bookingData.priorityBookingDetails = null;
     if (serviceBookingProcess.bookingData.priorityBooking && !serviceBookingProcess.bookingData.availabilityAll){
         return callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/getWorkshopAvailabilityForLabour?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,companyCode:serviceBookingProcess.bookingData.dealer.field_2442,labourArray:[]},allAvailabilityGet);
+    } else {
+        generateBookingSummary();
     }
 }
 
@@ -2032,7 +2034,7 @@ function calendarChangeMonthTo(month){
     calendareMonthSelected = month;
 }
 
-function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null, workOnLeave = null, priorityBooking = null){
+function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtesyVehiclesA = null, workOnLeave = null, priorityBooking = null, availabilityAll = null){
     const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
     const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
     let dayToUse = new Date();
@@ -2077,7 +2079,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
             console.log('get workonLeave error',ex)
         }
         
-        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'+(workOnLeaveForDay?' title="Work On Leave: '+(workOnLeaveForDay.data.ccH+workOnLeaveForDay.data.nonCcH).toFixed(1)+' hours"':'')))+'>'+(dayToUse>new Date() && priorityBooking && !isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return priorityBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
+        html += '<td '+(dayToUse<=new Date() || new Date(maxCheckedDate)<dayToUse?'style="text-align: center; background-color: gray;"':(isDateAvailable?(isCourtesyCarAvailableOrNotNeeded?(isWaitAvailable?'style="text-align: center; background-color: #90EE90;" title="Wait: '+waitAvforDay+'"':'style="text-align: center; background-color: green;"'):'style="text-align: center; background-color: orange;"'):'style="text-align: center; background-color: red;"'+(workOnLeaveForDay?' title="Work On Leave: '+(workOnLeaveForDay.data.ccH+workOnLeaveForDay.data.nonCcH).toFixed(1)+' hours"':'')))+'>'+(dayToUse>new Date() && priorityBooking && !isDateAvailable && isDealerOpen(dayToUse, availabilityAll)?'<a href="javascript:void(0);" style="color: black;" onclick="return priorityBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+(dayToUse>new Date() && isDateAvailable?'<a href="javascript:void(0);" style="color: black;" onclick="return checkBookDate(\''+dateToAutoline(dayToUse)+'\')">':'')+i+'</a></td>';
         dayOfWeek += 1;
         if (dayOfWeek===8){
             html += '</tr><tr>';
@@ -2089,6 +2091,12 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
     }
     html += '</tr></table>';
     return html;
+}
+
+function isDealerOpen(date, availabilityAll){
+    if (!availabilityAll) return false;
+    const fD = availabilityAll.find(el => el.date === dateToAutoline(date));
+    return (fD?fD.closed:false);
 }
 
 function generatePricingHTML(){
