@@ -338,8 +338,6 @@ function showPricing(){
         $('div[id="bookingProblems"]').show();
         return null;
     }
-    $('#dealershipCapabilitiesContent').html(getDealerCapabilities(serviceBookingProcess.bookingData.dealer));
-    $('#dealershipCapabilities').show();
     if ($('select[name="pricingBrand"]').val()===''){
         $('div[id="bookingProblems"]').html('<span style=\"color:red;\">Brand needs to be selected.</span>');
         $('div[id="bookingProblems"]').show();
@@ -692,6 +690,8 @@ function checkPricingDataForDealership(checkDealership){
         $('div[id="bookingDealership"]').text('');
         return;
     }
+    $('#dealershipCapabilitiesContent').html(getDealerCapabilities(checkDealership));
+    $('#dealershipCapabilities').show();
     console.log('checkPricingDataForDealership',checkDealership.field_8)
     if (!serviceBookingProcess.bookingData) serviceBookingProcess.bookingData = {}
 
