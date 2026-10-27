@@ -313,6 +313,7 @@ function getDealerCapabilities(dealer){
                                     <div ng-show="!selected.dealer.DealerPricingExtraDetail.BigVanMessage">-</div>
                                 </div>
                             </div>'*/
+                            return html;
 }
 
 function showPricing(){
