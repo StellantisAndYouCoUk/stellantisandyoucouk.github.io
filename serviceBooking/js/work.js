@@ -252,7 +252,7 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function priorityBookDate(date){
     console.log('priorityBookDate',date)
-    serviceBookingProcess.bookingData.confirmAvailability = {priroityBooking: true, date : new Date(date)}
+    serviceBookingProcess.bookingData.confirmAvailability = {priorityBooking: true, date : new Date(date)}
     generateBookingSummary();
 }
 
