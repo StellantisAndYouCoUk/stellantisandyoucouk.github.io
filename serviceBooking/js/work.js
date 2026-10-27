@@ -1762,11 +1762,24 @@ async function generateBookingSummary(){
                 }
             }
         }
-        if (!serviceBookingProcess.bookingData.bookingSentToAutoline && !serviceBookingProcess.bookingData.confirmAvailability && serviceBookingProcess.bookingData.priorityBookingDetails){
-            html += '<br /><br /><b>Booking details</b>';
-            if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
-                html += '<br />Colection and delivery<br /><a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
+        if ((serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet || serviceBookingProcess.bookingData.confirmAvailability.selectedWait || serviceBookingProcess.bookingData.confirmAvailability.confirmedCD)){
+            html += '<br /><br /><b>Create booking</b><br />';
+            html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ (serviceBookingProcess.bookingData.confirmAvailability.confirmedCD?'':' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait))+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
+            html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
+            html += (serviceBookingProcess.bookingData.confirmAvailability.confirmedCD?'<br />Collection and Delivery was confirmed for customer.':'');
+            html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
+            if (serviceBookingProcess.customer && serviceBookingProcess.vehicle){
+                html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
             } else {
+                html += '<br /><b style=\"color:red;\">Customer and vehicle needs to be created in Autoline to create booking.</b>'
+            }
+        }
+    }
+    if (!serviceBookingProcess.bookingData.bookingSentToAutoline && !serviceBookingProcess.bookingData.confirmAvailability && serviceBookingProcess.bookingData.priorityBookingDetails){
+        html += '<br /><br /><b>Booking details</b>';
+        if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
+            html += '<br />Colection and delivery<br /><a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
+        } else {
                 let aVForDate = serviceBookingProcess.bookingData.availabilityAll.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.priorityBookingDetails.date)));
                 if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
                     html += '<br />Meet and greet availability<br />';
@@ -1782,19 +1795,6 @@ async function generateBookingSummary(){
                     html += formatWaitAvailability(aVForDate.wait);
                     //html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
                 //}
-            }
-        }
-        if ((serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet || serviceBookingProcess.bookingData.confirmAvailability.selectedWait || serviceBookingProcess.bookingData.confirmAvailability.confirmedCD)){
-            html += '<br /><br /><b>Create booking</b><br />';
-            html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ (serviceBookingProcess.bookingData.confirmAvailability.confirmedCD?'':' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait))+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
-            html += (serviceBookingProcess.bookingData.confirmAvailability.selectedWait?'<br />Customer will wait.':'');
-            html += (serviceBookingProcess.bookingData.confirmAvailability.confirmedCD?'<br />Collection and Delivery was confirmed for customer.':'');
-            html += (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar?'<br />Courtesy car will be booked - '+serviceBookingProcess.bookingData.confirmAvailability.courtesyCar:'');
-            if (serviceBookingProcess.customer && serviceBookingProcess.vehicle){
-                html += '<br /><a href="#" id="doBookingButton" class="btn btn-primary" onclick="doBookingInAutoline(); return false;">Create Booking - WIP in Autoline</a>';
-            } else {
-                html += '<br /><b style=\"color:red;\">Customer and vehicle needs to be created in Autoline to create booking.</b>'
-            }
         }
     }
 
