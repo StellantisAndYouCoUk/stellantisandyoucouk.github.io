@@ -2095,7 +2095,7 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
 
 function isDealerOpen(date, availabilityAll){
     if (!availabilityAll) return false;
-    const fD = availabilityAll.find(el => el.date === dateToAutoline(date));
+    const fD = availabilityAll.availability.find(el => el.date === dateToAutoline(date));
     return (fD?fD.closed:false);
 }
 
