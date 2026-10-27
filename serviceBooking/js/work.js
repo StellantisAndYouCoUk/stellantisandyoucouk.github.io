@@ -287,7 +287,8 @@ function chooseDealership(dealershipId){
         if (serviceBookingProcess.bookingData.pricing){
             showPricing();
         }
-
+    $('#dealershipCapabilitiesContent').html(getDealerCapabilities(newDealership));
+    $('#dealershipCapabilities').show();
     //}
 }
 
