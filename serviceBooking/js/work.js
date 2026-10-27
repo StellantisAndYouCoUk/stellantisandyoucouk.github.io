@@ -252,8 +252,7 @@ function getPricing(konnectDealerId, konnectFranchiseId, konnectFuelTypeId, mode
 
 function priorityBookDate(date){
     console.log('priorityBookDate',date)
-    serviceBookingProcess.bookingData.confirmAvailability = null;
-    serviceBookingProcess.bookingData.priorityBookingDetails = {date : new Date(date)}
+    serviceBookingProcess.bookingData.confirmAvailability = {priroityBooking: true, date : new Date(date)}
     generateBookingSummary();
 }
 
@@ -1732,10 +1731,12 @@ async function generateBookingSummary(){
 
     if (!serviceBookingProcess.bookingData.bookingSentToAutoline && serviceBookingProcess.bookingData.confirmAvailability){
         html += '<br /><br /><b>Booking details</b>';
-        if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
-            html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Confirming availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
-        } else {
-            html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'confirmed available':(serviceBookingProcess.bookingData.confirmAvailability.description?'not available - '+serviceBookingProcess.bookingData.confirmAvailability.description:'NOT AVAILABLE'))+'</b></span>'
+        if (!serviceBookingProcess.bookingData.confirmAvailability.priorityBooking){
+            if (serviceBookingProcess.bookingData.confirmAvailability.status==='checking'){
+                html += '<br /><b><img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> <span style=\"color:orange;\">Confirming availability for date '+ dateToGB(serviceBookingProcess.bookingData.confirmAvailability.date)+'</span></b>'
+            } else {
+                html += '<br />'+(serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'<span style=\"color:green;\">':'<span style=\"color:red;\">')+'<b>Date '+ dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date)) + ' ' + (serviceBookingProcess.bookingData.confirmAvailability.dateAvailable?'confirmed available':(serviceBookingProcess.bookingData.confirmAvailability.description?'not available - '+serviceBookingProcess.bookingData.confirmAvailability.description:'NOT AVAILABLE'))+'</b></span>'
+            }
         }
         if (serviceBookingProcess.bookingData && serviceBookingProcess.bookingData.availability && serviceBookingProcess.bookingData.availability.availability && serviceBookingProcess.bookingData.confirmAvailability.dateAvailable){
             if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
@@ -1762,6 +1763,28 @@ async function generateBookingSummary(){
                 }
             }
         }
+        if (serviceBookingProcess.bookingData.confirmAvailability.priorityBooking){
+            html += '<br /><br /><b>Booking details</b>';
+            if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
+                html += '<br />Colection and delivery<br /><a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
+            } else {
+                    let aVForDate = serviceBookingProcess.bookingData.availabilityAll.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.priorityBookingDetails.date)));
+                    if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
+                        html += '<br />Meet and greet availability<br />';
+                        html += formatMeetAndGreetAvailability(aVForDate.meetAndGreet);
+                    }
+                    if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
+                        html += '<br />Available cars<br />';
+                        html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.priorityBookingDetails.date)).map(el => (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar===el.regNumber?'<b>Selected</b> ':'')+'<a href="#" onclick="chooseCourtesyCar(\''+el.regNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+(el.transmission?el.transmission+' - ':'')+el.description).join('<br />') + '<br />'
+                        if (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar) html += '<a href="#" onclick="chooseCourtesyCar(null); return false;">No courtesy car</a><br />'
+                    }
+                    //if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
+                        html += '<br />Wait appointment availability<br />';
+                        html += formatWaitAvailability(aVForDate.wait);
+                        //html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
+                    //}
+            }
+        }
         if ((serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet || serviceBookingProcess.bookingData.confirmAvailability.selectedWait || serviceBookingProcess.bookingData.confirmAvailability.confirmedCD)){
             html += '<br /><br /><b>Create booking</b><br />';
             html += 'Book '+serviceBookingProcess.bookingData.bookingVehicleDescription+' of '+ serviceBookingProcess.customer.FirstName+ ' '+serviceBookingProcess.customer.Surname+' at '+serviceBookingProcess.bookingData.dealerName+' on '+dateToGB(new Date(serviceBookingProcess.bookingData.confirmAvailability.date))+ (serviceBookingProcess.bookingData.confirmAvailability.confirmedCD?'':' '+(serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet?serviceBookingProcess.bookingData.confirmAvailability.selectedMeetAndGreet:serviceBookingProcess.bookingData.confirmAvailability.selectedWait))+' for total £' + (serviceBookingProcess.bookingData.discountPercent && serviceBookingProcess.bookingData.discountPercent>0?(total - total*(serviceBookingProcess.bookingData.discountPercent/100)):total).toFixed(2);
@@ -1773,28 +1796,6 @@ async function generateBookingSummary(){
             } else {
                 html += '<br /><b style=\"color:red;\">Customer and vehicle needs to be created in Autoline to create booking.</b>'
             }
-        }
-    }
-    if (!serviceBookingProcess.bookingData.bookingSentToAutoline && !serviceBookingProcess.bookingData.confirmAvailability && serviceBookingProcess.bookingData.priorityBookingDetails){
-        html += '<br /><br /><b>Booking details</b>';
-        if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('C/D'))){
-            html += '<br />Colection and delivery<br /><a href="#" onclick="confirmCD(); return false;">Confirm that all the details for C/D are right</a>'
-        } else {
-                let aVForDate = serviceBookingProcess.bookingData.availabilityAll.availability.find(el => el.date === dateToAutoline(new Date(serviceBookingProcess.bookingData.priorityBookingDetails.date)));
-                if (aVForDate && aVForDate.meetAndGreet && aVForDate.meetAndGreet.availability){
-                    html += '<br />Meet and greet availability<br />';
-                    html += formatMeetAndGreetAvailability(aVForDate.meetAndGreet);
-                }
-                if (serviceBookingProcess.bookingData.orderedLines.find(el => el.code.includes('CCAR'))){
-                    html += '<br />Available cars<br />';
-                    html += getCourtesyCarsForDate(new Date(serviceBookingProcess.bookingData.priorityBookingDetails.date)).map(el => (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar===el.regNumber?'<b>Selected</b> ':'')+'<a href="#" onclick="chooseCourtesyCar(\''+el.regNumber+'\'); return false;">'+el.regNumber+ '</a> ('+el.vehicleBranch+') - '+(el.transmission?el.transmission+' - ':'')+el.description).join('<br />') + '<br />'
-                    if (serviceBookingProcess.bookingData.confirmAvailability.courtesyCar) html += '<a href="#" onclick="chooseCourtesyCar(null); return false;">No courtesy car</a><br />'
-                }
-                //if (serviceBookingProcess.bookingData.confirmAvailability.isWaitAvailable){
-                    html += '<br />Wait appointment availability<br />';
-                    html += formatWaitAvailability(aVForDate.wait);
-                    //html += '<br /><input type="checkbox" id="bookWaitApointment" onclick="waitAppointmentChange(); return true;"'+(serviceBookingProcess.bookingData.confirmAvailability.bookWaitAppointment?' checked':'')+'/>Book Wait Appointment';
-                //}
         }
     }
 
