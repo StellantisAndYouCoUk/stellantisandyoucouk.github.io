@@ -1376,7 +1376,7 @@ function searchCustomerFirstPageInAutoline(){
     searchFields.map(function(el){
         payload[el.name] = $('#'+el.field).val();
     })
-    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:payload,withVehicles:true,excludeGdpr:true},searchCustomerFirstPageInAutolineCallback);
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutolineBasicData?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:payload},searchCustomerFirstPageInAutolineCallback);
     serviceBookingProcess.customerSearchFirstPage = {
         searchString : payload,
         results : []
@@ -1388,10 +1388,10 @@ function searchCustomerFirstPageInAutolineCallback(data){
     serviceBookingProcess.customerSearchFirstPage.results = data;
     let html = '';
     data.map(function(el){
-        html += '<br /><b>'+el.FirstName + ' '+el.Surname +'</b> - '+el.EMailAddress +'; '+el.TelephoneNumbers+' - '+el.Postcode;
+        html += '<br /><b>'+el.fullName +'</b> - '+el.email +'; '+el.telephoneNumbers.replaceAll(',,',',')+' - '+el.postcode;
         let vehicles = '';
         el.vehicles.map(function (veh){
-            vehicles += '<a class="btn btn-primary" onclick="chooseVehicleFirstPage(\''+veh.RegistrationNumber+'\'); return false;">'+veh.RegistrationNumber+'</a>, '
+            vehicles += '<a class="btn btn-primary" onclick="chooseVehicleFirstPage(\''+veh+'\'); return false;">'+veh+'</a>, '
         })
         if (vehicles!=='') html +='<br />&nbsp; &nbsp;'+vehicles;
     })
