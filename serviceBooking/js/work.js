@@ -1364,14 +1364,20 @@ function changeCustomer(){
 
 function searchCustomerFirstPageInAutoline(){
     $('#searchCustomerResults').html('<img src="https://stellantisandyoucouk.github.io/imagesStore/loading.gif"> Searching ...');
-    let searchString = $('#customerContact').val();
-    if (searchString.length<4){
+    let searchFields = [{name:'phone','field':'customerContactPhone'},{name:'email','field':'customerContactEmail'},{name:'surname','field':'customerContactSurname'},{name:'postcode','field':'customerContactPostcode'}]
+    let toCheck = searchFields.map(function(el){
+        return $('#'+el.field).val();
+    }).join('');
+    if (toCheck.length<4){
         $('#searchCustomerResults').html('Enter at least 4 characters ...');
         return;
     }
-    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:searchString,withVehicles:true,excludeGdpr:true},searchCustomerFirstPageInAutolineCallback);
+    let payload = searchFields.map(function(el){
+        return {'name':el.name,'value':$('#'+el.field).val()};
+    })
+    callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:payload,withVehicles:true,excludeGdpr:true},searchCustomerFirstPageInAutolineCallback);
     serviceBookingProcess.customerSearchFirstPage = {
-        searchString : searchString,
+        searchString : payload,
         results : []
     }
 }
