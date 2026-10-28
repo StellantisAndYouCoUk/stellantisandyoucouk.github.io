@@ -1397,6 +1397,7 @@ function searchCustomerFirstPageInAutolineCallback(data){
         }
         if (vehicles!=='') html +='<br />&nbsp; &nbsp;'+vehicles;
     })
+    if (data.length===10) html = '<b>More then 10 customers found, refine your search ...</b><br /><br />' + html;
     $('#searchCustomerResults').html(html);
 }
 
