@@ -2105,7 +2105,7 @@ function isDealerClosed(date, availabilityAll){
     let closed = false;
     if (fD) closed = fD.closed;
     if (closed){
-        let wOL = availabilityAll.workOnLeave.find(el => el.date === dateToAutoline(date));
+        let wOL = availabilityAll.workOnLeave.dates.find(el => el.date === dateToAutoline(date));
         if (wOL && (wOL.data.ccH!==0 || wOL.data.nonCcH!==0)) closed = false;
     }
     return closed;
