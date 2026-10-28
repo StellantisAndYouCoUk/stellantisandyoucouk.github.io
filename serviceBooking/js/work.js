@@ -2102,7 +2102,13 @@ function formatAvailability(availability, plusMonth = 0, maxCheckedDate, courtes
 function isDealerClosed(date, availabilityAll){
     if (!availabilityAll) return false;
     const fD = availabilityAll.availability.find(el => el.date === dateToAutoline(date));
-    return (fD?fD.closed:false);
+    let closed = false;
+    if (fD) closed = fD.closed;
+    if (closed){
+        let wOL = availabilityAll.workOnLeave.find(el => el.date === dateToAutoline(date));
+        if (wOL && (wOL.data.ccH!==0 || wOL.data.nonCcH!==0)) closed = false;
+    }
+    return closed;
 }
 
 function generatePricingHTML(){
