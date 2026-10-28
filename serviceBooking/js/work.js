@@ -1372,7 +1372,7 @@ function searchCustomerFirstPageInAutoline(){
         $('#searchCustomerResults').html('Enter at least 4 characters ...');
         return;
     }
-    let payload = ();
+    let payload = {};
     searchFields.map(function(el){
         payload[el.name] = $('#'+el.field).val();
     })
