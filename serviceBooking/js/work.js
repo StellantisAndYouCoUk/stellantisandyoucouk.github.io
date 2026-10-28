@@ -1372,8 +1372,9 @@ function searchCustomerFirstPageInAutoline(){
         $('#searchCustomerResults').html('Enter at least 4 characters ...');
         return;
     }
-    let payload = searchFields.map(function(el){
-        return {'name':el.name,'value':$('#'+el.field).val()};
+    let payload = ();
+    searchFields.map(function(el){
+        payload[el.name] = $('#'+el.field).val();
     })
     callPostHttpRequestAsync('https://davidmale--shared-server-1.apify.actor/searchCustomerInAutoline?token=apify_api_pt5m4fzVRYCWBTCdu5CKzc02hKZkXg2eeqW3',null,{token:token,searchString:payload,withVehicles:true,excludeGdpr:true},searchCustomerFirstPageInAutolineCallback);
     serviceBookingProcess.customerSearchFirstPage = {
