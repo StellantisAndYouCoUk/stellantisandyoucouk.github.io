@@ -1390,9 +1390,11 @@ function searchCustomerFirstPageInAutolineCallback(data){
     data.map(function(el){
         html += '<br /><b>'+el.fullName +'</b> - '+el.email +'; '+el.telephoneNumbers.replaceAll(',,',',')+' - '+el.postcode;
         let vehicles = '';
-        el.vehicles.map(function (veh){
-            vehicles += '<a class="btn btn-primary" onclick="chooseVehicleFirstPage(\''+veh+'\'); return false;">'+veh+'</a>, '
-        })
+        if (el.vehicles){
+            el.vehicles.map(function (veh){
+                vehicles += '<a class="btn btn-primary" onclick="chooseVehicleFirstPage(\''+veh+'\'); return false;">'+veh+'</a>, '
+            })
+        }
         if (vehicles!=='') html +='<br />&nbsp; &nbsp;'+vehicles;
     })
     $('#searchCustomerResults').html(html);
