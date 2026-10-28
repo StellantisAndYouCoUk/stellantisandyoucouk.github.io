@@ -1985,7 +1985,8 @@ function doBookingInAutoline(){
         isCD : serviceBookingProcess.bookingData.confirmAvailability.confirmedCD,
         provisinalWIPNumber : data.newWIPNumber,
         isPriorityBooking : serviceBookingProcess.bookingData.confirmAvailability.priorityBooking,
-        priorityBookingReason : serviceBookingProcess.bookingData.priorityBooking
+        priorityBookingReason : serviceBookingProcess.bookingData.priorityBooking,
+        loggedInUser : loggedInUser
     };
     callPostHttpRequestAsync('https://hook.eu1.make.celonis.com/y5mi0h9g6fqqvib520j1oik8t6okzi84',null,bookingData,doBookingAutolineCallback);
     serviceBookingProcess.bookingData.bookingSentToAutoline = true;
