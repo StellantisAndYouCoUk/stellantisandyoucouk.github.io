@@ -7157,3 +7157,9 @@ console.log("renderSYSearchButtons('9698',defineButtons);")
       }
     });	
 });
+
+$(document).on('knack-view-render.view_9369', function (event, view, data) {
+  let mp3Url = $('div[class*="field_12391"]>div[class="kn-detail-body"] a').attr('href');
+  $('div[class*="field_12391"]').append('<audio controls=""><source src="'+mp3Url+'" type="audio/mpeg"></audio>');
+  $('div[class*="field_12391"]>div[class="kn-detail-body"]').html('')
+})
